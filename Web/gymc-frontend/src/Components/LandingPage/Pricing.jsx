@@ -8,7 +8,7 @@ import './LandingPage.css'
 
 function Pricing() {
   return (
-    <div id='features'>
+    <div id='pricing'>
         <h1>PRICING</h1>
         <div className='p-container'>
             <Pricingbox title="AFFORDABLE PRICING FOR YOUR WORKOUTS" />
