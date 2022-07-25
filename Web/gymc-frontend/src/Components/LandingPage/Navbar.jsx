@@ -18,7 +18,7 @@ export const Navbar = () => {
 
   return (
     <nav className={nav ? "nav active" :"nav"}>
-        <Link to='#' className='logo'>
+        <Link to='main' className='logo'>
             <img src={logo} alt=''/>
         </Link>
         <input className='menu-btn' type="checkbox" id='menu-btn'/>
@@ -26,9 +26,9 @@ export const Navbar = () => {
             <span className='nav-icon'></span>
         </label>
         <ul className='menu'>
-            <li><Link to='#'>Features</Link></li>
+            <li><Link to='features'>Features</Link></li>
             <li><Link to='#'>Trainers</Link></li>
-            <li><Link to='#'>Pricing</Link></li>
+            <li><Link to='pricing'>Pricing</Link></li>
             <li><Link to='#'>About us</Link></li>
             <li><Link to='#'>Contact us</Link></li>
             <li><Link to='#'>Login</Link></li>
