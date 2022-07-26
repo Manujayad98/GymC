@@ -29,6 +29,9 @@ input{
     width: 90px;
     
 }
+
+/* HEADER */
+
 #main{
     width:100%;
     height:768px;
@@ -108,6 +111,9 @@ nav .menu-btn,
 .menu-icon{
 		display:none;
 	}
+
+
+
 .name{
     text-align: left;
     line-gap-override: 2px!important;
@@ -165,6 +171,8 @@ nav .menu-btn,
     color: #ffffff;
     border: 2px solid #FF1414;
 }
+
+/* FEATURES */
 
 #features{
     width:100%;
@@ -249,7 +257,7 @@ nav .menu-btn,
 .a-b-text a{
     margin-top:15px ;
 }
-#presentaion{
+/* #presentaion{
     padding-top: 30px;
     width:100%;
     height:768px;
@@ -308,8 +316,8 @@ nav .menu-btn,
     transition: all ease 0.5s;
     color: #ffffff;
     border: 2px solid #FF1414;
-}
-
+} */
+/* 
 #about{
     margin-top:100px ;
 	width:100%;
@@ -361,7 +369,9 @@ nav .menu-btn,
 }
 .about-image img{
   width: 600px;
-}
+} */
+
+/* CONTACT US */
 
 #contact{
     width:100%;
@@ -369,6 +379,7 @@ nav .menu-btn,
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: #1F0106;
 }
 #contact h1{
     color: #fff;
@@ -409,6 +420,96 @@ nav .menu-btn,
     }
 }
 
+ /* PRICING */
+
+ #pricing{
+    width:100%;
+    height:120vh;
+    box-sizing: border-box;
+    font-family:'Poppins';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px ;
+    background-color: #1F0106;
+}
+#pricing h1{
+    color: #fff;
+    font-size: 3rem;
+}
+.p-container{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 40px;
+
+
+}
+.p-box{
+    background-color: #3A141A;
+    width:300px;
+    height: 400px;
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.4s ease-in-out;
+    position: relative;
+    
+}
+.p-b-img{
+    width: 100%;
+    height: 60%;
+
+}
+.p-b-img img{
+    padding: 15px;
+    margin-top: 40px;
+    width:100%;
+    height: 50%;
+
+}
+.p-box:hover{
+    border: 1px solid #FF1414;
+    box-shadow: 2px 2px 12px rgba(184, 0, 0, 0.445);
+}
+.p-b-text{
+    width: 100%;
+    height: 40%;
+    /* background-color:#000000; */
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+.p-b-text h2{
+    color: #fff;
+}
+.p-b-text p{
+    margin: 0px;
+    color:#ffffffa6;
+    font-size: 1.1rem;
+    font-family:'Poppins';
+    display: block;
+    display: -webkit-box;
+    max-width: 80%;
+    margin-top: 5px;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 10px;
+}
+.p-b-text p:hover{
+    color:#ffffff;
+}
+.p-b-text a{
+    margin-top:15px ;
+}
+
+/* RESPONSIVE */
+
 @media(max-width:1190px){
 	#main{
 		background-size: 1150px !important;
@@ -429,7 +530,7 @@ nav .menu-btn,
     .name .details{
         font-size: 1rem;
     }
-    .pr-heading{
+    /* .pr-heading{
 		left: 50%;
 		top: 50%;
         transform: translate(-50%,-50%);
@@ -446,7 +547,7 @@ nav .menu-btn,
     }
 	.about-image img{
 		height:400px;
-    }
+    } */
     #features{
 		height:auto;
     }
@@ -457,6 +558,21 @@ nav .menu-btn,
 		flex-grow: 1;
 	}
     .a-b-img img{
+		object-fit:contain;
+    }
+
+    /* pricing */
+
+    #pricing{
+		height:auto;
+    }
+    .p-container{
+		flex-wrap: wrap;
+	}
+    .p-box{
+		flex-grow: 1;
+	}
+    .p-b-img img{
 		object-fit:contain;
     }
     
@@ -473,12 +589,12 @@ nav .menu-btn,
 		top: 50%;
 		transform: translate(-50%,-50%);
     }
-    .pr-heading{
+    /* .pr-heading{
 		left: 50%;
 		top: 50%;
 		transform: translate(-50%,-50%);
-	}
-	.about-image{
+	} */
+	/* .about-image{
         display:none;
     }
     .header-btn{
@@ -504,9 +620,13 @@ nav .menu-btn,
     }
     .about-text p{
         width: 100%;
-    }
+    } */
     #features{
         margin-bottom: 100px;
+    }
+    #pricing{
+        margin-bottom: 100px;
+        /* margin-top: 160px; */
     }
 }
 @media(max-width:600px){
@@ -610,92 +730,11 @@ nav .menu-btn,
                 width: 100%;
                 height:400px;
             }
+            .p-box{
+                width: 100%;
+                height:400px;
+                
+            }
         }
 
-        /* pricing css */
-
-        #pricing{
-          width:100%;
-          height:120vh;
-          box-sizing: border-box;
-          font-family:'Lato';
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          padding-top: 40px ;
-          background-color: #1F0106;
-      }
-      #pricing h1{
-          color: #fff;
-          font-size: 3rem;
-      }
-      .p-container{
-          display: flex;
-          justify-content: center;
-          align-content: center;
-          gap: 40px;
-      
-      
-      }
-      .p-box{
-          background-color: #3A141A;
-          width:300px;
-          height: 400px;
-          margin: 20px;
-          border-radius: 10px;
-          overflow: hidden;
-          transition: 0.4s ease-in-out;
-          position: relative;
-          
-      }
-      .p-b-img{
-          width: 100%;
-          height: 60%;
-      
-      }
-      .p-b-img img{
-          padding: 15px;
-          margin-top: 40px;
-          width:100%;
-          height: 50%;
-      
-      }
-      .p-box:hover{
-          border: 1px solid #FF1414;
-          box-shadow: 2px 2px 12px rgba(184, 0, 0, 0.445);
-      }
-      .p-b-text{
-          width: 100%;
-          height: 40%;
-          /* background-color:#000000; */
-          display:flex;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-          flex-direction: column;
-      }
-      .p-b-text h2{
-          color: #fff;
-      }
-      .p-b-text p{
-          margin: 0px;
-          color:#ffffffa6;
-          font-size: 1.1rem;
-          font-family:'Poppins';
-          display: block;
-          display: -webkit-box;
-          max-width: 80%;
-          margin-top: 5px;
-          -webkit-line-clamp: 4;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          margin-bottom: 10px;
-      }
-      .p-b-text p:hover{
-          color:#ffffff;
-      }
-      .p-b-text a{
-          margin-top:15px ;
-      }
+       
