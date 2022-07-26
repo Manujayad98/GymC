@@ -9,7 +9,7 @@ function Pricingbox(props) {
         </div> */}
         <div className='p-b-text'>
             <h2>{props.title}</h2>
-            <p>Rs.</p>
+            <p>{props.par}</p>
             {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p> */}
 
         </div>

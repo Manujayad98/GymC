@@ -5,7 +5,7 @@
 body{
     margin:0px;
     padding: 0px;
-    background-color: #000000;
+    background-color: #1F0106;
     font-family: 'Poppins', sans-serif;
 }
 *{
@@ -28,6 +28,9 @@ input{
 .logo img{
     width: 90px;
     
+}
+.logo{
+    margin-left: 0px;
 }
 
 /* HEADER */
@@ -142,7 +145,7 @@ nav .menu-btn,
 }
 .name h1{
 	font-family:'Poppins';
-	font-size: 4.5rem;
+	font-size: 4rem;
 	margin:0px;
 	letter-spacing: 2px;
 	color:#ffffff;
@@ -456,6 +459,7 @@ nav .menu-btn,
     transition: 0.4s ease-in-out;
     position: relative;
     
+    
 }
 .p-b-img{
     width: 100%;
@@ -485,6 +489,28 @@ nav .menu-btn,
 }
 .p-b-text h2{
     color: #fff;
+}
+.p-box h2{
+    color: white;
+}
+.p-box p{
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+.p-box span{
+    color: red;
+    font-size: larger;
+}
+ul.price{
+    list-style-type: disc;
+    line-height: 35px;
+    padding-left: 50px;
+    text-align: left;
+}
+li{
+    color: white;
+    
 }
 .p-b-text p{
     margin: 0px;
