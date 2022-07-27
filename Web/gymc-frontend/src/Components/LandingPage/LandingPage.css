@@ -382,7 +382,7 @@ nav .menu-btn,
 }
 
 .about-text {
-    width: 45%;
+    width: 50%;
     color: #fff;
     list-style: circle;
 }
@@ -390,6 +390,7 @@ nav .menu-btn,
 .about-text h2 {
     color: #FF1414;
     text-align: left;
+    font-size: 35px;
     font-weight: 500;
     margin: 0px;
     padding: 0px;
@@ -446,13 +447,14 @@ h5 {
 }
 
 .about-image {
-    width: 50%;
+    width: 55%;
     margin: 5px;
 }
 
 .about-image img {
-    width: 80%;
+    width: 90%;
     object-fit: contain;
+    margin: 0 0 -33px -160px;
 }
 
 /* ************ END ABOUT US ************ */
@@ -584,7 +586,7 @@ h5 {
     }
 
     .about-image img {
-        height: 400px;
+        height: 700px;
     }
 
     #features {

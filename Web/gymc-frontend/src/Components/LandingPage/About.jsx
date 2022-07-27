@@ -12,27 +12,27 @@ function About() {
                 </div>
                 <div className='about-text'>
                     <h2>Every Day Is A Chance To Become Better</h2>
-                    <h5>Lorem Ipsum Dolor Sit, Amet Consectetur Adipisicing Elit. Ratione
+                    <h4>Lorem Ipsum Dolor Sit, Amet Consectetur Adipisicing Elit. Ratione
                         Accusamus Dicta Inventore Nobis Obcaecati Vero Odio, Id Dolorum.
-                        Consequatur Ex, Aperiam Deserunt Nostrum Perferendis </h5>
+                        Consequatur Ex, Aperiam Deserunt Nostrum Perferendis </h4>
                     <div className='about-text-card-container'>
                         <div className='about-text-card'>
-                            <h5>Body And Mind</h5>
+                            <h4>Body And Mind</h4>
                             <p>Lorem Ipsum Dolor Sit Amet
                                 Consectetur Adipisicing Elit. Est,</p>
                         </div>
                         <div className='about-text-card'>
-                            <h5>Healthy Life</h5>
+                            <h4>Healthy Life</h4>
                             <p>Lorem Ipsum Dolor Sit Amet
                                 Consectetur Adipisicing Elit. Est,</p>
                         </div>
                         <div className='about-text-card'>
-                            <h5>Strategies</h5>
+                            <h4>Strategies</h4>
                             <p>Lorem Ipsum Dolor Sit Amet
                                 Consectetur Adipisicing Elit. Est,</p>
                         </div>
                         <div className='about-text-card'>
-                            <h5>Workout</h5>
+                            <h4>Workout</h4>
                             <p>Lorem Ipsum Dolor Sit Amet
                                 Consectetur Adipisicing Elit. Est,</p>
                         </div>
