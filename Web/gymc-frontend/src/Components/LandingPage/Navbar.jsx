@@ -29,7 +29,7 @@ export const Navbar = () => {
             <li><Link to='features' smooth={true} duration={1000}>Features</Link></li>
             <li><Link to='trainers' smooth={true} duration={1000}>Trainers</Link></li>
             <li><Link to='pricing' smooth={true} duration={1000}>Pricing</Link></li>
-            <li><Link to='#' smooth={true} duration={1000}>About us</Link></li>
+            <li><Link to='about' smooth={true} duration={1000}>About us</Link></li>
             <li><Link to='contact' smooth={true} duration={1000}>Contact us</Link></li>
             <li><Link to='#' smooth={true} duration={1000}>Login</Link></li>
         </ul>
