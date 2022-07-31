@@ -1,5 +1,6 @@
 import React from 'react'
 import './LandingPage.css'
+import { Link } from 'react-router-dom'
 
 export const Header = () => {
   return (
@@ -11,7 +12,9 @@ export const Header = () => {
             <h1><span>SUCCESS</span></h1>
             {/* <p className='details'>Build Your Body And Fitness With Professional Touch</p> */}
             <div className='header-btns'>
-                <a href="#" className='header-btn'>JOIN US</a>
+                <Link to='/registration'>
+                  <a href="#" className='header-btn'>JOIN US</a>
+                </Link>
             </div>
         </div>
     </div>
