@@ -1,13 +1,13 @@
 
 import React from 'react'
-import timage1 from '../../images/t1.png'
-import timage2 from '../../images/t2.png'
-import timage3 from '../../images/t3.png'
-import timage4 from '../../images/t4.png'
-import sicon1 from '../../images/facebook.svg'
+import timage1 from '../../../images/t1.png'
+import timage2 from '../../../images/t2.png'
+import timage3 from '../../../images/t3.png'
+import timage4 from '../../../images/t4.png'
+import sicon1 from '../../../images/facebook.svg'
 // import sicon2 from '../../images/messenger.svg'
-import sicon3 from '../../images/instagram.svg'
-import sicon4 from '../../images/twitter.svg'
+import sicon3 from '../../../images/instagram.svg'
+import sicon4 from '../../../images/twitter.svg'
 import './LandingPage.css'
 
 
