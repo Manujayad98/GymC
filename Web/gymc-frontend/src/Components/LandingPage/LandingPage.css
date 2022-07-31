@@ -77,6 +77,7 @@ nav {
 nav.active {
     box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.157);
     background-color: #000000;
+    cursor: pointer;
 }
 
 nav ul {
@@ -188,6 +189,7 @@ nav .menu-btn,
     transition: all ease 0.5s;
     color: #ffffff;
     border: 2px solid #FF1414;
+    cursor: pointer;
 }
 
 #features {
@@ -244,6 +246,7 @@ nav .menu-btn,
 .a-box:hover {
     border: 1px solid #FF1414;
     box-shadow: 2px 2px 12px rgba(184, 0, 0, 0.445);
+    cursor: pointer;
 }
 
 .a-b-text {
@@ -604,6 +607,7 @@ h5 {
 .p-box:hover {
     border: 1px solid #FF1414;
     box-shadow: 2px 2px 12px rgba(184, 0, 0, 0.445);
+    cursor: pointer;
 }
 
 .p-b-text {
