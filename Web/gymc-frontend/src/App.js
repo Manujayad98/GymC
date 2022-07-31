@@ -7,6 +7,7 @@ import About from './Components/LandingPage/About';
 import Contact from './Components/LandingPage/ContactUs';
 import Trainers from './Components/LandingPage/Trainers';
 import Login from './Components/LandingPage/Login';
+import Registration from './Components/RegistrationPage/Registration';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -21,8 +22,8 @@ function App() {
       <About/>
       <Contact/> */}
       <Routes>
-        <Route path="/" element={<Home />}></Route>
-          <Route path="/login" element={<Login />}></Route>
+        <Route exact path="/" element={<Home />}></Route>
+          <Route path="/registration" element={<Registration />}></Route>
       </Routes>
       </div>
     </Router>
