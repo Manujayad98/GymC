@@ -25,33 +25,33 @@ const Sidebar = ({children}) => {
             icon:<FaTh/>
         },
         {
-            path:"/about",
+            path:"/trainers",
             name:"Trainers",
             icon:<FaUserTie/>
         },
         {
-            path:"/analytics",
+            path:"/trainees",
             name:"Trainees",
             icon:<FaUserAlt/>
         },
         {
-            path:"/comment",
+            path:"/announcements",
             name:"Announcements",
             icon:<FaVolumeDown/>
         },
         {
-            path:"/product",
+            path:"/analytics",
             name:"Analytics",
             icon:<FaChartArea/>
         },
         {
-            path:"/productList",
+            path:"/notification",
             name:"Notification",
             icon:<FaBell />
             
         },
         {
-            path:"/productList",
+            path:"/home",
             name:"Logout",
             icon:<FaSignOutAlt />
             
@@ -83,7 +83,13 @@ const Sidebar = ({children}) => {
                }
            </div>
            <main>{children}
+           {/* <div className='header'>
+               profile
+           </div> */}
            </main>
+           <div className='header'>
+               profile
+           </div>
            
         </div>
     );
