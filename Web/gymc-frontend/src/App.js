@@ -9,10 +9,12 @@ import Trainers from './Components/Pages/LandingPage/Trainers';
 import Login from './Components/Pages/LandingPage/Login';
 import Registration from './Components/Pages/RegistrationPage/Registration';
 import Sidebar from './Components/Utilities/Sidebar/Sidebar';
-import Table1 from './Components/Utilities/Tables/Table1'
-import Table2 from './Components/Utilities/Tables/Table2'
+import Table1 from './Components/Utilities/Tables/Table1';
+import Table2 from './Components/Utilities/Tables/Table2';
+import LoginPage from './Components/Pages/LoginPage/LoginPage';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.min.css"
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
           <Route path="/sidebar" element={<Sidebar />}></Route>
           <Route path="/table1" element={<Table1 />}></Route>
           <Route path="/table2" element={<Table2 />}></Route>
+          <Route path="/signin" element={<LoginPage />}></Route>
+          <Route path="/signup" element={<LoginPage />}></Route>
         </Routes>
       </div>
     </Router>

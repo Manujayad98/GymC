@@ -1,4 +1,4 @@
-package com.example.gymcbackend.requests;
+package com.example.gymcbackend.dto;
 
 public class AuthenticationRequet {
     private String userName;

@@ -37,7 +37,17 @@ public class StaffMember implements UserDetails {
     @Column(name = "staff_type", length = 1)
     private Integer staffType;
 
-    @JoinTable
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "userID")
+    UserAccount userAccount;
+
+    public UserAccount getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

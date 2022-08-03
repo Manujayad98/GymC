@@ -1,4 +1,4 @@
-package com.example.gymcbackend.responses;
+package com.example.gymcbackend.dto;
 
 public class LoginResponse
 {
