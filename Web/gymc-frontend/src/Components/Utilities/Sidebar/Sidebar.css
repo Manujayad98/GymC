@@ -76,7 +76,11 @@ main{
     font-size: 15px;
     line-height: 30px;
 }
-h1{
-    color: black;
-}
 
+.header {
+    padding: 25px 0;
+    width: 100%;
+    height: 10vh;
+    text-align: center;
+    background: #222;
+  }
