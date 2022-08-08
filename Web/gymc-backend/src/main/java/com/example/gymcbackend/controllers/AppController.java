@@ -1,7 +1,6 @@
 package com.example.gymcbackend.controllers;
 
-import com.example.gymcbackend.repository.UserAccountDetailsRepository;
-import com.example.gymcbackend.services.CustomUserService;
+import com.example.gymcbackend.repository.userDao.UserAccountDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

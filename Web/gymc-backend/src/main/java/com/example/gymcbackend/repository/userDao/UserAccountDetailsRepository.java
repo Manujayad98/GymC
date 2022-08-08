@@ -1,4 +1,4 @@
-package com.example.gymcbackend.repository;
+package com.example.gymcbackend.repository.userDao;
 
 import com.example.gymcbackend.entities.UserAccount;
 import org.springframework.data.jpa.repository.JpaRepository;
