@@ -1,4 +1,4 @@
-package com.example.gymcbackend.repository.traineeDoa;
+package com.example.gymcbackend.repository.traineeDao;
 
 import com.example.gymcbackend.entities.Trainee;
 import org.springframework.data.jpa.repository.JpaRepository;

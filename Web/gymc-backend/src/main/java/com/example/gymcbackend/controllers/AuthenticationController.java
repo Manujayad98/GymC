@@ -55,7 +55,7 @@ public class AuthenticationController {
         UserAccount userObj=(UserAccount) userDetailsService.loadUserByUsername(user.getName());
         //userDetailsService call to repo
         UserInfo userInfo=new UserInfo();
-        System.out.println("hi");
+//        System.out.println("hi");
         userInfo.setUserName(userObj.getUserName());
         userInfo.setUserLevel(userObj.getUserLevel());
 

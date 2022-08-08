@@ -1,7 +1,7 @@
 package com.example.gymcbackend;
 
 import com.example.gymcbackend.repository.staffMemberDao.StaffMemberRepository;
-import com.example.gymcbackend.repository.traineeDoa.TraineeRepository;
+import com.example.gymcbackend.repository.traineeDao.TraineeRepository;
 import com.example.gymcbackend.repository.userDao.UserAccountDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
