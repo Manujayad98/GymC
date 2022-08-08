@@ -9,8 +9,8 @@ import Trainers from './Components/Pages/LandingPage/Trainers';
 import Login from './Components/Pages/LandingPage/Login';
 import Registration from './Components/Pages/RegistrationPage/Registration';
 import Sidebar from './Components/Utilities/Sidebar/Sidebar';
-import Table1 from './Components/Utilities/Tables/Table1';
-import Table2 from './Components/Utilities/Tables/Table2';
+import TrainerC from './Components/Pages/Owner/Trainers';
+import Adjustments from './Components/Pages/Owner/Adjustments';
 import LoginPage from './Components/Pages/LoginPage/LoginPage';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -30,10 +30,11 @@ function App() {
           <Route exact path="/" element={<Home />}></Route>
           <Route path="/registration" element={<Registration />}></Route>
           <Route path="/sidebar" element={<Sidebar />}></Route>
-          <Route path="/table1" element={<Table1 />}></Route>
-          <Route path="/table2" element={<Table2 />}></Route>
+
           <Route path="/signin" element={<LoginPage />}></Route>
           <Route path="/signup" element={<LoginPage />}></Route>
+          <Route path="/trainers" element={<TrainerC />}></Route>
+          <Route path="/adjustments" element={<Adjustments />}></Route>
         </Routes>
       </div>
     </Router>
