@@ -16,6 +16,7 @@ import logo from '../../../images/logo.png'
 import { fetchUserData } from "../../../services/AuthenticationService";
 
 const Sidebar = ({ children }) => {
+
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
     const menuItem = [
@@ -59,10 +60,11 @@ const Sidebar = ({ children }) => {
     ]
     const [data, setData] = useState({});
     React.useEffect(() => {
+        console.log('response');
         fetchUserData()
             .then((response) => {
                 setData(response.data);
-
+                console.log(response);
             })
             .catch((e) => {
                 localStorage.clear();
@@ -90,7 +92,7 @@ const Sidebar = ({ children }) => {
                 </div>
                 {
                     menuItem.map((item, index) => (
-                        item.name == "logout" ?
+                        item.name != "Logout" ?
                             <NavLink to={item.path} key={index} className="link" activeclassName="active">
                                 <div className="icon">{item.icon}</div>
                                 <div style={{ display: isOpen ? "block" : "none" }} className="link_text">{item.name}</div>
@@ -105,6 +107,7 @@ const Sidebar = ({ children }) => {
             </div>
             <main>{children}
             </main>
+            {data && `${data.userName} `}
         </div>
     );
 };

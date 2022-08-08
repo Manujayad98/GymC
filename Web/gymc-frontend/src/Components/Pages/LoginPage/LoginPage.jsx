@@ -26,7 +26,7 @@ const LoginPage = ({ loading, error, ...props }) => {
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        // props.authenticate();    //do not reload the page
+        props.authenticate();    //do not reload the page
         // console.log(props);
         //method called userLogin(userName,password) in authentication service as a authRequest
         userLogin(values)
@@ -34,8 +34,8 @@ const LoginPage = ({ loading, error, ...props }) => {
                 console.log("response->", response);
                 if (response.status === 200) {
                     console.log("logging success");
-                    // props.setUser(response.data);
-                    // userData();
+                    props.setUser(response.data);
+                    userData();
                     window.location.href = "/sidebar";
                 } else {
                     console.log("logging fail");
@@ -172,4 +172,22 @@ const LoginPage = ({ loading, error, ...props }) => {
     )
 };
 
-export default (LoginPage);
+const mapStateToProps = ({ auth }) => {
+    console.log("state ", auth);
+    return {
+        loading: auth.loading,
+        error: auth.error,
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        authenticate: () => dispatch(authenticate()),
+        //user details setted in above
+        setUser: (data) => dispatch(authSuccess(data)),
+        //error messages setted in above
+        loginFailure: (message) => dispatch(authFailure(message)),
+    };
+};
+//get data from store
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
