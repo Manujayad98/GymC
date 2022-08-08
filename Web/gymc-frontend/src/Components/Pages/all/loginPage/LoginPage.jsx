@@ -20,7 +20,20 @@ const LoginPage = ({ loading, error, ...props }) => {
     const userData = async () => {
         console.log('res1');
         const res = await fetchUserData();
-        console.log(res);
+
+        // console.log(res.data.userName);
+        var userLevel = res.data.userLevel;
+
+        if (userLevel === "Owner") {
+            window.location.href = "/sidebar";
+        } else if (userLevel === "Admin") {
+            window.location.href = "/";
+        } else if (userLevel === "Receptionist") {
+            window.location.href = "/";
+        } else {
+            localStorage.clear();
+            window.location.href = "/";
+        }
 
     };
 
@@ -28,7 +41,7 @@ const LoginPage = ({ loading, error, ...props }) => {
         evt.preventDefault();
         props.authenticate();    //do not reload the page
         // console.log(props);
-        //method called userLogin(userName,password) in authentication service as a authRequest
+
         userLogin(values)
             .then((response) => {
                 console.log("response->", response);
@@ -36,7 +49,6 @@ const LoginPage = ({ loading, error, ...props }) => {
                     console.log("logging success");
                     props.setUser(response.data);
                     userData();
-                    window.location.href = "/sidebar";
                 } else {
                     console.log("logging fail");
                     props.loginFailure("1.Something Wrong!Please Try Again");
