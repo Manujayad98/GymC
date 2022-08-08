@@ -33,8 +33,20 @@ public class Trainee implements UserDetails {
     @Column(name = "phone_number", length = 10)
     private String phoneNumber;
 
+    public UserAccount getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
+    }
+
     @Column(name = "occupation")
     private String occupation;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "userID")
+    UserAccount userAccount;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

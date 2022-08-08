@@ -2,8 +2,8 @@ package com.example.gymcbackend.controllers;
 
 import com.example.gymcbackend.config.JWTTokenHelper;
 import com.example.gymcbackend.entities.UserAccount;
-import com.example.gymcbackend.responses.LoginResponse;
-import com.example.gymcbackend.responses.UserInfo;
+import com.example.gymcbackend.dto.LoginResponse;
+import com.example.gymcbackend.dto.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.*;
 import java.security.NoSuchAlgorithmException;
 import java.security.Principal;
 import java.security.spec.InvalidKeySpecException;
-import com.example.gymcbackend.requests.AuthenticationRequet;
+import com.example.gymcbackend.dto.AuthenticationRequet;
 
 @RestController
 @RequestMapping("/api/v1")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 public class AuthenticationController {
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -55,7 +55,9 @@ public class AuthenticationController {
         UserAccount userObj=(UserAccount) userDetailsService.loadUserByUsername(user.getName());
         //userDetailsService call to repo
         UserInfo userInfo=new UserInfo();
+//        System.out.println("hi");
         userInfo.setUserName(userObj.getUserName());
+        userInfo.setUserLevel(userObj.getUserLevel());
 
         return ResponseEntity.ok(userInfo);
     }

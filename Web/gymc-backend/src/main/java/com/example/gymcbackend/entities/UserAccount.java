@@ -52,7 +52,7 @@ public class UserAccount implements UserDetails {
 
     @Override
     public String getUsername() {
-        return null;
+        return this.userName;
     }
 
     @Override

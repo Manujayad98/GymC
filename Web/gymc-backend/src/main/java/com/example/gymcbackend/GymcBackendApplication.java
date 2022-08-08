@@ -1,20 +1,12 @@
 package com.example.gymcbackend;
 
-import com.example.gymcbackend.entities.StaffMember;
-import com.example.gymcbackend.entities.Trainee;
-import com.example.gymcbackend.repository.StaffMemberRepository;
-import com.example.gymcbackend.repository.TraineeRepository;
-import com.example.gymcbackend.repository.UserAccountDetailsRepository;
+import com.example.gymcbackend.repository.staffMemberDao.StaffMemberRepository;
+import com.example.gymcbackend.repository.traineeDao.TraineeRepository;
+import com.example.gymcbackend.repository.userDao.UserAccountDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import javax.annotation.PostConstruct;
-import com.example.gymcbackend.entities.UserAccount;
-
-import java.time.LocalDate;
-import java.util.Date;
 
 @SpringBootApplication
 public class GymcBackendApplication {
