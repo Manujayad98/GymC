@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { connect } from "react-redux";
-import { userLogin } from "../../../services/AuthenticationService";
-import { fetchUserData } from "../../../services/AuthenticationService";
-import { authenticate, authFailure, authSuccess } from "../../redux/authAction";
+import { userLogin } from "../../../../services/AuthenticationService";
+import { fetchUserData } from "../../../../services/AuthenticationService";
+import { authenticate, authFailure, authSuccess } from "../../../redux/authAction";
 import './LoginPage.css'
 
 const LoginPage = ({ loading, error, ...props }) => {

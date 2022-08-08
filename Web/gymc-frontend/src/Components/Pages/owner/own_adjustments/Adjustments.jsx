@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Table from '../../Utilities/Tables/Table2'
-import Edit from '../../../images/Icons/pen-solid.svg'
+import Table from '../../../Utilities/Tables/Table2'
+import Edit from '../../../../images/Icons/pen-solid.svg'
 
 export default function Meals() {
     const [trainerDetails] = useState([

@@ -40,7 +40,7 @@ input {
     position: relative;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url('../../../images/banner.png');
+    background-image: url('../../../../images/banner.png');
     z-index: 0;
 }
 
@@ -292,7 +292,7 @@ nav .menu-btn,
     position: relative;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url(../../../images/offer.png);
+    background-image: url(../../../../images/offer.png);
     text-align: center;
 }
 

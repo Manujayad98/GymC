@@ -1,6 +1,6 @@
 import React from 'react'
 import './LandingPage.css'
-import aboutImg from '../../../images/about.png'
+import aboutImg from '../../../../images/about.png'
 
 function About() {
     return (

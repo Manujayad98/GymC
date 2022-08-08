@@ -1,40 +1,56 @@
 import React from 'react';
-import { Navbar } from './Components/Pages/LandingPage/Navbar';
-import { Header } from './Components/Pages/LandingPage/Header';
-import Features from './Components/Pages/LandingPage/Features';
-import Pricing from './Components/Pages/LandingPage/Pricing';
-import About from './Components/Pages/LandingPage/About';
-import Contact from './Components/Pages/LandingPage/ContactUs';
-import Trainers from './Components/Pages/LandingPage/Trainers';
-import Login from './Components/Pages/LandingPage/Login';
-import Registration from './Components/Pages/RegistrationPage/Registration';
+import { Navbar } from './Components/Pages/all/landingPage/Navbar';
+import { Header } from './Components/Pages/all/landingPage/Header';
+import Features from './Components/Pages/all/landingPage/Features';
+import Pricing from './Components/Pages/all/landingPage/Pricing';
+import About from './Components/Pages/all/landingPage/About';
+import Contact from './Components/Pages/all/landingPage/ContactUs';
+import Trainers from './Components/Pages/all/landingPage/Trainers';
+import Login from './Components/Pages/all/landingPage/Login';
+import Registration from './Components/Pages/all/registrationPage/Registration';
 import Sidebar from './Components/Utilities/Sidebar/Sidebar';
-import TrainerC from './Components/Pages/Owner/Trainers';
-import Adjustments from './Components/Pages/Owner/Adjustments';
-import LoginPage from './Components/Pages/LoginPage/LoginPage';
+import LoginPage from './Components/Pages/all/loginPage/LoginPage';
+
+import TrainerO from './Components/Pages/owner/own_trainers/Trainers';
+import AdjustmentsO from './Components/Pages/owner/own_adjustments/Adjustments';
+
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css"
+
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
 
 function App() {
   return (
     <Router>
       <div className="App">
-        {/* <Header/>
-      <Features/>
-      <Trainers/>
-      <Pricing/>
-      <About/>
-      <Contact/> */}
+
         <Routes>
+
+          {/* ALL ROUTES */}
           <Route exact path="/" element={<Home />}></Route>
           <Route path="/registration" element={<Registration />}></Route>
           <Route path="/sidebar" element={<Sidebar />}></Route>
-
           <Route path="/signin" element={<LoginPage />}></Route>
           <Route path="/signup" element={<LoginPage />}></Route>
-          <Route path="/trainers" element={<TrainerC />}></Route>
-          <Route path="/adjustments" element={<Adjustments />}></Route>
+
+          {/* OWNER ROUTES */}
+          <Route path="/trainers" element={<TrainerO />}></Route>
+          <Route path="/adjustments" element={<AdjustmentsO />}></Route>
+
+          {/* ADMIN ROUTES */}
+
+
+          {/* RECEPTIONIST ROUTES */}
+
+
+          {/* TRAINER ROUTES */}
+
+
+          {/* TRAINEE ROUTES */}
+
+
+
         </Routes>
       </div>
     </Router>

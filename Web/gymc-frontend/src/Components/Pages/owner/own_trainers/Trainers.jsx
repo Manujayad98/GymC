@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Table from '../../Utilities/Tables/Table1'
-import Trash from '../../../images/Icons/trash-solid.svg'
-import Edit from '../../../images/Icons/pen-solid.svg'
-import View from '../../../images/Icons/eye-solid.svg'
-import T1 from '../../../images/t1.png'
+import Table from '../../../Utilities/Tables/Table1'
+import Trash from '../../../../images/Icons/trash-solid.svg'
+import Edit from '../../../../images/Icons/pen-solid.svg'
+import View from '../../../../images/Icons/eye-solid.svg'
+import T1 from '../../../../images/t1.png'
 
 
 export default function Trainers() {
