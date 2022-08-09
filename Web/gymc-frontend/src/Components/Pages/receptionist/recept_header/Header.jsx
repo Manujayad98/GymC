@@ -9,7 +9,9 @@ function Header(props) {
               <img src={props.image} alt='' />
           </div> */}
           <div className='Head'>
-              <h1>{props.title}</h1>
+              <div className='Headng'>
+              <h1 id='heading'>{props.title}</h1>
+              </div>
               {/* <p>Lorem ipsum dolor sit amet consectetur </p> */}
                 <div className='profile'>
                     <img src={owner} alt="" />

@@ -1,12 +1,22 @@
+.Heading{grid-area: header;}
+.profile{grid-area: profile;}
 .Headr{
-    margin-bottom: 15px;
+    margin-bottom: 30px;
+    padding-left: 20px;
 }
 .Head{
-    display: flex;
-    /* gap: 830px; */
+    display: grid;
+    grid-template-areas: 
+    'header header header header header header header header header header header header header header header header header profile';
+   
+    /* gap: 10px; */
     /* padding-left: 100px;
     padding-right: 100px; */
     
+}
+.Heading{
+    
+    padding-right: 20px;
 }
 .profile{
     width: 250px;
@@ -15,12 +25,13 @@
     height: 50px;
     display: flex;
     overflow: hidden;
-    margin-left: 820px;
+    /* margin-left: 800px; */
     
 }
 .profileDetails{
    padding: 5px;
    text-align: left;
+   
     
 }
 #name{
@@ -32,6 +43,7 @@
     font-weight: 500;
     
 }
-h1{
+#heading{
     font-weight: 600!important;
+    font-size: 2rem!important;
 }

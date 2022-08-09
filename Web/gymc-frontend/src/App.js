@@ -20,9 +20,9 @@ import AnnouncementsR from './Components/Pages/receptionist/recept_announcements
 import DashboardR from './Components/Pages/receptionist/recept_dashboard/Dashboard';
 import EquipmentsR from './Components/Pages/receptionist/recept_equipments/Equipments';
 import NotificationsR from './Components/Pages/receptionist/recept_notifications/Notifications';
-import SidebarR from './Components/Pages/receptionist/recept_sidebar/Sidebar';
+// import SidebarR from './Components/Pages/receptionist/recept_sidebar/Sidebar';
 import TraineesR from './Components/Pages/receptionist/recept_trainees/Trainees';
-import TrainersR from './Components/Pages/owner/own_trainers/Trainers';
+import TrainersR from './Components/Pages/receptionist/recept_trainers/Trainers';
 
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css"
