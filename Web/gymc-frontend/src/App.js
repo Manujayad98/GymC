@@ -14,6 +14,16 @@ import LoginPage from './Components/Pages/all/loginPage/LoginPage';
 import TrainerO from './Components/Pages/owner/own_trainers/Trainers';
 import AdjustmentsO from './Components/Pages/owner/own_adjustments/Adjustments';
 
+// RECEPTIONIST
+import AnalyticsR from './Components/Pages/receptionist/recept_analytics/Analytics';
+import AnnouncementsR from './Components/Pages/receptionist/recept_announcements/Announcements';
+import DashboardR from './Components/Pages/receptionist/recept_dashboard/Dashboard';
+import EquipmentsR from './Components/Pages/receptionist/recept_equipments/Equipments';
+import NotificationsR from './Components/Pages/receptionist/recept_notifications/Notifications';
+import SidebarR from './Components/Pages/receptionist/recept_sidebar/Sidebar';
+import TraineesR from './Components/Pages/receptionist/recept_trainees/Trainees';
+import TrainersR from './Components/Pages/owner/own_trainers/Trainers';
+
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css"
 
@@ -23,6 +33,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {
   return (
     <Router>
+      
       <div className="App">
 
         <Routes>
@@ -30,7 +41,7 @@ function App() {
           {/* ALL ROUTES */}
           <Route exact path="/" element={<Home />}></Route>
           <Route path="/registration" element={<Registration />}></Route>
-          <Route path="/sidebar" element={<Sidebar />}></Route>
+          <Route path="/sidebar" element={<Sidebar/>}></Route>
           <Route path="/signin" element={<LoginPage />}></Route>
           <Route path="/signup" element={<LoginPage />}></Route>
 
@@ -42,6 +53,14 @@ function App() {
 
 
           {/* RECEPTIONIST ROUTES */}
+          <Route path="/Rdashboard" element={<DashboardR />}></Route>
+          <Route path="/Ranalytics" element={<AnalyticsR />}></Route>
+          <Route path="/Rtrainees" element={<TraineesR />}></Route>
+          <Route path="/Rtrainers" element={<TrainersR />}></Route>
+          <Route path="/Rannouncements" element={<AnnouncementsR />}></Route>
+          <Route path="/Requipments" element={<EquipmentsR />}></Route>
+          <Route path="/Rnotifications" element={<NotificationsR />}></Route>
+
 
 
           {/* TRAINER ROUTES */}
