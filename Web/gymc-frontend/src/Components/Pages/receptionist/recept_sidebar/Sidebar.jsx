@@ -89,10 +89,17 @@ const Sidebar = ({children}) => {
                </div>
                {
                    menuItem.map((item, index)=>(
+                    item.name != "Logout" ?
                        <NavLink to={item.path} key={index} className="link" activeclassName="active">
                            <div className="icon">{item.icon}</div>
                            <div style={{display: isOpen ? "block" : "none"}} className="link_text">{item.name}</div>
                        </NavLink>
+                       :
+                       <NavLink to={item.path} key={index} onClick={() => logOut()} className="link" activeclassName="active">
+                           <div className="icon">{item.icon}</div>
+                           <div style={{ display: isOpen ? "block" : "none" }} className="link_text">{item.name}</div>
+                       </NavLink>
+                       
                    ))
                }
            </div>
