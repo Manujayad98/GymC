@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import '../own_sidebar/Sidebar.css'
+import SidebarO from '../own_sidebar/Sidebar'
+import HeaderO from '../own_header/Header'
 import Table from '../../../Utilities/Tables/Table2'
 import Edit from '../../../../images/Icons/pen-solid.svg'
 
@@ -122,12 +125,22 @@ export default function Meals() {
         // { id: "Actions", label: "ACTIONS", numeric: false },
     ]);
     return (
-        <div>
-            <Table
-                rows={trainerDetails}
-                headCells={trainerDetailsTableHead}
-                tableName={"Trainers"}
-            />
-        </div>
+
+        <div className='main-container'>
+        <SidebarO/>
+        <div className='body-container'> 
+            <HeaderO title="Adjustments"/>
+            <div className="content-container">
+            
+                    <Table
+                        rows={trainerDetails}
+                        headCells={trainerDetailsTableHead}
+                        tableName={"Trainers"} 
+                    />
+
+            </div>
+          
+      </div>
+    </div>
     )
 }
