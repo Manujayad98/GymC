@@ -4,9 +4,7 @@ import {
     FaBars,
     FaUserAlt,
     FaRegChartBar,
-    FaCommentAlt,
-    FaShoppingBag,
-    FaThList,
+    FaBell,
     FaSignOutAlt
 }from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
@@ -37,7 +35,7 @@ const Sidebar = ({children}) => {
         {
             path:"/Anotifications",
             name:"Notifications",
-            icon:<FaThList/>
+            icon:<FaBell/>
         },
         {
             path: "/",

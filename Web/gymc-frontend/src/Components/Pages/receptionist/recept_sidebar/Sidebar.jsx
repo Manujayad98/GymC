@@ -3,12 +3,14 @@ import {
     FaTh,
     FaBars,
     FaUserAlt,
+    FaUserTie,
+    FaVolumeDown,
+    FaBell,
     FaRegChartBar,
-    FaCommentAlt,
-    FaShoppingBag,
-    FaThList,
+    FaDumbbell,
     FaSignOutAlt
 }from "react-icons/fa";
+
 import { NavLink } from 'react-router-dom';
 import './Sidebar.css'
 import { fetchUserData } from "../../../../services/AuthenticationService";
@@ -27,34 +29,34 @@ const Sidebar = ({children}) => {
         {
             path:"/Rtrainers",
             name:"Trainers",
-            icon:<FaUserAlt/>
+            icon:<FaUserTie/>
         },
         {
             path:"/Rtrainees",
             name:"Trainees",
-            icon:<FaRegChartBar/>
+            icon:<FaUserAlt/>
         },
         {
             path:"/Requipments",
             name:"Equipments",
-            icon:<FaCommentAlt/>
+            icon:<FaDumbbell/>
         },
         {
             path:"/Rannouncements",
             name:"Announcements",
-            icon:<FaShoppingBag/>
+            icon:<FaVolumeDown/>
         },
         {
             path:"/Rnotifications",
             name:"Notifications",
-            icon:<FaThList/>
+            icon:<FaBell/>
         },
         {
             path:"/Ranalytics",
             name:"Analytics",
             icon:<FaRegChartBar/>
         },{
-            path: "/home",
+            path: "/",
             name: "Logout",
             icon: <FaSignOutAlt />
 
