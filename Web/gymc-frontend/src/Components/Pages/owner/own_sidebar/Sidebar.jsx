@@ -3,6 +3,9 @@ import {
     FaTh,
     FaBars,
     FaUserAlt,
+    FaUserTie,
+    FaVolumeDown,
+    FaBell,
     FaRegChartBar,
     FaCommentAlt,
     FaShoppingBag,
@@ -27,12 +30,12 @@ const Sidebar = ({children}) => {
         {
             path:"/Otrainers",
             name:"Trainers",
-            icon:<FaUserAlt/>
+            icon:<FaUserTie/>
         },
         {
             path:"/Otrainees",
             name:"Trainees",
-            icon:<FaRegChartBar/>
+            icon:<FaUserAlt/>
         },
         {
             path:"/Oadjustments",
@@ -42,19 +45,19 @@ const Sidebar = ({children}) => {
         {
             path:"/Oannouncements",
             name:"Announcements",
-            icon:<FaShoppingBag/>
+            icon:<FaVolumeDown/>
         },
         {
             path:"/Onotifications",
             name:"Notifications",
-            icon:<FaThList/>
+            icon:<FaBell/>
         },
         {
             path:"/Oanalytics",
             name:"Analytics",
             icon:<FaRegChartBar/>
         },{
-            path: "/home",
+            path: "/",
             name: "Logout",
             icon: <FaSignOutAlt />
 

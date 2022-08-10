@@ -52,7 +52,7 @@ const Sidebar = ({ children }) => {
 
         },
         {
-            path: "/home",
+            path: "/",
             name: "Logout",
             icon: <FaSignOutAlt />
 
