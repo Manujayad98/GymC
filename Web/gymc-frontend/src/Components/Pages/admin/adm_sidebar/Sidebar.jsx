@@ -25,12 +25,12 @@ const Sidebar = ({children}) => {
             icon:<FaTh/>
         },
         {
-            path:"/Atrainers",
+            path:"/Ausers",
             name:"Users",
             icon:<FaUserAlt/>
         },
         {
-            path:"/Atrainees",
+            path:"/AsystemLogs",
             name:"System Logs",
             icon:<FaRegChartBar/>
         },
