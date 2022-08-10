@@ -11,6 +11,9 @@ import Registration from './Components/Pages/all/registrationPage/Registration';
 import Sidebar from './Components/Utilities/Sidebar/Sidebar';
 import LoginPage from './Components/Pages/all/loginPage/LoginPage';
 
+//ADMIN
+import SidebarA from './Components/Pages/admin/adm_sidebar/Sidebar';
+
 //OWNER
 import TrainerO from './Components/Pages/owner/own_trainers/Trainers';
 import AdjustmentsO from './Components/Pages/owner/own_adjustments/Adjustments';
@@ -49,7 +52,7 @@ function App() {
           {/* ALL ROUTES */}
           <Route exact path="/" element={<Home />}></Route>
           <Route path="/registration" element={<Registration />}></Route>
-          <Route path="/sidebar" element={<SidebarO/>}></Route>
+          <Route path="/sidebar" element={<SidebarA/>}></Route>
           <Route path="/signin" element={<LoginPage />}></Route>
           <Route path="/signup" element={<LoginPage />}></Route>
 
@@ -64,6 +67,7 @@ function App() {
 
 
           {/* ADMIN ROUTES */}
+
 
 
           {/* RECEPTIONIST ROUTES */}
