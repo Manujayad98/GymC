@@ -7,9 +7,9 @@ const Analytics = () => {
   return (
     <div className='main-container'>
       <SidebarR/>
-      <div className='content-container'> 
+      <div className='body-container'> 
           <HeaderR title="Analytics"/>
-          <div className="body-container">
+          <div className="content-container">
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem cum laudantium ipsa laborum esse! Atque temporibus asperiores veritatis ipsum enim ratione quia. Accusantium nesciunt, necessitatibus quaerat ea rerum aliquid minus?</p>
           </div>
       </div>

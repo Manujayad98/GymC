@@ -8,6 +8,7 @@ import Trash from '../../../../images/Icons/trash-solid.svg'
 import Edit from '../../../../images/Icons/pen-solid.svg'
 import View from '../../../../images/Icons/eye-solid.svg'
 import T1 from '../../../../images/t1.png'
+import Card from '../../../Utilities/Card/Card'
 
 
 export default function Trainers() {
@@ -126,14 +127,16 @@ export default function Trainers() {
         // </div>
         <div className='main-container'>
       <SidebarR/>
-      <div className='content-container'> 
-          <HeaderR title="Dasboard"/>
-          <div className="body-container">
-          <Table
-              rows={trainerDetails}
-              headCells={trainerDetailsTableHead}
-              tableName={"Trainers"} 
-          />
+      <div className='body-container'> 
+          <HeaderR title="Trainers"/>
+          <div className="content-container">
+           
+                <Table
+                    rows={trainerDetails}
+                    headCells={trainerDetailsTableHead}
+                    tableName={"Trainers"} 
+                />
+            
           </div>
           
       </div>
