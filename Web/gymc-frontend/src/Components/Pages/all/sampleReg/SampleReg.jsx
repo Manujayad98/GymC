@@ -1,18 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component,useState } from 'react';
 // import React, { useState,initialState } from 'react';
 
-import './App.css';
+import './SampleReg.css';
 
-import Button from './library/components/form-components/Button';
-import InputField from "./library/components/form-components/InputField";
-import Dropdown from "./library/components/form-components/Dropdown";
-import { Validators } from "./library/utilities/Validator";
-import Checkbox from "./library/components/form-components/Checkbox";
-import Radiobutton from "./library/components/form-components/Radiobutton";
+import Button from '../../../Utilities/form-components/Button/index';
+import InputField from "../../../Utilities/form-components/InputField";
+import Dropdown from "../../../Utilities/form-components/Dropdown";
+import { Validators } from "../../../Utilities/Validator/Validator";
+import Checkbox from "../../../Utilities/form-components/Checkbox";
+import Radiobutton from "../../../Utilities/form-components/Radiobutton";
 
-export default class App extends Component {
 
-  state = {
+
+export default function SampleReg(){
+
+  
+const[requestData] = useState({
     text: '',
     occupation: '',
     phone: '',
@@ -25,9 +28,10 @@ export default class App extends Component {
     acceptance: false,
     selectedOption: null,
     gender: false,
-  };
+  }
+  );
 
-  handleChange = (key) => (value) => {
+const  handleChange = (key) => (value) => {
     this.setState({ [key]: value });
   };
   // handleRadio = () => {
@@ -35,21 +39,21 @@ export default class App extends Component {
   //     this.setState({gender});
   // };
 
-  handleClick = (event) => {
+const handleClick = (event) => {
     event.preventDefault();
     alert('Button Clicked');
   };
 
-  handleDropdown = (country) => {
+const handleDropdown = (country) => {
     this.setState({ country });
   };
 
-  handleCheckbox = (acceptance) => {
+const handleCheckbox = (acceptance) => {
     this.setState({ acceptance });
   };
 
-  render() {
-    const { fname, lname, nic, dob, selectedOption, gender, occ, address, email, phone, emergency, text, number, occupation, country, message, acceptance } = this.state;
+  // render() {
+  //   const { fname, lname, nic, dob, selectedOption, gender, occ, address, email, phone, emergency, text, number, occupation, country, message, acceptance } = this.state;
 
     return (
       <div className="form-div">
@@ -62,49 +66,49 @@ export default class App extends Component {
             <div className="form-row">
               <div className="form-col1">
                 <InputField
-                  value={fname}
+                  value={requestData.fname}
                   type='text'
                   label="First Name"
                   placeholder='Type'
                   validators={[
                     { check: Validators.required, message: 'This field is required' }
                   ]}
-                  onChange={this.handleChange('fname')} />
+                  onChange={this.handleChange('requestData.fname')} />
               </div>
               <div className="form-col2">
                 <InputField
-                  value={lname}
+                  value={requestData.lname}
                   type='text'
                   label="Last Name"
                   placeholder='Type'
                   validators={[
                     { check: Validators.required, message: 'This field is required' }
                   ]}
-                  onChange={this.handleChange('text')} />
+                  onChange={this.handleChange('requestData.lname')} />
               </div>
             </div>
             <div className="form-row">
               <div className="form-col1">
                 <InputField
-                  value={nic}
+                  value={requestData.nic}
                   type='text'
                   label="NIC"
                   placeholder='Type'
                   validators={[
                     { check: Validators.nic, message: 'NIC is not valid' }
                   ]}
-                  onChange={this.handleChange('nic')} />
+                  onChange={this.handleChange('requestData.nic')} />
               </div>
               <div className="form-col2">
                 <InputField
-                  value={dob}
+                  value={requestData.dob}
                   type='date'
                   label="Date of Birth"
                   placeholder='Type'
                   validators={[
                     { check: Validators.required, message: 'This field is required' }
                   ]}
-                  onChange={this.handleChange('dob')} />
+                  onChange={this.handleChange('requestData.dob')} />
               </div>
             </div>
             <div className="form-row">
@@ -122,14 +126,14 @@ export default class App extends Component {
               </div>
               <div className="form-col2">
                 <InputField
-                  value={occupation}
+                  value={requestData.occupation}
                   type='text'
                   label="Occupation"
                   placeholder='Type'
                   validators={[
                     { check: Validators.required, message: 'This field is required' }
                   ]}
-                  onChange={this.handleChange('occupation')} />
+                  onChange={this.handleChange('requestData.occupation')} />
                 <br></br>
               </div>
             </div>
@@ -139,49 +143,49 @@ export default class App extends Component {
             <div className="form-row">
               <div className="form-col1">
                 <InputField
-                  value={address}
+                  value={requestData.address}
                   type='text'
                   label="Address"
                   placeholder='Type'
                   validators={[
                     { check: Validators.required, message: 'This field is required' }
                   ]}
-                  onChange={this.handleChange('address')} />
+                  onChange={this.handleChange('requestData.address')} />
               </div>
               <div className="form-col2">
                 <InputField
-                  value={email}
+                  value={requestData.email}
                   type='text'
                   label="Email"
                   placeholder='Type'
                   validators={[
                     { check: Validators.email, message: 'Email is not valid' }
                   ]}
-                  onChange={this.handleChange('email')} />
+                  onChange={this.handleChange('requestData.email')} />
               </div>
             </div>
             <div className="form-row">
               <div className="form-col1">
                 <InputField
-                  value={number}
+                  value={requestData.number}
                   type='text'
                   label="Phone"
                   placeholder='Type'
                   validators={[
                     { check: Validators.number, message: 'Number is not valid' }
                   ]}
-                  onChange={this.handleChange('number')} />
+                  onChange={this.handleChange('requestData.number')} />
               </div>
               <div className="form-col2">
                 <InputField
-                  value={emergency}
+                  value={requestData.emergency}
                   type='text'
                   label="Emergency"
                   placeholder='Type'
                   validators={[
                     { check: Validators.number, message: 'Number is not valid' }
                   ]}
-                  onChange={this.handleChange('emergency')} />
+                  onChange={this.handleChange('requestData.emergency')} />
               </div>
             </div>
 
@@ -214,7 +218,7 @@ export default class App extends Component {
               <div className="form-col1">
                 <Checkbox
                   label='I Accept the terms and conditions'
-                  selected={acceptance}
+                  selected={requestData.acceptance}
                   onChange={this.handleCheckbox}
                 />
               </div>
@@ -229,5 +233,9 @@ export default class App extends Component {
           </div>
         </div>
         );
-  }
+        
+  // }
+  
+
 }
+

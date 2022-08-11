@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
-import {validateInput} from "../../utilities/Validator";
+import {validateInput} from "../../Validator/Validator";
 
 const InputField = ({value, label, placeholder, validators, type, onChange}) => {
     const [error, setError] = useState(false);

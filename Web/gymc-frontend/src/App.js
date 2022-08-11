@@ -10,6 +10,7 @@ import Login from './Components/Pages/all/landingPage/Login';
 import Registration from './Components/Pages/all/registrationPage/Registration';
 import Sidebar from './Components/Utilities/Sidebar/Sidebar';
 import LoginPage from './Components/Pages/all/loginPage/LoginPage';
+import SampleReg from './Components/Pages/all/sampleReg/SampleReg';
 
 import TrainerO from './Components/Pages/owner/own_trainers/Trainers';
 import AdjustmentsO from './Components/Pages/owner/own_adjustments/Adjustments';
@@ -33,6 +34,7 @@ function App() {
           <Route path="/sidebar" element={<Sidebar />}></Route>
           <Route path="/signin" element={<LoginPage />}></Route>
           <Route path="/signup" element={<LoginPage />}></Route>
+          <Route path="/samplereg" element={<SampleReg />}></Route>
 
           {/* OWNER ROUTES */}
           <Route path="/trainers" element={<TrainerO />}></Route>
