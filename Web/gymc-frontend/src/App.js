@@ -10,6 +10,7 @@ import Login from './Components/Pages/all/landingPage/Login';
 import Registration from './Components/Pages/all/registrationPage/Registration';
 import Sidebar from './Components/Utilities/Sidebar/Sidebar';
 import LoginPage from './Components/Pages/all/loginPage/LoginPage';
+import SampleLogin from './Components/Pages/all/loginPage/SampleLogin';
 
 
 //ADMIN
@@ -60,6 +61,7 @@ function App() {
           <Route path="/sidebar" element={<SidebarA/>}></Route>
           <Route path="/signin" element={<LoginPage />}></Route>
           <Route path="/signup" element={<LoginPage />}></Route>
+          <Route path="/samplelogin" element={<SampleLogin />}></Route>
 
           {/* OWNER ROUTES */}
           <Route path="/Otrainers" element={<TrainerO />}></Route>
