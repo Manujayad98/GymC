@@ -15,7 +15,7 @@
     justify-content: center;
     background: #ffffff;
     padding: 0px 60px;
-    border-radius: 10px;
+    border-radius: 10px 0px 0px 10px;
     height: 100%;
     width: 100%;
     background-position: center;
@@ -43,6 +43,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border-radius: 0px 10px 10px 0px;
   }
   .login-form-content-left {
     border-radius: 0 10px 10px 0;
