@@ -3,6 +3,7 @@ import '../../all/loginPage/SampleLogin.css'
 
 import Button from '../../../Utilities/Form/Button';
 import InputField from "../../../Utilities/Form/InputField";
+import Checkbox from "../../../Utilities/Form/Checkbox";
 import { Validators } from "../../../Utilities/Form/Validator/Validator";
 import LoginImage from "../../../../images/LoginPage.jpg"
 
@@ -11,6 +12,7 @@ export default function SampleLogin() {
     const [requestData] = useState({
         userId: '',
         password: '',
+        rememberme: false
     });
 
     const handleChange = (key) => (value) => {
@@ -20,6 +22,9 @@ export default function SampleLogin() {
     const handleClick = (event) => {
         event.preventDefault();
         alert('Button Clicked');
+    };
+    const handleCheckbox = (rememberme) => {
+        this.setState({ rememberme });
     };
 
 
@@ -60,6 +65,16 @@ export default function SampleLogin() {
                                             onChange={handleChange('requestData.password')} />
                                     </div>
                                 </div>
+                                <div className="form-row">
+                                    <div className="form-col1">
+                                        <Checkbox
+                                            label='   Remember me'
+                                            selected={requestData.rememberme}
+                                            onChange={handleCheckbox}
+                                        />
+                                    </div>
+                                </div>
+
 
                                 <Button
                                     onClick={handleClick}
