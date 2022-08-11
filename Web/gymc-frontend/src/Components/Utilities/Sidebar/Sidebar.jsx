@@ -52,7 +52,7 @@ const Sidebar = ({ children }) => {
 
         },
         {
-            path: "/home",
+            path: "/",
             name: "Logout",
             icon: <FaSignOutAlt />
 
@@ -75,7 +75,7 @@ const Sidebar = ({ children }) => {
         window.location.href = "/";
     };
     return (
-        <div className="container">
+        <div className="S-container">
             <div style={{ width: isOpen ? "200px" : "50px" }} className="sidebar">
                 <div className="top_section">
                     {/* <h1 style={{display: isOpen ? "block" : "none"}} className="logo"> <img src={logo} alt="" /></h1> */}
@@ -108,9 +108,9 @@ const Sidebar = ({ children }) => {
             <main>{children}
             </main>
             {data && `${data.userName} `}
-            <div className='header'>
+            {/* <div className='header'>
                 profile
-            </div>
+            </div> */}
         </div>
     );
 };
