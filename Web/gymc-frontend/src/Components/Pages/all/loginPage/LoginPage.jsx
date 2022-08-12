@@ -3,19 +3,46 @@ import { connect } from "react-redux";
 import { userLogin } from "../../../../services/AuthenticationService";
 import { fetchUserData } from "../../../../services/AuthenticationService";
 import { authenticate, authFailure, authSuccess } from "../../../Redux/AuthAction";
-import './LoginPage.css'
+
+import Button from '../../../Utilities/Form/Button';
+import InputField from "../../../Utilities/Form/InputField";
+import Checkbox from "../../../Utilities/Form/Checkbox";
+import { Validators } from "../../../Utilities/Form/Validator/Validator";
+import LoginImage from "../../../../images/LoginPage.jpg"
+
+
+import '../../all/loginPage/SampleLogin.css'
 
 const LoginPage = ({ loading, error, ...props }) => {
-    let [authMode, setAuthMode] = useState("signin")
 
-    const changeAuthMode = () => {
-        setAuthMode(authMode === "signin" ? "signup" : "signin")
-    }
-
-    const [values, setValues] = useState({
-        userName: "",
-        password: "",
+    const [requestData] = useState({
+        userId: '',
+        password: '',
+        rememberme: false
     });
+
+    const handleChange = (key) => (value) => {
+        this.setState({ [key]: value });
+    };
+
+    const handleClick = (event) => {
+        event.preventDefault();
+        alert('Button Clicked');
+    };
+    const handleCheckbox = (rememberme) => {
+        this.setState({ rememberme });
+    };
+
+    // let [authMode, setAuthMode] = useState("signin")
+
+    // const changeAuthMode = () => {
+    //     setAuthMode(authMode === "signin" ? "signup" : "signin")
+    // }
+
+    // const [values, setValues] = useState({
+    //     userName: "",
+    //     password: "",
+    // });
 
     const userData = async () => {
         console.log('res1');
@@ -42,7 +69,7 @@ const LoginPage = ({ loading, error, ...props }) => {
         props.authenticate();    //do not reload the page
         // console.log(props);
 
-        userLogin(values)
+        userLogin(requestData)
             .then((response) => {
                 console.log("response->", response);
                 if (response.status === 200) {
@@ -71,117 +98,77 @@ const LoginPage = ({ loading, error, ...props }) => {
         //console.log("Loading again",loading);
     };
 
-    const handleChange = (e) => {
-        e.persist();
-        // console.log(e.target.name+"-"+e.target.value)
-        setValues((values) => ({
-            ...values,
-            [e.target.name]: e.target.value,
-        }));
-    };
+    // const handleChange = (e) => {
+    //     e.persist();
+    //     // console.log(e.target.name+"-"+e.target.value)
+    //     setValues((values) => ({
+    //         ...values,
+    //         [e.target.name]: e.target.value,
+    //     }));
+    // };
+    return (
+        <>
+            <div className='form-div'>
+                <form className="" onSubmit={handleSubmit} noValidate={false}>
+                    <div className='login-form-container'>
+                        <div className="login-form-content-left">
+                            <div className="login-form-in-container">
+                                <h1 className='login-form-heading'>Login</h1>
+                                <div className="form-inputs">
 
-    if (authMode === "signin") {
-        return (
-            <div className="Auth-form-container">
-                <form className="Auth-form" onSubmit={handleSubmit} noValidate={false}>
-                    <div className="Auth-form-content">
-                        <h3 className="Auth-form-title">Sign In</h3>
-                        <div className="text-center">
-                            Not registered yet?{" "}
-                            <span className="link-primary" onClick={changeAuthMode}>
-                                Sign Up
-                            </span>
-                        </div>
-                        <div className="form-group mt-3">
-                            <label>User Name</label>
-                            <input
-                                id="username"
-                                type="text"
-                                className="form-control mt-1"
-                                placeholder="Enter username"
-                                minLength={5}
-                                value={values.userName}
-                                onChange={handleChange}
-                                name="userName"
-                                required
-                            />
-                        </div>
-                        <div className="form-group mt-3">
-                            <label>Password</label>
-                            <input
-                                id="password"
-                                type="password"
-                                className="form-control mt-1"
-                                placeholder="Enter password"
-                                minLength={8}
-                                value={values.password}
-                                onChange={handleChange}
-                                name="password"
-                                required
-                            />
-                        </div>
-                        <div className="d-grid gap-2 mt-3">
-                            <button type="submit" className="btn btn-primary">
-                                Submit
+                                    <div className="form-row">
+                                        <div className="form-col1">
+                                            <InputField
+                                                value={requestData.userId}
+                                                type='text'
+                                                label="User Id"
+                                                placeholder='Type'
+                                                validators={[
+                                                    { check: Validators.required, message: 'This field is required' }
+                                                ]}
+                                                onChange={handleChange('userId')} />
+                                        </div>
+                                    </div>
+                                    <div className='form-row'>
+                                        <div className="form-col1">
+                                            <InputField
+                                                value={requestData.password}
+                                                type='text'
+                                                label="Password"
+                                                placeholder='Type'
+                                                validators={[
+                                                    { check: Validators.required, message: 'This field is required' }
+                                                ]}
+                                                onChange={handleChange('requestData.password')} />
+                                        </div>
+                                    </div>
+                                    <div className="form-row">
+                                        <div className="form-col1">
+                                            <Checkbox
+                                                label='   Remember me'
+                                                selected={requestData.rememberme}
+                                                onChange={handleCheckbox}
+                                            />
+                                        </div>
+                                    </div>
 
-                            </button>
+
+                                    <Button
+                                        onClick={handleClick}
+                                        value='Login' />
+                                </div>
+                            </div>
                         </div>
-                        <p className="text-center mt-2">
-                            Forgot <a href="#">password?</a>
-                        </p>
+                        <div className='login-form-content-right'>
+                            <img className='login-form-img' src={LoginImage} alt='runningMan' />
+
+                        </div>
                     </div>
                 </form>
             </div>
-        )
-    }
+        </>
+    );
 
-    return (
-        <div className="Auth-form-container">
-            <form className="Auth-form">
-                <div className="Auth-form-content">
-                    <h3 className="Auth-form-title">Sign In</h3>
-                    <div className="text-center">
-                        Already registered?{" "}
-                        <span className="link-primary" onClick={changeAuthMode}>
-                            Sign In
-                        </span>
-                    </div>
-                    <div className="form-group mt-3">
-                        <label>Full Name</label>
-                        <input
-                            type="email"
-                            className="form-control mt-1"
-                            placeholder="e.g Jane Doe"
-                        />
-                    </div>
-                    <div className="form-group mt-3">
-                        <label>Email address</label>
-                        <input
-                            type="email"
-                            className="form-control mt-1"
-                            placeholder="Email Address"
-                        />
-                    </div>
-                    <div className="form-group mt-3">
-                        <label>Password</label>
-                        <input
-                            type="password"
-                            className="form-control mt-1"
-                            placeholder="Password"
-                        />
-                    </div>
-                    <div className="d-grid gap-2 mt-3">
-                        <button type="submit" className="btn btn-primary">
-                            Submit
-                        </button>
-                    </div>
-                    <p className="text-center mt-2">
-                        Forgot <a href="#">password?</a>
-                    </p>
-                </div>
-            </form>
-        </div>
-    )
 };
 
 const mapStateToProps = ({ auth }) => {
