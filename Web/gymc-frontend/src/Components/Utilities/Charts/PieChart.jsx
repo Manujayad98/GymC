@@ -17,11 +17,11 @@ export const options = {
     },
 };
 
-const PieChart = () => {
+const PieChart = (props) => {
     return (
         <Chart
             chartType="PieChart"
-            data={data}
+            data={props.data}
             options={options}
             width={"100%"}
             height={"400px"}

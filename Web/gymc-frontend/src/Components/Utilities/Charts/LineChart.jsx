@@ -32,13 +32,13 @@ export const options = {
 };
 
 
-const LineChart = () => {
+const LineChart = (props) => {
     return (
         <Chart
             chartType="Line"
             width="100%"
             height="400px"
-            data={data}
+            data={props.data}
             options={options}
         />
     )
