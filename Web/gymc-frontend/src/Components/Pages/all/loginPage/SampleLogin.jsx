@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import '../../all/loginPage/SampleLogin.css'
 
 import Button from '../../../Utilities/Form/Button';
@@ -9,14 +9,15 @@ import LoginImage from "../../../../images/LoginPage.jpg"
 
 export default function SampleLogin() {
 
-    const [requestData] = useState({
-        userId: '',
-        password: '',
-        rememberme: false
-    });
+  // create "values" objecct
+  const [values, setValues] = useState({
+    userId: "",
+    password: "",
+    rememberme:false,
+  });
 
     const handleChange = (key) => (value) => {
-        this.setState({ [key]: value });
+        setValues({ [key]: value });
     };
 
     const handleClick = (event) => {
@@ -24,7 +25,7 @@ export default function SampleLogin() {
         alert('Button Clicked');
     };
     const handleCheckbox = (rememberme) => {
-        this.setState({ rememberme });
+        setValues({ rememberme });
     };
 
 
@@ -42,7 +43,7 @@ export default function SampleLogin() {
                                 <div className="form-row">
                                     <div className="form-col1">
                                         <InputField
-                                            value={requestData.userId}
+                                            value={values.userId}
                                             type='text'
                                             label="User Id"
                                             placeholder='Type'
@@ -55,21 +56,22 @@ export default function SampleLogin() {
                                 <div className='form-row'>
                                     <div className="form-col1">
                                         <InputField
-                                            value={requestData.password}
-                                            type='text'
+                                            value={values.password}
+                                            type='password'
                                             label="Password"
                                             placeholder='Type'
                                             validators={[
                                                 { check: Validators.required, message: 'This field is required' }
                                             ]}
-                                            onChange={handleChange('requestData.password')} />
+                                            onChange={handleChange('password')} />
                                     </div>
                                 </div>
                                 <div className="form-row">
                                     <div className="form-col1">
                                         <Checkbox
+                                            value={values.rememberme}
                                             label='   Remember me'
-                                            selected={requestData.rememberme}
+                                            // selected={values.rememberme}
                                             onChange={handleCheckbox}
                                         />
                                     </div>
