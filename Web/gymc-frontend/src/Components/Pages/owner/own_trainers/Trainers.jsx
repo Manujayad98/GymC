@@ -6,6 +6,7 @@ import Table from '../../../Utilities/Tables/Table1'
 import Trash from '../../../../images/Icons/trash-solid.svg'
 import Edit from '../../../../images/Icons/pen-solid.svg'
 import View from '../../../../images/Icons/eye-solid.svg'
+import Hold from '../../../../images/Icons/hand-solid.svg'
 import T1 from '../../../../images/t1.png'
 
 import './Trainers.css'
@@ -23,11 +24,16 @@ export default function Trainers() {
             Phone: "0714558741",
             Address: "No. 46/4, Tample road, Dambadeniya",
             RegDate: "2021-10-24",
+            Status: (
+                <span >
+                    <button type="button" class="btn" disabled style={{ backgroundColor: '#E4E074', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Hold</button>
+                </span>),
             Actions: (
                 <span >
                     <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
                 </span >
             ),
         },
@@ -38,11 +44,17 @@ export default function Trainers() {
             Phone: "0765584751",
             Address: "No. 46/4, Church road, Giriulla",
             RegDate: "2020-11-11",
+            Status: (
+                <span >
+                    <button type="button" class="btn" disabled style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Active</button>
+                </span>),
             Actions: (
                 <span >
                     <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
+
                 </span >
             ),
         },
@@ -53,11 +65,17 @@ export default function Trainers() {
             Phone: "0765584751",
             Address: "No. 46/4, Church road, Giriulla",
             RegDate: "2020-11-11",
+            Status: (
+                <span >
+                    <button type="button" class="btn" disabled style={{ backgroundColor: '#E47474', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Remove</button>
+                </span>),
             Actions: (
                 <span >
                     <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
+
                 </span >
             ),
         },
@@ -68,11 +86,17 @@ export default function Trainers() {
             Phone: "0765584751",
             Address: "No. 46/4, Church road, Giriulla",
             RegDate: "2020-11-11",
+            Status: (
+                <span >
+                    <button type="button" class="btn" disabled style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Active</button>
+                </span>),
             Actions: (
                 <span >
                     <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
+
                 </span >
             ),
         },
@@ -83,11 +107,17 @@ export default function Trainers() {
             Phone: "0765584751",
             Address: "No. 46/4, Church road, Giriulla",
             RegDate: "2020-11-11",
+            Status: (
+                <span >
+                    <button type="button" class="btn" disabled style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Active</button>
+                </span>),
             Actions: (
                 <span >
                     <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
+
                 </span >
             ),
         },
@@ -98,11 +128,17 @@ export default function Trainers() {
             Phone: "0765584751",
             Address: "No. 46/4, Church road, Giriulla",
             RegDate: "2020-11-11",
+            Status: (
+                <span >
+                    <button type="button" class="btn" disabled style={{ backgroundColor: '#E47474', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Remove</button>
+                </span>),
             Actions: (
                 <span >
                     <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
+
                 </span >
             ),
         },
@@ -116,6 +152,7 @@ export default function Trainers() {
         { id: "Phone", label: "PHONE", numeric: false },
         { id: "Address", label: "ADDRESS", numeric: false },
         { id: "RegDate", label: "REG ON", numeric: false },
+        { id: "Status", label: "STATUS", numeric: false },
         { id: "Actions", label: "ACTIONS", numeric: false },
     ]);
 

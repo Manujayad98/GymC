@@ -305,19 +305,42 @@ export default function EnhancedTable(props) {
                                             key={row.name}
 
                                         >
-                                            <TableCell
-                                                component="th"
-                                                id={labelId}
-                                                scope="row"
-                                            >
-                                                {Object.values(row)[0]}
-                                            </TableCell>
-                                            <TableCell >{Object.values(row)[1]}</TableCell>
-                                            <TableCell >{Object.values(row)[2]}</TableCell>
-                                            <TableCell >{Object.values(row)[3]}</TableCell>
-                                            <TableCell >{Object.values(row)[4]}</TableCell>
-                                            <TableCell >{Object.values(row)[5]}</TableCell>
-                                            <TableCell >{Object.values(row)[6]}</TableCell>
+                                            {Object.values(row)[0] != null ?
+                                                <TableCell
+                                                    component="th"
+                                                    id={labelId}
+                                                    scope="row"
+                                                >
+                                                    {Object.values(row)[0]}
+                                                </TableCell>
+                                                : null}
+                                            {Object.values(row)[1] != null ?
+                                                <TableCell >{Object.values(row)[1]}</TableCell>
+                                                : null}
+
+                                            {Object.values(row)[2] != null ?
+                                                <TableCell >{Object.values(row)[2]}</TableCell>
+                                                : null}
+
+                                            {Object.values(row)[3] != null ?
+                                                <TableCell >{Object.values(row)[3]}</TableCell>
+                                                : null}
+
+                                            {Object.values(row)[4] != null ?
+                                                <TableCell >{Object.values(row)[4]}</TableCell>
+                                                : null}
+
+                                            {Object.values(row)[5] != null ?
+                                                <TableCell >{Object.values(row)[5]}</TableCell>
+                                                : null}
+
+                                            {Object.values(row)[6] != null ?
+                                                <TableCell >{Object.values(row)[6]}</TableCell>
+                                                : null}
+
+                                            {Object.values(row)[7] != null ?
+                                                <TableCell >{Object.values(row)[7]}</TableCell>
+                                                : null}
                                         </TableRow>
                                     );
                                 })}
