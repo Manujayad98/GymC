@@ -16,6 +16,7 @@ import Login from './Components/Pages/all/loginPage/LoginPage';
 import PieChart from './Components/Utilities/Charts/PieChart';
 import BarChart from './Components/Utilities/Charts/BarChart';
 import LineChart from './Components/Utilities/Charts/LineChart';
+import SearchBar from './Components/Utilities/SearchBar/SearchBar';
 
 //ADMIN
 import SidebarA from './Components/Pages/admin/adm_sidebar/Sidebar';
@@ -67,7 +68,7 @@ function App() {
           <Route path="/signupPrev" element={<LoginPagePrev />}></Route>
           <Route path="/samplelogin" element={<SampleLogin />}></Route>
           <Route path="/login" element={<Login />}></Route>
-          <Route path="/lineChart" element={<LineChart />}></Route>
+          <Route path="/searchBar" element={<SearchBar />}></Route>
 
           {/* OWNER ROUTES */}
           <Route path="/Otrainers" element={<TrainerO />}></Route>
