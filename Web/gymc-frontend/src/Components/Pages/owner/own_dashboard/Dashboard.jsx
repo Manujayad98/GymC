@@ -184,7 +184,7 @@ const Dashboard = () => {
           <div className='own-dashboard-chart-table-container'>
 
             <div className='own-dashboard-chart-container'>
-              <div className='own-dashboard-container-head'>Annual Container</div>
+              <div className='own-dashboard-container-head'>Annual Income</div>
               <div className='own-dashboard-card chart-cards'>
                 <BarChart data={ChartData} />
               </div>

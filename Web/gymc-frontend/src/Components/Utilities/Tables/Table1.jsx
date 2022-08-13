@@ -275,7 +275,7 @@ export default function EnhancedTable(props) {
                     tableName={tableName}
                 /> */}
                 <TableContainer>
-                    <Table
+                    <Table className="table1"
                         sx={{ minWidth: 750 }}
                         aria-labelledby="tableTitle"
                     >
