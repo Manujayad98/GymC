@@ -6,14 +6,14 @@ import '../../../Utilities/Form/Form.css'
 
 import Button from '../../../Utilities/Form/Button';
 import InputField from "../../../Utilities/Form/InputField";
-import Dropdown from "../../../Utilities/Form/Dropdown";
+// import Dropdown from "../../../Utilities/Form/Dropdown";
 import { Validators } from "../../../Utilities/Form/Validator/Validator";
 import Checkbox from "../../../Utilities/Form/Checkbox";
-import Radiobutton from "../../../Utilities/Form/Radiobutton";
+// import Radiobutton from "../../../Utilities/Form/Radiobutton";
 
 export default function Registration() {
 
-    const [requestData] = useState({
+    const [requestData, setState] = useState({
         text: '',
         occupation: '',
         phone: '',
@@ -29,7 +29,7 @@ export default function Registration() {
     });
 
     const handleChange = (key) => (value) => {
-        this.setState({ [key]: value });
+        setState({ [key]: value });
     };
     // handleRadio = () => {
     // //   this.setState({ selectedOption});
@@ -41,12 +41,12 @@ export default function Registration() {
         alert('Button Clicked');
     };
 
-    const handleDropdown = (country) => {
-        this.setState({ country });
-    };
+    // const handleDropdown = (country) => {
+    //     setState({ country });
+    // };
 
     const handleCheckbox = (acceptance) => {
-        this.setState({ acceptance });
+        setState({ acceptance });
     };
 
 
@@ -100,7 +100,7 @@ export default function Registration() {
                                     validators={[
                                         { check: Validators.required, message: 'This field is required' }
                                     ]}
-                                    onChange={handleChange('text')} />
+                                    onChange={handleChange('lname')} />
                             </div>
                         </div>
                         <div className="form-row">
@@ -205,30 +205,30 @@ export default function Registration() {
                             </div>
                         </div>
 
-                        {/* <Dropdown
-              data={[
-                { value: 1, label: 'India' },
-                { value: 2, label: 'USA' },
-                { value: 3, label: 'UK' },
-                { value: 4, label: 'Germany' },
-                { value: 5, label: 'Russia' },
-                { value: 5, label: 'Italy' },
-              ]}
-              styleClass='mt-3'
-              value={country}
-              placeholder='Select Country'
-              onChange={this.handleDropdown}
-            /><br></br>
+                                        {/* <Dropdown
+                            data={[
+                                { value: 1, label: 'India' },
+                                { value: 2, label: 'USA' },
+                                { value: 3, label: 'UK' },
+                                { value: 4, label: 'Germany' },
+                                { value: 5, label: 'Russia' },
+                                { value: 5, label: 'Italy' },
+                            ]}
+                            styleClass='mt-3'
+                            value={country}
+                            placeholder='Select Country'
+                            onChange={this.handleDropdown}
+                            /><br></br>
 
-            <InputField
-              value={message}
-              type='textarea'
-              placeholder='Enter message!'
-              validators={[
-                { check: Validators.required, message: 'This field is required' }
-              ]}
-              onChange={this.handleChange('message')} />
-            <br></br> */}
+                            <InputField
+                            value={message}
+                            type='textarea'
+                            placeholder='Enter message!'
+                            validators={[
+                                { check: Validators.required, message: 'This field is required' }
+                            ]}
+                            onChange={this.handleChange('message')} />
+                            <br></br> */}
 
                         <div className="form-row">
                             <div className="form-col1">
