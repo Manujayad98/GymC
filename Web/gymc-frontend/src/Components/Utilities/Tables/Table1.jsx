@@ -16,6 +16,8 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { visuallyHidden } from '@mui/utils';
 
+import './Tables.css'
+
 // function createData(name, calories, fat, carbs, protein, status) {
 //     return {
 //         name,
@@ -269,9 +271,9 @@ export default function EnhancedTable(props) {
     return (
         <Box sx={{ width: '100%', padding: '20px' }}>
             <Paper sx={{ width: '100%', mb: 2, }}>
-                <EnhancedTableToolbar
+                {/* <EnhancedTableToolbar
                     tableName={tableName}
-                />
+                /> */}
                 <TableContainer>
                     <Table
                         sx={{ minWidth: 750 }}
@@ -284,7 +286,7 @@ export default function EnhancedTable(props) {
                             onSelectAllClick={handleSelectAllClick}
                             onRequestSort={handleRequestSort}
                             rowCount={rows.length}
-                            tableName={tableName}
+                            // tableName={tableName}
                             headCells={headCells}
                         />
                         <TableBody>
