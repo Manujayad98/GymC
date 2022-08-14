@@ -18,7 +18,12 @@ export default function SampleLogin() {
     });
 
     const handleChange = (key) => (value) => {
-        setValues({ [key]: value });
+        // key.persist();
+        console.log(key, value);
+        setValues({
+            ...values,
+            [key]: value
+        });
     };
 
     const handleClick = (event) => {
@@ -27,6 +32,7 @@ export default function SampleLogin() {
     };
     const handleCheckbox = (rememberme) => {
         setValues({ rememberme });
+        console.log(rememberme);
     };
 
 
@@ -46,6 +52,7 @@ export default function SampleLogin() {
                                         <InputField
                                             value={values.userId}
                                             type='text'
+                                            name='userId'
                                             label="User Id"
                                             placeholder='Type'
                                             validators={[
@@ -59,6 +66,7 @@ export default function SampleLogin() {
                                         <InputField
                                             value={values.password}
                                             type='password'
+                                            name='password'
                                             label="Password"
                                             placeholder='Type'
                                             validators={[
@@ -70,18 +78,21 @@ export default function SampleLogin() {
                                 <div className="form-row">
                                     <div className="form-col1">
                                         <Checkbox
-                                            value={values.rememberme}
+                                            // value={values.rememberme}
                                             label='   Remember me'
-                                            // selected={values.rememberme}
+                                            selected={values.rememberme}
                                             onChange={handleCheckbox}
                                         />
                                     </div>
                                 </div>
 
+                                <div className="form-button-submit">
 
-                                <Button
-                                    onClick={handleClick}
-                                    value='Login' />
+
+                                    <Button
+                                        onClick={handleClick}
+                                        value='Login' />
+                                </div>
                             </div>
                         </div>
                     </div>

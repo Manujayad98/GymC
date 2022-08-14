@@ -8,11 +8,17 @@ import LoginImage from "../../../../images/LoginPage.jpg"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import Button from '../../../Utilities/Form/Button';
+import InputField from "../../../Utilities/Form/InputField";
+import Checkbox from "../../../Utilities/Form/Checkbox";
+import { Validators } from "../../../Utilities/Form/Validator/Validator";
+
 const LoginPage = ({ loading, error, ...props }) => {
 
     const [values, setValues] = useState({
         userName: "",
         password: "",
+        rememberme: false,
     });
 
     const userData = async () => {
@@ -73,14 +79,30 @@ const LoginPage = ({ loading, error, ...props }) => {
         //console.log("Loading again",loading);
     };
 
-    const handleChange = (e) => {
-        e.persist();
-        // console.log(e.target.name+"-"+e.target.value)
-        setValues((values) => ({
-            ...values,
-            [e.target.name]: e.target.value,
-        }));
+    const handleCheckbox = (rememberme) => {
+        setValues({ rememberme });
+        // console.log(rememberme);
     };
+
+    // const handleChange = (e) => {
+    //     e.persist();
+    //     // console.log(e.target.name+"-"+e.target.value)
+    //     setValues((values) => ({
+    //         ...values,
+    //         [e.target.name]: e.target.value,
+    //     }));
+    // };
+
+    const handleChange = (key) => (value) => {
+        // key.persist();
+        // console.log(key, value);
+        setValues({
+            ...values,
+            [key]: value
+        });
+    };
+
+
     return (
         <>
             <div className='form-div'>
@@ -92,7 +114,7 @@ const LoginPage = ({ loading, error, ...props }) => {
                                 <div className="form-inputs">
 
                                     <div className="form-group mt-3">
-                                        <label>User Name</label>
+                                        {/* <label>User Name</label>
                                         <input
                                             id="username"
                                             type="text"
@@ -103,10 +125,22 @@ const LoginPage = ({ loading, error, ...props }) => {
                                             onChange={handleChange}
                                             name="userName"
                                             required
-                                        />
+                                        /> */}
+
+                                        <InputField
+                                            value={values.userName}
+                                            type='text'
+                                            name='userName'
+                                            label="Username"
+                                            placeholder='Type'
+                                            validators={[
+                                                { check: Validators.required, message: 'This field is required' }
+                                            ]}
+                                            onChange={handleChange('userName')} />
+
                                     </div>
                                     <div className="form-group mt-3">
-                                        <label>Password</label>
+                                        {/* <label>Password</label>
                                         <input
                                             id="password"
                                             type="password"
@@ -117,7 +151,28 @@ const LoginPage = ({ loading, error, ...props }) => {
                                             onChange={handleChange}
                                             name="password"
                                             required
-                                        />
+                                        /> */}
+
+                                        <InputField
+                                            value={values.password}
+                                            type='password'
+                                            name='password'
+                                            label="Password"
+                                            placeholder='Type'
+                                            validators={[
+                                                { check: Validators.required, message: 'This field is required' }
+                                            ]}
+                                            onChange={handleChange('password')} />
+                                    </div>
+                                    <div className="form-row">
+                                        <div className="form-col1">
+                                            <Checkbox
+                                                // value={values.rememberme}
+                                                label='   Remember me'
+                                                selected={values.rememberme}
+                                                onChange={handleCheckbox}
+                                            />
+                                        </div>
                                     </div>
 
                                     <p className="text-center mt-2">
