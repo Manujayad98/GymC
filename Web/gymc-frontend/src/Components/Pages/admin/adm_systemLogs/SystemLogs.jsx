@@ -6,7 +6,7 @@ import './SystemLogs.css'
 import Download from '../../../Utilities/DownloadButton/Download';
 
 
-const Dashboard = () => {
+const SystemLog = () => {
   return (
     <div className='main-container'>
       <SidebarO/>
@@ -26,4 +26,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default SystemLog
