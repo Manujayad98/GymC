@@ -9,13 +9,15 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import './Table.css';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
         // backgroundColor: theme.palette.common.black,
         color: theme.palette.common.black,
         fontSize: '15px',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        columnWidth: '150px'
     },
     [`&.${tableCellClasses.body}`]: {
         fontSize: 14,
@@ -63,11 +65,11 @@ export default function CustomizedTables(props) {
     const [tableName, settableName] = useState(props.tableName);
 
     return (
-        <Box sx={{ padding: '20px' }}>
+        <Box sx={{ padding: '10px' }}>
             <TableContainer component={Paper} style={{
-                alignItems: 'center', width: '80%',
+                alignItems: 'center', width: '70%',
             }}>
-                <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                <Table sx={{ minWidth: 600 }} aria-label="customized table">
                     <EnhancedTableHead
                         rowCount={rows.length}
                         tableName={tableName}
