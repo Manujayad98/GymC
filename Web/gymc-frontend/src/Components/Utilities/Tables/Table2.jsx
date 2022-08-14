@@ -15,7 +15,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
         // backgroundColor: theme.palette.common.black,
         color: theme.palette.common.black,
         fontSize: '15px',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
     [`&.${tableCellClasses.body}`]: {
         fontSize: 14,
@@ -65,9 +65,9 @@ export default function CustomizedTables(props) {
     return (
         <Box sx={{ padding: '20px' }}>
             <TableContainer component={Paper} style={{
-                alignItems: 'center', width: '80%',
+                alignItems: 'center',
             }}>
-                <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                <Table aria-label="customized table">
                     <EnhancedTableHead
                         rowCount={rows.length}
                         tableName={tableName}
@@ -75,20 +75,32 @@ export default function CustomizedTables(props) {
                     />
                     <TableBody>
                         {rows.map((row) => (
-                            <StyledTableRow key={row.name}>
-                                <StyledTableCell component="th" scope="row">
-                                    {Object.values(row)[0]}
-                                </StyledTableCell>
-                                <StyledTableCell >{Object.values(row)[1]}</StyledTableCell>
-                                <StyledTableCell >{Object.values(row)[2]}</StyledTableCell>
-                                <StyledTableCell >{Object.values(row)[3]}</StyledTableCell>
-                                <StyledTableCell >{Object.values(row)[4]}</StyledTableCell>
-                                <StyledTableCell align="center">{Object.values(row)[5]}</StyledTableCell>
+                            < StyledTableRow key={row.name} >
+                                {Object.values(row)[0] != null ?
+                                    <StyledTableCell component="th" scope="row" style={{ width: 'auto' }}>
+                                        {Object.values(row)[0]}
+                                    </StyledTableCell>
+                                    : null}
+                                {Object.values(row)[1] != null ?
+                                    <StyledTableCell >{Object.values(row)[1]}</StyledTableCell>
+                                    : null}
+                                {Object.values(row)[2] != null ?
+                                    <StyledTableCell >{Object.values(row)[2]}</StyledTableCell>
+                                    : null}
+                                {Object.values(row)[3] != null ?
+                                    <StyledTableCell >{Object.values(row)[3]}</StyledTableCell>
+                                    : null}
+                                {Object.values(row)[4] != null ?
+                                    <StyledTableCell >{Object.values(row)[4]}</StyledTableCell>
+                                    : null}
+                                {Object.values(row)[5] != null ?
+                                    <StyledTableCell align="center">{Object.values(row)[5]}</StyledTableCell>
+                                    : null}
                             </StyledTableRow>
                         ))}
                     </TableBody>
                 </Table>
             </TableContainer >
-        </Box>
+        </Box >
     );
 }

@@ -16,6 +16,8 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { visuallyHidden } from '@mui/utils';
 
+import './Tables.css'
+
 // function createData(name, calories, fat, carbs, protein, status) {
 //     return {
 //         name,
@@ -269,11 +271,11 @@ export default function EnhancedTable(props) {
     return (
         <Box sx={{ width: '100%', padding: '20px' }}>
             <Paper sx={{ width: '100%', mb: 2, }}>
-                <EnhancedTableToolbar
+                {/* <EnhancedTableToolbar
                     tableName={tableName}
-                />
+                /> */}
                 <TableContainer>
-                    <Table
+                    <Table className="table1"
                         sx={{ minWidth: 750 }}
                         aria-labelledby="tableTitle"
                     >
@@ -284,7 +286,7 @@ export default function EnhancedTable(props) {
                             onSelectAllClick={handleSelectAllClick}
                             onRequestSort={handleRequestSort}
                             rowCount={rows.length}
-                            tableName={tableName}
+                            // tableName={tableName}
                             headCells={headCells}
                         />
                         <TableBody>
@@ -303,19 +305,42 @@ export default function EnhancedTable(props) {
                                             key={row.name}
 
                                         >
-                                            <TableCell
-                                                component="th"
-                                                id={labelId}
-                                                scope="row"
-                                            >
-                                                {Object.values(row)[0]}
-                                            </TableCell>
-                                            <TableCell >{Object.values(row)[1]}</TableCell>
-                                            <TableCell >{Object.values(row)[2]}</TableCell>
-                                            <TableCell >{Object.values(row)[3]}</TableCell>
-                                            <TableCell >{Object.values(row)[4]}</TableCell>
-                                            <TableCell >{Object.values(row)[5]}</TableCell>
-                                            <TableCell >{Object.values(row)[6]}</TableCell>
+                                            {Object.values(row)[0] != null ?
+                                                <TableCell
+                                                    component="th"
+                                                    id={labelId}
+                                                    scope="row"
+                                                >
+                                                    {Object.values(row)[0]}
+                                                </TableCell>
+                                                : null}
+                                            {Object.values(row)[1] != null ?
+                                                <TableCell >{Object.values(row)[1]}</TableCell>
+                                                : null}
+
+                                            {Object.values(row)[2] != null ?
+                                                <TableCell >{Object.values(row)[2]}</TableCell>
+                                                : null}
+
+                                            {Object.values(row)[3] != null ?
+                                                <TableCell >{Object.values(row)[3]}</TableCell>
+                                                : null}
+
+                                            {Object.values(row)[4] != null ?
+                                                <TableCell >{Object.values(row)[4]}</TableCell>
+                                                : null}
+
+                                            {Object.values(row)[5] != null ?
+                                                <TableCell >{Object.values(row)[5]}</TableCell>
+                                                : null}
+
+                                            {Object.values(row)[6] != null ?
+                                                <TableCell >{Object.values(row)[6]}</TableCell>
+                                                : null}
+
+                                            {Object.values(row)[7] != null ?
+                                                <TableCell >{Object.values(row)[7]}</TableCell>
+                                                : null}
                                         </TableRow>
                                     );
                                 })}

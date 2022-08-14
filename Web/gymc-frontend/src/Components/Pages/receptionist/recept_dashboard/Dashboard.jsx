@@ -1,17 +1,28 @@
-import React from 'react'
+import React, {useState} from 'react'
 import '../recept_sidebar/Sidebar.css'
 import SidebarR from '../recept_sidebar/Sidebar'
 import HeaderR from '../recept_header/Header'
+import Modal from "../../../Utilities/Popups/Dconfirmation";
 import './Dashboard.css'
 
 const Dashboard = () => {
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <div className='main-container'>
       <SidebarR/>
       <div className='body-container'> 
           <HeaderR title="Dasboard"/>
           <div className="content-container">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem cum laudantium ipsa laborum esse! Atque temporibus asperiores veritatis ipsum enim ratione quia. Accusantium nesciunt, necessitatibus quaerat ea rerum aliquid minus?</p>
+          <button
+        className="openModalBtn"
+        onClick={() => {
+          setModalOpen(true);
+        }}
+      >
+        Open
+      </button>
+
+      {modalOpen && <Modal setOpenModal={setModalOpen} />}
           </div>
           
       </div>

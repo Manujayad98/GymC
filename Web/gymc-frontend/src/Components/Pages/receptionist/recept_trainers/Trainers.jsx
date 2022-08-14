@@ -100,7 +100,7 @@ export default function Trainers() {
                     <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-                </span >
+                </span>
             ),
         },
 
