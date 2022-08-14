@@ -28,11 +28,13 @@ Checkbox.propTypes = {
     styleClass: PropTypes.string,
     selected: PropTypes.bool.isRequired,
     label: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+    
 };
 
 Checkbox.defaultProps = {
-    styleClass: ''
+    styleClass: '',
+    selected:false
 };
 
 export default Checkbox;
