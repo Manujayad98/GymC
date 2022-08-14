@@ -4,7 +4,7 @@ import SidebarO from '../own_sidebar/Sidebar'
 import HeaderO from '../own_header/Header'
 import './Notifications.css'
 
-const Dashboard = () => {
+const Notification = () => {
   return (
     <div className='main-container'>
       <SidebarO/>
@@ -55,4 +55,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default Notification
