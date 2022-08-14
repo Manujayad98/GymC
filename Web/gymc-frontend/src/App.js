@@ -11,7 +11,7 @@ import Registration from './Components/Pages/all/registrationPage/Registration';
 import Sidebar from './Components/Utilities/Sidebar/Sidebar';
 import LoginPage from './Components/Pages/all/loginPage/LoginPage';
 import SampleLogin from './Components/Pages/all/loginPage/SampleLogin';
-
+import SampleReg from './Components/Pages/all/registrationPage/SampleReg';
 
 //ADMIN
 import SidebarA from './Components/Pages/admin/adm_sidebar/Sidebar';
@@ -24,6 +24,7 @@ import NotificationsA from './Components/Pages/admin/adm_notifications/Notificat
 import TrainerO from './Components/Pages/owner/own_trainers/Trainers';
 import AdjustmentsO from './Components/Pages/owner/own_adjustments/Adjustments';
 import TraineesO from './Components/Pages/owner/own_trainees/Trainees';
+import AddTrainer from './Components/Pages/owner/own_add_trainer/AddTrainer';
 import DashboardO from './Components/Pages/owner/own_dashboard/Dashboard';
 import AnnouncementsO from './Components/Pages/owner/own_announcements/Announcements';
 import AnalyticsO from './Components/Pages/owner/own_analytics/Analytics';
@@ -62,9 +63,12 @@ function App() {
           <Route path="/signin" element={<LoginPage />}></Route>
           <Route path="/signup" element={<LoginPage />}></Route>
           <Route path="/samplelogin" element={<SampleLogin />}></Route>
+          <Route path="/samplereg" element={<SampleReg />}></Route>
+
 
           {/* OWNER ROUTES */}
           <Route path="/Otrainers" element={<TrainerO />}></Route>
+          <Route path="/OaddTrainer" element={<AddTrainer />}></Route>
           <Route path="/Oadjustments" element={<AdjustmentsO />}></Route>
           <Route path="/Otrainees" element={<TraineesO />}></Route>
           <Route path="/Odashboard" element={<DashboardO />}></Route>

@@ -9,12 +9,13 @@ import LoginImage from "../../../../images/LoginPage.jpg"
 
 export default function SampleLogin() {
 
-  // create "values" objecct
-  const [values, setValues] = useState({
-    userId: "",
-    password: "",
-    rememberme:false,
-  });
+    // create "values" objecct
+    const [values, setValues] = useState({
+        userId: "",
+        password: "",
+        rememberme: false,
+        selected: ""
+    });
 
     const handleChange = (key) => (value) => {
         setValues({ [key]: value });
@@ -69,18 +70,21 @@ export default function SampleLogin() {
                                 <div className="form-row">
                                     <div className="form-col1">
                                         <Checkbox
-                                            value={values.rememberme}
+                                            // value={values.rememberme}
                                             label='   Remember me'
-                                            // selected={values.rememberme}
+                                            selected={values.rememberme}
                                             onChange={handleCheckbox}
                                         />
                                     </div>
                                 </div>
 
+                                <div className="form-button-submit">
 
-                                <Button
-                                    onClick={handleClick}
-                                    value='Login' />
+
+                                    <Button
+                                        onClick={handleClick}
+                                        value='Login' />
+                                </div>
                             </div>
                         </div>
                     </div>
