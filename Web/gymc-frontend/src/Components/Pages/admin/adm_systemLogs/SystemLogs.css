@@ -1,0 +1,12 @@
+.content-container{
+    width : 90%;
+    height : 75%;
+    background-color: #FFFFFF;
+    margin-left: 5%;
+    margin-top: 2%;
+    border-radius: 20px;
+    
+}
+.content{
+    margin-top: 150px;
+}
