@@ -65,9 +65,9 @@ export default function CustomizedTables(props) {
     const [tableName, settableName] = useState(props.tableName);
 
     return (
-        <Box sx={{ padding: '10px' }}>
+        <Box sx={{ padding: '20px' }}>
             <TableContainer component={Paper} style={{
-                alignItems: 'center', width: '70%',
+                alignItems: 'center', width: '100%',
             }}>
                 <Table sx={{ minWidth: 600 }} aria-label="customized table">
                     <EnhancedTableHead
