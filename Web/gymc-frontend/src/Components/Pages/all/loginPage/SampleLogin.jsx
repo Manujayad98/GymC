@@ -9,12 +9,12 @@ import LoginImage from "../../../../images/LoginPage.jpg"
 
 export default function SampleLogin() {
 
-  // create "values" objecct
-  const [values, setValues] = useState({
-    userId: "",
-    password: "",
-    rememberme:false,
-  });
+    // create "values" objecct
+    const [values, setValues] = useState({
+        userId: "",
+        password: "",
+        rememberme: false,
+    });
 
     const handleChange = (key) => (value) => {
         setValues({ [key]: value });

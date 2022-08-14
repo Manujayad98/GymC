@@ -76,3 +76,18 @@
     margin-left: 10px;
 
 }
+
+.login-btn-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.login-btn {
+
+    background-color: #2C131A;
+    color: #ffffff;
+    width: 100px;
+    margin-top: 10px;
+    padding: 8px 10px 8px 10px;
+    border-radius: 5px;
+}
