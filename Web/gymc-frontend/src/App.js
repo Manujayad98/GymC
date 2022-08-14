@@ -11,16 +11,16 @@ import Registration from './Components/Pages/all/registrationPage/Registration';
 import Sidebar from './Components/Utilities/Sidebar/Sidebar';
 import LoginPagePrev from './Components/Pages/all/loginPage/LoginPagePrev';
 import SampleLogin from './Components/Pages/all/loginPage/SampleLogin';
-<<<<<<< HEAD
+
 import SampleReg from './Components/Pages/all/registrationPage/SampleReg';
-=======
+
 import Login from './Components/Pages/all/loginPage/LoginPage';
 
 import PieChart from './Components/Utilities/Charts/PieChart';
 import BarChart from './Components/Utilities/Charts/BarChart';
 import LineChart from './Components/Utilities/Charts/LineChart';
 import SearchBar from './Components/Utilities/SearchBar/SearchBar';
->>>>>>> cb2e240d6a533213b096071d436f1fd293963db7
+
 
 //ADMIN
 import SidebarA from './Components/Pages/admin/adm_sidebar/Sidebar';
@@ -72,13 +72,13 @@ function App() {
           <Route path="/signinPrev" element={<LoginPagePrev />}></Route>
           <Route path="/signupPrev" element={<LoginPagePrev />}></Route>
           <Route path="/samplelogin" element={<SampleLogin />}></Route>
-<<<<<<< HEAD
+
           <Route path="/samplereg" element={<SampleReg />}></Route>
 
-=======
+
           <Route path="/login" element={<Login />}></Route>
           <Route path="/searchBar" element={<SearchBar />}></Route>
->>>>>>> cb2e240d6a533213b096071d436f1fd293963db7
+
 
           {/* OWNER ROUTES */}
           <Route path="/Otrainers" element={<TrainerO />}></Route>

@@ -29,7 +29,9 @@ export default function Registration() {
     });
 
     const handleChange = (key) => (value) => {
-        setState({ [key]: value });
+        setState({ 
+            ...requestData,
+            [key]: value });
     };
     // handleRadio = () => {
     // //   this.setState({ selectedOption});

@@ -14,11 +14,15 @@ export default function SampleLogin() {
         userId: "",
         password: "",
         rememberme: false,
-        selected: ""
+        
     });
 
     const handleChange = (key) => (value) => {
-        setValues({ [key]: value });
+        // key.persist();
+        console.log(key,value);
+        setValues({
+            ...values,
+            [key]: value });
     };
 
     const handleClick = (event) => {
@@ -27,6 +31,7 @@ export default function SampleLogin() {
     };
     const handleCheckbox = (rememberme) => {
         setValues({ rememberme });
+        console.log(rememberme);
     };
 
 
@@ -46,6 +51,7 @@ export default function SampleLogin() {
                                         <InputField
                                             value={values.userId}
                                             type='text'
+                                            name='userId'
                                             label="User Id"
                                             placeholder='Type'
                                             validators={[
@@ -59,6 +65,7 @@ export default function SampleLogin() {
                                         <InputField
                                             value={values.password}
                                             type='password'
+                                            name='password'
                                             label="Password"
                                             placeholder='Type'
                                             validators={[
