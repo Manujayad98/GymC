@@ -2,6 +2,9 @@ import React from 'react'
 import '../adm_sidebar/Sidebar.css'
 import SidebarO from '../adm_sidebar/Sidebar'
 import HeaderO from '../adm_header/header'
+import './SystemLogs.css'
+import Download from '../../../Utilities/DownloadButton/Download';
+
 
 const Dashboard = () => {
   return (
@@ -10,8 +13,13 @@ const Dashboard = () => {
       <div className='body-container'> 
           <HeaderO title="System Logs"/>
           <div className="content-container">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem cum laudantium ipsa laborum esse! Atque temporibus asperiores veritatis ipsum enim ratione quia. Accusantium nesciunt, necessitatibus quaerat ea rerum aliquid minus?</p>
+            <div className="content">
+              <p>click on below button to download the system log file.</p>
+              <Download/>
+            </div>
+            
           </div>
+        
           
       </div>
     </div>
