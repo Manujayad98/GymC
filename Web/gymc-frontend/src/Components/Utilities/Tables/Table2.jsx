@@ -77,20 +77,32 @@ export default function CustomizedTables(props) {
                     />
                     <TableBody>
                         {rows.map((row) => (
-                            <StyledTableRow key={row.name}>
-                                <StyledTableCell component="th" scope="row">
-                                    {Object.values(row)[0]}
-                                </StyledTableCell>
-                                <StyledTableCell >{Object.values(row)[1]}</StyledTableCell>
-                                <StyledTableCell >{Object.values(row)[2]}</StyledTableCell>
-                                <StyledTableCell >{Object.values(row)[3]}</StyledTableCell>
-                                <StyledTableCell >{Object.values(row)[4]}</StyledTableCell>
-                                <StyledTableCell align="center">{Object.values(row)[5]}</StyledTableCell>
+                            < StyledTableRow key={row.name} >
+                                {Object.values(row)[0] != null ?
+                                    <StyledTableCell component="th" scope="row" style={{ width: 'auto' }}>
+                                        {Object.values(row)[0]}
+                                    </StyledTableCell>
+                                    : null}
+                                {Object.values(row)[1] != null ?
+                                    <StyledTableCell >{Object.values(row)[1]}</StyledTableCell>
+                                    : null}
+                                {Object.values(row)[2] != null ?
+                                    <StyledTableCell >{Object.values(row)[2]}</StyledTableCell>
+                                    : null}
+                                {Object.values(row)[3] != null ?
+                                    <StyledTableCell >{Object.values(row)[3]}</StyledTableCell>
+                                    : null}
+                                {Object.values(row)[4] != null ?
+                                    <StyledTableCell >{Object.values(row)[4]}</StyledTableCell>
+                                    : null}
+                                {Object.values(row)[5] != null ?
+                                    <StyledTableCell align="center">{Object.values(row)[5]}</StyledTableCell>
+                                    : null}
                             </StyledTableRow>
                         ))}
                     </TableBody>
                 </Table>
             </TableContainer >
-        </Box>
+        </Box >
     );
 }

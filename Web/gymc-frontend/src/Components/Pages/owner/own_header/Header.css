@@ -1,19 +1,28 @@
-.Heading{grid-area: header;}
-.profile{grid-area: profile;}
-.Headr{
+.Heading {
+    grid-area: header;
+}
+
+.profile {
+    grid-area: profile;
+}
+
+.Headr {
     margin-bottom: 30px;
     padding-left: 20px;
 }
-.Head{
+
+.Head {
     display: grid;
-    grid-template-areas: 
-    'header header header header header header header header header header header header header header header header header profile';
+    grid-template-areas:
+        'header header header header header header header header header header header header header header header header header profile';
 }
-.Heading{
-    
+
+.Heading {
+
     padding-right: 20px;
 }
-.profile{
+
+.profile {
     width: 250px;
     background-color: white;
     border-radius: 25px;
@@ -22,23 +31,25 @@
     overflow: hidden;
 }
 
-.profileDetails{
-   padding: 5px;
-   text-align: left;
-    
+.profileDetails {
+    padding: 5px;
+    text-align: left;
+
 }
 
-#name{
+#name {
     font-size: 15px;
     font-weight: bold;
 }
 
-#level{
+#level {
     font-size: 12px;
     font-weight: 500;
-    
+
 }
-#heading{
-    font-weight: 600!important;
-    font-size: 2rem!important;
+
+#heading {
+    font-weight: 600 !important;
+    font-size: 2rem !important;
+    text-align: left;
 }

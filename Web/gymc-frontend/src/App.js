@@ -6,10 +6,17 @@ import Pricing from './Components/Pages/all/landingPage/Pricing';
 import About from './Components/Pages/all/landingPage/About';
 import Contact from './Components/Pages/all/landingPage/ContactUs';
 import Trainers from './Components/Pages/all/landingPage/Trainers';
-import Login from './Components/Pages/all/landingPage/Login';
+// import Login from './Components/Pages/all/landingPage/Login';
 import Registration from './Components/Pages/all/registrationPage/Registration';
 import Sidebar from './Components/Utilities/Sidebar/Sidebar';
-import LoginPage from './Components/Pages/all/loginPage/LoginPage';
+import LoginPagePrev from './Components/Pages/all/loginPage/LoginPagePrev';
+import SampleLogin from './Components/Pages/all/loginPage/SampleLogin';
+import Login from './Components/Pages/all/loginPage/LoginPage';
+
+import PieChart from './Components/Utilities/Charts/PieChart';
+import BarChart from './Components/Utilities/Charts/BarChart';
+import LineChart from './Components/Utilities/Charts/LineChart';
+import SearchBar from './Components/Utilities/SearchBar/SearchBar';
 
 //ADMIN
 import SidebarA from './Components/Pages/admin/adm_sidebar/Sidebar';
@@ -48,7 +55,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {
   return (
     <Router>
-      
+
       <div className="App">
 
         <Routes>
@@ -56,9 +63,12 @@ function App() {
           {/* ALL ROUTES */}
           <Route exact path="/" element={<Home />}></Route>
           <Route path="/registration" element={<Registration />}></Route>
-          <Route path="/sidebar" element={<SidebarA/>}></Route>
-          <Route path="/signin" element={<LoginPage />}></Route>
-          <Route path="/signup" element={<LoginPage />}></Route>
+          <Route path="/sidebar" element={<SidebarA />}></Route>
+          <Route path="/signinPrev" element={<LoginPagePrev />}></Route>
+          <Route path="/signupPrev" element={<LoginPagePrev />}></Route>
+          <Route path="/samplelogin" element={<SampleLogin />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/searchBar" element={<SearchBar />}></Route>
 
           {/* OWNER ROUTES */}
           <Route path="/Otrainers" element={<TrainerO />}></Route>
