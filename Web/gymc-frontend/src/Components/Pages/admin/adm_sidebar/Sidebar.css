@@ -9,6 +9,7 @@
 }
 .sb-container{
     display:flex;
+    background: #1F0106;
 }
 main{
     /* width: 100%; */
