@@ -5,13 +5,10 @@ import { fetchUserData } from "../../../../services/AuthenticationService";
 import { authenticate, authFailure, authSuccess } from "../../../Redux/AuthAction";
 import './LoginPage.css'
 import LoginImage from "../../../../images/LoginPage.jpg"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginPage = ({ loading, error, ...props }) => {
-    let [authMode, setAuthMode] = useState("signin")
-
-    const changeAuthMode = () => {
-        setAuthMode(authMode === "signin" ? "signup" : "signin")
-    }
 
     const [values, setValues] = useState({
         userName: "",
@@ -22,11 +19,11 @@ const LoginPage = ({ loading, error, ...props }) => {
         console.log('res1');
         const res = await fetchUserData();
 
-        // console.log(res.data.userName);
         var userLevel = res.data.userLevel;
 
         if (userLevel === "Owner") {
             window.location.href = "/Odashboard";
+            toast.success('successful');
         } else if (userLevel === "Admin") {
             window.location.href = "/Adashboard";
         } else if (userLevel === "Receptionist") {
@@ -47,11 +44,12 @@ const LoginPage = ({ loading, error, ...props }) => {
             .then((response) => {
                 console.log("response->", response);
                 if (response.status === 200) {
-                    console.log("logging success");
+                    // console.log("logging success");
                     props.setUser(response.data);
                     userData();
                 } else {
-                    console.log("logging fail");
+                    toast.warning('Something Wrong!Please Try Again')
+                    // console.log("logging fail");
                     props.loginFailure("1.Something Wrong!Please Try Again");
                 }
             })
@@ -59,14 +57,17 @@ const LoginPage = ({ loading, error, ...props }) => {
                 if (err && err.response) {
                     switch (err.response.status) {
                         case 401:
-                            console.log("401 status");
+                            toast.error('Authentication Failed.Bad Credentials')
+                            // console.log("401 status");
                             props.loginFailure("Authentication Failed.Bad Credentials");
                             break;
                         default:
+                            toast.warning('Something Wrong!Please Try Again!')
                             props.loginFailure("2.Something Wrong!Please Try Again!");
                     }
                 } else {
-                    // props.loginFailure("3.Something Wrong!Please Try Again");
+                    toast.warning('Something Wrong!Please Try Again!')
+                    props.loginFailure("3.Something Wrong!Please Try Again");
                 }
             });
         //console.log("Loading again",loading);
@@ -83,7 +84,7 @@ const LoginPage = ({ loading, error, ...props }) => {
     return (
         <>
             <div className='form-div'>
-                <form className="" onSubmit={handleSubmit} noValidate={false}>
+                <form className="login-form" onSubmit={handleSubmit} noValidate={false}>
                     <div className='login-form-container'>
                         <div className="login-form-content-left">
                             <div className="login-form-in-container">
@@ -95,7 +96,7 @@ const LoginPage = ({ loading, error, ...props }) => {
                                         <input
                                             id="username"
                                             type="text"
-                                            className="form-control mt-1"
+                                            className="form-control"
                                             placeholder="Enter username"
                                             minLength={5}
                                             value={values.userName}
@@ -109,7 +110,7 @@ const LoginPage = ({ loading, error, ...props }) => {
                                         <input
                                             id="password"
                                             type="password"
-                                            className="form-control mt-1"
+                                            className="form-control"
                                             placeholder="Enter password"
                                             minLength={8}
                                             value={values.password}
@@ -132,11 +133,14 @@ const LoginPage = ({ loading, error, ...props }) => {
                         </div>
                         <div className='login-form-content-right'>
                             <img className='login-form-img' src={LoginImage} alt='runningMan' />
-
+                            <div class="overlay">
+                                <div class="text">WELCOME TO THE GYM C</div>
+                            </div>
                         </div>
                     </div>
                 </form>
             </div>
+            <ToastContainer />
         </>
     )
 };
