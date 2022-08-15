@@ -15,7 +15,7 @@ function Deletemodal(props) {
         onHide={handleClose}
         //backdrop="static" ensures clicking outside and esc key does not close the modal
         keyboard={false}
-        //animation={false}
+        animation={false}
       >
         <Modal.Header closeButton>
           <Modal.Title>Modal title</Modal.Title>
