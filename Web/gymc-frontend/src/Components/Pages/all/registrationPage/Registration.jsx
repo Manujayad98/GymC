@@ -9,7 +9,7 @@ import InputField from "../../../Utilities/Form/InputField";
 // import Dropdown from "../../../Utilities/Form/Dropdown";
 import { Validators } from "../../../Utilities/Form/Validator/Validator";
 import Checkbox from "../../../Utilities/Form/Checkbox";
-// import Radiobutton from "../../../Utilities/Form/Radiobutton";
+import Radiobutton from "../../../Utilities/Form/Radiobutton";
 
 export default function Registration() {
 
@@ -33,9 +33,10 @@ export default function Registration() {
             ...requestData,
             [key]: value });
     };
-    // handleRadio = () => {
+
+    // handleRadio = (event) => {
     // //   this.setState({ selectedOption});
-    //     this.setState({gender});
+    //     setState({selectedOption: event.target.value});
     // };
 
     const handleClick = (event) => {
@@ -50,27 +51,6 @@ export default function Registration() {
     const handleCheckbox = (acceptance) => {
         setState({ acceptance });
     };
-
-
-    // const {
-    //     fname,
-    //     lname,
-    //     nic,
-    //     dob,
-    //     selectedOption,
-    //     gender,
-    //     occ,
-    //     address,
-    //     email,
-    //     phone,
-    //     emergency,
-    //     text,
-    //     number,
-    //     occupation,
-    //     country,
-    //     message,
-    //     acceptance
-    // } = this.state;
 
     return (
         <>

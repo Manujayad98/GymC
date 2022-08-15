@@ -4,31 +4,37 @@ import '../own_add_trainer/AddTrainer.css'
 import SidebarO from '../own_sidebar/Sidebar'
 import HeaderO from '../own_header/Header'
 
+import Pic1 from '../../../../images/owner.png'
+
 import Button from '../../../Utilities/Form/Button';
 import InputField from "../../../Utilities/Form/InputField";
 import Dropdown from "../../../Utilities/Form/Dropdown";
 import { Validators } from "../../../Utilities/Form/Validator/Validator";
 import Checkbox from "../../../Utilities/Form/Checkbox";
 import Radiobutton from "../../../Utilities/Form/Radiobutton";
+import PictureUploader from "../../../Utilities/Form/PictureUploader/PictureUploader";
 
 
 export default function AddTrainer() {
-    const [requestData] = useState({
+    const [requestData, setState] = useState({
         text: '',
         occupation: '',
         phone: '',
         number: '',
+        // emergency: '',
         address: '',
         email: '',
         country: '',
         message: '',
-        qualifications: '',
+        acceptance: false,
         selectedOption: null,
         gender: false,
     });
 
     const handleChange = (key) => (value) => {
-        this.setState({ [key]: value });
+        setState({ 
+            ...requestData,
+            [key]: value });
     };
     // handleRadio = () => {
     // //   this.setState({ selectedOption});
@@ -41,7 +47,7 @@ export default function AddTrainer() {
     };
 
     const handleDropdown = (country) => {
-        this.setState({ country });
+        setState({ country });
     };
 
     const handleCheckbox = (acceptance) => {
@@ -62,7 +68,20 @@ export default function AddTrainer() {
 
                                 <div className="form-row">
                                     <div className="form-col1">
-                                        <InputField
+                                        <div className='own-dashboard-card profile-cards'>
+                                            <div className='own-dashboard-card-img-container'>
+                                                <img src={Pic1} alt="" />
+                                            </div>
+                                            <div className='own-dashboard-card-content'>
+                                                <div className='staffID'>T00001</div>
+                                                <div className='staffName'></div>
+                                            </div>
+                                        </div>
+                                        <PictureUploader label="Add Photo"/>
+                                        
+                                    </div>
+                                    <div className="form-col2">
+                                    <InputField
                                             value={requestData.fname}
                                             type='text'
                                             label="First Name"
@@ -71,8 +90,6 @@ export default function AddTrainer() {
                                                 { check: Validators.required, message: 'This field is required' }
                                             ]}
                                             onChange={handleChange('fname')} />
-                                    </div>
-                                    <div className="form-col2">
                                         <InputField
                                             value={requestData.lname}
                                             type='text'
@@ -81,7 +98,7 @@ export default function AddTrainer() {
                                             validators={[
                                                 { check: Validators.required, message: 'This field is required' }
                                             ]}
-                                            onChange={handleChange('text')} />
+                                            onChange={handleChange('lname')} />
                                     </div>
                                 </div>
                                 <div className="form-row">

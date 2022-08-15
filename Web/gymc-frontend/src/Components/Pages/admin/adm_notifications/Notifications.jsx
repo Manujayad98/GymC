@@ -5,7 +5,7 @@ import HeaderO from '../adm_header/header'
 import './Notifications.css'
 // import Card from '../../../Utilities/Card/Card'
 
-const Dashboard = () => {
+const Notification = () => {
   return (
     <div className='main-container'>
       <SidebarO/>
@@ -56,4 +56,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default Notification

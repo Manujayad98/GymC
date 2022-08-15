@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 const Radiobutton = ({value,label, styleClass, onChange}) => {
 
-    // const handleChange = (event) => {
-    //     const {selectedOption} = event.target;
-    //     onChange(selectedOption);
-    // };
+    const handleChange = (event) => {
+        const {selectedOption} = event.target;
+        onChange(selectedOption);
+    };
 
     return (
         <div className={`form-group ${styleClass}`}>

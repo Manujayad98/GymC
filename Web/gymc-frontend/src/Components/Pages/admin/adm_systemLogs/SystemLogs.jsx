@@ -6,7 +6,8 @@ import './SystemLogs.css'
 import Button from '@mui/material/Button';
 import DownloadIcon from '@mui/icons-material/Download';
 
-const Dashboard = () => {
+
+const SystemLog = () => {
   return (
     <div className='main-container'>
       <SidebarO/>
@@ -36,4 +37,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default SystemLog

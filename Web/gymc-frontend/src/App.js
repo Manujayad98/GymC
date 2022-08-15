@@ -11,6 +11,8 @@ import Registration from './Components/Pages/all/registrationPage/Registration';
 import Sidebar from './Components/Utilities/Sidebar/Sidebar';
 import LoginPagePrev from './Components/Pages/all/loginPage/LoginPagePrev';
 import SampleLogin from './Components/Pages/all/loginPage/SampleLogin';
+import PictureUploader from './Components/Utilities/Form/PictureUploader/PictureUploader';
+
 
 import SampleReg from './Components/Pages/all/registrationPage/SampleReg';
 
@@ -20,6 +22,9 @@ import PieChart from './Components/Utilities/Charts/PieChart';
 import BarChart from './Components/Utilities/Charts/BarChart';
 import LineChart from './Components/Utilities/Charts/LineChart';
 import SearchBar from './Components/Utilities/SearchBar/SearchBar';
+import Calendar  from './Components/Utilities/CalendarComp/CalendarComp';
+import SampleCal  from './Components/Utilities/CalendarComp/SampleCal';
+
 
 
 //ADMIN
@@ -78,7 +83,9 @@ function App() {
 
           <Route path="/login" element={<Login />}></Route>
           <Route path="/searchBar" element={<SearchBar />}></Route>
-
+          <Route path="/calendar" element={<Calendar />}></Route>
+          <Route path="/samplecal" element={<SampleCal />}></Route>
+          <Route path="/picup" element={<PictureUploader />}></Route>
 
           {/* OWNER ROUTES */}
           <Route path="/Otrainers" element={<TrainerO />}></Route>
