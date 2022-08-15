@@ -24,43 +24,60 @@ import Dropdown from '../../../Utilities/Form/Dropdown'
       ["Aug", 8000],
   
     ]);
+
+    // EXCERCISE TABLE
   
     const [workoutDetailsTableHead] = useState([
-      { id: "Time", label: "Time", numeric: false },
-      { id: "TrainerName", label: "Trainer Name", numeric: false },
-      { id: "TraineeName", label: "Trainee Name", numeric: false }
+      { id: "Name", label: "Name", numeric: false },
+      { id: "Repetitions", label: "No of Repetitions", numeric: false }
     ]);
 
     const [workoutDetails] = useState([
       {
-        Time: "09.30 AM",
-        TrainerName: "Kasun Perera",
-        TraineeName: "Gihan Sekara"
+        Name: "Incline Press",
+        Repetitions: "15 Reps"
       },
       {
-        Time: "10.30 AM",
-        TrainerName: "Rasul Silve",
-        TraineeName: "Piyath Sandaruwan"
+        Name: "Incline Press",
+        Repetitions: "15 Reps"
       },
       {
-        Time: "09.30 AM",
-        TrainerName: "Kasun Perera",
-        TraineeName: "Gihan Sekara"
+        Name: "Incline Press",
+        Repetitions: "15 Reps"
       },
       {
-        Time: "10.30 AM",
-        TrainerName: "Rasul Silve",
-        TraineeName: "Piyath Sandaruwan"
+        Name: "Incline Press",
+        Repetitions: "15 Reps"
       },
       {
-        Time: "10.30 AM",
-        TrainerName: "Rasul Silve",
-        TraineeName: "Piyath Sandaruwan"
+        Name: "Incline Press",
+        Repetitions: "15 Reps"
       },
       {
-        Time: "10.30 AM",
-        TrainerName: "Rasul Silve",
-        TraineeName: "Piyath Sandaruwan"
+        Name: "Incline Press",
+        Repetitions: "15 Reps"
+      },
+    ]);
+
+    // PRICING TABLE
+
+    const [priceDetailsTableHead] = useState([
+      { id: "Type", label: "Type", numeric: false },
+      { id: "Price", label: "Price", numeric: false }
+    ]);
+
+    const [priceDetails] = useState([
+      {
+        Type: "Daily",
+        Price: "550.00"
+      },
+      {
+        Type: "Monthly - Personal",
+        Price: "550.00"
+      },
+      {
+        Type: "Monthly - Nonpersonal",
+        Price: "550.00"
       },
     ]);
   
@@ -145,8 +162,8 @@ import Dropdown from '../../../Utilities/Form/Dropdown'
                     <div className='own-dashboard-container-head'>Available Payment Plans</div>
                     <div className='own-dashboard-card table-cards'>
                       <Table
-                        rows={workoutDetails}
-                        headCells={workoutDetailsTableHead}
+                        rows={priceDetails}
+                        headCells={priceDetailsTableHead}
                       />
                     </div>
                   </div>
@@ -155,8 +172,44 @@ import Dropdown from '../../../Utilities/Form/Dropdown'
 
                 </Tab>
                 <Tab eventKey="profile" title="Reports">
-                  Reports
-                  {/* <Dropdown value={}/> */}
+                  <div className='dropdown'>
+                                <div className="dropdown-container">
+                                    <div className="form-label-container">
+                                        <label class="form-label" for="form1">Report Type</label>
+                                    </div>
+                                    <select class="form-control form-control-sm" style={{ padding: '8px' }}>
+                                        <option> select </option>
+                                        <option> select 1</option>
+                                        <option> select 2</option>
+                                        <option> select 3</option>
+                                        <option> select 4</option>
+                                    </select>
+                                </div>
+                                <div className="dropdown-container">
+                                    <div className="form-label-container">
+                                        <label class="form-label" for="form1">Duration</label>
+                                    </div>
+                                    <select class="form-control form-control-sm" style={{ padding: '8px' }}>
+                                        <option> select </option>
+                                        <option> select 1</option>
+                                        <option> select 2</option>
+                                        <option> select 3</option>
+                                        <option> select 4</option>
+                                    </select>
+                                </div>
+                                <div className="dropdown-container">
+                                    <div className="form-label-container">
+                                        <label class="form-label" for="form1">Time</label>
+                                    </div>
+                                    <select class="form-control form-control-sm" style={{ padding: '8px' }}>
+                                        <option> select </option>
+                                        <option> select 1</option>
+                                        <option> select 2</option>
+                                        <option> select 3</option>
+                                        <option> select 4</option>
+                                    </select>
+                                </div>
+                  </div>
                 </Tab>
   
               </Tabs>
