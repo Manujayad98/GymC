@@ -1,0 +1,22 @@
+.contents-container{
+    width : 95%;
+    height : 85%;
+    background-color: #FFFFFF;
+    margin-left: 2%;
+    margin-top: 2%;
+    border-radius: 20px;
+    
+}
+.filter-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.inputFields-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    
+}
