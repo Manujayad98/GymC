@@ -8,7 +8,8 @@ import {
     FaBell,
     FaRegChartBar,
     FaDumbbell,
-    FaSignOutAlt
+    FaSignOutAlt,
+    FaRegCalendarCheck
 }from "react-icons/fa";
 
 import { NavLink } from 'react-router-dom';
@@ -55,7 +56,13 @@ const Sidebar = ({children}) => {
             path:"/Ranalytics",
             name:"Analytics",
             icon:<FaRegChartBar/>
-        },{
+        },
+        {
+            path:"/Rappointments",
+            name:"Appointments",
+            icon:<FaRegCalendarCheck/>
+        },
+        {
             path: "/",
             name: "Logout",
             icon: <FaSignOutAlt />
