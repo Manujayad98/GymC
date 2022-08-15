@@ -140,7 +140,7 @@ export default function Trainers() {
         { id: "TrainerName", label: "TRAINER NAME", numeric: false },
         { id: "RegDate", label: "REG DATE", numeric: false },
         { id: "NextShift", label: "NEXT SHIFT", numeric: false },
-        { id: "Status", label: "STATUS", numeric: false },
+        { id: "Status", label: "LEAVE", numeric: false },
         { id: "Actions", label: "ACTIONS", numeric: false },
     ]);
 
