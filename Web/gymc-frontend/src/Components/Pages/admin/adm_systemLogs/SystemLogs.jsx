@@ -2,6 +2,9 @@ import React from 'react'
 import '../adm_sidebar/Sidebar.css'
 import SidebarO from '../adm_sidebar/Sidebar'
 import HeaderO from '../adm_header/header'
+import './SystemLogs.css'
+import Button from '@mui/material/Button';
+import DownloadIcon from '@mui/icons-material/Download';
 
 const Dashboard = () => {
   return (
@@ -10,7 +13,22 @@ const Dashboard = () => {
       <div className='body-container'> 
           <HeaderO title="System Logs"/>
           <div className="content-container">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem cum laudantium ipsa laborum esse! Atque temporibus asperiores veritatis ipsum enim ratione quia. Accusantium nesciunt, necessitatibus quaerat ea rerum aliquid minus?</p>
+            <div className='systemLog'>
+             {/* <h1>sumudu</h1> */}
+             <div className='LogText'>Click on below button to download the system log file</div>
+             <div className='downloadButton'>
+             <Button 
+             style={{
+              borderRadius: 35,
+              backgroundColor: "#32E04E",
+              width:'250px',
+              color:'white'
+          }}
+             color="primary" size="large" startIcon={<DownloadIcon />}>
+                  Download
+              </Button>
+              </div>
+             </div>
           </div>
           
       </div>
