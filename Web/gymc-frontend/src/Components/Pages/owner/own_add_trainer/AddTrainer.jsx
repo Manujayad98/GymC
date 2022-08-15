@@ -8,9 +8,7 @@ import Pic1 from '../../../../images/owner.png'
 
 import Button from '../../../Utilities/Form/Button';
 import InputField from "../../../Utilities/Form/InputField";
-import Dropdown from "../../../Utilities/Form/Dropdown";
 import { Validators } from "../../../Utilities/Form/Validator/Validator";
-import Checkbox from "../../../Utilities/Form/Checkbox";
 import Radiobutton from "../../../Utilities/Form/Radiobutton";
 import PictureUploader from "../../../Utilities/Form/PictureUploader/PictureUploader";
 
@@ -20,15 +18,10 @@ export default function AddTrainer() {
         text: '',
         occupation: '',
         phone: '',
-        number: '',
-        // emergency: '',
-        address: '',
         email: '',
-        country: '',
-        message: '',
-        acceptance: false,
         selectedOption: null,
         gender: false,
+        qualifications:''
     });
 
     const handleChange = (key) => (value) => {
@@ -128,15 +121,15 @@ export default function AddTrainer() {
                                 <div className="form-row">
                                     <div className="form-col1">
 
-                                        {/* <Radiobutton
-                  value={gender}
-                  name='gender'
-                  type='radio'
-                  label="selectedOption"
-                  // validators={[
-                  //   { check: Validators.required, message: 'Select an option' }
-                  // ]}
-                  onChange={handleRadio('gender')} /> */}
+                                            {/* <Radiobutton
+                                            value={gender}
+                                            name='gender'
+                                            type='radio'
+                                            label="selectedOption"
+                                            // validators={[
+                                            //   { check: Validators.required, message: 'Select an option' }
+                                            // ]}
+                                            onChange={handleRadio('gender')} /> */}
                                     </div>
                                     <div className="form-col2">
                                         <InputField
@@ -181,29 +174,33 @@ export default function AddTrainer() {
                                 <div className="form-row">
                                     <div className="form-col1">
                                         <InputField
-                                            value={requestData.number}
-                                            type='text'
+                                            value={requestData.phone}
+                                            type='number'
                                             label="Phone"
                                             placeholder='Type'
                                             validators={[
                                                 { check: Validators.number, message: 'Number is not valid' }
                                             ]}
-                                            onChange={handleChange('number')} />
+                                            onChange={handleChange('phone')} />
+                                    </div>
+                                    <div className="form-col2">
+
                                     </div>
 
                                 </div>
-
+                                <h4 className='form-subHeading'>Qualifications</h4>
+                                <hr />
                                 <div className="form-row">
                                     <div className="form-col1">
-                                        {/* <InputField
+                                        <InputField
                                             value={requestData.qualifications}
                                             type='textarea'
-                                            placeholder='Enter message!'
+                                            placeholder='Type'
                                             validators={[
                                                 { check: Validators.required, message: 'This field is required' }
                                             ]}
-                                            onChange={this.handleChange('requestData.qualifications')} />
-                                        <br></br> */}
+                                            onChange={handleChange('qualifications')} />
+                                        <br></br>
 
                                     </div>
                                 </div>
