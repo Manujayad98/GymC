@@ -23,7 +23,7 @@
 .header{
     display: grid;
     grid-template: 
-    'e1 e2' ;
+    'e1 e1 e1 e1 e2' ;
 }
 
 #heading{
@@ -98,6 +98,14 @@ button:hover {
   justify-content: left;
   align-items: center;
 }
+
+#own-dashboard-titles {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 5px 0 5px 12px;
+  text-align: left;
+}
+
 
 @media (max-width: 768px) {
   .center_div {
