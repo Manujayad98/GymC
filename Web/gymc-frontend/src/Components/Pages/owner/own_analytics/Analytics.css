@@ -34,3 +34,14 @@
     width: 210px;
     height: 120px;
 }
+
+.tab-content > .active{
+    background: none!important;
+    /* display: none; */
+    box-shadow: none;
+    transition: none;
+    color: black;
+}
+.fade{
+    transition: none!important;
+}
