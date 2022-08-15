@@ -24,43 +24,60 @@ import Dropdown from '../../../Utilities/Form/Dropdown'
       ["Aug", 8000],
   
     ]);
+
+    // EXCERCISE TABLE
   
     const [workoutDetailsTableHead] = useState([
-      { id: "Time", label: "Time", numeric: false },
-      { id: "TrainerName", label: "Trainer Name", numeric: false },
-      { id: "TraineeName", label: "Trainee Name", numeric: false }
+      { id: "Name", label: "Name", numeric: false },
+      { id: "Repetitions", label: "No of Repetitions", numeric: false }
     ]);
 
     const [workoutDetails] = useState([
       {
-        Time: "09.30 AM",
-        TrainerName: "Kasun Perera",
-        TraineeName: "Gihan Sekara"
+        Name: "Incline Press",
+        Repetitions: "15 Reps"
       },
       {
-        Time: "10.30 AM",
-        TrainerName: "Rasul Silve",
-        TraineeName: "Piyath Sandaruwan"
+        Name: "Incline Press",
+        Repetitions: "15 Reps"
       },
       {
-        Time: "09.30 AM",
-        TrainerName: "Kasun Perera",
-        TraineeName: "Gihan Sekara"
+        Name: "Incline Press",
+        Repetitions: "15 Reps"
       },
       {
-        Time: "10.30 AM",
-        TrainerName: "Rasul Silve",
-        TraineeName: "Piyath Sandaruwan"
+        Name: "Incline Press",
+        Repetitions: "15 Reps"
       },
       {
-        Time: "10.30 AM",
-        TrainerName: "Rasul Silve",
-        TraineeName: "Piyath Sandaruwan"
+        Name: "Incline Press",
+        Repetitions: "15 Reps"
       },
       {
-        Time: "10.30 AM",
-        TrainerName: "Rasul Silve",
-        TraineeName: "Piyath Sandaruwan"
+        Name: "Incline Press",
+        Repetitions: "15 Reps"
+      },
+    ]);
+
+    // PRICING TABLE
+
+    const [priceDetailsTableHead] = useState([
+      { id: "Type", label: "Type", numeric: false },
+      { id: "Price", label: "Price", numeric: false }
+    ]);
+
+    const [priceDetails] = useState([
+      {
+        Type: "Daily",
+        Price: "550.00"
+      },
+      {
+        Type: "Monthly - Personal",
+        Price: "550.00"
+      },
+      {
+        Type: "Monthly - Nonpersonal",
+        Price: "550.00"
       },
     ]);
   
@@ -145,8 +162,8 @@ import Dropdown from '../../../Utilities/Form/Dropdown'
                     <div className='own-dashboard-container-head'>Available Payment Plans</div>
                     <div className='own-dashboard-card table-cards'>
                       <Table
-                        rows={workoutDetails}
-                        headCells={workoutDetailsTableHead}
+                        rows={priceDetails}
+                        headCells={priceDetailsTableHead}
                       />
                     </div>
                   </div>
