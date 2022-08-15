@@ -155,8 +155,44 @@ import Dropdown from '../../../Utilities/Form/Dropdown'
 
                 </Tab>
                 <Tab eventKey="profile" title="Reports">
-                  Reports
-                  {/* <Dropdown value={}/> */}
+                  <div className='dropdown'>
+                                <div className="dropdown-container">
+                                    <div className="form-label-container">
+                                        <label class="form-label" for="form1">Report Type</label>
+                                    </div>
+                                    <select class="form-control form-control-sm" style={{ padding: '8px' }}>
+                                        <option> select </option>
+                                        <option> select 1</option>
+                                        <option> select 2</option>
+                                        <option> select 3</option>
+                                        <option> select 4</option>
+                                    </select>
+                                </div>
+                                <div className="dropdown-container">
+                                    <div className="form-label-container">
+                                        <label class="form-label" for="form1">Duration</label>
+                                    </div>
+                                    <select class="form-control form-control-sm" style={{ padding: '8px' }}>
+                                        <option> select </option>
+                                        <option> select 1</option>
+                                        <option> select 2</option>
+                                        <option> select 3</option>
+                                        <option> select 4</option>
+                                    </select>
+                                </div>
+                                <div className="dropdown-container">
+                                    <div className="form-label-container">
+                                        <label class="form-label" for="form1">Time</label>
+                                    </div>
+                                    <select class="form-control form-control-sm" style={{ padding: '8px' }}>
+                                        <option> select </option>
+                                        <option> select 1</option>
+                                        <option> select 2</option>
+                                        <option> select 3</option>
+                                        <option> select 4</option>
+                                    </select>
+                                </div>
+                  </div>
                 </Tab>
   
               </Tabs>

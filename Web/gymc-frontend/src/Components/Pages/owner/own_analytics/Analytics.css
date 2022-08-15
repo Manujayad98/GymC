@@ -45,3 +45,22 @@
 .fade{
     transition: none!important;
 }
+
+.dropdown-container {
+    width: 300px;
+}
+
+.form-label-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.form-label {
+    font-weight: 800;
+}
+.dropdown{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
