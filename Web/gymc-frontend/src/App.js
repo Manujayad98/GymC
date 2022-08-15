@@ -45,6 +45,7 @@ import NotificationsR from './Components/Pages/receptionist/recept_notifications
 import SidebarR from './Components/Pages/receptionist/recept_sidebar/Sidebar';
 import TraineesR from './Components/Pages/receptionist/recept_trainees/Trainees';
 import TrainersR from './Components/Pages/receptionist/recept_trainers/Trainers';
+import AppointmentsR from './Components/Pages/receptionist/recept_appointments/Appointments'
 
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -95,6 +96,7 @@ function App() {
           <Route path="/Rannouncements" element={<AnnouncementsR />}></Route>
           <Route path="/Requipments" element={<EquipmentsR />}></Route>
           <Route path="/Rnotifications" element={<NotificationsR />}></Route>
+          <Route path="/Rappointments" element={<AppointmentsR />}></Route>
 
 
 
