@@ -8,7 +8,9 @@ import Pic1 from '../../../../images/owner.png'
 
 import Button from '../../../Utilities/Form/Button';
 import InputField from "../../../Utilities/Form/InputField";
+import Dropdown from "../../../Utilities/Form/Dropdown";
 import { Validators } from "../../../Utilities/Form/Validator/Validator";
+import Checkbox from "../../../Utilities/Form/Checkbox";
 import Radiobutton from "../../../Utilities/Form/Radiobutton";
 import PictureUploader from "../../../Utilities/Form/PictureUploader/PictureUploader";
 
@@ -18,16 +20,18 @@ export default function AddTrainer() {
         text: '',
         occupation: '',
         phone: '',
+        number: '',
+        // emergency: '',
+        address: '',
         email: '',
-        selectedOption: null,
         gender: false,
-        qualifications:''
     });
 
     const handleChange = (key) => (value) => {
-        setState({ 
+        setState({
             ...requestData,
-            [key]: value });
+            [key]: value
+        });
     };
     // handleRadio = () => {
     // //   this.setState({ selectedOption});
@@ -70,11 +74,11 @@ export default function AddTrainer() {
                                                 <div className='staffName'></div>
                                             </div>
                                         </div>
-                                        <PictureUploader label="Add Photo"/>
-                                        
+                                        <PictureUploader label="Add Photo" />
+
                                     </div>
                                     <div className="form-col2">
-                                    <InputField
+                                        <InputField
                                             value={requestData.fname}
                                             type='text'
                                             label="First Name"
@@ -121,27 +125,18 @@ export default function AddTrainer() {
                                 <div className="form-row">
                                     <div className="form-col1">
 
-                                            {/* <Radiobutton
-                                            value={gender}
-                                            name='gender'
-                                            type='radio'
-                                            label="selectedOption"
-                                            // validators={[
-                                            //   { check: Validators.required, message: 'Select an option' }
-                                            // ]}
-                                            onChange={handleRadio('gender')} /> */}
+                                        {/* <Radiobutton
+                                    value={gender}
+                                    name='gender'
+                                    type='radio'
+                                    label="selectedOption"
+                                    // validators={[
+                                    //   { check: Validators.required, message: 'Select an option' }
+                                    // ]}
+                                    onChange={handleRadio('gender')} /> */}
                                     </div>
                                     <div className="form-col2">
-                                        <InputField
-                                            value={requestData.occupation}
-                                            type='text'
-                                            label="Occupation"
-                                            placeholder='Type'
-                                            validators={[
-                                                { check: Validators.required, message: 'This field is required' }
-                                            ]}
-                                            onChange={handleChange('occupation')} />
-                                        <br></br>
+
                                     </div>
                                 </div>
 
@@ -174,17 +169,14 @@ export default function AddTrainer() {
                                 <div className="form-row">
                                     <div className="form-col1">
                                         <InputField
-                                            value={requestData.phone}
-                                            type='number'
+                                            value={requestData.number}
+                                            type='text'
                                             label="Phone"
                                             placeholder='Type'
                                             validators={[
                                                 { check: Validators.number, message: 'Number is not valid' }
                                             ]}
-                                            onChange={handleChange('phone')} />
-                                    </div>
-                                    <div className="form-col2">
-
+                                            onChange={handleChange('number')} />
                                     </div>
 
                                 </div>
@@ -206,11 +198,16 @@ export default function AddTrainer() {
                                 </div>
 
 
-
-                                <Button
-                                    onClick={handleClick}
-                                    value='Save' />
+                                <div className="form-row">
+                                    <div className="form-col1"></div>
+                                    <div className="form-col2">
+                                    </div>
+                                    <Button
+                                        onClick={handleClick}
+                                        value='Save' />
+                                </div>
                             </div>
+
                         </div>
                     </div>
 
