@@ -13,6 +13,7 @@ import java.util.Date;
 public class UserAccount implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "userId")
     private long id;
 
     @Column(name = "userName", unique = true)

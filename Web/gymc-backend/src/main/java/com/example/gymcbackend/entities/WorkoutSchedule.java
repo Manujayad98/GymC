@@ -26,6 +26,22 @@ public class WorkoutSchedule {
     @Column(name = "start_date")
     private Date startDate;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "staffId")
+    StaffMember staffMember;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "tranieeId")
+    Trainee trainee;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "workoutPlanID")
+    WorkoutPlan workoutPlan;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "dietPlanID")
+    DietPlan dietPlan;
+
     public void setId(long id) {
         this.id = id;
     }
@@ -50,6 +66,22 @@ public class WorkoutSchedule {
         this.startDate = startDate;
     }
 
+    public void setStaffMember(StaffMember staffMember) {
+        this.staffMember = staffMember;
+    }
+
+    public void setTrainee(Trainee trainee) {
+        this.trainee = trainee;
+    }
+
+    public void setWorkoutPlan(WorkoutPlan workoutPlan) {
+        this.workoutPlan = workoutPlan;
+    }
+
+    public void setDietPlan(DietPlan dietPlan) {
+        this.dietPlan = dietPlan;
+    }
+
     public long getId() {
         return id;
     }
@@ -72,5 +104,21 @@ public class WorkoutSchedule {
 
     public Date getStartDate() {
         return startDate;
+    }
+
+    public StaffMember getStaffMember() {
+        return staffMember;
+    }
+
+    public Trainee getTrainee() {
+        return trainee;
+    }
+
+    public WorkoutPlan getWorkoutPlan() {
+        return workoutPlan;
+    }
+
+    public DietPlan getDietPlan() {
+        return dietPlan;
     }
 }

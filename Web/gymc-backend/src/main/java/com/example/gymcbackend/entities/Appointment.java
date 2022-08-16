@@ -21,6 +21,14 @@ public class Appointment {
     @Column(name = "end_time")
     private Time endTime;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "staffId")
+    StaffMember staffMember;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "traineeId")
+    Trainee trainee;
+
     public void setId(long id) {
         this.id = id;
     }
@@ -37,6 +45,14 @@ public class Appointment {
         this.endTime = endTime;
     }
 
+    public void setStaffMember(StaffMember staffMember) {
+        this.staffMember = staffMember;
+    }
+
+    public void setTrainee(Trainee trainee) {
+        this.trainee = trainee;
+    }
+
     public long getId() {
         return id;
     }
@@ -51,5 +67,13 @@ public class Appointment {
 
     public Time getEndTime() {
         return endTime;
+    }
+
+    public StaffMember getStaffMember() {
+        return staffMember;
+    }
+
+    public Trainee getTrainee() {
+        return trainee;
     }
 }

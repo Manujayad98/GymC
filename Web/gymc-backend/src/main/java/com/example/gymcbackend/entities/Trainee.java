@@ -33,14 +33,6 @@ public class Trainee implements UserDetails {
     @Column(name = "phone_number", length = 10)
     private String phoneNumber;
 
-    public UserAccount getUserAccount() {
-        return userAccount;
-    }
-
-    public void setUserAccount(UserAccount userAccount) {
-        this.userAccount = userAccount;
-    }
-
     @Column(name = "occupation")
     private String occupation;
 
@@ -83,37 +75,6 @@ public class Trainee implements UserDetails {
         return false;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public Character getGender() {
-        return gender;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getNic() {
-        return nic;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public String getOccupation() {
-        return occupation;
-    }
 
     public void setId(long id) {
         this.id = id;
@@ -146,4 +107,46 @@ public class Trainee implements UserDetails {
     public void setOccupation(String occupation) {
         this.occupation = occupation;
     }
+
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public Character getGender() {
+        return gender;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getNic() {
+        return nic;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public UserAccount getUserAccount() {
+        return userAccount;
+    }
+
+
 }

@@ -1,6 +1,7 @@
 package com.example.gymcbackend.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Table(name = "exercise")
 @Entity
@@ -22,6 +23,15 @@ public class Exercise {
     @Column(name = "secondary_muscle")
     private String secondaryMuscle;
 
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "equipmentID")
+//    Equipment equipment;
+
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinTable(name = "exercise_equipments", joinColumns = @JoinColumn(referencedColumnName = "exerciseID"),inverseJoinColumns = @JoinColumn(referencedColumnName ="equipmentID"))
+    private List<Equipment> equipment;
+
+
     public void setId(long id) {
         this.id = id;
     }
@@ -42,6 +52,10 @@ public class Exercise {
         this.secondaryMuscle = secondaryMuscle;
     }
 
+    public void setEquipment(List<Equipment> equipment) {
+        this.equipment = equipment;
+    }
+
     public long getId() {
         return id;
     }
@@ -60,5 +74,9 @@ public class Exercise {
 
     public String getSecondaryMuscle() {
         return secondaryMuscle;
+    }
+
+    public List<Equipment> getEquipment() {
+        return equipment;
     }
 }

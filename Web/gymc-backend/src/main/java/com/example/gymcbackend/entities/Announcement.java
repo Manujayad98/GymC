@@ -24,6 +24,10 @@ public class Announcement {
     @Column(name = "description")
     private String description;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "staffId")
+    StaffMember staffMember;
+
     public void setDate(Date date) {
         this.date = date;
     }
@@ -36,6 +40,14 @@ public class Announcement {
         this.description = description;
     }
 
+    public void setAnnouncementID(long announcementID) {
+        this.announcementID = announcementID;
+    }
+
+    public void setStaffMember(StaffMember staffMember) {
+        this.staffMember = staffMember;
+    }
+
     public Date getDate() {
         return date;
     }
@@ -46,5 +58,13 @@ public class Announcement {
 
     public String getDescription() {
         return description;
+    }
+
+    public long getAnnouncementID() {
+        return announcementID;
+    }
+
+    public StaffMember getStaffMember() {
+        return staffMember;
     }
 }

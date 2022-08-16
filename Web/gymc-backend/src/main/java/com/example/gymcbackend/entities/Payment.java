@@ -20,6 +20,14 @@ public class Payment {
     @Column(name = "date")
     private Date date;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "paymentPlanID")
+    PaymentPlan paymentPlan;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "traineeId")
+    Trainee trainee;
+
     public void setId(long id) {
         this.id = id;
     }
@@ -36,6 +44,14 @@ public class Payment {
         this.date = date;
     }
 
+    public void setPaymentPlan(PaymentPlan paymentPlan) {
+        this.paymentPlan = paymentPlan;
+    }
+
+    public void setTrainee(Trainee trainee) {
+        this.trainee = trainee;
+    }
+
     public long getId() {
         return id;
     }
@@ -50,5 +66,13 @@ public class Payment {
 
     public Date getDate() {
         return date;
+    }
+
+    public PaymentPlan getPaymentPlan() {
+        return paymentPlan;
+    }
+
+    public Trainee getTrainee() {
+        return trainee;
     }
 }

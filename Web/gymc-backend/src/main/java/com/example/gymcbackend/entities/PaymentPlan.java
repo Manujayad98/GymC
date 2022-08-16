@@ -23,6 +23,10 @@ public class PaymentPlan {
     @Column(name = "affected_date")
     private Date affectedDate;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "traineeId")
+    Trainee trainee;
+
     public void setId(long id) {
         this.id = id;
     }
@@ -43,6 +47,10 @@ public class PaymentPlan {
         this.affectedDate = affectedDate;
     }
 
+    public void setTrainee(Trainee trainee) {
+        this.trainee = trainee;
+    }
+
     public long getId() {
         return id;
     }
@@ -61,5 +69,9 @@ public class PaymentPlan {
 
     public Date getAffectedDate() {
         return affectedDate;
+    }
+
+    public Trainee getTrainee() {
+        return trainee;
     }
 }

@@ -24,6 +24,10 @@ public class Leaves {
     @Column(name = "substitute_ID")
     private long substituteID;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "staffId")
+    StaffMember staffMember;
+
     public void setId(long id) {
         this.id = id;
     }
@@ -44,6 +48,10 @@ public class Leaves {
         this.substituteID = substituteID;
     }
 
+    public void setStaffMember(StaffMember staffMember) {
+        this.staffMember = staffMember;
+    }
+
     public long getId() {
         return id;
     }
@@ -62,5 +70,9 @@ public class Leaves {
 
     public long getSubstituteID() {
         return substituteID;
+    }
+
+    public StaffMember getStaffMember() {
+        return staffMember;
     }
 }

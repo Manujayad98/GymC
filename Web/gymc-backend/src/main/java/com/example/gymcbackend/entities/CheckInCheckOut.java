@@ -23,6 +23,11 @@ public class CheckInCheckOut {
     @Column(name = "end_time")
     private Time endTime;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "traineeId")
+    Trainee trainee;
+
+
     public void setDate(Date date) {
         this.date = date;
     }
@@ -35,6 +40,14 @@ public class CheckInCheckOut {
         this.endTime = endTime;
     }
 
+    public void setCheckInCheckOutID(long checkInCheckOutID) {
+        CheckInCheckOutID = checkInCheckOutID;
+    }
+
+    public void setTrainee(Trainee trainee) {
+        this.trainee = trainee;
+    }
+
     public Date getDate() {
         return date;
     }
@@ -45,5 +58,13 @@ public class CheckInCheckOut {
 
     public Time getEndTime() {
         return endTime;
+    }
+
+    public long getCheckInCheckOutID() {
+        return CheckInCheckOutID;
+    }
+
+    public Trainee getTrainee() {
+        return trainee;
     }
 }

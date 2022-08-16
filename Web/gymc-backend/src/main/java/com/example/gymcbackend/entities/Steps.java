@@ -18,6 +18,10 @@ public class Steps {
     @Column(name = "frame_path")
     private String framePath;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "exerciseID")
+    Exercise exercise;
+
     public void setId(long id) {
         this.id = id;
     }
@@ -30,6 +34,10 @@ public class Steps {
         this.framePath = framePath;
     }
 
+    public void setExercise(Exercise exercise) {
+        this.exercise = exercise;
+    }
+
     public long getId() {
         return id;
     }
@@ -40,5 +48,9 @@ public class Steps {
 
     public String getFramePath() {
         return framePath;
+    }
+
+    public Exercise getExercise() {
+        return exercise;
     }
 }

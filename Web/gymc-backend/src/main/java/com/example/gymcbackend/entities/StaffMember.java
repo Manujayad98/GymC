@@ -41,14 +41,6 @@ public class StaffMember implements UserDetails {
     @JoinColumn(name = "userID")
     UserAccount userAccount;
 
-    public UserAccount getUserAccount() {
-        return userAccount;
-    }
-
-    public void setUserAccount(UserAccount userAccount) {
-        this.userAccount = userAccount;
-    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -84,6 +76,42 @@ public class StaffMember implements UserDetails {
         return false;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setGender(Character gender) {
+        this.gender = gender;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setNic(String nic) {
+        this.nic = nic;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setStaffType(Integer staffType) {
+        this.staffType = staffType;
+    }
+
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
+    }
+
     public long getId() {
         return id;
     }
@@ -116,36 +144,9 @@ public class StaffMember implements UserDetails {
         return staffType;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public UserAccount getUserAccount() {
+        return userAccount;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setGender(Character gender) {
-        this.gender = gender;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setNic(String nic) {
-        this.nic = nic;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public void setStaffType(Integer staffType) {
-        this.staffType = staffType;
-    }
 
 }
