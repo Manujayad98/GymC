@@ -113,6 +113,24 @@ const Dashboard = () => {
                       <Card.Subtitle className='card-subtitle'>Louianna</Card.Subtitle>
                       </Card.Body>
                     </Card>
+                    <Card className='rec-dashboard-pic-card'>
+                      <Card.Body>
+                      <img src={Pic1} alt="" />
+                      <Card.Subtitle className='card-subtitle'>Trump</Card.Subtitle>
+                      </Card.Body>
+                    </Card>
+                    <Card className='rec-dashboard-pic-card'>
+                      <Card.Body>
+                      <img src={Pic1} alt="" />
+                      <Card.Subtitle className='card-subtitle'>Lahiru</Card.Subtitle>
+                      </Card.Body>
+                    </Card>
+                    <Card className='rec-dashboard-pic-card'>
+                      <Card.Body>
+                      <img src={Pic1} alt="" />
+                      <Card.Subtitle className='card-subtitle'>Louianna</Card.Subtitle>
+                      </Card.Body>
+                    </Card>
                   </div>
                   </Card.Body>
                 </Card>
