@@ -58,23 +58,28 @@ export default function AddTrainer() {
                 <HeaderO title="New Trainer" />
                 <div className="content-container">
                     <div className="add-trainer-form-div">
-                        <div className="form-container">
+                        <div className="add-trainer-form-container">
                             <h4 className='form-subHeading'>Basic Info</h4>
                             <hr />
-                            <div className="form-inputs">
+                            <div className="add-trainer-form-inputs">
 
                                 <div className="form-row">
                                     <div className="form-col1">
                                         <div className='own-dashboard-card profile-cards'>
                                             <div className='own-dashboard-card-img-container'>
+                                                
                                                 <img src={Pic1} alt="" />
+                                                
                                             </div>
+                                            
                                             <div className='own-dashboard-card-content'>
-                                                <div className='staffID'>T00001</div>
+                                                
                                                 <div className='staffName'></div>
                                             </div>
                                         </div>
                                         <PictureUploader label="Add Photo" />
+                                        <div className='add-tariner-userID'>T00001</div>
+                                        
 
                                     </div>
                                     <div className="form-col2">
@@ -178,6 +183,9 @@ export default function AddTrainer() {
                                             ]}
                                             onChange={handleChange('number')} />
                                     </div>
+                                    <div className="form-col2">
+                                        
+                                    </div>
 
                                 </div>
                                 <h4 className='form-subHeading'>Qualifications</h4>
@@ -203,6 +211,7 @@ export default function AddTrainer() {
                                     <div className="form-col2">
                                     </div>
                                     <Button
+                                    
                                         onClick={handleClick}
                                         value='Save' />
                                 </div>

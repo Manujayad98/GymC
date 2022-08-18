@@ -17,6 +17,7 @@ import PictureUploader from './Components/Utilities/Form/PictureUploader/Picture
 import SampleReg from './Components/Pages/all/registrationPage/SampleReg';
 
 import Login from './Components/Pages/all/loginPage/LoginPage';
+import ResetPassword from './Components/Pages/all/resetPassword/ResetPassword';
 
 import PieChart from './Components/Utilities/Charts/PieChart';
 import BarChart from './Components/Utilities/Charts/BarChart';
@@ -90,6 +91,7 @@ function App() {
 
 
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/resetpasswd" element={<ResetPassword />}></Route>
           <Route path="/searchBar" element={<SearchBar />}></Route>
           <Route path="/alert" element={<Alert />}></Route>
           <Route path="/calendar" element={<Calendar />}></Route>
