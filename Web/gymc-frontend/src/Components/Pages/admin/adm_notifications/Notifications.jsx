@@ -1,7 +1,7 @@
 import React from 'react'
 import '../adm_sidebar/Sidebar.css'
 import SidebarO from '../adm_sidebar/Sidebar'
-import HeaderO from '../adm_header/Header'
+import HeaderO from '../adm_header/header'
 
 const Dashboard = () => {
   return (

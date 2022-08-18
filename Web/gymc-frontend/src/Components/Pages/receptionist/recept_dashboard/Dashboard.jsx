@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import '../recept_sidebar/Sidebar.css'
 import SidebarR from '../recept_sidebar/Sidebar'
 import HeaderR from '../recept_header/Header'
-import Modal from "../../../Utilities/PopUps/Dconfirmation";
+import Modal from "../../../Utilities/Popups/Dconfirmation";
 import './Dashboard.css'
 
 const Dashboard = () => {
