@@ -30,8 +30,14 @@ public class Trainee implements UserDetails {
     @Column(name = "nic", length = 25)
     private String nic;
 
+    @Column(name = "email")
+    private String email;
+
     @Column(name = "phone_number", length = 10)
     private String phoneNumber;
+
+    @Column(name = "emergency_number", length = 10)
+    private String emergencyNumber;
 
     @Column(name = "occupation")
     private String occupation;
@@ -100,6 +106,10 @@ public class Trainee implements UserDetails {
         this.nic = nic;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
@@ -110,6 +120,10 @@ public class Trainee implements UserDetails {
 
     public void setUserAccount(UserAccount userAccount) {
         this.userAccount = userAccount;
+    }
+
+    public void setEmergencyNumber(String emergencyNumber) {
+        this.emergencyNumber = emergencyNumber;
     }
 
     public long getId() {
@@ -136,6 +150,10 @@ public class Trainee implements UserDetails {
         return nic;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -148,5 +166,7 @@ public class Trainee implements UserDetails {
         return userAccount;
     }
 
-
+    public String getEmergencyNumber() {
+        return emergencyNumber;
+    }
 }

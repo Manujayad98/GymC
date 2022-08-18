@@ -28,6 +28,9 @@ public class StaffMember implements UserDetails {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "email")
+    private String email;
+
     @Column(name = "nic", length = 25)
     private String nic;
 
@@ -100,6 +103,10 @@ public class StaffMember implements UserDetails {
         this.nic = nic;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
@@ -148,5 +155,7 @@ public class StaffMember implements UserDetails {
         return userAccount;
     }
 
-
+    public String getEmail() {
+        return email;
+    }
 }

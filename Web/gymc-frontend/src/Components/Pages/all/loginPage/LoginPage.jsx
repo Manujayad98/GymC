@@ -54,7 +54,7 @@ const LoginPage = ({ loading, error, ...props }) => {
                     props.setUser(response.data);
                     userData();
                 } else {
-                    toast.warning('Something Wrong!Please Try Again')
+                    toast.warning('Something Wrong!Please Try Again');
                     // console.log("logging fail");
                     props.loginFailure("1.Something Wrong!Please Try Again");
                 }
@@ -63,7 +63,7 @@ const LoginPage = ({ loading, error, ...props }) => {
                 if (err && err.response) {
                     switch (err.response.status) {
                         case 401:
-                            toast.error('Authentication Failed.Bad Credentials')
+                            toast.error('Authentication Failed.Bad Credentials');
                             // console.log("401 status");
                             props.loginFailure("Authentication Failed.Bad Credentials");
                             break;
@@ -72,7 +72,7 @@ const LoginPage = ({ loading, error, ...props }) => {
                             props.loginFailure("2.Something Wrong!Please Try Again!");
                     }
                 } else {
-                    toast.warning('Something Wrong!Please Try Again!')
+                    toast.warning('Something Wrong!Please Try Again!');
                     props.loginFailure("3.Something Wrong!Please Try Again");
                 }
             });
