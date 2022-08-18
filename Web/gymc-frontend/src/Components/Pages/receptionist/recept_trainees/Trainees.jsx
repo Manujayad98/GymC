@@ -30,7 +30,7 @@ import T1 from '../../../../images/t1.png'
 const Trainees = () => {
   /*const snackbarRef = useRef(null);
   const [show, setShow] = useState(false);
-  const handleShow = () => setShow(true);*/ // Snackbar reference and pop state
+  const handleShow = () => setShow(true); */ // Snackbar reference and pop state
   const [trainerDetails] = useState([
     {
       TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
@@ -41,7 +41,7 @@ const Trainees = () => {
       Check : (
         <span>
           <span style={{margin:"10px"}}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
-          <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+          <span><Button variant='outline-warning' size='sm' ><img src={Checkout} alt="" height={20} width={20} /></Button></span>
         </span>
       ),
       Pay: (
