@@ -1,0 +1,20 @@
+.rec-train-card{
+    width: 200px;
+    padding: 1%;
+    margin: 15px;
+}
+.content-row{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    margin-top: 0.5%;
+}
+.rec-add-button{
+    background-color: #3DA2FF;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+

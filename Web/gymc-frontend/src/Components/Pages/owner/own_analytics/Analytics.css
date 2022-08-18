@@ -1,0 +1,71 @@
+/* .tab-panel{
+    background-color: none;
+    display: flex;
+} */
+
+
+.own-analytics-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    padding: 20px 20px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.own-analytics-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    justify-content: space-around;
+    text-align: center;
+    align-content: center;
+    border-radius: 6px;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+    
+}
+
+.profile-cards {
+    padding: 20px;
+    margin: 10px 5px;
+    width: 210px;
+    height: 120px;
+}
+
+/* .own-dashboard-table-container{
+    height: 450px;
+} */
+
+.tab-content > .active{
+    background: none!important;
+    /* display: none; */
+    box-shadow: none;
+    transition: none;
+    color: black;
+}
+.fade{
+    transition: none!important;
+}
+
+.dropdown-container {
+    width: 300px;
+}
+
+.form-label-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.form-label {
+    font-weight: 800;
+}
+.dropdown{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}

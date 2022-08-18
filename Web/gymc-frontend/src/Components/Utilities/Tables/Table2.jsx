@@ -9,6 +9,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import './Table.css';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -16,6 +17,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
         color: theme.palette.common.black,
         fontSize: '15px',
         fontWeight: 'bold',
+        columnWidth: '150px'
     },
     [`&.${tableCellClasses.body}`]: {
         fontSize: 14,
@@ -65,9 +67,9 @@ export default function CustomizedTables(props) {
     return (
         <Box sx={{ padding: '20px' }}>
             <TableContainer component={Paper} style={{
-                alignItems: 'center',
+                alignItems: 'center', width: '100%',
             }}>
-                <Table aria-label="customized table">
+                <Table sx={{ minWidth: 600 }} aria-label="customized table">
                     <EnhancedTableHead
                         rowCount={rows.length}
                         tableName={tableName}

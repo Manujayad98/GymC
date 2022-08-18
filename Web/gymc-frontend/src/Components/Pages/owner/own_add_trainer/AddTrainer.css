@@ -1,7 +1,23 @@
+.form-container{
+  margin-top: auto;
+  max-width: 1000px;
+}
 .add-trainer-form-div{
+  margin-top: 50px;
+  margin-left: 80px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background: white;
+    justify-content: left;
+    height: 100%;
+    background: #D9D9D9;
+  }
+
+  .add-trainer-form-div .form-container .form-col1 .profile-cards{
+    padding: 20px;
+    margin: 10px 5px;
+    width: 180px;
+    height: 130px;
+  } 
+  .form-subHeading{
+    margin-top: 40px;
   }

@@ -1,13 +1,56 @@
- 
- 
-  .App .openModalBtn {
-    width: 200px;
-    height: 40px;
-    border: none;
-    border-radius: 6px;
-    background-color: cornflowerblue;
+.rec-dashboard-card{
+    width: 450px;
+    height: fit-content;
+    padding: 1%;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+
+}
+
+.alt{
+    width: 700px;
+    padding: 0%;
+    
+}
+
+.rec-dashboard-pic-card{
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    margin-top: 5%;
+}
+
+.card-subtitle{
+    padding-top: 10%;
+}
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
     color: white;
-    cursor: pointer;
-  }
-  
-  
+    line-height: 1.33;
+    background-color: #ff2121;
+}
+.content-row{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    margin-top: 0.5%;
+}
+
+.table-cards {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 20px 20px;
+    margin: 10px 5px;
+    width: 100%;
+    height: inherit;
+    
+}
+

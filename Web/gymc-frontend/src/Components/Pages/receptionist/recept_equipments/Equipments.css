@@ -3,3 +3,20 @@
     gap: 30px;
     justify-content: center;
 }
+.rec-equipment-card{
+    padding: 5px;
+}
+.equipment-button{
+    border-radius: 25px;
+    background-color: white;
+    margin: auto;
+}
+.content-row{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    margin-top: 0.5%;
+}

@@ -1,0 +1,41 @@
+.content-container{
+    margin-top: -35px;
+}
+h6{
+    text-align: left;
+    font-weight: bolder;
+}
+hr{
+    height: 2px;
+    background-color: black;
+}
+.card-container{
+    width:100%;
+    height:auto;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding:20px 40px 10px 40px;
+    margin-bottom: 7px;
+    
+}
+.line1{
+    text-align: left;
+    font-size: 14px;
+    line-height: 0.2;
+    
+
+}
+.line2{
+    text-align: left;
+    font-size: 14px;
+    font-weight: bolder;
+    line-height: 0.4;
+
+}
+.line3{
+    text-align: left;
+    font-size: 10px;
+    line-height: 0;
+
+}
+
