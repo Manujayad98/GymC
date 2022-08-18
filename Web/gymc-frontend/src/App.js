@@ -58,6 +58,10 @@ import TraineesR from './Components/Pages/receptionist/recept_trainees/Trainees'
 import TrainersR from './Components/Pages/receptionist/recept_trainers/Trainers';
 import AppointmentsR from './Components/Pages/receptionist/recept_appointments/Appointments'
 
+//TRAINEE
+import TraineeLogedPage from './Components/Pages/trainee/LogedInPage'
+
+
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css"
 
@@ -122,7 +126,7 @@ function App() {
 
 
           {/* TRAINER ROUTES */}
-
+          <Route path="/TELogedPage" element={<TraineeLogedPage />}></Route>
 
           {/* TRAINEE ROUTES */}
 

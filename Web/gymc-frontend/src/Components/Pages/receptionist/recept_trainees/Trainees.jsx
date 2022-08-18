@@ -38,9 +38,9 @@ const Trainees = () => {
       TrainerName: "RMN Ruwan",
       PaymentType: "Daily",
       RegDate: "2021-10-24",
-      Check : (
+      Check: (
         <span>
-          <span style={{margin:"10px"}}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+          <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
           <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
         </span>
       ),
@@ -61,9 +61,9 @@ const Trainees = () => {
       TrainerName: "RMN Ruwan",
       PaymentType: "Daily",
       RegDate: "2021-10-24",
-      Check : (
+      Check: (
         <span>
-          <span style={{margin:"10px"}}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+          <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
           <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
         </span>
       ),
@@ -79,7 +79,7 @@ const Trainees = () => {
       ),
     }
   ]);
-  
+
   const [trainerDetailsTableHead] = useState([
     { id: "TraineeImg", label: "", numeric: false },
     { id: "TraineeID", label: "TRAINEE ID", numeric: false },
@@ -92,11 +92,11 @@ const Trainees = () => {
   ]);
   return (
     <div className='main-container'>
-      <SidebarR/>
-      <div className='body-container'> 
-          <HeaderR title="Trainees"/> 
-          <div className="content-container">
-            <div>
+      <SidebarR />
+      <div className='body-container'>
+        <HeaderR title="Trainees" />
+        <div className="content-container">
+          <div>
             <Tabs defaultActiveKey={"NowIn"} id="uncontrolled-tab-example" className='mb-3'>
               <Tab eventKey={"NowIn"} title="Now In">
                 <div className='content-row'>
@@ -130,7 +130,7 @@ const Trainees = () => {
                 </div>
               </Tab>
               <Tab eventKey={"due"} title="Due Check Out">
-              <div className='content-row'>
+                <div className='content-row'>
                   <Card className='rec-train-card'>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
@@ -152,51 +152,51 @@ const Trainees = () => {
                 </div>
               </Tab>
             </Tabs>
+          </div>
+
+          <p style={{ textAlign: 'left', fontWeight: 'bold', fontSize: '30px' }}>All</p>
+          <form action="">
+            <div className="filter-container">
+              <div className="inputFields-container">
+                <div className='searchbar-container'>
+                  <div className="form-label-container">
+                    <label class="form-label" for="form1">Trainee ID</label>
+                  </div>
+                  <div class="input-group">
+                    <button type="button" class="btn btn-dark" style={{ height: '38px', width: '50px' }}>
+                      <FontAwesomeIcon icon={faSearch} />
+                    </button>
+                    <div class="form-outline">
+                      <input type="search" id="form1" class="form-control" placeholder='Search here' />
+                    </div>
+                  </div>
+
+                </div>
+                <div className="dropdown-container">
+                  <div className="form-label-container">
+                    <label class="form-label" for="form1">Due</label>
+                  </div>
+                  <select class="form-control form-control-sm" style={{ padding: '8px' }}>
+                    <option> select 1</option>
+                    <option> select 2</option>
+                    <option> select 3</option>
+                    <option> select 4</option>
+                  </select>
+                </div>
+              </div>
+              <div className="button-container">
+                <button type="button" class="btn" style={{ backgroundColor: '#3DA2FF', width: '100px' }}>Add</button>
+              </div>
+
             </div>
-            
-              <p style={{ textAlign: 'left', fontWeight: 'bold', fontSize: '30px' }}>All</p>
-              <form action="">
-                        <div className="filter-container">
-                            <div className="inputFields-container">
-                                <div className='searchbar-container'>
-                                    <div className="form-label-container">
-                                        <label class="form-label" for="form1">Trainee ID</label>
-                                    </div>
-                                    <div class="input-group">
-                                        <button type="button" class="btn btn-dark" style={{ height: '38px', width: '50px' }}>
-                                            <FontAwesomeIcon icon={faSearch} />
-                                        </button>
-                                        <div class="form-outline">
-                                            <input type="search" id="form1" class="form-control" placeholder='Search here' />
-                                        </div>
-                                    </div>
+          </form>
 
-                                </div>
-                                <div className="dropdown-container">
-                                    <div className="form-label-container">
-                                        <label class="form-label" for="form1">Due</label>
-                                    </div>
-                                    <select class="form-control form-control-sm" style={{ padding: '8px' }}>
-                                        <option> select 1</option>
-                                        <option> select 2</option>
-                                        <option> select 3</option>
-                                        <option> select 4</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="button-container">
-                                <button type="button" class="btn" style={{ backgroundColor: '#3DA2FF', width: '100px' }}>Add</button>
-                            </div>
-
-                        </div>
-                    </form>
-            
-            <Table
+          <Table
             rows={trainerDetails}
             headCells={trainerDetailsTableHead}
             tableName={"Trainers"}
           />
-          </div>
+        </div>
       </div>
     </div>
   )

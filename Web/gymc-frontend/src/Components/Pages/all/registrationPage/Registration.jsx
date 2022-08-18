@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
 // import React, { useState,initialState } from 'react';
-import { joinRequest } from "../../../../services/SignUpService";
+import { signUp } from "../../../../services/SignUpService";
 
 import '../../../Utilities/Form/Form.css'
 // import './Registration.css';
@@ -33,10 +33,11 @@ export default function Registration() {
         // message: '',
         acceptance: true,
         // selectedOption: null,
-        gender: false,
+        gender: "M",
     });
 
     const handleChange = (key) => (value) => {
+        console.log(key, value);
         setState({
             ...requestData,
             [key]: value
@@ -83,16 +84,19 @@ export default function Registration() {
     // } = this.state;
 
     const handleSubmit = (evt) => {
-        // evt.preventDefault();
-        joinRequest(requestData)
+        console.log(requestData);
+        evt.preventDefault();
+
+        signUp(requestData)
             .then((response) => {
                 if (response.status === 200) {
                     console.log(response.data);
                     // setMessage(response.data);
                     if (response.data === "You have already an account!") {
-                        toast.error('Failed!!!');
+                        toast.warning('You have already an account!');
                     } else {
-                        toast.error("success!!!");
+                        window.location.href = "/";
+                        toast.success("successfully registered!!!");
                     }
                 }
             })
@@ -281,14 +285,15 @@ export default function Registration() {
                             onClick={handleClick}
                             value='Register' />. */}
 
-                            <div className="login-btn-container">
-                                <button type="submit" className=" login-btn">
-                                    Login
-                                </button>
-                            </div>
+                            {/* <div className="login-btn-container"> */}
+                            <button type="submit" className=" login-btn">
+                                Login
+                            </button>
+                            {/* </div> */}
                         </div>
                     </div>
                 </form>
+                <ToastContainer />
             </div>
         </>
     );
