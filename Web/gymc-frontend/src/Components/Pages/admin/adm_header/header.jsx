@@ -1,5 +1,5 @@
 import React from 'react'
-import '../adm_header/Header.css'
+import '../adm_header/header.css'
 import owner from '../../../../images/owner.png'
 
 function Header(props) {
