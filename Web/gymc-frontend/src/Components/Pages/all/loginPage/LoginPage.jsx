@@ -36,6 +36,8 @@ const LoginPage = ({ loading, error, ...props }) => {
             window.location.href = "/Rdashboard";
         } else if (userLevel === "Trainee") {
             window.location.href = "/TELogedPage";
+        } else if (userLevel === "Trainer") {
+            window.location.href = "/TRLogedPage";
         } else {
             localStorage.clear();
             window.location.href = "/";

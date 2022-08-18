@@ -3,7 +3,7 @@ import './Header.css'
 import profileImg from '../../../images/owner.png'
 import { fetchUserData } from "../../../services/AuthenticationService";
 
-function TaineeHeader(props) {
+function TainerHeader(props) {
 
     const [data, setData] = useState({});
 
@@ -33,4 +33,4 @@ function TaineeHeader(props) {
     )
 }
 
-export default TaineeHeader
+export default TainerHeader
