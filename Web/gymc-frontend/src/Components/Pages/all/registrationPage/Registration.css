@@ -1,55 +1,76 @@
-.form-div{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background: #2C131A;
-  }
-  .form-container{
-    align-items: center;
-    justify-content: center;
-    background: #ffffff;
-    padding: 0px 60px;
-    border-radius: 10px;
-    max-width: 700px;
-    background-position: center;
-    color: black;
-    /* background-size: cover; */
-  
-  }
-  .form-heading{
-    padding-top: 20px;
-    text-align: center;
-    text-decoration: solid;
-    font-weight: bold;
-  }
-  .form-inputs{
-    text-align: left;
-    font-weight: 100px;
-  }
-  .form-button{
-    background: #2C131A;
-    border-radius: 10px;
-    color: white;
-    margin-top: 10px;
-    margin-bottom: 30px;
-  }
-  .form-subHeading{
-    margin-top: 10px;
-    align-items: flex-start;
-    text-align: left;
-  }
-  .form-row{
-    display:flex;
-    margin-top: 15px;
-  }
-  .form-col1{
-    flex-direction: column;
-    flex:50%;
-    /* margin-left: 10px; */
-  }
-  .form-col2{
-    flex:50%;
-    margin-left: 10px;
-    
-  }
+.reg-form-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #2C131A;
+}
+
+.reg-form-container {
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 0px 60px;
+  border-radius: 10px;
+  height: 690px;
+  max-width: 700px;
+  background-position: center;
+  color: black;
+  /* background-size: cover; */
+
+}
+
+.reg-form-heading {
+  padding-top: 20px;
+  text-align: center;
+  text-decoration: solid;
+  font-weight: bold;
+}
+
+.reg-form-inputs {
+  text-align: left;
+  font-weight: 100px;
+}
+
+.reg-form-button {
+  background: #2C131A;
+  border-radius: 10px;
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.reg-form-subHeading {
+  margin-top: 10px;
+  align-items: flex-start;
+  text-align: left;
+  font-weight: 520;
+  font-size: 20px;
+  color: #1F0106;
+}
+
+.reg-form-row {
+  display: flex;
+  margin-top: 15px;
+}
+
+.reg-form-col1 {
+  flex-direction: column;
+  flex: 50%;
+  /* margin-left: 10px; */
+}
+
+.reg-form-col2 {
+  flex: 50%;
+  margin-left: 10px;
+
+}
+
+.reg-login-btn-container {
+  display: flex;
+  justify-content: right;
+}
+
+.reg-hr {
+  margin: 5px 0;
+}

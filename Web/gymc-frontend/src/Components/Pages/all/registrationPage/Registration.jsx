@@ -3,11 +3,11 @@ import React, { Component, useState } from 'react';
 import { signUp } from "../../../../services/SignUpService";
 
 import '../../../Utilities/Form/Form.css'
-// import './Registration.css';
+import './Registration.css';
 
 import Button from '../../../Utilities/Form/Button';
 import InputField from "../../../Utilities/Form/InputField";
-// import Dropdown from "../../../Utilities/Form/Dropdown";
+import Dropdown from "../../../Utilities/Form/Dropdown";
 import { Validators } from "../../../Utilities/Form/Validator/Validator";
 import Checkbox from "../../../Utilities/Form/Checkbox";
 // import Radiobutton from "../../../Utilities/Form/Radiobutton";
@@ -18,8 +18,8 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function Registration() {
 
     const [requestData, setState] = useState({
-        firstName: '',
-        lastName: '',
+        firstname: '',
+        lastname: '',
         nic: '',
         dob: '',
         occupation: '',
@@ -27,13 +27,10 @@ export default function Registration() {
         email: '',
         phoneNumber: '',
         emergencyNumber: '',
-
-
-        // country: '',
-        // message: '',
+        gender: '',
+        message: '',
         acceptance: true,
         // selectedOption: null,
-        gender: "M",
     });
 
     const handleChange = (key) => (value) => {
@@ -49,77 +46,63 @@ export default function Registration() {
     //     setState({selectedOption: event.target.value});
     // };
 
-    const handleClick = (event) => {
-        event.preventDefault();
-        alert('Button Clicked');
-    };
+    // const handleClick = (event) => {
+    //     event.preventDefault();
+    //     alert('Button Clicked');
+    // };
 
-    // const handleDropdown = (country) => {
-    //     setState({ country });
+    // const handleDropdown = (gender) => (value) => {
+    //     console.log(gender, value);
+    //     setState({ ...requestData, [gender]: value });
     // };
 
     const handleCheckbox = (acceptance) => {
         setState({ acceptance });
     };
 
-
-    // const {
-    //     fname,
-    //     lname,
-    //     nic,
-    //     dob,
-    //     selectedOption,
-    //     gender,
-    //     occ,
-    //     address,
-    //     email,
-    //     phone,
-    //     emergency,
-    //     text,
-    //     number,
-    //     occupation,
-    //     country,
-    //     message,
-    //     acceptance
-    // } = this.state;
-
     const handleSubmit = (evt) => {
         console.log(requestData);
         evt.preventDefault();
 
-        signUp(requestData)
-            .then((response) => {
-                if (response.status === 200) {
-                    console.log(response.data);
-                    // setMessage(response.data);
-                    if (response.data === "You have already an account!") {
-                        toast.warning('You have already an account!');
-                    } else {
-                        window.location.href = "/";
-                        toast.success("successfully registered!!!");
+        if (!requestData.firstname || !requestData.lastname || requestData.nic || requestData.dob || requestData.occupation || requestData.address || requestData.email || requestData.phoneNumber || requestData.emergencyNumber || requestData.gender) {
+            console.log('Please fill out the form correctly');
+            toast.warning('Please fill out the form correctly');
+        } else {
+
+            signUp(requestData)
+                .then((response) => {
+                    if (response.status === 200) {
+                        console.log(response.data);
+                        // setMessage(response.data);
+                        if (response.data === "You have already an account!") {
+                            toast.warning('You have already an account!');
+                        } else {
+                            window.location.href = "/";
+                            toast.success("successfully registered!!!");
+                        }
                     }
-                }
-            })
-            .catch((err) => {
-                if (err && err.response) {
-                    console.log(err);
-                    toast.error('Failed!!!');
-                }
-            });
+                })
+                .catch((err) => {
+                    if (err && err.response) {
+                        console.log(err);
+                        toast.error('Failed!!!');
+                    }
+                });
+        }
     };
 
     return (
         <>
-            <div className="form-div">
+            <div className="reg-form-div">
                 <form className="login-form" onSubmit={handleSubmit} noValidate={false}>
-                    <div className="form-container">
-                        <h2 className='form-heading'>Registration</h2>
-                        <h4 className='form-subHeading'>Basic Info</h4>
-                        <hr />
-                        <div className="form-inputs">
+                    <div className="reg-form-container">
+                        <h2 className='reg-form-heading'>Registration</h2>
+                        <h4 className='reg-form-subHeading'>Basic Info</h4>
+                        <hr className='reg-hr' />
+                        <div className="reg-form-inputs">
 
-                            <div className="form-row">
-                                <div className="form-col1">
+                            <div className="reg-form-row">
+                                <div className="reg-form-col1">
                                     <InputField
                                         value={requestData.firstName}
                                         type='text'
@@ -130,7 +113,7 @@ export default function Registration() {
                                         ]}
                                         onChange={handleChange('firstName')} />
                                 </div>
-                                <div className="form-col2">
+                                <div className="reg-form-col2">
                                     <InputField
                                         value={requestData.lastName}
                                         type='text'
@@ -142,8 +125,8 @@ export default function Registration() {
                                         onChange={handleChange('lastName')} />
                                 </div>
                             </div>
-                            <div className="form-row">
-                                <div className="form-col1">
+                            <div className="reg-form-row">
+                                <div className="reg-form-col1">
                                     <InputField
                                         value={requestData.nic}
                                         type='text'
@@ -154,7 +137,7 @@ export default function Registration() {
                                         ]}
                                         onChange={handleChange('nic')} />
                                 </div>
-                                <div className="form-col2">
+                                <div className="reg-form-col2">
                                     <InputField
                                         value={requestData.dob}
                                         type='date'
@@ -166,20 +149,42 @@ export default function Registration() {
                                         onChange={handleChange('dob')} />
                                 </div>
                             </div>
-                            <div className="form-row">
-                                <div className="form-col1">
+                            <div className="reg-form-row">
+                                <div className="reg-form-col1">
 
                                     {/* <Radiobutton
-                  value={gender}
-                  name='gender'
-                  type='radio'
-                  label="selectedOption"
-                  // validators={[
-                  //   { check: Validators.required, message: 'Select an option' }
-                  // ]}
-                  onChange={handleRadio('gender')} /> */}
+                                    value={gender}
+                                    name='gender'
+                                    type='radio'
+                                    label="selectedOption"
+                                    // validators={[
+                                    //   { check: Validators.required, message: 'Select an option' }
+                                    // ]}
+                                    onChange={handleRadio('gender')} /> */}
+
+                                    {/* <Dropdown
+                                        data={[
+                                            { value: "M", label: 'Male' },
+                                            { value: "F", label: 'Female' },
+                                        ]}
+                                        label="Gender"
+                                        // styleClass='mt-3'
+                                        value={requestData.gender}
+                                        placeholder='Select Gender'
+                                        onChange={handleDropdown}
+                                    /><br></br> */}
+
+                                    {/* <InputField
+                                        value={message}
+                                        type='textarea'
+                                        placeholder='Enter message!'
+                                        validators={[
+                                            { check: Validators.required, message: 'This field is required' }
+                                        ]}
+                                        onChange={this.handleChange('message')} />
+                                    <br></br> */}
                                 </div>
-                                <div className="form-col2">
+                                <div className="reg-form-col2">
                                     <InputField
                                         value={requestData.occupation}
                                         type='text'
@@ -193,10 +198,10 @@ export default function Registration() {
                                 </div>
                             </div>
 
-                            <h4 className='form-subHeading'>Contact Info</h4>
-                            <hr />
-                            <div className="form-row">
-                                <div className="form-col1">
+                            <h4 className='reg-form-subHeading'>Contact Info</h4>
+                            <hr className='reg-hr' />
+                            <div className="reg-form-row">
+                                <div className="reg-form-col1">
                                     <InputField
                                         value={requestData.address}
                                         type='text'
@@ -207,7 +212,7 @@ export default function Registration() {
                                         ]}
                                         onChange={handleChange('address')} />
                                 </div>
-                                <div className="form-col2">
+                                <div className="reg-form-col2">
                                     <InputField
                                         value={requestData.email}
                                         type='text'
@@ -219,8 +224,8 @@ export default function Registration() {
                                         onChange={handleChange('email')} />
                                 </div>
                             </div>
-                            <div className="form-row">
-                                <div className="form-col1">
+                            <div className="reg-form-row">
+                                <div className="reg-form-col1">
                                     <InputField
                                         value={requestData.phoneNumber}
                                         type='text'
@@ -231,7 +236,7 @@ export default function Registration() {
                                         ]}
                                         onChange={handleChange('phoneNumber')} />
                                 </div>
-                                <div className="form-col2">
+                                <div className="reg-form-col2">
                                     <InputField
                                         value={requestData.emergencyNumber}
                                         type='text'
@@ -269,8 +274,8 @@ export default function Registration() {
                             onChange={this.handleChange('message')} />
                             <br></br> */}
 
-                            <div className="form-row">
-                                <div className="form-col1">
+                            <div className="reg-form-row">
+                                <div className="reg-form-col1">
                                     <Checkbox
                                         label='I Accept the terms and conditions'
                                         selected={requestData.acceptance}
@@ -285,11 +290,11 @@ export default function Registration() {
                             onClick={handleClick}
                             value='Register' />. */}
 
-                            {/* <div className="login-btn-container"> */}
-                            <button type="submit" className=" login-btn">
-                                Login
-                            </button>
-                            {/* </div> */}
+                            <div className="reg-login-btn-container">
+                                <button type="submit" className=" login-btn">
+                                    Login
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </form>

@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 
 import java.util.Collection;
+import java.util.Date;
 
 @Table(name = "staff_member")
 @Entity
@@ -30,6 +31,9 @@ public class StaffMember implements UserDetails {
 
     @Column(name = "email")
     private String email;
+
+    @Column(name = "dob")
+    private Date dob;
 
     @Column(name = "nic", length = 25)
     private String nic;
@@ -119,6 +123,10 @@ public class StaffMember implements UserDetails {
         this.userAccount = userAccount;
     }
 
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
     public long getId() {
         return id;
     }
@@ -157,5 +165,9 @@ public class StaffMember implements UserDetails {
 
     public String getEmail() {
         return email;
+    }
+
+    public Date getDob() {
+        return dob;
     }
 }
