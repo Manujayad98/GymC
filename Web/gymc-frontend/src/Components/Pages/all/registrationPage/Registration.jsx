@@ -12,6 +12,9 @@ import { Validators } from "../../../Utilities/Form/Validator/Validator";
 import Checkbox from "../../../Utilities/Form/Checkbox";
 // import Radiobutton from "../../../Utilities/Form/Radiobutton";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function Registration() {
 
     const [requestData, setState] = useState({
