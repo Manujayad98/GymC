@@ -10,6 +10,7 @@
   align-items: center;
   justify-content: center;
   background: #ffffff;
+  /* opacity: 80%; */
   padding: 0px 60px;
   border-radius: 10px;
   height: 690px;
@@ -73,4 +74,15 @@
 
 .reg-hr {
   margin: 5px 0;
+}
+
+.reg-svg {
+  width: 700px;
+  height: 700px;
+  margin: 40px;
+}
+
+.reg-svg-img {
+  width: 700px;
+  height: 700px;
 }

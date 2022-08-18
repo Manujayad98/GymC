@@ -4,6 +4,8 @@ import { signUp } from "../../../../services/SignUpService";
 
 import '../../../Utilities/Form/Form.css'
 import './Registration.css';
+import BikeExercise from '../../../../images/Svg/bike.svg'
+import Tracker from '../../../../images/Svg/tracker.svg'
 
 import Button from '../../../Utilities/Form/Button';
 import InputField from "../../../Utilities/Form/InputField";
@@ -94,7 +96,11 @@ export default function Registration() {
     return (
         <>
             <div className="reg-form-div">
+                {/* <div className="reg-svg" >
+                    <img src={Tracker} alt="" className="reg-svg-img" />
+                </div> */}
                 <form className="login-form" onSubmit={handleSubmit} noValidate={false}>
+
                     <div className="reg-form-container">
                         <h2 className='reg-form-heading'>Registration</h2>
                         <h4 className='reg-form-subHeading'>Basic Info</h4>
