@@ -1,9 +1,20 @@
-import React,{useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import '../adm_header/header.css'
 import owner from '../../../../images/owner.png'
 import { fetchUserData } from "../../../../services/AuthenticationService";
 
 function Header(props) {
+
+  useEffect(() => {
+    checkValidate();
+  }, []);
+
+  const checkValidate = async () => {
+    const y = localStorage.getItem("USER_KEY");
+    if (!y) {
+      window.location.href = "/";
+    }
+  };
 
   const [data, setData] = useState({});
   React.useEffect(() => {

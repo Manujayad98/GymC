@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../own_sidebar/Sidebar.css'
 import SidebarO from '../own_sidebar/Sidebar'
 import HeaderO from '../own_header/Header'
@@ -10,6 +10,17 @@ import Edit from '../../../../images/Icons/pen-solid.svg'
 import './Dashboard.css'
 
 const Dashboard = () => {
+
+  useEffect(() => {
+    checkValidate();
+  }, []);
+
+  const checkValidate = async () => {
+    const y = localStorage.getItem("USER_KEY");
+    if (!y) {
+      window.location.href = "/";
+    }
+  };
 
   const [ChartData] = useState([
     ["Month", "Income"],
@@ -76,7 +87,7 @@ const Dashboard = () => {
 
           <div className='own-dashboard-card-container'>
 
-            <div className='own-dashboard-card profile-cards'>
+            <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
                 <img src={Pic1} alt="" />
               </div>
@@ -86,7 +97,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className='own-dashboard-card profile-cards'>
+            <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
                 <img src={Pic1} alt="" />
               </div>
@@ -96,7 +107,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className='own-dashboard-card profile-cards'>
+            <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
                 <img src={Pic1} alt="" />
               </div>
@@ -106,7 +117,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className='own-dashboard-card profile-cards'>
+            <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
                 <img src={Pic1} alt="" />
               </div>
@@ -116,7 +127,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className='own-dashboard-card profile-cards'>
+            <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
                 <img src={Pic1} alt="" />
               </div>
@@ -131,7 +142,7 @@ const Dashboard = () => {
           <div className='own-dashboard-titles'>Today's Available Trainees</div>
 
           <div className='own-dashboard-card-container'>
-            <div className='own-dashboard-card profile-cards'>
+            <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
                 <img src={Pic1} alt="" />
               </div>
@@ -141,7 +152,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className='own-dashboard-card profile-cards'>
+            <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
                 <img src={Pic1} alt="" />
               </div>
@@ -151,7 +162,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className='own-dashboard-card profile-cards'>
+            <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
                 <img src={Pic1} alt="" />
               </div>
@@ -161,7 +172,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className='own-dashboard-card profile-cards'>
+            <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
                 <img src={Pic1} alt="" />
               </div>
@@ -171,7 +182,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className='own-dashboard-card profile-cards'>
+            <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
                 <img src={Pic1} alt="" />
               </div>
@@ -187,14 +198,14 @@ const Dashboard = () => {
 
             <div className='own-dashboard-chart-container'>
               <div className='own-dashboard-container-head'>Annual Income</div>
-              <div className='own-dashboard-card chart-cards'>
+              <div className='own-dashboard-card own-dashboard-chart-cards'>
                 <BarChart data={ChartData} />
               </div>
             </div>
 
             <div className='own-dashboard-table-container'>
               <div className='own-dashboard-container-head'>Today's Workouts</div>
-              <div className='own-dashboard-card table-cards'>
+              <div className='own-dashboard-card own-dashboard-table-cards'>
                 <Table
                   rows={workoutDetails}
                   headCells={workoutDetailsTableHead}

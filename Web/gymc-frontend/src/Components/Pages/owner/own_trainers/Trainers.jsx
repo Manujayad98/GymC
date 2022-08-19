@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import '../own_sidebar/Sidebar.css'
 import SidebarO from '../own_sidebar/Sidebar'
 import HeaderO from '../own_header/Header'
@@ -13,8 +13,20 @@ import './Trainers.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 
 export default function Trainers() {
+
+    useEffect(() => {
+        checkValidate();
+    }, []);
+
+    const checkValidate = async () => {
+        const y = localStorage.getItem("USER_KEY");
+        if (!y) {
+            window.location.href = "/";
+        }
+    };
 
     const [trainerDetails] = useState([
         {
@@ -156,6 +168,7 @@ export default function Trainers() {
         { id: "Actions", label: "ACTIONS", numeric: false },
     ]);
 
+
     return (
 
         <div className='main-container'>
@@ -193,7 +206,9 @@ export default function Trainers() {
                                 </div>
                             </div>
                             <div className="button-container">
-                                <button type="button" class="btn" style={{ backgroundColor: '#3DA2FF', width: '100px' }}>Add</button>
+                                <Link to='/OaddTrainer'>
+                                    <button type="button" class="btn" style={{ backgroundColor: '#3DA2FF', width: '100px' }}>Add</button>
+                                </Link>
                             </div>
 
                         </div>

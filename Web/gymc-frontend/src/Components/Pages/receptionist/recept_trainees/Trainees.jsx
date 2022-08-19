@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Button from 'react-bootstrap/Button';
 import Deletemodal from '../../../Utilities/Popups/popup';
 import '../recept_sidebar/Sidebar.css'
@@ -28,6 +28,18 @@ import T1 from '../../../../images/t1.png'
 };*/
 
 const Trainees = () => {
+
+  useEffect(() => {
+    checkValidate();
+  }, []);
+
+  const checkValidate = async () => {
+    const y = localStorage.getItem("USER_KEY");
+    if (!y) {
+      window.location.href = "/";
+    }
+  };
+
   /*const snackbarRef = useRef(null);
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);*/ // Snackbar reference and pop state
