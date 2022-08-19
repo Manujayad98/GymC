@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import '../own_sidebar/Sidebar.css'
-import '../own_add_trainer/AddTrainer.css'
-import SidebarO from '../own_sidebar/Sidebar'
-import HeaderO from '../own_header/Header'
+import '../recept_sidebar/Sidebar.css'
+import './AddTrainer.css'
+import SidebarO from '../recept_sidebar/Sidebar'
+import HeaderO from '../recept_header/Header'
 
 import Pic1 from '../../../../images/owner.png'
 
@@ -65,14 +65,14 @@ export default function AddTrainer() {
 
                                 <div className="form-row">
                                     <div className="form-col1">
-                                        <div className='own-dashboard-card profile-cards'>
-                                            <div className='own-dashboard-card-img-container'>
+                                        <div className='recept-dashboard-card profile-cards'>
+                                            <div className='recept-dashboard-card-img-container'>
                                                 
                                                 <img src={Pic1} alt="" />
                                                 
                                             </div>
                                             
-                                            <div className='own-dashboard-card-content'>
+                                            <div className='recept-dashboard-card-content'>
                                                 
                                                 <div className='staffName'></div>
                                             </div>
@@ -214,7 +214,7 @@ export default function AddTrainer() {
                                     <div className="form-col1"></div>
                                     <div className="form-col2">
                                     </div>
-                                    <button type="submit" className=" register-button">
+                                    <button type="submit" className="add-trainer-form-button">
                                     Save
                                 </button>
                                 </div>
