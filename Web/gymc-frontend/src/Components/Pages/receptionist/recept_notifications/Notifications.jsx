@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import '../recept_sidebar/Sidebar.css'
 import SidebarR from '../recept_sidebar/Sidebar'
 import HeaderR from '../recept_header/Header'
@@ -9,134 +9,145 @@ import './Recept_Notifications.css'
 
 export default function Trainers() {
 
-  const [trainerDetails] = useState([
-      {
-          
-          Time: "10.00 a.m.",
-          Notification: "Trainee Jake Hall ID just checked out",
-          Actions: (
-              <span>
-              
-                      {/* <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span> */}
-                      
-                      <span style={{ paddingRight: "20px", marginLeft:"80%" }}><img src={Trash} alt="" height={20} width={20} /></span>
-                  
-              </span >
-          ),
-      },
+    useEffect(() => {
+        checkValidate();
+    }, []);
 
-      {
-          
-          Time: "09.45 a.m.",
-          Notification: "Trainee Nehara Perera ID T125486 just checked in",
-          Actions: (
-              <span>
-              
-                      {/* <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span> */}
-                      
-                      <span style={{ paddingRight: "20px", marginLeft:"80%" }}><img src={Trash} alt="" height={20} width={20} /></span>
-                  
-              </span >
-          ),
-      },
+    const checkValidate = async () => {
+        const y = localStorage.getItem("USER_KEY");
+        if (!y) {
+            window.location.href = "/";
+        }
+    };
 
-      {
-          
-          Time: "08.00 a.m.",
-          Notification: "Trainer Calum Scott is on leave today",
-          Actions: (
-              <span>
-              
-                      {/* <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span> */}
-                      
-                      <span style={{ paddingRight: "20px", marginLeft:"80%" }}><img src={Trash} alt="" height={20} width={20} /></span>
-                  
-              </span >
-          ),
-      },
+    const [trainerDetails] = useState([
+        {
 
-      {
-          
-          Time: "10.00 a.m.",
-          Notification: "Trainee Jake Hall ID just checked out",
-          Actions: (
-              <span>
-              
-                      {/* <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span> */}
-                      
-                      <span style={{ paddingRight: "20px", marginLeft:"80%" }}><img src={Trash} alt="" height={20} width={20} /></span>
-                  
-              </span >
-          ),
-      },
+            Time: "10.00 a.m.",
+            Notification: "Trainee Jake Hall ID just checked out",
+            Actions: (
+                <span>
 
-      {
-          
-          Time: "09.45 a.m.",
-          Notification: "Trainee Nehara Perera ID T125486 just checked in",
-          Actions: (
-              <span>
-              
-                      {/* <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span> */}
-                      
-                      <span style={{ paddingRight: "20px", marginLeft:"80%" }}><img src={Trash} alt="" height={20} width={20} /></span>
-                  
-              </span >
-          ),
-      },
+                    {/* <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span> */}
 
-      {
-          
-          Time: "08.00 a.m.",
-          Notification: "Trainer Calum Scott is on leave today",
-          Actions: (
-              <span>
-              
-                      {/* <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span> */}
-                      
-                      <span style={{ paddingRight: "20px", marginLeft:"80%" }}><img src={Trash} alt="" height={20} width={20} /></span>
-                  
-              </span >
-          ),
-      },
+                    <span style={{ paddingRight: "20px", marginLeft: "80%" }}><img src={Trash} alt="" height={20} width={20} /></span>
 
-      {
-          
-          Time: "10.00 a.m.",
-          Notification: "Trainee Jake Hall ID just checked out",
-          Actions: (
-              <span>
-              
-                      {/* <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span> */}
-                      
-                      <span style={{ paddingRight: "20px", marginLeft:"80%" }}><img src={Trash} alt="" height={20} width={20} /></span>
-                  
-              </span >
-          ),
-      }, 
+                </span >
+            ),
+        },
 
-  ]);
+        {
 
-  const [trainerDetailsTableHead] = useState([
-     
-    
-  ]);
+            Time: "09.45 a.m.",
+            Notification: "Trainee Nehara Perera ID T125486 just checked in",
+            Actions: (
+                <span>
 
-  return (
+                    {/* <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span> */}
 
-      <div className='main-container'>
-          <SidebarR />
-          <div className='body-container'>
-              <HeaderR title="Notifications" />
-              <div className="contents-container">
-                  
-                  <Table
-                      rows={trainerDetails}
-                      headCells={trainerDetailsTableHead}
-                      tableName={"Notifications"}
-                  />
-              </div>
-          </div >
-      </div >
-  )
+                    <span style={{ paddingRight: "20px", marginLeft: "80%" }}><img src={Trash} alt="" height={20} width={20} /></span>
+
+                </span >
+            ),
+        },
+
+        {
+
+            Time: "08.00 a.m.",
+            Notification: "Trainer Calum Scott is on leave today",
+            Actions: (
+                <span>
+
+                    {/* <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span> */}
+
+                    <span style={{ paddingRight: "20px", marginLeft: "80%" }}><img src={Trash} alt="" height={20} width={20} /></span>
+
+                </span >
+            ),
+        },
+
+        {
+
+            Time: "10.00 a.m.",
+            Notification: "Trainee Jake Hall ID just checked out",
+            Actions: (
+                <span>
+
+                    {/* <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span> */}
+
+                    <span style={{ paddingRight: "20px", marginLeft: "80%" }}><img src={Trash} alt="" height={20} width={20} /></span>
+
+                </span >
+            ),
+        },
+
+        {
+
+            Time: "09.45 a.m.",
+            Notification: "Trainee Nehara Perera ID T125486 just checked in",
+            Actions: (
+                <span>
+
+                    {/* <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span> */}
+
+                    <span style={{ paddingRight: "20px", marginLeft: "80%" }}><img src={Trash} alt="" height={20} width={20} /></span>
+
+                </span >
+            ),
+        },
+
+        {
+
+            Time: "08.00 a.m.",
+            Notification: "Trainer Calum Scott is on leave today",
+            Actions: (
+                <span>
+
+                    {/* <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span> */}
+
+                    <span style={{ paddingRight: "20px", marginLeft: "80%" }}><img src={Trash} alt="" height={20} width={20} /></span>
+
+                </span >
+            ),
+        },
+
+        {
+
+            Time: "10.00 a.m.",
+            Notification: "Trainee Jake Hall ID just checked out",
+            Actions: (
+                <span>
+
+                    {/* <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span> */}
+
+                    <span style={{ paddingRight: "20px", marginLeft: "80%" }}><img src={Trash} alt="" height={20} width={20} /></span>
+
+                </span >
+            ),
+        },
+
+    ]);
+
+    const [trainerDetailsTableHead] = useState([
+
+
+    ]);
+
+    return (
+
+        <div className='main-container'>
+            <SidebarR />
+            <div className='body-container'>
+                <HeaderR title="Notifications" />
+                <div className="contents-container">
+
+                    <Table
+                        rows={trainerDetails}
+                        headCells={trainerDetailsTableHead}
+                        tableName={"Notifications"}
+                    />
+                </div>
+            </div >
+        </div >
+    )
 }

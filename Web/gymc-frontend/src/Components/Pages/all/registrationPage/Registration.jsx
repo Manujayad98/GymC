@@ -20,8 +20,8 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function Registration() {
 
     const [requestData, setState] = useState({
-        firstname: '',
-        lastname: '',
+        firstName: '',
+        lastName: '',
         nic: '',
         dob: '',
         occupation: '',
@@ -43,10 +43,14 @@ export default function Registration() {
         });
     };
 
-    // handleRadio = (event) => {
-    // //   this.setState({ selectedOption});
-    //     setState({selectedOption: event.target.value});
-    // };
+    const handleRadio = (event) => {
+        //   this.setState({ selectedOption});
+        setState({
+            ...requestData,
+            gender: event.target.value
+        });
+        console.log(requestData.gender)
+    };
 
     // const handleClick = (event) => {
     //     event.preventDefault();
@@ -59,14 +63,18 @@ export default function Registration() {
     // };
 
     const handleCheckbox = (acceptance) => {
-        setState({ acceptance });
+        setState({
+            ...requestData,
+            acceptance
+        });
     };
+
 
     const handleSubmit = (evt) => {
         console.log(requestData);
         evt.preventDefault();
 
-        if (!requestData.firstname || !requestData.lastname || requestData.nic || requestData.dob || requestData.occupation || requestData.address || requestData.email || requestData.phoneNumber || requestData.emergencyNumber || requestData.gender) {
+        if (!requestData.firstName || !requestData.lastName || !requestData.nic || !requestData.dob || !requestData.occupation || !requestData.address || !requestData.email || !requestData.phoneNumber || !requestData.emergencyNumber || !requestData.gender) {
             console.log('Please fill out the form correctly');
             toast.warning('Please fill out the form correctly');
         } else {
@@ -114,10 +122,11 @@ export default function Registration() {
                                         type='text'
                                         label="First Name"
                                         placeholder='Type'
-                                        validators={[
-                                            { check: Validators.required, message: 'This field is required' }
-                                        ]}
+                                        // validators={[
+                                        //     { check: Validators.required, message: 'This field is required' }
+                                        // ]}
                                         onChange={handleChange('firstName')} />
+                                    {!requestData.firstName && <span className='text-danger'>This Field is required</span>}
                                 </div>
                                 <div className="reg-form-col2">
                                     <InputField
@@ -125,10 +134,11 @@ export default function Registration() {
                                         type='text'
                                         label="Last Name"
                                         placeholder='Type'
-                                        validators={[
-                                            { check: Validators.required, message: 'This field is required' }
-                                        ]}
+                                        // validators={[
+                                        //     { check: Validators.required, message: 'This field is required' }
+                                        // ]}
                                         onChange={handleChange('lastName')} />
+                                    {!requestData.lastName && <span className='text-danger'>This Field is required</span>}
                                 </div>
                             </div>
                             <div className="reg-form-row">
@@ -142,6 +152,7 @@ export default function Registration() {
                                             { check: Validators.nic, message: 'NIC is not valid' }
                                         ]}
                                         onChange={handleChange('nic')} />
+                                    {!requestData.nic && <span className='text-danger'>This Field is required</span>}
                                 </div>
                                 <div className="reg-form-col2">
                                     <InputField
@@ -157,6 +168,12 @@ export default function Registration() {
                             </div>
                             <div className="reg-form-row">
                                 <div className="reg-form-col1">
+                                    <label> Gender</label>
+                                    <div className="radio-div" onChange={handleRadio}>
+                                        <input type="radio" className='form-radio' value="M" name="gender" /> Male
+                                        <input type="radio" className='form-radio' value="F" name="gender" style={{ marginLeft: '10px' }} /> Female
+                                    </div>
+                                    {!requestData.gender && <span className='text-danger'>This Field is required</span>}
 
                                     {/* <Radiobutton
                                     value={gender}
@@ -200,6 +217,7 @@ export default function Registration() {
                                             { check: Validators.required, message: 'This field is required' }
                                         ]}
                                         onChange={handleChange('occupation')} />
+                                    {!requestData.occupation && <span className='text-danger'>This Field is required</span>}
                                     <br></br>
                                 </div>
                             </div>
@@ -217,6 +235,7 @@ export default function Registration() {
                                             { check: Validators.required, message: 'This field is required' }
                                         ]}
                                         onChange={handleChange('address')} />
+                                    {!requestData.address && <span className='text-danger'>This Field is required</span>}
                                 </div>
                                 <div className="reg-form-col2">
                                     <InputField
@@ -228,6 +247,7 @@ export default function Registration() {
                                             { check: Validators.email, message: 'Email is not valid' }
                                         ]}
                                         onChange={handleChange('email')} />
+                                    {!requestData.email && <span className='text-danger'>This Field is required</span>}
                                 </div>
                             </div>
                             <div className="reg-form-row">
@@ -241,6 +261,7 @@ export default function Registration() {
                                             { check: Validators.number, message: 'Number is not valid' }
                                         ]}
                                         onChange={handleChange('phoneNumber')} />
+                                    {!requestData.phoneNumber && <span className='text-danger'>This Field is required</span>}
                                 </div>
                                 <div className="reg-form-col2">
                                     <InputField
@@ -252,6 +273,7 @@ export default function Registration() {
                                             { check: Validators.number, message: 'Number is not valid' }
                                         ]}
                                         onChange={handleChange('emergencyNumber')} />
+                                    {!requestData.emergencyNumber && <span className='text-danger'>This Field is required</span>}
                                 </div>
                             </div>
 
@@ -297,7 +319,7 @@ export default function Registration() {
                             value='Register' />. */}
 
                             <div className="reg-login-btn-container">
-                                <button type="submit" className=" login-btn">
+                                <button type="submit" className="register-button">
                                     Login
                                 </button>
                             </div>

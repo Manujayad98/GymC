@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../own_sidebar/Sidebar.css'
 import SidebarO from '../own_sidebar/Sidebar'
 import HeaderO from '../own_header/Header'
@@ -16,9 +16,20 @@ import View from '../../../../images/Icons/eye-solid.svg'
 
 const Dashboard = () => {
 
+  useEffect(() => {
+    checkValidate();
+  }, []);
+
+  const checkValidate = async () => {
+    const y = localStorage.getItem("USER_KEY");
+    if (!y) {
+      window.location.href = "/";
+    }
+  };
+
   const [requestData, setState] = useState({
-    title:'',
-    note:''
+    title: '',
+    note: ''
   });
   const [announcementDetailsTableHead] = useState([
     { id: "Date_Time", label: "Date & Time", numeric: false },
@@ -33,11 +44,11 @@ const Dashboard = () => {
       Note: "Fitness center is closed on 20 th August 2022",
       Actions: (
         <span >
-            <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-            <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
 
         </span >
-    ),
+      ),
     },
     {
       Date_Time: "2022/08/15 09.30 AM",
@@ -45,11 +56,11 @@ const Dashboard = () => {
       Note: "Fitness center is closed on 20 th August 2022",
       Actions: (
         <span >
-            <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-            <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
 
         </span >
-    ),
+      ),
     },
     {
       Date_Time: "2022/08/15 09.30 AM",
@@ -57,35 +68,35 @@ const Dashboard = () => {
       Note: "Fitness center is closed on 20 th August 2022",
       Actions: (
         <span >
-            <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-            <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
 
         </span >
-    ),
+      ),
     },
     {
       Date_Time: "2022/08/15 09.30 AM",
       Topic: "Center Closure",
-      Note: "Fitness center is closed on 20 th August 2022",Actions: (
+      Note: "Fitness center is closed on 20 th August 2022", Actions: (
         <span >
-            <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-            <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
 
         </span >
-    ),
+      ),
     },
     {
       Date_Time: "2022/08/15 09.30 AM",
       Topic: "Center Closure",
-      Note: "Fitness center is closed on 20 th August 2022",Actions: (
+      Note: "Fitness center is closed on 20 th August 2022", Actions: (
         <span >
-            <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-            <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
 
         </span >
-    ),
+      ),
     },
-    
+
   ]);
 
   const handleChange = (key) => (value) => {
@@ -112,7 +123,7 @@ const Dashboard = () => {
 
                 <div className="form-inputs">
 
-                  
+
                   <div className="form-row">
                     <div className="form-col1">
                       <InputField
