@@ -14,7 +14,7 @@ export default class PictureUploader extends React.Component {
 
   handlePictureSelected(event) {
     var picture = event.target.files[0];
-    var src     = URL.createObjectURL(picture);
+    var src = URL.createObjectURL(picture);
 
     this.setState({
       picture: picture,
@@ -37,17 +37,17 @@ export default class PictureUploader extends React.Component {
   setEditorRef = (editor) => (this.editor = editor)
 
   renderPreview() {
-    if(this.state.src) {
+    if (this.state.src) {
       return (
         // <img src={this.state.src}/>
         <AvatarEditor
-        ref={this.setEditorRef}
-        image={this.state.src}
-        width={250}
-        height={250}
-        border={50}
-        scale={1.2}
-      />
+          ref={this.setEditorRef}
+          image={this.state.src}
+          width={75}
+          height={75}
+          border={50}
+          scale={1.2}
+        />
       );
     } else {
       // return (
@@ -70,7 +70,7 @@ export default class PictureUploader extends React.Component {
       cache: false,
       contentType: false,
       processData: false,
-      success: function(response) {
+      success: function (response) {
         // Code to handle a succesful upload
       }
     });
@@ -79,17 +79,19 @@ export default class PictureUploader extends React.Component {
   render() {
     return (
       <div>
-        <input
-          type="file"
-          onChange={this.handlePictureSelected.bind(this)}
-        />
+        
         <div>
-        {this.renderPreview()}
+          {this.renderPreview()}
         </div>
         {/* <button
           onClick={this.upload.bind(this)}>
           Upload
         </button> */}
+        <input
+        className='form-group'
+          type="file"
+          onChange={this.handlePictureSelected.bind(this)}
+        />
       </div>
     );
   }

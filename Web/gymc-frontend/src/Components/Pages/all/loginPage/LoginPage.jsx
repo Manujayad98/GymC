@@ -34,6 +34,10 @@ const LoginPage = ({ loading, error, ...props }) => {
             window.location.href = "/Adashboard";
         } else if (userLevel === "Receptionist") {
             window.location.href = "/Rdashboard";
+        } else if (userLevel === "Trainee") {
+            window.location.href = "/TELogedPage";
+        } else if (userLevel === "Trainer") {
+            window.location.href = "/TRLogedPage";
         } else {
             localStorage.clear();
             window.location.href = "/";
@@ -43,40 +47,51 @@ const LoginPage = ({ loading, error, ...props }) => {
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        props.authenticate();    //do not reload the page
-        // console.log(props);
+        if (!values.userName || !values.password) {
+            if (!values.userName) {
+                console.log('not userName');
+            }
+            if (!values.password) {
+                console.log('not password');
+            }
+            toast.warning('Please fill out the form correctly');
+        } else {
 
-        userLogin(values)
-            .then((response) => {
-                console.log("response->", response);
-                if (response.status === 200) {
-                    // console.log("logging success");
-                    props.setUser(response.data);
-                    userData();
-                } else {
-                    toast.warning('Something Wrong!Please Try Again');
-                    // console.log("logging fail");
-                    props.loginFailure("1.Something Wrong!Please Try Again");
-                }
-            })
-            .catch((err) => {
-                if (err && err.response) {
-                    switch (err.response.status) {
-                        case 401:
-                            toast.error('Authentication Failed.Bad Credentials');
-                            // console.log("401 status");
-                            props.loginFailure("Authentication Failed.Bad Credentials");
-                            break;
-                        default:
-                            toast.warning('Something Wrong!Please Try Again!')
-                            props.loginFailure("2.Something Wrong!Please Try Again!");
+            props.authenticate();    //do not reload the page
+            // console.log(props);
+
+            userLogin(values)
+                .then((response) => {
+                    console.log("response->", response);
+                    if (response.status === 200) {
+                        // console.log("logging success");
+                        props.setUser(response.data);
+                        userData();
+                    } else {
+                        toast.warning('Something Wrong!Please Try Again');
+                        // console.log("logging fail");
+                        props.loginFailure("1.Something Wrong!Please Try Again");
                     }
-                } else {
-                    toast.warning('Something Wrong!Please Try Again!');
-                    props.loginFailure("3.Something Wrong!Please Try Again");
-                }
-            });
-        //console.log("Loading again",loading);
+                })
+                .catch((err) => {
+                    if (err && err.response) {
+                        switch (err.response.status) {
+                            case 401:
+                                toast.error('Authentication Failed.Bad Credentials');
+                                // console.log("401 status");
+                                props.loginFailure("Authentication Failed.Bad Credentials");
+                                break;
+                            default:
+                                toast.warning('Something Wrong!Please Try Again!')
+                                props.loginFailure("2.Something Wrong!Please Try Again!");
+                        }
+                    } else {
+                        toast.warning('Something Wrong!Please Try Again!');
+                        props.loginFailure("3.Something Wrong!Please Try Again");
+                    }
+                });
+            //console.log("Loading again",loading);
+        }
     };
 
     const handleCheckbox = (rememberme) => {
@@ -137,6 +152,7 @@ const LoginPage = ({ loading, error, ...props }) => {
                                                 { check: Validators.required, message: 'This field is required' }
                                             ]}
                                             onChange={handleChange('userName')} />
+                                        <span className="error-login-username" style={{ color: 'red', display: 'none' }}>This field is required</span>
 
                                     </div>
                                     <div className="form-group mt-3">

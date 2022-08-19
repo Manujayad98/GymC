@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Dropdown = ({value, data, placeholder, styleClass, onChange}) => {
+const Dropdown = ({ value, data, placeholder, styleClass, onChange }) => {
 
     const handleChange = (event) => {
-        const {value} = event.target;
+        const { value } = event.target;
         onChange(value);
     };
 

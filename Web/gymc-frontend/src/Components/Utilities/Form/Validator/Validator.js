@@ -3,7 +3,8 @@ const regex = {
         '^(([^<>()\\[\\]\\\\.,;:\\s@]+(\\.[^<>()\\[\\]\\\\.,;:\\s@]+)*)|(.+))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$',
     ),
     number: new RegExp('^[0-9]+$'),
-    nic: new RegExp('^([0-9]{9}[x|X|v|V]|[0-9]{12})$')
+    nic: new RegExp('^([0-9]{9}[x|X|v|V]|[0-9]{12})$'),
+    password: new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})')
 };
 
 export class Validators {
@@ -41,6 +42,19 @@ export class Validators {
 
         return false;
     }
+    static password(value, message) {
+        const length = value ? value.toString().length : 0;
+
+        if (length > 0) {
+            const result = regex.password.test(value);
+            if (!result) {
+                return { error: true, message };
+            }
+        }
+
+        return false;
+    }
+    
 }
 
 export const validateInput = (validators, value) => {
