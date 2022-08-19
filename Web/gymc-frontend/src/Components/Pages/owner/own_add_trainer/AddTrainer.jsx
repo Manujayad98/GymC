@@ -59,27 +59,21 @@ export default function AddTrainer() {
                 <div className="content-container">
                     <div className="add-trainer-form-div">
                         <div className="add-trainer-form-container">
-                            <h4 className='form-subHeading'>Basic Info</h4>
-                            <hr />
-                            <div className="add-trainer-form-inputs">
 
+                            <div className="add-trainer-form-inputs">
+                                <h4 className='add-trainer-form-subHeading'>Basic Info</h4>
+                                <hr className="add-trainer-hr" />
                                 <div className="form-row">
                                     <div className="form-col1">
-                                        <div className='own-dashboard-card profile-cards'>
+                                        <div className='add-trainer-card add-trainer-profile-cards'>
                                             <div className='own-dashboard-card-img-container'>
-                                                
                                                 <img src={Pic1} alt="" />
-                                                
-                                            </div>
-                                            
-                                            <div className='own-dashboard-card-content'>
-                                                
-                                                <div className='staffName'></div>
                                             </div>
                                         </div>
+                                        {/* <div className='add-tariner-userID'>T00001</div> */}
                                         <PictureUploader label="Add Photo" />
-                                        <div className='add-tariner-userID'>T00001</div>
-                                        
+
+
 
                                     </div>
                                     <div className="form-col2">
@@ -145,8 +139,8 @@ export default function AddTrainer() {
                                     </div>
                                 </div>
 
-                                <h4 className='form-subHeading'>Contact Info</h4>
-                                <hr />
+                                <h4 className='add-trainer-form-subHeading'>Contact Info</h4>
+                                <hr className="add-trainer-hr" />
                                 <div className="form-row">
                                     <div className="form-col1">
                                         <InputField
@@ -184,12 +178,12 @@ export default function AddTrainer() {
                                             onChange={handleChange('number')} />
                                     </div>
                                     <div className="form-col2">
-                                        
+
                                     </div>
 
                                 </div>
-                                <h4 className='form-subHeading'>Qualifications</h4>
-                                <hr />
+                                <h4 className='add-trainer-form-subHeading'>Qualifications</h4>
+                                <hr className="add-trainer-hr" />
                                 <div className="form-row">
                                     <div className="form-col1">
                                         <InputField
@@ -211,7 +205,7 @@ export default function AddTrainer() {
                                     <div className="form-col2">
                                     </div>
                                     <Button
-                                    
+
                                         onClick={handleClick}
                                         value='Save' />
                                 </div>
