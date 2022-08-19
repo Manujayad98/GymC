@@ -5,6 +5,8 @@ import InputField from "../../../Utilities/Form/InputField";
 import Button from '../../../Utilities/Form/Button';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+import owner from '../../../../images/owner.png'
+import PictureUploader from "../../../Utilities/Form/PictureUploader/PictureUploader";
 
 export default function ProfileView() {
 
@@ -34,14 +36,23 @@ export default function ProfileView() {
 
                     <Tab eventKey="profileDetails" title="Account" >
                         <div className="profile-form-div">
+                            <div className='profile-img-container'>
+                                <div className="profile-form-container">
+                                    <img src={owner} alt="" />
+                                </div>
+                                <PictureUploader label="Add Photo" />
+                            </div>
+
                             <div className="profile-form-container">
                                 <div className="profile-form-inputs">
                                     <div className="form-row">
-                                        <div className="form-col1">
+                                        <div className="form-col1 profile-col-style">
+                                            {/* <div className='profile-form-lable'> */}
+                                            <label>User ID</label>
+                                            {/* </div> */}
                                             <InputField
                                                 value={requestData.userID}
                                                 type='text'
-                                                label="Usei ID"
                                                 placeholder='OW0001'
                                             // validators={[
                                             //     { check: Validators.required, message: 'This field is required' }
@@ -49,7 +60,7 @@ export default function ProfileView() {
                                             // onChange={handleChange('fname')} 
                                             />
                                         </div>
-                                        <div className="form-col1">
+                                        <div className="form-col1 profile-col-style">
                                             <InputField
                                                 value={requestData.username}
                                                 type='text'
@@ -64,7 +75,7 @@ export default function ProfileView() {
                                     </div>
 
                                     <div className="form-row">
-                                        <div className="form-col1">
+                                        <div className="form-col1 profile-col-style">
                                             <InputField
                                                 value={requestData.firstname}
                                                 type='text'
@@ -76,7 +87,7 @@ export default function ProfileView() {
                                             // onChange={handleChange('fname')} 
                                             />
                                         </div>
-                                        <div className="form-col1">
+                                        <div className="form-col1 profile-col-style">
                                             <InputField
                                                 value={requestData.lastname}
                                                 type='text'
@@ -91,7 +102,7 @@ export default function ProfileView() {
                                     </div>
 
                                     <div className="form-row">
-                                        <div className="form-col1">
+                                        <div className="form-col1 profile-col-style">
                                             <InputField
                                                 value={requestData.dob}
                                                 type='date'
@@ -103,7 +114,7 @@ export default function ProfileView() {
                                             // onChange={handleChange('fname')} 
                                             />
                                         </div>
-                                        <div className="form-col1">
+                                        <div className="form-col1 profile-col-style">
                                             <InputField
                                                 value={requestData.address}
                                                 type='text'
@@ -118,7 +129,7 @@ export default function ProfileView() {
                                     </div>
 
                                     <div className="form-row">
-                                        <div className="form-col1">
+                                        <div className="form-col1 profile-col-style">
                                             <InputField
                                                 value={requestData.phone}
                                                 type='text'
@@ -130,7 +141,7 @@ export default function ProfileView() {
                                             // onChange={handleChange('fname')} 
                                             />
                                         </div>
-                                        <div className="form-col1">
+                                        <div className="form-col1 profile-col-style">
                                             <InputField
                                                 value={requestData.email}
                                                 type='text'
@@ -146,8 +157,8 @@ export default function ProfileView() {
                                 </div>
                                 <div className="form-row">
                                     <div className="form-col1"></div>
-                                    <div className="form-col2">
-                                    </div>
+                                    {/* <div className="form-col2">
+                                    </div> */}
                                     <Button
 
                                         // onClick={handleClick}
@@ -159,7 +170,7 @@ export default function ProfileView() {
                     </Tab>
                     <Tab eventKey="changePassword" title="Change password" >
                         <div className="profile-form-div">
-                            <div className="profile-form-container">
+                            <div className="profile-changepw-form-container">
                                 <div className="profile-form-inputs">
                                     <div className="form-row">
                                         <div className="form-col1">
@@ -208,12 +219,10 @@ export default function ProfileView() {
 
                                     <div className="form-row">
                                         <div className="form-col1"></div>
-                                        <div className="form-col2">
-                                            <Button
+                                        <Button
 
-                                                // onClick={handleClick}
-                                                value='Save' />
-                                        </div>
+                                            // onClick={handleClick}
+                                            value='Save' />
 
                                     </div>
                                 </div>
