@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import SidebarO from '../../owner/own_sidebar/Sidebar'
 import './ProfileView.css'
 import InputField from "../../../Utilities/Form/InputField";

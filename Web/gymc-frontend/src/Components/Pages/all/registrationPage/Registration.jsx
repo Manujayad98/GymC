@@ -59,7 +59,7 @@ export default function Registration() {
     // };
 
     const handleCheckbox = (acceptance) => {
-        setState({ acceptance });
+        setState({ ...requestData, acceptance });
     };
 
     const handleSubmit = (evt) => {

@@ -12,21 +12,17 @@ import Sidebar from './Components/Utilities/Sidebar/Sidebar';
 import LoginPagePrev from './Components/Pages/all/loginPage/LoginPagePrev';
 import SampleLogin from './Components/Pages/all/loginPage/SampleLogin';
 import PictureUploader from './Components/Utilities/Form/PictureUploader/PictureUploader';
-
-
 import SampleReg from './Components/Pages/all/registrationPage/SampleReg';
-
 import Login from './Components/Pages/all/loginPage/LoginPage';
 import ResetPassword from './Components/Pages/all/resetPassword/ResetPassword';
-
 import PieChart from './Components/Utilities/Charts/PieChart';
 import BarChart from './Components/Utilities/Charts/BarChart';
 import LineChart from './Components/Utilities/Charts/LineChart';
 import SearchBar from './Components/Utilities/SearchBar/SearchBar';
 import Calendar from './Components/Utilities/CalendarComp/CalendarComp';
 import SampleCal from './Components/Utilities/CalendarComp/SampleCal';
-
 import Alert from './Components/Utilities/AlertPopup/AlertPopup'
+import Profile from './Components/Pages/all/Profile/ProfileView'
 
 
 //ADMIN
@@ -86,10 +82,7 @@ function App() {
           <Route path="/signinPrev" element={<LoginPagePrev />}></Route>
           <Route path="/signupPrev" element={<LoginPagePrev />}></Route>
           <Route path="/samplelogin" element={<SampleLogin />}></Route>
-
           <Route path="/samplereg" element={<SampleReg />}></Route>
-
-
           <Route path="/login" element={<Login />}></Route>
           <Route path="/resetpasswd" element={<ResetPassword />}></Route>
           <Route path="/searchBar" element={<SearchBar />}></Route>
@@ -97,6 +90,7 @@ function App() {
           <Route path="/calendar" element={<Calendar />}></Route>
           <Route path="/samplecal" element={<SampleCal />}></Route>
           <Route path="/picup" element={<PictureUploader />}></Route>
+          <Route path="/profile" element={<Profile />}></Route>
 
           {/* OWNER ROUTES */}
           <Route path="/Otrainers" element={<TrainerO />}></Route>
