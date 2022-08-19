@@ -1,7 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import HeaderTR from './TrainerHeader'
 
 const LogedInPage = () => {
+
+    useEffect(() => {
+        checkValidate();
+    }, []);
+
+    const checkValidate = async () => {
+        const y = localStorage.getItem("USER_KEY");
+        if (!y) {
+            window.location.href = "/";
+        }
+    };
 
     const logOut = () => {
         localStorage.clear();

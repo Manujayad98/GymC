@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import SidebarO from '../../owner/own_sidebar/Sidebar'
 import './ProfileView.css'
 import InputField from "../../../Utilities/Form/InputField";
@@ -9,6 +9,17 @@ import owner from '../../../../images/owner.png'
 import PictureUploader from "../../../Utilities/Form/PictureUploader/PictureUploader";
 
 export default function ProfileView() {
+
+    useEffect(() => {
+        checkValidate();
+    }, []);
+
+    const checkValidate = async () => {
+        const y = localStorage.getItem("USER_KEY");
+        if (!y) {
+            window.location.href = "/";
+        }
+    };
 
     const [requestData, setState] = useState({
         userID: '',

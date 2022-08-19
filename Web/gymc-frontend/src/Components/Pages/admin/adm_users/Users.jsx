@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import '../adm_sidebar/Sidebar.css'
 import SidebarO from '../adm_sidebar/Sidebar'
 import HeaderO from '../adm_header/header'
@@ -15,6 +15,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 export default function Trainers() {
+
+    useEffect(() => {
+        checkValidate();
+    }, []);
+
+    const checkValidate = async () => {
+        const y = localStorage.getItem("USER_KEY");
+        if (!y) {
+            window.location.href = "/";
+        }
+    };
 
     const [trainerDetails] = useState([
         {

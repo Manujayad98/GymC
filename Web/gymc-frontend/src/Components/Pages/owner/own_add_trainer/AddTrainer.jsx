@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import '../own_sidebar/Sidebar.css'
 import '../own_add_trainer/AddTrainer.css'
 import SidebarO from '../own_sidebar/Sidebar'
@@ -16,6 +16,18 @@ import PictureUploader from "../../../Utilities/Form/PictureUploader/PictureUplo
 
 
 export default function AddTrainer() {
+
+    useEffect(() => {
+        checkValidate();
+    }, []);
+
+    const checkValidate = async () => {
+        const y = localStorage.getItem("USER_KEY");
+        if (!y) {
+            window.location.href = "/";
+        }
+    };
+
     const [requestData, setState] = useState({
         text: '',
         occupation: '',

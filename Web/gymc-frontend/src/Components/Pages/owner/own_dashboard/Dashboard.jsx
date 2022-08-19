@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../own_sidebar/Sidebar.css'
 import SidebarO from '../own_sidebar/Sidebar'
 import HeaderO from '../own_header/Header'
@@ -10,6 +10,17 @@ import Edit from '../../../../images/Icons/pen-solid.svg'
 import './Dashboard.css'
 
 const Dashboard = () => {
+
+  useEffect(() => {
+    checkValidate();
+  }, []);
+
+  const checkValidate = async () => {
+    const y = localStorage.getItem("USER_KEY");
+    if (!y) {
+      window.location.href = "/";
+    }
+  };
 
   const [ChartData] = useState([
     ["Month", "Income"],

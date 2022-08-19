@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Card from 'react-bootstrap/Card'
 import '../recept_sidebar/Sidebar.css'
 import SidebarR from '../recept_sidebar/Sidebar'
@@ -12,6 +12,18 @@ import { margin } from '@mui/system'
 
 
 const Dashboard = () => {
+
+  useEffect(() => {
+    checkValidate();
+  }, []);
+
+  const checkValidate = async () => {
+    const y = localStorage.getItem("USER_KEY");
+    if (!y) {
+      window.location.href = "/";
+    }
+  };
+
   const [workoutDetailsTableHead] = useState([
     { id: "Time", label: "Time", numeric: false },
     { id: "TrainerName", label: "Trainer Name", numeric: false },

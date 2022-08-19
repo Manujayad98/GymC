@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../own_sidebar/Sidebar.css'
 import SidebarO from '../own_sidebar/Sidebar'
 import HeaderO from '../own_header/Header'
@@ -14,6 +14,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 const Dashboard = () => {
+
+  useEffect(() => {
+    checkValidate();
+  }, []);
+
+  const checkValidate = async () => {
+    const y = localStorage.getItem("USER_KEY");
+    if (!y) {
+      window.location.href = "/";
+    }
+  };
+
   const [trainerDetails] = useState([
     {
       TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),

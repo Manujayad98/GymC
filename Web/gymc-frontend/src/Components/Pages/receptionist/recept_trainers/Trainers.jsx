@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import '../recept_sidebar/Sidebar.css'
 import SidebarO from '../recept_sidebar/Sidebar'
 import HeaderO from '../recept_header/Header'
@@ -14,6 +14,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 export default function Trainers() {
+
+    useEffect(() => {
+        checkValidate();
+    }, []);
+
+    const checkValidate = async () => {
+        const y = localStorage.getItem("USER_KEY");
+        if (!y) {
+            window.location.href = "/";
+        }
+    };
 
     const [trainerDetails] = useState([
         {
@@ -31,7 +42,7 @@ export default function Trainers() {
                     <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-                    
+
                 </span >
             ),
         },

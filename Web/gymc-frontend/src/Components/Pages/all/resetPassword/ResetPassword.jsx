@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { connect } from "react-redux";
 import { userLogin } from "../../../../services/AuthenticationService";
 import { fetchUserData } from "../../../../services/AuthenticationService";
@@ -15,18 +15,30 @@ import '../../all/resetPassword/ResetPassword.css'
 
 const ResetPassword = ({ loading, error, ...props }) => {
 
+    useEffect(() => {
+        checkValidate();
+    }, []);
+
+    const checkValidate = async () => {
+        const y = localStorage.getItem("USER_KEY");
+        if (!y) {
+            window.location.href = "/";
+        }
+    };
+
     const [requestData, setValues] = useState({
         newPassword: "",
         confirmPassword: "",
-        
+
     });
 
     const handleChange = (key) => (value) => {
         // key.persist();
-        console.log(key,value);
+        console.log(key, value);
         setValues({
             ...requestData,
-            [key]: value });
+            [key]: value
+        });
     };
 
 
@@ -42,7 +54,7 @@ const ResetPassword = ({ loading, error, ...props }) => {
     //         return false;
     //     }
     // };
-    
+
 
     // let [authMode, setAuthMode] = useState("signin")
 
@@ -153,7 +165,7 @@ const ResetPassword = ({ loading, error, ...props }) => {
                                                 onChange={handleChange('confirmPassword')} />
                                         </div>
                                     </div>
-                                    
+
 
 
                                     <Button
