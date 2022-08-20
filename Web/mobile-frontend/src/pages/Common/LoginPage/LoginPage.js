@@ -54,6 +54,11 @@ const LoginPage = ({ navigation }) => {
           navigation.navigate('Forgot')} 
         type="TERTIARY"
         />
+        <CustomButton text="Home" 
+        onPress={() =>
+          navigation.navigate('TraineeHome')} 
+        type="TERTIARY"
+        />
 
         
         {/* <CustomButton text="I accept the Terms and conditions" onPress={onForgotPasswordPressed} type="TERTIARY" fgColor="red"/>  */}

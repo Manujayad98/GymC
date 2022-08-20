@@ -3,6 +3,7 @@ import LoginPage from './src/pages/Common/LoginPage/LoginPage'
 import ForgotPasswordPage from './src/pages/Common/ForgotPasswordPage/ForgotPasswordPage'
 import ResetPasswordPage from './src/pages/Common/ResetPasswordPage/ResetPasswordPage'
 import StartPage from './src/pages/Common/StartPage/StartPage'
+import TraineeHomePage from './src/pages/Trainee/trainee_homepage/Home'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -22,13 +23,13 @@ const App = () => {
         
         <Stack.Screen
           name="Startup"
-          component={StartPage}
+          component={LoginPage}
           options={{ title: 'Login' }}
         />
         <Stack.Screen name="Login" component={LoginPage} />
         <Stack.Screen name="Forgot" component={ForgotPasswordPage} />
         <Stack.Screen name="Reset" component={ResetPasswordPage} />
-
+        <Stack.Screen name="TraineeHome" component={TraineeHomePage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
