@@ -32,8 +32,10 @@ export default function Registration() {
         gender: '',
         message: '',
         acceptance: true,
+        // click:false
         // selectedOption: null,
     });
+    const [click,setClick]=useState(false);
 
     const handleChange = (key) => (value) => {
         console.log(key, value);
@@ -76,6 +78,7 @@ export default function Registration() {
 
         if (!requestData.firstName || !requestData.lastName || !requestData.nic || !requestData.dob || !requestData.occupation || !requestData.address || !requestData.email || !requestData.phoneNumber || !requestData.emergencyNumber || !requestData.gender) {
             console.log('Please fill out the form correctly');
+            setClick({ click :true,})
             toast.warning('Please fill out the form correctly');
         } else {
 
@@ -126,7 +129,7 @@ export default function Registration() {
                                         //     { check: Validators.required, message: 'This field is required' }
                                         // ]}
                                         onChange={handleChange('firstName')} />
-                                    {!requestData.firstName && <span className='text-danger'>This Field is required</span>}
+                                    {!requestData.firstName && click && <span className='text-danger'>This Field is required</span>}
                                 </div>
                                 <div className="reg-form-col2">
                                     <InputField
@@ -138,7 +141,7 @@ export default function Registration() {
                                         //     { check: Validators.required, message: 'This field is required' }
                                         // ]}
                                         onChange={handleChange('lastName')} />
-                                    {!requestData.lastName && <span className='text-danger'>This Field is required</span>}
+                                    {!requestData.lastName && click && <span className='text-danger'>This Field is required</span>}
                                 </div>
                             </div>
                             <div className="reg-form-row">
@@ -152,7 +155,7 @@ export default function Registration() {
                                             { check: Validators.nic, message: 'NIC is not valid' }
                                         ]}
                                         onChange={handleChange('nic')} />
-                                    {!requestData.nic && <span className='text-danger'>This Field is required</span>}
+                                    {!requestData.nic && click && <span className='text-danger'>This Field is required</span>}
                                 </div>
                                 <div className="reg-form-col2">
                                     <InputField
@@ -164,6 +167,7 @@ export default function Registration() {
                                             { check: Validators.required, message: 'This field is required' }
                                         ]}
                                         onChange={handleChange('dob')} />
+                                        {!requestData.dob && click && <span className='text-danger'>This Field is required</span>}
                                 </div>
                             </div>
                             <div className="reg-form-row">
@@ -173,7 +177,7 @@ export default function Registration() {
                                         <input type="radio" className='form-radio' value="M" name="gender" /> Male
                                         <input type="radio" className='form-radio' value="F" name="gender" style={{ marginLeft: '10px' }} /> Female
                                     </div>
-                                    {!requestData.gender && <span className='text-danger'>This Field is required</span>}
+                                    {!requestData.gender && click && <span className='text-danger'>This Field is required</span>}
 
                                     {/* <Radiobutton
                                     value={gender}
@@ -217,7 +221,7 @@ export default function Registration() {
                                             { check: Validators.required, message: 'This field is required' }
                                         ]}
                                         onChange={handleChange('occupation')} />
-                                    {!requestData.occupation && <span className='text-danger'>This Field is required</span>}
+                                    {!requestData.occupation && click && <span className='text-danger'>This Field is required</span>}
                                     <br></br>
                                 </div>
                             </div>
@@ -235,7 +239,7 @@ export default function Registration() {
                                             { check: Validators.required, message: 'This field is required' }
                                         ]}
                                         onChange={handleChange('address')} />
-                                    {!requestData.address && <span className='text-danger'>This Field is required</span>}
+                                    {!requestData.address && click && <span className='text-danger'>This Field is required</span>}
                                 </div>
                                 <div className="reg-form-col2">
                                     <InputField
@@ -247,7 +251,7 @@ export default function Registration() {
                                             { check: Validators.email, message: 'Email is not valid' }
                                         ]}
                                         onChange={handleChange('email')} />
-                                    {!requestData.email && <span className='text-danger'>This Field is required</span>}
+                                    {!requestData.email && click && <span className='text-danger'>This Field is required</span>}
                                 </div>
                             </div>
                             <div className="reg-form-row">
@@ -261,7 +265,7 @@ export default function Registration() {
                                             { check: Validators.number, message: 'Number is not valid' }
                                         ]}
                                         onChange={handleChange('phoneNumber')} />
-                                    {!requestData.phoneNumber && <span className='text-danger'>This Field is required</span>}
+                                    {!requestData.phoneNumber && click && <span className='text-danger'>This Field is required</span>}
                                 </div>
                                 <div className="reg-form-col2">
                                     <InputField
@@ -273,7 +277,7 @@ export default function Registration() {
                                             { check: Validators.number, message: 'Number is not valid' }
                                         ]}
                                         onChange={handleChange('emergencyNumber')} />
-                                    {!requestData.emergencyNumber && <span className='text-danger'>This Field is required</span>}
+                                    {!requestData.emergencyNumber && click && <span className='text-danger'>This Field is required</span>}
                                 </div>
                             </div>
 
@@ -320,7 +324,7 @@ export default function Registration() {
 
                             <div className="reg-login-btn-container">
                                 <button type="submit" className="register-button">
-                                    Login
+                                    Register
                                 </button>
                             </div>
                         </div>
