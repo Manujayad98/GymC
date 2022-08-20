@@ -1,4 +1,4 @@
-.add-trainer-form-container {
+.add-trainer-form-container{
   margin-top: auto;
   max-width: 800px;
   align-items: center;
@@ -9,36 +9,29 @@
   background-position: center;
   color: black;
 }
-
-.add-trainer-form-div {
+.add-trainer-form-div{
   margin-top: 50px;
   margin-left: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  background: #D9D9D9;
-}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: #D9D9D9;
+  }
 
-.add-trainer-form-div .form-container .form-col1 .profile-cards {
-  padding: 20px;
-  margin: 10px 5px;
-  width: 180px;
-  height: 130px;
+  .add-trainer-form-div .form-container .form-col1 .profile-cards{
+    padding: 20px;
+    margin: 10px 5px;
+    width: 180px;
+    height: 130px;
+  } 
+  .form-subHeading{
+    margin-top: 40px;
+  }
+  .add-trainer-form-inputs {
+    text-align: left;
+    font-weight: 100px;
 }
-
-.add-trainer-form-subHeading {
-  margin-top: 40px;
-  font-weight: 520;
-  font-size: 20px;
-  color: #1F0106;
-}
-
-.add-trainer-form-inputs {
-  text-align: left;
-  font-weight: 100px;
-}
-
 .add-tariner-userID {
   color: rgb(0, 0, 0);
   font-size: 1.1rem;
@@ -46,7 +39,6 @@
   text-align: center;
   /* justify-content: flex-start; */
 }
-
 .add-trainer-form-button {
   background: #FF2121;
   border-radius: 15px;
@@ -54,4 +46,7 @@
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 7px 25px 7px 25px;
+}
+.add-trainer-form-container label{
+  font-weight: 500;
 }
