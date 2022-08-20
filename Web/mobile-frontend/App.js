@@ -27,7 +27,7 @@ const App = () => {
         />
         <Stack.Screen name="Login" component={LoginPage} />
         <Stack.Screen name="Forgot" component={ForgotPasswordPage} />
-        <Stack.Screen name="Reset" component={ResetPasswordPage} />
+        {/* <Stack.Screen name="Reset" component={ResetPasswordPage} /> */}
 
       </Stack.Navigator>
     </NavigationContainer>
