@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const ForgotPasswordPage = ({ navigation }) =>{
   
     return (
+      <ScrollView>
       <View style={styles.root}>
         <Text><Icon name="backward" size={30} color="#fff" 
         onPress={() =>
@@ -34,6 +35,7 @@ const ForgotPasswordPage = ({ navigation }) =>{
           navigation.navigate('Reset', { name: 'Jane' })} 
         />
       </View>
+      </ScrollView>
     )
   }
 
