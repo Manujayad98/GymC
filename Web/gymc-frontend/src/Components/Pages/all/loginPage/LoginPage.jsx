@@ -7,6 +7,9 @@ import './LoginPage.css'
 import LoginImage from "../../../../images/LoginPage.jpg"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom'
+
+import ResetPassword from '../resetPassword/ResetPassword';
 
 import Button from '../../../Utilities/Form/Button';
 import InputField from "../../../Utilities/Form/InputField";
@@ -20,7 +23,7 @@ const LoginPage = ({ loading, error, ...props }) => {
         password: "",
         rememberme: false,
     });
-
+    const [click, setClick] = useState(false);
     const userData = async () => {
         console.log('res1');
         const res = await fetchUserData();
@@ -48,6 +51,7 @@ const LoginPage = ({ loading, error, ...props }) => {
     const handleSubmit = (evt) => {
         evt.preventDefault();
         if (!values.userName || !values.password) {
+            setClick({ click: true, })
             if (!values.userName) {
                 console.log('not userName');
             }
@@ -141,7 +145,6 @@ const LoginPage = ({ loading, error, ...props }) => {
                                             name="userName"
                                             required
                                         /> */}
-
                                         <InputField
                                             value={values.userName}
                                             type='text'
@@ -152,7 +155,8 @@ const LoginPage = ({ loading, error, ...props }) => {
                                                 { check: Validators.required, message: 'This field is required' }
                                             ]}
                                             onChange={handleChange('userName')} />
-                                        <span className="error-login-username" style={{ color: 'red', display: 'none' }}>This field is required</span>
+                                        {!values.userName && click && <span className='text-danger'>Username is required</span>}
+
 
                                     </div>
                                     <div className="form-group mt-3">
@@ -179,6 +183,7 @@ const LoginPage = ({ loading, error, ...props }) => {
                                                 { check: Validators.required, message: 'This field is required' }
                                             ]}
                                             onChange={handleChange('password')} />
+                                        {!values.password && click && <span className='text-danger'>Password is required</span>}
                                     </div>
                                     <div className="form-row">
                                         <div className="form-col1">
@@ -192,10 +197,12 @@ const LoginPage = ({ loading, error, ...props }) => {
                                     </div>
 
                                     <p className="text-center mt-2">
-                                        Forgot <a href="#">password?</a>
+                                        <Link to='/resetpasswd'>
+                                            <a href="#" >Forgot Password?</a>
+                                        </Link>
                                     </p>
                                     <div className="login-btn-container">
-                                        <button type="submit" className=" login-btn">
+                                        <button type="submit" className="login-btn">
                                             Login
                                         </button>
                                     </div>
