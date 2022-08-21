@@ -81,4 +81,16 @@ public class UserAccountDetailsJdbcRepository {
         return profile;
     }
 
+    public long changePassword(String newPassword,String userName) {
+        MapSqlParameterSource namedParameters =
+                new MapSqlParameterSource();
+        String update = "UPDATE user_account " +
+                "SET password = :newPassword WHERE user_name = :username;";
+        namedParameters.addValue("newPassword", newPassword);
+        namedParameters.addValue("username", userName);
+        System.out.println("pwcjdbc1");
+        int rowAffected = jdbc.update(update, namedParameters);
+        return rowAffected;
+    }
+
 }

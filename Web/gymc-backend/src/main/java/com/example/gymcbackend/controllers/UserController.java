@@ -1,14 +1,15 @@
 package com.example.gymcbackend.controllers;
 
 import com.example.gymcbackend.dto.Profile;
+import com.example.gymcbackend.dto.Password;
 import com.example.gymcbackend.entities.UserAccount;
 import com.example.gymcbackend.repository.userDao.UserAccountDetailsRepository;
 import com.example.gymcbackend.services.CustomUserService;
+import com.example.gymcbackend.services.PasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -19,6 +20,9 @@ public class UserController {
 
     @Autowired
     private CustomUserService customUserService;
+
+    @Autowired
+    PasswordService passwordService;
 
     @GetMapping("/test")
     public String test(){
@@ -38,6 +42,13 @@ public class UserController {
     @GetMapping("/users/{userName}")
     public Profile getUserById(@PathVariable String userName){
         return customUserService.getUserByUsername(userName);
+    }
+
+    @PutMapping("/changePassword/{userName}")
+    public long changePassword(@RequestBody Password password, @PathVariable String userName){
+//        System.out.println("pwcontroller");
+        System.out.println(password.getNewPassword());
+        return passwordService.changePassword(password,userName);
     }
 
 }
