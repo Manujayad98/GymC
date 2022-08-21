@@ -27,3 +27,15 @@ export const getProfile = (userName) => {
     });
 };
 
+export const updatePassword = (password, userName) => {
+    console.log(userName);
+    // return axios.get(USER_URL);
+    return axios({
+        method: "PUT",
+        url: `${USER_URL}/changePassword/${userName}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+        data: password,
+    });
+};

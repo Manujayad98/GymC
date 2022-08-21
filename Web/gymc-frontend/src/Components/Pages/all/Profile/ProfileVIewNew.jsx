@@ -6,9 +6,10 @@ import owner from '../../../../images/owner.png'
 import './ProfileViewNew.css'
 import Edit from '../../../../images/Icons/pen-solid.svg'
 
+import { useForm } from "react-hook-form";
 
 import { fetchUserData } from "../../../../services/AuthenticationService";
-import { getProfile } from "../../../../services/UserService";
+import { getProfile, updatePassword } from "../../../../services/UserService";
 
 import Button from '../../../Utilities/Form/Button';
 import InputField from "../../../Utilities/Form/InputField";
@@ -16,7 +17,17 @@ import Dropdown from "../../../Utilities/Form/Dropdown";
 import { Validators } from "../../../Utilities/Form/Validator/Validator";
 import Checkbox from "../../../Utilities/Form/Checkbox";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function () {
+
+    const {
+        register,
+        formState: { errors },
+    } = useForm({
+        mode: "all",
+    });
 
     useEffect(() => {
         checkValidate();
@@ -47,6 +58,13 @@ export default function () {
         nic: "",
     });
 
+    const [password, setPassword] = useState({
+        currentPassword: "",
+        newPassword: "",
+        confirmNewPassword: "",
+    });
+
+
     useEffect(() => {
         userProfileData();
     }, []);
@@ -71,6 +89,45 @@ export default function () {
         setProfile(res.data);
         // setMyEmail(res.data.email);
 
+    };
+
+    const handlePassword = (e) => {
+        e.persist();
+        console.log(e.target.name + "-" + e.target.value);
+        setPassword((password) => ({
+            ...password,
+            [e.target.name]: e.target.value,
+        }));
+    };
+
+    const handleSubmitPW = (e) => {
+        e.preventDefault()
+
+        console.log(password);
+
+        if (!password.currentPassword || !password.newPassword || !password.confirmNewPassword) {
+            toast.warning('Please fill out the form correctly');
+        } else {
+
+            updatePassword(password, userdata.userName)
+                .then((response) => {
+                    if (response.data == 1) {
+                        toast.success('Password Updated Successfully!');
+                        //   setMessage("Update Successful!");
+                        //   setPopUp("success");
+                        window.location.href = "/profile";
+                    } else {
+                        toast.error('Password Update Failed!');
+                        //   setMessage("Update Failed!");
+                        //   setPopUp("failed");
+                    }
+                })
+                .catch((err) => {
+                    // setMessage(err);
+                    toast.error('Failed!');
+                    // setPopUp("failed");
+                });
+        }
     };
 
     return (
@@ -154,11 +211,11 @@ export default function () {
                                                     <div class="form-group col-md-6">
                                                         <label for="gender" style={{ marginBottom: '5px' }}>Gender</label><br />
                                                         {/* <div class="form-check form-check-inline"> */}
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="" value="M" checked={profile.gender === "M"} ></input>
+                                                        <input class="form-check-input" type="radio" style={{ marginRight: '5px' }} name="inlineRadioOptions" id="" value="M" checked={profile.gender === "M"} ></input>
                                                         <label class="form-check-label" for="inlineRadio1">Male</label>
                                                         {/* </div> */}
                                                         {/* <div class="form-check form-check-inline"> */}
-                                                        <input class="form-check-input" style={{ marginLeft: '30px' }} type="radio" name="inlineRadioOptions" id="" value="F" checked={profile.gender === "F"}></input>
+                                                        <input class="form-check-input" style={{ marginLeft: '20px', marginRight: '5px' }} type="radio" name="inlineRadioOptions" id="" value="F" checked={profile.gender === "F"}></input>
                                                         <label class="form-check-label" for="inlineRadio2">Female</label>
                                                         {/* </div> */}
                                                     </div>
@@ -217,11 +274,12 @@ export default function () {
                                     </div>
 
                                 </form>
+
                             </div>
                         </Tab>
                         <Tab eventKey="changePassword" title="Change password" >
                             <div class="container profile-main-container">
-                                <form>
+                                <form onSubmit={handleSubmitPW}>
                                     <div class="row">
                                         <div class="col-sm profile-container">
 
@@ -230,29 +288,63 @@ export default function () {
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <label for="inputEmail4">Current Password</label>
-                                                        <input type="email" class="form-control profile-input-field" id="" placeholder="Type"></input>
+                                                        <input
+                                                            {...register("currentPassword", {
+                                                                required: "Old password is required...",
+                                                            })}
+                                                            type="password"
+                                                            className="form-control profile-input-field"
+                                                            id="currentPassword"
+                                                            placeholder="Enter Current Password"
+                                                            name="currentPassword"
+                                                            onChange={handlePassword}
+                                                        ></input>
                                                     </div>
 
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <label for="inputEmail4">New Password</label>
-                                                        <input type="email" class="form-control profile-input-field" id="" placeholder="Type"></input>
+                                                        <input
+                                                            {...register("newPassword", {
+                                                                required: "New password is required...",
+                                                            })}
+                                                            type="password"
+                                                            className="form-control profile-input-field"
+                                                            id="newPassword"
+                                                            placeholder="Enter New Password"
+                                                            name="newPassword"
+                                                            onChange={handlePassword}></input>
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <label for="inputEmail4">Confirm Password</label>
-                                                        <input type="email" class="form-control profile-input-field" id="" placeholder="Type"></input>
+                                                        <input
+                                                            {...register("confirmNewPassword", {
+                                                                required: "Confirm password is required...",
+                                                            })}
+                                                            type="password"
+                                                            className="form-control profile-input-field"
+                                                            id="confirmNewPassword"
+                                                            placeholder="Enter Confirm Password"
+                                                            name="confirmNewPassword"
+                                                            onChange={handlePassword}></input>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div className='profile-submit-btn2'>
-                                        <button type="submit" class="btn btn-primary" >Save</button>
+                                        <button
+                                            type="submit"
+                                            id="submit"
+                                            name="submit"
+                                            class="btn btn-primary" >Save</button>
+
                                     </div>
                                 </form>
+                                <ToastContainer />
                             </div>
                         </Tab>
                     </Tabs>

@@ -322,7 +322,7 @@ export default function Registration() {
 
                             <div className="reg-login-btn-container">
                                 <button type="submit" className="register-button">
-                                    Login
+                                    Register
                                 </button>
                             </div>
                         </div>
