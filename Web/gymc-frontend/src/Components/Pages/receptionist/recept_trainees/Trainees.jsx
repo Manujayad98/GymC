@@ -1,13 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Button from 'react-bootstrap/Button';
-import Deletemodal from '../../../Utilities/Popups/popup';
+import DeleteModal from '../../../Utilities/Popups/DeletionModal'
 import '../recept_sidebar/Sidebar.css'
 import SidebarR from '../recept_sidebar/Sidebar'
 import HeaderR from '../recept_header/Header'
 import Pic1 from '../../../../images/owner.png'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import Snackbar from '../../../Utilities/Popups/messagepop'
 import './Trainees.css'
 import { Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -22,10 +21,7 @@ import T1 from '../../../../images/t1.png'
 
 
 
-/*const SnackbarType = {
-  success: "success",
-  fail: "fail",
-};*/
+
 
 const Trainees = () => {
 
@@ -40,9 +36,11 @@ const Trainees = () => {
     }
   };
 
-  /*const snackbarRef = useRef(null);
-  const [show, setShow] = useState(false);
-  const handleShow = () => setShow(true); */ // Snackbar reference and pop state
+ 
+  
+
+  const [openModal, setOpenModal] = useState(false)
+
   const [trainerDetails] = useState([
     {
       TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
@@ -52,7 +50,8 @@ const Trainees = () => {
       RegDate: "2021-10-24",
       Check: (
         <span>
-          <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+          <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button>
+          </span>
           <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
         </span>
       ),
@@ -63,7 +62,7 @@ const Trainees = () => {
         <span >
           <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
           <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
         </span >
       ),
     },
@@ -111,54 +110,54 @@ const Trainees = () => {
           <div>
             <Tabs defaultActiveKey={"NowIn"} id="uncontrolled-tab-example" className='mb-3'>
               <Tab eventKey={"NowIn"} title="Now In">
-                <div className='content-row'>
+                <div className='rec-content-row'>
                   <Card className='rec-train-card'>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
                       T000001
                     </Card.Subtitle>
                     <Card.Body>
-                      Troy
+                      Kasun Perera
                     </Card.Body>
                   </Card>
                   <Card className='rec-train-card'>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
-                      T000001
+                      T000002
                     </Card.Subtitle>
                     <Card.Body>
-                      Troy
+                      Rasul Silve
                     </Card.Body>
                   </Card>
                   <Card className='rec-train-card'>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
-                      T000001
+                      T000003
                     </Card.Subtitle>
                     <Card.Body>
-                      Troy
+                      Dominic Gape
                     </Card.Body>
                   </Card>
                 </div>
               </Tab>
               <Tab eventKey={"due"} title="Due Check Out">
-                <div className='content-row'>
-                  <Card className='rec-train-card'>
+                <div className='rec-content-row'>
+                  <Card className='rec-train-card' style={{borderColor: 'red'}}>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
                       T000001
                     </Card.Subtitle>
                     <Card.Body>
-                      Troy
+                      Kasun Perera
                     </Card.Body>
                   </Card>
-                  <Card className='rec-train-card'>
+                  <Card className='rec-train-card' style={{borderColor:'red'}}>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
-                      T000001
+                      T000002
                     </Card.Subtitle>
                     <Card.Body>
-                      Troy
+                      Rasul Silve
                     </Card.Body>
                   </Card>
                 </div>
@@ -189,10 +188,9 @@ const Trainees = () => {
                     <label class="form-label" for="form1">Due</label>
                   </div>
                   <select class="form-control form-control-sm" style={{ padding: '8px' }}>
-                    <option> select 1</option>
-                    <option> select 2</option>
-                    <option> select 3</option>
-                    <option> select 4</option>
+                    <option> All</option>
+                    <option> Payments Due</option>
+                    <option> Payments Not Due</option>
                   </select>
                 </div>
               </div>
@@ -208,6 +206,9 @@ const Trainees = () => {
             headCells={trainerDetailsTableHead}
             tableName={"Trainers"}
           />
+          <div>
+            <DeleteModal open={openModal} onClose={() => setOpenModal(false)}/>
+          </div>
         </div>
       </div>
     </div>
@@ -215,17 +216,3 @@ const Trainees = () => {
 }
 
 export default Trainees
-
-/* 
-      <div className='body-container'> 
-          <HeaderR title="Trainees"/> 
-          <div className="content-container">
-          <Button variant="primary" onClick={handleShow}>
-            Launch static backdrop modal
-          </Button>
-          {show && <Deletemodal show/>}
-          <Button variant='warning' onClick={() => {snackbarRef.current.show();}}>Alert</Button>
-          <Snackbar ref={snackbarRef} message="Task Completed Successfully!" type={SnackbarType.success}/>
-          </div>
-      </div>
-*/
