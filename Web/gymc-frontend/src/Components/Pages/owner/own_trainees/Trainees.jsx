@@ -12,6 +12,7 @@ import './Trainees.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 
 const Dashboard = () => {
 
@@ -35,7 +36,7 @@ const Dashboard = () => {
       RegDate: "2021-10-24",
       Actions: (
         <span >
-          <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><Link to='/OviewWorkout'><img src={View} alt="" height={20} width={20} /></Link></span>
           <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
           <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
         </span >
