@@ -12,6 +12,7 @@ import './Trainers.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 
 export default function Trainers() {
 
@@ -41,7 +42,7 @@ export default function Trainers() {
                 <span >
                     <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px" }}><Link to='/RupdateTrainer'><img src={Edit} alt="" height={20} width={20} /></Link></span>
 
                 </span >
             ),

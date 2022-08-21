@@ -43,7 +43,7 @@ const LoginPage = ({ loading, error, ...props }) => {
             window.location.href = "/TRLogedPage";
         } else {
             localStorage.clear();
-            window.location.href = "/";
+            // window.location.href = "/";
         }
 
     };

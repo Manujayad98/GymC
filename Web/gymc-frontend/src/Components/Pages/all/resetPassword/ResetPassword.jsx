@@ -18,16 +18,6 @@ import '../../all/resetPassword/ResetPassword.css'
 
 const ResetPassword = ({ loading, error, ...props }) => {
 
-    useEffect(() => {
-        checkValidate();
-    }, []);
-
-    const checkValidate = async () => {
-        const y = localStorage.getItem("USER_KEY");
-        if (!y) {
-            window.location.href = "/";
-        }
-    };
 
     const [requestData, setValues] = useState({
         newPassword: "",
@@ -44,7 +34,7 @@ const ResetPassword = ({ loading, error, ...props }) => {
             ...requestData,
             [key]: value
         });
-        if(requestData.newPassword !== requestData.confirmPassword && requestData.confirmPassword){
+        if(requestData.newPassword != requestData.confirmPassword && requestData.confirmPassword){
             
             setMatch({ match: false })
             console.log(match);
@@ -171,7 +161,7 @@ const ResetPassword = ({ loading, error, ...props }) => {
                                                     { check: Validators.password, message: 'Password is invalid.must contain lowercase,uppercase,numeric and special with 8 or more' }
                                                 ]}
                                                 onChange={handleChange('newPassword')} />
-                                                {!match && !requestData.newPassword && click && <span className='text-danger'>This Field is required</span>}
+                                                {!requestData.newPassword && click && <span className='text-danger'>This Field is required</span>}
 
                                         </div>
                                     </div>
@@ -187,7 +177,7 @@ const ResetPassword = ({ loading, error, ...props }) => {
                                                 // ]}
                                                 onChange={handleChange('confirmPassword')} />
                                                 {/* {!requestData.confirmPassword && click && <span className='text-danger'>This Field is required</span>} */}
-                                                {!match && requestData.confirmPassword && <span className='text-danger'>Passwords not match</span>}
+                                                {!match && requestData.newPassword && <span className='text-danger'>Passwords not match</span>}
                                                 
                                         </div>
                                     </div>
