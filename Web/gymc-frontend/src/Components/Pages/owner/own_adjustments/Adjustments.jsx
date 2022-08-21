@@ -7,11 +7,8 @@ import Table from '../../../Utilities/Tables/Table2'
 import Edit from '../../../../images/Icons/pen-solid.svg'
 import trash from '../../../../images/Icons/trash-solid.svg'
 import Button1 from '@mui/material/Button';
-//increment decrement
-// import AddIcon from "@material-ui/icons/Add";
-// import RemoveIcon from "@material-ui/icons/Remove";
-// import Button from "@material-ui/core/Button";
-// import Tooltip from "@material-ui/core/Tooltip";
+import {FaPlusCircle,FaMinusCircle} from "react-icons/fa";
+
 
 
 export default function Exercises() {
@@ -19,28 +16,12 @@ export default function Exercises() {
         {
             Name: "Incline Press",
             Repetitions: "15 Reps",
-            // Calories: "45",
-            // Proteins: "84",
-            // Carbs: "8",
+           
             Actions: (
                 <span >
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={trash} alt="" height={20} width={20} /></span>
-                    {/* <button
-                    
-                        type="button"
-                        id="submit"
-                        name="submit"
-                        className="btn  mt-0"
-                        style={{
-                            backgroundColor: "#000",
-                            color: "#FFF",
-                            border: "none",
-                            borderRadius: "20px"
-                        }}
-                    >
-                        HOLD
-                    </button> */}
+              
                 </span >
 
             ),
@@ -48,27 +29,12 @@ export default function Exercises() {
         {
             Name: "Incline Press",
             Repetitions: "15 Reps",
-            // Calories: "45",
-            // Proteins: "84",
-            // Carbs: "8",
+         
             Actions: (
                 <span >
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={trash} alt="" height={20} width={20} /></span>
-                    {/* <button
-                        type="button"
-                        id="submit"
-                        name="submit"
-                        className="btn  mt-0"
-                        style={{
-                            backgroundColor: "#000",
-                            color: "#FFF",
-                            border: "none",
-                            borderRadius: "20px"
-                        }}
-                    >
-                        HOLD
-                    </button> */}
+              
                 </span >
 
             ),
@@ -76,27 +42,12 @@ export default function Exercises() {
         {
             Name: "Incline Press",
             Repetitions: "15 Reps",
-            // Calories: "45",
-            // Proteins: "84",
-            // Carbs: "8",
+           
             Actions: (
                 <span >
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={trash} alt="" height={20} width={20} /></span>
-                    {/* <button
-                        type="button"
-                        id="submit"
-                        name="submit"
-                        className="btn  mt-0"
-                        style={{
-                            backgroundColor: "#000",
-                            color: "#FFF",
-                            border: "none",
-                            borderRadius: "20px"
-                        }}
-                    >
-                        HOLD
-                    </button> */}
+                
                 </span >
 
             ),
@@ -104,29 +55,14 @@ export default function Exercises() {
         {
             Name: "Incline Press",
             Repetitions: "15 Reps",
-            // Calories: "45",
-            // Proteins: "84",
-            // Carbs: "8",
+           
             Actions: (
                 <span >
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
                     
             
                     <span style={{ paddingRight: "20px" }}><img src={trash} alt="" height={20} width={20} /></span>
-                    {/* <button
-                        type="button"
-                        id="submit"
-                        name="submit"
-                        className="btn  mt-0"
-                        style={{
-                            backgroundColor: "#000",
-                            color: "#FFF",
-                            border: "none",
-                            borderRadius: "20px"
-                        }}
-                    >
-                        HOLD
-                    </button> */}
+                
                 </span >
 
             ),
@@ -135,10 +71,7 @@ export default function Exercises() {
     const [excerciseDetailsTableHead] = useState([
         { id: "Name", label: "NAME", numeric: false },
         { id: "Repetitions", label: "REPETITIONS", numeric: false },
-        // { id: "Calories", label: "CALORIES", numeric: false },
-        // { id: "Proteins", label: "PROTEINS", numeric: false },
-        // { id: "Carbs", label: "CARBS", numeric: false },
-        // { id: "Actions", label: "ACTIONS", numeric: false },
+        
     ]);
 
     const [paymentPlanDetails] = useState([
@@ -184,17 +117,26 @@ export default function Exercises() {
         // { id: "Actions", label: "ACTIONS", numeric: false },
     ]);
 
-    const [count, setCount] = useState(5);
-    const IncNum = () => {
-        setCount(count + 1);
-    };
-    const DecNum = () => {
-        if (count > 0) setCount(count - 1);
-        else {
-        setCount(0);
-        alert("min limit reached");
+    //INCREMENT DECREMENT COUNT
+
+    const [count, setCount] = useState(5); // useState returns a pair. 'count' is the current state. 'setCount' is a function we can use to update the state.
+
+    function increment() {
+      //setCount(prevCount => prevCount+=1);
+      setCount(function (prevCount) {
+        return (prevCount += 1);
+      });
+    }
+  
+    function decrement() {
+      setCount(function (prevCount) {
+        if (prevCount > 0) {
+          return (prevCount -= 1); 
+        } else {
+          return (prevCount = 0);
         }
-    };
+      });
+    }
   
 
     return (
@@ -235,18 +177,10 @@ export default function Exercises() {
                     
                     <div className="main_div">
                         <div className="center_div">
-                        <h2 id="count">{count}</h2>
-                        <div className="btn_div">
-                            {/* <Tooltip title="Add">
-                            <Button onClick={IncNum}>
-                                <AddIcon />
-                            </Button>
-                            </Tooltip>
-                            <Tooltip title="Reduce">
-                            <Button onClick={DecNum}>
-                            <RemoveIcon />
-                            </Button>
-                            </Tooltip> */}
+                        <div className="btn_div">    
+                            <button id="countButton" onClick={increment}>{<FaPlusCircle/>}</button>
+                            <h2 >{count}</h2>
+                            <button id="countButton" onClick={decrement}>{<FaMinusCircle/>}</button>
                         </div>
                         </div>
                     </div>
