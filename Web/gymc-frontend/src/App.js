@@ -42,6 +42,7 @@ import AnnouncementsO from './Components/Pages/owner/own_announcements/Announcem
 import AnalyticsO from './Components/Pages/owner/own_analytics/Analytics';
 import NotificationsO from './Components/Pages/owner/own_notifications/Notifications';
 import SidebarO from './Components/Pages/owner/own_sidebar/Sidebar';
+import ViewWorkout from './Components/Pages/owner/own_view_workout/ViewWorkout';
 
 
 // RECEPTIONIST
@@ -54,6 +55,8 @@ import SidebarR from './Components/Pages/receptionist/recept_sidebar/Sidebar';
 import TraineesR from './Components/Pages/receptionist/recept_trainees/Trainees';
 import TrainersR from './Components/Pages/receptionist/recept_trainers/Trainers';
 import AppointmentsR from './Components/Pages/receptionist/recept_appointments/Appointments'
+import AddTrainerR from './Components/Pages/receptionist/recept_add_trainer/AddTrainer';
+import UpdateTrainerR from './Components/Pages/receptionist/recept_update_trainer/UpdateTrainer';
 
 //TRAINEE
 import TraineeLogedPage from './Components/Pages/trainee/LogedInPage'
@@ -101,6 +104,7 @@ function App() {
           <Route path="/Onotifications" element={<NotificationsO />}></Route>
           <Route path="/Oannouncements" element={<AnnouncementsO />}></Route>
           <Route path="/Oanalytics" element={<AnalyticsO />}></Route>
+          <Route path="/OviewWorkout" element={<ViewWorkout />}></Route>
 
 
           {/* ADMIN ROUTES */}
@@ -119,7 +123,8 @@ function App() {
           <Route path="/Requipments" element={<EquipmentsR />}></Route>
           <Route path="/Rnotifications" element={<NotificationsR />}></Route>
           <Route path="/Rappointments" element={<AppointmentsR />}></Route>
-
+          <Route path="/RaddTrainer" element={<AddTrainerR />}></Route>
+          <Route path="/RupdateTrainer" element={<UpdateTrainerR />}></Route>
 
 
 

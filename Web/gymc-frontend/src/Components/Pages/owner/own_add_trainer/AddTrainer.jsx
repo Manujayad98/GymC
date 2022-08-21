@@ -6,6 +6,9 @@ import HeaderO from '../own_header/Header'
 
 import Pic1 from '../../../../images/owner.png'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Button from '../../../Utilities/Form/Button';
 import InputField from "../../../Utilities/Form/InputField";
 import Dropdown from "../../../Utilities/Form/Dropdown";
@@ -29,15 +32,19 @@ export default function AddTrainer() {
     };
 
     const [requestData, setState] = useState({
-        text: '',
-        occupation: '',
+
+        firstname: '',
+        lastname: '',
+        dob: '',
         phone: '',
-        number: '',
+        // number: '',
         // emergency: '',
         address: '',
         email: '',
         gender: false,
+        qualifications: '',
     });
+    const [click, setClick] = useState(false);
 
     const handleChange = (key) => (value) => {
         setState({
@@ -45,23 +52,52 @@ export default function AddTrainer() {
             [key]: value
         });
     };
-    // handleRadio = () => {
-    // //   this.setState({ selectedOption});
-    //     this.setState({gender});
-    // };
+    const handleRadio = (event) => {
+        
+        setState({
+            ...requestData,
+            gender: event.target.value
+        });
+        console.log(requestData.gender)
+    };
 
     const handleClick = (event) => {
         event.preventDefault();
         alert('Button Clicked');
     };
+    const handleSubmit = (evt) => {
+        console.log(requestData);
+        evt.preventDefault();
 
-    const handleDropdown = (country) => {
-        setState({ country });
+        if (!requestData.firstName || !requestData.lastName || !requestData.nic || !requestData.dob || !requestData.occupation || !requestData.address || !requestData.email || !requestData.phoneNumber || !requestData.emergencyNumber || !requestData.gender) {
+            console.log('Please fill out the form correctly');
+            setClick({ click: true, })
+            toast.warning('Please fill out the form correctly');
+        }
+        // else {
+
+        //     signUp(requestData)
+        //         .then((response) => {
+        //             if (response.status === 200) {
+        //                 console.log(response.data);
+        //                 // setMessage(response.data);
+        //                 if (response.data === "You have already an account!") {
+        //                     toast.warning('You have already an account!');
+        //                 } else {
+        //                     window.location.href = "/";
+        //                     toast.success("successfully registered!!!");
+        //                 }
+        //             }
+        //         })
+        //         .catch((err) => {
+        //             if (err && err.response) {
+        //                 console.log(err);
+        //                 toast.error('Failed!!!');
+        //             }
+        //         });
+        // }
     };
 
-    const handleCheckbox = (acceptance) => {
-        this.setState({ acceptance });
-    };
 
     return (
         <div className='main-container'>
@@ -70,73 +106,84 @@ export default function AddTrainer() {
                 <HeaderO title="New Trainer" />
                 <div className="content-container">
                     <div className="add-trainer-form-div">
-                        <div className="add-trainer-form-container">
+                        <form className="login-form" onSubmit={handleSubmit} noValidate={false}>
+                            <div className="add-trainer-form-container">
 
-                            <div className="add-trainer-form-inputs">
-                                <h4 className='add-trainer-form-subHeading'>Basic Info</h4>
-                                <hr className="add-trainer-hr" />
-                                <div className="form-row">
-                                    <div className="form-col1">
-                                        <div className='add-trainer-card add-trainer-profile-cards'>
-                                            <div className='own-dashboard-card-img-container'>
-                                                <img src={Pic1} alt="" />
+                                <div className="add-trainer-form-inputs">
+                                    <h4 className='add-trainer-form-subHeading'>Basic Info</h4>
+                                    <hr className="add-trainer-hr" />
+                                    <div className="form-row">
+                                        <div className="form-col1">
+                                            <div className='add-trainer-card add-trainer-profile-cards'>
+                                                <div className='own-dashboard-card-img-container'>
+                                                    <img src={Pic1} alt="" />
+                                                </div>
                                             </div>
+                                            {/* <div className='add-tariner-userID'>T00001</div> */}
+                                            <PictureUploader label="Add Photo" />
+
+
+
                                         </div>
-                                        {/* <div className='add-tariner-userID'>T00001</div> */}
-                                        <PictureUploader label="Add Photo" />
-
-
-
+                                        <div className="form-col2">
+                                            <InputField
+                                                value={requestData.firstname}
+                                                type='text'
+                                                label="First Name"
+                                                placeholder='Type'
+                                                validators={[
+                                                    { check: Validators.required, message: 'This field is required' }
+                                                ]}
+                                                onChange={handleChange('firstname')} />
+                                            {!requestData.firstname && click && <span className='text-danger'>This Field is required</span>}
+                                            <InputField
+                                                value={requestData.lastname}
+                                                type='text'
+                                                label="Last Name"
+                                                placeholder='Type'
+                                                validators={[
+                                                    { check: Validators.required, message: 'This field is required' }
+                                                ]}
+                                                onChange={handleChange('lastname')} />
+                                            {!requestData.lastname && click && <span className='text-danger'>This Field is required</span>}
+                                        </div>
                                     </div>
-                                    <div className="form-col2">
-                                        <InputField
-                                            value={requestData.fname}
-                                            type='text'
-                                            label="First Name"
-                                            placeholder='Type'
-                                            validators={[
-                                                { check: Validators.required, message: 'This field is required' }
-                                            ]}
-                                            onChange={handleChange('fname')} />
-                                        <InputField
-                                            value={requestData.lname}
-                                            type='text'
-                                            label="Last Name"
-                                            placeholder='Type'
-                                            validators={[
-                                                { check: Validators.required, message: 'This field is required' }
-                                            ]}
-                                            onChange={handleChange('lname')} />
+                                    <div className="form-row">
+                                        <div className="form-col1">
+                                            <InputField
+                                                value={requestData.nic}
+                                                type='text'
+                                                label="NIC"
+                                                placeholder='Type'
+                                                validators={[
+                                                    { check: Validators.nic, message: 'NIC is not valid' }
+                                                ]}
+                                                onChange={handleChange('nic')} />
+                                            {!requestData.nic && click && <span className='text-danger'>This Field is required</span>}
+                                        </div>
+                                        <div className="form-col2">
+                                            <InputField
+                                                value={requestData.dob}
+                                                type='date'
+                                                label="Date of Birth"
+                                                placeholder='Type'
+                                                validators={[
+                                                    { check: Validators.required, message: 'This field is required' }
+                                                ]}
+                                                onChange={handleChange('dob')} />
+                                            {!requestData.dob && click && <span className='text-danger'>This Field is required</span>}
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="form-row">
-                                    <div className="form-col1">
-                                        <InputField
-                                            value={requestData.nic}
-                                            type='text'
-                                            label="NIC"
-                                            placeholder='Type'
-                                            validators={[
-                                                { check: Validators.nic, message: 'NIC is not valid' }
-                                            ]}
-                                            onChange={handleChange('nic')} />
-                                    </div>
-                                    <div className="form-col2">
-                                        <InputField
-                                            value={requestData.dob}
-                                            type='date'
-                                            label="Date of Birth"
-                                            placeholder='Type'
-                                            validators={[
-                                                { check: Validators.required, message: 'This field is required' }
-                                            ]}
-                                            onChange={handleChange('dob')} />
-                                    </div>
-                                </div>
-                                <div className="form-row">
-                                    <div className="form-col1">
+                                    <div className="form-row">
+                                        <div className="form-col1">
+                                            <label> Gender</label>
+                                            <div className='radio-div' onChange={handleRadio}>
+                                                <input type="radio" className='form-radio' value="M" name="gender" /> Male
+                                                <input type="radio" className='form-radio' value="F" name="gender" style={{ marginLeft: '10px' }} /> Female
+                                            </div>
+                                            {!requestData.gender && click && <span className='text-danger'>This Field is required</span>}
 
-                                        {/* <Radiobutton
+                                            {/* <Radiobutton
                                     value={gender}
                                     name='gender'
                                     type='radio'
@@ -145,85 +192,94 @@ export default function AddTrainer() {
                                     //   { check: Validators.required, message: 'Select an option' }
                                     // ]}
                                     onChange={handleRadio('gender')} /> */}
-                                    </div>
-                                    <div className="form-col2">
+                                        </div>
+                                        <div className="form-col2">
 
+                                        </div>
+                                    </div>
+
+                                    <h4 className='add-trainer-form-subHeading'>Contact Info</h4>
+                                    <hr className="add-trainer-hr" />
+                                    <div className="form-row">
+                                        <div className="form-col1">
+                                            <InputField
+                                                value={requestData.address}
+                                                type='text'
+                                                label="Address"
+                                                placeholder='Type'
+                                                validators={[
+                                                    { check: Validators.required, message: 'This field is required' }
+                                                ]}
+                                                onChange={handleChange('address')} />
+                                            {!requestData.address && click && <span className='text-danger'>This Field is required</span>}
+
+                                        </div>
+                                        <div className="form-col2">
+                                            <InputField
+                                                value={requestData.email}
+                                                type='text'
+                                                label="Email"
+                                                placeholder='Type'
+                                                validators={[
+                                                    { check: Validators.email, message: 'Email is not valid' }
+                                                ]}
+                                                onChange={handleChange('email')} />
+                                            {!requestData.email && click && <span className='text-danger'>This Field is required</span>}
+
+                                        </div>
+                                    </div>
+                                    <div className="form-row">
+                                        <div className="form-col1">
+                                            <InputField
+                                                value={requestData.phone}
+                                                type='number'
+                                                label="Phone"
+                                                placeholder='Type'
+                                                validators={[
+                                                    { check: Validators.number, message: 'Number is not valid' }
+                                                ]}
+                                                onChange={handleChange('phone')} />
+                                            {!requestData.phone && click && <span className='text-danger'>This Field is required</span>}
+
+                                        </div>
+                                        <div className="form-col2">
+
+                                        </div>
+
+                                    </div>
+                                    <h4 className='add-trainer-form-subHeading'>Qualifications</h4>
+                                    <hr className="add-trainer-hr" />
+                                    <div className="form-row">
+                                        <div className="form-col1">
+                                            <InputField
+                                                value={requestData.qualifications}
+                                                type='textarea'
+                                                placeholder='Type'
+                                                validators={[
+                                                    { check: Validators.required, message: 'This field is required' }
+                                                ]}
+                                                onChange={handleChange('qualifications')} />
+                                            {!requestData.qualifications && click && <span className='text-danger'>This Field is required</span>}
+
+                                            <br></br>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div className="form-row">
+                                        <div className="form-col1"></div>
+                                        <div className="form-col2">
+                                        </div>
+                                        <button type="submit" className="register-button">
+                                            Add
+                                        </button>
                                     </div>
                                 </div>
 
-                                <h4 className='add-trainer-form-subHeading'>Contact Info</h4>
-                                <hr className="add-trainer-hr" />
-                                <div className="form-row">
-                                    <div className="form-col1">
-                                        <InputField
-                                            value={requestData.address}
-                                            type='text'
-                                            label="Address"
-                                            placeholder='Type'
-                                            validators={[
-                                                { check: Validators.required, message: 'This field is required' }
-                                            ]}
-                                            onChange={handleChange('address')} />
-                                    </div>
-                                    <div className="form-col2">
-                                        <InputField
-                                            value={requestData.email}
-                                            type='text'
-                                            label="Email"
-                                            placeholder='Type'
-                                            validators={[
-                                                { check: Validators.email, message: 'Email is not valid' }
-                                            ]}
-                                            onChange={handleChange('email')} />
-                                    </div>
-                                </div>
-                                <div className="form-row">
-                                    <div className="form-col1">
-                                        <InputField
-                                            value={requestData.number}
-                                            type='text'
-                                            label="Phone"
-                                            placeholder='Type'
-                                            validators={[
-                                                { check: Validators.number, message: 'Number is not valid' }
-                                            ]}
-                                            onChange={handleChange('number')} />
-                                    </div>
-                                    <div className="form-col2">
-
-                                    </div>
-
-                                </div>
-                                <h4 className='add-trainer-form-subHeading'>Qualifications</h4>
-                                <hr className="add-trainer-hr" />
-                                <div className="form-row">
-                                    <div className="form-col1">
-                                        <InputField
-                                            value={requestData.qualifications}
-                                            type='textarea'
-                                            placeholder='Type'
-                                            validators={[
-                                                { check: Validators.required, message: 'This field is required' }
-                                            ]}
-                                            onChange={handleChange('qualifications')} />
-                                        <br></br>
-
-                                    </div>
-                                </div>
-
-
-                                <div className="form-row">
-                                    <div className="form-col1"></div>
-                                    <div className="form-col2">
-                                    </div>
-                                    <Button
-
-                                        onClick={handleClick}
-                                        value='Save' />
-                                </div>
                             </div>
-
-                        </div>
+                        </form>
+                        <ToastContainer />
                     </div>
 
 

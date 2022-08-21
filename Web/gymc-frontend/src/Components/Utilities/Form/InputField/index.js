@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { validateInput } from "../Validator/Validator";
 
-const InputField = ({ value, label, placeholder, validators, type, onChange }) => {
+const InputField = ({ value, label, placeholder, validators, type,readonly, onChange }) => {
     const [error, setError] = useState(false);
 
     const handleChange = (event) => {
@@ -21,6 +21,7 @@ const InputField = ({ value, label, placeholder, validators, type, onChange }) =
                     className='form-control'
                     placeholder={placeholder}
                     value={value}
+                    readonly
                     defaultValue={value}
                     onChange={handleChange}
                 />
@@ -29,6 +30,7 @@ const InputField = ({ value, label, placeholder, validators, type, onChange }) =
                     type={type}
                     value={value}
                     className='form-control'
+                    readonly
                     placeholder={placeholder}
                     onChange={handleChange}
                 />
@@ -44,7 +46,8 @@ InputField.propTypes = {
     placeholder: PropTypes.string,
     validators: PropTypes.array,
     type: PropTypes.string,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+    readonly: PropTypes.bool
 };
 
 InputField.defaultProps = {
@@ -52,7 +55,8 @@ InputField.defaultProps = {
     label: '',
     placeholder: '',
     type: 'text',
-    validators: []
+    validators: [],
+    // readonly:false
 };
 
 export default InputField;
