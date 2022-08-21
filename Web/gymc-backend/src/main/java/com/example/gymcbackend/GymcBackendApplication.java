@@ -55,7 +55,7 @@ public class GymcBackendApplication {
 //		user.setMemberId(staffMemId);
 //		user.setPassword("123456789");
 //		user.setEmail("sampath@gmail.com");
-//		user.setUserLevel("Trainer");
+//		user.setUserLevel("Owner");
 //		user.setPassword(passwordEncoder.encode("123456789"));
 //		user.setStatus(true);
 //

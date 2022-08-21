@@ -27,4 +27,17 @@ public class UserAccountDetailsJdbcRepository {
 
         return count;
     }
+
+    public int checkNICExists(String nic) {
+        MapSqlParameterSource namedParameters =
+                new MapSqlParameterSource();
+
+        namedParameters.addValue("nic", nic);
+
+        String sql = "SELECT count(*) from trainee where nic = ?";
+
+        int count = jdbcTemplate.queryForObject(sql, new Object[] { nic }, Integer.class);
+
+        return count;
+    }
 }

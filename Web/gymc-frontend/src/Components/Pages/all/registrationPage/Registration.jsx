@@ -86,6 +86,8 @@ export default function Registration() {
                         // setMessage(response.data);
                         if (response.data === "You have already an account!") {
                             toast.warning('You have already an account!');
+                        } else if (response.data === "There is a issue. Here already has a nic!") {
+                            toast.warning('There is a issue. Here already has a nic!');
                         } else {
                             window.location.href = "/";
                             toast.success("successfully registered!!!");

@@ -36,39 +36,58 @@ public class SignUpService {
 
     public String signUp(Trainee trainee) {
 
-        int rowCount1 = userAccountDetailsJdbcRepository.checkEmailExists(trainee.getEmail());
+        int emailCount = userAccountDetailsJdbcRepository.checkEmailExists(trainee.getEmail());
+        int nicCount = userAccountDetailsJdbcRepository.checkNICExists(trainee.getNic());
 
         SimpleMailMessage message=new SimpleMailMessage();
 
-        if(rowCount1>0){
+        if(emailCount>0){
             return "You have already an account!";
+        }else if(nicCount>0) {
+            return "There is a issue. Here already has a nic!";
         }else{
-            Trainee success=traineeRepository.save(trainee);
-
             String pw=generateRandomPassword(8, 97, 122);
 
             UserAccount user=new UserAccount();
 
-            user.setUserName(trainee.getFirstName());
+            user.setUserName(trainee.getNic());
             user.setEmail(trainee.getEmail());
-            user.setMemberId(trainee.getId());
+//            user.setMemberId(trainee.getId());
             user.setPassword(passwordEncoder.encode(pw));
             user.setStatus(true);
             user.setUserLevel("Trainee");
 
             userAccountDetailsRepository.save(user);
 
+            Trainee traineeEnt=new Trainee();
+
+//            Trainee success=traineeRepository.save(trainee);
+            traineeEnt.setFirstName(trainee.getFirstName());
+            traineeEnt.setLastName(trainee.getLastName());
+            traineeEnt.setEmail(trainee.getEmail());
+            traineeEnt.setDob(trainee.getDob());
+            traineeEnt.setNic(trainee.getNic());
+            traineeEnt.setAddress(trainee.getAddress());
+            traineeEnt.setGender(trainee.getGender());
+            traineeEnt.setOccupation(trainee.getOccupation());
+            traineeEnt.setAddress(trainee.getAddress());
+            traineeEnt.setPhoneNumber(trainee.getPhoneNumber());
+            traineeEnt.setEmergencyNumber(trainee.getEmergencyNumber());
+            traineeEnt.setUserAccount(user);
+
+            traineeRepository.save(traineeEnt);
+
             message.setFrom("thirdyeargroupproject2@gmail.com");
             message.setTo(trainee.getEmail());
-
 
             String mainContent="Welcome to the Gym C.\n"+
                     "Your have successfully registered.\n" +
                     "Welcome to the gym c!\n" +
-                    "We have provided a auto generated password for you.\n" +
-                    "Please change the password for security purposes\nYour Password : ";
+                    "Initially We have provided your NIC as the username.\n" +
+                    "And we have provided a auto generated password for you.\n" +
+                    "You can change your username and password.\nYour Password : ";
 
-            message.setText(mainContent + pw + "\n" + "Your Username : "+trainee.getFirstName());
+            message.setText(mainContent + pw + "\n" + "Your Username : "+trainee.getNic());
             message.setSubject("Welcome to the GYM C!");
 
             mailSender.send(message);

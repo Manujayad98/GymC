@@ -15,3 +15,15 @@ export const getUsers = () => {
         },
     });
 };
+
+export const getProfile = (userName) => {
+    // return axios.get(USER_URL);
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/users/${userName}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
