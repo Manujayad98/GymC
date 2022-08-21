@@ -69,8 +69,9 @@ const Dashboard = () => {
       <SidebarR />
       <div className='body-container'>
         <HeaderR title="Dashboard" />
-        <div className="content-container">
-          <div className='content-row'>
+        {/*<div className="content-container">*/}
+          <div className='rec-split rec-left'>
+          <div className='rec-content-row'>
             <Card className='rec-dashboard-card' >
               <Card.Body>
                 <Card.Title>Payments Due</Card.Title>
@@ -83,73 +84,58 @@ const Dashboard = () => {
                 <button className='btn btn-default btn-circle btn-xl'>2</button>
               </Card.Body>
             </Card>
-          </div>
-          <div className='content-row'>
-            <Card className='rec-dashboard-card'>
+            <Card className='rec-trainerstoday-card'>
               <Card.Body>
                 <Card.Title>Trainers today</Card.Title>
-                <div className='content-row'>
+                <div className='rec-content-row'>
                   <Card className='rec-dashboard-pic-card'>
                     <Card.Body>
                       <img src={Pic1} alt="" />
-                      <Card.Subtitle className='card-subtitle'>Louis</Card.Subtitle>
+                      <Card.Subtitle className='rec-card-subtitle'>Louis</Card.Subtitle>
                     </Card.Body>
                   </Card>
                   <Card className='rec-dashboard-pic-card'>
                     <Card.Body>
                       <img src={Pic1} alt="" />
-                      <Card.Subtitle className='card-subtitle'>John</Card.Subtitle>
+                      <Card.Subtitle className='rec-card-subtitle'>John</Card.Subtitle>
                     </Card.Body>
                   </Card>
                   <Card className='rec-dashboard-pic-card'>
                     <Card.Body>
                       <img src={Pic1} alt="" />
-                      <Card.Subtitle className='card-subtitle'>Kunst</Card.Subtitle>
+                      <Card.Subtitle className='rec-card-subtitle'>Kunst</Card.Subtitle>
                     </Card.Body>
                   </Card>
                   <Card className='rec-dashboard-pic-card'>
                     <Card.Body>
                       <img src={Pic1} alt="" />
-                      <Card.Subtitle className='card-subtitle'>Trump</Card.Subtitle>
+                      <Card.Subtitle className='rec-card-subtitle'>Trump</Card.Subtitle>
                     </Card.Body>
                   </Card>
                   <Card className='rec-dashboard-pic-card'>
                     <Card.Body>
                       <img src={Pic1} alt="" />
-                      <Card.Subtitle className='card-subtitle'>Lahiru</Card.Subtitle>
+                      <Card.Subtitle className='rec-card-subtitle'>Lahiru</Card.Subtitle>
                     </Card.Body>
                   </Card>
                   <Card className='rec-dashboard-pic-card'>
                     <Card.Body>
                       <img src={Pic1} alt="" />
-                      <Card.Subtitle className='card-subtitle'>Louianna</Card.Subtitle>
-                    </Card.Body>
-                  </Card>
-                  <Card className='rec-dashboard-pic-card'>
-                    <Card.Body>
-                      <img src={Pic1} alt="" />
-                      <Card.Subtitle className='card-subtitle'>Trump</Card.Subtitle>
-                    </Card.Body>
-                  </Card>
-                  <Card className='rec-dashboard-pic-card'>
-                    <Card.Body>
-                      <img src={Pic1} alt="" />
-                      <Card.Subtitle className='card-subtitle'>Lahiru</Card.Subtitle>
-                    </Card.Body>
-                  </Card>
-                  <Card className='rec-dashboard-pic-card'>
-                    <Card.Body>
-                      <img src={Pic1} alt="" />
-                      <Card.Subtitle className='card-subtitle'>Louianna</Card.Subtitle>
+                      <Card.Subtitle className='rec-card-subtitle'>Louianna</Card.Subtitle>
                     </Card.Body>
                   </Card>
                 </div>
               </Card.Body>
             </Card>
-            <Card className='rec-dashboard-card alt' style={{ margin: '2%' }}>
+          </div>
+          </div>
+          <div className='rec-split rec-right'>
+          <div className='rec-content-row'>
+
+            <Card className='rec-alt-card' style={{ margin: '2%' }}>
               <Card.Body>
                 <Card.Title>Upcoming Appointments</Card.Title>
-                <div className='table-cards'>
+                <div className='rec-table-cards'>
                   <Table
                     rows={workoutDetails}
                     headCells={workoutDetailsTableHead}
@@ -158,8 +144,9 @@ const Dashboard = () => {
               </Card.Body>
             </Card>
           </div>
+          </div>
 
-        </div>
+        {/*</div>*/}
 
       </div>
     </div>

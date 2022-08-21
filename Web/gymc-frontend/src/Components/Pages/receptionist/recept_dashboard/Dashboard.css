@@ -1,14 +1,24 @@
 .rec-dashboard-card{
-    width: 450px;
+    width: 220px;
     height: fit-content;
     padding: 1%;
     box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
 
 }
+.rec-trainerstoday-card{
+    width: 450px;
+    height: fit-content;
+    padding: 1%;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+}
 
-.alt{
-    width: 700px;
+.rec-alt-card{
+    height: fit-content;
+    padding: 1%;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+    width: 100%;
     padding: 0%;
+    align-items: center;
     
 }
 
@@ -19,7 +29,7 @@
     margin-top: 5%;
 }
 
-.card-subtitle{
+.rec-card-subtitle{
     padding-top: 10%;
 }
 
@@ -33,7 +43,7 @@
     line-height: 1.33;
     background-color: #ff2121;
 }
-.content-row{
+.rec-content-row{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -43,7 +53,7 @@
     margin-top: 0.5%;
 }
 
-.table-cards {
+.rec-table-cards {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -53,4 +63,26 @@
     height: inherit;
     
 }
+.rec-split.rec-left{
+    width: 35%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    left: 0;
+    margin: 90px;
+    margin-top: 100px;
+}
+
+.rec-split.rec-right{
+    width: 60%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+    margin-top: 70px;
+    right: 0;
+}
+
 
