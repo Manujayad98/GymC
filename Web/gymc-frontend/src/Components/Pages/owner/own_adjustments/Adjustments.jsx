@@ -8,10 +8,10 @@ import Edit from '../../../../images/Icons/pen-solid.svg'
 import trash from '../../../../images/Icons/trash-solid.svg'
 import Button1 from '@mui/material/Button';
 //increment decrement
-import AddIcon from "@material-ui/icons/Add";
-import RemoveIcon from "@material-ui/icons/Remove";
-import Button from "@material-ui/core/Button";
-import Tooltip from "@material-ui/core/Tooltip";
+// import AddIcon from "@material-ui/icons/Add";
+// import RemoveIcon from "@material-ui/icons/Remove";
+// import Button from "@material-ui/core/Button";
+// import Tooltip from "@material-ui/core/Tooltip";
 
 
 export default function Exercises() {
@@ -233,7 +233,7 @@ export default function Exercises() {
                         <div className="center_div">
                         <h2 id="count">{count}</h2>
                         <div className="btn_div">
-                            <Tooltip title="Add">
+                            {/* <Tooltip title="Add">
                             <Button onClick={IncNum}>
                                 <AddIcon />
                             </Button>
@@ -242,7 +242,7 @@ export default function Exercises() {
                             <Button onClick={DecNum}>
                             <RemoveIcon />
                             </Button>
-                            </Tooltip>
+                            </Tooltip> */}
                         </div>
                         </div>
                     </div>

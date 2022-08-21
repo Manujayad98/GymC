@@ -4,7 +4,7 @@ import SidebarO from '../adm_sidebar/Sidebar'
 import HeaderO from '../adm_header/header'
 import './SystemLogs.css'
 import Button from '@mui/material/Button';
-import DownloadIcon from '@mui/icons-material/Download';
+// import DownloadIcon from '@mui/icons-material/Download';
 
 
 const SystemLog = () => {
@@ -18,7 +18,7 @@ const SystemLog = () => {
             {/* <h1>sumudu</h1> */}
             <div className='LogText'>Click on below button to download the system log file</div>
             <div className='downloadButton'>
-              <Button
+              {/* <Button
                 style={{
                   borderRadius: 35,
                   backgroundColor: "#32E04E",
@@ -27,7 +27,7 @@ const SystemLog = () => {
                 }}
                 color="primary" size="large" startIcon={<DownloadIcon />}>
                 Download
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>
