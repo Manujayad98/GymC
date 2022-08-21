@@ -1,6 +1,8 @@
 package com.example.gymcbackend.repository.userDao;
 
+import com.example.gymcbackend.dto.Profile;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -40,4 +42,43 @@ public class UserAccountDetailsJdbcRepository {
 
         return count;
     }
+
+    public Long getUserIdByUsername(String userName) {
+        MapSqlParameterSource namedParameters =
+                new MapSqlParameterSource();
+
+        namedParameters.addValue("user_name", userName);
+
+        String sql = "SELECT user_id from user_account where user_name = ?";
+
+        Long userId = jdbcTemplate.queryForObject(sql, new Object[] { userName }, Long.class);
+
+        return userId;
+
+    }
+
+    public Profile profileStaffMember(long userId) {
+        MapSqlParameterSource namedParameters =
+                new MapSqlParameterSource();
+
+        System.out.println(userId);
+
+//        namedParameters.addValue("user_id", userId);
+
+        String query = "select  u.user_id, u.user_name,s.first_name,s.last_name,s.phone_number,s.email,s.address,s.nic,s.gender,s.dob " +
+                "from user_account as u " +
+                "INNER JOIN staff_member s ON u.user_id= s.userid and u.user_id=?";
+
+        System.out.println(query);
+
+//        Profile profile = jdbcTemplate.queryForObject(query,  Profile.class);
+//        jdbcTemplate.queryForObject(query, new Object[] { userId }, String.class);
+        Profile profile = (Profile) jdbcTemplate.queryForObject(query, new Object[] {userId}, new BeanPropertyRowMapper(Profile.class));
+
+
+
+        System.out.println("awajdbc3");
+        return profile;
+    }
+
 }

@@ -39,27 +39,35 @@ public class GymcBackendApplication {
 //		UserAccount user=new UserAccount();
 //		StaffMember staffMember= new StaffMember();
 //
-//		staffMember.setFirstName("Kalindu");
-//		staffMember.setLastName("Sampath");
-//		staffMember.setAddress("No,324/3, Dewalapara, Panadura");
-//		staffMember.setGender('M');
-//		staffMember.setNic("199874513600");
-//		staffMember.setPhoneNumber("0773514180");
-//		staffMember.setStaffType(4);
-//
-//		staffMemberRepository.save(staffMember);
-//
-//		Long staffMemId= (Long) staffMember.getId();
-//
-//		user.setUserName("KalinduS");
-//		user.setMemberId(staffMemId);
+//		user.setUserName("199874511111");
+////		user.setMemberId(staffMemId);
 //		user.setPassword("123456789");
-//		user.setEmail("sampath@gmail.com");
-//		user.setUserLevel("Owner");
+//		user.setEmail("sudam@gmail.com");
+//		user.setUserLevel("Admiin");
 //		user.setPassword(passwordEncoder.encode("123456789"));
 //		user.setStatus(true);
 //
 //		userAccountDetailsRepository.save(user);
+//
+//		staffMember.setFirstName("Sudam");
+//		staffMember.setLastName("Mune");
+//		staffMember.setAddress("No,324/3, Dewalapara, Panadura");
+//		staffMember.setGender('F');
+//		staffMember.setNic("199874511111");
+//		staffMember.setPhoneNumber("0773514180");
+//		staffMember.setStaffType(3);
+////		staffMember.setId(8);
+//
+//		staffMemberRepository.save(staffMember);
+//
+////		Long staffMemId= (Long) staffMember.getId();
+//
+//
 //	}
 
+	//Staff Types
+	//Owner : 1
+	//Receptionist : 2
+	//Trainer : 3
+	//Admin : 4
 }

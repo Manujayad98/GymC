@@ -1,5 +1,6 @@
 package com.example.gymcbackend.controllers;
 
+import com.example.gymcbackend.dto.Profile;
 import com.example.gymcbackend.entities.UserAccount;
 import com.example.gymcbackend.repository.userDao.UserAccountDetailsRepository;
 import com.example.gymcbackend.services.CustomUserService;
@@ -29,8 +30,14 @@ public class UserController {
         return userAccountDetailsRepository.findAll();
     }
 
-    @GetMapping("/users/{id}")
-    public Optional<UserAccount> getUserById(@PathVariable Long id){
-        return userAccountDetailsRepository.findById(id);
+//    @GetMapping("/users/{id}")
+//    public Optional<UserAccount> getUserByUsername(@PathVariable String userName){
+//        return customUserService.loadUserByUsername(userName);
+//    }
+
+    @GetMapping("/users/{userName}")
+    public Profile getUserById(@PathVariable String userName){
+        return customUserService.getUserByUsername(userName);
     }
+
 }

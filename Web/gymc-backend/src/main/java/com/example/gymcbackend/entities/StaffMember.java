@@ -45,7 +45,7 @@ public class StaffMember implements UserDetails {
     private Integer staffType;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userID")
+    @JoinColumn(name = "userId")
     UserAccount userAccount;
 
     @Override

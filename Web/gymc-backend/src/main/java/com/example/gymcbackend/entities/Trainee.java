@@ -47,7 +47,7 @@ public class Trainee implements UserDetails {
     private String occupation;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userID")
+    @JoinColumn(name = "userId")
     UserAccount userAccount;
 
     @Override
