@@ -8,10 +8,10 @@ import Edit from '../../../../images/Icons/pen-solid.svg'
 import trash from '../../../../images/Icons/trash-solid.svg'
 import Button1 from '@mui/material/Button';
 //increment decrement
-import AddIcon from "@material-ui/icons/Add";
-import RemoveIcon from "@material-ui/icons/Remove";
-import Button from "@material-ui/core/Button";
-import Tooltip from "@material-ui/core/Tooltip";
+// import AddIcon from "@material-ui/icons/Add";
+// import RemoveIcon from "@material-ui/icons/Remove";
+// import Button from "@material-ui/core/Button";
+// import Tooltip from "@material-ui/core/Tooltip";
 
 
 export default function Exercises() {
@@ -218,34 +218,38 @@ export default function Exercises() {
                 <div className="content-container">
                     <div className="ex">
                         <div className="header">
-                            <h3 id="own-dashboard-titles">Exercises</h3>
+                            <h3 id="own-adjustment-titles">Exercises</h3>
                             <Button1 variant="contained" className="Hbutton">New Exercise</Button1>
                         </div>
+                        <div className='own-adjustment-card '>
                         <Table
                             rows={excerciseDetails}
                             headCells={excerciseDetailsTableHead}
                             tableName={"Exercises"}
                         />
+                        </div>
                     </div>
                     <div className="ex">
                         <div className="header">
-                            <h3 id="own-dashboard-titles">Payment Plans</h3>
+                            <h3 id="own-adjustment-titles">Payment Plans</h3>
                             <Button1 variant="contained" className="Hbutton">New Payment</Button1>
                         </div>
+                        <div className='own-adjustment-card '>
                         <Table
                             rows={paymentPlanDetails}
                             headCells={paymentPlanDetailsTableHead}
                             tableName={"PaymentPlans"}
                         />
+                        </div>
                     </div>
                     <div className="ex">
-                        <h3 id="own-dashboard-titles">No of appoinments per timeslot</h3>
+                        <h3 id="own-adjustment-titles">No of appoinments per timeslot</h3>
 
                         <div className="main_div">
                             <div className="center_div">
                                 <h2 id="count">{count}</h2>
                                 <div className="btn_div">
-                                    <Tooltip title="Add">
+                                    {/* <Tooltip title="Add">
                                         <Button onClick={IncNum}>
                                             <AddIcon />
                                         </Button>
@@ -254,7 +258,7 @@ export default function Exercises() {
                                         <Button onClick={DecNum}>
                                             <RemoveIcon />
                                         </Button>
-                                    </Tooltip>
+                                    </Tooltip> */}
                                 </div>
                             </div>
                         </div>
