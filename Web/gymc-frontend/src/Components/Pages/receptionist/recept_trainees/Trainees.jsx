@@ -45,7 +45,7 @@ const Trainees = () => {
     {
       TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
       TrainerID: "M001",
-      TrainerName: "RMN Ruwan",
+      TrainerName: "Kasun Perera",
       PaymentType: "Daily",
       RegDate: "2021-10-24",
       Check: (
@@ -68,9 +68,32 @@ const Trainees = () => {
     },
     {
       TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TrainerID: "M001",
-      TrainerName: "RMN Ruwan",
+      TrainerID: "M002",
+      TrainerName: "Rasul Silve",
       PaymentType: "Daily",
+      RegDate: "2021-08-14",
+      Check: (
+        <span>
+          <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+          <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+        </span>
+      ),
+      Pay: (
+        <Button variant='success'>Pay</Button>
+      ),
+      Actions: (
+        <span >
+          <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+        </span >
+      ),
+    },
+    {
+      TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+      TrainerID: "M003",
+      TrainerName: "Dominic Gape",
+      PaymentType: "Monthly - Personal",
       RegDate: "2021-10-24",
       Check: (
         <span>
@@ -85,7 +108,99 @@ const Trainees = () => {
         <span >
           <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
           <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+        </span >
+      ),
+    },
+    {
+      TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+      TrainerID: "M004",
+      TrainerName: "Natasha Perera",
+      PaymentType: "Monthly - Non Personal",
+      RegDate: "2021-10-24",
+      Check: (
+        <span>
+          <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+          <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+        </span>
+      ),
+      Pay: (
+        <Button variant='success'>Pay</Button>
+      ),
+      Actions: (
+        <span >
+          <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+        </span >
+      ),
+    },
+    {
+      TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+      TrainerID: "M005",
+      TrainerName: "Rajeewa Senevirathne",
+      PaymentType: "Daily",
+      RegDate: "2022-01-05",
+      Check: (
+        <span>
+          <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+          <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+        </span>
+      ),
+      Pay: (
+        <Button variant='success'>Pay</Button>
+      ),
+      Actions: (
+        <span >
+          <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+        </span >
+      ),
+    },
+    {
+      TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+      TrainerID: "M006",
+      TrainerName: "Denuwan Wijesekara",
+      PaymentType: "Daily",
+      RegDate: "2022-02-14",
+      Check: (
+        <span>
+          <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+          <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+        </span>
+      ),
+      Pay: (
+        <Button variant='success'>Pay</Button>
+      ),
+      Actions: (
+        <span >
+          <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+        </span >
+      ),
+    },
+    {
+      TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+      TrainerID: "M007",
+      TrainerName: "Pasindu Pathberiya",
+      PaymentType: "Monthly - Personal",
+      RegDate: "2022-06-11",
+      Check: (
+        <span>
+          <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+          <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+        </span>
+      ),
+      Pay: (
+        <Button variant='success'>Pay</Button>
+      ),
+      Actions: (
+        <span >
+          <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
         </span >
       ),
     }
@@ -114,7 +229,7 @@ const Trainees = () => {
                   <Card className='rec-train-card'>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
-                      T000001
+                      M001
                     </Card.Subtitle>
                     <Card.Body>
                       Kasun Perera
@@ -123,7 +238,7 @@ const Trainees = () => {
                   <Card className='rec-train-card'>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
-                      T000002
+                      M002
                     </Card.Subtitle>
                     <Card.Body>
                       Rasul Silve
@@ -132,7 +247,7 @@ const Trainees = () => {
                   <Card className='rec-train-card'>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
-                      T000003
+                      M003
                     </Card.Subtitle>
                     <Card.Body>
                       Dominic Gape
@@ -145,7 +260,7 @@ const Trainees = () => {
                   <Card className='rec-train-card' style={{borderColor: 'red'}}>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
-                      T000001
+                      M001
                     </Card.Subtitle>
                     <Card.Body>
                       Kasun Perera
@@ -154,7 +269,7 @@ const Trainees = () => {
                   <Card className='rec-train-card' style={{borderColor:'red'}}>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
-                      T000002
+                      M002
                     </Card.Subtitle>
                     <Card.Body>
                       Rasul Silve
