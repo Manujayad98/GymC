@@ -97,7 +97,7 @@ import Dropdown from '../../../Utilities/Form/Dropdown'
 
                 <div className='own-analytics-card-container'>
                   
-                  <div className='own-analytics-card profile-cards'>
+                  <div className='own-analytics-card analytics-cards'>
 
                   <div className='own-analytics-card-content'>
                     <div className='staffID'>No of Trainers</div>
@@ -105,7 +105,7 @@ import Dropdown from '../../../Utilities/Form/Dropdown'
                   </div>
                   
                 </div>
-                <div className='own-analytics-card profile-cards'>
+                <div className='own-analytics-card analytics-cards'>
 
                   <div className='own-analytics-card-content'>
                     <div className='staffID'>No of Trainees</div>
@@ -113,7 +113,15 @@ import Dropdown from '../../../Utilities/Form/Dropdown'
                   </div>
                   
                 </div>
-                <div className='own-analytics-card profile-cards'>
+                <div className='own-analytics-card analytics-cards'>
+
+                  <div className='own-analytics-card-content'>
+                    <div className='staffID'>No of Trainees</div>
+                    <div className='staffName'>5</div>
+                  </div>
+                  
+                </div>
+                <div className='own-analytics-card analytics-cards'>
 
                   <div className='own-analytics-card-content'>
                     <div className='staffID'>No of Excercises</div>
@@ -121,7 +129,7 @@ import Dropdown from '../../../Utilities/Form/Dropdown'
                   </div>
                   
                 </div>
-                <div className='own-analytics-card profile-cards'>
+                <div className='own-analytics-card analytics-cards'>
 
                   <div className='own-analytics-card-content'>
                     <div className='staffID'>No of Equipments</div>
@@ -130,27 +138,27 @@ import Dropdown from '../../../Utilities/Form/Dropdown'
                   
                 </div>
                 </div>
-                <div className='own-dashboard-chart-table-container'>
+                <div className='own-analytics-chart-table-container'>
 
-                  <div className='own-dashboard-chart-container'>
-                    <div className='own-dashboard-container-head'>Annual Income</div>
-                    <div className='own-dashboard-card chart-cards'>
+                  <div className='own-analytics-chart-container'>
+                    <div className='own-analytics-container-head'>Annual Income</div>
+                    <div className='own-analytics-card chart-cards'>
                       <BarChart data={ChartData} />
                     </div>
                   </div>
 
-                  <div className='own-dashboard-table-container'>
-                    <div className='own-dashboard-container-head'>This Month's Income</div>
-                    <div className='own-dashboard-card chart-cards'>
+                  <div className='own-analytics-chart-container'>
+                    <div className='own-analytics-container-head'>This Month's Income</div>
+                    <div className='own-analytics-card chart-cards'>
                       <BarChart data={ChartData} />
                     </div>
                   </div>
                 </div>
-                <div className='own-dashboard-chart-table-container'>
+                <div className='own-analytics-chart-table-container'>
 
-                  <div className='own-dashboard-chart-container'>
-                    <div className='own-dashboard-container-head'>Available Excercises</div>
-                    <div className='own-dashboard-card table-cards'>
+                  <div className='own-analytics-table-container'>
+                    <div className='own-analytics-container-head'>Available Excercises</div>
+                    <div className='own-analytics-card table-cards'>
                       <Table
                         rows={workoutDetails}
                         headCells={workoutDetailsTableHead}
@@ -158,9 +166,9 @@ import Dropdown from '../../../Utilities/Form/Dropdown'
                     </div>
                   </div>
 
-                  <div className='own-dashboard-table-container'>
-                    <div className='own-dashboard-container-head'>Available Payment Plans</div>
-                    <div className='own-dashboard-card table-cards'>
+                  <div className='own-analytics-table-container'>
+                    <div className='own-analytics-container-head'>Available Payment Plans</div>
+                    <div className='own-analytics-card table-cards'>
                       <Table
                         rows={priceDetails}
                         headCells={priceDetailsTableHead}
@@ -172,7 +180,7 @@ import Dropdown from '../../../Utilities/Form/Dropdown'
 
                 </Tab>
                 <Tab eventKey="profile" title="Reports">
-                  <div className='dropdown'>
+                  <div className='own-reports-dropdown'>
                                 <div className="dropdown-container">
                                     <div className="form-label-container">
                                         <label class="form-label" for="form1">Report Type</label>
