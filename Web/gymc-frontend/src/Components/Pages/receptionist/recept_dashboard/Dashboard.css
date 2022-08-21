@@ -1,15 +1,17 @@
 .rec-dashboard-card{
-    width: 220px;
+    width: 215px;
     height: fit-content;
-    padding: 1%;
+    padding: 10px;
     box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+    margin: 10px;
 
 }
 .rec-trainerstoday-card{
     width: 450px;
     height: fit-content;
-    padding: 1%;
+    padding: 10px;
     box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+    margin: 10px;
 }
 
 .rec-alt-card{
@@ -64,25 +66,18 @@
     
 }
 .rec-split.rec-left{
-    width: 35%;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    overflow-x: hidden;
-    left: 0;
-    margin: 90px;
-    margin-top: 100px;
+    width: 40%;
+    float: left;
 }
 
 .rec-split.rec-right{
     width: 60%;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    overflow-x: hidden;
-    padding-top: 20px;
-    margin-top: 70px;
-    right: 0;
+    float: left;
+}
+
+.rec-content-container::after{
+    display: table;
+    clear: both;
 }
 
 
