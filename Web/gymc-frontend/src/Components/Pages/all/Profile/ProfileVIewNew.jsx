@@ -6,39 +6,71 @@ import owner from '../../../../images/owner.png'
 import './ProfileViewNew.css'
 import Edit from '../../../../images/Icons/pen-solid.svg'
 
-import { getProfile } from "../../../../services/UserService";
+
 import { fetchUserData } from "../../../../services/AuthenticationService";
+import { getProfile } from "../../../../services/UserService";
 
-
+import Button from '../../../Utilities/Form/Button';
+import InputField from "../../../Utilities/Form/InputField";
+import Dropdown from "../../../Utilities/Form/Dropdown";
+import { Validators } from "../../../Utilities/Form/Validator/Validator";
+import Checkbox from "../../../Utilities/Form/Checkbox";
 
 export default function () {
+
+    useEffect(() => {
+        checkValidate();
+    }, []);
+
+    const checkValidate = async () => {
+        const y = localStorage.getItem("USER_KEY");
+        if (!y) {
+            window.location.href = "/";
+        }
+    };
+
+
+
+    // const [data, setData] = useState({});
+
     const [userdata, setData] = useState([]);
-    const [userrole, setUserRoles] = useState([]);
-    const [myEmail, setMyEmail] = useState("");
+
     const [profile, setProfile] = useState({
-        id: "",
-        firstName: "",
-        lastName: "",
+        user_id: "",
+        user_name: "",
+        first_name: "",
+        last_name: "",
+        phone_number: "",
         email: "",
-        phoneNumber: "",
         address: "",
         gender: "",
         nic: "",
     });
 
-    const userData = async () => {
+    useEffect(() => {
+        userProfileData();
+    }, []);
+
+    // console.log(data);
+
+    const userProfileData = async () => {
         const res = await fetchUserData();
+        console.log(res.data.userName);
         setData(res.data);
-        setUserRoles(res.data.userLevel);
-        getProfileData(res.data.userName);
+        // setUserRoles(res.data.userName);
+        console.log(res.data.userName);
+        getUserProfileData(res.data.userName);
         // console.log(res.data);
     };
 
-    const getProfileData = async (userName) => {
+    const getUserProfileData = async (userName) => {
+        console.log('res1');
         const res = await getProfile(userName);
+
+        console.log(res);
         setProfile(res.data);
         // setMyEmail(res.data.email);
-        // console.log(res.data);
+
     };
 
     return (
@@ -70,22 +102,30 @@ export default function () {
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
-                                                        <label for="inputEmail4">UserID</label>
-                                                        <input type="email" class="form-control profile-input-field" id="" placeholder="Email"></input>
+                                                        <label for="userid">UserID</label>
+                                                        <input type="text" class="form-control profile-input-field" value={profile.user_id} id="" placeholder="Email"></input>
                                                     </div>
 
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
-                                                        <label for="inputEmail4">Username</label>
-                                                        <input type="email" class="form-control profile-input-field" id="" placeholder="Email"></input>
+                                                        <label for="username">Username</label>
+                                                        <input type="text" class="form-control profile-input-field" value={profile.user_name} id="" ></input>
+
+
+                                                        {/* <InputField
+                                                            value={profile.user_name}
+                                                            type='text'
+                                                            label="User Name"
+
+                                                        /> */}
                                                     </div>
 
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
-                                                        <label for="inputEmail4">First Name</label>
-                                                        <input type="email" class="form-control profile-input-field" id="" placeholder="Email"></input>
+                                                        <label for="firstname">First Name</label>
+                                                        <input type="text" class="form-control profile-input-field" value={profile.first_name} id="" ></input>
                                                     </div>
 
                                                 </div>
@@ -99,35 +139,42 @@ export default function () {
                                             <div className='profile-card1'>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
-                                                        <label for="inputEmail4">Last Name</label>
-                                                        <input type="email" class="form-control profile-input-field" id="" placeholder="Email"></input>
+                                                        <label for="lastname">Last Name</label>
+                                                        <input type="text" class="form-control profile-input-field" id="" value={profile.last_name} ></input>
                                                     </div>
 
                                                 </div>
-
+                                                {/* <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="gender">Gender</label>
+                                                    </div>
+                                                </div> */}
                                                 <div class="form-row">
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="" value="option1"></input>
+
+                                                    <div class="form-group col-md-6">
+                                                        <label for="gender" style={{ marginBottom: '5px' }}>Gender</label><br />
+                                                        {/* <div class="form-check form-check-inline"> */}
+                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="" value="M" checked={profile.gender === "M"} ></input>
                                                         <label class="form-check-label" for="inlineRadio1">Male</label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="" value="option2"></input>
+                                                        {/* </div> */}
+                                                        {/* <div class="form-check form-check-inline"> */}
+                                                        <input class="form-check-input" style={{ marginLeft: '30px' }} type="radio" name="inlineRadioOptions" id="" value="F" cheched={profile.gender === "F"}></input>
                                                         <label class="form-check-label" for="inlineRadio2">Female</label>
+                                                        {/* </div> */}
                                                     </div>
-
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
-                                                        <label for="inputEmail4">DOB</label>
-                                                        <input type="date" class="form-control profile-input-field" id="" ></input>
+                                                        <label for="dob">DOB</label>
+                                                        <input type="date" class="form-control profile-input-field" id="" value={profile.dob} ></input>
                                                     </div>
 
                                                 </div>
 
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
-                                                        <label for="inputEmail4">Phone</label>
-                                                        <input type="email" class="form-control profile-input-field" id="" placeholder="Email"></input>
+                                                        <label for="phone">Phone</label>
+                                                        <input type="email" class="form-control profile-input-field" value={profile.phone_number} id="" ></input>
                                                     </div>
 
                                                 </div>
@@ -142,22 +189,22 @@ export default function () {
 
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
-                                                        <label for="inputEmail4">Email</label>
-                                                        <input type="email" class="form-control profile-input-field" id="" placeholder="Email"></input>
+                                                        <label for="email">Email</label>
+                                                        <input type="email" class="form-control profile-input-field" value={profile.email} id="" ></input>
                                                     </div>
 
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
-                                                        <label for="inputEmail4">NIC</label>
-                                                        <input type="email" class="form-control profile-input-field" id="" placeholder="Email"></input>
+                                                        <label for="nic">NIC</label>
+                                                        <input type="email" class="form-control profile-input-field" value={profile.nic} id="" ></input>
                                                     </div>
 
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
-                                                        <label for="inputEmail4">Address</label>
-                                                        <input type="email" class="form-control profile-input-field" id="" placeholder="Email"></input>
+                                                        <label for="address">Address</label>
+                                                        <input type="email" class="form-control profile-input-field" value={profile.address} id="" ></input>
                                                     </div>
 
                                                 </div>
