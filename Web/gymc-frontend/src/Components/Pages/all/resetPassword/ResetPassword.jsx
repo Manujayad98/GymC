@@ -8,10 +8,13 @@ import Button from '../../../Utilities/Form/Button';
 import InputField from "../../../Utilities/Form/InputField";
 import Checkbox from "../../../Utilities/Form/Checkbox";
 import { Validators } from "../../../Utilities/Form/Validator/Validator";
-import LoginImage from "../../../../images/LoginPage.jpg"
+import ResetImage from "../../../../images/resetPage.jpg"
 
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 import '../../all/resetPassword/ResetPassword.css'
+
 
 const ResetPassword = ({ loading, error, ...props }) => {
 
@@ -31,14 +34,24 @@ const ResetPassword = ({ loading, error, ...props }) => {
         confirmPassword: "",
 
     });
+    const [click,setClick]=useState(false);
+    const [match,setMatch]=useState(true);
 
     const handleChange = (key) => (value) => {
         // key.persist();
-        console.log(key, value);
+        
         setValues({
             ...requestData,
             [key]: value
         });
+        if(requestData.newPassword !== requestData.confirmPassword && requestData.confirmPassword){
+            
+            setMatch({ match: false })
+            console.log(match);
+        }else{
+            setMatch({ match: true})
+        }
+        console.log(requestData)
     };
 
 
@@ -46,11 +59,12 @@ const ResetPassword = ({ loading, error, ...props }) => {
         event.preventDefault();
         alert('Button Clicked');
     };
-    // const handleMatch = e =>{
+    // const handleMatch = (key) =>{
     //     if(requestData.newPassword === requestData.confirmPassword){
     //         return true;
     //     }
     //     else{
+            
     //         return false;
     //     }
     // };
@@ -62,10 +76,7 @@ const ResetPassword = ({ loading, error, ...props }) => {
     //     setAuthMode(authMode === "signin" ? "signup" : "signin")
     // }
 
-    // const [values, setValues] = useState({
-    //     userName: "",
-    //     password: "",
-    // });
+    
 
     const userData = async () => {
         console.log('res1');
@@ -89,8 +100,18 @@ const ResetPassword = ({ loading, error, ...props }) => {
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        props.authenticate();    //do not reload the page
+        // props.authenticate();    //do not reload the page
         // console.log(props);
+        if (!requestData.newPassword || !requestData.confirmPassword) {
+            setClick({ click: true, })
+            if (!requestData.newPassword) {
+                console.log('not userName');
+            }
+            if (!requestData.confirmPassword) {
+                console.log('not password');
+            }
+            toast.warning('Please fill out the form correctly');
+        }
 
         userLogin(requestData)
             .then((response) => {
@@ -104,20 +125,20 @@ const ResetPassword = ({ loading, error, ...props }) => {
                     props.loginFailure("1.Something Wrong!Please Try Again");
                 }
             })
-            .catch((err) => {
-                if (err && err.response) {
-                    switch (err.response.status) {
-                        case 401:
-                            console.log("401 status");
-                            props.loginFailure("Authentication Failed.Bad Credentials");
-                            break;
-                        default:
-                            props.loginFailure("2.Something Wrong!Please Try Again!");
-                    }
-                } else {
-                    // props.loginFailure("3.Something Wrong!Please Try Again");
-                }
-            });
+            // .catch((err) => {
+            //     if (err && err.response) {
+            //         switch (err.response.status) {
+            //             case 401:
+            //                 console.log("401 status");
+            //                 props.loginFailure("Authentication Failed.Bad Credentials");
+            //                 break;
+            //             default:
+            //                 props.loginFailure("2.Something Wrong!Please Try Again!");
+            //         }
+            //     } else {
+            //         // props.loginFailure("3.Something Wrong!Please Try Again");
+            //     }
+            // });
         //console.log("Loading again",loading);
     };
 
@@ -150,6 +171,8 @@ const ResetPassword = ({ loading, error, ...props }) => {
                                                     { check: Validators.password, message: 'Password is invalid.must contain lowercase,uppercase,numeric and special with 8 or more' }
                                                 ]}
                                                 onChange={handleChange('newPassword')} />
+                                                {!match && !requestData.newPassword && click && <span className='text-danger'>This Field is required</span>}
+
                                         </div>
                                     </div>
                                     <div className='form-row'>
@@ -159,23 +182,28 @@ const ResetPassword = ({ loading, error, ...props }) => {
                                                 type='password'
                                                 label="Password"
                                                 placeholder='Type'
-                                                validators={[
-                                                    { check: handleChange, message: 'This field is required' }
-                                                ]}
+                                                // validators={[
+                                                //     { check: Validators.required, message: 'This field is required' }
+                                                // ]}
                                                 onChange={handleChange('confirmPassword')} />
+                                                {/* {!requestData.confirmPassword && click && <span className='text-danger'>This Field is required</span>} */}
+                                                {!match && requestData.confirmPassword && <span className='text-danger'>Passwords not match</span>}
+                                                
                                         </div>
                                     </div>
 
 
 
-                                    <Button
-                                        onClick={handleClick}
-                                        value='Reset' />
+                                    <div className="login-btn-container">
+                                        <button type="submit" className=" login-btn">
+                                            Reset
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div className='resetPswd-form-content-right'>
-                            <img className='resetPswd-form-img' src={LoginImage} alt='runningMan' />
+                            <img className='resetPswd-form-img' src={ResetImage} alt='runningMan' />
 
                         </div>
                     </div>
