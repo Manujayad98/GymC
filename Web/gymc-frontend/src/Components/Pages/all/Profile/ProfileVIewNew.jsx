@@ -158,7 +158,7 @@ export default function () {
                                                         <label class="form-check-label" for="inlineRadio1">Male</label>
                                                         {/* </div> */}
                                                         {/* <div class="form-check form-check-inline"> */}
-                                                        <input class="form-check-input" style={{ marginLeft: '30px' }} type="radio" name="inlineRadioOptions" id="" value="F" cheched={profile.gender === "F"}></input>
+                                                        <input class="form-check-input" style={{ marginLeft: '30px' }} type="radio" name="inlineRadioOptions" id="" value="F" checked={profile.gender === "F"}></input>
                                                         <label class="form-check-label" for="inlineRadio2">Female</label>
                                                         {/* </div> */}
                                                     </div>
