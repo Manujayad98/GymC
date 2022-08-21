@@ -12,7 +12,6 @@ import lahirupic from "../../../../images/receptionistinterim/lahiru.png"
 import lelanipic from "../../../../images/receptionistinterim/lelani.png"
 
 import Table from '../../../Utilities/Tables/Table2'
-import Modal from "../../../Utilities/Popups/Dconfirmation";
 import './Dashboard.css'
 import { margin } from '@mui/system'
 
@@ -75,7 +74,7 @@ const Dashboard = () => {
     }
   ]);
 
-  const [modalOpen, setModalOpen] = useState(false);
+  
   return (
     <div className='main-container'>
       <SidebarR />
@@ -166,6 +165,4 @@ const Dashboard = () => {
 
 export default Dashboard
 
-/*            <button className="openModalBtn" onClick={() => {setModalOpen(true);}}>Open</button>
-            {modalOpen && <Modal setOpenModal={setModalOpen} />}
-            <button>click</button>*/
+

@@ -13,6 +13,8 @@ import piyathpic from "../../../../images/receptionistinterim/kalindu.png"
 import trumppic from "../../../../images/receptionistinterim/trump.png"
 import lahirupic from "../../../../images/receptionistinterim/lahiru.png"
 import lelanipic from "../../../../images/receptionistinterim/lelani.png"
+import DeleteModal from '../../../Utilities/Popups/DeletionModal'
+
 
 
 import './Trainers.css'
@@ -35,9 +37,11 @@ export default function Trainers() {
         }
     };
 
+    const [openModal, setOpenModal] = useState(false)
+
     const [trainerDetails] = useState([
         {
-            TrainerImg: (<img src={gihanpic} height={70}></img>),
+            TrainerImg: (<img src={gihanpic} height={50}></img>),
             TrainerID: "T001",
             TrainerName: "Gihan Sekara",
             RegDate: "2021-10-24",
@@ -49,14 +53,14 @@ export default function Trainers() {
             Actions: (
                 <span >
                     <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
 
                 </span >
             ),
         },
         {
-            TrainerImg: (<img src={kalindupic} height={70}></img>),
+            TrainerImg: (<img src={kalindupic} height={50}></img>),
             TrainerID: "T002",
             TrainerName: "Kalindu Sampath",
             RegDate: "2020-11-11",
@@ -68,14 +72,14 @@ export default function Trainers() {
             Actions: (
                 <span >
                     <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
 
                 </span >
             ),
         },
         {
-            TrainerImg: (<img src={lahirupic} height={70}></img>),
+            TrainerImg: (<img src={lahirupic} height={50}></img>),
             TrainerID: "T003",
             TrainerName: "Lahiru Induwara",
             RegDate: "2020-11-11",
@@ -87,14 +91,14 @@ export default function Trainers() {
             Actions: (
                 <span >
                     <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
 
                 </span >
             ),
         },
         {
-            TrainerImg: (<img src={lelanipic} height={70}></img>),
+            TrainerImg: (<img src={lelanipic} height={50}></img>),
             TrainerID: "T004",
             TrainerName: "Lelani De Silva",
             RegDate: "2020-11-11",
@@ -106,14 +110,14 @@ export default function Trainers() {
             Actions: (
                 <span >
                     <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
 
                 </span >
             ),
         },
         {
-            TrainerImg: (<img src={piyathpic} height={70}></img>),
+            TrainerImg: (<img src={piyathpic} height={50}></img>),
             TrainerID: "T005",
             TrainerName: "Piyath Sandaruwan",
             RegDate: "2020-11-11",
@@ -125,14 +129,14 @@ export default function Trainers() {
             Actions: (
                 <span >
                     <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
 
                 </span >
             ),
         },
         {
-            TrainerImg: (<img src={trumppic} height={70}></img>),
+            TrainerImg: (<img src={trumppic} height={50}></img>),
             TrainerID: "T006",
             TrainerName: "Trump Caleb",
             RegDate: "2020-11-11",
@@ -145,7 +149,7 @@ export default function Trainers() {
             Actions: (
                 <span >
                     <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
 
                 </span >
@@ -200,6 +204,7 @@ export default function Trainers() {
                         headCells={trainerDetailsTableHead}
                         tableName={"Trainers"}
                     />
+                    <DeleteModal open={openModal} onClose={() => setOpenModal(false)}/>
                 </div>
             </div >
         </div >
