@@ -56,10 +56,16 @@ public class UserController {
         return passwordService.changePassword(password,userName);
     }
 
-    @PostMapping("/registerTrainer")
-    public String registerTrainer(@RequestBody StaffMember staffMember){
+    @PostMapping("/registerUser")
+    public String registerUser(@RequestBody StaffMember staffMember){
         System.out.println("registerTrainer");
         return staffMemberService.register(staffMember);
     }
+
+//    @PostMapping("/registerUser")
+//    public String registerUser(@RequestBody StaffMember staffMember){
+//        System.out.println("registerUser");
+//        return staffMemberService.register(staffMember);
+//    }
 
 }

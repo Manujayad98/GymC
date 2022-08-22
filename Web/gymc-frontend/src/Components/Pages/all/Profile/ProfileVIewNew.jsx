@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import SidebarO from '../../owner/own_sidebar/Sidebar'
+import SidebarA from '../../admin/adm_sidebar/Sidebar'
+import SidebarR from '../../receptionist/recept_sidebar/Sidebar'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import owner from '../../../../images/owner.png'
@@ -40,7 +42,18 @@ export default function () {
         }
     };
 
-
+    const [userLevelData, setUserData] = useState({});
+    React.useEffect(() => {
+        console.log('response');
+        fetchUserData()
+            .then((response) => {
+                setUserData(response.data);
+                console.log(response);
+            })
+            .catch((e) => {
+                localStorage.clear();
+            });
+    }, []);
 
     // const [data, setData] = useState({});
 
@@ -133,7 +146,12 @@ export default function () {
     return (
         <div>
             <div className='main-container'>
-                <SidebarO />
+                {`${userLevelData.userLevel}` == 'Owner' ? <SidebarO /> : null}
+
+                {`${userLevelData.userLevel}` == 'Admin' ? <SidebarA /> : null}
+
+                {`${userLevelData.userLevel}` == 'Receptionist' ? <SidebarR /> : null}
+
                 <div className='body-container'>
                     <div className='Headng'>
                         <h1 id='heading'>Profile</h1>

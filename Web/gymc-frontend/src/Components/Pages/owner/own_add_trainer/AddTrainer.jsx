@@ -18,7 +18,7 @@ import Checkbox from "../../../Utilities/Form/Checkbox";
 import Radiobutton from "../../../Utilities/Form/Radiobutton";
 import PictureUploader from "../../../Utilities/Form/PictureUploader/PictureUploader";
 
-import { registerTrainer } from "../../../../services/UserService";
+import { registerUser } from "../../../../services/UserService";
 
 export default function AddTrainer() {
 
@@ -79,7 +79,7 @@ export default function AddTrainer() {
         }
         else {
 
-            registerTrainer(requestData)
+            registerUser(requestData)
                 .then((response) => {
                     if (response.status === 200) {
                         console.log(response.data);
@@ -244,7 +244,7 @@ export default function AddTrainer() {
                                             <InputField
                                                 value={requestData.phoneNumber}
                                                 type='text'
-                                                label="phoneNumber"
+                                                label="Phone Number"
                                                 placeholder='Type'
                                                 validators={[
                                                     { check: Validators.number, message: 'Number is not valid' }
@@ -265,6 +265,7 @@ export default function AddTrainer() {
                                             <InputField
                                                 value={requestData.qualification}
                                                 type='textarea'
+                                                label='Qualification'
                                                 placeholder='Type'
                                                 validators={[
                                                     { check: Validators.required, message: 'This field is required' }

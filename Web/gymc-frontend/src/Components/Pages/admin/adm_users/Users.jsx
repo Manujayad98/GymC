@@ -14,6 +14,8 @@ import './Users.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
+import { Link } from 'react-router-dom'
+
 export default function Trainers() {
 
     useEffect(() => {
@@ -183,7 +185,9 @@ export default function Trainers() {
                                 </div>
                             </div>
                             <div className="button-container">
-                                <button type="button" class="btn" style={{ backgroundColor: '#3DA2FF', width: '100px' }}>New User</button>
+                                <Link to='/AaddUsers'>
+                                    <button type="button" class="btn" style={{ backgroundColor: '#3DA2FF', width: '100px' }}>New User</button>
+                                </Link>
                             </div>
 
                         </div>

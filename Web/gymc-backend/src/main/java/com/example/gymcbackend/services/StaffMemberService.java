@@ -50,7 +50,16 @@ public class StaffMemberService {
             user.setEmail(staffMember.getEmail());
             user.setPassword(passwordEncoder.encode(pw));
             user.setStatus(true);
-            user.setUserLevel("Trainer");
+
+            if (staffMember.getStaffType() == 1 ){
+                user.setUserLevel("Owner");
+            } else if (staffMember.getStaffType() == 2 ) {
+                user.setUserLevel("Receptionist");
+            } else if (staffMember.getStaffType() == 3) {
+                user.setUserLevel("Trainer");
+            } else {
+                user.setUserLevel("Admin");
+            }
 
             userAccountDetailsRepository.save(user);
 
@@ -63,7 +72,13 @@ public class StaffMemberService {
             staffMemberEnt.setGender(staffMember.getGender());
             staffMemberEnt.setAddress(staffMember.getAddress());
             staffMemberEnt.setEmail(staffMember.getEmail());
-            staffMemberEnt.setStaffType(3);
+
+            if (staffMember.getStaffType() == 1 || staffMember.getStaffType() == 2 || staffMember.getStaffType() == 4){
+                staffMemberEnt.setStaffType(staffMember.getStaffType());
+            }else{
+                staffMemberEnt.setStaffType(3);
+            }
+
             staffMemberEnt.setPhoneNumber(staffMember.getPhoneNumber());
             staffMemberEnt.setQualification(staffMember.getQualification());
             staffMemberEnt.setUserAccount(user);
@@ -82,7 +97,7 @@ public class StaffMemberService {
             message.setText(mainContent + pw + "\n" + "Your Username : "+staffMember.getNic());
             message.setSubject("Welcome to the GYM C!");
 
-            mailSender.send(message);
+//            mailSender.send(message);
 
             return "Your have successfully registered!";
         }
