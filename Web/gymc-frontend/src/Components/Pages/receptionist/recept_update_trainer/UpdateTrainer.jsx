@@ -132,7 +132,7 @@ export default function UpdateTrainer() {
                                                 value={requestData.firstname}
                                                 type='text'
                                                 label="First Name"
-                                                placeholder='RMN'
+                                                placeholder='Gihan'
                                                 readonly
                                                 validators={[
                                                     { check: Validators.required, message: 'This field is required' }
@@ -144,7 +144,7 @@ export default function UpdateTrainer() {
                                                 value={requestData.lastname}
                                                 type='text'
                                                 label="Last Name"
-                                                placeholder='Ruwan'
+                                                placeholder='Sekara'
                                                 readonly
                                                 validators={[
                                                     { check: Validators.required, message: 'This field is required' }
@@ -159,7 +159,7 @@ export default function UpdateTrainer() {
                                                 value={requestData.nic}
                                                 type='text'
                                                 label="NIC"
-                                                placeholder='903344334434V'
+                                                placeholder='9036851450V'
                                                 readonly
                                                 validators={[
                                                     { check: Validators.nic, message: 'NIC is not valid' }
@@ -213,7 +213,7 @@ export default function UpdateTrainer() {
                                                 value={requestData.address}
                                                 type='text'
                                                 label="Address"
-                                                placeholder='Lane 01,Colombo 05'
+                                                placeholder='Lane 01, Alawwa Junction, Giriulla'
                                                 validators={[
                                                     { check: Validators.required, message: 'This field is required' }
                                                 ]}
@@ -226,7 +226,7 @@ export default function UpdateTrainer() {
                                                 value={requestData.email}
                                                 type='text'
                                                 label="Email"
-                                                placeholder='rmnruwan90@gmail.com'
+                                                placeholder='gihansekanara90@gmail.com'
                                                 validators={[
                                                     { check: Validators.email, message: 'Email is not valid' }
                                                 ]}
@@ -241,7 +241,7 @@ export default function UpdateTrainer() {
                                                 value={requestData.phone}
                                                 type='number'
                                                 label="Phone"
-                                                placeholder='077771111'
+                                                placeholder='0775674159'
                                                 validators={[
                                                     { check: Validators.number, message: 'Number is not valid' }
                                                 ]}

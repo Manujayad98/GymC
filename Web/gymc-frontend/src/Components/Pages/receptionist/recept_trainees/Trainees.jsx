@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Button from 'react-bootstrap/Button';
 import DeleteModal from '../../../Utilities/Popups/DeletionModal'
+import CheckinModal from '../../../Utilities/Popups/Checkinmodal';
 import '../recept_sidebar/Sidebar.css'
 import SidebarR from '../recept_sidebar/Sidebar'
 import HeaderR from '../recept_header/Header'
@@ -40,7 +41,7 @@ const Trainees = () => {
   
 
   const [openModal, setOpenModal] = useState(false)
-
+  const [checkinmodal, opencheckin] = useState (false)
   const [trainerDetails] = useState([
     {
       TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
@@ -50,7 +51,7 @@ const Trainees = () => {
       RegDate: "2021-10-24",
       Check: (
         <span>
-          <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button>
+          <span style={{ margin: "10px" }}><Button onClick={() => opencheckin(true)} variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button>
           </span>
           <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
         </span>
@@ -74,7 +75,7 @@ const Trainees = () => {
       RegDate: "2021-08-14",
       Check: (
         <span>
-          <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+          <span style={{ margin: "10px" }}><Button onClick={() => opencheckin(true)} variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
           <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
         </span>
       ),
@@ -323,6 +324,7 @@ const Trainees = () => {
           />
           <div>
             <DeleteModal open={openModal} onClose={() => setOpenModal(false)}/>
+            <CheckinModal open={checkinmodal} onClose={() => opencheckin(false)} />
           </div>
         </div>
       </div>
