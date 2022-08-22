@@ -14,6 +14,7 @@ import trumppic from "../../../../images/receptionistinterim/trump.png"
 import lahirupic from "../../../../images/receptionistinterim/lahiru.png"
 import lelanipic from "../../../../images/receptionistinterim/lelani.png"
 import DeleteModal from '../../../Utilities/Popups/DeletionModal'
+import AdjustModal from "../../../Utilities/Popups/adjustmentModal";
 
 
 
@@ -22,6 +23,7 @@ import './Trainers.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
+import { Button } from "@mui/material";
 
 
 
@@ -39,6 +41,7 @@ export default function Trainers() {
     };
 
     const [openModal, setOpenModal] = useState(false)
+    const [openadjustModal, setadjustModal] = useState(false)
 
     const [trainerDetails] = useState([
         {
@@ -205,6 +208,8 @@ export default function Trainers() {
                         headCells={trainerDetailsTableHead}
                         tableName={"Trainers"}
                     />
+                    <Button onClick={() => setadjustModal(true)}>Add Next Amount</Button>
+                    <AdjustModal open={openadjustModal} onClose={() => setadjustModal(false)} />
                     <DeleteModal open={openModal} onClose={() => setOpenModal(false)}/>
                 </div>
             </div >

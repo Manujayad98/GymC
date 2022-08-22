@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import './checkModal.css'
 import InputField from "../Form/InputField";
 
-const CheckinModal = ({open,onClose}) => {
+const CheckoutModal = ({open,onClose}) => {
 
     const [requestData, setState] = useState({
 
@@ -18,7 +18,7 @@ const CheckinModal = ({open,onClose}) => {
         <div className="rec-check-overlay">
             <div className="rec-check-container">
                 <Button onClick={onClose} className="rec-cmodal-closebtn">X</Button>
-                <p className="rec-check-title">Check In form</p>
+                <p className="rec-check-title">Check Out form</p>
                 <form className="rec-check-form" action="">
                     <div className="rec-check-input">
                     <InputField
@@ -55,6 +55,13 @@ const CheckinModal = ({open,onClose}) => {
                     placeholder="10.10 a.m."
                     readonly={true}
                     />
+                    <InputField
+                    value={requestData.checkintime}
+                    type='text'
+                    label = "CHECK OUT TIME"
+                    placeholder="12.30 p.m."
+                    readonly={true}
+                    />
                     </div>
                     <div>
                         <Button onClick={onClose} className="rec-modal-btn rec-cancelbtn">Cancel</Button>
@@ -65,4 +72,4 @@ const CheckinModal = ({open,onClose}) => {
         </div>
     )
 }
-export default CheckinModal
+export default CheckoutModal

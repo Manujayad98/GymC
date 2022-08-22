@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import Button from 'react-bootstrap/Button';
 import DeleteModal from '../../../Utilities/Popups/DeletionModal'
 import CheckinModal from '../../../Utilities/Popups/Checkinmodal';
+import CheckoutModal from '../../../Utilities/Popups/Checkoutmodal';
 import '../recept_sidebar/Sidebar.css'
 import SidebarR from '../recept_sidebar/Sidebar'
 import HeaderR from '../recept_header/Header'
@@ -19,6 +20,7 @@ import View from '../../../../images/Icons/eye-solid.svg'
 import Checkin from '../../../../images/Icons/enter.png'
 import Checkout from '../../../../images/Icons/exit.png'
 import T1 from '../../../../images/t1.png'
+import { Link } from 'react-router-dom'
 
 
 
@@ -42,6 +44,7 @@ const Trainees = () => {
 
   const [openModal, setOpenModal] = useState(false)
   const [checkinmodal, opencheckin] = useState (false)
+  const [checkoutmodal, opencheckout] = useState (false)
   const [trainerDetails] = useState([
     {
       TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
@@ -53,7 +56,7 @@ const Trainees = () => {
         <span>
           <span style={{ margin: "10px" }}><Button onClick={() => opencheckin(true)} variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button>
           </span>
-          <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+          <span><Button onClick={() => opencheckout(true)} variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
         </span>
       ),
       Pay: (
@@ -62,7 +65,7 @@ const Trainees = () => {
       Actions: (
         <span >
           <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><Link to='/RupdateTrainee'><img src={Edit} alt="" height={20} width={20} /></Link></span>
           <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
         </span >
       ),
@@ -85,7 +88,7 @@ const Trainees = () => {
       Actions: (
         <span >
           <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><Link to='/RupdateTrainer'><img src={Edit} alt="" height={20} width={20} /></Link></span>
           <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
         </span >
       ),
@@ -325,6 +328,7 @@ const Trainees = () => {
           <div>
             <DeleteModal open={openModal} onClose={() => setOpenModal(false)}/>
             <CheckinModal open={checkinmodal} onClose={() => opencheckin(false)} />
+            <CheckoutModal open={checkoutmodal} onClose={() => opencheckout(false)} />
           </div>
         </div>
       </div>
