@@ -34,8 +34,8 @@ export default function AddTrainer() {
         });
     };
     const handleRadio = (event) => {
-        
-        setState({selectedOption: event.target.value});
+
+        setState({ selectedOption: event.target.value });
     };
 
     const handleClick = (event) => {
@@ -67,19 +67,19 @@ export default function AddTrainer() {
                                     <div className="form-col1">
                                         <div className='recept-dashboard-card profile-cards'>
                                             <div className='recept-dashboard-card-img-container'>
-                                                
+
                                                 <img src={Pic1} alt="" />
-                                                
+
                                             </div>
-                                            
+
                                             <div className='recept-dashboard-card-content'>
-                                                
+
                                                 <div className='staffName'></div>
                                             </div>
                                         </div>
                                         <PictureUploader label="Add Photo" />
                                         <div className='add-tariner-userID'>T00001</div>
-                                        
+
 
                                     </div>
                                     <div className="form-col2">
@@ -129,11 +129,11 @@ export default function AddTrainer() {
                                 </div>
                                 <div className="form-row">
                                     <div className="form-col1">
-                                    <label> Gender</label>
-                                    <div onChange={handleRadio}>
-                                        <input type="radio" className='form-radio' value="M" name="gender" /> Male
-                                        <input type="radio" className='form-radio' value="F" name="gender" /> Female
-                                    </div>
+                                        <label> Gender</label>
+                                        <div onChange={handleRadio}>
+                                            <input type="radio" className='form-radio' value="M" name="gender" /> Male
+                                            <input type="radio" className='form-radio' value="F" name="gender" /> Female
+                                        </div>
                                         {/* <Radiobutton
                                     value={gender}
                                     name='gender'
@@ -188,7 +188,7 @@ export default function AddTrainer() {
                                             onChange={handleChange('number')} />
                                     </div>
                                     <div className="form-col2">
-                                        
+
                                     </div>
 
                                 </div>
@@ -215,8 +215,8 @@ export default function AddTrainer() {
                                     <div className="form-col2">
                                     </div>
                                     <button type="submit" className="add-trainer-form-button">
-                                    Save
-                                </button>
+                                        Save
+                                    </button>
                                 </div>
                             </div>
 
