@@ -39,3 +39,14 @@ export const updatePassword = (password, userName) => {
         data: password,
     });
 };
+
+export const registerTrainer = (requestData) => {
+    return axios({
+        method: "POST",
+        url: `${USER_URL}/registerTrainer`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+        data: requestData,
+    });
+};

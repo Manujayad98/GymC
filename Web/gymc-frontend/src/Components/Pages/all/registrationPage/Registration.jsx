@@ -76,7 +76,7 @@ export default function Registration() {
         console.log(requestData);
         evt.preventDefault();
 
-        if (!requestData.firstName || !requestData.lastName || !requestData.nic || !requestData.dob || !requestData.occupation || !requestData.address || !requestData.email || !requestData.phoneNumber || !requestData.emergencyNumber || !requestData.gender) {
+        if (!requestData.firstName || !requestData.lastName || !requestData.nic || !requestData.dob || !requestData.occupation || !requestData.address || !requestData.email || !requestData.phoneNumber || !requestData.emergencyNumber || !requestData.gender || requestData.acceptance == false) {
             console.log('Please fill out the form correctly');
             setClick({ click: true, })
             toast.warning('Please fill out the form correctly');
