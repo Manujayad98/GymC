@@ -2,10 +2,12 @@ package com.example.gymcbackend.controllers;
 
 import com.example.gymcbackend.dto.Profile;
 import com.example.gymcbackend.dto.Password;
+import com.example.gymcbackend.entities.StaffMember;
 import com.example.gymcbackend.entities.UserAccount;
 import com.example.gymcbackend.repository.userDao.UserAccountDetailsRepository;
 import com.example.gymcbackend.services.CustomUserService;
 import com.example.gymcbackend.services.PasswordService;
+import com.example.gymcbackend.services.StaffMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +22,9 @@ public class UserController {
 
     @Autowired
     private CustomUserService customUserService;
+
+    @Autowired
+    private StaffMemberService staffMemberService;
 
     @Autowired
     PasswordService passwordService;
@@ -49,6 +54,12 @@ public class UserController {
 //        System.out.println("pwcontroller");
         System.out.println(password.getNewPassword());
         return passwordService.changePassword(password,userName);
+    }
+
+    @PostMapping("/registerTrainer")
+    public String registerTrainer(@RequestBody StaffMember staffMember){
+        System.out.println("registerTrainer");
+        return staffMemberService.register(staffMember);
     }
 
 }

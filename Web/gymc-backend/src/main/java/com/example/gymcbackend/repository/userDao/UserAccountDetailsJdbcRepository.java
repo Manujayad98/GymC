@@ -43,6 +43,19 @@ public class UserAccountDetailsJdbcRepository {
         return count;
     }
 
+    public int checkNICExistsInStaffMember(String nic) {
+        MapSqlParameterSource namedParameters =
+                new MapSqlParameterSource();
+
+        namedParameters.addValue("nic", nic);
+
+        String sql = "SELECT count(*) from staff_member where nic = ?";
+
+        int count = jdbcTemplate.queryForObject(sql, new Object[] { nic }, Integer.class);
+
+        return count;
+    }
+
     public Long getUserIdByUsername(String userName) {
         MapSqlParameterSource namedParameters =
                 new MapSqlParameterSource();

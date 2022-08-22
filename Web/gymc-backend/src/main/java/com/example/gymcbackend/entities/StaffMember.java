@@ -44,6 +44,9 @@ public class StaffMember implements UserDetails {
     @Column(name = "staff_type", length = 1)
     private Integer staffType;
 
+    @Column(name = "qualification")
+    private String qualification;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userId")
     UserAccount userAccount;
@@ -127,6 +130,10 @@ public class StaffMember implements UserDetails {
         this.dob = dob;
     }
 
+    public void setQualification(String qualification) {
+        this.qualification = qualification;
+    }
+
     public long getId() {
         return id;
     }
@@ -169,5 +176,9 @@ public class StaffMember implements UserDetails {
 
     public Date getDob() {
         return dob;
+    }
+
+    public String getQualification() {
+        return qualification;
     }
 }
