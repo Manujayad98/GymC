@@ -14,10 +14,17 @@ import './Users.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
+import { Link } from 'react-router-dom'
+
+import { getUsers } from "../../../../services/UserService";
+
 export default function Trainers() {
+
+    const [users, setAllUsers] = useState([]);
 
     useEffect(() => {
         checkValidate();
+        getAllUsers();
     }, []);
 
     const checkValidate = async () => {
@@ -25,6 +32,12 @@ export default function Trainers() {
         if (!y) {
             window.location.href = "/";
         }
+    };
+
+    const getAllUsers = async () => {
+        const res = await getUsers();
+        console.log(res.data);
+        setAllUsers(res.data);
     };
 
     const [trainerDetails] = useState([
@@ -183,7 +196,9 @@ export default function Trainers() {
                                 </div>
                             </div>
                             <div className="button-container">
-                                <button type="button" class="btn" style={{ backgroundColor: '#3DA2FF', width: '100px' }}>New User</button>
+                                <Link to='/AaddUsers'>
+                                    <button type="button" class="btn" style={{ backgroundColor: '#3DA2FF', width: '100px' }}>New User</button>
+                                </Link>
                             </div>
 
                         </div>

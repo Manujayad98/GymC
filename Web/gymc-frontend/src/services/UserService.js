@@ -8,7 +8,7 @@ export const getUsers = () => {
     // return axios.get(USER_URL);
     return axios({
         method: "GET",
-        url: USER_URL,
+        url: `${USER_URL}/users`,
         headers: {
             Authorization: "Bearer " + getToken(),
         },
@@ -40,13 +40,25 @@ export const updatePassword = (password, userName) => {
     });
 };
 
-export const registerTrainer = (requestData) => {
+export const registerUser = (requestData) => {
     return axios({
         method: "POST",
-        url: `${USER_URL}/registerTrainer`,
+        url: `${USER_URL}/registerUser`,
         headers: {
             Authorization: "Bearer " + getToken(),
         },
         data: requestData,
+    });
+};
+
+
+export const updateUserProfile = (profile) => {
+    return axios({
+        method: "PUT",
+        url: `${USER_URL}/updateProfile`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+        data: profile,
     });
 };

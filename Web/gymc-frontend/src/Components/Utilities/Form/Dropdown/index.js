@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Dropdown = ({ value, data, placeholder, styleClass, onChange }) => {
+const Dropdown = ({ value, data, placeholder, styleClass, onChange, label }) => {
 
     const handleChange = (event) => {
         const { value } = event.target;
@@ -10,6 +10,7 @@ const Dropdown = ({ value, data, placeholder, styleClass, onChange }) => {
 
     return (
         <div className={`form-group ${styleClass}`}>
+            {label && <label htmlFor="app-input-field">{label}</label>}
             <select
                 value={value}
                 className="form-control"
