@@ -18,14 +18,16 @@ const Home = ({ navigation }) => {
             <View style={styles.root}>
                 <View style={styles.homecontainer}>
                     <View style={styles.header}>
-                        <Text><Icon name="profile" size={30} color="#fff"
+                        <Text><Icon name="user-circle" size={30} color="#fff"
                             onPress={() =>
                                 navigation.navigate('Startup')}
 
                         />
-                        </Text>
                         <Text style={styles.profilename}>Sumudu Perera</Text>
+
+                        </Text>
                     </View>
+                    <View style={styles.homebody}></View>
                 </View>
 
 
@@ -73,15 +75,23 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     header: {
+        // display:'flex',
+        paddingLeft: 180,
         width: '100%',
         height: '15%',
-        alignItems: 'right',
-        justifyContent: 'right',
+        alignContent: 'right',
         // backgroundColor: '#eee',
         color: 'white',
     },
     profilename: {
         color: 'white',
+    },
+    homebody:{
+        width: '100%',
+        height:'85%',
+        padding: 5,
+        flexDirection:'row',
+        flexWrap:5,
     }
 })
 
