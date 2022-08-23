@@ -31,6 +31,7 @@ const styles=StyleSheet.create({
         marginVertical:5,
         alignItems:'center',
         borderRadius:5,
+        alignSelf:'center',
         // backgroundColor:'#4C5564',
     },
 

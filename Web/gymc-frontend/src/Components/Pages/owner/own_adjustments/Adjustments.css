@@ -22,21 +22,30 @@
 }
 
 .header{
-    
-    /* display: grid;
-    grid-template: 
-    'e1 e2' ; */
-    width: 70%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 20px;
+    width: 70%;
 }
 
 #heading{
   text-align: left;
   font-size: 1rem!important;
 } 
+
+.own-adjustment-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  justify-content: space-around;
+  text-align: center;
+  align-content: center;
+  border-radius: 6px;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+  width: 70%;
+}
+
 
 /* increment decrement */
 .main_div{
@@ -48,8 +57,8 @@
   width: 25%;
   height: 25vh;
   background-color: white;
-  border-radius: 5%;
-  box-shadow: 5px 5px 20px -5px black;
+  border-radius: 6px;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -67,10 +76,10 @@
   /* box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3); */
 }
 
-/* button {
+button {
   min-height: 40px;
-  background-color: #8566aa;
-  color: #fff;
+  background-color: none;
+  color: #8566aa;
   border-radius: 5%;
   border: none;
   outline: none;
@@ -81,15 +90,15 @@
   text-align: center;
   font-weight: bold;
   font-size: 20px;
-  margin-top: 30px;
+  /* margin-top: 30px; */
   padding: 0 15px;
   cursor: pointer;
   display: flex;
-  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3); */
 }
 
-button:hover {
-  background-color: #20bf6b;
+#countButton:hover {
+  background-color: rgb(61, 162, 255);
 }
 
 .btn_div {

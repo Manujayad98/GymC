@@ -106,9 +106,9 @@ const Dashboard = () => {
 
             <Tab eventKey="home" title="Gym Progress" >
 
-              <div className='own-analytics-card-container'>
-
-                <div className='own-analytics-card profile-cards'>
+                <div className='own-analytics-card-container'>
+                  
+                  <div className='own-analytics-card analytics-cards'>
 
                   <div className='own-analytics-card-content'>
                     <div className='staffID'>No of Trainers</div>
@@ -116,7 +116,7 @@ const Dashboard = () => {
                   </div>
 
                 </div>
-                <div className='own-analytics-card profile-cards'>
+                <div className='own-analytics-card analytics-cards'>
 
                   <div className='own-analytics-card-content'>
                     <div className='staffID'>No of Trainees</div>
@@ -124,7 +124,15 @@ const Dashboard = () => {
                   </div>
 
                 </div>
-                <div className='own-analytics-card profile-cards'>
+                <div className='own-analytics-card analytics-cards'>
+
+                  <div className='own-analytics-card-content'>
+                    <div className='staffID'>No of Trainees</div>
+                    <div className='staffName'>5</div>
+                  </div>
+                  
+                </div>
+                <div className='own-analytics-card analytics-cards'>
 
                   <div className='own-analytics-card-content'>
                     <div className='staffID'>No of Excercises</div>
@@ -132,7 +140,7 @@ const Dashboard = () => {
                   </div>
 
                 </div>
-                <div className='own-analytics-card profile-cards'>
+                <div className='own-analytics-card analytics-cards'>
 
                   <div className='own-analytics-card-content'>
                     <div className='staffID'>No of Equipments</div>
@@ -140,8 +148,8 @@ const Dashboard = () => {
                   </div>
 
                 </div>
-              </div>
-              <div className='own-dashboard-chart-table-container'>
+                </div>
+                <div className='own-dashboard-chart-table-container'>
 
                 <div className='own-dashboard-chart-container'>
                   <div className='own-dashboard-container-head'>Annual Income</div>
@@ -150,14 +158,14 @@ const Dashboard = () => {
                   </div>
                 </div>
 
-                <div className='own-dashboard-table-container'>
-                  <div className='own-dashboard-container-head'>This Month's Income</div>
-                  <div className='own-dashboard-card chart-cards'>
-                    <BarChart data={ChartData} />
+                  <div className='own-dashboard-table-container'>
+                    <div className='own-dashboard-container-head'>This Month's Income</div>
+                    <div className='own-dashboard-card chart-cards'>
+                      <BarChart data={ChartData} />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className='own-dashboard-chart-table-container'>
+                <div className='own-dashboard-chart-table-container'>
 
                 <div className='own-dashboard-chart-container'>
                   <div className='own-dashboard-container-head'>Available Excercises</div>

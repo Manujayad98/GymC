@@ -4,7 +4,7 @@ import CustomInput from '../../../components/CustomInput/CustomInput'
 import CustomButton from '../../../components/CustomButton/CustomButton'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const ResetPasswordPage = ({ navigation }) => {
+const SetupPasswordPage = ({ navigation }) => {
 
   const[password,setPassword]=useState('');
   const[confirmPassword,setConfirmPassword]=useState('');
@@ -13,11 +13,11 @@ const ResetPasswordPage = ({ navigation }) => {
       <View style={styles.root}>
         <Text><Icon name="backward" size={30} color="#fff" 
         onPress={() =>
-          navigation.navigate('Forgot', { name: 'Jane' })} 
+          navigation.navigate('Setup', { name: 'Jane' })} 
         /></Text>
         <View style={styles.content}>
         <Text style={styles.title}>
-            Reset Password
+            Set Your Own Password
         </Text>
         <Text style={styles.text}>New Password</Text>
         <CustomInput 
@@ -36,7 +36,7 @@ const ResetPasswordPage = ({ navigation }) => {
         <View style={styles.reset}>
         <CustomButton  text="Reset" type="PRIMARY" bgColor="red"
         onPress={() =>
-          navigation.navigate('Setup', { name: 'Jane' })}
+          navigation.navigate('Guide', { name: 'Jane' })}
         />
         </View>
         </View>
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
         marginBottom:20,
         padding:30,
-        
+        textAlign:'center',
     },
     text:{
         color:'white',
@@ -78,8 +78,8 @@ const styles = StyleSheet.create({
        marginTop:100,
     },
     // content:{
-    //   alignItems:'center'
+    //   alignSelf:'center'
     // }
 })
 
-export default ResetPasswordPage
+export default SetupPasswordPage
