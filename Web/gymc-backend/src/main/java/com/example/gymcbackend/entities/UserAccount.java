@@ -18,8 +18,8 @@ public class UserAccount implements UserDetails {
 
     @Column(name = "userName", unique = true)
     private String userName;
-    @Column(name = "memberId")
-    private Long memberId;
+//    @Column(name = "memberId")
+//    private Long memberId;
 
     @CreationTimestamp
     @Column(name = "registered_date")
@@ -84,9 +84,9 @@ public class UserAccount implements UserDetails {
         return userName;
     }
 
-    public Long getMemberId() {
-        return memberId;
-    }
+//    public Long getMemberId() {
+//        return memberId;
+//    }
 
     public Date getRegisteredDate() {
         return registeredDate;
@@ -120,9 +120,9 @@ public class UserAccount implements UserDetails {
         return status;
     }
 
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
-    }
+//    public void setMemberId(Long memberId) {
+//        this.memberId = memberId;
+//    }
 
     public void setRegisteredDate(Date registeredDate) {
         this.registeredDate = registeredDate;

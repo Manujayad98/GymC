@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   background: #ffffff;
-  padding: 0px 60px;
+  padding: 25px 60px;
   border-radius: 10px;
   background-position: center;
   color: black;
@@ -54,4 +54,8 @@
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 7px 25px 7px 25px;
+}
+
+.add-trainer-hr {
+  margin: 6px 0px;
 }

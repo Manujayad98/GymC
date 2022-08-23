@@ -1,13 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Button from 'react-bootstrap/Button';
-import Deletemodal from '../../../Utilities/Popups/popup';
+import DeleteModal from '../../../Utilities/Popups/DeletionModal'
+import CheckinModal from '../../../Utilities/Popups/Checkinmodal';
+import CheckoutModal from '../../../Utilities/Popups/Checkoutmodal';
 import '../recept_sidebar/Sidebar.css'
 import SidebarR from '../recept_sidebar/Sidebar'
 import HeaderR from '../recept_header/Header'
 import Pic1 from '../../../../images/owner.png'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import Snackbar from '../../../Utilities/Popups/messagepop'
 import './Trainees.css'
 import { Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -19,13 +20,11 @@ import View from '../../../../images/Icons/eye-solid.svg'
 import Checkin from '../../../../images/Icons/enter.png'
 import Checkout from '../../../../images/Icons/exit.png'
 import T1 from '../../../../images/t1.png'
+import { Link } from 'react-router-dom'
 
 
 
-/*const SnackbarType = {
-  success: "success",
-  fail: "fail",
-};*/
+
 
 const Trainees = () => {
 
@@ -40,20 +39,24 @@ const Trainees = () => {
     }
   };
 
-  /*const snackbarRef = useRef(null);
-  const [show, setShow] = useState(false);
-  const handleShow = () => setShow(true);*/ // Snackbar reference and pop state
+ 
+  
+
+  const [openModal, setOpenModal] = useState(false)
+  const [checkinmodal, opencheckin] = useState (false)
+  const [checkoutmodal, opencheckout] = useState (false)
   const [trainerDetails] = useState([
     {
       TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
       TrainerID: "M001",
-      TrainerName: "RMN Ruwan",
+      TrainerName: "Kasun Perera",
       PaymentType: "Daily",
       RegDate: "2021-10-24",
       Check: (
         <span>
-          <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
-          <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+          <span style={{ margin: "10px" }}><Button onClick={() => opencheckin(true)} variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button>
+          </span>
+          <span><Button onClick={() => opencheckout(true)} variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
         </span>
       ),
       Pay: (
@@ -62,16 +65,39 @@ const Trainees = () => {
       Actions: (
         <span >
           <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><Link to='/RupdateTrainee'><img src={Edit} alt="" height={20} width={20} /></Link></span>
+          <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
         </span >
       ),
     },
     {
       TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TrainerID: "M001",
-      TrainerName: "RMN Ruwan",
+      TrainerID: "M002",
+      TrainerName: "Rasul Silve",
       PaymentType: "Daily",
+      RegDate: "2021-08-14",
+      Check: (
+        <span>
+          <span style={{ margin: "10px" }}><Button onClick={() => opencheckin(true)} variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+          <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+        </span>
+      ),
+      Pay: (
+        <Button variant='success'>Pay</Button>
+      ),
+      Actions: (
+        <span >
+          <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><Link to='/RupdateTrainer'><img src={Edit} alt="" height={20} width={20} /></Link></span>
+          <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+        </span >
+      ),
+    },
+    {
+      TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+      TrainerID: "M003",
+      TrainerName: "Dominic Gape",
+      PaymentType: "Monthly - Personal",
       RegDate: "2021-10-24",
       Check: (
         <span>
@@ -86,7 +112,99 @@ const Trainees = () => {
         <span >
           <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
           <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+        </span >
+      ),
+    },
+    {
+      TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+      TrainerID: "M004",
+      TrainerName: "Natasha Perera",
+      PaymentType: "Monthly - Non Personal",
+      RegDate: "2021-10-24",
+      Check: (
+        <span>
+          <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+          <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+        </span>
+      ),
+      Pay: (
+        <Button variant='success'>Pay</Button>
+      ),
+      Actions: (
+        <span >
+          <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+        </span >
+      ),
+    },
+    {
+      TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+      TrainerID: "M005",
+      TrainerName: "Rajeewa Senevirathne",
+      PaymentType: "Daily",
+      RegDate: "2022-01-05",
+      Check: (
+        <span>
+          <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+          <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+        </span>
+      ),
+      Pay: (
+        <Button variant='success'>Pay</Button>
+      ),
+      Actions: (
+        <span >
+          <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+        </span >
+      ),
+    },
+    {
+      TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+      TrainerID: "M006",
+      TrainerName: "Denuwan Wijesekara",
+      PaymentType: "Daily",
+      RegDate: "2022-02-14",
+      Check: (
+        <span>
+          <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+          <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+        </span>
+      ),
+      Pay: (
+        <Button variant='success'>Pay</Button>
+      ),
+      Actions: (
+        <span >
+          <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+        </span >
+      ),
+    },
+    {
+      TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+      TrainerID: "M007",
+      TrainerName: "Pasindu Pathberiya",
+      PaymentType: "Monthly - Personal",
+      RegDate: "2022-06-11",
+      Check: (
+        <span>
+          <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+          <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+        </span>
+      ),
+      Pay: (
+        <Button variant='success'>Pay</Button>
+      ),
+      Actions: (
+        <span >
+          <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
         </span >
       ),
     }
@@ -111,54 +229,54 @@ const Trainees = () => {
           <div>
             <Tabs defaultActiveKey={"NowIn"} id="uncontrolled-tab-example" className='mb-3'>
               <Tab eventKey={"NowIn"} title="Now In">
-                <div className='content-row'>
+                <div className='rec-content-row'>
                   <Card className='rec-train-card'>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
-                      T000001
+                      M001
                     </Card.Subtitle>
                     <Card.Body>
-                      Troy
+                      Kasun Perera
                     </Card.Body>
                   </Card>
                   <Card className='rec-train-card'>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
-                      T000001
+                      M002
                     </Card.Subtitle>
                     <Card.Body>
-                      Troy
+                      Rasul Silve
                     </Card.Body>
                   </Card>
                   <Card className='rec-train-card'>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
-                      T000001
+                      M003
                     </Card.Subtitle>
                     <Card.Body>
-                      Troy
+                      Dominic Gape
                     </Card.Body>
                   </Card>
                 </div>
               </Tab>
               <Tab eventKey={"due"} title="Due Check Out">
-                <div className='content-row'>
-                  <Card className='rec-train-card'>
+                <div className='rec-content-row'>
+                  <Card className='rec-train-card' style={{borderColor: 'red'}}>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
-                      T000001
+                      M001
                     </Card.Subtitle>
                     <Card.Body>
-                      Troy
+                      Kasun Perera
                     </Card.Body>
                   </Card>
-                  <Card className='rec-train-card'>
+                  <Card className='rec-train-card' style={{borderColor:'red'}}>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
-                      T000001
+                      M002
                     </Card.Subtitle>
                     <Card.Body>
-                      Troy
+                      Rasul Silve
                     </Card.Body>
                   </Card>
                 </div>
@@ -189,10 +307,9 @@ const Trainees = () => {
                     <label class="form-label" for="form1">Due</label>
                   </div>
                   <select class="form-control form-control-sm" style={{ padding: '8px' }}>
-                    <option> select 1</option>
-                    <option> select 2</option>
-                    <option> select 3</option>
-                    <option> select 4</option>
+                    <option> All</option>
+                    <option> Payments Due</option>
+                    <option> Payments Not Due</option>
                   </select>
                 </div>
               </div>
@@ -208,6 +325,11 @@ const Trainees = () => {
             headCells={trainerDetailsTableHead}
             tableName={"Trainers"}
           />
+          <div>
+            <DeleteModal open={openModal} onClose={() => setOpenModal(false)}/>
+            <CheckinModal open={checkinmodal} onClose={() => opencheckin(false)} />
+            <CheckoutModal open={checkoutmodal} onClose={() => opencheckout(false)} />
+          </div>
         </div>
       </div>
     </div>
@@ -215,17 +337,3 @@ const Trainees = () => {
 }
 
 export default Trainees
-
-/* 
-      <div className='body-container'> 
-          <HeaderR title="Trainees"/> 
-          <div className="content-container">
-          <Button variant="primary" onClick={handleShow}>
-            Launch static backdrop modal
-          </Button>
-          {show && <Deletemodal show/>}
-          <Button variant='warning' onClick={() => {snackbarRef.current.show();}}>Alert</Button>
-          <Snackbar ref={snackbarRef} message="Task Completed Successfully!" type={SnackbarType.success}/>
-          </div>
-      </div>
-*/

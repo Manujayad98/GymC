@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 105vh;
+  height: 120vh;
   background: #2C131A;
 }
 
@@ -95,6 +95,10 @@
   margin-bottom: 10px;
   padding: 8px 10px 8px 10px;
   border-radius: 10px;
+}
+.register-button:hover{
+  background-color: #4b3138;
+  transition: 0.5s;
 }
 
 .radio-div {

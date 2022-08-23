@@ -6,13 +6,14 @@ import Pricing from './Components/Pages/all/landingPage/Pricing';
 import About from './Components/Pages/all/landingPage/About';
 import Contact from './Components/Pages/all/landingPage/ContactUs';
 import Trainers from './Components/Pages/all/landingPage/Trainers';
+// import Footer from './Components/Pages/all/landingPage/Footer';
 // import Login from './Components/Pages/all/landingPage/Login';
 import Registration from './Components/Pages/all/registrationPage/Registration';
 import Sidebar from './Components/Utilities/Sidebar/Sidebar';
-import LoginPagePrev from './Components/Pages/all/loginPage/LoginPagePrev';
-import SampleLogin from './Components/Pages/all/loginPage/SampleLogin';
+// import LoginPagePrev from './Components/Pages/all/loginPage/LoginPagePrev';
+// import SampleLogin from './Components/Pages/all/loginPage/SampleLogin';
 import PictureUploader from './Components/Utilities/Form/PictureUploader/PictureUploader';
-import SampleReg from './Components/Pages/all/registrationPage/SampleReg';
+// import SampleReg from './Components/Pages/all/registrationPage/SampleReg';
 import Login from './Components/Pages/all/loginPage/LoginPage';
 import ResetPassword from './Components/Pages/all/resetPassword/ResetPassword';
 import PieChart from './Components/Utilities/Charts/PieChart';
@@ -22,7 +23,7 @@ import SearchBar from './Components/Utilities/SearchBar/SearchBar';
 import Calendar from './Components/Utilities/CalendarComp/CalendarComp';
 import SampleCal from './Components/Utilities/CalendarComp/SampleCal';
 import Alert from './Components/Utilities/AlertPopup/AlertPopup'
-import Profile from './Components/Pages/all/Profile/ProfileView'
+import Profile from './Components/Pages/all/Profile/ProfileVIewNew'
 
 
 //ADMIN
@@ -56,6 +57,8 @@ import TraineesR from './Components/Pages/receptionist/recept_trainees/Trainees'
 import TrainersR from './Components/Pages/receptionist/recept_trainers/Trainers';
 import AppointmentsR from './Components/Pages/receptionist/recept_appointments/Appointments'
 import AddTrainerR from './Components/Pages/receptionist/recept_add_trainer/AddTrainer';
+import UpdateTrainerR from './Components/Pages/receptionist/recept_update_trainer/UpdateTrainer';
+import UpdateTraineeR from './Components/Pages/receptionist/recept_update_trainee/UpdateTrainee'
 
 //TRAINEE
 import TraineeLogedPage from './Components/Pages/trainee/LogedInPage'
@@ -81,10 +84,10 @@ function App() {
           <Route exact path="/" element={<Home />}></Route>
           <Route path="/registration" element={<Registration />}></Route>
           <Route path="/sidebar" element={<SidebarA />}></Route>
-          <Route path="/signinPrev" element={<LoginPagePrev />}></Route>
-          <Route path="/signupPrev" element={<LoginPagePrev />}></Route>
-          <Route path="/samplelogin" element={<SampleLogin />}></Route>
-          <Route path="/samplereg" element={<SampleReg />}></Route>
+          {/* <Route path="/signinPrev" element={<LoginPagePrev />}></Route> */}
+          {/* <Route path="/signupPrev" element={<LoginPagePrev />}></Route> */}
+          {/* <Route path="/samplelogin" element={<SampleLogin />}></Route> */}
+          {/* <Route path="/samplereg" element={<SampleReg />}></Route> */}
           <Route path="/login" element={<Login />}></Route>
           <Route path="/resetpasswd" element={<ResetPassword />}></Route>
           <Route path="/searchBar" element={<SearchBar />}></Route>
@@ -123,7 +126,8 @@ function App() {
           <Route path="/Rnotifications" element={<NotificationsR />}></Route>
           <Route path="/Rappointments" element={<AppointmentsR />}></Route>
           <Route path="/RaddTrainer" element={<AddTrainerR />}></Route>
-
+          <Route path="/RupdateTrainer" element={<UpdateTrainerR />}></Route>
+          <Route path="/RupdateTrainee" element={<UpdateTraineeR />}></Route>
 
 
 
@@ -149,6 +153,7 @@ const Home = () => (
     <Pricing />
     <About />
     <Contact />
+   {/* <Footer /> */}
   </div>
 )
 

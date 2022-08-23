@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import '../own_sidebar/Sidebar.css'
-import '../own_add_trainer/AddTrainer.css'
+import './AddTrainer.css'
 import SidebarO from '../own_sidebar/Sidebar'
 import HeaderO from '../own_header/Header'
 
 import Pic1 from '../../../../images/owner.png'
+import Edit from '../../../../images/Icons/pen-solid.svg'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -17,6 +18,7 @@ import Checkbox from "../../../Utilities/Form/Checkbox";
 import Radiobutton from "../../../Utilities/Form/Radiobutton";
 import PictureUploader from "../../../Utilities/Form/PictureUploader/PictureUploader";
 
+import { registerTrainer } from "../../../../services/UserService";
 
 export default function AddTrainer() {
 
@@ -33,27 +35,27 @@ export default function AddTrainer() {
 
     const [requestData, setState] = useState({
 
-        firstname: '',
-        lastname: '',
+        firstName: '',
+        lastName: '',
+        nic: '',
         dob: '',
-        phone: '',
-        // number: '',
-        // emergency: '',
+        gender: '',
         address: '',
         email: '',
-        gender: false,
-        qualifications: '',
+        phoneNumber: '',
+        qualification: '',
     });
     const [click, setClick] = useState(false);
 
     const handleChange = (key) => (value) => {
+        console.log(key, value);
         setState({
             ...requestData,
             [key]: value
         });
     };
     const handleRadio = (event) => {
-        
+
         setState({
             ...requestData,
             gender: event.target.value
@@ -61,41 +63,42 @@ export default function AddTrainer() {
         console.log(requestData.gender)
     };
 
-    const handleClick = (event) => {
-        event.preventDefault();
-        alert('Button Clicked');
-    };
+    // const handleClick = (event) => {
+    //     event.preventDefault();
+    //     alert('Button Clicked');
+    // };
+
     const handleSubmit = (evt) => {
         console.log(requestData);
         evt.preventDefault();
 
-        if (!requestData.firstName || !requestData.lastName || !requestData.nic || !requestData.dob || !requestData.occupation || !requestData.address || !requestData.email || !requestData.phoneNumber || !requestData.emergencyNumber || !requestData.gender) {
+        if (!requestData.firstName || !requestData.lastName || !requestData.nic || !requestData.dob || !requestData.address || !requestData.email || !requestData.phoneNumber || !requestData.gender || !requestData.qualification) {
             console.log('Please fill out the form correctly');
             setClick({ click: true, })
             toast.warning('Please fill out the form correctly');
         }
-        // else {
+        else {
 
-        //     signUp(requestData)
-        //         .then((response) => {
-        //             if (response.status === 200) {
-        //                 console.log(response.data);
-        //                 // setMessage(response.data);
-        //                 if (response.data === "You have already an account!") {
-        //                     toast.warning('You have already an account!');
-        //                 } else {
-        //                     window.location.href = "/";
-        //                     toast.success("successfully registered!!!");
-        //                 }
-        //             }
-        //         })
-        //         .catch((err) => {
-        //             if (err && err.response) {
-        //                 console.log(err);
-        //                 toast.error('Failed!!!');
-        //             }
-        //         });
-        // }
+            registerTrainer(requestData)
+                .then((response) => {
+                    if (response.status === 200) {
+                        console.log(response.data);
+                        // setMessage(response.data);
+                        if (response.data === "Already has an account!") {
+                            toast.warning('Already has an account!');
+                        } else {
+                            window.location.href = "/Otrainers";
+                            toast.success("successfully registered the trainer!!!");
+                        }
+                    }
+                })
+                .catch((err) => {
+                    if (err && err.response) {
+                        console.log(err);
+                        toast.error('Failed!!!');
+                    }
+                });
+        }
     };
 
 
@@ -112,40 +115,48 @@ export default function AddTrainer() {
                                 <div className="add-trainer-form-inputs">
                                     <h4 className='add-trainer-form-subHeading'>Basic Info</h4>
                                     <hr className="add-trainer-hr" />
+                                    <div className="form-row profile-form-row">
+                                        {/* <div class="form-row profile-form-row"> */}
+                                        <div class="form-group col-md-6">
+                                            <img src={Pic1} alt="" style={{ borderRadius: '80%', width: '100px', height: '100px' }} />
+                                            <img src={Edit} alt="" height={20} width={20} style={{ marginLeft: '10px', cursor: 'pointer' }} />
+                                        </div>
+
+                                        {/* </div> */}
+                                    </div>
                                     <div className="form-row">
-                                        <div className="form-col1">
-                                            <div className='add-trainer-card add-trainer-profile-cards'>
+                                        {/* <div className="form-col1"> */}
+                                        {/* <div className='add-trainer-card add-trainer-profile-cards'>
                                                 <div className='own-dashboard-card-img-container'>
                                                     <img src={Pic1} alt="" />
                                                 </div>
-                                            </div>
-                                            {/* <div className='add-tariner-userID'>T00001</div> */}
-                                            <PictureUploader label="Add Photo" />
-
-
-
-                                        </div>
-                                        <div className="form-col2">
+                                            </div> */}
+                                        {/* <div className='add-tariner-userID'>T00001</div> */}
+                                        {/* <PictureUploader label="Add Photo" /> */}
+                                        {/* </div> */}
+                                        <div className="form-col1">
                                             <InputField
-                                                value={requestData.firstname}
+                                                value={requestData.firstName}
                                                 type='text'
                                                 label="First Name"
                                                 placeholder='Type'
                                                 validators={[
                                                     { check: Validators.required, message: 'This field is required' }
                                                 ]}
-                                                onChange={handleChange('firstname')} />
-                                            {!requestData.firstname && click && <span className='text-danger'>This Field is required</span>}
+                                                onChange={handleChange('firstName')} />
+                                            {!requestData.firstName && click && <span className='text-danger'>This Field is required</span>}
+                                        </div>
+                                        <div className="form-col2">
                                             <InputField
-                                                value={requestData.lastname}
+                                                value={requestData.lastName}
                                                 type='text'
                                                 label="Last Name"
                                                 placeholder='Type'
                                                 validators={[
                                                     { check: Validators.required, message: 'This field is required' }
                                                 ]}
-                                                onChange={handleChange('lastname')} />
-                                            {!requestData.lastname && click && <span className='text-danger'>This Field is required</span>}
+                                                onChange={handleChange('lastName')} />
+                                            {!requestData.lastName && click && <span className='text-danger'>This Field is required</span>}
                                         </div>
                                     </div>
                                     <div className="form-row">
@@ -231,15 +242,15 @@ export default function AddTrainer() {
                                     <div className="form-row">
                                         <div className="form-col1">
                                             <InputField
-                                                value={requestData.phone}
-                                                type='number'
-                                                label="Phone"
+                                                value={requestData.phoneNumber}
+                                                type='text'
+                                                label="phoneNumber"
                                                 placeholder='Type'
                                                 validators={[
                                                     { check: Validators.number, message: 'Number is not valid' }
                                                 ]}
-                                                onChange={handleChange('phone')} />
-                                            {!requestData.phone && click && <span className='text-danger'>This Field is required</span>}
+                                                onChange={handleChange('phoneNumber')} />
+                                            {!requestData.phoneNumber && click && <span className='text-danger'>This Field is required</span>}
 
                                         </div>
                                         <div className="form-col2">
@@ -252,14 +263,14 @@ export default function AddTrainer() {
                                     <div className="form-row">
                                         <div className="form-col1">
                                             <InputField
-                                                value={requestData.qualifications}
+                                                value={requestData.qualification}
                                                 type='textarea'
                                                 placeholder='Type'
                                                 validators={[
                                                     { check: Validators.required, message: 'This field is required' }
                                                 ]}
-                                                onChange={handleChange('qualifications')} />
-                                            {!requestData.qualifications && click && <span className='text-danger'>This Field is required</span>}
+                                                onChange={handleChange('qualification')} />
+                                            {!requestData.qualification && click && <span className='text-danger'>This Field is required</span>}
 
                                             <br></br>
 

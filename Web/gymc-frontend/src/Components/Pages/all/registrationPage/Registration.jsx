@@ -35,7 +35,7 @@ export default function Registration() {
         // click:false
         // selectedOption: null,
     });
-    const [click,setClick]=useState(false);
+    const [click, setClick] = useState(false);
 
     const handleChange = (key) => (value) => {
         console.log(key, value);
@@ -76,9 +76,9 @@ export default function Registration() {
         console.log(requestData);
         evt.preventDefault();
 
-        if (!requestData.firstName || !requestData.lastName || !requestData.nic || !requestData.dob || !requestData.occupation || !requestData.address || !requestData.email || !requestData.phoneNumber || !requestData.emergencyNumber || !requestData.gender) {
+        if (!requestData.firstName || !requestData.lastName || !requestData.nic || !requestData.dob || !requestData.occupation || !requestData.address || !requestData.email || !requestData.phoneNumber || !requestData.emergencyNumber || !requestData.gender || requestData.acceptance == false) {
             console.log('Please fill out the form correctly');
-            setClick({ click :true,})
+            setClick({ click: true, })
             toast.warning('Please fill out the form correctly');
         } else {
 
@@ -89,6 +89,8 @@ export default function Registration() {
                         // setMessage(response.data);
                         if (response.data === "You have already an account!") {
                             toast.warning('You have already an account!');
+                        } else if (response.data === "There is a issue. Here already has a nic!") {
+                            toast.warning('There is a issue. Here already has a nic!');
                         } else {
                             window.location.href = "/";
                             toast.success("successfully registered!!!");
@@ -167,7 +169,7 @@ export default function Registration() {
                                             { check: Validators.required, message: 'This field is required' }
                                         ]}
                                         onChange={handleChange('dob')} />
-                                        {!requestData.dob && click && <span className='text-danger'>This Field is required</span>}
+                                    {!requestData.dob && click && <span className='text-danger'>This Field is required</span>}
                                 </div>
                             </div>
                             <div className="reg-form-row">
