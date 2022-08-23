@@ -1,40 +1,49 @@
-import { Text, View ,StyleSheet,ScrollView} from 'react-native'
-import React, { Component } from 'react'
+import {Text, View ,StyleSheet} from 'react-native'
+import React, {useState} from 'react'
 import CustomInput from '../../../components/CustomInput/CustomInput'
 import CustomButton from '../../../components/CustomButton/CustomButton'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-export class ResetPasswordPage extends Component {
-  render() {
+const ResetPasswordPage = ({ navigation }) => {
+
+  const[password,setPassword]=useState('');
+  const[confirmPassword,setConfirmPassword]=useState('');
+
     return (
       <View style={styles.root}>
         <Text><Icon name="backward" size={30} color="#fff" 
         onPress={() =>
           navigation.navigate('Forgot', { name: 'Jane' })} 
         /></Text>
+        <View style={styles.content}>
         <Text style={styles.title}>
-        
             Reset Password
         </Text>
         <Text style={styles.text}>New Password</Text>
         <CustomInput 
             // placeholder="Username" 
-            // value={username} 
-            // setValue={setUsername}
+            value={password} 
+            setValue={setPassword}
+            secureTextEntry={true}
         />
         <Text style={styles.text}>Confirm Password</Text>
         <CustomInput 
             // placeholder="Username" 
-            // value={username} 
-            // setValue={setUsername}
+            value={confirmPassword} 
+            setValue={setConfirmPassword}
+            secureTextEntry={true}
         />
-        <view style={styles.reset}>
-        <CustomButton  text="Reset" type="PRIMARY" bgColor="red"/>
-        </view>
+        <View style={styles.reset}>
+        <CustomButton  text="Reset" type="PRIMARY" bgColor="red"
+        onPress={() =>
+          navigation.navigate('Setup', { name: 'Jane' })}
+        />
+        </View>
+        </View>
       </View>
     )
   }
-}
+
 
 const styles = StyleSheet.create({
     root:{
@@ -67,8 +76,10 @@ const styles = StyleSheet.create({
     },
     reset:{
        marginTop:100,
-       
-    }
+    },
+    // content:{
+    //   alignItems:'center'
+    // }
 })
 
 export default ResetPasswordPage
