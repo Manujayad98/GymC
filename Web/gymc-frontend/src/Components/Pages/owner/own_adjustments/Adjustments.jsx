@@ -143,7 +143,6 @@ export default function Exercises() {
   
 
     return (
-
         <div className='main-container'>
         <SidebarO/>
         <div className='body-container'> 
@@ -151,28 +150,32 @@ export default function Exercises() {
             <div className="content-container">
                 <div className="ex">
                     <div className="header">
-                        <h3 id="own-dashboard-titles">Exercises</h3>
+                        <h3 id="own-adjustment-titles">Exercises</h3>
                         <Button1 variant="contained" className="Hbutton">New Exercise</Button1>
                     </div>
+                    <div className='own-adjustment-card '>
                     <Table
                         rows={excerciseDetails}
                         headCells={excerciseDetailsTableHead}
                         tableName={"Exercises"} 
                     />
+                    </div>
                 </div>
                 <div className="ex">
                     <div className="header">
                         <h3 id="own-dashboard-titles">Payment Plans</h3>
                         <Button1 variant="contained" className="Hbutton">New Payment</Button1>
                     </div>
+                    <div className='own-adjustment-card '>
                     <Table
                         rows={paymentPlanDetails}
                         headCells={paymentPlanDetailsTableHead}
                         tableName={"PaymentPlans"} 
                     />
+                    </div>
                 </div>
                 <div className="ex">
-                    <h3 id="own-dashboard-titles">No of appoinments per timeslot</h3>
+                    <h3 id="own-adjustment-titles">No of appoinments per timeslot</h3>
                     
                     <div className="main_div">
                         <div className="center_div">
