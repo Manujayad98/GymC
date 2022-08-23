@@ -1,7 +1,9 @@
 package com.example.gymcbackend.services;
 
+import com.example.gymcbackend.dto.Profile;
 import com.example.gymcbackend.entities.StaffMember;
 import com.example.gymcbackend.entities.UserAccount;
+import com.example.gymcbackend.repository.staffMemberDao.StaffMemberJdbcRepository;
 import com.example.gymcbackend.repository.staffMemberDao.StaffMemberRepository;
 import com.example.gymcbackend.repository.userDao.UserAccountDetailsJdbcRepository;
 import com.example.gymcbackend.repository.userDao.UserAccountDetailsRepository;
@@ -21,6 +23,9 @@ public class StaffMemberService {
     UserAccountDetailsJdbcRepository userAccountDetailsJdbcRepository;
     @Autowired
     UserAccountDetailsRepository userAccountDetailsRepository;
+
+    @Autowired
+    StaffMemberJdbcRepository staffMemberJdbcRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -97,7 +102,7 @@ public class StaffMemberService {
             message.setText(mainContent + pw + "\n" + "Your Username : "+staffMember.getNic());
             message.setSubject("Welcome to the GYM C!");
 
-//            mailSender.send(message);
+            mailSender.send(message);
 
             return "Your have successfully registered!";
         }
@@ -110,4 +115,17 @@ public class StaffMemberService {
                 .mapToObj(i -> String.valueOf((char)i))
                 .collect(Collectors.joining());
     }
+
+    public long updateProfile(Profile profile) {
+//        System.out.println("sdsdsdsd2");
+
+//        int emailCount = userAccountDetailsJdbcRepository.checkNICExistsInStaffMember(profile.getEmail());
+//        if(emailCount>0){
+//            String x =  "Already has an account!";
+//        }
+//        int y = (int) staffMemberJdbcRepository.updateProfile(profile);
+
+        return staffMemberJdbcRepository.updateProfile(profile);
+    }
+
 }

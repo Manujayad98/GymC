@@ -21,7 +21,7 @@ const InputField = ({ value, label, placeholder, validators, type, readonly, onC
                     className='form-control'
                     placeholder={placeholder}
                     value={value}
-                    readonly
+                    readOnly={readonly}
                     defaultValue={value}
                     onChange={handleChange}
                 />
@@ -30,7 +30,7 @@ const InputField = ({ value, label, placeholder, validators, type, readonly, onC
                     type={type}
                     value={value}
                     className='form-control'
-                    readonly
+                    readOnly={readonly}
                     placeholder={placeholder}
                     onChange={handleChange}
                 />

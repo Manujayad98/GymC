@@ -16,10 +16,15 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 import { Link } from 'react-router-dom'
 
+import { getUsers } from "../../../../services/UserService";
+
 export default function Trainers() {
+
+    const [users, setAllUsers] = useState([]);
 
     useEffect(() => {
         checkValidate();
+        getAllUsers();
     }, []);
 
     const checkValidate = async () => {
@@ -27,6 +32,12 @@ export default function Trainers() {
         if (!y) {
             window.location.href = "/";
         }
+    };
+
+    const getAllUsers = async () => {
+        const res = await getUsers();
+        console.log(res.data);
+        setAllUsers(res.data);
     };
 
     const [trainerDetails] = useState([

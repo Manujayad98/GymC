@@ -4,6 +4,7 @@ import com.example.gymcbackend.dto.Profile;
 import com.example.gymcbackend.dto.Password;
 import com.example.gymcbackend.entities.StaffMember;
 import com.example.gymcbackend.entities.UserAccount;
+import com.example.gymcbackend.repository.staffMemberDao.StaffMemberRepository;
 import com.example.gymcbackend.repository.userDao.UserAccountDetailsRepository;
 import com.example.gymcbackend.services.CustomUserService;
 import com.example.gymcbackend.services.PasswordService;
@@ -20,6 +21,8 @@ public class UserController {
     @Autowired
     private UserAccountDetailsRepository userAccountDetailsRepository;
 
+    @Autowired
+    private StaffMemberRepository staffMemberRepository;
     @Autowired
     private CustomUserService customUserService;
 
@@ -52,20 +55,20 @@ public class UserController {
     @PutMapping("/changePassword/{userName}")
     public long changePassword(@RequestBody Password password, @PathVariable String userName){
 //        System.out.println("pwcontroller");
-        System.out.println(password.getNewPassword());
+//        System.out.println(password.getNewPassword());
         return passwordService.changePassword(password,userName);
     }
 
     @PostMapping("/registerUser")
     public String registerUser(@RequestBody StaffMember staffMember){
-        System.out.println("registerTrainer");
+//        System.out.println("registerTrainer");
         return staffMemberService.register(staffMember);
     }
 
-//    @PostMapping("/registerUser")
-//    public String registerUser(@RequestBody StaffMember staffMember){
-//        System.out.println("registerUser");
-//        return staffMemberService.register(staffMember);
-//    }
+    @PutMapping("/updateProfile")
+    public long updateProfile(@RequestBody Profile profile){
+//        System.out.println("sdsdsdsd1");
+        return staffMemberService.updateProfile(profile);
+    }
 
 }
