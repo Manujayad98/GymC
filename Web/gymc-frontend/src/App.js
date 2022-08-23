@@ -30,12 +30,12 @@ import Profile from './Components/Pages/all/Profile/ProfileVIewNew'
 import SidebarA from './Components/Pages/admin/adm_sidebar/Sidebar';
 import DashboardA from './Components/Pages/admin/adm_dashboard/Dashboard';
 import UsersA from './Components/Pages/admin/adm_users/Users';
-// import SystemLogsA from './Components/Pages/admin/adm_systemLogs/SystemLogs';
+import SystemLogsA from './Components/Pages/admin/adm_systemLogs/SystemLogs';
 import NotificationsA from './Components/Pages/admin/adm_notifications/Notifications';
 
 //OWNER
 import TrainerO from './Components/Pages/owner/own_trainers/Trainers';
-// import AdjustmentsO from './Components/Pages/owner/own_adjustments/Adjustments';
+import AdjustmentsO from './Components/Pages/owner/own_adjustments/Adjustments';
 import TraineesO from './Components/Pages/owner/own_trainees/Trainees';
 import AddTrainer from './Components/Pages/owner/own_add_trainer/AddTrainer';
 import DashboardO from './Components/Pages/owner/own_dashboard/Dashboard';
@@ -100,7 +100,7 @@ function App() {
           {/* OWNER ROUTES */}
           <Route path="/Otrainers" element={<TrainerO />}></Route>
           <Route path="/OaddTrainer" element={<AddTrainer />}></Route>
-          {/* <Route path="/Oadjustments" element={<AdjustmentsO />}></Route> */}
+          <Route path="/Oadjustments" element={<AdjustmentsO />}></Route>
           <Route path="/Otrainees" element={<TraineesO />}></Route>
           <Route path="/Odashboard" element={<DashboardO />}></Route>
           <Route path="/Onotifications" element={<NotificationsO />}></Route>
@@ -113,7 +113,7 @@ function App() {
           <Route path="/Adashboard" element={<DashboardA />}></Route>
           <Route path="/Anotifications" element={<NotificationsA />}></Route>
           <Route path="/Ausers" element={<UsersA />}></Route>
-          {/* <Route path="/AsystemLogs" element={<SystemLogsA />}></Route> */}
+          <Route path="/AsystemLogs" element={<SystemLogsA />}></Route>
 
 
           {/* RECEPTIONIST ROUTES */}

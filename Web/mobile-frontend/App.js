@@ -17,35 +17,37 @@ import {
   StyleSheet,
   Text,
 } from 'react-native';
-
 const Stack = createNativeStackNavigator();
 
 const App = () => {
 
   return (
     // <TrainerNavBar/>
-    
+
     <NavigationContainer>
       <Stack.Navigator>
-        
+
         <Stack.Screen
           name="Startup"
           component={StartPage}
-          options={{ title: 'Login' }}
+          options={{ title: 'Startup' }}
         />
         <Stack.Screen name="Login" component={LoginPage} />
         <Stack.Screen name="Forgot" component={ForgotPasswordPage} />
         <Stack.Screen name="Reset" component={ResetPasswordPage} />
+        <Stack.Screen name="Setup" component={SetupProfilePage} />
+        <Stack.Screen name="SetupPw" component={SetupPasswordPage} />
+        <Stack.Screen name="Guide" component={AppoinmentGuidePage} />
+        <Stack.Screen name="Explore" component={ExploreAppPage} />
 
       </Stack.Navigator>
     </NavigationContainer>
-  );
-};
 
+);
+};
 const styles = StyleSheet.create({
   // root:{
   //   flex:1,
   // }
 });
-
 export default App;

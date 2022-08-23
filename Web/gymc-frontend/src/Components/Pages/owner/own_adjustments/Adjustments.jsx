@@ -177,7 +177,7 @@ export default function Exercises() {
                     <div className="main_div">
                         <div className="center_div">
                         <h2 id="count">{count}</h2>
-                        <div className="btn_div">
+                        {/* <div className="btn_div">
                             <Tooltip title="Add">
                             <Button onClick={IncNum}>
                                 <AddIcon />
@@ -188,7 +188,7 @@ export default function Exercises() {
                             <RemoveIcon />
                             </Button>
                             </Tooltip>
-                        </div>
+                        </div> */}
                         </div>
                     </div>
                 </div>
