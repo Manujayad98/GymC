@@ -7,14 +7,15 @@
     left: 0;
 }
 
-.rec-check-container{
+.rec-leave-container{
     background-color: white;
     border-radius: 8px;
     width: 500px;
     height: fit-content;
     position: fixed;
     top: 10%;
-    left: 35%;
+    left: 30%;
+    text-align: center;
 }
 
 .rec-cmodal-closebtn{
@@ -40,7 +41,7 @@
     padding: 20px;
 }
 
-.rec-check-input{
+.rec-leave-input{
     padding-left: 50px;
     padding-right: 50px;
 }
@@ -69,16 +70,18 @@
     background-color: #32ff4E !important;
 
 }
-.rec-check-body{
-    display: flex;
-    align-items: center;
+.rec-leave-body{
     padding: 20px;
 }
 
-.rec-check-header{
+.rec-leave-header{
     height: 40px;
 }
 
-.rec-check-formtitle{
+.rec-leave-title{
     height: 30px;
+}
+
+.last-line{
+    padding-bottom: 20px;
 }

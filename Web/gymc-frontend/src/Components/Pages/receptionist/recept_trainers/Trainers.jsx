@@ -15,6 +15,7 @@ import lahirupic from "../../../../images/receptionistinterim/lahiru.png"
 import lelanipic from "../../../../images/receptionistinterim/lelani.png"
 import DeleteModal from '../../../Utilities/Popups/DeletionModal'
 import AdjustModal from "../../../Utilities/Popups/adjustmentModal";
+import LeaveModal from "../../../Utilities/Popups/LeaveModal";
 
 
 
@@ -42,6 +43,7 @@ export default function Trainers() {
 
     const [openModal, setOpenModal] = useState(false)
     const [openadjustModal, setadjustModal] = useState(false)
+    const [openleaveModal, setleaveModal] = useState(false)
 
     const [trainerDetails] = useState([
         {
@@ -52,7 +54,7 @@ export default function Trainers() {
             NextShift: "2022-10-17 09.30a.m",
             Status: (
                 <span >
-                    <button type="button" class="btn" style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Leave</button>
+                    <button onClick={() => setleaveModal(true)} type="button" class="btn" style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Leave</button>
                 </span>),
             Actions: (
                 <span >
@@ -211,6 +213,7 @@ export default function Trainers() {
                     <Button onClick={() => setadjustModal(true)}>Add Next Amount</Button>
                     <AdjustModal open={openadjustModal} onClose={() => setadjustModal(false)} />
                     <DeleteModal open={openModal} onClose={() => setOpenModal(false)}/>
+                    <LeaveModal open={openleaveModal} onClose={() => setleaveModal(false)} />
                 </div>
             </div >
         </div >
