@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet, useWindowDimensions, ScrollView,CheckBox} from 'react-native'
+import { View, Text, Image, StyleSheet, useWindowDimensions} from 'react-native'
 import React, {useState} from 'react'
 // import Logo from '../../../../assets/logo.png'
 import CustomInput from '../../../components/CustomInput/CustomInput'
@@ -19,7 +19,7 @@ const LoginPage = ({ navigation }) => {
     }
 
   return (
-    <ScrollView>
+    
     <View style={styles.root}>
     <Text><Icon name="backward" size={30} color="#fff" 
         onPress={() =>
@@ -60,7 +60,7 @@ const LoginPage = ({ navigation }) => {
 
         
     </View>
-    </ScrollView>
+    
   )
 }
 
