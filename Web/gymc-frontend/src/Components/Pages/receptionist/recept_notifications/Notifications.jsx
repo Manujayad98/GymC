@@ -1,153 +1,87 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from 'react'
 import '../recept_sidebar/Sidebar.css'
 import SidebarR from '../recept_sidebar/Sidebar'
 import HeaderR from '../recept_header/Header'
-import Table from '../../../Utilities/Tables/Table1'
-import Trash from '../../../../images/Icons/trash-solid.svg'
-
 import './Recept_Notifications.css'
 
-export default function Trainers() {
+const RNotification = () => {
 
-    useEffect(() => {
-        checkValidate();
-    }, []);
+  useEffect(() => {
+    checkValidate();
+  }, []);
 
-    const checkValidate = async () => {
-        const y = localStorage.getItem("USER_KEY");
-        if (!y) {
-            window.location.href = "/";
-        }
-    };
+  const checkValidate = async () => {
+    const y = localStorage.getItem("USER_KEY");
+    if (!y) {
+      window.location.href = "/";
+    }
+  };
 
-    const [trainerDetails] = useState([
-        {
-
-            Time: "10.00 a.m.",
-            Notification: "Trainee Jake Hall ID just checked out",
-            Actions: (
-                <span>
-
-                    {/* <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span> */}
-
-                    <span style={{ paddingRight: "20px", marginLeft: "80%" }}><img src={Trash} alt="" height={20} width={20} /></span>
-
-                </span >
-            ),
-        },
-
-        {
-
-            Time: "09.45 a.m.",
-            Notification: "Trainee Nehara Perera ID T125486 just checked in",
-            Actions: (
-                <span>
-
-                    {/* <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span> */}
-
-                    <span style={{ paddingRight: "20px", marginLeft: "80%" }}><img src={Trash} alt="" height={20} width={20} /></span>
-
-                </span >
-            ),
-        },
-
-        {
-
-            Time: "08.00 a.m.",
-            Notification: "Trainer Calum Scott is on leave today",
-            Actions: (
-                <span>
-
-                    {/* <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span> */}
-
-                    <span style={{ paddingRight: "20px", marginLeft: "80%" }}><img src={Trash} alt="" height={20} width={20} /></span>
-
-                </span >
-            ),
-        },
-
-        {
-
-            Time: "10.00 a.m.",
-            Notification: "Trainee Jake Hall ID just checked out",
-            Actions: (
-                <span>
-
-                    {/* <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span> */}
-
-                    <span style={{ paddingRight: "20px", marginLeft: "80%" }}><img src={Trash} alt="" height={20} width={20} /></span>
-
-                </span >
-            ),
-        },
-
-        {
-
-            Time: "09.45 a.m.",
-            Notification: "Trainee Nehara Perera ID T125486 just checked in",
-            Actions: (
-                <span>
-
-                    {/* <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span> */}
-
-                    <span style={{ paddingRight: "20px", marginLeft: "80%" }}><img src={Trash} alt="" height={20} width={20} /></span>
-
-                </span >
-            ),
-        },
-
-        {
-
-            Time: "08.00 a.m.",
-            Notification: "Trainer Calum Scott is on leave today",
-            Actions: (
-                <span>
-
-                    {/* <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span> */}
-
-                    <span style={{ paddingRight: "20px", marginLeft: "80%" }}><img src={Trash} alt="" height={20} width={20} /></span>
-
-                </span >
-            ),
-        },
-
-        {
-
-            Time: "10.00 a.m.",
-            Notification: "Trainee Jake Hall ID just checked out",
-            Actions: (
-                <span>
-
-                    {/* <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span> */}
-
-                    <span style={{ paddingRight: "20px", marginLeft: "80%" }}><img src={Trash} alt="" height={20} width={20} /></span>
-
-                </span >
-            ),
-        },
-
-    ]);
-
-    const [trainerDetailsTableHead] = useState([
+  return (
+    <div className='main-container'>
+      <SidebarR />
+      <div className='body-container'>
+        <HeaderR title="Notifications" />
+        <div className="recept-notification-content-container">
+          <h6 className="recept-text"><b>New</b></h6>
+          <hr width='100%' />
+          <div className="recept-noti-card-container">
+            <div className="notification-body">
+              <p class="recept-noti-title">Appoinment cancellation</p>     
+              <p class="recept-noti-body">Client cancelled the appoinment on Tuesday 24th of July..................</p>
+              <p class="recept-noti-time">34 minutes ago</p>
+            </div>
+            <div className="recept-read-btn">
+                <button className="mark-as-read-btn">mark as read</button>
+            </div>
+          </div>
+          <div className="recept-noti-card-container">
+            <div className="notification-body">
+              <p class="recept-noti-title">Appoinment cancellation</p>     
+              <p class="recept-noti-body">Client cancelled the appoinment on Tuesday 24th of July..................</p>
+              <p class="recept-noti-time">34 minutes ago</p>
+            </div>
+            <div className="recept-read-btn">
+                <button className="mark-as-read-btn">mark as read</button>
+            </div>
+          </div>
+         
 
 
-    ]);
 
-    return (
+          <h6 className="recept-text"><b>Earlier</b></h6>
+          <hr width='100%' />
+          <div className="recept-noti-card-container">
+            <div className="notification-body">
+              <p class="recept-noti-title">Appoinment cancellation</p>     
+              <p class="recept-noti-body">Client cancelled the appoinment on Tuesday 24th of July..................</p>
+              <p class="recept-noti-time">34 minutes ago</p>
+            </div>
+            
+          </div>
+          <div className="recept-noti-card-container">
+            <div className="notification-body">
+              <p class="recept-noti-title">Appoinment cancellation</p>     
+              <p class="recept-noti-body">Client cancelled the appoinment on Tuesday 24th of July..................</p>
+              <p class="recept-noti-time">34 minutes ago</p>
+            </div>
+            
+          </div>
+          <div className="recept-noti-card-container">
+            <div className="notification-body">
+              <p class="recept-noti-title">Appoinment cancellation</p>     
+              <p class="recept-noti-body">Client cancelled the appoinment on Tuesday 24th of July..................</p>
+              <p class="recept-noti-time">34 minutes ago</p>
+            </div>
+            
+          </div>
+          
 
-        <div className='main-container'>
-            <SidebarR />
-            <div className='body-container'>
-                <HeaderR title="Notifications" />
-                <div className="contents-container">
+        </div>
 
-                    <Table
-                        rows={trainerDetails}
-                        headCells={trainerDetailsTableHead}
-                        tableName={"Notifications"}
-                    />
-                </div>
-            </div >
-        </div >
-    )
+      </div>
+    </div>
+  )
 }
+
+export default RNotification
