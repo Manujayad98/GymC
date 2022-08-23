@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button';
 import DeleteModal from '../../../Utilities/Popups/DeletionModal'
 import CheckinModal from '../../../Utilities/Popups/Checkinmodal';
 import CheckoutModal from '../../../Utilities/Popups/Checkoutmodal';
+import NowinModal from '../../../Utilities/Popups/NowinModal';
+import DuecheckModal from '../../../Utilities/Popups/DuecheckoutModal';
 import '../recept_sidebar/Sidebar.css'
 import SidebarR from '../recept_sidebar/Sidebar'
 import HeaderR from '../recept_header/Header'
@@ -12,7 +14,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import './Trainees.css'
 import { Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faL, faSearch } from '@fortawesome/free-solid-svg-icons'
 import Table from '../../../Utilities/Tables/Table1'
 import Trash from '../../../../images/Icons/trash-solid.svg'
 import Edit from '../../../../images/Icons/pen-solid.svg'
@@ -45,6 +47,9 @@ const Trainees = () => {
   const [openModal, setOpenModal] = useState(false)
   const [checkinmodal, opencheckin] = useState (false)
   const [checkoutmodal, opencheckout] = useState (false)
+  const [nowinmodal, opennowin] = useState (false)
+  const [duecmodal, openduec] = useState (false)
+
   const [trainerDetails] = useState([
     {
       TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
@@ -54,7 +59,7 @@ const Trainees = () => {
       RegDate: "2021-10-24",
       Check: (
         <span>
-          <span style={{ margin: "10px" }}><Button onClick={() => opencheckin(true)} variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button>
+          <span style={{ margin: "10px" }}><Button disabled onClick={() => opencheckin(true)} variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button>
           </span>
           <span><Button onClick={() => opencheckout(true)} variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
         </span>
@@ -78,7 +83,7 @@ const Trainees = () => {
       RegDate: "2021-08-14",
       Check: (
         <span>
-          <span style={{ margin: "10px" }}><Button onClick={() => opencheckin(true)} variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+          <span style={{ margin: "10px" }}><Button disabled onClick={() => opencheckin(true)} variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
           <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
         </span>
       ),
@@ -101,7 +106,7 @@ const Trainees = () => {
       RegDate: "2021-10-24",
       Check: (
         <span>
-          <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+          <span style={{ margin: "10px" }}><Button disabled variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
           <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
         </span>
       ),
@@ -124,8 +129,8 @@ const Trainees = () => {
       RegDate: "2021-10-24",
       Check: (
         <span>
-          <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
-          <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+          <span style={{ margin: "10px" }}><Button onClick={() => opencheckin(true) } variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+          <span><Button disabled variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
         </span>
       ),
       Pay: (
@@ -148,7 +153,7 @@ const Trainees = () => {
       Check: (
         <span>
           <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
-          <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+          <span><Button disabled variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
         </span>
       ),
       Pay: (
@@ -171,7 +176,7 @@ const Trainees = () => {
       Check: (
         <span>
           <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
-          <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+          <span><Button disabled variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
         </span>
       ),
       Pay: (
@@ -194,7 +199,7 @@ const Trainees = () => {
       Check: (
         <span>
           <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
-          <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+          <span><Button disabled variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
         </span>
       ),
       Pay: (
@@ -230,7 +235,7 @@ const Trainees = () => {
             <Tabs defaultActiveKey={"NowIn"} id="uncontrolled-tab-example" className='mb-3'>
               <Tab eventKey={"NowIn"} title="Now In">
                 <div className='rec-content-row'>
-                  <Card className='rec-train-card'>
+                  <Card onClick={() => opennowin(true)} style={{cursor:"pointer"}} className='rec-train-card'>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
                       M001
@@ -261,7 +266,7 @@ const Trainees = () => {
               </Tab>
               <Tab eventKey={"due"} title="Due Check Out">
                 <div className='rec-content-row'>
-                  <Card className='rec-train-card' style={{borderColor: 'red'}}>
+                  <Card onClick={() => openduec(true)} className='rec-train-card' style={{borderColor: 'red'}}>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
                       M001
@@ -329,6 +334,8 @@ const Trainees = () => {
             <DeleteModal open={openModal} onClose={() => setOpenModal(false)}/>
             <CheckinModal open={checkinmodal} onClose={() => opencheckin(false)} />
             <CheckoutModal open={checkoutmodal} onClose={() => opencheckout(false)} />
+            <NowinModal open={nowinmodal} onClose={() => opennowin(false)} />
+            <DuecheckModal open={duecmodal} onCloseD={() => openduec(false)} />
           </div>
         </div>
       </div>
