@@ -20,7 +20,7 @@ import Radiobutton from "../../../Utilities/Form/Radiobutton";
 import PictureUploader from "../../../Utilities/Form/PictureUploader/PictureUploader";
 
 
-export default function UpdateTrainer() {
+export default function UpdateTrainee() {
 
     useEffect(() => {
         checkValidate();
@@ -44,7 +44,7 @@ export default function UpdateTrainer() {
         address: '',
         email: '',
         gender: false,
-        qualifications: '',
+        membership: '',
     });
     const [click, setClick] = useState(false);
 
@@ -105,7 +105,7 @@ export default function UpdateTrainer() {
         <div className='main-container'>
             <SidebarR />
             <div className='body-container'>
-                <HeaderR title="Update Trainer" />
+                <HeaderR title="Update Trainee" />
                 <div className="content-container">
                     <div className="add-trainer-form-div">
                         <form className="login-form" onSubmit={handleSubmit} noValidate={false}>
@@ -132,7 +132,7 @@ export default function UpdateTrainer() {
                                                 value={requestData.firstname}
                                                 type='text'
                                                 label="First Name"
-                                                placeholder='Gihan'
+                                                placeholder='Kasun'
                                                 readonly
                                                 validators={[
                                                     { check: Validators.required, message: 'This field is required' }
@@ -144,7 +144,7 @@ export default function UpdateTrainer() {
                                                 value={requestData.lastname}
                                                 type='text'
                                                 label="Last Name"
-                                                placeholder='Sekara'
+                                                placeholder='Perera'
                                                 readonly
                                                 validators={[
                                                     { check: Validators.required, message: 'This field is required' }
@@ -254,20 +254,25 @@ export default function UpdateTrainer() {
                                         </div>
 
                                     </div>
-                                    <h4 className='add-trainer-form-subHeading'>Qualifications</h4>
+                                    <h4 className='add-trainer-form-subHeading'>Membership</h4>
                                     <hr className="add-trainer-hr" />
                                     <div className="form-row">
                                         <div className="form-col1">
-                                            <InputField
-                                                value={requestData.qualifications}
+                                            <select name="membership" id="membership">
+                                                <option value="Daily">Daily</option>
+                                                <option value="MonthlyNP">Monthly Non Personal</option>
+                                                <option value="MonthlyP">Monthly Personal</option>
+                                            </select>
+                                            {/*<InputField
+                                                value={requestData.membership}
                                                 type='textarea'
                                                 placeholder='Diploma in physical education'
                                                 validators={[
                                                     { check: Validators.required, message: 'This field is required' }
                                                 ]}
-                                                onChange={handleChange('qualifications')} />
-                                            {!requestData.qualifications && click && <span className='text-danger'>This Field is required</span>}
-
+                                                onChange={handleChange('membership')} />
+                                            {!requestData.membership && click && <span className='text-danger'>This Field is required</span>}
+*/}
                                             <br></br>
 
                                         </div>
@@ -278,7 +283,7 @@ export default function UpdateTrainer() {
                                         <div className="form-col1"></div>
                                         <div className="form-col2">
                                         </div>
-                                        <Link to='/Rtrainers'>
+                                        <Link to='/Rtrainees'>
                                         <button className="update-cancel-button"  style={{marginRight:'40px'}}>
                                             Cancel
                                         </button>

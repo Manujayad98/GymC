@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
         paddingHorizontal:10,
         marginVertical:5,
         height:40,
+        alignSelf:'center'
     },
     input:{},
 });

@@ -1,24 +1,23 @@
-import { View, Text, Image, StyleSheet, useWindowDimensions, ScrollView} from 'react-native'
-import React, {useState} from 'react'
+import { View, Text, Image, StyleSheet, useWindowDimensions} from 'react-native'
+import React from 'react'
 import Logo from '../../../../assets/Start.png'
-import CustomInput from '../../../components/CustomInput/CustomInput'
 import CustomButton from '../../../components/CustomButton/CustomButton'
 
 const StartPage = ({ navigation }) => {
-    const[username,setUsername]=useState('');
-    const[password,setPassword]=useState('');
+    // const[username,setUsername]=useState('');
+    // const[password,setPassword]=useState('');
 
-    const {height} = useWindowDimensions();
+    // const {height} = useWindowDimensions();
 
-    const onSignInPressed=()=>{
-        console.warn('Sign in success');
-    }
-    const onForgotPasswordPressed=()=>{
-        console.warn('forgot');
-    }
+    // const onSignInPressed=()=>{
+    //     console.warn('Sign in success');
+    // }
+    // const onForgotPasswordPressed=()=>{
+    //     console.warn('forgot');
+    // }
 
   return (
-    <ScrollView>
+    
     <View style={styles.root}>
      
       <Image source={Logo} style={styles.logo} 
@@ -34,25 +33,21 @@ const StartPage = ({ navigation }) => {
       </view>
 
     </View>
-    </ScrollView>
+    
   )
 }
 
 const styles = StyleSheet.create({
     root:{
-        
-        alignSelf:'center',
         alignItems:'center',
         marginTop:0,
         backgroundColor:'#121928',
-        height:800,
         textAlign: 'left',
-        width:360,
+        
     },
     logo:{
         width:'100%',
         height:500,
-        // marginBottom:10,
         alignSelf:'center',
         marginTop:0,
     },

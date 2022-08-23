@@ -3,8 +3,8 @@ import '../adm_sidebar/Sidebar.css'
 import SidebarO from '../adm_sidebar/Sidebar'
 import HeaderO from '../adm_header/header'
 import './SystemLogs.css'
-import Button from '@mui/material/Button';
-import DownloadIcon from '@mui/icons-material/Download';
+import Button1 from '@mui/material/Button';
+import {FaDownload} from "react-icons/fa";
 
 
 const SystemLog = () => {
@@ -30,16 +30,14 @@ const SystemLog = () => {
             {/* <h1>sumudu</h1> */}
             <div className='LogText'>Click on below button to download the system log file</div>
             <div className='downloadButton'>
-              <Button
-                style={{
+            <Button1 style={{
                   borderRadius: 35,
                   backgroundColor: "#32E04E",
                   width: '250px',
                   color: 'white'
                 }}
-                color="primary" size="large" startIcon={<DownloadIcon />}>
-                Download
-              </Button>
+                color="primary" size="large" startIcon={<FaDownload/>}>download</Button1>
+                
             </div>
           </div>
         </div>

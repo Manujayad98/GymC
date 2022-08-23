@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react'
 import '../adm_sidebar/Sidebar.css'
-import SidebarO from '../adm_sidebar/Sidebar'
-import HeaderO from '../adm_header/header'
-import './Notifications.css'
-// import Card from '../../../Utilities/Card/Card'
+import SidebarA from '../adm_sidebar/Sidebar'
+import HeaderA from '../adm_header/header'
+import './ANotifications.css'
 
-const Notification = () => {
+const ANotification = () => {
 
   useEffect(() => {
     checkValidate();
@@ -20,46 +19,62 @@ const Notification = () => {
 
   return (
     <div className='main-container'>
-      <SidebarO />
+      <SidebarA />
       <div className='body-container'>
-        <HeaderO title="Notifications" />
-        <div className="content-container">
-          <h6><b>New</b></h6>
+        <HeaderA title="Notifications" />
+        <div className="adm-notification-content-container">
+          <h6 className="adm-text"><b>New</b></h6>
           <hr width='100%' />
-          <div className="card-container">
-            <p class="line1">Appoinment cancellation</p>
-            <p class="line2">Client cancelled the appoinment on Tuesday 24th of July..................</p>
-            <p class="line3">34 minutes ago</p>
-
-
+          <div className="adm-noti-card-container">
+            <div className="notification-body">
+              <p class="adm-noti-title">Appoinment cancellation</p>     
+              <p class="adm-noti-body">Client cancelled the appoinment on Tuesday 24th of July..................</p>
+              <p class="adm-noti-time">34 minutes ago</p>
+            </div>
+            <div className="adm-read-btn">
+                <button className="mark-as-read-btn">mark as read</button>
+            </div>
           </div>
+          <div className="adm-noti-card-container">
+            <div className="notification-body">
+              <p class="adm-noti-title">Appoinment cancellation</p>     
+              <p class="adm-noti-body">Client cancelled the appoinment on Tuesday 24th of July..................</p>
+              <p class="adm-noti-time">34 minutes ago</p>
+            </div>
+            <div className="adm-read-btn">
+                <button className="mark-as-read-btn">mark as read</button>
+            </div>
+          </div>
+         
 
 
 
-          <h6><b>Earlier</b></h6>
+          <h6 className="adm-text"><b>Earlier</b></h6>
           <hr width='100%' />
-          <div className="card-container">
-            <p class="line1">Appoinment cancellation</p>
-            <p class="line2">Client cancelled the appoinment on Tuesday 24th of July..................</p>
-            <p class="line3">34 minutes ago</p>
-
-
+          <div className="adm-noti-card-container">
+            <div className="notification-body">
+              <p class="adm-noti-title">Appoinment cancellation</p>     
+              <p class="adm-noti-body">Client cancelled the appoinment on Tuesday 24th of July..................</p>
+              <p class="adm-noti-time">34 minutes ago</p>
+            </div>
+            
           </div>
-          <div className="card-container">
-            <p class="line1">Appoinment cancellation</p>
-            <p class="line2">Client cancelled the appoinment on Tuesday 24th of July..................</p>
-            <p class="line3">34 minutes ago</p>
-
-
+          <div className="adm-noti-card-container">
+            <div className="notification-body">
+              <p class="adm-noti-title">Appoinment cancellation</p>     
+              <p class="adm-noti-body">Client cancelled the appoinment on Tuesday 24th of July..................</p>
+              <p class="adm-noti-time">34 minutes ago</p>
+            </div>
+            
           </div>
-          <div className="card-container">
-            <p class="line1">Appoinment cancellation</p>
-            <p class="line2">Client cancelled the appoinment on Tuesday 24th of July..................</p>
-            <p class="line3">34 minutes ago</p>
-
-
+          <div className="adm-noti-card-container">
+            <div className="notification-body">
+              <p class="adm-noti-title">Appoinment cancellation</p>     
+              <p class="adm-noti-body">Client cancelled the appoinment on Tuesday 24th of July..................</p>
+              <p class="adm-noti-time">34 minutes ago</p>
+            </div>
+            
           </div>
-
 
         </div>
 
@@ -68,4 +83,4 @@ const Notification = () => {
   )
 }
 
-export default Notification
+export default ANotification

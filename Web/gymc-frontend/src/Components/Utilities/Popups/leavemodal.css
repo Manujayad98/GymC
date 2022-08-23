@@ -1,4 +1,4 @@
-.rec-modal-overlay{
+.rec-check-overlay{
     background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
     height: 100%;
@@ -7,24 +7,18 @@
     left: 0;
 }
 
-.rec-modal-container{
+.rec-leave-container{
     background-color: white;
     border-radius: 8px;
+    width: 500px;
     height: fit-content;
-    width: fit-content;
-    align-items: center;
     position: fixed;
-    left: 35%;
-    top: 35%;
-}
-.rec-modal-title{
-    font-size:large ;
-    font-weight: bold;
-    padding-top: 70px;
-    margin: 20px;
+    top: 10%;
+    left: 30%;
+    text-align: center;
 }
 
-.rec-modal-closebtn{
+.rec-cmodal-closebtn{
     background-color: white !important;
     width: 40px;
     height: 40px;
@@ -35,17 +29,28 @@
     margin-right: 10px;
     float: right;
 }
-.rec-modal-closebtn:hover{
-    background-color: #ff2121 !important;
-    color: white !important;
-    border-color: #ff2121 !important;
+
+.rec-check-title{
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 20px ;
+}
+
+.rec-check-form{
+    width: 500px;
+    padding: 20px;
+}
+
+.rec-leave-input{
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .rec-modal-btn{
     border: none;
     height: 40px;
     width: 100px;
-    margin: 40px;
+    margin: 20px;
 }
 
 .rec-cancelbtn{
@@ -57,11 +62,26 @@
 
 }
 
-.rec-removebtn{
-    background-color: #ff2121 !important;
-    border-color: #ff2121 !important;
+.rec-confirmbtn{
+    background-color: #32E04E !important;
+    border-color: #32E04E !important;
 }
-.rec-removebtn:hover{
-    background-color: #df0000 !important;
+.rec-confirmbtn:hover{
+    background-color: #32ff4E !important;
+
+}
+.rec-leave-body{
+    padding: 20px;
 }
 
+.rec-leave-header{
+    height: 40px;
+}
+
+.rec-leave-title{
+    height: 30px;
+}
+
+.last-line{
+    padding-bottom: 20px;
+}

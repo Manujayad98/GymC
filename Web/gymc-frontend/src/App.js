@@ -6,6 +6,7 @@ import Pricing from './Components/Pages/all/landingPage/Pricing';
 import About from './Components/Pages/all/landingPage/About';
 import Contact from './Components/Pages/all/landingPage/ContactUs';
 import Trainers from './Components/Pages/all/landingPage/Trainers';
+// import Footer from './Components/Pages/all/landingPage/Footer';
 // import Login from './Components/Pages/all/landingPage/Login';
 import Registration from './Components/Pages/all/registrationPage/Registration';
 import Sidebar from './Components/Utilities/Sidebar/Sidebar';
@@ -29,13 +30,13 @@ import Profile from './Components/Pages/all/Profile/ProfileVIewNew'
 import SidebarA from './Components/Pages/admin/adm_sidebar/Sidebar';
 import DashboardA from './Components/Pages/admin/adm_dashboard/Dashboard';
 import UsersA from './Components/Pages/admin/adm_users/Users';
-// import SystemLogsA from './Components/Pages/admin/adm_systemLogs/SystemLogs';
+import SystemLogsA from './Components/Pages/admin/adm_systemLogs/SystemLogs';
 import NotificationsA from './Components/Pages/admin/adm_notifications/Notifications';
 import AddUserA from './Components/Pages/admin/adm_add_user/AddUser'
 
 //OWNER
 import TrainerO from './Components/Pages/owner/own_trainers/Trainers';
-// import AdjustmentsO from './Components/Pages/owner/own_adjustments/Adjustments';
+import AdjustmentsO from './Components/Pages/owner/own_adjustments/Adjustments';
 import TraineesO from './Components/Pages/owner/own_trainees/Trainees';
 import AddTrainer from './Components/Pages/owner/own_add_trainer/AddTrainer';
 import DashboardO from './Components/Pages/owner/own_dashboard/Dashboard';
@@ -58,6 +59,7 @@ import TrainersR from './Components/Pages/receptionist/recept_trainers/Trainers'
 import AppointmentsR from './Components/Pages/receptionist/recept_appointments/Appointments'
 import AddTrainerR from './Components/Pages/receptionist/recept_add_trainer/AddTrainer';
 import UpdateTrainerR from './Components/Pages/receptionist/recept_update_trainer/UpdateTrainer';
+import UpdateTraineeR from './Components/Pages/receptionist/recept_update_trainee/UpdateTrainee'
 
 //TRAINEE
 import TraineeLogedPage from './Components/Pages/trainee/LogedInPage'
@@ -99,7 +101,7 @@ function App() {
           {/* OWNER ROUTES */}
           <Route path="/Otrainers" element={<TrainerO />}></Route>
           <Route path="/OaddTrainer" element={<AddTrainer />}></Route>
-          {/* <Route path="/Oadjustments" element={<AdjustmentsO />}></Route> */}
+          <Route path="/Oadjustments" element={<AdjustmentsO />}></Route>
           <Route path="/Otrainees" element={<TraineesO />}></Route>
           <Route path="/Odashboard" element={<DashboardO />}></Route>
           <Route path="/Onotifications" element={<NotificationsO />}></Route>
@@ -112,7 +114,7 @@ function App() {
           <Route path="/Adashboard" element={<DashboardA />}></Route>
           <Route path="/Anotifications" element={<NotificationsA />}></Route>
           <Route path="/Ausers" element={<UsersA />}></Route>
-          {/* <Route path="/AsystemLogs" element={<SystemLogsA />}></Route> */}
+          <Route path="/AsystemLogs" element={<SystemLogsA />}></Route>
           <Route path="/AaddUsers" element={<AddUserA />}></Route>
 
           {/* RECEPTIONIST ROUTES */}
@@ -126,6 +128,7 @@ function App() {
           <Route path="/Rappointments" element={<AppointmentsR />}></Route>
           <Route path="/RaddTrainer" element={<AddTrainerR />}></Route>
           <Route path="/RupdateTrainer" element={<UpdateTrainerR />}></Route>
+          <Route path="/RupdateTrainee" element={<UpdateTraineeR />}></Route>
 
 
 
@@ -151,6 +154,7 @@ const Home = () => (
     <Pricing />
     <About />
     <Contact />
+    {/* <Footer /> */}
   </div>
 )
 
