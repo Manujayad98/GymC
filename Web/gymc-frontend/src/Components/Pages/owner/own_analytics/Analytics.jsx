@@ -229,6 +229,11 @@ const Dashboard = () => {
                   </select>
                 </div>
               </div>
+              <div className="dropdown-container">
+              <div className="own-read-btn">
+                <button className="mark-as-read-btn">Generate</button>
+            </div>
+            </div>
             </Tab>
 
           </Tabs>

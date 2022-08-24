@@ -93,7 +93,18 @@
 }
 
 .dropdown-container {
-    width: 300px;
+    width: 200px;
+    
+}
+.dropdown{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row!important;
+    justify-content: space-between;
+    width: 60%;
+    height: auto;
+    padding: 10px 20px; 
+    
 }
 
 .form-label-container {
