@@ -586,8 +586,9 @@ h5 {
     overflow: hidden;
     transition: 0.4s ease-in-out;
     position: relative;
+    padding: 15px;
+    align-items: center;
 
-    padding: 20px;
 }
 
 .p-b-img {
@@ -627,6 +628,7 @@ h5 {
 
 .p-box h2 {
     color: white;
+    text-align: center;
 }
 
 .p-box p {

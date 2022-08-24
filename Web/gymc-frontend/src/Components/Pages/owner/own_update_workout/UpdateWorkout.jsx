@@ -105,12 +105,17 @@ export default function UpdateWorkout() {
             <SidebarO />
             <div className='body-container'>
                 <HeaderO title="Update Workout" />
-                <div class="form-group col-md-6">
-                    <img src={Pic1} alt="" style={{ borderRadius: '80%', width: '100px', height: '100px' }} />
-                    <div className='own-dashboard-card-content'>
-                        <div className='staffID'>T00001</div>
-                        <div className='staffName'>Sanjana Rajapaksha</div>
+                <div className="workout-profile-card">
+                    <div className='own-dashboard-card own-dashboard-profile-cards'>
+                        <div className='own-dashboard-card-img-container'>
+                            <img src={Pic1} alt="" />
+                        </div>
+                        <div className='own-dashboard-card-content'>
+                            <div className='staffID'>T00001</div>
+                            <div className='staffName'>Sanjana Rajapaksha</div>
+                        </div>
                     </div>
+
                 </div>
                 <div className="own_update_workout_content-container">
 
@@ -131,7 +136,6 @@ export default function UpdateWorkout() {
                                                     type='text'
                                                     label="Height"
                                                     placeholder='Type'
-                                                    readonly
                                                     validators={[
                                                         { check: Validators.required, message: 'NIC is not valid' }
                                                     ]}
@@ -144,7 +148,6 @@ export default function UpdateWorkout() {
                                                     type='text'
                                                     label="Weight"
                                                     placeholder='Type'
-                                                    readonly
                                                     validators={[
                                                         { check: Validators.required, message: 'This field is required' }
                                                     ]}
@@ -171,7 +174,6 @@ export default function UpdateWorkout() {
 
                                             </div>
                                             <div className="form-col2">
-                                                <label htmlFor="">Affected Bone</label>
                                                 <Dropdown
                                                     data={[
                                                         { value: "UpperArm", label: 'Upper Arm' },
@@ -215,7 +217,6 @@ export default function UpdateWorkout() {
                                             type='text'
                                             label="Biceps"
                                             placeholder='Type'
-                                            readonly
                                             validators={[
                                                 { check: Validators.required, message: 'NIC is not valid' }
                                             ]}
@@ -228,7 +229,6 @@ export default function UpdateWorkout() {
                                             type='text'
                                             label="Forearms"
                                             placeholder='Type'
-                                            readonly
                                             validators={[
                                                 { check: Validators.required, message: 'This field is required' }
                                             ]}
@@ -243,7 +243,6 @@ export default function UpdateWorkout() {
                                             type='text'
                                             label="Chest"
                                             placeholder='Type'
-                                            readonly
                                             validators={[
                                                 { check: Validators.required, message: 'This Field is not valid' }
                                             ]}
@@ -256,7 +255,6 @@ export default function UpdateWorkout() {
                                             type='text'
                                             label="Hips"
                                             placeholder='Type'
-                                            readonly
                                             validators={[
                                                 { check: Validators.required, message: 'This field is required' }
                                             ]}
@@ -271,7 +269,6 @@ export default function UpdateWorkout() {
                                             type='text'
                                             label="Thighs"
                                             placeholder='Type'
-                                            readonly
                                             validators={[
                                                 { check: Validators.required, message: 'NIC is not valid' }
                                             ]}
@@ -291,11 +288,11 @@ export default function UpdateWorkout() {
 
                         </div>
                     </div>
-                    <div className="own_update_workout_btn">
+                    {/* <div className="own_update_workout_btn"> */}
 
                         <button onClick={handleSubmit} className="own_update_workout-btn">Save</button>
 
-                    </div>
+                    {/* </div> */}
 
 
                 </div>
