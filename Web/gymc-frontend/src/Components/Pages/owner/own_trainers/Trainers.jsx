@@ -37,7 +37,7 @@ export default function Trainers() {
     const [trainerDetails] = useState([
         {
             TrainerImg: (<img src={trainee1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-            TrainerID: "M001",
+            TrainerID: "S001",
             TrainerName: "Thiyangi Senevirathna",
             Phone: "0714558741",
             Address: "No. 46/4, Tample road, Narammala",
@@ -57,7 +57,7 @@ export default function Trainers() {
         },
         {
             TrainerImg: (<img src={trainee2} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-            TrainerID: "M002",
+            TrainerID: "S002",
             TrainerName: "Bashitha Marasinghe",
             Phone: "075584736",
             Address: "No. 46/4, Church road, Dambadeniya",
@@ -78,7 +78,7 @@ export default function Trainers() {
         },
         {
             TrainerImg: (<img src={trainee3} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-            TrainerID: "M003",
+            TrainerID: "S003",
             TrainerName: "Inosha Perera",
             Phone: "0775587511",
             Address: "No. 16/4, Temple Road, Pannala",
@@ -99,7 +99,7 @@ export default function Trainers() {
         },
         {
             TrainerImg: (<img src={trainee4} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-            TrainerID: "M004",
+            TrainerID: "S004",
             TrainerName: "Rasangi Madhushika",
             Phone: "078558456",
             Address: "No. 14/A, Negombo Road, Giriulla",
@@ -120,7 +120,7 @@ export default function Trainers() {
         },
         {
             TrainerImg: (<img src={trainee5} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-            TrainerID: "M005",
+            TrainerID: "S005",
             TrainerName: "Ishan Karunananyake",
             Phone: "0765584751",
             Address: "No. 36/4, Temple road, Damabadeniya",
@@ -141,7 +141,7 @@ export default function Trainers() {
         },
         {
             TrainerImg: (<img src={trainee6} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-            TrainerID: "M006",
+            TrainerID: "S006",
             TrainerName: "Madhupa Minol",
             Phone: "0765584751",
             Address: "No. 46/4, Church road, Giriulla",
