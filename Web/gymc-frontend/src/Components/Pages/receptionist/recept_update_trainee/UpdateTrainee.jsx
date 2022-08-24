@@ -55,7 +55,7 @@ export default function UpdateTrainee() {
         });
     };
     const handleRadio = (event) => {
-        
+
         setState({
             ...requestData,
             gender: event.target.value
@@ -137,8 +137,8 @@ export default function UpdateTrainee() {
                                                 validators={[
                                                     { check: Validators.required, message: 'This field is required' }
                                                 ]}
-                                                onChange={handleChange('firstname')} 
-                                                 />
+                                                onChange={handleChange('firstname')}
+                                            />
                                             {!requestData.firstname && click && <span className='text-danger'>This Field is required</span>}
                                             <InputField
                                                 value={requestData.lastname}
@@ -185,7 +185,7 @@ export default function UpdateTrainee() {
                                         <div className="form-col1">
                                             <label> Gender</label>
                                             <div className='radio-div' onChange={handleRadio}>
-                                                <input type="radio" className='form-radio' value="M" name="gender" checked readonly/> Male
+                                                <input type="radio" className='form-radio' value="M" name="gender" checked readonly /> Male
                                                 <input type="radio" className='form-radio' value="F" name="gender" readonly style={{ marginLeft: '10px' }} /> Female
                                             </div>
                                             {!requestData.gender && click && <span className='text-danger'>This Field is required</span>}
@@ -258,11 +258,11 @@ export default function UpdateTrainee() {
                                     <hr className="add-trainer-hr" />
                                     <div className="form-row">
                                         <div className="form-col1">
-                                            <select name="membership" id="membership">
+                                            {/* <select name="membership" id="membership">
                                                 <option value="Daily">Daily</option>
                                                 <option value="MonthlyNP">Monthly Non Personal</option>
                                                 <option value="MonthlyP">Monthly Personal</option>
-                                            </select>
+                                            </select> */}
                                             {/*<InputField
                                                 value={requestData.membership}
                                                 type='textarea'
@@ -273,9 +273,22 @@ export default function UpdateTrainee() {
                                                 onChange={handleChange('membership')} />
                                             {!requestData.membership && click && <span className='text-danger'>This Field is required</span>}
 */}
+                                            <Dropdown
+                                                data={[
+                                                    { value: 1, label: 'Monthly-Personal' },
+                                                    { value: 2, label: 'Monthly-NonPersonal' },
+                                                    { value: 3, label: 'Daily' },
+                                                ]}
+                                                label="Membership type"
+                                                // styleClass='mt-3'
+                                                value={requestData.staffType}
+                                                placeholder='Select'
+                                            // onChange={handleDropdown('staffType')}
+                                            />
                                             <br></br>
 
                                         </div>
+                                        <div className="form-col1"></div>
                                     </div>
 
 
@@ -284,15 +297,15 @@ export default function UpdateTrainee() {
                                         <div className="form-col2">
                                         </div>
                                         <Link to='/Rtrainees'>
-                                        <button className="update-cancel-button"  style={{marginRight:'40px'}}>
-                                            Cancel
-                                        </button>
+                                            <button className="update-cancel-button" style={{ marginRight: '40px' }}>
+                                                Cancel
+                                            </button>
                                         </Link>
-                                        
+
                                         <button type="submit" className="update-button">
                                             Confirm
                                         </button>
-                                        
+
                                     </div>
                                 </div>
 

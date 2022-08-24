@@ -205,7 +205,7 @@ export default function AddTrainer() {
                                             label="Membership type"
                                             // styleClass='mt-3'
                                             value={requestData.staffType}
-                                            placeholder='Select Membership type'
+                                            placeholder='Select'
                                         // onChange={handleDropdown('staffType')}
                                         />
                                         <br></br>

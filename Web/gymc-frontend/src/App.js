@@ -33,6 +33,8 @@ import UsersA from './Components/Pages/admin/adm_users/Users';
 import SystemLogsA from './Components/Pages/admin/adm_systemLogs/SystemLogs';
 import NotificationsA from './Components/Pages/admin/adm_notifications/Notifications';
 import AddUserA from './Components/Pages/admin/adm_add_user/AddUser'
+import EditUserA from './Components/Pages/admin/adm_edit_user/EditUser'
+
 
 //OWNER
 import TrainerO from './Components/Pages/owner/own_trainers/Trainers';
@@ -118,6 +120,7 @@ function App() {
           <Route path="/Ausers" element={<UsersA />}></Route>
           <Route path="/AsystemLogs" element={<SystemLogsA />}></Route>
           <Route path="/AaddUsers" element={<AddUserA />}></Route>
+          <Route path="/AeditUsers" element={<EditUserA />}></Route>
 
           {/* RECEPTIONIST ROUTES */}
           <Route path="/Rdashboard" element={<DashboardR />}></Route>
