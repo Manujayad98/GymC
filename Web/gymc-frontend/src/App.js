@@ -45,7 +45,6 @@ import AnalyticsO from './Components/Pages/owner/own_analytics/Analytics';
 import NotificationsO from './Components/Pages/owner/own_notifications/Notifications';
 import SidebarO from './Components/Pages/owner/own_sidebar/Sidebar';
 import ViewWorkout from './Components/Pages/owner/own_view_workout/ViewWorkout';
-import TraineeProgressO from './Components/Pages/owner/own_trainee_progress/TraineeProgress';
 
 
 // RECEPTIONIST
@@ -109,7 +108,6 @@ function App() {
           <Route path="/Oannouncements" element={<AnnouncementsO />}></Route>
           <Route path="/Oanalytics" element={<AnalyticsO />}></Route>
           <Route path="/OviewWorkout" element={<ViewWorkout />}></Route>
-          <Route path="/Otraineeprogress" element={<TraineeProgressO />}></Route>
 
 
           {/* ADMIN ROUTES */}

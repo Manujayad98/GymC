@@ -11,6 +11,7 @@ import Pic1 from '../../../../images/owner.png'
 import InputField from "../../../Utilities/Form/InputField";
 import { Validators } from "../../../Utilities/Form/Validator/Validator";
 import Table from '../../../Utilities/Tables/Table2';
+import { Link } from 'react-router-dom'
 
 export default function ViewWorkout() {
     const [requestData, setState] = useState({
@@ -199,6 +200,11 @@ export default function ViewWorkout() {
                                 </div>
                             </div>
                         </div>
+                        <div className="button-container">
+                                <Link to='/OupdateWorkout'>
+                                    <button type="button" class="btn" style={{ backgroundColor: '#3DA2FF', width: '100px' }}>Update Workout</button>
+                                </Link>
+                            </div>
                     </div>
 
 
