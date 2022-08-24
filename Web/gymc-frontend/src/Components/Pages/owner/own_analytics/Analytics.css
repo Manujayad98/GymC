@@ -15,9 +15,10 @@
     align-items: center;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 6px;
 }
 
-.own-analytics-card {
+.own-analytics-card1 {
     display: flex;
     flex-direction: column;
     background-color: #fff;
@@ -38,8 +39,9 @@
 
 .own-analytics-chart-container,
 .own-analytics-table-container {
-    margin: 10x;
+    margin: 10px;
     padding: 5px;
+   
 }
 
 .chart-cards,
@@ -57,8 +59,9 @@
     justify-content: space-around;
     text-align: center;
     align-content: center;
-    border-radius: 6px;
+    border-radius: 6px!important;
     box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+    width: 600px;
 }
 
 .own-analytics-container-head {
