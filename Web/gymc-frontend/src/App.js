@@ -61,6 +61,7 @@ import AddTrainerR from './Components/Pages/receptionist/recept_add_trainer/AddT
 import UpdateTrainerR from './Components/Pages/receptionist/recept_update_trainer/UpdateTrainer';
 import UpdateTraineeR from './Components/Pages/receptionist/recept_update_trainee/UpdateTrainee'
 import AddTraineeR from './Components/Pages/receptionist/recept_add_trainee/AddTrainee'
+import MoreEquipmentR from './Components/Pages/receptionist/recept_equipments/Moredetails'
 
 
 //TRAINEE
@@ -132,6 +133,7 @@ function App() {
           <Route path="/RupdateTrainer" element={<UpdateTrainerR />}></Route>
           <Route path="/RupdateTrainee" element={<UpdateTraineeR />}></Route>
           <Route path="/RaddTrainee" element={<AddTraineeR />}></Route>
+          <Route path="RmoreEquipment" element={<MoreEquipmentR />}></Route>
 
 
           {/* TRAINER ROUTES */}
