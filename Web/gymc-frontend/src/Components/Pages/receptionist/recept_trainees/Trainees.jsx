@@ -5,6 +5,7 @@ import CheckinModal from '../../../Utilities/Popups/Checkinmodal';
 import CheckoutModal from '../../../Utilities/Popups/Checkoutmodal';
 import NowinModal from '../../../Utilities/Popups/NowinModal';
 import DuecheckModal from '../../../Utilities/Popups/DuecheckoutModal';
+import PaymentModal from '../../../Utilities/Popups/paymentModal';
 import '../recept_sidebar/Sidebar.css'
 import SidebarR from '../recept_sidebar/Sidebar'
 import HeaderR from '../recept_header/Header'
@@ -49,11 +50,12 @@ const Trainees = () => {
   const [checkoutmodal, opencheckout] = useState(false)
   const [nowinmodal, opennowin] = useState(false)
   const [duecmodal, openduec] = useState(false)
+  const [paymentModal, openpaymentModal] = useState(false)
 
   const [trainerDetails] = useState([
     {
       TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TrainerID: "M001",
+      TrainerID: "T001",
       TrainerName: "Kasun Perera",
       PaymentType: "Daily",
       RegDate: "2021-10-24",
@@ -65,7 +67,7 @@ const Trainees = () => {
         </span>
       ),
       Pay: (
-        <Button variant='success'>Pay</Button>
+        <Button variant='success' onClick={() => openpaymentModal(true) }>Pay</Button>
       ),
       Actions: (
         <span >
@@ -77,7 +79,7 @@ const Trainees = () => {
     },
     {
       TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TrainerID: "M002",
+      TrainerID: "T002",
       TrainerName: "Rasul Silve",
       PaymentType: "Daily",
       RegDate: "2021-08-14",
@@ -100,7 +102,7 @@ const Trainees = () => {
     },
     {
       TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TrainerID: "M003",
+      TrainerID: "T003",
       TrainerName: "Dominic Gape",
       PaymentType: "Monthly - Personal",
       RegDate: "2021-10-24",
@@ -123,7 +125,7 @@ const Trainees = () => {
     },
     {
       TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TrainerID: "M004",
+      TrainerID: "T004",
       TrainerName: "Natasha Perera",
       PaymentType: "Monthly - Non Personal",
       RegDate: "2021-10-24",
@@ -146,7 +148,7 @@ const Trainees = () => {
     },
     {
       TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TrainerID: "M005",
+      TrainerID: "T005",
       TrainerName: "Rajeewa Senevirathne",
       PaymentType: "Daily",
       RegDate: "2022-01-05",
@@ -169,7 +171,7 @@ const Trainees = () => {
     },
     {
       TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TrainerID: "M006",
+      TrainerID: "T006",
       TrainerName: "Denuwan Wijesekara",
       PaymentType: "Daily",
       RegDate: "2022-02-14",
@@ -192,7 +194,7 @@ const Trainees = () => {
     },
     {
       TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TrainerID: "M007",
+      TrainerID: "T007",
       TrainerName: "Pasindu Pathberiya",
       PaymentType: "Monthly - Personal",
       RegDate: "2022-06-11",
@@ -238,7 +240,7 @@ const Trainees = () => {
                   <Card onClick={() => opennowin(true)} style={{ cursor: "pointer" }} className='rec-train-card'>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
-                      M001
+                      T001
                     </Card.Subtitle>
                     <Card.Body>
                       Kasun Perera
@@ -247,7 +249,7 @@ const Trainees = () => {
                   <Card className='rec-train-card'>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
-                      M002
+                      T002
                     </Card.Subtitle>
                     <Card.Body>
                       Rasul Silve
@@ -256,7 +258,7 @@ const Trainees = () => {
                   <Card className='rec-train-card'>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
-                      M003
+                      T003
                     </Card.Subtitle>
                     <Card.Body>
                       Dominic Gape
@@ -269,7 +271,7 @@ const Trainees = () => {
                   <Card onClick={() => openduec(true)} className='rec-train-card' style={{ borderColor: 'red' }}>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
-                      M001
+                      T001
                     </Card.Subtitle>
                     <Card.Body>
                       Kasun Perera
@@ -278,7 +280,7 @@ const Trainees = () => {
                   <Card className='rec-train-card' style={{ borderColor: 'red' }}>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
-                      M002
+                      T002
                     </Card.Subtitle>
                     <Card.Body>
                       Rasul Silve
@@ -338,6 +340,7 @@ const Trainees = () => {
             <CheckoutModal open={checkoutmodal} onClose={() => opencheckout(false)} />
             <NowinModal open={nowinmodal} onClose={() => opennowin(false)} />
             <DuecheckModal open={duecmodal} onCloseD={() => openduec(false)} />
+            <PaymentModal open={paymentModal} onClose={() => openpaymentModal(false)} />
           </div>
         </div>
       </div>
