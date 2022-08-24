@@ -191,7 +191,7 @@ const Dashboard = () => {
 
             </Tab>
             <Tab eventKey="profile" title="Reports">
-              <div className='dropdown'>
+              <div className='Analytics-dropdown'>
                 <div className="dropdown-container">
                   <div className="form-label-container">
                     <label class="form-label" for="form1">Report Type</label>
@@ -228,10 +228,11 @@ const Dashboard = () => {
                     <option> select 4</option>
                   </select>
                 </div>
-              </div>
+              
               <div className="dropdown-container">
               <div className="own-read-btn">
-                <button className="mark-as-read-btn">Generate</button>
+                <button className="report-generate-button">Generate</button>
+            </div>
             </div>
             </div>
             </Tab>

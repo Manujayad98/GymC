@@ -96,15 +96,33 @@
     width: 200px;
     
 }
-.dropdown{
+.Analytics-dropdown{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row!important;
     justify-content: space-between;
-    width: 60%;
+    width: 100%;
     height: auto;
     padding: 10px 20px; 
     
+}
+
+.report-generate-button{
+    background-color: #3DA2FF;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 35px 30px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.report-generate-button:hover{
+    background-color: #2869a7;
 }
 
 .form-label-container {
