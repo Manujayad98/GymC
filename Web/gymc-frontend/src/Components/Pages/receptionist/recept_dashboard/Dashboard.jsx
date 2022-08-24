@@ -144,7 +144,7 @@ const Dashboard = () => {
             <div className='rec-content-row'>
 
               <Card className='rec-alt-card' style={{ margin: '2%' }}>
-                <Card.Body>
+                <Card.Body style={{textAlign:"center"}}>
                   <Card.Title>Upcoming Appointments</Card.Title>
                   <div className='rec-table-cards'>
                     <Table

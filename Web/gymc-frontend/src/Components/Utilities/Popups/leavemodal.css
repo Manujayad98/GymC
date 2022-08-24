@@ -79,6 +79,7 @@
 
 .rec-leave-header {
     height: 40px;
+    text-align: center;
 }
 
 .rec-leave-title {
@@ -87,4 +88,15 @@
 
 .last-line {
     padding-bottom: 20px;
+}
+
+.rec-payment-incrbtn{
+    height: 40px;
+    width: 40px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.rec-payment-incrbtn:focus{
+    background-color: grey;
+    font-weight: bold;
 }

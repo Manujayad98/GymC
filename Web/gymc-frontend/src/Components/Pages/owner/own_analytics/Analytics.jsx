@@ -39,27 +39,27 @@ const Dashboard = () => {
   //ANNUAL INCOME CHART
   const Annualdata = [
     ["Element", "Income", { role: "style" }],
-    ["Jan", 8.94, "#b87333"], 
-    ["Feb", 10.49, "silver"], 
+    ["Jan", 8.94, "#b87333"],
+    ["Feb", 10.49, "silver"],
     ["Mar", 19.3, "gold"],
     ["Apr", 21.45, "color: #e5e4e2"],
-    ["May", 18.94, "#b87333"], 
-    ["Jun", 12.49, "silver"], 
+    ["May", 18.94, "#b87333"],
+    ["Jun", 12.49, "silver"],
     ["Jul", 9.3, "gold"],
     ["Aug", 17.45, "color: #e5e4e2"],
-    ["Sep", 18.94, "#b87333"], 
-    ["Oct", 19.49, "silver"], 
+    ["Sep", 18.94, "#b87333"],
+    ["Oct", 19.49, "silver"],
     ["Nov", 15.3, "gold"],
-    ["Dec", 21.45, "color: #e5e4e2"], 
+    ["Dec", 21.45, "color: #e5e4e2"],
   ];
 
   //MONTHLY INCOME CHART
   const Monthlydata = [
     ["Element", "Income", { role: "style" }],
-    ["week 1", 8.94, "#b87333"], 
-    ["week 2", 10.49, "silver"], 
+    ["week 1", 8.94, "#b87333"],
+    ["week 2", 10.49, "silver"],
     ["week 3", 19.3, "gold"],
-    ["week 4", 21.45, "color: #e5e4e2"], 
+    ["week 4", 21.45, "color: #e5e4e2"],
   ];
 
   // EXCERCISE TABLE
@@ -132,9 +132,9 @@ const Dashboard = () => {
 
             <Tab eventKey="home" title="Gym Progress" >
 
-                <div className='own-analytics-card-container'>
-                  
-                  <div className='own-analytics-card1 analytics-cards'>
+              <div className='own-analytics-card-container'>
+
+                <div className='own-analytics-card1 analytics-cards'>
 
                   <div className='own-analytics-card-content'>
                     <div className='staffID'>No of Trainers</div>
@@ -174,26 +174,26 @@ const Dashboard = () => {
                   </div>
 
                 </div>
-                </div>
-                <div className='own-analytics-chart-table-container'>
+              </div>
+              <div className='own-analytics-chart-table-container'>
 
                 <div className='own-analytics-chart-container'>
                   <div className='own-analytics-container-head'>Annual Income</div>
                   <div className='own-analytics-card '>
                     {/* <BarChart data={ChartData} /> */}
-                    <Chart chartType="ColumnChart" width="100%" height="400px" data={Annualdata} />
+                    <Chart chartType="ColumnChart" width="90%" height="400px" data={Annualdata} />
                   </div>
                 </div>
 
-                  <div className='own-analytics-chart-container'>
-                    <div className='own-analytics-container-head'>This Month's Income</div>
-                    <div className='own-analytics-card '>
-                      {/* <BarChart data={ChartData} /> */}
-                      <Chart chartType="ColumnChart" width="100%" height="400px" data={Monthlydata} />
-                    </div>
+                <div className='own-analytics-chart-container'>
+                  <div className='own-analytics-container-head'>This Month's Income</div>
+                  <div className='own-analytics-card '>
+                    {/* <BarChart data={ChartData} /> */}
+                    <Chart chartType="ColumnChart" width="100%" height="400px" data={Monthlydata} />
                   </div>
                 </div>
-                <div className='own-analytics-chart-table-container'>
+              </div>
+              <div className='own-analytics-chart-table-container'>
 
                 <div className='own-analytics-chart-container'>
                   <div className='own-analytics-container-head'>Available Excercises</div>
@@ -256,13 +256,13 @@ const Dashboard = () => {
                     <option> select 4</option>
                   </select>
                 </div>
-              
-              <div className="dropdown-container">
-              <div className="own-read-btn">
-                <button className="report-generate-button">Generate</button>
-            </div>
-            </div>
-            </div>
+
+                <div className="dropdown-container">
+                  <div className="own-read-btn">
+                    <button className="report-generate-button">Generate</button>
+                  </div>
+                </div>
+              </div>
             </Tab>
 
           </Tabs>

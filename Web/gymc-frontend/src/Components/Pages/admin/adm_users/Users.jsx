@@ -11,6 +11,13 @@ import T1 from '../../../../images/t1.png'
 import Arrow from '../../../../images/Icons/arrow-square-right.svg'
 import DeleteModal from '../../../Utilities/Popups/DeletionModal'
 
+import user1 from '../../../../images/owner/tr1.png'
+import user2 from '../../../../images/owner/te1.png'
+import user3 from '../../../../images/owner/te2.png'
+import user4 from '../../../../images/owner/te3.png'
+import user5 from '../../../../images/owner/te4.png'
+import user6 from '../../../../images/owner/te5.png'
+
 import './Users.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -48,6 +55,7 @@ export default function Trainers() {
             UserImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
             UserID: "S0001",
             UserName: "Kevin Nugera",
+            UserType: "Owner",
             Status: (
                 <span >
                     <button type="button" class="btn" disabled style={{ backgroundColor: '#E4E074', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Hold</button>
@@ -62,9 +70,10 @@ export default function Trainers() {
             ),
         },
         {
-            UserImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+            UserImg: (<img src={user1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
             UserID: "S0002",
             UserName: "Harshana Peris",
+            UserType: "Trainer",
             Status: (
                 <span >
                     <button type="button" class="btn" disabled style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Active</button>
@@ -80,9 +89,10 @@ export default function Trainers() {
             ),
         },
         {
-            UserImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+            UserImg: (<img src={user2} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
             UserID: "S0003",
             UserName: "Kumari Hasara",
+            UserType: "Receptionist",
             Status: (
                 <span >
                     <button type="button" class="btn" disabled style={{ backgroundColor: '#E47474', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Remove</button>
@@ -98,9 +108,10 @@ export default function Trainers() {
             ),
         },
         {
-            UserImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+            UserImg: (<img src={user3} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
             UserID: "S0004",
             UserName: "Piyumi Dasanayaka",
+            UserType: "Trainer",
             Status: (
                 <span >
                     <button type="button" class="btn" disabled style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Active</button>
@@ -116,9 +127,10 @@ export default function Trainers() {
             ),
         },
         {
-            UserImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+            UserImg: (<img src={user4} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
             UserID: "S0005",
             UserName: "Kalpani Sithara",
+            UserType: "Trainer",
             Status: (
                 <span >
                     <button type="button" class="btn" disabled style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Active</button>
@@ -134,9 +146,10 @@ export default function Trainers() {
             ),
         },
         {
-            UserImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+            UserImg: (<img src={user5} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
             UserID: "S0006",
             UserName: "Kusal Mendis",
+            UserType: "Trainer",
             Status: (
                 <span >
                     <button type="button" class="btn" disabled style={{ backgroundColor: '#E47474', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Remove</button>
@@ -158,6 +171,7 @@ export default function Trainers() {
         { id: "UserImg", label: "", numeric: false },
         { id: "UserID", label: "USER ID", numeric: false },
         { id: "UserName", label: "USER NAME", numeric: false },
+        { id: "UserType", label: "USER TYPE", numeric: false },
         { id: "Status", label: "STATUS", numeric: false },
         { id: "Actions", label: "ACTIONS", numeric: false },
     ]);

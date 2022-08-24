@@ -7,7 +7,7 @@ function ContactUs() {
         <div id='contact'>
             <h1 className='contact-head'>CONTACT US</h1>
             <div className='contact-container'>
-                <div className='form-container'>
+                <div className='landing-form-container'>
                     <h2>SEND US A MESSAGE</h2>
                     <form action="">
                         <input type="text" placeholder='Name' />

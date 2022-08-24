@@ -32,7 +32,7 @@ const LeaveModal = ({open,onClose}) => {
                     <InputField 
                     value={requestData.trainerid}
                     type='text'
-                    label="TRAINEE ID"
+                    label="TRAINER ID"
                     placeholder="T001"
                     onChange={handleChange('trainerid')}
                     />
@@ -41,7 +41,7 @@ const LeaveModal = ({open,onClose}) => {
                     <InputField 
                     value={requestData.trainername}
                     type='text'
-                    label="TRAINEE NAME"
+                    label="TRAINER NAME"
                     placeholder="Gihan Sekara"
                     onChange={handleChange('trainername')}
                     />
@@ -50,7 +50,7 @@ const LeaveModal = ({open,onClose}) => {
                     <InputField 
                     value={requestData.leavedate}
                     type='date'
-                    label="TRAINEE DATE"
+                    label="LEAVE DATE"
                     onChange={handleChange('leavedate')}
                     />
                     </div>
