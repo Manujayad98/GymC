@@ -163,7 +163,7 @@ export default function Exercises() {
                 </div>
                 <div className="ex">
                     <div className="header">
-                        <h3 id="own-dashboard-titles">Payment Plans</h3>
+                        <h3 id="own-adjustment-titles">Payment Plans</h3>
                         <Button1 variant="contained" className="Hbutton">New Payment</Button1>
                     </div>
                     <div className='own-adjustment-card '>

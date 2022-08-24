@@ -3,6 +3,7 @@ import '../recept_sidebar/Sidebar.css'
 import SidebarR from '../recept_sidebar/Sidebar'
 import HeaderR from '../recept_header/Header'
 import BarChart from '../../../Utilities/Charts/BarChart'
+import { Chart } from "react-google-charts";
 
 import './Analytics.css'
 
@@ -19,16 +20,25 @@ const Analytics = () => {
     }
   };
 
-  const [ChartData] = useState([
-    ["Week", "Percentage"],
-    ["Week1", 20],
-    ["Week2", 70],
-    ["Week3", 40],
-    ["Week4", 50],
+  // const [ChartData] = useState([
+  //   ["Week", "Percentage"],
+  //   ["Week1", 20],
+  //   ["Week2", 70],
+  //   ["Week3", 40],
+  //   ["Week4", 50],
 
 
 
-  ]);
+  // ]);
+
+  //MONTHLY INCOME CHART
+  const Monthlydata = [
+    ["Element", "Income", { role: "style" }],
+    ["week 1", 8.94, "#b87333"], 
+    ["week 2", 10.49, "silver"], 
+    ["week 3", 19.3, "gold"],
+    ["week 4", 21.45, "color: #e5e4e2"], 
+  ];
 
   return (
     <div className='main-container'>
@@ -86,15 +96,16 @@ const Analytics = () => {
 
           </div>
 
-          <div className='recept-analytics-chart-table-container'>
+         
 
             <div className='recept-analytics-chart-container'>
               {/* <div className='own-dashboard-container-head'>Annual Income</div> */}
-              <div className='recept-analytics-card chart-cards'>
-                <BarChart data={ChartData} />
+              <div className='recept-analytics-card '>
+                {/* <BarChart data={ChartData} /> */}
+                <Chart chartType="ColumnChart" width="100%" height="500px" data={Monthlydata} />
               </div>
             </div>
-          </div>
+         
 
         </div>
       </div>
