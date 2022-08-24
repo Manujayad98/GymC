@@ -8,6 +8,7 @@ import BarChart from '../../../Utilities/Charts/BarChart'
 import Table from '../../../Utilities/Tables/Table2'
 import Edit from '../../../../images/Icons/pen-solid.svg'
 import './Dashboard.css'
+import { Chart } from "react-google-charts";
 
 const Dashboard = () => {
 
@@ -22,18 +23,35 @@ const Dashboard = () => {
     }
   };
 
-  const [ChartData] = useState([
-    ["Month", "Income"],
-    ["Jan", 11000],
-    ["Feb", 2000],
-    ["Mar", 2000],
-    ["Apr", 5000],
-    ["May", 7000],
-    ["Jun", 8000],
-    ["Jul", 7000],
-    ["Aug", 8000],
+  // const [ChartData] = useState([
+  //   ["Month", "Income"],
+  //   ["Jan", 11000],
+  //   ["Feb", 2000],
+  //   ["Mar", 2000],
+  //   ["Apr", 5000],
+  //   ["May", 7000],
+  //   ["Jun", 8000],
+  //   ["Jul", 7000],
+  //   ["Aug", 8000],
 
-  ]);
+  // ]);
+
+  //ANNUAL INCOME CHART
+  const Annualdata = [
+    ["Element", "Income", { role: "style" }],
+    ["Jan", 8.94, "#b87333"], 
+    ["Feb", 10.49, "silver"], 
+    ["Mar", 19.3, "gold"],
+    ["Apr", 21.45, "color: #e5e4e2"],
+    ["May", 18.94, "#b87333"], 
+    ["Jun", 12.49, "silver"], 
+    ["Jul", 9.3, "gold"],
+    ["Aug", 17.45, "color: #e5e4e2"],
+    ["Sep", 18.94, "#b87333"], 
+    ["Oct", 19.49, "silver"], 
+    ["Nov", 15.3, "gold"],
+    ["Dec", 21.45, "color: #e5e4e2"], 
+  ];
 
   const [workoutDetailsTableHead] = useState([
     { id: "Time", label: "Time", numeric: false },
@@ -199,7 +217,8 @@ const Dashboard = () => {
             <div className='own-dashboard-chart-container'>
               <div className='own-dashboard-container-head'>Annual Income</div>
               <div className='own-dashboard-card own-dashboard-chart-cards'>
-                <BarChart data={ChartData} />
+                {/* <BarChart data={ChartData} /> */}
+                <Chart chartType="ColumnChart" width="100%" height="400px" data={Annualdata} />
               </div>
             </div>
 

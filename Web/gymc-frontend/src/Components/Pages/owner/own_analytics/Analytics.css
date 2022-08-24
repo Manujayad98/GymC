@@ -15,9 +15,10 @@
     align-items: center;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 6px;
 }
 
-.own-analytics-card {
+.own-analytics-card1 {
     display: flex;
     flex-direction: column;
     background-color: #fff;
@@ -38,8 +39,9 @@
 
 .own-analytics-chart-container,
 .own-analytics-table-container {
-    margin: 10x;
+    margin: 10px;
     padding: 5px;
+   
 }
 
 .chart-cards,
@@ -57,8 +59,9 @@
     justify-content: space-around;
     text-align: center;
     align-content: center;
-    border-radius: 6px;
+    border-radius: 6px!important;
     box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+    width: 600px;
 }
 
 .own-analytics-container-head {
@@ -93,7 +96,36 @@
 }
 
 .dropdown-container {
-    width: 300px;
+    width: 200px;
+    
+}
+.Analytics-dropdown{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row!important;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    padding: 10px 20px; 
+    
+}
+
+.report-generate-button{
+    background-color: #3DA2FF;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 35px 30px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.report-generate-button:hover{
+    background-color: #2869a7;
 }
 
 .form-label-container {
