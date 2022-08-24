@@ -42,9 +42,9 @@
     margin: 5px;
 }
 
-.owner-dashboard-images{
-    width:70px;
-    border-radius:30px;
+.owner-dashboard-images {
+    width: 70px;
+    border-radius: 30px;
 }
 
 .own-dashboard-card-content .staffID {
@@ -61,16 +61,17 @@
     text-align: center;
 }
 
-.own-dashboard-chart-cards{
-    padding: 20px;
+.own-dashboard-chart-cards {
+    padding: 10px;
     margin: 10px 5px;
-    width: 550px;
+    width: 530px;
     height: 550px;
 }
+
 .own-dashboard-table-cards {
-    padding: 20px;
+    padding: 10px;
     margin: 10px 5px;
-    width: 700px;
+    width: 550px;
     height: 550px;
 }
 
