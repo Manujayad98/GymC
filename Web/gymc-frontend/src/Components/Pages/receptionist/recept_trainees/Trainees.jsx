@@ -319,7 +319,9 @@ const Trainees = () => {
                 </div>
               </div>
               <div className="button-container">
-                <button type="button" class="btn" style={{ backgroundColor: '#3DA2FF', width: '100px' }}>Add</button>
+                <Link to='/RaddTrainee'>
+                  <button type="button" class="btn" style={{ backgroundColor: '#3DA2FF', width: '100px' }}>Add</button>
+                </Link>
               </div>
 
             </div>

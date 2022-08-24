@@ -60,6 +60,8 @@ import AppointmentsR from './Components/Pages/receptionist/recept_appointments/A
 import AddTrainerR from './Components/Pages/receptionist/recept_add_trainer/AddTrainer';
 import UpdateTrainerR from './Components/Pages/receptionist/recept_update_trainer/UpdateTrainer';
 import UpdateTraineeR from './Components/Pages/receptionist/recept_update_trainee/UpdateTrainee'
+import AddTraineeR from './Components/Pages/receptionist/recept_add_trainee/AddTrainee'
+
 
 //TRAINEE
 import TraineeLogedPage from './Components/Pages/trainee/LogedInPage'
@@ -129,7 +131,7 @@ function App() {
           <Route path="/RaddTrainer" element={<AddTrainerR />}></Route>
           <Route path="/RupdateTrainer" element={<UpdateTrainerR />}></Route>
           <Route path="/RupdateTrainee" element={<UpdateTraineeR />}></Route>
-
+          <Route path="/RaddTrainee" element={<AddTraineeR />}></Route>
 
 
           {/* TRAINER ROUTES */}

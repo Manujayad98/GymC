@@ -72,7 +72,7 @@ export default function Trainers() {
             NextShift: "2022-10-17 10.00a.m",
             Status: (
                 <span >
-                    <button type="button" class="btn" disabled style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Leave</button>
+                    <button type="button" class="btn" style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Leave</button>
                 </span>),
             Actions: (
                 <span >
@@ -91,7 +91,7 @@ export default function Trainers() {
             NextShift: "2022-10-17 10.00a.m",
             Status: (
                 <span >
-                    <button type="button" class="btn" disabled style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Leave</button>
+                    <button type="button" class="btn" style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Leave</button>
                 </span>),
             Actions: (
                 <span >
@@ -110,7 +110,7 @@ export default function Trainers() {
             NextShift: "2022-10-17 10.00a.m",
             Status: (
                 <span >
-                    <button type="button" class="btn" disabled style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Leave</button>
+                    <button type="button" class="btn" style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Leave</button>
                 </span>),
             Actions: (
                 <span >
@@ -129,7 +129,7 @@ export default function Trainers() {
             NextShift: "2022-10-17 09.00a.m",
             Status: (
                 <span >
-                    <button type="button" class="btn" disabled style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Leave</button>
+                    <button type="button" class="btn" style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Leave</button>
                 </span>),
             Actions: (
                 <span >
@@ -149,7 +149,7 @@ export default function Trainers() {
             RegDate: "2020-11-11",
             Status: (
                 <span >
-                    <button type="button" class="btn" disabled style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Leave</button>
+                    <button type="button" class="btn" style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Leave</button>
                 </span>),
             Actions: (
                 <span >
