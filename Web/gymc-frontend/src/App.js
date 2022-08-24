@@ -44,7 +44,8 @@ import AnalyticsO from './Components/Pages/owner/own_analytics/Analytics';
 import NotificationsO from './Components/Pages/owner/own_notifications/Notifications';
 import SidebarO from './Components/Pages/owner/own_sidebar/Sidebar';
 import ViewWorkout from './Components/Pages/owner/own_view_workout/ViewWorkout';
-
+import UpdateWorkoutO from './Components/Pages/owner/own_update_workout/UpdateWorkout';
+import AddWorkoutO from './Components/Pages/owner/own_add_workout/AddWorkout';
 
 // RECEPTIONIST
 import AnalyticsR from './Components/Pages/receptionist/recept_analytics/Analytics';
@@ -107,7 +108,8 @@ function App() {
           <Route path="/Oannouncements" element={<AnnouncementsO />}></Route>
           <Route path="/Oanalytics" element={<AnalyticsO />}></Route>
           <Route path="/OviewWorkout" element={<ViewWorkout />}></Route>
-
+          <Route path="/OupdateWorkout" element={<UpdateWorkoutO />}></Route>
+          <Route path="/Oaddworkout" element={<AddWorkoutO />}></Route>
 
           {/* ADMIN ROUTES */}
           <Route path="/Adashboard" element={<DashboardA />}></Route>

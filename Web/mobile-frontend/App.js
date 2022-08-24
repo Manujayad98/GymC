@@ -23,22 +23,22 @@ const Stack = createNativeStackNavigator();
 const App = () => {
 
   return (
-    // <TrainerNavBar/>
+    <TraineeNavBar/>
     
-    <NavigationContainer>
-      <Stack.Navigator>
+    // <NavigationContainer>
+    //   <Stack.Navigator>
         
-        <Stack.Screen
-          name="Startup"
-          component={TraineeHomePage}
-          options={{ title: 'Login' }}
-        />
-        <Stack.Screen name="Login" component={LoginPage} />
-        <Stack.Screen name="Forgot" component={ForgotPasswordPage} />
-        <Stack.Screen name="Reset" component={ResetPasswordPage} />
+    //     <Stack.Screen
+    //       name="Startup"
+    //       component={TraineeHomePage}
+    //       options={{ title: 'Login' }}
+    //     />
+    //     <Stack.Screen name="Login" component={LoginPage} />
+    //     <Stack.Screen name="Forgot" component={ForgotPasswordPage} />
+    //     <Stack.Screen name="Reset" component={ResetPasswordPage} />
 
-      </Stack.Navigator>
-    </NavigationContainer>
+    //   </Stack.Navigator>
+    // </NavigationContainer>
   );
 };
 
