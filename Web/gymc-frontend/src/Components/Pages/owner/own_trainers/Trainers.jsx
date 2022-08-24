@@ -8,6 +8,12 @@ import Edit from '../../../../images/Icons/pen-solid.svg'
 import View from '../../../../images/Icons/eye-solid.svg'
 import Hold from '../../../../images/Icons/hand-solid.svg'
 import T1 from '../../../../images/t1.png'
+import trainee6 from '../../../../images/owner/tr1.png'
+import trainee1 from '../../../../images/owner/te1.png'
+import trainee2 from '../../../../images/owner/te2.png'
+import trainee3 from '../../../../images/owner/te3.png'
+import trainee4 from '../../../../images/owner/te4.png'
+import trainee5 from '../../../../images/owner/te5.png'
 import Arrow from '../../../../images/Icons/arrow-square-right.svg'
 import './Trainers.css'
 
@@ -30,12 +36,12 @@ export default function Trainers() {
 
     const [trainerDetails] = useState([
         {
-            TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-            TrainerID: "T001",
-            TrainerName: "RMN Ruwan",
+            TrainerImg: (<img src={trainee1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+            TrainerID: "M001",
+            TrainerName: "Thiyangi Senevirathna",
             Phone: "0714558741",
-            Address: "No. 46/4, Tample road, Dambadeniya",
-            RegDate: "2021-10-24",
+            Address: "No. 46/4, Tample road, Narammala",
+            RegDate: "2019-06-30",
             Status: (
                 <span >
                     <button type="button" class="btn" disabled style={{ backgroundColor: '#E4E074', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Hold</button>
@@ -50,12 +56,12 @@ export default function Trainers() {
             ),
         },
         {
-            TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-            TrainerID: "T002",
-            TrainerName: "KG Hasara",
-            Phone: "0765584751",
-            Address: "No. 46/4, Church road, Giriulla",
-            RegDate: "2020-11-11",
+            TrainerImg: (<img src={trainee2} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+            TrainerID: "M002",
+            TrainerName: "Bashitha Marasinghe",
+            Phone: "075584736",
+            Address: "No. 46/4, Church road, Dambadeniya",
+            RegDate: "2019-07-21",
             Status: (
                 <span >
                     <button type="button" class="btn" disabled style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Active</button>
@@ -71,12 +77,12 @@ export default function Trainers() {
             ),
         },
         {
-            TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-            TrainerID: "T002",
-            TrainerName: "KG Hasara",
-            Phone: "0765584751",
-            Address: "No. 46/4, Church road, Giriulla",
-            RegDate: "2020-11-11",
+            TrainerImg: (<img src={trainee3} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+            TrainerID: "M003",
+            TrainerName: "Inosha Perera",
+            Phone: "0775587511",
+            Address: "No. 16/4, Temple Road, Pannala",
+            RegDate: "2020-17-15",
             Status: (
                 <span >
                     <button type="button" class="btn" disabled style={{ backgroundColor: '#E47474', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Remove</button>
@@ -92,12 +98,12 @@ export default function Trainers() {
             ),
         },
         {
-            TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-            TrainerID: "T002",
-            TrainerName: "KG Hasara",
-            Phone: "0765584751",
-            Address: "No. 46/4, Church road, Giriulla",
-            RegDate: "2020-11-11",
+            TrainerImg: (<img src={trainee4} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+            TrainerID: "M004",
+            TrainerName: "Rasangi Madhushika",
+            Phone: "078558456",
+            Address: "No. 14/A, Negombo Road, Giriulla",
+            RegDate: "2020-08-17",
             Status: (
                 <span >
                     <button type="button" class="btn" disabled style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Active</button>
@@ -113,12 +119,12 @@ export default function Trainers() {
             ),
         },
         {
-            TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-            TrainerID: "T002",
-            TrainerName: "KG Hasara",
+            TrainerImg: (<img src={trainee5} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+            TrainerID: "M005",
+            TrainerName: "Ishan Karunananyake",
             Phone: "0765584751",
-            Address: "No. 46/4, Church road, Giriulla",
-            RegDate: "2020-11-11",
+            Address: "No. 36/4, Temple road, Damabadeniya",
+            RegDate: "2020-10-23",
             Status: (
                 <span >
                     <button type="button" class="btn" disabled style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Active</button>
@@ -134,9 +140,9 @@ export default function Trainers() {
             ),
         },
         {
-            TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-            TrainerID: "T002",
-            TrainerName: "KG Hasara",
+            TrainerImg: (<img src={trainee6} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+            TrainerID: "M006",
+            TrainerName: "Madhupa Minol",
             Phone: "0765584751",
             Address: "No. 46/4, Church road, Giriulla",
             RegDate: "2020-11-11",
