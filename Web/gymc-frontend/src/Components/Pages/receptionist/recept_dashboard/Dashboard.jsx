@@ -83,13 +83,13 @@ const Dashboard = () => {
         <div className="rec-content-container" >
           <div className='rec-split rec-left'>
             <div className='rec-content-row'>
-              <Card className='rec-dashboard-card' >
+              <Card className='rec-dashboard-card' style={{width:"190px",  height:"190px"}}>{/*addtional inline styles*/}
                 <Card.Body>
                   <Card.Title>Payments Due</Card.Title>
                   <button className='btn btn-default btn-circle btn-xl'>3</button>
                 </Card.Body>
               </Card>
-              <Card className='rec-dashboard-card'>
+              <Card className='rec-dashboard-card' style={{width:"190px", height:"190px"}}>{/*addtional inline styles*/}
                 <Card.Body>
                   <Card.Title>Trainees Now In</Card.Title>
                   <button className='btn btn-default btn-circle btn-xl'>2</button>
