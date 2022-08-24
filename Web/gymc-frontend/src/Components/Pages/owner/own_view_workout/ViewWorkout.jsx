@@ -100,7 +100,6 @@ export default function ViewWorkout() {
         },
 
     ]);
->>>>>>> Nips
 
       return (
         <div className='main-container'>

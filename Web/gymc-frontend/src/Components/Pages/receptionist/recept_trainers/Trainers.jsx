@@ -47,7 +47,7 @@ export default function Trainers() {
     const [trainerDetails] = useState([
         {
             TrainerImg: (<img src={gihanpic} height={50}></img>),
-            TrainerID: "T001",
+            TrainerID: "S001",
             TrainerName: "Gihan Sekara",
             RegDate: "2021-10-24",
             NextShift: "2022-10-17 09.30a.m",
@@ -66,7 +66,7 @@ export default function Trainers() {
         },
         {
             TrainerImg: (<img src={kalindupic} height={50}></img>),
-            TrainerID: "T002",
+            TrainerID: "S002",
             TrainerName: "Kalindu Sampath",
             RegDate: "2020-11-11",
             NextShift: "2022-10-17 10.00a.m",
@@ -85,7 +85,7 @@ export default function Trainers() {
         },
         {
             TrainerImg: (<img src={lahirupic} height={50}></img>),
-            TrainerID: "T003",
+            TrainerID: "S003",
             TrainerName: "Lahiru Induwara",
             RegDate: "2020-11-11",
             NextShift: "2022-10-17 10.00a.m",
@@ -104,7 +104,7 @@ export default function Trainers() {
         },
         {
             TrainerImg: (<img src={lelanipic} height={50}></img>),
-            TrainerID: "T004",
+            TrainerID: "S004",
             TrainerName: "Lelani De Silva",
             RegDate: "2020-11-11",
             NextShift: "2022-10-17 10.00a.m",
@@ -123,7 +123,7 @@ export default function Trainers() {
         },
         {
             TrainerImg: (<img src={piyathpic} height={50}></img>),
-            TrainerID: "T005",
+            TrainerID: "S005",
             TrainerName: "Piyath Sandaruwan",
             RegDate: "2020-11-11",
             NextShift: "2022-10-17 09.00a.m",
@@ -142,7 +142,7 @@ export default function Trainers() {
         },
         {
             TrainerImg: (<img src={trumppic} height={50}></img>),
-            TrainerID: "T006",
+            TrainerID: "S006",
             TrainerName: "Trump Caleb",
             RegDate: "2020-11-11",
             Address: "No. 46/4, Church road, Giriulla",
