@@ -1,8 +1,21 @@
 .adm-notification-content-container {
     margin-top: -35px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.adm-notification-content-subcontainer {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    width: 50%;
 }
 
 .adm-text {
+    font-size: 20px;
+    font-weight: 400;
     text-align: left;
     font-weight: bolder;
 }
@@ -17,11 +30,11 @@ hr {
     height: auto;
     background-color: #FFFFFF;
     border-radius: 10px;
-    padding: 20px 40px 30px 60px;
+    padding: 20px;
     margin-bottom: 7px;
     display: flex;
-
-
+    margin-bottom: 25px;
+    /* flex-direction: column; */
 }
 
 /* .card-container:hover{
@@ -62,7 +75,7 @@ hr {
 
 .adm-noti-title {
     text-align: left;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 0.2;
     margin-top: 20px;
 
@@ -75,11 +88,11 @@ hr {
     font-size: 14px;
     font-weight: bolder;
     line-height: 0.4;
-    margin-top: 20px;
+    margin-top: 32px;
 
 }
 
-=======>>>>>>>a3caf7effa9b1d8d1d40db394489ed8f418dfc25 .adm-noti-time {
+.adm-noti-time {
     text-align: left;
     font-size: 10px;
     line-height: 0;

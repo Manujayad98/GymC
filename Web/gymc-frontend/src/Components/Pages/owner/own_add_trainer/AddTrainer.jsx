@@ -44,6 +44,7 @@ export default function AddTrainer() {
         email: '',
         phoneNumber: '',
         qualification: '',
+        staffType: 3,
     });
     const [click, setClick] = useState(false);
 

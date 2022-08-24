@@ -16,12 +16,13 @@
     position: fixed;
     left: 35%;
     top: 35%;
+    padding: 8px;
 }
 
 .rec-modal-title {
     font-size: large;
     font-weight: bold;
-    padding-top: 70px;
+    padding-top: 55px;
     margin: 20px;
 }
 

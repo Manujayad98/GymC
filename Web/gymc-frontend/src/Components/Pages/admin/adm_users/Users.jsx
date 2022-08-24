@@ -9,6 +9,7 @@ import View from '../../../../images/Icons/eye-solid.svg'
 import Hold from '../../../../images/Icons/hand-solid.svg'
 import T1 from '../../../../images/t1.png'
 import Arrow from '../../../../images/Icons/arrow-square-right.svg'
+import DeleteModal from '../../../Utilities/Popups/DeletionModal'
 
 import './Users.css'
 
@@ -34,6 +35,7 @@ export default function Trainers() {
             window.location.href = "/";
         }
     };
+    const [openModal, setOpenModal] = useState(false)
 
     const getAllUsers = async () => {
         const res = await getUsers();
@@ -43,108 +45,108 @@ export default function Trainers() {
 
     const [trainerDetails] = useState([
         {
-            TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-            TrainerID: "T001",
-            TrainerName: "RMN Ruwan",
+            UserImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+            UserID: "S0001",
+            UserName: "Kevin Nugera",
             Status: (
                 <span >
                     <button type="button" class="btn" disabled style={{ backgroundColor: '#E4E074', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Hold</button>
                 </span>),
             Actions: (
                 <span >
-                    <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Arrow} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><Link to='/AeditUsers'><img src={Edit} alt="" height={20} width={20} /></Link></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Hold} alt="" height={20} width={20} /></span>
                 </span >
             ),
         },
         {
-            TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-            TrainerID: "T002",
-            TrainerName: "KG Hasara",
+            UserImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+            UserID: "S0002",
+            UserName: "Harshana Peris",
             Status: (
                 <span >
                     <button type="button" class="btn" disabled style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Active</button>
                 </span>),
             Actions: (
                 <span >
-                    <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Arrow} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Edit} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Hold} alt="" height={20} width={20} /></span>
 
                 </span >
             ),
         },
         {
-            TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-            TrainerID: "T002",
-            TrainerName: "KG Hasara",
+            UserImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+            UserID: "S0003",
+            UserName: "Kumari Hasara",
             Status: (
                 <span >
                     <button type="button" class="btn" disabled style={{ backgroundColor: '#E47474', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Remove</button>
                 </span>),
             Actions: (
                 <span >
-                    <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Arrow} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Edit} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Hold} alt="" height={20} width={20} /></span>
 
                 </span >
             ),
         },
         {
-            TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-            TrainerID: "T002",
-            TrainerName: "KG Hasara",
+            UserImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+            UserID: "S0004",
+            UserName: "Piyumi Dasanayaka",
             Status: (
                 <span >
                     <button type="button" class="btn" disabled style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Active</button>
                 </span>),
             Actions: (
                 <span >
-                    <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Arrow} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Edit} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Hold} alt="" height={20} width={20} /></span>
 
                 </span >
             ),
         },
         {
-            TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-            TrainerID: "T002",
-            TrainerName: "KG Hasara",
+            UserImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+            UserID: "S0005",
+            UserName: "Kalpani Sithara",
             Status: (
                 <span >
                     <button type="button" class="btn" disabled style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Active</button>
                 </span>),
             Actions: (
                 <span >
-                    <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Arrow} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Edit} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Hold} alt="" height={20} width={20} /></span>
 
                 </span >
             ),
         },
         {
-            TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-            TrainerID: "T002",
-            TrainerName: "KG Hasara",
+            UserImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+            UserID: "S0006",
+            UserName: "Kusal Mendis",
             Status: (
                 <span >
                     <button type="button" class="btn" disabled style={{ backgroundColor: '#E47474', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Remove</button>
                 </span>),
             Actions: (
                 <span >
-                    <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Arrow} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Edit} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Hold} alt="" height={20} width={20} /></span>
 
                 </span >
             ),
@@ -153,9 +155,9 @@ export default function Trainers() {
     ]);
 
     const [trainerDetailsTableHead] = useState([
-        { id: "TrainerImg", label: "", numeric: false },
-        { id: "TrainerID", label: "TRAINER ID", numeric: false },
-        { id: "TrainerName", label: "TRAINER NAME", numeric: false },
+        { id: "UserImg", label: "", numeric: false },
+        { id: "UserID", label: "USER ID", numeric: false },
+        { id: "UserName", label: "USER NAME", numeric: false },
         { id: "Status", label: "STATUS", numeric: false },
         { id: "Actions", label: "ACTIONS", numeric: false },
     ]);
@@ -209,6 +211,7 @@ export default function Trainers() {
                         headCells={trainerDetailsTableHead}
                         tableName={"Trainers"}
                     />
+                    <DeleteModal open={openModal} onClose={() => setOpenModal(false)} />
                 </div>
             </div >
         </div >
