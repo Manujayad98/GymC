@@ -8,7 +8,7 @@ import {
     FaBell,
     FaRegChartBar,
     FaCommentAlt,
-    FaShoppingBag,
+    FaEdit,
     FaThList,
     FaSignOutAlt
 } from "react-icons/fa";
@@ -52,7 +52,7 @@ const Sidebar = ({ children }) => {
         {
             path: "/Oadjustments",
             name: "Adjustments",
-            icon: <FaCommentAlt />
+            icon: <FaEdit />
         },
         {
             path: "/Oannouncements",

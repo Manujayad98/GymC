@@ -3,6 +3,7 @@ import '../adm_header/header.css'
 import owner from '../../../../images/owner.png'
 import { fetchUserData } from "../../../../services/AuthenticationService";
 import { Link } from 'react-router-dom'
+import user5 from '../../../../images/owner/te4.png'
 
 function Header(props) {
 
@@ -38,7 +39,7 @@ function Header(props) {
         </div>
         <div className='profile'>
           <Link to={'/profile'}>
-            <img src={owner} alt="" />
+            <img src={user5} alt="" />
           </Link>
           <div className='profileDetails'>
             <h1 id='name'>{`${data.userName} `}</h1>

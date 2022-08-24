@@ -129,18 +129,24 @@ export default function Exercises() {
         // { id: "Actions", label: "ACTIONS", numeric: false },
     ]);
 
-    const [count, setCount] = useState(5);
-    const IncNum = () => {
-        setCount(count + 1);
-    };
-    const DecNum = () => {
-        if (count > 0) setCount(count - 1);
-        else {
-        setCount(0);
-        alert("min limit reached");
+
+    
+    let [num, setNum]= useState(5);
+    let incNum =()=>{
+        if(num<10)
+        {
+        setNum(Number(num)+1);
         }
     };
-  
+    let decNum = () => {
+        if(num>0)
+        {
+        setNum(num - 1);
+        }
+    }
+    let handleChange = (e)=>{
+    setNum(e.target.value);
+    }
 
     return (
         <div className='main-container'>
@@ -179,19 +185,18 @@ export default function Exercises() {
                     
                     <div className="main_div">
                         <div className="center_div">
-                        <h2 id="count">{count}</h2>
-                        {/* <div className="btn_div">
-                            <Tooltip title="Add">
-                            <Button onClick={IncNum}>
-                                <AddIcon />
-                            </Button>
-                            </Tooltip>
-                            <Tooltip title="Reduce">
-                            <Button onClick={DecNum}>
-                            <RemoveIcon />
-                            </Button>
-                            </Tooltip>
-                        </div> */}
+                        {/* <h2 id="count">{count}</h2> */}
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <button class="btn btn-outline-primary" type="button" onClick={decNum}>-</button>
+                            </div>
+                            <div className="adjustments-count">
+                            <input id="count" type="text" class="form-control" value={num} onChange={handleChange}/>
+                            </div>
+                            <div class="input-group-prepend">
+                                <button class="btn btn-outline-primary" type="button" onClick={incNum}>+</button>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>

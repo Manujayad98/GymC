@@ -27,7 +27,7 @@
     align-content: center;
     border-radius: 6px;
     box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
-    
+
 }
 
 .analytics-cards {
@@ -41,7 +41,7 @@
 .own-analytics-table-container {
     margin: 10px;
     padding: 5px;
-   
+
 }
 
 .chart-cards,
@@ -59,9 +59,9 @@
     justify-content: space-around;
     text-align: center;
     align-content: center;
-    border-radius: 6px!important;
+    border-radius: 6px !important;
     box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
-    width: 600px;
+    width: 525px;
 }
 
 .own-analytics-container-head {
@@ -84,33 +84,35 @@
     margin-right: auto;
 }
 
-.tab-content > .active{
-    background: none!important;
+.tab-content>.active {
+    background: none !important;
     /* display: none; */
     box-shadow: none;
     transition: none;
     color: black;
 }
-.fade{
-    transition: none!important;
+
+.fade {
+    transition: none !important;
 }
 
 .dropdown-container {
     width: 200px;
-    
+
 }
-.Analytics-dropdown{
+
+.Analytics-dropdown {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row!important;
+    flex-direction: row !important;
     justify-content: space-between;
     width: 100%;
     height: auto;
-    padding: 10px 20px; 
-    
+    /* padding: 10px 20px; */
+
 }
 
-.report-generate-button{
+.report-generate-button {
     background-color: #3DA2FF;
     border: none;
     color: white;
@@ -124,7 +126,7 @@
     border-radius: 10px;
 }
 
-.report-generate-button:hover{
+.report-generate-button:hover {
     background-color: #2869a7;
 }
 
@@ -136,7 +138,8 @@
 .form-label {
     font-weight: 800;
 }
-.own-reports-dropdown{
+
+.own-reports-dropdown {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;

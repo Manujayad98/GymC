@@ -41,7 +41,7 @@ export default function Trainers() {
             TrainerName: "Thiyangi Senevirathna",
             Phone: "0714558741",
             Address: "No. 46/4, Tample road, Narammala",
-            RegDate: "2019-06-30",
+            // RegDate: "2019-06-30",
             Status: (
                 <span >
                     <button type="button" class="btn" disabled style={{ backgroundColor: '#E4E074', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Hold</button>
@@ -49,7 +49,7 @@ export default function Trainers() {
             Actions: (
                 <span >
                     <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+                    {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
                     <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
                 </span >
@@ -61,7 +61,7 @@ export default function Trainers() {
             TrainerName: "Bashitha Marasinghe",
             Phone: "075584736",
             Address: "No. 46/4, Church road, Dambadeniya",
-            RegDate: "2019-07-21",
+            // RegDate: "2019-07-21",
             Status: (
                 <span >
                     <button type="button" class="btn" disabled style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Active</button>
@@ -69,7 +69,7 @@ export default function Trainers() {
             Actions: (
                 <span >
                     <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+                    {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
                     <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
 
@@ -82,7 +82,7 @@ export default function Trainers() {
             TrainerName: "Inosha Perera",
             Phone: "0775587511",
             Address: "No. 16/4, Temple Road, Pannala",
-            RegDate: "2020-17-15",
+            // RegDate: "2020-17-15",
             Status: (
                 <span >
                     <button type="button" class="btn" disabled style={{ backgroundColor: '#E47474', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Remove</button>
@@ -90,7 +90,7 @@ export default function Trainers() {
             Actions: (
                 <span >
                     <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+                    {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
                     <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
 
@@ -102,8 +102,8 @@ export default function Trainers() {
             TrainerID: "S004",
             TrainerName: "Rasangi Madhushika",
             Phone: "078558456",
-            Address: "No. 14/A, Negombo Road, Giriulla",
-            RegDate: "2020-08-17",
+            Address: "Negombo Road, Giriulla",
+            // RegDate: "2020-08-17",
             Status: (
                 <span >
                     <button type="button" class="btn" disabled style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Active</button>
@@ -111,7 +111,7 @@ export default function Trainers() {
             Actions: (
                 <span >
                     <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+                    {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
                     <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
 
@@ -123,8 +123,8 @@ export default function Trainers() {
             TrainerID: "S005",
             TrainerName: "Ishan Karunananyake",
             Phone: "0765584751",
-            Address: "No. 36/4, Temple road, Damabadeniya",
-            RegDate: "2020-10-23",
+            Address: "Temple road, Damabadeniya",
+            // RegDate: "2020-10-23",
             Status: (
                 <span >
                     <button type="button" class="btn" disabled style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Active</button>
@@ -132,7 +132,7 @@ export default function Trainers() {
             Actions: (
                 <span >
                     <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+                    {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
                     <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
 
@@ -144,8 +144,8 @@ export default function Trainers() {
             TrainerID: "S006",
             TrainerName: "Madhupa Minol",
             Phone: "0765584751",
-            Address: "No. 46/4, Church road, Giriulla",
-            RegDate: "2020-11-11",
+            Address: "Church road, Giriulla",
+            // RegDate: "2020-11-11",
             Status: (
                 <span >
                     <button type="button" class="btn" disabled style={{ backgroundColor: '#E47474', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Remove</button>
@@ -153,7 +153,7 @@ export default function Trainers() {
             Actions: (
                 <span >
                     <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+                    {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
                     <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
 
@@ -169,7 +169,7 @@ export default function Trainers() {
         { id: "TrainerName", label: "TRAINER NAME", numeric: false },
         { id: "Phone", label: "PHONE", numeric: false },
         { id: "Address", label: "ADDRESS", numeric: false },
-        { id: "RegDate", label: "REG ON", numeric: false },
+        // { id: "RegDate", label: "REG ON", numeric: false },
         { id: "Status", label: "STATUS", numeric: false },
         { id: "Actions", label: "ACTIONS", numeric: false },
     ]);
