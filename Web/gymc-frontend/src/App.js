@@ -6,7 +6,7 @@ import Pricing from './Components/Pages/all/landingPage/Pricing';
 import About from './Components/Pages/all/landingPage/About';
 import Contact from './Components/Pages/all/landingPage/ContactUs';
 import Trainers from './Components/Pages/all/landingPage/Trainers';
-// import Footer from './Components/Pages/all/landingPage/Footer';
+import Footer from './Components/Pages/all/landingPage/Footer';
 // import Login from './Components/Pages/all/landingPage/Login';
 import Registration from './Components/Pages/all/registrationPage/Registration';
 import Sidebar from './Components/Utilities/Sidebar/Sidebar';
@@ -165,7 +165,7 @@ const Home = () => (
     <Pricing />
     <About />
     <Contact />
-    {/* <Footer /> */}
+    <Footer />
   </div>
 )
 

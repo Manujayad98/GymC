@@ -18,7 +18,7 @@ function Trainers() {
             <div className='t-container'>
                 <div className="t-box">
                     <img src={timage1} alt="" className='dp' />
-                    <div class="t-content">
+                    <div class="trainer-content">
                         <p>Expert Trainer</p>
                         <span className='t-name'>John Doe</span>
                         <div class="t-share">
@@ -33,7 +33,7 @@ function Trainers() {
                 </div>
                 <div className="t-box">
                     <img src={timage2} alt="" className='dp' />
-                    <div class="t-content">
+                    <div class="trainer-content">
                         <p>Expert Trainer</p>
                         <span className='t-name'>Olivia Emma</span>
                         <div class="t-share">
@@ -46,7 +46,7 @@ function Trainers() {
                 </div>
                 <div className="t-box">
                     <img src={timage3} alt="" className='dp' />
-                    <div class="t-content">
+                    <div class="trainer-content">
                         <p>Expert Trainer</p>
                         <span className='t-name'>Jos Philip</span>
                         <div class="t-share">
@@ -59,7 +59,7 @@ function Trainers() {
                 </div>
                 <div className="t-box">
                     <img src={timage4} alt="" className='dp' />
-                    <div class="t-content">
+                    <div class="trainer-content">
                         <p>Expert Trainer</p>
                         <span className='t-name'>Christina</span>
                         <div class="t-share">
