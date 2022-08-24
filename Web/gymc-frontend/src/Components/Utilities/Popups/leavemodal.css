@@ -1,4 +1,4 @@
-.rec-check-overlay{
+.rec-check-overlay {
     background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
     height: 100%;
@@ -7,7 +7,7 @@
     left: 0;
 }
 
-.rec-leave-container{
+.rec-leave-container {
     background-color: white;
     border-radius: 8px;
     width: 500px;
@@ -18,7 +18,7 @@
     text-align: center;
 }
 
-.rec-cmodal-closebtn{
+.rec-cmodal-closebtn {
     background-color: white !important;
     width: 40px;
     height: 40px;
@@ -30,58 +30,61 @@
     float: right;
 }
 
-.rec-check-title{
+.rec-check-title {
     font-weight: bold;
-    font-size: 20px;
-    padding-top: 20px ;
+    font-size: 25px;
+    padding: 10px;
 }
 
-.rec-check-form{
+.rec-check-form {
     width: 500px;
     padding: 20px;
 }
 
-.rec-leave-input{
+.rec-leave-input {
     padding-left: 50px;
     padding-right: 50px;
 }
 
-.rec-modal-btn{
+.rec-modal-btn {
     border: none;
     height: 40px;
     width: 100px;
     margin: 20px;
 }
 
-.rec-cancelbtn{
+.rec-cancelbtn {
     background-color: #989090 !important;
     border-color: #989090 !important;
 }
-.rec-cancelbtn:hover{
+
+.rec-cancelbtn:hover {
     background-color: #757575 !important;
 
 }
 
-.rec-confirmbtn{
+.rec-confirmbtn {
     background-color: #32E04E !important;
     border-color: #32E04E !important;
 }
-.rec-confirmbtn:hover{
+
+.rec-confirmbtn:hover {
     background-color: #32ff4E !important;
 
 }
-.rec-leave-body{
+
+.rec-leave-body {
     padding: 20px;
 }
 
-.rec-leave-header{
+.rec-leave-header {
     height: 40px;
 }
 
-.rec-leave-title{
+.rec-leave-title {
     height: 30px;
 }
 
-.last-line{
+.last-line {
     padding-bottom: 20px;
 }

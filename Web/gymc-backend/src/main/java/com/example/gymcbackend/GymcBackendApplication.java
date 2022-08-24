@@ -1,11 +1,15 @@
 package com.example.gymcbackend;
 
+import com.example.gymcbackend.entities.StaffMember;
+import com.example.gymcbackend.entities.UserAccount;
 import com.example.gymcbackend.repository.traineeDao.TraineeRepository;
 import com.example.gymcbackend.repository.userDao.UserAccountDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import javax.annotation.PostConstruct;
 
 @SpringBootApplication
 public class GymcBackendApplication {
@@ -34,23 +38,25 @@ public class GymcBackendApplication {
 //		UserAccount user=new UserAccount();
 //		StaffMember staffMember= new StaffMember();
 //
-//		user.setUserName("199874511111");
+//		user.setUserName("Sudam Munasinghe");
 ////		user.setMemberId(staffMemId);
 //		user.setPassword("123456789");
-//		user.setEmail("sudam@gmail.com");
-//		user.setUserLevel("Admiin");
+//		user.setEmail("sudam123@gmail.com");
+//		user.setUserLevel("Receptionist");
 //		user.setPassword(passwordEncoder.encode("123456789"));
 //		user.setStatus(true);
 //
 //		userAccountDetailsRepository.save(user);
 //
 //		staffMember.setFirstName("Sudam");
-//		staffMember.setLastName("Mune");
-//		staffMember.setAddress("No,324/3, Dewalapara, Panadura");
-//		staffMember.setGender('F');
+//		staffMember.setLastName("Munasinghe");
+//		staffMember.setAddress("No,23/8, Temple Road, Matara");
+//		staffMember.setGender('M');
 //		staffMember.setNic("199874511111");
-//		staffMember.setPhoneNumber("0773514180");
-//		staffMember.setStaffType(3);
+//		staffMember.setPhoneNumber("0763514133");
+//		staffMember.setEmail("sudam123@gmail.com");
+//		staffMember.setStaffType(2);
+////		staffMember.setUserAccount(user);
 ////		staffMember.setId(8);
 //
 //		staffMemberRepository.save(staffMember);

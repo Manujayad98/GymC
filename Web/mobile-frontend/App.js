@@ -23,28 +23,24 @@ const App = () => {
 
   return (
     // <TrainerNavBar/>
-
+    
     <NavigationContainer>
       <Stack.Navigator>
-
+        
         <Stack.Screen
           name="Startup"
-          component={StartPage}
-          options={{ title: 'Startup' }}
+          component={TraineeHomePage}
+          options={{ title: 'Login' }}
         />
         <Stack.Screen name="Login" component={LoginPage} />
         <Stack.Screen name="Forgot" component={ForgotPasswordPage} />
         <Stack.Screen name="Reset" component={ResetPasswordPage} />
-        <Stack.Screen name="Setup" component={SetupProfilePage} />
-        <Stack.Screen name="SetupPw" component={SetupPasswordPage} />
-        <Stack.Screen name="Guide" component={AppoinmentGuidePage} />
-        <Stack.Screen name="Explore" component={ExploreAppPage} />
 
       </Stack.Navigator>
     </NavigationContainer>
-
-);
+  );
 };
+
 const styles = StyleSheet.create({
   // root:{
   //   flex:1,

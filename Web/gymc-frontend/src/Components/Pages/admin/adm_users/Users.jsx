@@ -8,16 +8,24 @@ import Edit from '../../../../images/Icons/pen-solid.svg'
 import View from '../../../../images/Icons/eye-solid.svg'
 import Hold from '../../../../images/Icons/hand-solid.svg'
 import T1 from '../../../../images/t1.png'
+import Arrow from '../../../../images/Icons/arrow-square-right.svg'
 
 import './Users.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
+import { Link } from 'react-router-dom'
+
+import { getUsers } from "../../../../services/UserService";
+
 export default function Trainers() {
+
+    const [users, setAllUsers] = useState([]);
 
     useEffect(() => {
         checkValidate();
+        getAllUsers();
     }, []);
 
     const checkValidate = async () => {
@@ -25,6 +33,12 @@ export default function Trainers() {
         if (!y) {
             window.location.href = "/";
         }
+    };
+
+    const getAllUsers = async () => {
+        const res = await getUsers();
+        console.log(res.data);
+        setAllUsers(res.data);
     };
 
     const [trainerDetails] = useState([
@@ -38,7 +52,7 @@ export default function Trainers() {
                 </span>),
             Actions: (
                 <span >
-                    <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
@@ -55,7 +69,7 @@ export default function Trainers() {
                 </span>),
             Actions: (
                 <span >
-                    <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
@@ -73,7 +87,7 @@ export default function Trainers() {
                 </span>),
             Actions: (
                 <span >
-                    <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
@@ -91,7 +105,7 @@ export default function Trainers() {
                 </span>),
             Actions: (
                 <span >
-                    <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
@@ -109,7 +123,7 @@ export default function Trainers() {
                 </span>),
             Actions: (
                 <span >
-                    <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
@@ -127,7 +141,7 @@ export default function Trainers() {
                 </span>),
             Actions: (
                 <span >
-                    <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
@@ -183,7 +197,9 @@ export default function Trainers() {
                                 </div>
                             </div>
                             <div className="button-container">
-                                <button type="button" class="btn" style={{ backgroundColor: '#3DA2FF', width: '100px' }}>New User</button>
+                                <Link to='/AaddUsers'>
+                                    <button type="button" class="btn" style={{ backgroundColor: '#3DA2FF', width: '100px' }}>New User</button>
+                                </Link>
                             </div>
 
                         </div>

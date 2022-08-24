@@ -22,7 +22,7 @@ export const options = {
 };
 
 
-const PieChart = (props) => {
+const BarChart = (props) => {
     return (
         <Chart
             chartType="Bar"
@@ -33,4 +33,4 @@ const PieChart = (props) => {
         />
     )
 }
-export default PieChart
+export default BarChart

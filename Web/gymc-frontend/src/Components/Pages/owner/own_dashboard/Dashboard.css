@@ -60,7 +60,7 @@
 .own-dashboard-table-cards {
     padding: 20px;
     margin: 10px 5px;
-    width: 550px;
+    /* width: 550px; */
     height: inherit;
 }
 

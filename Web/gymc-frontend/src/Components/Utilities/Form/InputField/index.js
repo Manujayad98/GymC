@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { validateInput } from "../Validator/Validator";
 
-const InputField = ({ value, label, placeholder, validators, type,readonly, onChange }) => {
+const InputField = ({ value, label, placeholder, validators, type, readonly, onChange }) => {
     const [error, setError] = useState(false);
 
     const handleChange = (event) => {
@@ -21,7 +21,7 @@ const InputField = ({ value, label, placeholder, validators, type,readonly, onCh
                     className='form-control'
                     placeholder={placeholder}
                     value={value}
-                    readonly
+                    readOnly={readonly}
                     defaultValue={value}
                     onChange={handleChange}
                 />
@@ -30,7 +30,7 @@ const InputField = ({ value, label, placeholder, validators, type,readonly, onCh
                     type={type}
                     value={value}
                     className='form-control'
-                    readonly
+                    readOnly={readonly}
                     placeholder={placeholder}
                     onChange={handleChange}
                 />

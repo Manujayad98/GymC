@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import '../recept_sidebar/Sidebar.css'
-import './AddTrainer.css'
+import './AddTrainee.css'
 import SidebarO from '../recept_sidebar/Sidebar'
 import HeaderO from '../recept_header/Header'
 
@@ -55,7 +55,7 @@ export default function AddTrainer() {
         <div className='main-container'>
             <SidebarO />
             <div className='body-container'>
-                <HeaderO title="New Trainer" />
+                <HeaderO title="New Trainee" />
                 <div className="content-container">
                     <div className="add-trainer-form-div">
                         <div className="add-trainer-form-container">
@@ -192,19 +192,26 @@ export default function AddTrainer() {
                                     </div>
 
                                 </div>
-                                <h4 className='add-trainer-form-subHeading'>Qualifications</h4>
+                                <h4 className='add-trainer-form-subHeading'>Memebership Type</h4>
                                 <hr />
                                 <div className="form-row">
                                     <div className="form-col1">
-                                        <InputField
-                                            value={requestData.qualifications}
-                                            type='textarea'
-                                            placeholder='Type'
-                                            validators={[
-                                                { check: Validators.required, message: 'This field is required' }
+                                        <Dropdown
+                                            data={[
+                                                { value: 1, label: 'Monthly-Personal' },
+                                                { value: 2, label: 'Monthly-NonPersonal' },
+                                                { value: 3, label: 'Daily' },
                                             ]}
-                                            onChange={handleChange('qualifications')} />
+                                            label="Membership type"
+                                            // styleClass='mt-3'
+                                            value={requestData.staffType}
+                                            placeholder='Select Membership type'
+                                        // onChange={handleDropdown('staffType')}
+                                        />
                                         <br></br>
+
+                                    </div>
+                                    <div className="form-col1">
 
                                     </div>
                                 </div>
