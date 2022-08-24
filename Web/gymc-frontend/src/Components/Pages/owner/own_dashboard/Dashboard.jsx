@@ -4,11 +4,23 @@ import SidebarO from '../own_sidebar/Sidebar'
 import HeaderO from '../own_header/Header'
 
 import Pic1 from '../../../../images/owner.png'
+import trainer1 from '../../../../images/owner/tr1.png'
+import trainer2 from '../../../../images/owner/tr2.png'
+import trainer3 from '../../../../images/owner/tr3.png'
+import trainer4 from '../../../../images/owner/tr4.png'
+import trainer5 from '../../../../images/owner/tr5.png'
+import trainee1 from '../../../../images/owner/te1.png'
+import trainee2 from '../../../../images/owner/te2.png'
+import trainee3 from '../../../../images/owner/te3.png'
+import trainee4 from '../../../../images/owner/te4.png'
+import trainee5 from '../../../../images/owner/te5.png'
+
 import BarChart from '../../../Utilities/Charts/BarChart'
 import Table from '../../../Utilities/Tables/Table2'
 import Edit from '../../../../images/Icons/pen-solid.svg'
 import './Dashboard.css'
 import { Chart } from "react-google-charts";
+import { width } from '@mui/system'
 
 const Dashboard = () => {
 
@@ -107,50 +119,50 @@ const Dashboard = () => {
 
             <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
-                <img src={Pic1} alt="" />
+                <img src={trainer1} className='owner-dashboard-images' alt="" />
               </div>
               <div className='own-dashboard-card-content'>
-                <div className='staffID'>T00001</div>
-                <div className='staffName'>Sanjana Rajapaksha</div>
+                <div className='staffID'>S0001</div>
+                <div className='staffName'>Manujaya Dasanayaka</div>
               </div>
             </div>
 
             <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
-                <img src={Pic1} alt="" />
+                <img src={trainer2} className='owner-dashboard-images' alt="" />
               </div>
               <div className='own-dashboard-card-content'>
-                <div className='staffID'>T00001</div>
-                <div className='staffName'>Sanjana Rajapaksha</div>
+                <div className='staffID'>S0002</div>
+                <div className='staffName'>Sudam Munasingha</div>
               </div>
             </div>
 
             <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
-                <img src={Pic1} alt="" />
+                <img src={trainer3} className='owner-dashboard-images' alt="" />
               </div>
               <div className='own-dashboard-card-content'>
-                <div className='staffID'>T00001</div>
-                <div className='staffName'>Sanjana Rajapaksha</div>
+                <div className='staffID'>S0003</div>
+                <div className='staffName'>Chathura Senevirathna</div>
               </div>
             </div>
 
             <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
-                <img src={Pic1} alt="" />
+                <img src={trainer4} className='owner-dashboard-images' alt="" />
               </div>
               <div className='own-dashboard-card-content'>
-                <div className='staffID'>T00001</div>
-                <div className='staffName'>Sanjana Rajapaksha</div>
+                <div className='staffID'>S0004</div>
+                <div className='staffName'>Sewmini Wanigarathna</div>
               </div>
             </div>
 
             <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
-                <img src={Pic1} alt="" />
+                <img src={trainer5} className='owner-dashboard-images' alt="" />
               </div>
               <div className='own-dashboard-card-content'>
-                <div className='staffID'>T00001</div>
+                <div className='staffID'>S0005</div>
                 <div className='staffName'>Sanjana Rajapaksha</div>
               </div>
             </div>
@@ -162,51 +174,51 @@ const Dashboard = () => {
           <div className='own-dashboard-card-container'>
             <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
-                <img src={Pic1} alt="" />
+                <img src={trainee1} className='owner-dashboard-images' alt="" />
               </div>
               <div className='own-dashboard-card-content'>
-                <div className='staffID'>T00001</div>
-                <div className='staffName'>Sanjana Rajapaksha</div>
+                <div className='staffID'>M0001</div>
+                <div className='staffName'>Rasheni Yohana</div>
               </div>
             </div>
 
             <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
-                <img src={Pic1} alt="" />
+              <img src={trainee2} className='owner-dashboard-images' alt="" />
               </div>
               <div className='own-dashboard-card-content'>
-                <div className='staffID'>T00001</div>
-                <div className='staffName'>Sanjana Rajapaksha</div>
+                <div className='staffID'>M0002</div>
+                <div className='staffName'>Laseth Perera</div>
               </div>
             </div>
 
             <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
-                <img src={Pic1} alt="" />
+              <img src={trainee3} className='owner-dashboard-images' alt="" />
               </div>
               <div className='own-dashboard-card-content'>
-                <div className='staffID'>T00001</div>
-                <div className='staffName'>Sanjana Rajapaksha</div>
+                <div className='staffID'>M0003</div>
+                <div className='staffName'>Lithuni Sihasna</div>
               </div>
             </div>
 
             <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
-                <img src={Pic1} alt="" />
+              <img src={trainee4} className='owner-dashboard-images' alt="" />
               </div>
               <div className='own-dashboard-card-content'>
-                <div className='staffID'>T00001</div>
-                <div className='staffName'>Sanjana Rajapaksha</div>
+                <div className='staffID'>M0004</div>
+                <div className='staffName'>Sanuthi Onara</div>
               </div>
             </div>
 
             <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
-                <img src={Pic1} alt="" />
+              <img src={trainee5} className='owner-dashboard-images' alt="" />
               </div>
               <div className='own-dashboard-card-content'>
-                <div className='staffID'>T00001</div>
-                <div className='staffName'>Sanjana Rajapaksha</div>
+                <div className='staffID'>M0005</div>
+                <div className='staffName'>Yuhas Thenul</div>
               </div>
             </div>
 
