@@ -2,19 +2,25 @@ import React, { useState } from 'react'
 import '../own_sidebar/Sidebar.css'
 import SidebarO from '../own_sidebar/Sidebar'
 import HeaderO from '../own_header/Header'
-import Table from '../../../Utilities/Tables/Table1'
-import Trash from '../../../../images/Icons/trash-solid.svg'
-import Edit from '../../../../images/Icons/pen-solid.svg'
-import View from '../../../../images/Icons/eye-solid.svg'
+// import Table from '../../../Utilities/Tables/Table1'
+
+import Add from '../../../../images/Add.svg'
+import Clear from '../../../../images/clear.svg'
 import T1 from '../../../../images/t1.png'
 import Pic1 from '../../../../images/owner.png'
 import Card from 'react-bootstrap/Card'
+import Plus from '../../../../images/plus.svg'
+import Minus from '../../../../images/minus.svg'
 
 
 import InputField from "../../../Utilities/Form/InputField";
 import '../../../Utilities/Form/Form.css'
 import { Validators } from "../../../Utilities/Form/Validator/Validator";
 import Dropdown from "../../../Utilities/Form/Dropdown";
+import Table from '../../../Utilities/Tables/Table2'
+
+
+import Button1 from '@mui/material/Button';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -41,7 +47,7 @@ const AddWorkout = () => {
         hips: '',
         diseases: '',
         bones: '',
-        memType:'',
+        memType: '',
     });
     const [click, setClick] = useState(false);
 
@@ -101,6 +107,145 @@ const AddWorkout = () => {
         // }
     };
 
+    //table data
+
+    const [excerciseDetails] = useState([
+        {
+            Name: "Incline Press",
+            Repetitions: (
+                <span >
+                    <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "10px" }}>15 Reps</span>
+                    <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
+
+                </span >
+                
+                ),
+
+            Actions: (
+                <span >
+                    <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={50} width={80} /></span>
+                    
+
+                </span >
+
+            ),
+        },
+        {
+            Name: "Incline Press",
+            Repetitions: (
+                <span >
+                    <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "10px" }}>15 Reps</span>
+                    <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
+
+                </span >
+                
+                ),
+
+            Actions: (
+                <span >
+                    <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={50} width={80} /></span>
+                    {/* <span style={{ paddingRight: "20px" }}><img src={Clear} alt="" height={20} width={20} /></span> */}
+
+                </span >
+
+            ),
+        },
+        {
+            Name: "Incline Press",
+            Repetitions: (
+                <span >
+                    <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "10px" }}>15 Reps</span>
+                    <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
+
+                </span >
+                
+                ),
+
+            Actions: (
+                <span >
+                    {/* <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={20} width={20} /></span> */}
+                    <span style={{ paddingRight: "20px" }}><img src={Clear} alt="" height={50} width={80} /></span>
+
+                </span >
+
+            ),
+        },
+        {
+            Name: "Incline Press",
+            Repetitions:  (
+                <span >
+                    <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "10px" }}>15 Reps</span>
+                    <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
+
+                </span >
+                
+                ),
+
+            Actions: (
+                <span >
+                    <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={50} width={80} /></span>
+                    {/* <span style={{ paddingRight: "20px" }}><img src={Clear} alt="" height={20} width={20} /></span> */}
+
+                </span >
+
+            ),
+        },
+        {
+            Name: "Incline Press",
+            Repetitions:  (
+                <span >
+                    <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "10px" }}>15 Reps</span>
+                    <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
+
+                </span >
+                
+                ),
+
+            Actions: (
+                <span >
+                    {/* <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={20} width={20} /></span> */}
+                    <span style={{ paddingRight: "20px" }}><img src={Clear} alt="" height={50} width={80} /></span>
+
+                </span >
+
+            ),
+        },
+        {
+            Name: "Incline Press",
+            Repetitions:  (
+                <span >
+                    <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "10px" }}>15 Reps</span>
+                    <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
+
+                </span >
+                
+                ),
+
+            Actions: (
+                <span >
+                    <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={50} width={80} /></span>
+                    {/* <span style={{ paddingRight: "20px" }}><img src={Clear} alt="" height={20} width={20} /></span> */}
+
+                </span >
+
+            ),
+        },
+        
+        
+    ]);
+    const [excerciseDetailsTableHead] = useState([
+        { id: "Name", label: "NAME", numeric: false },
+        { id: "Repetitions", label: "REPETITIONS", numeric: false },
+
+    ]);
+
+
 
     return (
         <div className='main-container'>
@@ -111,13 +256,14 @@ const AddWorkout = () => {
                     <div className="own-addworkout-left">
                         <div className="own-addworkout-profile">
 
-                            <div className="own-addworkout-profile-pic">
-                                <img src={Pic1} alt="" />
-
-                            </div>
-                            <div className="own-addworkout-profile-content">
-                                <h6>Sanjana Rajapakse</h6>
-                                <h5>T0001</h5>
+                            <div className='own-dashboard-card own-dashboard-profile-cards'>
+                                <div className='own-dashboard-card-img-container'>
+                                    <img src={Pic1} alt="" />
+                                </div>
+                                <div className='own-dashboard-card-content'>
+                                    <div className='staffID'>T00001</div>
+                                    <div className='staffName'>Sanjana Rajapaksha</div>
+                                </div>
                             </div>
 
 
@@ -140,7 +286,6 @@ const AddWorkout = () => {
                                                     type='text'
                                                     label="Height"
                                                     placeholder='Type'
-                                                    readonly
                                                     validators={[
                                                         { check: Validators.required, message: 'NIC is not valid' }
                                                     ]}
@@ -153,7 +298,7 @@ const AddWorkout = () => {
                                                     type='text'
                                                     label="Weight"
                                                     placeholder='Type'
-                                                    readonly
+
                                                     validators={[
                                                         { check: Validators.required, message: 'This field is required' }
                                                     ]}
@@ -180,7 +325,7 @@ const AddWorkout = () => {
 
                                             </div>
                                             <div className="form-col2">
-                                                <label htmlFor="">Affected Bone</label>
+                                                {/* <label htmlFor="">Affected Bone</label> */}
                                                 <Dropdown
                                                     data={[
                                                         { value: "UpperArm", label: 'Upper Arm' },
@@ -210,7 +355,6 @@ const AddWorkout = () => {
                                                     type='text'
                                                     label="Biceps"
                                                     placeholder='Type'
-                                                    readonly
                                                     validators={[
                                                         { check: Validators.required, message: 'NIC is not valid' }
                                                     ]}
@@ -223,7 +367,6 @@ const AddWorkout = () => {
                                                     type='text'
                                                     label="Forearms"
                                                     placeholder='Type'
-                                                    readonly
                                                     validators={[
                                                         { check: Validators.required, message: 'This field is required' }
                                                     ]}
@@ -238,7 +381,6 @@ const AddWorkout = () => {
                                                     type='text'
                                                     label="Chest"
                                                     placeholder='Type'
-                                                    readonly
                                                     validators={[
                                                         { check: Validators.required, message: 'This Field is not valid' }
                                                     ]}
@@ -251,7 +393,6 @@ const AddWorkout = () => {
                                                     type='text'
                                                     label="Hips"
                                                     placeholder='Type'
-                                                    readonly
                                                     validators={[
                                                         { check: Validators.required, message: 'This field is required' }
                                                     ]}
@@ -266,7 +407,6 @@ const AddWorkout = () => {
                                                     type='text'
                                                     label="Thighs"
                                                     placeholder='Type'
-                                                    readonly
                                                     validators={[
                                                         { check: Validators.required, message: 'NIC is not valid' }
                                                     ]}
@@ -277,13 +417,6 @@ const AddWorkout = () => {
 
                                             </div>
                                         </div>
-
-
-
-
-
-
-
                                     </div>
                                 </div>
 
@@ -296,26 +429,50 @@ const AddWorkout = () => {
                     <div className="own-addworkout-right">
                         <div className="addworkout_card2">
                             <div className="update-workout-form-inputs">
-                                <h4 className='add-trainer-form-subHeading'>Member Type</h4>
+                                <h4 className='add-trainer-form-subHeading' style={{ marginTop: '10px' }}>Member Type</h4>
                                 <hr className="add-trainer-hr" />
-                                <Dropdown
-                                    data={[
-                                        { value: "Monthly-Personal", label: 'Monthly-Personal' },
-                                        { value: "Monthly-NonPersonal", label: 'Monthly-NonPersonal' },
-                                        { value: "Daily", label: 'Daily' },
-                                        
-                                    ]}
-                                    label="Member Type"
-                                    // styleClass='mt-3'
-                                    value={requestData.memType}
-                                    placeholder='Select'
-                                    onChange={handleDropdown}
-                                /><br></br>
+                                <div className="form-row">
+                                    <div className="form-col1">
+                                        <Dropdown
+                                            data={[
+                                                { value: "Monthly-Personal", label: 'Monthly-Personal' },
+                                                { value: "Monthly-NonPersonal", label: 'Monthly-NonPersonal' },
+                                                { value: "Daily", label: 'Daily' },
+
+                                            ]}
+                                            label="Member Type"
+                                            // styleClass='mt-3'
+                                            value={requestData.memType}
+                                            placeholder='Select'
+                                            onChange={handleDropdown}
+
+                                        /><div className="own_update_workout_btn">
+
+                                            <button onClick={handleSubmit} className="own_update_workout-btn">Suggest</button>
+
+                                        </div>
+
+
+                                    </div>
+                                    <div className="form-col2">
+
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <div className="addworkout_card3">
-
+                            <Table
+                                rows={excerciseDetails}
+                                headCells={excerciseDetailsTableHead}
+                                tableName={"Exercises"}
+                            />
                         </div>
+                        <div className="own_update_workout_btn">
+
+                                            <button  className="own_update_workout-btn" style={{marginLeft:'73%'}}>Schedule</button>
+
+                                        </div>
 
 
                     </div>

@@ -58,22 +58,22 @@ export default function ViewWorkout() {
       ]);
       const [workoutDetails] = useState([
         {
-          incline: "Incline Press",
-          reps: "15 Reps",
-          delete: <img src={Edit} alt="" height={20} width={20} />,
-          
+            incline: "Incline Press",
+            reps: "15 Reps",
+            delete: <img src={Edit} alt="" height={20} width={20} />,
+
         },
         {
-            incline: "Incline Press",
-            reps: "15 Reps",
-            delete: <img src={Edit} alt="" height={20} width={20} />,
-            
+              incline: "Incline Press",
+              reps: "15 Reps",
+              delete: <img src={Edit} alt="" height={20} width={20} />,
+  
           },
           {
-            incline: "Incline Press",
-            reps: "15 Reps",
-            delete: <img src={Edit} alt="" height={20} width={20} />,
-            
+              incline: "Incline Press",
+              reps: "15 Reps",
+              delete: <img src={Edit} alt="" height={20} width={20} />,
+  
           },
         
       
@@ -87,26 +87,20 @@ export default function ViewWorkout() {
       ]);
       const [dietDetails] = useState([
         {
-          nutrition: "Protien",
-          CalorieIntake: "23",
-          delete: <img src={Edit} alt="" height={20} width={20} />,
-          
+            Date_Time: "2022/08/15 09.30 AM",
+            Topic: "Center Closure",
+            Note: "Fitness center is closed on 20 th August 2022"
+
+
         },
         {
-            nutrition: "Carbs",
-            CalorieIntake: "17",
-            delete: <img src={Edit} alt="" height={20} width={20} />,
-            
-          },
-          {
-            nutrition: "Fat",
-            CalorieIntake: "85",
-            delete: <img src={Edit} alt="" height={20} width={20} />,
-            
-          },
-      
-        
-      ]);
+            Date_Time: "2022/08/15 09.30 AM",
+            Topic: "Center Closure",
+            Note: "Fitness center is closed on 20 th August 2022",
+        },
+
+    ]);
+>>>>>>> Nips
 
       return (
         <div className='main-container'>
@@ -227,7 +221,6 @@ export default function ViewWorkout() {
                                                         onChange={handleChange('password')} />
                                                 </div>
                                             </div>
-
 
                                         </div>
 

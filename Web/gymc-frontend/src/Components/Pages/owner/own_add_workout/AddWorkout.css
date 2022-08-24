@@ -26,24 +26,29 @@
     height: auto;
     background-color: #FFFFFF;
     border-radius: 10px;
-    margin-top: 5px;
+    margin-top: 45px;
     margin-left: 5px;
 }
 .addworkout_card2{
     width: 99%;
-    height: 35vh;
+    height: 39vh;
     background-color: #FFFFFF;
     border-radius: 10px;
-    margin-left: 5px;
+    margin-left: 10px;
     margin-top: 5px;
 }
 .addworkout_card3{
     width: 99%;
-    height: 50vh;
+    height: auto;
     background-color: #FFFFFF;
     border-radius: 10px;
     margin-top: 5px;
-    margin-left: 5px;
+    margin-left: 10px;
+}
+.update-workout-form-inputs {
+    text-align: left;
+    padding: 20px 20px 0px 20px;
+    
 }
 
 
