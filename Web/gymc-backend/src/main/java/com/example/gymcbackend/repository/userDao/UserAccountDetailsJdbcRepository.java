@@ -80,7 +80,7 @@ public class UserAccountDetailsJdbcRepository {
 
         String query = "select  u.user_id, u.user_name, u.user_level, s.first_name,s.last_name,s.phone_number,s.email,s.address,s.nic,s.gender,s.dob " +
                 "from user_account as u " +
-                "INNER JOIN staff_member s ON u.user_id= s.userid and u.user_id=?";
+                "INNER JOIN staff_member s ON u.user_id= s.user_id and u.user_id=?";
 
         System.out.println(query);
 

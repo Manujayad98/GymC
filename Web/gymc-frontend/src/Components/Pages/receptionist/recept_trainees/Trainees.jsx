@@ -23,7 +23,7 @@ import Checkin from '../../../../images/Icons/enter.png'
 import Checkout from '../../../../images/Icons/exit.png'
 import T1 from '../../../../images/t1.png'
 import { Link } from 'react-router-dom'
-
+import Arrow from '../../../../images/Icons/arrow-square-right.svg'
 
 
 
@@ -41,14 +41,14 @@ const Trainees = () => {
     }
   };
 
- 
-  
+
+
 
   const [openModal, setOpenModal] = useState(false)
-  const [checkinmodal, opencheckin] = useState (false)
-  const [checkoutmodal, opencheckout] = useState (false)
-  const [nowinmodal, opennowin] = useState (false)
-  const [duecmodal, openduec] = useState (false)
+  const [checkinmodal, opencheckin] = useState(false)
+  const [checkoutmodal, opencheckout] = useState(false)
+  const [nowinmodal, opennowin] = useState(false)
+  const [duecmodal, openduec] = useState(false)
 
   const [trainerDetails] = useState([
     {
@@ -69,9 +69,9 @@ const Trainees = () => {
       ),
       Actions: (
         <span >
-          <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
           <span style={{ paddingRight: "20px" }}><Link to='/RupdateTrainee'><img src={Edit} alt="" height={20} width={20} /></Link></span>
-          <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+          <span style={{ paddingRight: "20px" }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
         </span >
       ),
     },
@@ -92,9 +92,9 @@ const Trainees = () => {
       ),
       Actions: (
         <span >
-          <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
           <span style={{ paddingRight: "20px" }}><Link to='/RupdateTrainer'><img src={Edit} alt="" height={20} width={20} /></Link></span>
-          <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+          <span style={{ paddingRight: "20px" }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
         </span >
       ),
     },
@@ -115,9 +115,9 @@ const Trainees = () => {
       ),
       Actions: (
         <span >
-          <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
           <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+          <span style={{ paddingRight: "20px" }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
         </span >
       ),
     },
@@ -129,7 +129,7 @@ const Trainees = () => {
       RegDate: "2021-10-24",
       Check: (
         <span>
-          <span style={{ margin: "10px" }}><Button onClick={() => opencheckin(true) } variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+          <span style={{ margin: "10px" }}><Button onClick={() => opencheckin(true)} variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
           <span><Button disabled variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
         </span>
       ),
@@ -138,9 +138,9 @@ const Trainees = () => {
       ),
       Actions: (
         <span >
-          <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
           <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+          <span style={{ paddingRight: "20px" }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
         </span >
       ),
     },
@@ -161,9 +161,9 @@ const Trainees = () => {
       ),
       Actions: (
         <span >
-          <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
           <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+          <span style={{ paddingRight: "20px" }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
         </span >
       ),
     },
@@ -184,9 +184,9 @@ const Trainees = () => {
       ),
       Actions: (
         <span >
-          <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
           <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+          <span style={{ paddingRight: "20px" }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
         </span >
       ),
     },
@@ -207,9 +207,9 @@ const Trainees = () => {
       ),
       Actions: (
         <span >
-          <span style={{ paddingRight: "20px" }}><img src={View} alt="" height={20} width={20} /></span>
+          <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
           <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><button  onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+          <span style={{ paddingRight: "20px" }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
         </span >
       ),
     }
@@ -235,7 +235,7 @@ const Trainees = () => {
             <Tabs defaultActiveKey={"NowIn"} id="uncontrolled-tab-example" className='mb-3'>
               <Tab eventKey={"NowIn"} title="Now In">
                 <div className='rec-content-row'>
-                  <Card onClick={() => opennowin(true)} style={{cursor:"pointer"}} className='rec-train-card'>
+                  <Card onClick={() => opennowin(true)} style={{ cursor: "pointer" }} className='rec-train-card'>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
                       M001
@@ -266,7 +266,7 @@ const Trainees = () => {
               </Tab>
               <Tab eventKey={"due"} title="Due Check Out">
                 <div className='rec-content-row'>
-                  <Card onClick={() => openduec(true)} className='rec-train-card' style={{borderColor: 'red'}}>
+                  <Card onClick={() => openduec(true)} className='rec-train-card' style={{ borderColor: 'red' }}>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
                       M001
@@ -275,7 +275,7 @@ const Trainees = () => {
                       Kasun Perera
                     </Card.Body>
                   </Card>
-                  <Card className='rec-train-card' style={{borderColor:'red'}}>
+                  <Card className='rec-train-card' style={{ borderColor: 'red' }}>
                     <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
                     <Card.Subtitle>
                       M002
@@ -331,7 +331,7 @@ const Trainees = () => {
             tableName={"Trainers"}
           />
           <div>
-            <DeleteModal open={openModal} onClose={() => setOpenModal(false)}/>
+            <DeleteModal open={openModal} onClose={() => setOpenModal(false)} />
             <CheckinModal open={checkinmodal} onClose={() => opencheckin(false)} />
             <CheckoutModal open={checkoutmodal} onClose={() => opencheckout(false)} />
             <NowinModal open={nowinmodal} onClose={() => opennowin(false)} />
