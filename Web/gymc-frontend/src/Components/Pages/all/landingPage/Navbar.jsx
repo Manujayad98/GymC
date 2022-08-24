@@ -32,7 +32,7 @@ export const Navbar = () => {
                 <li><Link to='pricing' smooth={true} duration={500}>Pricing</Link></li>
                 <li><Link to='about' smooth={true} duration={500}>About us</Link></li>
                 <li><Link to='contact' smooth={true} duration={500}>Contact us</Link></li>
-                <li><a href='/login' smooth={true} duration={500}>Login</a></li>
+                <li><a href='/login' style={{ textDecoration: 'none' }} smooth={true} duration={500}>Login</a></li>
             </ul>
         </nav>
     )

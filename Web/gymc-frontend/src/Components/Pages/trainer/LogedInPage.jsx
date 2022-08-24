@@ -26,7 +26,7 @@ const LogedInPage = () => {
                 <HeaderTR title="TRLogedInPage" />
 
             </div>
-            <div style={{ padding: '20px' }}>
+            <div style={{ padding: '20px', display: 'flex', justifyContent: 'space-evenly' }}>
                 <p>
                     Please download the Gym C app from here
                 </p>
