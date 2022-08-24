@@ -52,52 +52,52 @@ export default function ViewWorkout() {
         { id: "Date_Time", label: "Date & Time", numeric: false },
         { id: "Topic", label: "Topic", numeric: false },
         { id: "Note", label: "Note", numeric: false },
-        
-      ]);
-      const [announcementDetails] = useState([
+
+    ]);
+    const [announcementDetails] = useState([
         {
-          Date_Time: "2022/08/15 09.30 AM",
-          Topic: "Center Closure",
-          Note: "Fitness center is closed on 20 th August 2022",
-          
+            Date_Time: "2022/08/15 09.30 AM",
+            Topic: "Center Closure",
+            Note: "Fitness center is closed on 20 th August 2022",
+
         },
         {
-          Date_Time: "2022/08/15 09.30 AM",
-          Topic: "Center Closure",
-          Note: "Fitness center is closed on 20 th August 2022",
-          
+            Date_Time: "2022/08/15 09.30 AM",
+            Topic: "Center Closure",
+            Note: "Fitness center is closed on 20 th August 2022",
+
         },
         {
-          Date_Time: "2022/08/15 09.30 AM",
-          Topic: "Center Closure",
-          Note: "Fitness center is closed on 20 th August 2022",
-          
+            Date_Time: "2022/08/15 09.30 AM",
+            Topic: "Center Closure",
+            Note: "Fitness center is closed on 20 th August 2022",
+
         },
         {
-          Date_Time: "2022/08/15 09.30 AM",
-          Topic: "Center Closure",
-          Note: "Fitness center is closed on 20 th August 2022"
-           
-        
+            Date_Time: "2022/08/15 09.30 AM",
+            Topic: "Center Closure",
+            Note: "Fitness center is closed on 20 th August 2022"
+
+
         },
         {
-          Date_Time: "2022/08/15 09.30 AM",
-          Topic: "Center Closure",
-          Note: "Fitness center is closed on 20 th August 2022",
+            Date_Time: "2022/08/15 09.30 AM",
+            Topic: "Center Closure",
+            Note: "Fitness center is closed on 20 th August 2022",
         },
-        
-      ]);
+
+    ]);
 
     return (
         <div className='main-container'>
             <SidebarO />
             <div className='body-container'>
-                <HeaderO title="New Trainer" />
+                <HeaderO title="View Workout" />
                 <div className="content-container">
 
                     <div className="workout-container">
-                        <div className="workout-profile-card">profile card
-                            <div className='own-dashboard-card profile-cards'>
+                        <div className="workout-profile-card">
+                            <div className='own-dashboard-card own-dashboard-profile-cards'>
                                 <div className='own-dashboard-card-img-container'>
                                     <img src={Pic1} alt="" />
                                 </div>
@@ -109,7 +109,7 @@ export default function ViewWorkout() {
 
                         </div>
                         <div className="workout-button-card">buttons here
-                            <button>New Workout</button>
+                            <Link to='/OaddWorkout'><button>New Workout</button></Link>
                             <button>Progress</button>
                         </div>
                         <div className="workout-calendar-card">Calendar
@@ -201,10 +201,10 @@ export default function ViewWorkout() {
                             </div>
                         </div>
                         <div className="button-container">
-                                <Link to='/OupdateWorkout'>
-                                    <button type="button" class="btn" style={{ backgroundColor: '#3DA2FF', width: '100px' }}>Update Workout</button>
-                                </Link>
-                            </div>
+                            <Link to='/OupdateWorkout'>
+                                <button type="button" class="btn" style={{ backgroundColor: '#3DA2FF', width: '100px' }}>Update Workout</button>
+                            </Link>
+                        </div>
                     </div>
 
 
