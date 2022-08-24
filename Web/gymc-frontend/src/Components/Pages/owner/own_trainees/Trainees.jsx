@@ -9,6 +9,13 @@ import View from '../../../../images/Icons/eye-solid.svg'
 import T1 from '../../../../images/t1.png'
 import Arrow from '../../../../images/Icons/arrow-square-right.svg'
 
+import trainer1 from '../../../../images/owner/tr1.png'
+import trainer2 from '../../../../images/owner/te1.png'
+import trainer3 from '../../../../images/owner/tr2.png'
+import trainer4 from '../../../../images/owner/tr3.png'
+import trainer5 from '../../../../images/owner/tr4.png'
+import trainer6 from '../../../../images/owner/tr5.png'
+
 import './Trainees.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -30,11 +37,11 @@ const Dashboard = () => {
 
   const [trainerDetails] = useState([
     {
-      TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+      TrainerImg: (<img src={trainer1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
       TrainerID: "M001",
-      TrainerName: "RMN Ruwan",
+      TrainerName: "Nilupul Madhuwantha",
       Phone: "0714558741",
-      RegDate: "2021-10-24",
+      RegDate: "2018-10-24",
       Actions: (
         <span >
           <span style={{ paddingRight: "20px" }}><Link to='/OviewWorkout'><img src={Arrow} alt="" height={20} width={20} /></Link></span>
@@ -44,11 +51,11 @@ const Dashboard = () => {
       ),
     },
     {
-      TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+      TrainerImg: (<img src={trainer2} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
       TrainerID: "M002",
-      TrainerName: "KG Hasara",
-      Phone: "0765584751",
-      RegDate: "2020-11-11",
+      TrainerName: "Ishara Rodrigo",
+      Phone: "0765145632",
+      RegDate: "2018-12-11",
       Actions: (
         <span >
           <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
@@ -58,11 +65,11 @@ const Dashboard = () => {
       ),
     },
     {
-      TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+      TrainerImg: (<img src={trainer3} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
       TrainerID: "M002",
-      TrainerName: "KG Hasara",
-      Phone: "0765584751",
-      RegDate: "2020-11-11",
+      TrainerName: "Ruwan Gamage",
+      Phone: "0775145632",
+      RegDate: "2019-06-22",
       Actions: (
         <span >
           <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
@@ -72,11 +79,11 @@ const Dashboard = () => {
       ),
     },
     {
-      TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+      TrainerImg: (<img src={trainer4} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
       TrainerID: "M002",
-      TrainerName: "KG Hasara",
-      Phone: "0765584751",
-      RegDate: "2020-11-11",
+      TrainerName: "Imesh Kasthurirathna",
+      Phone: "0774564751",
+      RegDate: "2020-08-19",
       Actions: (
         <span >
           <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
@@ -86,11 +93,11 @@ const Dashboard = () => {
       ),
     },
     {
-      TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+      TrainerImg: (<img src={trainer5} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
       TrainerID: "M002",
-      TrainerName: "KG Hasara",
-      Phone: "0765584751",
-      RegDate: "2020-11-11",
+      TrainerName: "Mayori Ekanayake",
+      Phone: "0765545127",
+      RegDate: "2021-10-31",
       Actions: (
         <span >
           <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
@@ -100,7 +107,7 @@ const Dashboard = () => {
       ),
     },
     {
-      TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+      TrainerImg: (<img src={trainer6} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
       TrainerID: "M002",
       TrainerName: "KG Hasara",
       Phone: "0765584751",
