@@ -5,6 +5,7 @@ import CheckinModal from '../../../Utilities/Popups/Checkinmodal';
 import CheckoutModal from '../../../Utilities/Popups/Checkoutmodal';
 import NowinModal from '../../../Utilities/Popups/NowinModal';
 import DuecheckModal from '../../../Utilities/Popups/DuecheckoutModal';
+import PaymentModal from '../../../Utilities/Popups/paymentModal';
 import '../recept_sidebar/Sidebar.css'
 import SidebarR from '../recept_sidebar/Sidebar'
 import HeaderR from '../recept_header/Header'
@@ -49,6 +50,7 @@ const Trainees = () => {
   const [checkoutmodal, opencheckout] = useState(false)
   const [nowinmodal, opennowin] = useState(false)
   const [duecmodal, openduec] = useState(false)
+  const [paymentModal, openpaymentModal] = useState(false)
 
   const [trainerDetails] = useState([
     {
@@ -65,7 +67,7 @@ const Trainees = () => {
         </span>
       ),
       Pay: (
-        <Button variant='success'>Pay</Button>
+        <Button variant='success' onClick={() => openpaymentModal(true) }>Pay</Button>
       ),
       Actions: (
         <span >
@@ -338,6 +340,7 @@ const Trainees = () => {
             <CheckoutModal open={checkoutmodal} onClose={() => opencheckout(false)} />
             <NowinModal open={nowinmodal} onClose={() => opennowin(false)} />
             <DuecheckModal open={duecmodal} onCloseD={() => openduec(false)} />
+            <PaymentModal open={paymentModal} onClose={() => openpaymentModal(false)} />
           </div>
         </div>
       </div>
