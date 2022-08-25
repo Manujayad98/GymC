@@ -41,7 +41,7 @@ const Equipments = () => {
 
         <div className="content-container">
           <div className='rec-equip-addbtn'>
-          <button onClick={() => setequipType(true)} type="button" class="btn" style={{ backgroundColor: '#3DA2FF', width: '100px', margin: '20px' }}>Add</button>
+            <button onClick={() => setequipType(true)} type="button" class="btn" style={{ backgroundColor: '#3DA2FF', width: '100px', margin: '20px' }}>Add</button>
           </div>
           <div className='Ecard'>
             <Card className='rec-equipment-card'>
@@ -50,7 +50,7 @@ const Equipments = () => {
               </Card.Title>
               <Card.Subtitle>Treadmills</Card.Subtitle>
               <Card.Body className='content-row'>
-                <button className='equipment-button' style={{fontSize:"1.5rem"}}>3</button>
+                <button className='equipment-button' style={{ fontSize: "1.5rem" }}>3</button>
                 <button className='equipment-button'><Link to='/RmoreEquipment'><img src={View} alt="" height={20} width={20} /></Link></button>
                 <button onClick={() => setNequipModal(true)} className='equipment-button'><img src={Plus} alt="" height={20} width={20} /></button>
               </Card.Body>
@@ -59,7 +59,7 @@ const Equipments = () => {
               <Card.Title><img src={Dumbbell} alt="" height={250} width={250} /><p className='hiddenpart'></p></Card.Title>
               <Card.Subtitle>Dumbbells</Card.Subtitle>
               <Card.Body className='content-row'>
-                <button className='equipment-button' style={{fontSize:"1.5rem"}}>6</button>
+                <button className='equipment-button' style={{ fontSize: "1.5rem" }}>6</button>
                 <button className='equipment-button'><img src={View} alt="" height={20} width={20} /></button>
                 <button className='equipment-button'><img src={Plus} alt="" height={20} width={20} /></button>
               </Card.Body>
@@ -68,7 +68,7 @@ const Equipments = () => {
               <Card.Title><img src={Bench} alt="" height={250} width={250} /></Card.Title>
               <Card.Subtitle>Benches</Card.Subtitle>
               <Card.Body className='content-row'>
-                <button className='equipment-button' style={{fontSize:"1.5rem"}}>2</button>
+                <button className='equipment-button' style={{ fontSize: "1.5rem" }}>2</button>
                 <button className='equipment-button'><img src={View} alt="" height={20} width={20} /></button>
                 <button className='equipment-button'><img src={Plus} alt="" height={20} width={20} /></button>
               </Card.Body>
@@ -77,13 +77,13 @@ const Equipments = () => {
               <Card.Title><img src={Rowing} alt="" height={250} width={250} /></Card.Title>
               <Card.Subtitle>Rowing machines</Card.Subtitle>
               <Card.Body className='content-row'>
-                <button className='equipment-button' style={{fontSize:"1.5rem"}}>3</button>
+                <button className='equipment-button' style={{ fontSize: "1.5rem" }}>3</button>
                 <button className='equipment-button'><img src={View} alt="" height={20} width={20} /></button>
                 <button className='equipment-button'><img src={Plus} alt="" height={20} width={20} /></button>
               </Card.Body>
             </Card>
           </div>
-          <NewequipmentModal open={openNequipModal} onClose={() => setNequipModal(false)}/>
+          <NewequipmentModal open={openNequipModal} onClose={() => setNequipModal(false)} />
           <NewequipmentTypeModal open={openequipType} onClose={() => setequipType(false)} />
         </div>
       </div>

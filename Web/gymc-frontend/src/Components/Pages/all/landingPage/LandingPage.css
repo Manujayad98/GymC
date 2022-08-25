@@ -181,6 +181,7 @@ nav .menu-btn,
     box-shadow: 5px 10px 30px rgba(255, 2, 2, 0.336);
     border-radius: 5px;
     color: #ffffff;
+    text-decoration: none !important;
 }
 
 .header-btn:hover {
