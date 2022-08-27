@@ -150,14 +150,14 @@ const Dashboard = () => {
                   </div>
 
                 </div>
-                <div className='own-analytics-card1 analytics-cards'>
+                {/* <div className='own-analytics-card1 analytics-cards'>
 
                   <div className='own-analytics-card-content'>
                     <div className='staffID'>No of Trainees</div>
                     <div className='staffName'>5</div>
                   </div>
 
-                </div>
+                </div> */}
                 <div className='own-analytics-card1 analytics-cards'>
 
                   <div className='own-analytics-card-content'>
@@ -226,10 +226,10 @@ const Dashboard = () => {
                   </div>
                   <select class="form-control form-control-sm" style={{ padding: '8px' }}>
                     <option> select </option>
-                    <option> select 1</option>
-                    <option> select 2</option>
-                    <option> select 3</option>
-                    <option> select 4</option>
+                    <option> Income Report</option>
+                    {/* <option> Monthly Report</option> */}
+                    <option> Trainer Report</option>
+                    <option> Trainee Report</option>
                   </select>
                 </div>
                 <div className="dropdown-container">
@@ -238,10 +238,10 @@ const Dashboard = () => {
                   </div>
                   <select class="form-control form-control-sm" style={{ padding: '8px' }}>
                     <option> select </option>
-                    <option> select 1</option>
-                    <option> select 2</option>
-                    <option> select 3</option>
-                    <option> select 4</option>
+                    <option> Yearly</option>
+                    <option> Monthly</option>
+                    <option> Daily</option>
+                    {/* <option> select 4</option> */}
                   </select>
                 </div>
                 <div className="dropdown-container">
@@ -250,10 +250,10 @@ const Dashboard = () => {
                   </div>
                   <select class="form-control form-control-sm" style={{ padding: '8px' }}>
                     <option> select </option>
-                    <option> select 1</option>
-                    <option> select 2</option>
-                    <option> select 3</option>
-                    <option> select 4</option>
+                    <option> January</option>
+                    <option> February</option>
+                    <option> March</option>
+                    <option> April</option>
                   </select>
                 </div>
 

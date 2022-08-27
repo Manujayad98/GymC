@@ -45,7 +45,7 @@ const Dashboard = () => {
       Actions: (
         <span >
           <span style={{ paddingRight: "20px" }}><Link to='/OviewWorkout'><img src={Arrow} alt="" height={20} width={20} /></Link></span>
-          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+          {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
           <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
         </span >
       ),
@@ -59,7 +59,7 @@ const Dashboard = () => {
       Actions: (
         <span >
           <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+          {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
           <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
         </span >
       ),
@@ -73,7 +73,7 @@ const Dashboard = () => {
       Actions: (
         <span >
           <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+          {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
           <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
         </span >
       ),
@@ -87,7 +87,7 @@ const Dashboard = () => {
       Actions: (
         <span >
           <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+          {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
           <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
         </span >
       ),
@@ -101,7 +101,7 @@ const Dashboard = () => {
       Actions: (
         <span >
           <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+          {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
           <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
         </span >
       ),
@@ -115,7 +115,7 @@ const Dashboard = () => {
       Actions: (
         <span >
           <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
+          {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
           <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
         </span >
       ),
