@@ -100,27 +100,28 @@ export default function ViewWorkout() {
         },
 
     ]);
+>>>>>>> Nips
 
     return (
         <div className='main-container'>
-            <SidebarO />
-            <div className='body-container'>
-                <HeaderO title="Trainees" />
-                <div className="own-trainee-content-container">
-                    <div className="left">
-                        <div className="own-trainee-profile">
-
-                            <div className="workout-profile-card">
-                                <div className='own-dashboard-card-profile-cards'>
-                                    <div className='own-viewworkout-card-img-container'>
-                                        <img src={Pic1} alt="" />
-                                    </div>
-                                    <div className='own-dashboard-card-content'>
-                                        <div className='tname'>S.Rajapakse</div>
-                                        <div className='tid'>T0001</div>
-
-                                    </div>
+          <SidebarO />
+          <div className='body-container'>
+            <HeaderO title="Trainees" />
+            <div className="own-trainee-content-container">
+              <div className="left">
+                  <div className="own-trainee-profile">
+                        
+                        <div className="workout-profile-card">
+                            <div className='own-dashboard-card-profile-cards'>
+                                <div className='own-viewworkout-card-img-container'>
+                                    <img src={Pic1} alt="" />
                                 </div>
+                                <div className='own-dashboard-card-content'>
+                                    <div className='tname'>S.Rajapakse</div>
+                                    <div className='tid'>T0001</div>
+                                    
+                                </div>
+                            </div>
 
                             </div>
                             <div className="workout-button-card">
