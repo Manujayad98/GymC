@@ -121,11 +121,10 @@ function App() {
 
           {/* ADMIN ROUTES */}
           <Route path="/Aannouncements" element={<AnnouncementsA />}></Route>
-//           <Route path="/Anotifications" element={<NotificationsA />}></Route>
           <Route path="/Ausers" element={<UsersA />}></Route>
           <Route path="/AsystemLogs" element={<SystemLogsA />}></Route>
           <Route path="/AaddUsers" element={<AddUserA />}></Route>
-//           <Route path="/AeditUsers" element={<EditUserA />}></Route>
+
 
           {/* RECEPTIONIST ROUTES */}
           <Route path="/Rdashboard" element={<DashboardR />}></Route>
