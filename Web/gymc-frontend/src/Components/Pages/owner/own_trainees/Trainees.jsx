@@ -37,9 +37,10 @@ const Dashboard = () => {
 
   const [trainerDetails] = useState([
     {
-      TrainerImg: (<img src={trainer1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TrainerID: "M001",
-      TrainerName: "Nilupul Madhuwantha",
+      TraineeImg: (<img src={trainer1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+      TraineeID: "M001",
+      TraineeName: "Nilupul Madhuwantha",
+      TraineeType: "Personal",
       Phone: "0714558741",
       RegDate: "2018-10-24",
       Actions: (
@@ -51,9 +52,10 @@ const Dashboard = () => {
       ),
     },
     {
-      TrainerImg: (<img src={trainer2} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TrainerID: "M002",
-      TrainerName: "Ishara Rodrigo",
+      TraineeImg: (<img src={trainer2} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+      TraineeID: "M002",
+      TraineeName: "Ishara Rodrigo",
+      TraineeType: "Personal",
       Phone: "0765145632",
       RegDate: "2018-12-11",
       Actions: (
@@ -65,9 +67,10 @@ const Dashboard = () => {
       ),
     },
     {
-      TrainerImg: (<img src={trainer3} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TrainerID: "M002",
-      TrainerName: "Ruwan Gamage",
+      TraineeImg: (<img src={trainer3} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+      TraineeID: "M002",
+      TraineeName: "Ruwan Gamage",
+      TraineeType: "Non-Personal",
       Phone: "0775145632",
       RegDate: "2019-06-22",
       Actions: (
@@ -79,9 +82,10 @@ const Dashboard = () => {
       ),
     },
     {
-      TrainerImg: (<img src={trainer4} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TrainerID: "M002",
-      TrainerName: "Imesh Kasthurirathna",
+      TraineeImg: (<img src={trainer4} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+      TraineeID: "M002",
+      TraineeName: "Imesh Kasthurirathna",
+      TraineeType: "Personal",
       Phone: "0774564751",
       RegDate: "2020-08-19",
       Actions: (
@@ -93,9 +97,10 @@ const Dashboard = () => {
       ),
     },
     {
-      TrainerImg: (<img src={trainer5} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TrainerID: "M002",
-      TrainerName: "Mayori Ekanayake",
+      TraineeImg: (<img src={trainer5} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+      TraineeID: "M002",
+      TraineeName: "Mayori Ekanayake",
+      TraineeType: "Daily",
       Phone: "0765545127",
       RegDate: "2021-10-31",
       Actions: (
@@ -107,9 +112,10 @@ const Dashboard = () => {
       ),
     },
     {
-      TrainerImg: (<img src={trainer6} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TrainerID: "M002",
-      TrainerName: "KG Hasara",
+      TraineeImg: (<img src={trainer6} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+      TraineeID: "M002",
+      TraineeName: "KG Hasara",
+      TraineeType: "Non-Personal",
       Phone: "0765584751",
       RegDate: "2020-11-11",
       Actions: (
@@ -126,7 +132,8 @@ const Dashboard = () => {
   const [trainerDetailsTableHead] = useState([
     { id: "TraineeImg", label: "", numeric: false },
     { id: "TraineeID", label: "TRAINEE ID", numeric: false },
-    { id: "TrainerName", label: "TRAINEe NAME", numeric: false },
+    { id: "TrainerName", label: "TRAINEE NAME", numeric: false },
+    { id: "TraineeType", label: "TRAINEE TYPE", numeric: false },
     { id: "Phone", label: "PHONE", numeric: false },
     { id: "RegDate", label: "REG ON", numeric: false },
     { id: "Actions", label: "ACTIONS", numeric: false },

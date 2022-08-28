@@ -218,7 +218,7 @@ export default function () {
                                                         {/* <label for="userid">UserID</label>
                                                         <input type="text" class="form-control profile-input-field" value={profile.user_id} id="" disabled></input> */}
                                                         <InputField
-                                                            value={profile.email}
+                                                            value={profile.user_id}
                                                             type='text'
                                                             label="User ID"
                                                             readonly

@@ -21,6 +21,7 @@ public class StaffMemberJdbcRepository {
 
         MapSqlParameterSource namedParameters =
                 new MapSqlParameterSource();
+
         String updateUserAccount = "UPDATE user_account " +
                 "SET email = :email  WHERE user_id = :userId;";
         String updateStaffMember="UPDATE staff_member " +
