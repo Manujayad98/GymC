@@ -167,7 +167,7 @@ export default function Exercises() {
                         <div className="main_div">
                             <div className="center_div">
                                 {/* <h2 id="count">{count}</h2> */}
-                                <div class="input-group">
+                                <div class="adjustment-input-group ">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-outline-primary" type="button" onClick={decNum}>-</button>
                                     </div>
@@ -188,7 +188,7 @@ export default function Exercises() {
                         <div className="main_div">
                             <div className="center_div">
                                 {/* <h2 id="count">{count}</h2> */}
-                                <div class="input-group">
+                                <div class="adjustment-input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-outline-primary" type="button" onClick={decNum}>-</button>
                                     </div>

@@ -64,43 +64,38 @@ const Dashboard = () => {
 
   // EXCERCISE TABLE
 
-  const [workoutDetailsTableHead] = useState([
-    { id: "Name", label: "Name", numeric: false },
-    { id: "Repetitions", label: "No of Repetitions", numeric: false }
+  const [excerciseDetails] = useState([
+    {
+      ExerciseID: 'E0001',
+      ExerciseName: "Incline Press",
+      PrimaryMuscle: "Muscle 1",
+      SecondaryMuscle: "Muscle 2",
+    },
+    {
+      ExerciseID: 'E0002',
+      ExerciseName: "Incline Press",
+      PrimaryMuscle: "Muscle 1",
+      SecondaryMuscle: "Muscle 2",
+    },
+    {
+      ExerciseID: 'E0003',
+      ExerciseName: "Incline Press",
+      PrimaryMuscle: "Muscle 1",
+      SecondaryMuscle: "Muscle 2",
+    },
   ]);
-
-  const [workoutDetails] = useState([
-    {
-      Name: "Incline Press",
-      Repetitions: "15 Reps"
-    },
-    {
-      Name: "Incline Press",
-      Repetitions: "15 Reps"
-    },
-    {
-      Name: "Incline Press",
-      Repetitions: "15 Reps"
-    },
-    {
-      Name: "Incline Press",
-      Repetitions: "15 Reps"
-    },
-    {
-      Name: "Incline Press",
-      Repetitions: "15 Reps"
-    },
-    {
-      Name: "Incline Press",
-      Repetitions: "15 Reps"
-    },
+  const [excerciseDetailsTableHead] = useState([
+    { id: "ExerciseID", label: "EXERCISE ID", numeric: false },
+    { id: "ExerciseName", label: "Exercise NAME", numeric: false },
+    { id: "PrimaryMuscle", label: "PRIMARY MUSCLE", numeric: false },
+    { id: "SecondaryMuscle", label: "SECONDARY MUSCLE", numeric: false },
   ]);
 
   // PRICING TABLE
 
   const [priceDetailsTableHead] = useState([
-    { id: "Type", label: "Type", numeric: false },
-    { id: "Price", label: "Price", numeric: false }
+    { id: "Type", label: "TYPE", numeric: false },
+    { id: "Price", label: "PRICE", numeric: false }
   ]);
 
   const [priceDetails] = useState([
@@ -150,14 +145,7 @@ const Dashboard = () => {
                   </div>
 
                 </div>
-                {/* <div className='own-analytics-card1 analytics-cards'>
-
-                  <div className='own-analytics-card-content'>
-                    <div className='staffID'>No of Trainees</div>
-                    <div className='staffName'>5</div>
-                  </div>
-
-                </div> */}
+                {/*   */}
                 <div className='own-analytics-card1 analytics-cards'>
 
                   <div className='own-analytics-card-content'>
@@ -197,17 +185,17 @@ const Dashboard = () => {
 
                 <div className='own-analytics-chart-container'>
                   <div className='own-analytics-container-head'>Available Excercises</div>
-                  <div className='own-analytics-card1 table-cards'>
+                  <div className='own-analytics-card1'>
                     <Table
-                      rows={workoutDetails}
-                      headCells={workoutDetailsTableHead}
+                      rows={excerciseDetails}
+                      headCells={excerciseDetailsTableHead}
                     />
                   </div>
                 </div>
 
                 <div className='own-analytics-table-container'>
                   <div className='own-analytics-container-head'>Available Payment Plans</div>
-                  <div className='own-analytics-card1 table-cards'>
+                  <div className='own-analytics-card1'>
                     <Table
                       rows={priceDetails}
                       headCells={priceDetailsTableHead}
