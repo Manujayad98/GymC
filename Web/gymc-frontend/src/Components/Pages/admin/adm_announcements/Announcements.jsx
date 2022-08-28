@@ -126,8 +126,8 @@ const AAnnouncements = () => {
       <SidebarA />
       <div className='body-container'>
         <HeaderA title="Announcements" />
-        <div className="own-announcement-content-container">
-          <div className="own-announcement-form">
+        <div className="adm-announcement-content-container">
+          <div className="adm-announcement-form">
             {/* start form */}
             {/* <div className='own-dashboard-container-head'>New Annoucement</div> */}
             <h1>New Announcement</h1>
@@ -183,10 +183,10 @@ const AAnnouncements = () => {
 
 
           {/* start table */}
-          <div className="own-announcement-table">
+          <div className="adm-announcement-table">
 
             <h1>All Announcements</h1>
-            <div className='own-announcement-table-card'>
+            <div className='adm-announcement-table-card'>
               <Table
                 rows={announcementDetails}
                 headCells={announcementDetailsTableHead}
