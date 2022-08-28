@@ -73,6 +73,10 @@ import TraineeLogedPage from './Components/Pages/trainee/LogedInPage'
 
 //TRAINER
 import TrainerLogedPage from './Components/Pages/trainer/LogedInPage'
+import DashboardT from './Components/Pages/trainer/trainer_dashboard/Dashboard'
+import NotificationsT from './Components/Pages/trainer/trainer_notifications/Notifications'
+import AnnouncementsT from './Components/Pages/trainer/trainer_announcements/Announcements'
+import TraineesT from './Components/Pages/trainer/trainer_trainees/Trainess';
 
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -145,6 +149,10 @@ function App() {
 
           {/* TRAINER ROUTES */}
           <Route path="/TELogedPage" element={<TraineeLogedPage />}></Route>
+          <Route path="/Tdashboard" element={<DashboardT />}></Route>
+          <Route path="/Tnotifications" element={<NotificationsT />}></Route>
+          <Route path="/Tannouncements" element={<AnnouncementsT />}></Route>
+          <Route path="/Ttrainees" element={<TraineesT />}></Route>
 
           {/* TRAINEE ROUTES */}
           <Route path="/TRLogedPage" element={<TrainerLogedPage />}></Route>

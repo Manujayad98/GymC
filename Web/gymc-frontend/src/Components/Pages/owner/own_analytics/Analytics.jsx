@@ -142,14 +142,14 @@ const Dashboard = () => {
                   </div>
 
                 </div>
-                <div className='own-analytics-card1 analytics-cards'>
+                {/* <div className='own-analytics-card1 analytics-cards'>
 
                   <div className='own-analytics-card-content'>
                     <div className='staffID'>No of Trainees</div>
                     <div className='staffName'>5</div>
                   </div>
 
-                </div>
+                </div> */}
                 <div className='own-analytics-card1 analytics-cards'>
 
                   <div className='own-analytics-card-content'>
