@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import '../recept_sidebar/Sidebar.css'
-import SidebarR from '../recept_sidebar/Sidebar'
-import HeaderR from '../recept_header/Header'
+import '../adm_sidebar/Sidebar.css'
+import SidebarA from '../adm_sidebar/Sidebar'
+import HeaderA from '../adm_header/header'
+// import '../own_dashboard/Dashboard.css'
+import '../adm_announcements/Announcements.css'
 
 import Button from '../../../Utilities/Form/Button';
 import InputField from "../../../Utilities/Form/InputField";
@@ -12,7 +14,7 @@ import Trash from '../../../../images/Icons/trash-solid.svg'
 import Edit from '../../../../images/Icons/pen-solid.svg'
 import View from '../../../../images/Icons/eye-solid.svg'
 
-const Announcements = () => {
+const AAnnouncements = () => {
 
   useEffect(() => {
     checkValidate();
@@ -119,88 +121,86 @@ const Announcements = () => {
     event.preventDefault();
     alert('Button Clicked');
   };
-
   return (
     <div className='main-container'>
-      <SidebarR />
+      <SidebarA />
       <div className='body-container'>
-        <HeaderR title="Announcements" />
-        <div className="content-container">
-          <div className="own-announcement-content-container">
-            <div className="own-announcement-form">
-              {/* start form */}
-              {/* <div className='own-dashboard-container-head'>New Annoucement</div> */}
-              <h1>New Announcement</h1>
-              <div className="form-container">
+        <HeaderA title="Announcements" />
+        <div className="adm-announcement-content-container">
+          <div className="adm-announcement-form">
+            {/* start form */}
+            {/* <div className='own-dashboard-container-head'>New Annoucement</div> */}
+            <h1>New Announcement</h1>
+            <div className="form-container">
 
-                <div className="form-inputs">
-
-
-                  <div className="form-row">
-                    <div className="form-col1">
-                      <InputField
-                        value={requestData.title}
-                        type='text'
-                        label="Topic"
-                        placeholder='Type'
-                        validators={[
-                          { check: Validators.required, message: 'This field is required' }
-                        ]}
-                        onChange={handleChange('title')} />
-                    </div>
-                  </div>
-
-                  <div className="form-row">
-                    <div className="form-col1">
-                      <InputField
-                        value={requestData.note}
-                        label='Note'
-                        type='textarea'
-                        placeholder='Type'
-                        validators={[
-                          { check: Validators.required, message: 'This field is required' }
-                        ]}
-                        onChange={handleChange('note')} />
-                      <br></br><br /><br /><br />
-
-                    </div>
-                  </div>
+              <div className="form-inputs">
 
 
-
-                  <div className="form-row">
-                    <div className="form-col1"></div>
-                    <div className="form-col2">
-                    </div>
-                    <Button
-                      onClick={handleClick}
-                      value='Add' />
+                <div className="form-row">
+                  <div className="form-col1">
+                    <InputField
+                      value={requestData.title}
+                      type='text'
+                      label="Topic"
+                      placeholder='Type'
+                      validators={[
+                        { check: Validators.required, message: 'This field is required' }
+                      ]}
+                      onChange={handleChange('title')} />
                   </div>
                 </div>
+
+                <div className="form-row">
+                  <div className="form-col1">
+                    <InputField
+                      value={requestData.note}
+                      label='Note'
+                      type='textarea'
+                      placeholder='Type'
+                      validators={[
+                        { check: Validators.required, message: 'This field is required' }
+                      ]}
+                      onChange={handleChange('note')} />
+                    <br></br><br /><br /><br />
+
+                  </div>
+                </div>
+
+
+
+                <div className="form-row">
+                  <div className="form-col1"></div>
+                  <div className="form-col2">
+                  </div>
+                  <Button
+                    onClick={handleClick}
+                    value='Add' />
+                </div>
               </div>
-              {/* end form */}
             </div>
-
-
-            {/* start table */}
-            <div className="own-announcement-table">
-
-              <h1>All Announcements</h1>
-              <div className='own-announcement-table-card'>
-                <Table
-                  rows={announcementDetails}
-                  headCells={announcementDetailsTableHead}
-                />
-              </div>
-            </div>
-            {/* end table */}
-
-
+            {/* end form */}
           </div>
+
+
+          {/* start table */}
+          <div className="adm-announcement-table">
+
+            <h1>All Announcements</h1>
+            <div className='adm-announcement-table-card'>
+              <Table
+                rows={announcementDetails}
+                headCells={announcementDetailsTableHead}
+              />
+            </div>
+          </div>
+          {/* end table */}
+
+
         </div>
+
       </div>
     </div>
   )
 }
 
-export default Announcements
+export default AAnnouncements

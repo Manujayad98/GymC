@@ -5,6 +5,7 @@ import {
     FaUserAlt,
     FaRegChartBar,
     FaBell,
+    FaVolumeDown,
     FaSignOutAlt
 } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
@@ -30,9 +31,9 @@ const Sidebar = ({ children }) => {
     const toggle = () => setIsOpen(!isOpen);
     const menuItem = [
         {
-            path: "/Adashboard",
-            name: "Dashboard",
-            icon: <FaTh />
+            path: "/Aannouncements",
+            name: "Announcements",
+            icon: <FaVolumeDown />
         },
         {
             path: "/Ausers",
@@ -44,11 +45,11 @@ const Sidebar = ({ children }) => {
             name: "System Logs",
             icon: <FaRegChartBar />
         },
-        {
-            path: "/Anotifications",
-            name: "Notifications",
-            icon: <FaBell />
-        },
+        // {
+        //     path: "/Anotifications",
+        //     name: "Notifications",
+        //     icon: <FaBell />
+        // },
         {
             path: "/",
             name: "Logout",

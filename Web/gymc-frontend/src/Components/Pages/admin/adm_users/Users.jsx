@@ -62,8 +62,8 @@ export default function Trainers() {
                 </span>),
             Actions: (
                 <span >
-                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><Link to='/AeditUsers'><img src={Edit} alt="" height={20} width={20} /></Link></span>
+                    {/* <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Arrow} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><Link to='/AeditUsers'><img src={Edit} alt="" height={20} width={20} /></Link></span> */}
                     <span style={{ paddingRight: "20px", cursor: 'pointer' }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
                     <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Hold} alt="" height={20} width={20} /></span>
                 </span >
@@ -80,8 +80,7 @@ export default function Trainers() {
                 </span>),
             Actions: (
                 <span >
-                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Edit} alt="" height={20} width={20} /></span>
+
                     <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Hold} alt="" height={20} width={20} /></span>
 
@@ -99,8 +98,7 @@ export default function Trainers() {
                 </span>),
             Actions: (
                 <span >
-                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Edit} alt="" height={20} width={20} /></span>
+  
                     <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Hold} alt="" height={20} width={20} /></span>
 
@@ -118,8 +116,7 @@ export default function Trainers() {
                 </span>),
             Actions: (
                 <span >
-                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Edit} alt="" height={20} width={20} /></span>
+
                     <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Hold} alt="" height={20} width={20} /></span>
 
@@ -137,8 +134,7 @@ export default function Trainers() {
                 </span>),
             Actions: (
                 <span >
-                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Edit} alt="" height={20} width={20} /></span>
+
                     <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Hold} alt="" height={20} width={20} /></span>
 
@@ -156,8 +152,7 @@ export default function Trainers() {
                 </span>),
             Actions: (
                 <span >
-                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Edit} alt="" height={20} width={20} /></span>
+
                     <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Hold} alt="" height={20} width={20} /></span>
 

@@ -7,7 +7,7 @@ const SampleCal = () => {
   return (
     <div>
       <Calendar onChange={onChange} value={value} />
-      <p>{value.toString()};</p> 
+      {/* <p>{value.toString()};</p>  */}
     </div>
   )
 }

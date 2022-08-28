@@ -28,12 +28,12 @@ import Profile from './Components/Pages/all/Profile/ProfileVIewNew'
 
 //ADMIN
 import SidebarA from './Components/Pages/admin/adm_sidebar/Sidebar';
-import DashboardA from './Components/Pages/admin/adm_dashboard/Dashboard';
+import AnnouncementsA from './Components/Pages/admin/adm_announcements/Announcements';
 import UsersA from './Components/Pages/admin/adm_users/Users';
 import SystemLogsA from './Components/Pages/admin/adm_systemLogs/SystemLogs';
-import NotificationsA from './Components/Pages/admin/adm_notifications/Notifications';
+// import NotificationsA from './Components/Pages/admin/adm_notifications/Notifications';
 import AddUserA from './Components/Pages/admin/adm_add_user/AddUser'
-import EditUserA from './Components/Pages/admin/adm_edit_user/EditUser'
+// import EditUserA from './Components/Pages/admin/adm_edit_user/EditUser'
 
 
 //OWNER
@@ -49,6 +49,8 @@ import SidebarO from './Components/Pages/owner/own_sidebar/Sidebar';
 import ViewWorkout from './Components/Pages/owner/own_view_workout/ViewWorkout';
 import AddWorkoutO from './Components/Pages/owner/own_add_workout/AddWorkout';
 import UpdateWorkoutO from './Components/Pages/owner/own_update_workout/UpdateWorkout';
+import NewExercise from './Components/Pages/owner/own_adjustments/NewExercise';
+
 
 // RECEPTIONIST
 import AnalyticsR from './Components/Pages/receptionist/recept_analytics/Analytics';
@@ -121,15 +123,14 @@ function App() {
           <Route path="/OviewWorkout" element={<ViewWorkout />}></Route>
           <Route path="/OaddWorkout" element={<AddWorkoutO />}></Route>
           <Route path="/OupdateWorkout" element={<UpdateWorkoutO />}></Route>
-
+          <Route path="/ONewExercise" element={<NewExercise />}></Route>
 
           {/* ADMIN ROUTES */}
-          <Route path="/Adashboard" element={<DashboardA />}></Route>
-          <Route path="/Anotifications" element={<NotificationsA />}></Route>
+          <Route path="/Aannouncements" element={<AnnouncementsA />}></Route>
           <Route path="/Ausers" element={<UsersA />}></Route>
           <Route path="/AsystemLogs" element={<SystemLogsA />}></Route>
           <Route path="/AaddUsers" element={<AddUserA />}></Route>
-          <Route path="/AeditUsers" element={<EditUserA />}></Route>
+
 
           {/* RECEPTIONIST ROUTES */}
           <Route path="/Rdashboard" element={<DashboardR />}></Route>

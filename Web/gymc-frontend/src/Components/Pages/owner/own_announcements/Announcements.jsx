@@ -126,78 +126,73 @@ const OAnnouncements = () => {
       <SidebarO />
       <div className='body-container'>
         <HeaderO title="Announcements" />
-        <div className="own-announcement-content-container">
-          <div className="own-announcement-form">
-            {/* start form */}
-            {/* <div className='own-dashboard-container-head'>New Annoucement</div> */}
-            <h1>New Announcement</h1>
-            <div className="form-container">
+        <div className="content-container">
+          <div className="own-announcement-content-container">
+            <div className="own-announcement-form">
+              {/* start form */}
+              {/* <div className='own-dashboard-container-head'>New Annoucement</div> */}
+              <h1>New Announcement</h1>
+              <div className="form-container">
 
-              <div className="form-inputs">
+                <div className="form-inputs">
 
-
-                <div className="form-row">
-                  <div className="form-col1">
-                    <InputField
-                      value={requestData.title}
-                      type='text'
-                      label="Date"
-                      placeholder='DD/MM/YY'
-                      validators={[
-                        { check: Validators.required, message: 'This field is required' }
-                      ]}
-                      onChange={handleChange('title')} />
+                  <div className="form-row">
+                    <div className="form-col1">
+                      <InputField
+                        value={requestData.title}
+                        type='text'
+                        label="Topic"
+                        placeholder='Type'
+                        validators={[
+                          { check: Validators.required, message: 'This field is required' }
+                        ]}
+                        onChange={handleChange('title')} />
+                    </div>
                   </div>
-                </div>
 
-                <div className="form-row">
-                  <div className="form-col1">
-                    <InputField
-                      value={requestData.note}
-                      label='Note'
-                      type='textarea'
-                      placeholder='Type'
-                      validators={[
-                        { check: Validators.required, message: 'This field is required' }
-                      ]}
-                      onChange={handleChange('note')} />
-                    <br></br><br /><br /><br />
+                  <div className="form-row">
+                    <div className="form-col1">
+                      <InputField
+                        value={requestData.note}
+                        label='Note'
+                        type='textarea'
+                        placeholder='Type'
+                        validators={[
+                          { check: Validators.required, message: 'This field is required' }
+                        ]}
+                        onChange={handleChange('note')} />
+                      <br></br><br /><br /><br />
 
+                    </div>
                   </div>
-                </div>
 
-
-
-                <div className="form-row">
-                  <div className="form-col1"></div>
-                  <div className="form-col2">
+                  <div className="form-row">
+                    <div className="form-col1"></div>
+                    <div className="form-col2">
+                    </div>
+                    <Button
+                      onClick={handleClick}
+                      value='Add' />
                   </div>
-                  <Button
-                    onClick={handleClick}
-                    value='Add' />
                 </div>
               </div>
+              {/* end form */}
             </div>
-            {/* end form */}
-          </div>
 
+            {/* start table */}
+            <div className="own-announcement-table">
 
-          {/* start table */}
-          <div className="own-announcement-table">
-
-            <h1>All Announcements</h1>
-            <div className='own-announcement-table-card'>
-              <Table
-                rows={announcementDetails}
-                headCells={announcementDetailsTableHead}
-              />
+              <h1>All Announcements</h1>
+              <div className='own-announcement-table-card'>
+                <Table
+                  rows={announcementDetails}
+                  headCells={announcementDetailsTableHead}
+                />
+              </div>
             </div>
+            {/* end table */}
           </div>
-          {/* end table */}
-
-
         </div>
-
       </div>
     </div>
   )
