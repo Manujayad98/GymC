@@ -34,7 +34,7 @@ const LoginPage = ({ loading, error, ...props }) => {
             window.location.href = "/Odashboard";
             toast.success('successful');
         } else if (userLevel === "Admin") {
-            window.location.href = "/Adashboard";
+            window.location.href = "/Aannouncements";
         } else if (userLevel === "Receptionist") {
             window.location.href = "/Rdashboard";
         } else if (userLevel === "Trainee") {

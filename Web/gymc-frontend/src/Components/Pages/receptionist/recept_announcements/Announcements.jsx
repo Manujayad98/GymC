@@ -141,8 +141,8 @@ const Announcements = () => {
                       <InputField
                         value={requestData.title}
                         type='text'
-                        label="Date"
-                        placeholder='DD/MM/YY'
+                        label="Topic"
+                        placeholder='Type'
                         validators={[
                           { check: Validators.required, message: 'This field is required' }
                         ]}
