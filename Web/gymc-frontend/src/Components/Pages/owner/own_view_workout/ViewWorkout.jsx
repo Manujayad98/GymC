@@ -100,7 +100,7 @@ export default function ViewWorkout() {
         },
 
     ]);
->>>>>>> Nips
+
 
       return (
         <div className='main-container'>
@@ -155,7 +155,8 @@ export default function ViewWorkout() {
                                                         type='text'
                                                         name='userId'
                                                         label="Full Name"
-                                                        placeholder='Type'
+                                                        placeholder='Nilupul Madhuwantha'
+                                                        readonly
                                                         validators={[
                                                             { check: Validators.required, message: 'This field is required' }
                                                         ]}
@@ -169,7 +170,8 @@ export default function ViewWorkout() {
                                                         type='text'
                                                         name='userId'
                                                         label="NIC"
-                                                        placeholder='Type'
+                                                        placeholder='90324354223V'
+                                                        readonly
                                                         validators={[
                                                             { check: Validators.required, message: 'This field is required' }
                                                         ]}
@@ -184,7 +186,7 @@ export default function ViewWorkout() {
                                                         type='text'
                                                         name='userId'
                                                         label="Phone"
-                                                        placeholder='Type'
+                                                        placeholder='077777777'
                                                         readonly
                                                         validators={[
                                                             { check: Validators.required, message: 'This field is required' }
@@ -200,7 +202,8 @@ export default function ViewWorkout() {
                                                         type='text'
                                                         name='password'
                                                         label="DOB"
-                                                        placeholder='Type'
+                                                        placeholder='07/10/1990'
+                                                        readonly
                                                         validators={[
                                                             { check: Validators.required, message: 'This field is required' }
                                                         ]}
@@ -214,7 +217,8 @@ export default function ViewWorkout() {
                                                         type='text'
                                                         name='password'
                                                         label="Address"
-                                                        placeholder='Type'
+                                                        placeholder='N0 1,Lane 2,Colombo 3'
+                                                        readonly
                                                         validators={[
                                                             { check: Validators.required, message: 'This field is required' }
                                                         ]}
