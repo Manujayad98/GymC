@@ -80,81 +80,43 @@ const Dashboard = () => {
       <SidebarR />
       <div className='body-container'>
         <HeaderR title="Dashboard" />
-        <div className="rec-content-container" >
-          <div className='rec-split rec-left'>
-            <div className='rec-content-row'>
-              <Card className='rec-dashboard-card' style={{width:"190px",  height:"190px"}}>{/*addtional inline styles*/}
-                <Card.Body>
-                  <Card.Title>Payments Due</Card.Title>
-                  <button className='btn btn-default btn-circle btn-xl'>3</button>
-                </Card.Body>
-              </Card>
-              <Card className='rec-dashboard-card' style={{width:"190px", height:"190px"}}>{/*addtional inline styles*/}
-                <Card.Body>
-                  <Card.Title>Trainees Now In</Card.Title>
-                  <button className='btn btn-default btn-circle btn-xl'>2</button>
-                </Card.Body>
-              </Card>
-              <Card className='rec-trainerstoday-card'>
-                <Card.Body>
-                  <Card.Title>Trainers today</Card.Title>
-                  <div className='rec-content-row'>
-                    <Card className='rec-dashboard-pic-card'>
-                      <Card.Body>
-                        <img src={gihanpic} height={70} alt="" />
-                        <Card.Subtitle className='rec-card-subtitle'>Gihan</Card.Subtitle>
-                      </Card.Body>
-                    </Card>
-                    <Card className='rec-dashboard-pic-card'>
-                      <Card.Body>
-                        <img src={kalindupic} height={70}  alt="" />
-                        <Card.Subtitle className='rec-card-subtitle'>Kalindu</Card.Subtitle>
-                      </Card.Body>
-                    </Card>
-                    <Card className='rec-dashboard-pic-card'>
-                      <Card.Body>
-                        <img src={piyathpic} height={70}  alt="" />
-                        <Card.Subtitle className='rec-card-subtitle'>Piyath</Card.Subtitle>
-                      </Card.Body>
-                    </Card>
-                    <Card className='rec-dashboard-pic-card'>
-                      <Card.Body>
-                        <img src={trumppic} height={70} alt="" />
-                        <Card.Subtitle className='rec-card-subtitle'>Trump</Card.Subtitle>
-                      </Card.Body>
-                    </Card>
-                    <Card className='rec-dashboard-pic-card'>
-                      <Card.Body>
-                        <img src={lahirupic} height={70} alt="" />
-                        <Card.Subtitle className='rec-card-subtitle'>Lahiru</Card.Subtitle>
-                      </Card.Body>
-                    </Card>
-                    <Card className='rec-dashboard-pic-card'>
-                      <Card.Body>
-                        <img src={lelanipic} height={70} alt="" />
-                        <Card.Subtitle className='rec-card-subtitle'>Lelani</Card.Subtitle>
-                      </Card.Body>
-                    </Card>
-                  </div>
-                </Card.Body>
-              </Card>
+        <div className="content-container" >
+          <div className='rec-split-left'>
+            <div className='rec-dashboard-card-container'>
+              <div className='rec-dashboard-card1 rec-dashboard-cards'>
+                <div className='rec-dashboard-card-content'>
+                  <div className='rec-dashboard-card-title'>Payments Due</div>
+                  <div className='rec-dashboard-card-text'>5</div>
+                </div>
+              </div>
+              <div className='rec-dashboard-card1 rec-dashboard-cards'>
+                <div className='rec-dashboard-card-content'>
+                  <div className='rec-dashboard-card-title'>Now in</div>
+                  <div className='rec-dashboard-card-text'>3</div>
+                </div>
+              </div>
             </div>
+              <div className='rec-dashboard-chart-container'>
+                <div className='rec-dashboard-container-head'>Trainers Today</div>
+                <div className='rec-dashboard-card1 rec-dashboard-trainers-card'>
+                  <div className='rec-dashboard-pic-card'>
+                    <img src={kalindupic} alt="" className='recept-dashboard-images' />
+                    <p className='rec-card-subtitle'>Gihan</p>
+                  </div>
+                
+                </div>
+              </div>
           </div>
-          <div className='rec-split rec-right'>
-            <div className='rec-content-row'>
-
-              <Card className='rec-alt-card' style={{ margin: '2%' }}>
-                <Card.Body style={{textAlign:"center"}}>
-                  <Card.Title>Upcoming Appointments</Card.Title>
-                  <div className='rec-table-cards'>
-                    <Table
-                      rows={workoutDetails}
-                      headCells={workoutDetailsTableHead}
-                    />
-                  </div>
-                </Card.Body>
-              </Card>
-            </div>
+          <div className='rec-split-right'>
+              <div className='rec-dashboard-chart-container'>
+                <div className='rec-dashboard-container-head'> Upcoming Appointments</div>
+                <div className='rec-dashboard-card2 rec-dashboard-table-cards'>
+                  <Table
+                    rows={workoutDetails}
+                    headCells={workoutDetailsTableHead}
+                  />
+                </div>
+              </div>
           </div>
         </div>
 
