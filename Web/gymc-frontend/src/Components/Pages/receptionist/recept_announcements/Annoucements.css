@@ -9,11 +9,11 @@
 
 }
 .recept-announcement-table{
-    width:55%;
+    width:100%;
     height: auto;
 
 }
-.recept-announcement-form h1{
+.recept-announcement-form h4{
     margin-left: 20px;
 }
 .recept-announcement-table-card{

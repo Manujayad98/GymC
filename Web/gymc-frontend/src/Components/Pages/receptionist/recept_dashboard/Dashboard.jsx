@@ -103,7 +103,26 @@ const Dashboard = () => {
                     <img src={kalindupic} alt="" className='recept-dashboard-images' />
                     <p className='rec-card-subtitle'>Gihan</p>
                   </div>
-                
+                  <div className='rec-dashboard-pic-card'>
+                    <img src={kalindupic} alt="" className='recept-dashboard-images' />
+                    <p className='rec-card-subtitle'>Gihan</p>
+                  </div>
+                  <div className='rec-dashboard-pic-card'>
+                    <img src={kalindupic} alt="" className='recept-dashboard-images' />
+                    <p className='rec-card-subtitle'>Gihan</p>
+                  </div>
+                  <div className='rec-dashboard-pic-card'>
+                    <img src={kalindupic} alt="" className='recept-dashboard-images' />
+                    <p className='rec-card-subtitle'>Gihan</p>
+                  </div>
+                  <div className='rec-dashboard-pic-card'>
+                    <img src={kalindupic} alt="" className='recept-dashboard-images' />
+                    <p className='rec-card-subtitle'>Gihan</p>
+                  </div>
+                  <div className='rec-dashboard-pic-card'>
+                    <img src={kalindupic} alt="" className='recept-dashboard-images' />
+                    <p className='rec-card-subtitle'>Gihan</p>
+                  </div>
                 </div>
               </div>
           </div>
