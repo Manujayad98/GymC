@@ -1,4 +1,38 @@
-.recept-analytics-titles {
+.rec-analytics-card-container{
+    margin: 10px;
+    padding: 10px;
+}
+
+.rec-analytics-total-card{
+    padding: 20px;
+    margin: 10px 5px;
+    width: 180px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    justify-content: space-around;
+    text-align: center;
+    align-content: center;
+    border-radius: 6px;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+
+}
+
+.rec-analytics-card-title{
+    color: rgb(0, 0, 0);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+
+
+
+
+
+
+
+/* .recept-analytics-titles {
     font-size: 1.1rem;
     font-weight: 600;
     margin: 5px 0 5px 12px;
@@ -34,8 +68,6 @@
     align-content: center;
     border-radius: 10px;
     box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
-    
-    /* box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25); */
 }
 .cardx{
     display: flex;
@@ -83,12 +115,12 @@
     border-radius: 5px;
 }
 
-/* .own-dashboard-container-head {
+ .own-dashboard-container-head {
     font-size: 1.1rem;
     font-weight: 600;
     margin: 50px 0 5px -10px;
     text-align: left;
-} */
+} 
 .dropdown{
     display:flex;
     width: 21%;
@@ -98,4 +130,4 @@
     
     
 }
-
+ */

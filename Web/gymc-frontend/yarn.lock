@@ -6093,6 +6093,11 @@
   dependencies:
     "language-subtag-registry" "~0.3.2"
 
+"lanka-nic@^1.0.0":
+  "integrity" "sha512-Rrx7fFKQu32pgYA/7tYp/C779Wd4V8dPX5qFgaNnQcIspN9A6q5aVAAVBd6Af/0yJDiqR1jz1We7PrYmjsP85w=="
+  "resolved" "https://registry.npmjs.org/lanka-nic/-/lanka-nic-1.0.0.tgz"
+  "version" "1.0.0"
+
 "leven@^3.1.0":
   "integrity" "sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A=="
   "resolved" "https://registry.npmjs.org/leven/-/leven-3.1.0.tgz"
