@@ -24,7 +24,7 @@ import Calendar from './Components/Utilities/CalendarComp/CalendarComp';
 import SampleCal from './Components/Utilities/CalendarComp/SampleCal';
 import Alert from './Components/Utilities/AlertPopup/AlertPopup'
 import Profile from './Components/Pages/all/Profile/ProfileVIewNew'
-
+import TableNew from './Components/Utilities/Tables/TableView'
 
 //ADMIN
 import SidebarA from './Components/Pages/admin/adm_sidebar/Sidebar';
@@ -106,6 +106,8 @@ function App() {
           <Route path="/samplecal" element={<SampleCal />}></Route>
           <Route path="/picup" element={<PictureUploader />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
+
+          <Route path="/newtable" element={<TableNew />}></Route>
 
           {/* OWNER ROUTES */}
           <Route path="/Otrainers" element={<TrainerO />}></Route>

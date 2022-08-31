@@ -95,6 +95,7 @@ public class UserController {
     // GET DATA FOR TRAINEE TABLE
     @GetMapping("/trainees")
     public List<TraineeInfo> getAllTrainees(){
+
         return traineeService.getAllTrainees();
     }
 }
