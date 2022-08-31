@@ -56,12 +56,7 @@ export default function Trainers() {
                     <button onClick={() => setleaveModal(true)} type="button" class="btn" style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Leave</button>
                 </span>),
             Actions: (
-                <span >
                     <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
-                    <span style={{ paddingRight: "20px" }}><Link to='/RupdateTrainer'><img src={Edit} alt="" height={20} width={20} /></Link></span>
-
-                </span >
             ),
         },
         {
@@ -75,12 +70,7 @@ export default function Trainers() {
                     <button type="button" class="btn" style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Leave</button>
                 </span>),
             Actions: (
-                <span >
                     <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-
-                </span >
             ),
         },
         {
@@ -94,12 +84,7 @@ export default function Trainers() {
                     <button type="button" class="btn" style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Leave</button>
                 </span>),
             Actions: (
-                <span >
                     <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-
-                </span >
             ),
         },
         {
@@ -113,12 +98,7 @@ export default function Trainers() {
                     <button type="button" class="btn" style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Leave</button>
                 </span>),
             Actions: (
-                <span >
                     <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-
-                </span >
             ),
         },
         {
@@ -132,12 +112,7 @@ export default function Trainers() {
                     <button type="button" class="btn" style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Leave</button>
                 </span>),
             Actions: (
-                <span >
                     <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-
-                </span >
             ),
         },
         {
@@ -152,12 +127,7 @@ export default function Trainers() {
                     <button type="button" class="btn" style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Leave</button>
                 </span>),
             Actions: (
-                <span >
                     <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
-                    <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-
-                </span >
             ),
         },
 

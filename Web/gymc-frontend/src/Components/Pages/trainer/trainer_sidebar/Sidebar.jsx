@@ -7,11 +7,11 @@ import {
     FaVolumeDown,
     FaBell,
     FaRegChartBar,
-    // FaDumbbell,
-    FaSignOutAlt,
-    FaRegCalendarCheck
+    FaCommentAlt,
+    FaEdit,
+    FaThList,
+    FaSignOutAlt
 } from "react-icons/fa";
-
 import { NavLink } from 'react-router-dom';
 import './Sidebar.css'
 import { fetchUserData } from "../../../../services/AuthenticationService";
@@ -35,44 +35,24 @@ const Sidebar = ({ children }) => {
     const toggle = () => setIsOpen(!isOpen);
     const menuItem = [
         {
-            path: "/Rdashboard",
+            path: "/Tdashboard",
             name: "Dashboard",
             icon: <FaTh />
         },
         {
-            path: "/Rtrainers",
-            name: "Trainers",
-            icon: <FaUserTie />
-        },
-        {
-            path: "/Rtrainees",
+            path: "/Ttrainees",
             name: "Trainees",
             icon: <FaUserAlt />
         },
-        // {
-        //     path: "/Requipments",
-        //     name: "Equipments",
-        //     icon: <FaDumbbell />
-        // },
         {
-            path: "/Rannouncements",
+            path: "/Tannouncements",
             name: "Announcements",
             icon: <FaVolumeDown />
         },
         {
-            path: "/Rnotifications",
+            path: "/Tnotifications",
             name: "Notifications",
             icon: <FaBell />
-        },
-        {
-            path: "/Ranalytics",
-            name: "Analytics",
-            icon: <FaRegChartBar />
-        },
-        {
-            path: "/Rappointments",
-            name: "Appointments",
-            icon: <FaRegCalendarCheck />
         },
         {
             path: "/",
@@ -98,7 +78,7 @@ const Sidebar = ({ children }) => {
         window.location.href = "/";
     };
     return (
-        <div className="s-container">
+        <div className="sb-container">
             <div style={{ width: isOpen ? "220px" : "50px", padding: isOpen ? "0px 18px 0px 18px" : "0px" }} className="sidebar">
                 <div className="top_section">
                     <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">
@@ -110,7 +90,7 @@ const Sidebar = ({ children }) => {
                 </div>
                 {
                     menuItem.map((item, index) => (
-                        item.name !== "Logout" ?
+                        item.name != "Logout" ?
                             <NavLink to={item.path} key={index} className="link" activeclassName="active">
                                 <div className="icon">{item.icon}</div>
                                 <div style={{ display: isOpen ? "block" : "none" }} className="link_text">{item.name}</div>

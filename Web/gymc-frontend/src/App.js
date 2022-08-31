@@ -56,7 +56,7 @@ import NewExercise from './Components/Pages/owner/own_adjustments/NewExercise';
 import AnalyticsR from './Components/Pages/receptionist/recept_analytics/Analytics';
 import AnnouncementsR from './Components/Pages/receptionist/recept_announcements/Announcements';
 import DashboardR from './Components/Pages/receptionist/recept_dashboard/Dashboard';
-import EquipmentsR from './Components/Pages/receptionist/recept_equipments/Equipments';
+//import EquipmentsR from './Components/Pages/receptionist/recept_equipments/Equipments';
 import NotificationsR from './Components/Pages/receptionist/recept_notifications/Notifications';
 import SidebarR from './Components/Pages/receptionist/recept_sidebar/Sidebar';
 import TraineesR from './Components/Pages/receptionist/recept_trainees/Trainees';
@@ -66,7 +66,7 @@ import AddTrainerR from './Components/Pages/receptionist/recept_add_trainer/AddT
 import UpdateTrainerR from './Components/Pages/receptionist/recept_update_trainer/UpdateTrainer';
 import UpdateTraineeR from './Components/Pages/receptionist/recept_update_trainee/UpdateTrainee'
 import AddTraineeR from './Components/Pages/receptionist/recept_add_trainee/AddTrainee'
-import MoreEquipmentR from './Components/Pages/receptionist/recept_equipments/Moredetails'
+//import MoreEquipmentR from './Components/Pages/receptionist/recept_equipments/Moredetails'
 
 
 
@@ -75,6 +75,10 @@ import TraineeLogedPage from './Components/Pages/trainee/LogedInPage'
 
 //TRAINER
 import TrainerLogedPage from './Components/Pages/trainer/LogedInPage'
+import DashboardT from './Components/Pages/trainer/trainer_dashboard/Dashboard'
+import NotificationsT from './Components/Pages/trainer/trainer_notifications/Notifications'
+import AnnouncementsT from './Components/Pages/trainer/trainer_announcements/Announcements'
+import TraineesT from './Components/Pages/trainer/trainer_trainees/Trainess';
 
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -136,18 +140,22 @@ function App() {
           <Route path="/Rtrainees" element={<TraineesR />}></Route>
           <Route path="/Rtrainers" element={<TrainersR />}></Route>
           <Route path="/Rannouncements" element={<AnnouncementsR />}></Route>
-          <Route path="/Requipments" element={<EquipmentsR />}></Route>
+          {/*<Route path="/Requipments" element={<EquipmentsR />}></Route>*/}
           <Route path="/Rnotifications" element={<NotificationsR />}></Route>
           <Route path="/Rappointments" element={<AppointmentsR />}></Route>
           <Route path="/RaddTrainer" element={<AddTrainerR />}></Route>
           <Route path="/RupdateTrainer" element={<UpdateTrainerR />}></Route>
           <Route path="/RupdateTrainee" element={<UpdateTraineeR />}></Route>
           <Route path="/RaddTrainee" element={<AddTraineeR />}></Route>
-          <Route path="RmoreEquipment" element={<MoreEquipmentR />}></Route>
+          {/* <Route path="RmoreEquipment" element={<MoreEquipmentR />}></Route> */}
 
 
           {/* TRAINER ROUTES */}
           <Route path="/TELogedPage" element={<TraineeLogedPage />}></Route>
+          <Route path="/Tdashboard" element={<DashboardT />}></Route>
+          <Route path="/Tnotifications" element={<NotificationsT />}></Route>
+          <Route path="/Tannouncements" element={<AnnouncementsT />}></Route>
+          <Route path="/Ttrainees" element={<TraineesT />}></Route>
 
           {/* TRAINEE ROUTES */}
           <Route path="/TRLogedPage" element={<TrainerLogedPage />}></Route>

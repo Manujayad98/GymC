@@ -40,7 +40,7 @@ const LoginPage = ({ loading, error, ...props }) => {
         } else if (userLevel === "Trainee") {
             window.location.href = "/TELogedPage";
         } else if (userLevel === "Trainer") {
-            window.location.href = "/TRLogedPage";
+            window.location.href = "/Tdashboard";
         } else {
             localStorage.clear();
             // window.location.href = "/";
