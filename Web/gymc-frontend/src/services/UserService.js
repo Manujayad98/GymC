@@ -62,3 +62,14 @@ export const updateUserProfile = (profile) => {
         data: profile,
     });
 };
+
+export const getAllStaffUsers = () => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/staffMembers`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+

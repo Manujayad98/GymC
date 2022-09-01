@@ -1,6 +1,7 @@
 package com.example.gymcbackend.services;
 
 import com.example.gymcbackend.dto.Profile;
+import com.example.gymcbackend.dto.StaffUsers;
 import com.example.gymcbackend.entities.UserAccount;
 import com.example.gymcbackend.repository.userDao.UserAccountDetailsJdbcRepository;
 import com.example.gymcbackend.repository.userDao.UserAccountDetailsRepository;
@@ -10,6 +11,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CustomUserService implements UserDetailsService {
@@ -43,4 +46,5 @@ public class CustomUserService implements UserDetailsService {
         return userAccountDetailsJdbcRepository.profileStaffMember(userId);
 
     }
+
 }

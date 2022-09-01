@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import '../recept_sidebar/Sidebar.css'
 import SidebarR from '../recept_sidebar/Sidebar'
 import HeaderR from '../recept_header/Header'
+import './Annoucements.css'
 
 import Button from '../../../Utilities/Form/Button';
 import InputField from "../../../Utilities/Form/InputField";
@@ -126,67 +127,13 @@ const Announcements = () => {
       <div className='body-container'>
         <HeaderR title="Announcements" />
         <div className="content-container">
-          <div className="own-announcement-content-container">
-            <div className="own-announcement-form">
-              {/* start form */}
-              {/* <div className='own-dashboard-container-head'>New Annoucement</div> */}
-              <h1>New Announcement</h1>
-              <div className="form-container">
-
-                <div className="form-inputs">
-
-
-                  <div className="form-row">
-                    <div className="form-col1">
-                      <InputField
-                        value={requestData.title}
-                        type='text'
-                        label="Topic"
-                        placeholder='Type'
-                        validators={[
-                          { check: Validators.required, message: 'This field is required' }
-                        ]}
-                        onChange={handleChange('title')} />
-                    </div>
-                  </div>
-
-                  <div className="form-row">
-                    <div className="form-col1">
-                      <InputField
-                        value={requestData.note}
-                        label='Note'
-                        type='textarea'
-                        placeholder='Type'
-                        validators={[
-                          { check: Validators.required, message: 'This field is required' }
-                        ]}
-                        onChange={handleChange('note')} />
-                      <br></br><br /><br /><br />
-
-                    </div>
-                  </div>
-
-
-
-                  <div className="form-row">
-                    <div className="form-col1"></div>
-                    <div className="form-col2">
-                    </div>
-                    <Button
-                      onClick={handleClick}
-                      value='Add' />
-                  </div>
-                </div>
-              </div>
-              {/* end form */}
-            </div>
-
-
+          <div className="recept-announcement-content-container">
+            
             {/* start table */}
-            <div className="own-announcement-table">
+            <div className="recept-announcement-table">
 
               <h1>All Announcements</h1>
-              <div className='own-announcement-table-card'>
+              <div className='recept-announcement-table-card'>
                 <Table
                   rows={announcementDetails}
                   headCells={announcementDetailsTableHead}

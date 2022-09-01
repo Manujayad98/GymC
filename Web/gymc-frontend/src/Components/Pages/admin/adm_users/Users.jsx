@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import '../adm_sidebar/Sidebar.css'
 import SidebarO from '../adm_sidebar/Sidebar'
 import HeaderO from '../adm_header/header'
@@ -25,11 +25,12 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 import { Link } from 'react-router-dom'
 
-import { getUsers } from "../../../../services/UserService";
+import { getAllStaffUsers } from "../../../../services/UserService";
 
 export default function Trainers() {
 
     const [users, setAllUsers] = useState([]);
+    const [openModal, setOpenModal] = useState(false);
 
     useEffect(() => {
         checkValidate();
@@ -42,13 +43,24 @@ export default function Trainers() {
             window.location.href = "/";
         }
     };
-    const [openModal, setOpenModal] = useState(false)
 
     const getAllUsers = async () => {
-        const res = await getUsers();
+        const res = await getAllStaffUsers();
         console.log(res.data);
-        setAllUsers(res.data);
+        setAllUsers(
+            [res.data]
+        );
+        console.log(users);
     };
+
+    // const [trainerDetailsTableHead] = useState([
+    //     // { id: "UserImg", label: "", numeric: false },
+    //     { id: "first_name", label: "USER ID", numeric: false },
+    //     { id: "last_name", label: "USER'S NAME", numeric: false },
+    //     { id: "staff_type", label: "USER TYPE", numeric: false },
+    //     { id: "status", label: "STATUS", numeric: false },
+    //     { id: "user_id", label: "ACTIONS", numeric: false },
+    // ]);
 
     const [trainerDetails] = useState([
         {
@@ -98,7 +110,7 @@ export default function Trainers() {
                 </span>),
             Actions: (
                 <span >
-  
+
                     <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} alt="" height={20} width={20} /></span>
                     <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Hold} alt="" height={20} width={20} /></span>
 
@@ -162,13 +174,14 @@ export default function Trainers() {
 
     ]);
 
+
     const [trainerDetailsTableHead] = useState([
         { id: "UserImg", label: "", numeric: false },
-        { id: "UserID", label: "USER ID", numeric: false },
-        { id: "UserName", label: "USER NAME", numeric: false },
-        { id: "UserType", label: "USER TYPE", numeric: false },
-        { id: "Status", label: "STATUS", numeric: false },
-        { id: "Actions", label: "ACTIONS", numeric: false },
+        { id: "first_name", label: "USER ID", numeric: false },
+        { id: "last_name", label: "USER'S NAME", numeric: false },
+        { id: "staff_type", label: "USER TYPE", numeric: false },
+        { id: "status", label: "STATUS", numeric: false },
+        { id: "user_id", label: "ACTIONS", numeric: false },
     ]);
 
     return (

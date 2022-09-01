@@ -1,6 +1,7 @@
 package com.example.gymcbackend.services;
 
 import com.example.gymcbackend.dto.Profile;
+import com.example.gymcbackend.dto.StaffUsers;
 import com.example.gymcbackend.entities.StaffMember;
 import com.example.gymcbackend.entities.UserAccount;
 import com.example.gymcbackend.repository.staffMemberDao.StaffMemberJdbcRepository;
@@ -14,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -126,6 +128,10 @@ public class StaffMemberService {
 //        int y = (int) staffMemberJdbcRepository.updateProfile(profile);
 
         return staffMemberJdbcRepository.updateProfile(profile);
+    }
+
+    public List<StaffUsers> getAllStaffMembers() {
+        return staffMemberJdbcRepository.findAllStaffMembers();
     }
 
 }

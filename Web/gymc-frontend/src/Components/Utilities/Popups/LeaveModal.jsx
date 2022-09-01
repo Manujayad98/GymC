@@ -65,8 +65,8 @@ const LeaveModal = ({open,onClose}) => {
                     <div className="rec-leave-input">
                     <InputField 
                     value={requestData.substituteid}
-                    type='text'
-                    label="SUBSTITUTE ID"
+                    type='textarea'
+                    label="REASON"
                     onChange={handleChange('substituteid')}
                     />
                     </div>

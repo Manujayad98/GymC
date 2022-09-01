@@ -110,7 +110,7 @@ const Dashboard = () => {
     <div className='main-container'>
       <SidebarO />
       <div className='body-container'>
-        <HeaderO title="Dasboard" />
+        <HeaderO title="Dashboard" />
         <div className="content-container">
 
           <div className='own-dashboard-titles'>Today's Available Trainers</div>

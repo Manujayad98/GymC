@@ -71,8 +71,6 @@ const Trainees = () => {
       ),
       Actions: (
         <span >
-          <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><Link to='/RupdateTrainee'><img src={Edit} alt="" height={20} width={20} /></Link></span>
           <span style={{ paddingRight: "20px" }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
         </span >
       ),
@@ -94,9 +92,7 @@ const Trainees = () => {
       ),
       Actions: (
         <span >
-          <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><Link to='/RupdateTrainer'><img src={Edit} alt="" height={20} width={20} /></Link></span>
-          <span style={{ paddingRight: "20px" }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+          <span style={{ paddingRight: "20px" }}><button style={{backgroundColor:"white"}} onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
         </span >
       ),
     },
@@ -117,9 +113,7 @@ const Trainees = () => {
       ),
       Actions: (
         <span >
-          <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+          <span style={{ paddingRight: "20px" }}><button style={{backgroundColor:"white"}} onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
         </span >
       ),
     },
@@ -140,9 +134,7 @@ const Trainees = () => {
       ),
       Actions: (
         <span >
-          <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+          <span style={{ paddingRight: "20px" }}><button style={{backgroundColor:"white"}} onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
         </span >
       ),
     },
@@ -163,9 +155,7 @@ const Trainees = () => {
       ),
       Actions: (
         <span >
-          <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+          <span style={{ paddingRight: "20px" }}><button style={{backgroundColor:"white"}} onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
         </span >
       ),
     },
@@ -186,9 +176,7 @@ const Trainees = () => {
       ),
       Actions: (
         <span >
-          <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+          <span style={{ paddingRight: "20px" }}><button style={{backgroundColor:"white"}} onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
         </span >
       ),
     },
@@ -209,9 +197,7 @@ const Trainees = () => {
       ),
       Actions: (
         <span >
-          <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-          <span style={{ paddingRight: "20px" }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+          <span style={{ paddingRight: "20px" }}><button style={{backgroundColor:"white"}} onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
         </span >
       ),
     }
@@ -234,61 +220,46 @@ const Trainees = () => {
         <HeaderR title="Trainees" />
         <div className="content-container">
           <div>
-            <Tabs defaultActiveKey={"NowIn"} id="uncontrolled-tab-example" className='mb-3'>
-              <Tab eventKey={"NowIn"} title="Now In">
-                <div className='rec-content-row'>
-                  <Card onClick={() => opennowin(true)} style={{ cursor: "pointer" }} className='rec-train-card'>
-                    <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
-                    <Card.Subtitle>
-                      T001
-                    </Card.Subtitle>
-                    <Card.Body>
-                      Kasun Perera
-                    </Card.Body>
-                  </Card>
-                  <Card className='rec-train-card'>
-                    <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
-                    <Card.Subtitle>
-                      T002
-                    </Card.Subtitle>
-                    <Card.Body>
-                      Rasul Silve
-                    </Card.Body>
-                  </Card>
-                  <Card className='rec-train-card'>
-                    <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
-                    <Card.Subtitle>
-                      T003
-                    </Card.Subtitle>
-                    <Card.Body>
-                      Dominic Gape
-                    </Card.Body>
-                  </Card>
+              <div className='rec-trainee-titles'> Trainees Today</div>
+                <div className='rec-trainee-profile-card-container'>
+                    <div onClick={() => opennowin(true)} className='rec-train-card'>
+                      <div className='rec-dashboard-card-img-container'>
+                        <img className='recept-dashboard-images' src={Pic1} alt="" />
+                      </div>
+                      <div className='traineeID'>S0001</div>
+                      <div className='traineeName'>Manujaya Dasanayaka</div>
+                    </div>
+                    <div onClick={() => opennowin(true)} className='rec-train-card'>
+                      <div className='rec-dashboard-card-img-container'>
+                        <img className='recept-dashboard-images' src={Pic1} alt="" />
+                      </div>
+                      <div className='traineeID'>S0001</div>
+                      <div className='traineeName'>Manujaya Dasanayaka</div>
+                    </div>
+                    <div onClick={() => opennowin(true)} className='rec-train-card'>
+                      <div className='rec-dashboard-card-img-container'>
+                        <img className='recept-dashboard-images' src={Pic1} alt="" />
+                      </div>
+                      <div className='traineeID'>S0001</div>
+                      <div className='traineeName'>Manujaya Dasanayaka</div>
+                    </div>
+                    <div onClick={() => opennowin(true)} className='rec-train-card'>
+                      <div className='rec-dashboard-card-img-container'>
+                        <img className='recept-dashboard-images' src={Pic1} alt="" />
+                      </div>
+                      <div className='traineeID'>S0001</div>
+                      <div className='traineeName'>Manujaya Dasanayaka</div>
+                    </div>
+                    <div onClick={() => opennowin(true)} className='rec-train-card'>
+                      <div className='rec-dashboard-card-img-container'>
+                        <img className='recept-dashboard-images' src={Pic1} alt="" />
+                      </div>
+                      <div className='traineeID'>S0001</div>
+                      <div className='traineeName'>Manujaya Dasanayaka</div>
+                    </div>
+                  
                 </div>
-              </Tab>
-              <Tab eventKey={"due"} title="Due Check Out">
-                <div className='rec-content-row'>
-                  <Card onClick={() => openduec(true)} className='rec-train-card' style={{ borderColor: 'red' }}>
-                    <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
-                    <Card.Subtitle>
-                      T001
-                    </Card.Subtitle>
-                    <Card.Body>
-                      Kasun Perera
-                    </Card.Body>
-                  </Card>
-                  <Card className='rec-train-card' style={{ borderColor: 'red' }}>
-                    <Card.Title> <img src={Pic1} alt="" /> </Card.Title>
-                    <Card.Subtitle>
-                      T002
-                    </Card.Subtitle>
-                    <Card.Body>
-                      Rasul Silve
-                    </Card.Body>
-                  </Card>
-                </div>
-              </Tab>
-            </Tabs>
+              
           </div>
 
           <p style={{ textAlign: 'left', fontWeight: 'bold', fontSize: '30px' }}>All</p>
