@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import '../adm_sidebar/Sidebar.css'
 import SidebarO from '../adm_sidebar/Sidebar'
 import HeaderO from '../adm_header/header'
-import Table from '../../../Utilities/Tables/Table1'
+// import Table from '../../../Utilities/Tables/Table1'
 import Trash from '../../../../images/Icons/trash-solid.svg'
 import Edit from '../../../../images/Icons/pen-solid.svg'
 import View from '../../../../images/Icons/eye-solid.svg'
@@ -10,6 +10,7 @@ import Hold from '../../../../images/Icons/hand-solid.svg'
 import T1 from '../../../../images/t1.png'
 import Arrow from '../../../../images/Icons/arrow-square-right.svg'
 import DeleteModal from '../../../Utilities/Popups/DeletionModal'
+import MaterialTable from "material-table";
 
 import user1 from '../../../../images/owner/tr1.png'
 import user2 from '../../../../images/owner/te1.png'
@@ -48,7 +49,7 @@ export default function Trainers() {
         const res = await getAllStaffUsers();
         console.log(res.data);
         setAllUsers(
-            [res.data]
+            [...res.data]
         );
         console.log(users);
     };
@@ -228,11 +229,54 @@ export default function Trainers() {
 
                         </div>
                     </form>
-                    <Table
+                    {/* <Table
                         rows={trainerDetails}
                         headCells={trainerDetailsTableHead}
                         tableName={"Trainers"}
-                    />
+                    /> */}
+                    <div className="table-div">
+                        <MaterialTable
+                            title=""
+                            columns={[
+                                { title: "first_name", field: "first_name" },
+                                { title: "last_name", field: "last_name" },
+                                { title: "staff_type", field: "staff_type" },
+                                { title: "status", field: "status" },
+                                { title: "user_id", field: "user_id" },
+                            ]}
+                            data={users}
+                            actions={[
+                                {
+                                    icon: () => {
+                                        return (
+
+                                            <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} onClick={() => setOpenModal(true)} alt="" height={20} width={20} /></span>
+                                        );
+                                    },
+                                    onClick: (event, rowData) => {
+
+                                    },
+                                },
+                                {
+                                    icon: () => {
+                                        return (
+                                            <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Hold} alt="" height={20} width={20} /></span>
+                                        );
+                                    },
+                                    onClick: (event, rowData) => {
+
+                                    },
+                                },
+                            ]}
+                            options={{
+                                headerStyle: {
+                                    backgroundColor: '#1F0106',
+                                    color: '#FFF',
+                                }
+                            }}
+                        />
+                    </div>
+
                     <DeleteModal open={openModal} onClose={() => setOpenModal(false)} />
                 </div>
             </div >
