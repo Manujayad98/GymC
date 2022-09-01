@@ -41,8 +41,8 @@ public class StaffMember implements UserDetails {
     @Column(name = "phone_number", length = 10)
     private String phoneNumber;
 
-    @Column(name = "staff_type", length = 1)
-    private Integer staffType;
+    @Column(name = "staff_type")
+    private String staffType;
 
     @Column(name = "qualification")
     private String qualification;
@@ -118,7 +118,7 @@ public class StaffMember implements UserDetails {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setStaffType(Integer staffType) {
+    public void setStaffType(String staffType) {
         this.staffType = staffType;
     }
 
@@ -162,7 +162,7 @@ public class StaffMember implements UserDetails {
         return phoneNumber;
     }
 
-    public Integer getStaffType() {
+    public String getStaffType() {
         return staffType;
     }
 
