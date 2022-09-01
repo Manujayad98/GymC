@@ -70,7 +70,18 @@
     background-color: #df0000 !important;
 }
 
-.delete-model-btn-container {
+.rec-holdbtn {
+    background-color: #ebee29 !important;
+    border-color: #ebee29 !important;
+}
+
+.rec-holdbtn:hover {
+    background-color: #cbce24 !important;
+}
+
+
+.delete-model-btn-container,
+.hold-model-btn-container {
     display: flex;
     justify-content: space-evenly;
 }
