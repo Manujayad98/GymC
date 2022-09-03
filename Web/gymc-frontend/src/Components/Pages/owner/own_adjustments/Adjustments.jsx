@@ -5,10 +5,14 @@ import SidebarO from '../own_sidebar/Sidebar'
 import HeaderO from '../own_header/Header'
 import Table from '../../../Utilities/Tables/Table2'
 import Edit from '../../../../images/Icons/pen-solid.svg'
-import trash from '../../../../images/Icons/trash-solid.svg'
+import Trash from '../../../../images/Icons/trash-solid.svg'
 import Button1 from '@mui/material/Button';
 import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
 import { Link } from 'react-router-dom'
+
+import DeleteModal from '../../../Utilities/Popups/DeletionModal'
+import MaterialTable from "material-table";
+import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 
 
 export default function Exercises() {
@@ -24,39 +28,29 @@ export default function Exercises() {
         }
     };
 
+    const [openModal, setOpenModal] = useState(false);
+
     const [excerciseDetails] = useState([
         {
             ExerciseID: 'E0001',
             ExerciseName: "Incline Press",
             PrimaryMuscle: "Muscle 1",
             SecondaryMuscle: "Muscle 2",
-            Actions: (
-                <span >
-                    <span style={{ paddingRight: "20px" }}><img src={trash} alt="" height={20} width={20} /></span>
-                </span >
-            ),
+
         },
         {
             ExerciseID: 'E0002',
             ExerciseName: "Incline Press",
             PrimaryMuscle: "Muscle 1",
             SecondaryMuscle: "Muscle 2",
-            Actions: (
-                <span >
-                    <span style={{ paddingRight: "20px" }}><img src={trash} alt="" height={20} width={20} /></span>
-                </span >
-            ),
+
         },
         {
             ExerciseID: 'E0003',
             ExerciseName: "Incline Press",
             PrimaryMuscle: "Muscle 1",
             SecondaryMuscle: "Muscle 2",
-            Actions: (
-                <span >
-                    <span style={{ paddingRight: "20px" }}><img src={trash} alt="" height={20} width={20} /></span>
-                </span >
-            ),
+
         },
     ]);
     const [excerciseDetailsTableHead] = useState([
@@ -68,37 +62,19 @@ export default function Exercises() {
 
     const [paymentPlanDetails] = useState([
         {
-            Type: "Daily",
+            PaymentID: 'P0001',
+            PaymentType: "Daily",
             Price: "Rs.550",
-            NextAmount: "-",
-            Actions: (
-                <span >
-                    <span style={{ paddingRight: "0px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-                </span >
-
-            ),
         },
         {
-            Type: "Monthly-Personal",
+            PaymentID: 'P0001',
+            PaymentType: "Monthly-Personal",
             Price: "Rs.550",
-            NextAmount: "Rs.650",
-            Actions: (
-                <span >
-                    <span style={{ paddingRight: "0px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-                </span >
-
-            ),
         },
         {
-            Type: "Monthly-NonPersonal",
+            PaymentID: 'P0001',
+            PaymentType: "Monthly-NonPersonal",
             Price: "Rs.550",
-            NextAmount: "-",
-            Actions: (
-                <span >
-                    <span style={{ paddingRight: "0px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-                </span >
-
-            ),
         },
 
     ]);
@@ -139,12 +115,44 @@ export default function Exercises() {
                                 <Button1 variant="contained" className="Hbutton">New Exercise</Button1>
                             </Link>
                         </div>
-                        <div className='own-adjustment-card '>
-                            <Table
+                        <div className='own-adjustment-card'>
+                            {/* <Table
                                 rows={excerciseDetails}
                                 headCells={excerciseDetailsTableHead}
                                 tableName={"Exercises"}
+                            /> */}
+                            <MaterialTable
+                                title="Exercices"
+                                columns={[
+                                    { title: "ExerciseID", field: "Exercise ID" },
+                                    { title: "ExerciseName", field: "Exercise Name" },
+                                    { title: "PrimaryMuscle", field: "Primary Muscle" },
+                                    { title: "SecondaryMuscle", field: "Secondary Muscle" },
+                                ]}
+                                icons={TableIcons}
+                                data={excerciseDetails}
+                                actions={[
+                                    {
+                                        icon: () => {
+                                            return (
+                                                <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} onClick={() => setOpenModal(true)} alt="" height={20} width={20} /></span>
+                                            );
+                                        },
+                                        onClick: (event, rowData) => {
+                                        },
+                                    },
+                                ]}
+                                options={{
+                                    pageSize: 3,
+                                    pageSizeOptions: [6, 12, 15],
+                                    headerStyle: {
+                                        backgroundColor: '#1F0106',
+                                        color: '#FFF',
+                                        hover: '#FFF'
+                                    }
+                                }}
                             />
+
                         </div>
                     </div>
                     <div className="ex">
@@ -153,11 +161,42 @@ export default function Exercises() {
                             <Button1 variant="contained" className="Hbutton">New Payment</Button1>
                         </div>
                         <div className='own-adjustment-card '>
-                            <Table
+                            {/* <Table
                                 rows={paymentPlanDetails}
                                 headCells={paymentPlanDetailsTableHead}
                                 tableName={"PaymentPlans"}
+                            /> */}
+                            <MaterialTable
+                                title="Payments"
+                                columns={[
+                                    { title: "PaymentID", field: "Payment ID" },
+                                    { title: "PaymentType", field: "Payment Type" },
+                                    { title: "Price", field: "Price" },
+                                ]}
+                                icons={TableIcons}
+                                data={excerciseDetails}
+                                actions={[
+                                    {
+                                        icon: () => {
+                                            return (
+                                                <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} onClick={() => setOpenModal(true)} alt="" height={20} width={20} /></span>
+                                            );
+                                        },
+                                        onClick: (event, rowData) => {
+                                        },
+                                    },
+                                ]}
+                                options={{
+                                    pageSize: 3,
+                                    pageSizeOptions: [6, 12, 15],
+                                    headerStyle: {
+                                        backgroundColor: '#1F0106',
+                                        color: '#FFF',
+                                        hover: '#FFF'
+                                    }
+                                }}
                             />
+
                         </div>
                     </div>
                     <div className="ex">
@@ -203,7 +242,7 @@ export default function Exercises() {
                         </div>
                     </div>
                 </div>
-
+                <DeleteModal open={openModal} onClose={() => setOpenModal(false)} />
             </div>
         </div>
     )

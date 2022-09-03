@@ -24,7 +24,6 @@
   width: 150px;
   background-color: #3DA2FF !important;
   justify-items: right;
-
 }
 
 .Hbutton:hover {
@@ -32,12 +31,11 @@
 }
 
 .header {
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 20px;
-  width: 70%;
+  width: 100%;
 }
 
 #heading {
@@ -48,15 +46,15 @@
 .own-adjustment-card {
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  /* background-color: #fff; */
   justify-content: space-around;
   text-align: center;
   align-content: center;
   border-radius: 6px;
-  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
-  width: 70%;
+  /* box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25); */
+  width: 100%;
   padding: 20px;
-  margin: 20px;
+  /* margin: 20px; */
 }
 
 /* increment decrement */
@@ -142,7 +140,7 @@ align-items: center;
 #own-adjustment-titles {
   font-size: 1.1rem;
   font-weight: 600;
-  margin: 5px 0 5px 12px;
+  /* margin: 5px 0 5px 12px; */
   text-align: left;
 }
 
