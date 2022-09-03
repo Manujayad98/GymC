@@ -15,8 +15,8 @@ public class Announcement {
     @Column(name = "announcementID")
     private long announcementID;
 
-    @Column(name = "date")
-    private Date date;
+    @Column(name = "Topic")
+    private String topic;
 
     @Column(name = "time")
     private Time time;
@@ -28,8 +28,8 @@ public class Announcement {
     @JoinColumn(name = "staffId")
     StaffMember staffMember;
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setTopic(String topic) {
+        this.topic = topic;
     }
 
     public void setTime(Time time) {
@@ -48,8 +48,8 @@ public class Announcement {
         this.staffMember = staffMember;
     }
 
-    public Date getDate() {
-        return date;
+    public String getTopic() {
+        return topic;
     }
 
     public Time getTime() {
