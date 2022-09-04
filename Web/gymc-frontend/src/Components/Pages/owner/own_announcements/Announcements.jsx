@@ -14,7 +14,13 @@ import Trash from '../../../../images/Icons/trash-solid.svg'
 import Edit from '../../../../images/Icons/pen-solid.svg'
 import View from '../../../../images/Icons/eye-solid.svg'
 
+import MaterialTable from "material-table";
+import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
+import DeleteModal from '../../../Utilities/Popups/DeletionModal'
+
 const OAnnouncements = () => {
+
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     checkValidate();
@@ -38,8 +44,8 @@ const OAnnouncements = () => {
   ]);
   const [announcementDetails] = useState([
     {
-      Date_Time: "2022/08/15",
-      Topic: "Center Closure",
+      Date: "2022/08/15",
+      Announcement: "Center Closure",
 
       Actions: (
         <span >
@@ -48,8 +54,8 @@ const OAnnouncements = () => {
       ),
     },
     {
-      Date_Time: "2022/08/15",
-      Topic: "Center Closure",
+      Date: "2022/08/15",
+      Announcement: "Center Closure",
 
       Actions: (
         <span >
@@ -58,8 +64,8 @@ const OAnnouncements = () => {
       ),
     },
     {
-      Date_Time: "2022/08/15",
-      Topic: "Center Closure",
+      Date: "2022/08/15",
+      Announcement: "Center Closure",
 
       Actions: (
         <span >
@@ -68,8 +74,8 @@ const OAnnouncements = () => {
       ),
     },
     {
-      Date_Time: "2022/08/15",
-      Topic: "Center Closure",
+      Date: "2022/08/15",
+      Announcement: "Center Closure",
 
       Actions: (
         <span >
@@ -78,8 +84,8 @@ const OAnnouncements = () => {
       ),
     },
     {
-      Date_Time: "2022/08/15",
-      Topic: "Center Closure",
+      Date: "2022/08/15",
+      Announcement: "Center Closure",
 
       Actions: (
         <span >
@@ -88,8 +94,8 @@ const OAnnouncements = () => {
       ),
     },
     {
-      Date_Time: "2022/08/15",
-      Topic: "Center Closure",
+      Date: "2022/08/15",
+      Announcement: "Center Closure",
 
       Actions: (
         <span >
@@ -98,8 +104,8 @@ const OAnnouncements = () => {
       ),
     },
     {
-      Date_Time: "2022/08/15",
-      Topic: "Center Closure",
+      Date: "2022/08/15",
+      Announcement: "Center Closure",
 
       Actions: (
         <span >
@@ -161,8 +167,6 @@ const OAnnouncements = () => {
                           { check: Validators.required, message: 'This field is required' }
                         ]}
                         onChange={handleChange('note')} />
-                      <br></br><br /><br /><br />
-
                     </div>
                   </div>
 
@@ -184,10 +188,43 @@ const OAnnouncements = () => {
 
               <h1>All Announcements</h1>
               <div className='own-announcement-table-card'>
-                <Table
+                {/* <Table
                   rows={announcementDetails}
                   headCells={announcementDetailsTableHead}
-                />
+                /> */}
+                <div className="table-div">
+                  <MaterialTable
+                    title="System Users"
+                    columns={[
+                      { title: "Date", field: "Date" },
+                      { title: "Announcement", field: "Announcement" },
+
+                    ]}
+                    icons={TableIcons}
+                    data={announcementDetails}
+                    actions={[
+                      {
+                        icon: () => {
+                          return (
+                            <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} onClick={() => setOpenModal(true)} alt="" height={20} width={20} /></span>
+                          );
+                        },
+                        onClick: (event, rowData) => {
+
+                        },
+                      },
+
+                    ]}
+                    options={{
+                      headerStyle: {
+                        backgroundColor: '#1F0106',
+                        color: '#FFF',
+                        hover: '#FFF'
+                      }
+                    }}
+                  />
+                  <DeleteModal open={openModal} onClose={() => setOpenModal(false)} />
+                </div>
               </div>
             </div>
             {/* end table */}
