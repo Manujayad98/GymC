@@ -21,6 +21,8 @@ import Edit from '../../../../images/Icons/pen-solid.svg'
 import './Dashboard.css'
 import { Chart } from "react-google-charts";
 import { width } from '@mui/system'
+import MaterialTable from "material-table";
+import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 
 const Dashboard = () => {
 
@@ -51,18 +53,18 @@ const Dashboard = () => {
   //ANNUAL INCOME CHART
   const Annualdata = [
     ["Element", "Income", { role: "style" }],
-    ["Jan", 8.94, "#b87333"], 
-    ["Feb", 10.49, "silver"], 
+    ["Jan", 8.94, "#b87333"],
+    ["Feb", 10.49, "silver"],
     ["Mar", 19.3, "gold"],
     ["Apr", 21.45, "color: #e5e4e2"],
-    ["May", 18.94, "#b87333"], 
-    ["Jun", 12.49, "silver"], 
+    ["May", 18.94, "#b87333"],
+    ["Jun", 12.49, "silver"],
     ["Jul", 9.3, "gold"],
     ["Aug", 17.45, "color: #e5e4e2"],
-    ["Sep", 18.94, "#b87333"], 
-    ["Oct", 19.49, "silver"], 
+    ["Sep", 18.94, "#b87333"],
+    ["Oct", 19.49, "silver"],
     ["Nov", 15.3, "gold"],
-    ["Dec", 21.45, "color: #e5e4e2"], 
+    ["Dec", 21.45, "color: #e5e4e2"],
   ];
 
   const [workoutDetailsTableHead] = useState([
@@ -184,7 +186,7 @@ const Dashboard = () => {
 
             <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
-              <img src={trainee2} className='owner-dashboard-images' alt="" />
+                <img src={trainee2} className='owner-dashboard-images' alt="" />
               </div>
               <div className='own-dashboard-card-content'>
                 <div className='staffID'>M0002</div>
@@ -194,7 +196,7 @@ const Dashboard = () => {
 
             <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
-              <img src={trainee3} className='owner-dashboard-images' alt="" />
+                <img src={trainee3} className='owner-dashboard-images' alt="" />
               </div>
               <div className='own-dashboard-card-content'>
                 <div className='staffID'>M0003</div>
@@ -204,7 +206,7 @@ const Dashboard = () => {
 
             <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
-              <img src={trainee4} className='owner-dashboard-images' alt="" />
+                <img src={trainee4} className='owner-dashboard-images' alt="" />
               </div>
               <div className='own-dashboard-card-content'>
                 <div className='staffID'>M0004</div>
@@ -214,7 +216,7 @@ const Dashboard = () => {
 
             <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
-              <img src={trainee5} className='owner-dashboard-images' alt="" />
+                <img src={trainee5} className='owner-dashboard-images' alt="" />
               </div>
               <div className='own-dashboard-card-content'>
                 <div className='staffID'>M0005</div>
@@ -237,9 +239,29 @@ const Dashboard = () => {
             <div className='own-dashboard-table-container'>
               <div className='own-dashboard-container-head'>Today's Workouts</div>
               <div className='own-dashboard-card own-dashboard-table-cards'>
-                <Table
+                {/* <Table
                   rows={workoutDetails}
                   headCells={workoutDetailsTableHead}
+                /> */}
+                <MaterialTable
+                  title="Workouts"
+                  columns={[
+                    { title: "Time", field: "Time" },
+                    { title: "TraineeName", field: "TraineeName" },
+                    { title: "TrainerName", field: "TrainerName" },
+                  ]}
+                  icons={TableIcons}
+                  data={workoutDetails}
+
+                  options={{
+                    pageSize: 3,
+                    pageSizeOptions: [6, 12, 15],
+                    headerStyle: {
+                      backgroundColor: '#1F0106',
+                      color: '#FFF',
+                      hover: '#FFF'
+                    }
+                  }}
                 />
               </div>
             </div>
