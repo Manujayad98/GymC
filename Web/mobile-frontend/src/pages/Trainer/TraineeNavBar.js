@@ -4,11 +4,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FontAwesome from 'react-native-vector-icons/FontAwesome5';
 
 // Screens
-import Trainer_Trainee_Page from './TrainerPages/Trainer_Trainee_Page';
-import Trainer_Home_Page from './TrainerPages/Trainer_Home_Page';
-import Trainer_Profile_Page from './TrainerPages/Trainer_Profile_Page';
-import Trainer_Schedule_Page from './TrainerPages/Trainer_Schedule_Page';
-import Trainer_Notifications_Page from './TrainerPages/Trainer_Notifications_Page';
+import Trainer_Trainee_Page from './TraineePages/Trainee_MyProgress_Page';
+import Trainer_Home_Page from './TraineePages/Trainee_Home_Page';
+import Trainer_Profile_Page from './TraineePages/Trainee_Profile_Page';
+import Trainer_Schedule_Page from './TraineePages/Trainee_Schedule_Page';
+import Trainer_Notifications_Page from './TraineePages/Trainee_Notifications_Page';
 
 //Screen name
 const trainee = "Trainees";

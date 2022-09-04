@@ -11,7 +11,8 @@ import ExploreAppPage from './src/pages/Common/ExploreAppPage/ExploreAppPage'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // import TraineeNavBar from './src/pages/Trainee/TraineeNavBar'
-// import TrainerNavBar from './src/pages/Trainer/TrainerNavBar'
+import TrainerNavBar from './src/pages/Trainer/TraineeNavBar'
+
 
 import {
   SafeAreaView,
@@ -22,27 +23,28 @@ const Stack = createNativeStackNavigator();
 const App = () => {
 
   return (
-    // <TrainerNavBar/>
 
-    <NavigationContainer>
-      <Stack.Navigator>
+   <TrainerNavBar/>
 
-        <Stack.Screen
-          name="Startup"
-          component={StartPage}
+    // <NavigationContainer>
+    //   <Stack.Navigator>
+
+    //     <Stack.Screen
+    //       name="Startup"
+    //       component={StartPage}
           
-          options={{ title: 'Startup' }}
-        />
-        <Stack.Screen name="Login" component={LoginPage} />
-        <Stack.Screen name="Forgot" component={ForgotPasswordPage} />
-        <Stack.Screen name="Reset" component={ResetPasswordPage} />
-        <Stack.Screen name="Setup" component={SetupProfilePage} />
-        <Stack.Screen name="SetupPw" component={SetupPasswordPage} />
-        <Stack.Screen name="Guide" component={AppoinmentGuidePage} />
-        <Stack.Screen name="Explore" component={ExploreAppPage} />
+    //       options={{ title: 'Startup' }}
+    //     />
+    //     <Stack.Screen name="Login" component={LoginPage} />
+    //     <Stack.Screen name="Forgot" component={ForgotPasswordPage} />
+    //     <Stack.Screen name="Reset" component={ResetPasswordPage} />
+    //     <Stack.Screen name="Setup" component={SetupProfilePage} />
+    //     <Stack.Screen name="SetupPw" component={SetupPasswordPage} />
+    //     <Stack.Screen name="Guide" component={AppoinmentGuidePage} />
+    //     <Stack.Screen name="Explore" component={ExploreAppPage} />
 
-      </Stack.Navigator>
-    </NavigationContainer>
+    //   </Stack.Navigator>
+    // </NavigationContainer>
   );
 };
 const styles = StyleSheet.create({
