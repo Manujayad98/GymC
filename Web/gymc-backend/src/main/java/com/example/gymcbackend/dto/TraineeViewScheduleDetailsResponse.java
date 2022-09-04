@@ -19,6 +19,15 @@ public class TraineeViewScheduleDetailsResponse {
 
     private String address;
 
+    private Date trainingDate;
+
+
+    private Integer noOfRepetitions;
+
+    private String eName;
+
+
+
     public long getTraineeId() {
         return traineeId;
     }
@@ -60,6 +69,30 @@ public class TraineeViewScheduleDetailsResponse {
     }
 //for calendar view
 
+
+    public Date getTrainingDate() {
+        return trainingDate;
+    }
+
+    public void setTrainingDate(Date trainingDate) {
+        this.trainingDate = trainingDate;
+    }
+
+    public Integer getNoOfRepetitions() {
+        return noOfRepetitions;
+    }
+
+    public void setNoOfRepetitions(Integer noOfRepetitions) {
+        this.noOfRepetitions = noOfRepetitions;
+    }
+
+    public String geteName() {
+        return eName;
+    }
+
+    public void seteName(String eName) {
+        this.eName = eName;
+    }
 
 
 }

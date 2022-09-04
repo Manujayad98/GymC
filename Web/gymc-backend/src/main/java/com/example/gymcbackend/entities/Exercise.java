@@ -2,6 +2,7 @@ package com.example.gymcbackend.entities;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Table(name = "exercise")
 @Entity
@@ -26,6 +27,11 @@ public class Exercise {
 //    @ManyToMany(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "equipmentID")
 //    Equipment equipment;
+
+    //for many to many map
+
+    @OneToMany(mappedBy = "trainingDate")
+    Set<WorkoutPlan> workoutPlans;
 
     @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinTable(name = "exercise_equipments", joinColumns = @JoinColumn(referencedColumnName = "exerciseID"),inverseJoinColumns = @JoinColumn(referencedColumnName ="equipmentID"))
