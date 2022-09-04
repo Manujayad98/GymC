@@ -4,16 +4,14 @@ import SidebarO from '../trainer_sidebar/Sidebar'
 import HeaderO from '../trainer_header/Header'
 import '../trainer_announcements/Announcements.css'
 
-import Button from '../../../Utilities/Form/Button';
-import InputField from "../../../Utilities/Form/InputField";
-import { Validators } from "../../../Utilities/Form/Validator/Validator";
-import Table from '../../../Utilities/Tables/Table2';
+import MaterialTable from "material-table";
+import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
+import DeleteModal from '../../../Utilities/Popups/DeletionModal'
 
-import Trash from '../../../../images/Icons/trash-solid.svg'
-import Edit from '../../../../images/Icons/pen-solid.svg'
-import View from '../../../../images/Icons/eye-solid.svg'
 
 const Announcements = () => {
+
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     checkValidate();
@@ -26,85 +24,78 @@ const Announcements = () => {
     }
   };
 
-  const [requestData, setState] = useState({
-    title: '',
-    note: ''
-  });
-  const [announcementDetailsTableHead] = useState([
-    { id: "Date", label: "Date", numeric: false },
-    { id: "Topic", label: "Topic", numeric: false },
-    { id: "Announcement", label: "Announcement", numeric: false }
-  ]);
-  const [announcementDetails] = useState([
+  const [annoucementDetails] = useState([
     {
-      Date_Time: "2022/08/15",
+      
+      Date: "15-10-2022",
       Topic: "Gym Closure",
-      Announcement: "Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
+      Annoucement: "Gym will be closed on 17-10-2022 due to unavoidable circumstances",
+      
     },
     {
-      Date_Time: "2022/08/15",
+      
+      Date: "15-10-2022",
       Topic: "Gym Closure",
-      Announcement: "Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
+      Annoucement: "Gym will be closed on 17-10-2022 due to unavoidable circumstances",
+      
     },
     {
-      Date_Time: "2022/08/15",
+      
+      Date: "15-10-2022",
       Topic: "Gym Closure",
-      Announcement: "Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
+      Annoucement: "Gym will be closed on 17-10-2022 due to unavoidable circumstances",
+      
     },
     {
-      Date_Time: "2022/08/15",
+      
+      Date: "15-10-2022",
       Topic: "Gym Closure",
-      Announcement: "Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
+      Annoucement: "Gym will be closed on 17-10-2022 due to unavoidable circumstances",
+      
     },
     {
-      Date_Time: "2022/08/15",
+      
+      Date: "15-10-2022",
       Topic: "Gym Closure",
-      Announcement: "Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
+      Annoucement: "Gym will be closed on 17-10-2022 due to unavoidable circumstances",
+     
+      
     },
     {
-      Date_Time: "2022/08/15",
+      
+      Date: "15-10-2022",
       Topic: "Gym Closure",
-      Announcement: "Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
+      Annoucement: "Gym will be closed on 17-10-2022 due to unavoidable circumstances",
+     
+      
     },
     {
-      Date_Time: "2022/08/15",
+      
+      Date: "15-10-2022",
       Topic: "Gym Closure",
-      Announcement: "Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
+      Annoucement: "Gym will be closed on 17-10-2022 due to unavoidable circumstances",
+     
+      
     },
     {
-      Date_Time: "2022/08/15",
+      
+      Date: "15-10-2022",
       Topic: "Gym Closure",
-      Announcement: "Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
+      Annoucement: "Gym will be closed on 17-10-2022 due to unavoidable circumstances",
+     
+      
     },
     {
-      Date_Time: "2022/08/15",
+      
+      Date: "15-10-2022",
       Topic: "Gym Closure",
-      Announcement: "Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
-    },
-    {
-      Date_Time: "2022/08/15",
-      Topic: "Gym Closure",
-      Announcement: "Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
-    },
-    {
-      Date_Time: "2022/08/15",
-      Topic: "Gym Closure",
-      Announcement: "Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
+      Annoucement: "Gym will be closed on 17-10-2022 due to unavoidable circumstances",
+     
+      
     },
 
   ]);
 
-  const handleChange = (key) => (value) => {
-    setState({
-      ...requestData,
-      [key]: value
-    });
-  };
-
-  const handleClick = (event) => {
-    event.preventDefault();
-    alert('Button Clicked');
-  };
   return (
     <div className='main-container'>
       <SidebarO />
@@ -119,10 +110,29 @@ const Announcements = () => {
 
 
             <div className='trainer-announcement-table-card'>
-              <Table
-                rows={announcementDetails}
-                headCells={announcementDetailsTableHead}
-              />
+            <div className="table-div">
+            <MaterialTable
+              title="New"
+              columns={[
+                { title: "Date", field: "Date" },
+                { title: "Topic", field: "Topic" },
+                { title: "Annoucement", field: "Annoucement" },
+                
+
+              ]}
+              icons={TableIcons}
+              data={annoucementDetails}
+         
+              options={{
+                headerStyle: {
+                  backgroundColor: '#1F0106',
+                  color: '#FFF',
+                  hover: '#FFF'
+                }
+              }}
+            />
+            <DeleteModal open={openModal} onClose={() => setOpenModal(false)} />
+          </div>
             </div>
           </div>
           {/* end table */}
