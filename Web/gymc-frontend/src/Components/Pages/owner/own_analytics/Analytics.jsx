@@ -8,6 +8,8 @@ import Tabs from 'react-bootstrap/Tabs';
 // import BarChart from '../../../Utilities/Charts/BarChart'
 import Table from '../../../Utilities/Tables/Table2'
 import { Chart } from "react-google-charts";
+import MaterialTable from "material-table";
+import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 
 
 const Dashboard = () => {
@@ -84,31 +86,34 @@ const Dashboard = () => {
       SecondaryMuscle: "Muscle 2",
     },
   ]);
-  const [excerciseDetailsTableHead] = useState([
-    { id: "ExerciseID", label: "EXERCISE ID", numeric: false },
-    { id: "ExerciseName", label: "Exercise NAME", numeric: false },
-    { id: "PrimaryMuscle", label: "PRIMARY MUSCLE", numeric: false },
-    { id: "SecondaryMuscle", label: "SECONDARY MUSCLE", numeric: false },
-  ]);
+  // const [excerciseDetailsTableHead] = useState([
+  //   { id: "ExerciseID", label: "EXERCISE ID", numeric: false },
+  //   { id: "ExerciseName", label: "Exercise NAME", numeric: false },
+  //   { id: "PrimaryMuscle", label: "PRIMARY MUSCLE", numeric: false },
+  //   { id: "SecondaryMuscle", label: "SECONDARY MUSCLE", numeric: false },
+  // ]);
 
   // PRICING TABLE
 
-  const [priceDetailsTableHead] = useState([
-    { id: "Type", label: "TYPE", numeric: false },
-    { id: "Price", label: "PRICE", numeric: false }
-  ]);
+  // const [priceDetailsTableHead] = useState([
+  //   { id: "Type", label: "TYPE", numeric: false },
+  //   { id: "Price", label: "PRICE", numeric: false }
+  // ]);
 
   const [priceDetails] = useState([
     {
-      Type: "Daily",
+      PaymentID: "P0001",
+      PaymentType: "Daily",
       Price: "550.00"
     },
     {
-      Type: "Monthly - Personal",
+      PaymentID: "P0001",
+      PaymentType: "Monthly - Personal",
       Price: "550.00"
     },
     {
-      Type: "Monthly - Nonpersonal",
+      PaymentID: "P0001",
+      PaymentType: "Monthly - Nonpersonal",
       Price: "550.00"
     },
   ]);
@@ -183,12 +188,33 @@ const Dashboard = () => {
               </div>
               <div className='own-analytics-chart-table-container'>
 
-                <div className='own-analytics-chart-container'>
+                <div className='own-analytics-table-container'>
                   <div className='own-analytics-container-head'>Available Excercises</div>
                   <div className='own-analytics-card1'>
-                    <Table
+                    {/* <Table
                       rows={excerciseDetails}
                       headCells={excerciseDetailsTableHead}
+                    /> */}
+                    <MaterialTable
+                      title="Exercices"
+                      columns={[
+                        { title: "Exercise ID", field: "ExerciseID" },
+                        { title: "Exercise Name", field: "ExerciseName" },
+                        { title: "Primary Muscle", field: "PrimaryMuscle" },
+                        { title: "Secondary Muscle", field: "SecondaryMuscle" },
+                      ]}
+                      icons={TableIcons}
+                      data={excerciseDetails}
+
+                      options={{
+                        pageSize: 3,
+                        pageSizeOptions: [6, 12, 15],
+                        headerStyle: {
+                          backgroundColor: '#1F0106',
+                          color: '#FFF',
+                          hover: '#FFF'
+                        }
+                      }}
                     />
                   </div>
                 </div>
@@ -196,9 +222,29 @@ const Dashboard = () => {
                 <div className='own-analytics-table-container'>
                   <div className='own-analytics-container-head'>Available Payment Plans</div>
                   <div className='own-analytics-card1'>
-                    <Table
+                    {/* <Table
                       rows={priceDetails}
                       headCells={priceDetailsTableHead}
+                    /> */}
+                    <MaterialTable
+                      title="Payments"
+                      columns={[
+                        { title: "Payment ID", field: "PaymentID" },
+                        { title: "Payment Type", field: "PaymentType" },
+                        { title: "Price", field: "Price" },
+                      ]}
+                      icons={TableIcons}
+                      data={priceDetails}
+
+                      options={{
+                        pageSize: 3,
+                        pageSizeOptions: [6, 12, 15],
+                        headerStyle: {
+                          backgroundColor: '#1F0106',
+                          color: '#FFF',
+                          hover: '#FFF'
+                        }
+                      }}
                     />
                   </div>
                 </div>

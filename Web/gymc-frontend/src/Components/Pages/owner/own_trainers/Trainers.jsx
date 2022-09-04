@@ -16,12 +16,19 @@ import trainee4 from '../../../../images/owner/te4.png'
 import trainee5 from '../../../../images/owner/te5.png'
 import Arrow from '../../../../images/Icons/arrow-square-right.svg'
 import './Trainers.css'
+import MaterialTable from "material-table";
+import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
+import DeleteModal from '../../../Utilities/Popups/DeletionModal'
+import HoldModal from '../../../Utilities/Popups/HoldModel'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 
 export default function Trainers() {
+
+    const [openModal, setOpenModal] = useState(false);
+    const [openModal2, setOpenModal2] = useState(false);
 
     useEffect(() => {
         checkValidate();
@@ -38,7 +45,7 @@ export default function Trainers() {
         {
             TrainerImg: (<img src={trainee1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
             TrainerID: "S001",
-            TrainerName: "Thiyangi Senevirathna",
+            Name: "Thiyangi Senevirathna",
             Phone: "0714558741",
             Address: "No. 46/4, Tample road, Narammala",
             // RegDate: "2019-06-30",
@@ -58,7 +65,7 @@ export default function Trainers() {
         {
             TrainerImg: (<img src={trainee2} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
             TrainerID: "S002",
-            TrainerName: "Bashitha Marasinghe",
+            Name: "Bashitha Marasinghe",
             Phone: "075584736",
             Address: "No. 46/4, Church road, Dambadeniya",
             // RegDate: "2019-07-21",
@@ -79,7 +86,7 @@ export default function Trainers() {
         {
             TrainerImg: (<img src={trainee3} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
             TrainerID: "S003",
-            TrainerName: "Inosha Perera",
+            Name: "Inosha Perera",
             Phone: "0775587511",
             Address: "No. 16/4, Temple Road, Pannala",
             // RegDate: "2020-17-15",
@@ -100,7 +107,7 @@ export default function Trainers() {
         {
             TrainerImg: (<img src={trainee4} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
             TrainerID: "S004",
-            TrainerName: "Rasangi Madhushika",
+            Name: "Rasangi Madhushika",
             Phone: "078558456",
             Address: "Negombo Road, Giriulla",
             // RegDate: "2020-08-17",
@@ -121,7 +128,7 @@ export default function Trainers() {
         {
             TrainerImg: (<img src={trainee5} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
             TrainerID: "S005",
-            TrainerName: "Ishan Karunananyake",
+            Name: "Ishan Karunananyake",
             Phone: "0765584751",
             Address: "Temple road, Damabadeniya",
             // RegDate: "2020-10-23",
@@ -142,7 +149,7 @@ export default function Trainers() {
         {
             TrainerImg: (<img src={trainee6} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
             TrainerID: "S006",
-            TrainerName: "Madhupa Minol",
+            Name: "Madhupa Minol",
             Phone: "0765584751",
             Address: "Church road, Giriulla",
             // RegDate: "2020-11-11",
@@ -163,16 +170,16 @@ export default function Trainers() {
 
     ]);
 
-    const [trainerDetailsTableHead] = useState([
-        { id: "TrainerImg", label: "", numeric: false },
-        { id: "TrainerID", label: "TRAINER ID", numeric: false },
-        { id: "TrainerName", label: "TRAINER NAME", numeric: false },
-        { id: "Phone", label: "PHONE", numeric: false },
-        { id: "Address", label: "ADDRESS", numeric: false },
-        // { id: "RegDate", label: "REG ON", numeric: false },
-        { id: "Status", label: "STATUS", numeric: false },
-        { id: "Actions", label: "ACTIONS", numeric: false },
-    ]);
+    // const [trainerDetailsTableHead] = useState([
+    //     { id: "TrainerImg", label: "", numeric: false },
+    //     { id: "TrainerID", label: "TRAINER ID", numeric: false },
+    //     { id: "TrainerName", label: "TRAINER NAME", numeric: false },
+    //     { id: "Phone", label: "PHONE", numeric: false },
+    //     { id: "Address", label: "ADDRESS", numeric: false },
+    //     // { id: "RegDate", label: "REG ON", numeric: false },
+    //     { id: "Status", label: "STATUS", numeric: false },
+    //     { id: "Actions", label: "ACTIONS", numeric: false },
+    // ]);
 
 
     return (
@@ -185,7 +192,7 @@ export default function Trainers() {
                     <form action="">
                         <div className="filter-container">
                             <div className="inputFields-container">
-                                <div className='searchbar-container'>
+                                {/* <div className='searchbar-container'>
                                     <div className="form-label-container">
                                         <label class="form-label" for="form1">Trainer ID</label>
                                     </div>
@@ -198,8 +205,8 @@ export default function Trainers() {
                                         </div>
                                     </div>
 
-                                </div>
-                                <div className="dropdown-container">
+                                </div> */}
+                                {/* <div className="dropdown-container">
                                     <div className="form-label-container">
                                         <label class="form-label" for="form1">Status</label>
                                     </div>
@@ -209,7 +216,7 @@ export default function Trainers() {
                                         <option> select 3</option>
                                         <option> select 4</option>
                                     </select>
-                                </div>
+                                </div> */}
                             </div>
                             <div className="button-container">
                                 <Link to='/OaddTrainer'>
@@ -219,11 +226,69 @@ export default function Trainers() {
 
                         </div>
                     </form>
-                    <Table
+                    {/* <Table
                         rows={trainerDetails}
                         headCells={trainerDetailsTableHead}
                         tableName={"Trainers"}
-                    />
+                    /> */}
+                    <div className="table-div">
+                        <MaterialTable
+                            title="System Users"
+                            columns={[
+                                { title: "TrainerImg", field: "TrainerImg" },
+                                { title: "TrainerID", field: "TrainerID" },
+                                { title: "name", field: "Name" },
+                                { title: "phone", field: "Phone" },
+                                { title: "address", field: "Address" },
+                                { title: "status", field: "Status" },
+
+                            ]}
+                            icons={TableIcons}
+                            data={trainerDetails}
+                            actions={[
+                                {
+                                    icon: () => {
+                                        return (
+
+                                            <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Arrow} alt="" height={20} width={20} /></span>
+                                        );
+                                    },
+                                    onClick: (event, rowData) => {
+
+                                    },
+                                },
+                                {
+                                    icon: () => {
+                                        return (
+                                            <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} onClick={() => setOpenModal(true)} alt="" height={20} width={20} /></span>
+                                        );
+                                    },
+                                    onClick: (event, rowData) => {
+
+                                    },
+                                },
+                                {
+                                    icon: () => {
+                                        return (
+                                            <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Hold} alt="" onClick={() => setOpenModal2(true)} height={20} width={20} /></span>
+                                        );
+                                    },
+                                    onClick: (event, rowData) => {
+
+                                    },
+                                },
+                            ]}
+                            options={{
+                                headerStyle: {
+                                    backgroundColor: '#1F0106',
+                                    color: '#FFF',
+                                    hover: '#FFF'
+                                }
+                            }}
+                        />
+                    </div>
+                    <DeleteModal open={openModal} onClose={() => setOpenModal(false)} />
+                    <HoldModal open={openModal2} onClose={() => setOpenModal2(false)} />
                 </div>
             </div >
         </div >

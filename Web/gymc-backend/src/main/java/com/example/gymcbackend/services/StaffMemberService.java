@@ -58,11 +58,11 @@ public class StaffMemberService {
             user.setPassword(passwordEncoder.encode(pw));
             user.setStatus(true);
 
-            if (staffMember.getStaffType() == 1 ){
+            if (staffMember.getStaffType() == "Owner" ){
                 user.setUserLevel("Owner");
-            } else if (staffMember.getStaffType() == 2 ) {
+            } else if (staffMember.getStaffType() == "Receptionist" ) {
                 user.setUserLevel("Receptionist");
-            } else if (staffMember.getStaffType() == 3) {
+            } else if (staffMember.getStaffType() == "Trainer") {
                 user.setUserLevel("Trainer");
             } else {
                 user.setUserLevel("Admin");
@@ -80,10 +80,10 @@ public class StaffMemberService {
             staffMemberEnt.setAddress(staffMember.getAddress());
             staffMemberEnt.setEmail(staffMember.getEmail());
 
-            if (staffMember.getStaffType() == 1 || staffMember.getStaffType() == 2 || staffMember.getStaffType() == 4){
+            if (staffMember.getStaffType() == "Owner" || staffMember.getStaffType() == "Receptionist" || staffMember.getStaffType() == "Admin"){
                 staffMemberEnt.setStaffType(staffMember.getStaffType());
             }else{
-                staffMemberEnt.setStaffType(3);
+                staffMemberEnt.setStaffType("Trainer");
             }
 
             staffMemberEnt.setPhoneNumber(staffMember.getPhoneNumber());

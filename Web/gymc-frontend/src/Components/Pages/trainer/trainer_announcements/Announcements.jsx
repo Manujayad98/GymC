@@ -39,57 +39,57 @@ const Announcements = () => {
     {
       Date_Time: "2022/08/15",
       Topic: "Gym Closure",
-      Announcement:"Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
+      Announcement: "Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
     },
     {
       Date_Time: "2022/08/15",
       Topic: "Gym Closure",
-      Announcement:"Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
+      Announcement: "Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
     },
     {
       Date_Time: "2022/08/15",
       Topic: "Gym Closure",
-      Announcement:"Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
+      Announcement: "Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
     },
     {
       Date_Time: "2022/08/15",
       Topic: "Gym Closure",
-      Announcement:"Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
+      Announcement: "Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
     },
     {
       Date_Time: "2022/08/15",
       Topic: "Gym Closure",
-      Announcement:"Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
+      Announcement: "Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
     },
     {
       Date_Time: "2022/08/15",
       Topic: "Gym Closure",
-      Announcement:"Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
+      Announcement: "Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
     },
     {
       Date_Time: "2022/08/15",
       Topic: "Gym Closure",
-      Announcement:"Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
+      Announcement: "Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
     },
     {
       Date_Time: "2022/08/15",
       Topic: "Gym Closure",
-      Announcement:"Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
+      Announcement: "Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
     },
     {
       Date_Time: "2022/08/15",
       Topic: "Gym Closure",
-      Announcement:"Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
+      Announcement: "Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
     },
     {
       Date_Time: "2022/08/15",
       Topic: "Gym Closure",
-      Announcement:"Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
+      Announcement: "Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
     },
     {
       Date_Time: "2022/08/15",
       Topic: "Gym Closure",
-      Announcement:"Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
+      Announcement: "Gym C will be closed on 2022/08/17 due to unavoidable circumstances",
     },
 
   ]);
@@ -111,13 +111,13 @@ const Announcements = () => {
       <div className='body-container'>
         <HeaderO title="Announcements" />
         <div className="trainer-announcement-content-container">
-         
+
 
 
           {/* start table */}
           <div className="trainer-announcement-table">
 
-         
+
             <div className='trainer-announcement-table-card'>
               <Table
                 rows={announcementDetails}

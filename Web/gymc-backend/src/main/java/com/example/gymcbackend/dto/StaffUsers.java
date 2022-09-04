@@ -5,7 +5,7 @@ public class StaffUsers {
     private Long user_id;
     private String first_name;
     private String last_name;
-    private  Integer staff_type;
+    private  String staff_type;
     private  Integer status;
 
     public void setUser_id(Long user_id) {
@@ -20,7 +20,7 @@ public class StaffUsers {
         this.last_name = last_name;
     }
 
-    public void setStaff_type(Integer staff_type) {
+    public void setStaff_type(String staff_type) {
         this.staff_type = staff_type;
     }
 
@@ -40,7 +40,7 @@ public class StaffUsers {
         return last_name;
     }
 
-    public Integer getStaff_type() {
+    public String getStaff_type() {
         return staff_type;
     }
 

@@ -27,9 +27,13 @@ public class Exercise {
 //    @JoinColumn(name = "equipmentID")
 //    Equipment equipment;
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinTable(name = "exercise_equipments", joinColumns = @JoinColumn(referencedColumnName = "exerciseID"),inverseJoinColumns = @JoinColumn(referencedColumnName ="equipmentID"))
-    private List<Equipment> equipment;
+//    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+//    @JoinTable(name = "exercise_equipments", joinColumns = @JoinColumn(referencedColumnName = "exerciseID"),inverseJoinColumns = @JoinColumn(referencedColumnName ="equipmentID"))
+//    private List<Equipment> equipment;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "equipmentid")
+    Equipment equipment;
 
 
     public void setId(long id) {
@@ -52,7 +56,11 @@ public class Exercise {
         this.secondaryMuscle = secondaryMuscle;
     }
 
-    public void setEquipment(List<Equipment> equipment) {
+//    public void setEquipment(List<Equipment> equipment) {
+//        this.equipment = equipment;
+//    }
+
+    public void setEquipment(Equipment equipment) {
         this.equipment = equipment;
     }
 
@@ -76,7 +84,11 @@ public class Exercise {
         return secondaryMuscle;
     }
 
-    public List<Equipment> getEquipment() {
+//    public List<Equipment> getEquipment() {
+//        return equipment;
+//    }
+
+    public Equipment getEquipment() {
         return equipment;
     }
 }
