@@ -17,12 +17,17 @@ import trainer5 from '../../../../images/owner/tr4.png'
 import trainer6 from '../../../../images/owner/tr5.png'
 
 import './Trainees.css'
+import MaterialTable from "material-table";
+import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
+import DeleteModal from '../../../Utilities/Popups/DeletionModal'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 
 const Dashboard = () => {
+
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     checkValidate();
@@ -40,9 +45,9 @@ const Dashboard = () => {
       TraineeImg: (<img src={trainer1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
       TraineeID: "M001",
       TraineeName: "Nilupul Madhuwantha",
-      TraineeType: "Personal",
+      Type: "Personal",
       Phone: "0714558741",
-      RegDate: "2018-10-24",
+      RegOn: "2018-10-24",
       Actions: (
         <span >
           <span style={{ paddingRight: "20px" }}><Link to='/OviewWorkout'><img src={Arrow} alt="" height={20} width={20} /></Link></span>
@@ -55,9 +60,9 @@ const Dashboard = () => {
       TraineeImg: (<img src={trainer2} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
       TraineeID: "M002",
       TraineeName: "Ishara Rodrigo",
-      TraineeType: "Personal",
+      Type: "Personal",
       Phone: "0765145632",
-      RegDate: "2018-12-11",
+      RegOn: "2018-12-11",
       Actions: (
         <span >
           <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
@@ -70,9 +75,9 @@ const Dashboard = () => {
       TraineeImg: (<img src={trainer3} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
       TraineeID: "M002",
       TraineeName: "Ruwan Gamage",
-      TraineeType: "Non-Personal",
+      Type: "Non-Personal",
       Phone: "0775145632",
-      RegDate: "2019-06-22",
+      RegOn: "2019-06-22",
       Actions: (
         <span >
           <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
@@ -85,9 +90,9 @@ const Dashboard = () => {
       TraineeImg: (<img src={trainer4} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
       TraineeID: "M002",
       TraineeName: "Imesh Kasthurirathna",
-      TraineeType: "Personal",
+      Type: "Personal",
       Phone: "0774564751",
-      RegDate: "2020-08-19",
+      RegOn: "2020-08-19",
       Actions: (
         <span >
           <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
@@ -100,9 +105,9 @@ const Dashboard = () => {
       TraineeImg: (<img src={trainer5} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
       TraineeID: "M002",
       TraineeName: "Mayori Ekanayake",
-      TraineeType: "Daily",
+      Type: "Daily",
       Phone: "0765545127",
-      RegDate: "2021-10-31",
+      RegOn: "2021-10-31",
       Actions: (
         <span >
           <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
@@ -115,9 +120,9 @@ const Dashboard = () => {
       TraineeImg: (<img src={trainer6} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
       TraineeID: "M002",
       TraineeName: "KG Hasara",
-      TraineeType: "Non-Personal",
+      Type: "Non-Personal",
       Phone: "0765584751",
-      RegDate: "2020-11-11",
+      RegOn: "2020-11-11",
       Actions: (
         <span >
           <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
@@ -129,15 +134,15 @@ const Dashboard = () => {
 
   ]);
 
-  const [trainerDetailsTableHead] = useState([
-    { id: "TraineeImg", label: "", numeric: false },
-    { id: "TraineeID", label: "TRAINEE ID", numeric: false },
-    { id: "TrainerName", label: "TRAINEE NAME", numeric: false },
-    { id: "TraineeType", label: "TRAINEE TYPE", numeric: false },
-    { id: "Phone", label: "PHONE", numeric: false },
-    { id: "RegDate", label: "REG ON", numeric: false },
-    { id: "Actions", label: "ACTIONS", numeric: false },
-  ]);
+  // const [trainerDetailsTableHead] = useState([
+  //   { id: "TraineeImg", label: "", numeric: false },
+  //   { id: "TraineeID", label: "TRAINEE ID", numeric: false },
+  //   { id: "TrainerName", label: "TRAINEE NAME", numeric: false },
+  //   { id: "TraineeType", label: "TRAINEE TYPE", numeric: false },
+  //   { id: "Phone", label: "PHONE", numeric: false },
+  //   { id: "RegDate", label: "REG ON", numeric: false },
+  //   { id: "Actions", label: "ACTIONS", numeric: false },
+  // ]);
   return (
     <div className='main-container'>
       <SidebarO />
@@ -146,7 +151,7 @@ const Dashboard = () => {
         <div className="content-container">
           <form action="">
             <div className="filter-container">
-              <div className="inputFields-container">
+              {/* <div className="inputFields-container">
                 <div className='searchbar-container'>
                   <div className="form-label-container">
                     <label class="form-label" for="form1">Trainee ID</label>
@@ -172,15 +177,62 @@ const Dashboard = () => {
                     <option> select 4</option>
                   </select>
                 </div>
-              </div>
+              </div> */}
 
             </div>
           </form>
-          <Table
+          {/* <Table
             rows={trainerDetails}
             headCells={trainerDetailsTableHead}
             tableName={"Trainers"}
-          />
+          /> */}
+          <div className="table-div">
+            <MaterialTable
+              title="System Users"
+              columns={[
+                { title: "Trainee ID", field: "TraineeID" },
+                { title: "Trainee Name", field: "TraineeName" },
+                { title: "Trainee Type", field: "Type" },
+                { title: "Phone", field: "Phone" },
+                { title: "Reg On", field: "RegOn" },
+
+              ]}
+              icons={TableIcons}
+              data={trainerDetails}
+              actions={[
+                {
+                  icon: () => {
+                    return (
+
+                      <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Arrow} alt="" height={20} width={20} /></span>
+                    );
+                  },
+                  onClick: (event, rowData) => {
+
+                  },
+                },
+                {
+                  icon: () => {
+                    return (
+                      <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} onClick={() => setOpenModal(true)} alt="" height={20} width={20} /></span>
+                    );
+                  },
+                  onClick: (event, rowData) => {
+
+                  },
+                },
+
+              ]}
+              options={{
+                headerStyle: {
+                  backgroundColor: '#1F0106',
+                  color: '#FFF',
+                  hover: '#FFF'
+                }
+              }}
+            />
+            <DeleteModal open={openModal} onClose={() => setOpenModal(false)} />
+          </div>
         </div>
 
       </div>
