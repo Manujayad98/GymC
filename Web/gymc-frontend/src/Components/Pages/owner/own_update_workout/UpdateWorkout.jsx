@@ -111,7 +111,7 @@ export default function UpdateWorkout() {
 
     const [excerciseDetails] = useState([
         {
-            Name: "Incline Press",
+            Exercise: "Incline Press",
             Repetitions: (
                 <span >
                     <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
@@ -132,7 +132,7 @@ export default function UpdateWorkout() {
             ),
         },
         {
-            Name: "Incline Press",
+            Exercise: "Incline Press",
             Repetitions: (
                 <span >
                     <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
@@ -153,7 +153,7 @@ export default function UpdateWorkout() {
             ),
         },
         {
-            Name: "Incline Press",
+            Exercise: "Incline Press",
             Repetitions: (
                 <span >
                     <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
@@ -174,7 +174,7 @@ export default function UpdateWorkout() {
             ),
         },
         {
-            Name: "Incline Press",
+            Exercise: "Incline Press",
             Repetitions:  (
                 <span >
                     <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
@@ -195,7 +195,7 @@ export default function UpdateWorkout() {
             ),
         },
         {
-            Name: "Incline Press",
+            Exercise: "Incline Press",
             Repetitions:  (
                 <span >
                     <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
@@ -216,7 +216,7 @@ export default function UpdateWorkout() {
             ),
         },
         {
-            Name: "Incline Press",
+            Exercise: "Incline Press",
             Repetitions:  (
                 <span >
                     <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
@@ -240,7 +240,7 @@ export default function UpdateWorkout() {
         
     ]);
     const [excerciseDetailsTableHead] = useState([
-        { id: "Name", label: "NAME", numeric: false },
+        { id: "Exercise", label: "EXERCISE", numeric: false },
         { id: "Repetitions", label: "REPETITIONS", numeric: false },
 
     ]);
@@ -414,10 +414,19 @@ export default function UpdateWorkout() {
 
                                             </div>
                                         </div>
+                                        <div className="form-row">
+                                            <div className="form-col1">
+                                                
+                                            </div>
+                                            <div className="form-col2">
+                                            
+                                            </div>
+                                            <button onClick={handleSubmit} className="suggest-button">Suggest</button>
+                                        </div>
                                     </div>
                                 </div>
 
-
+                            
 
                             </form>
                             <ToastContainer />
@@ -432,12 +441,12 @@ export default function UpdateWorkout() {
                                 headCells={excerciseDetailsTableHead}
                                 tableName={"Exercises"}
                             />
-
+                        <button  className="own_update_workout-btn">Update</button>
                         </div>
                     </div>
                     {/* <div className="own_update_workout_btn"> */}
 
-                    <button onClick={handleSubmit} className="own_update_workout-btn">Save</button>
+                    
 
                     {/* </div> */}
 
