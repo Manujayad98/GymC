@@ -13,6 +13,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // import TraineeNavBar from './src/pages/Trainee/TraineeNavBar'
 import TrainerNavBar from './src/pages/Trainer/TraineeNavBar'
+// import ProfilePage from './src/pages/Common/ProfilePage'
 
 
 import {
@@ -44,6 +45,7 @@ const App = () => {
         <Stack.Screen name="Guide" component={AppoinmentGuidePage} />
         <Stack.Screen name="Explore" component={ExploreAppPage} />
         <Stack.Screen name="TraineeHome" component={TraineeHomeScreen} />
+        {/* <Stack.Screen name="Profile" component={ProfilePage} /> */}
 
       </Stack.Navigator>
     </NavigationContainer>
