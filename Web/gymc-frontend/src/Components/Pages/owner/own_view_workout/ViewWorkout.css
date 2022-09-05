@@ -143,22 +143,19 @@
     background-color: #7bb4e9;
   }
   .update_btn{
-    background-color: #3DA2FF;
+    background-color: #32E04E;
     border: none;
-    color: #000;
+    color: white;
     padding: 5px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 18px;
-    margin: 2px 1px;
-    cursor: pointer;
-    width: 12vw;
-    height: 40px;
-    border-radius: 8px;
-    padding: 0 20px 0 10px;
-    margin-left: 650px;
-    margin-top: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-left: 80%;
+    margin-bottom: 10px;
+    margin-right: 50px;
   }
   .update_btn:hover{
     background-color: #78aee0;

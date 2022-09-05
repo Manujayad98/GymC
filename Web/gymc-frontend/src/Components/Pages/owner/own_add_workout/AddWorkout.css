@@ -73,6 +73,9 @@
     width:50%;
    
 }
+.reps-edit{
+    width: 15px;
+}
 @media screen and (max-width:800px){
     .own-addworkout-left{
         width: 100%;

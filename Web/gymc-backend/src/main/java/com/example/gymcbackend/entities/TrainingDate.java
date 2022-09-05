@@ -5,17 +5,41 @@ import javax.persistence.*;
 import java.sql.Time;
 import java.util.Date;
 
-@Table(name = "trainingDate")
+//@Table(name = "trainingDate")
 @Entity
 public class TrainingDate {
 
-    @Id
+    @EmbeddedId
+    WorkoutPlanExerciseKey id;
+
     @Column(name = "training_date")
     private Date trainingDate;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "workoutPlanID")
+
+    @ManyToOne
+    @MapsId("workoutPlanId")
+    @JoinColumn(name = "workout_planid")
     WorkoutPlan workoutPlan;
+
+
+    @ManyToOne
+    @MapsId("exerciseId")
+    @JoinColumn(name = "exercise_id")
+    Exercise exercise;
+
+
+
+
+    @Column(name = "no_of_repetions")
+    private Integer noOfRepetitions;
+
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "workoutPlanID")
+//    WorkoutPlan workoutPlan;
+
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "exerciseID")
+//    Exercise exercise;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "traineeId")
@@ -43,5 +67,21 @@ public class TrainingDate {
 
     public Trainee getTrainee() {
         return trainee;
+    }
+
+    public Integer getNoOfRepetitions() {
+        return noOfRepetitions;
+    }
+
+    public void setNoOfRepetitions(Integer noOfRepetitions) {
+        this.noOfRepetitions = noOfRepetitions;
+    }
+
+    public Exercise getExercise() {
+        return exercise;
+    }
+
+    public void setExercise(Exercise exercise) {
+        this.exercise = exercise;
     }
 }
