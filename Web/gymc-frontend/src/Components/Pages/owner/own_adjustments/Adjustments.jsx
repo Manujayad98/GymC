@@ -242,7 +242,7 @@ export default function Exercises() {
                         </div>
                     </div>
                 </div>
-                <DeleteModal open={openModal} onClose={() => setOpenModal(false)} />
+                {/* <DeleteModal open={openModal} onClose={() => setOpenModal(false)} /> */}
             </div>
         </div>
     )
