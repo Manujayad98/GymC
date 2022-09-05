@@ -27,7 +27,7 @@ public class TraineeViewScheduleJdbcRepository {
                 "INNER JOIN workout_plan as wp  ON w.workout_planid=wp.workout_planid " +
                 "INNER JOIN training_date as td  ON w.workout_planid=td.workout_planid " +
                 "INNER JOIN exercise as e ON td.exercise_id=e.exerciseid " +
-                "AND t.trainee_id=? AND w.status=1;";
+                "AND t.trainee_id=? AND w.status=1";
 
         List<TraineeViewScheduleDetailsResponse> traineeViewSchedule = jdbc.query(query, new BeanPropertyRowMapper<TraineeViewScheduleDetailsResponse>(TraineeViewScheduleDetailsResponse.class));
         return traineeViewSchedule;

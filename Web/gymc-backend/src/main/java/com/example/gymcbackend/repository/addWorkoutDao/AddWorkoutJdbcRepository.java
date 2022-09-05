@@ -5,9 +5,11 @@ import com.example.gymcbackend.dto.TraineeViewScheduleDetailsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class AddWorkoutJdbcRepository {
     @Autowired
     protected NamedParameterJdbcTemplate jdbc;

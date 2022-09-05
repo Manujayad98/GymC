@@ -14,6 +14,7 @@ public class TraineeViewScheduleService {
     TraineeViewScheduleJdbcRepository traineeViewScheduleJdbcRepository;
 
     public List<TraineeViewScheduleDetailsResponse> getTraineeSchedule(Long traineeId) {
+        System.out.println("schedule service");
         List<TraineeViewScheduleDetailsResponse> traineeViewSchedule = traineeViewScheduleJdbcRepository.getTraineeSchedule(traineeId);
         return traineeViewSchedule;
 

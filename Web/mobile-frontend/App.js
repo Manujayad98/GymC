@@ -2,6 +2,7 @@ import React from 'react'
 import LoginPage from './src/pages/Common/LoginPage/LoginPage'
 import ForgotPasswordPage from './src/pages/Common/ForgotPasswordPage/ForgotPasswordPage'
 import ResetPasswordPage from './src/pages/Common/ResetPasswordPage/ResetPasswordPage'
+import TraineeHomeScreen from './src/pages/Trainer/TraineePages/Trainee_Home_Page'
 import StartPage from './src/pages/Common/StartPage/StartPage'
 // import { NavigationContainer } from '@react-navigation/native';
 import SetupProfilePage from './src/pages/Common/SetupProfilePage/SetupProfilePage'
@@ -24,27 +25,28 @@ const App = () => {
 
   return (
 
-   <TrainerNavBar/>
+  //  <TrainerNavBar/>
 
-    // <NavigationContainer>
-    //   <Stack.Navigator>
+    <NavigationContainer>
+      <Stack.Navigator>
 
-    //     <Stack.Screen
-    //       name="Startup"
-    //       component={StartPage}
+        <Stack.Screen
+          name="Startup"
+          component={StartPage}
           
-    //       options={{ title: 'Startup' }}
-    //     />
-    //     <Stack.Screen name="Login" component={LoginPage} />
-    //     <Stack.Screen name="Forgot" component={ForgotPasswordPage} />
-    //     <Stack.Screen name="Reset" component={ResetPasswordPage} />
-    //     <Stack.Screen name="Setup" component={SetupProfilePage} />
-    //     <Stack.Screen name="SetupPw" component={SetupPasswordPage} />
-    //     <Stack.Screen name="Guide" component={AppoinmentGuidePage} />
-    //     <Stack.Screen name="Explore" component={ExploreAppPage} />
+          options={{ title: 'Startup' }}
+        />
+        <Stack.Screen name="Login" component={LoginPage} />
+        <Stack.Screen name="Forgot" component={ForgotPasswordPage} />
+        <Stack.Screen name="Reset" component={ResetPasswordPage} />
+        <Stack.Screen name="Setup" component={SetupProfilePage} />
+        <Stack.Screen name="SetupPw" component={SetupPasswordPage} />
+        <Stack.Screen name="Guide" component={AppoinmentGuidePage} />
+        <Stack.Screen name="Explore" component={ExploreAppPage} />
+        <Stack.Screen name="TraineeHome" component={TraineeHomeScreen} />
 
-    //   </Stack.Navigator>
-    // </NavigationContainer>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 const styles = StyleSheet.create({
