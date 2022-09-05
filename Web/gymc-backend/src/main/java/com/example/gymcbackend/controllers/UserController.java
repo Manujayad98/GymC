@@ -92,10 +92,38 @@ public class UserController {
         return staffMemberService.getAllStaffMembers();
     }
 
+    // DELETE STAFF USER
+    @PutMapping("/deleteStaffUser/{staffUserID}")
+    public long deleteStaffUser(@PathVariable String staffUserID){
+        int sts= 0;
+        return staffMemberService.changeStaffUserStatus(staffUserID,sts);
+    }
+
+    // HOLD STAFF USER
+    @PutMapping("/holdStaffUser/{staffUserID}")
+    public long holdStaffUser(@PathVariable String staffUserID){
+        int sts= 2;
+        return staffMemberService.changeStaffUserStatus(staffUserID,sts);
+    }
+
+    // ACTIVE STAFF USER
+    @PutMapping("/activeStaffUser/{staffUserID}")
+    public long activeStaffUser(@PathVariable String staffUserID){
+        int sts= 1;
+        return staffMemberService.changeStaffUserStatus(staffUserID,sts);
+    }
+
     // GET DATA FOR TRAINEE TABLE
     @GetMapping("/trainees")
     public List<TraineeInfo> getAllTrainees(){
 
         return traineeService.getAllTrainees();
+    }
+
+    // DELETE TRAINEE
+    @PutMapping("/deleteTrainee/{traineeID}")
+    public long deleteTrainee(@PathVariable String traineeID){
+        System.out.println("1ta");
+        return staffMemberService.changeTraineeStatus(traineeID);
     }
 }

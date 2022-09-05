@@ -1,20 +1,22 @@
 package com.example.gymcbackend.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.util.Date;
+
 public class TraineeInfo {
-    private Long trainee_id;
-    private String first_name;
-    private String last_name;
+    private String trainee_id;
+    private String full_name;
     private String phone_number;
     private String address;
     private  Integer status;
 
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date registered_date;
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setFull_name(String full_name) {
+        this.full_name = full_name;
     }
 
     public void setPhone_number(String phone_number) {
@@ -25,18 +27,17 @@ public class TraineeInfo {
         this.address = address;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+
+    public void setTrainee_id(String trainee_id) {
+        this.trainee_id = trainee_id;
     }
 
-
-
-    public String getFirst_name() {
-        return first_name;
+    public void setRegistered_date(Date registered_date) {
+        this.registered_date = registered_date;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getFull_name() {
+        return full_name;
     }
 
     public String getPhone_number() {
@@ -47,7 +48,12 @@ public class TraineeInfo {
         return address;
     }
 
-    public Integer getStatus() {
-        return status;
+
+    public String getTrainee_id() {
+        return trainee_id;
+    }
+
+    public Date getRegistered_date() {
+        return registered_date;
     }
 }
