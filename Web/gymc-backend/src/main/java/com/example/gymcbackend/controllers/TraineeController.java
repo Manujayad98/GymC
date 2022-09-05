@@ -1,6 +1,6 @@
 package com.example.gymcbackend.controllers;
 
-import com.example.gymcbackend.dto.TraineeDetailsResponse;
+import com.example.gymcbackend.dto.TraineeInfo;
 import com.example.gymcbackend.services.TraineeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,7 +19,7 @@ public class TraineeController {
     TraineeService traineeService;
 
     @GetMapping("/getAllTrainees")
-    public List<TraineeDetailsResponse> getAllTrainees(){
+    public List<TraineeInfo> getAllTrainees(){
         return traineeService.getAllTrainees();
     }
 }

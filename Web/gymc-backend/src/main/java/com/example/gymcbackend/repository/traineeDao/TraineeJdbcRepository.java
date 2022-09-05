@@ -41,11 +41,11 @@ public class TraineeJdbcRepository {
 
     }
 
-    @Autowired
-    protected NamedParameterJdbcTemplate jdbc;
+//    @Autowired
+//    protected NamedParameterJdbcTemplate jdbc;
 
-    @Autowired
-    JdbcTemplate jdbcTemplate;
+//    @Autowired
+//    JdbcTemplate jdbcTemplate;
     public List<TraineeInfo> findAllTrainees() {
         String query ="SELECT t.trainee_id, t.first_name, t.last_name, t.phone_number, t.address, u.status " +
                 "FROM trainee as t " +
