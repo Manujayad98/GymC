@@ -22,7 +22,7 @@ const StartPage = ({ navigation }) => {
      
       <Image source={Logo} style={styles.logo} 
       resizeMode="contain"/>
-      <Text style={styles.heading1}>DON'T BE AFRAID OF<br/>FAILURE<br/>THIS IS THE WAY TO<br/>SUCCESS</Text>
+      <Text style={styles.heading1}>DON'T BE AFRAID OF FAILURE<br/>THIS IS THE WAY TO<br/>SUCCESS</Text>
       <Text style={styles.heading2}>Carry your day with good<br/>fitness</Text>
       
       <view style={styles.loginButton}>
