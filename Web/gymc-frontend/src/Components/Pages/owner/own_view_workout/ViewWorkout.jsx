@@ -13,6 +13,7 @@ import InputField from "../../../Utilities/Form/InputField";
 import { Validators } from "../../../Utilities/Form/Validator/Validator";
 import Table from '../../../Utilities/Tables/Table2';
 import { Link } from 'react-router-dom'
+import CalendarComp from "../../../Utilities/CalendarComp/CalendarComp";
 
 
 export default function ViewWorkout() {
@@ -104,28 +105,28 @@ export default function ViewWorkout() {
 
     return (
         <div className='main-container'>
-          <SidebarO />
-          <div className='body-container'>
-            <HeaderO title="Trainees" />
-            <div className="own-trainee-content-container">
-              <div className="left">
-                  <div className="own-trainee-profile">
-                        
-                        <div className="workout-profile-card">
-                            <div className='own-dashboard-card-profile-cards'>
-                                <div className='own-viewworkout-card-img-container'>
-                                    <img src={Pic1} alt="" />
+            <SidebarO />
+            <div className='body-container'>
+                <HeaderO title="Trainees" />
+                <div className="own-trainee-content-container">
+                    <div className="left">
+                        <div className="own-trainee-profile">
+
+                            <div className="workout-profile-card">
+                                <div className='own-dashboard-card-profile-cards'>
+                                    <div className='own-viewworkout-card-img-container'>
+                                        <img src={Pic1} alt="" />
+                                    </div>
+                                    <div className='own-dashboard-card-content'>
+                                        <div className='tname'>S.Rajapakse</div>
+                                        <div className='tid'>T0001</div>
+
+                                    </div>
                                 </div>
-                                <div className='own-dashboard-card-content'>
-                                    <div className='tname'>S.Rajapakse</div>
-                                    <div className='tid'>T0001</div>
-                                    
-                                </div>
-                            </div>
 
                             </div>
                             <div className="workout-button-card">
-                                <Link to=''>
+                                <Link to='/OaddWorkout'>
                                     <button class="newworkoutbtn">New Workout</button>
                                 </Link>
                                 <Link to='/Otraineeprogress'>
@@ -238,7 +239,7 @@ export default function ViewWorkout() {
                             <div className="own-viewworkout-calender">
 
                                 <div className="own-viewworkout-calender-card">
-                                    <SampleCal />
+                                    <CalendarComp />
                                 </div>
                             </div>
 
@@ -254,7 +255,9 @@ export default function ViewWorkout() {
                                             rows={workoutDetails}
                                             headCells={workoutDetailsTableHead}
                                         />
-
+                                        <Link to='/OupdateWorkout'>
+                                            <button className="update_btn">Update</button>
+                                        </Link>
                                     </Tab>
                                     <Tab eventKey="profile" title="Diet" >
                                         <Table
@@ -270,9 +273,7 @@ export default function ViewWorkout() {
 
 
                             </div>
-                            <Link to='/OupdateWorkout'>
-                                <button className="update_btn">Update</button>
-                            </Link>
+
 
 
                         </div>

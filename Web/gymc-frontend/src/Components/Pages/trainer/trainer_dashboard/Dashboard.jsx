@@ -2,12 +2,16 @@ import React, { useState, useEffect } from 'react'
 import '../trainer_dashboard/Dashboard.css'
 import SidebarO from '../trainer_sidebar/Sidebar'
 import HeaderO from '../trainer_header/Header'
-import Table from '../../../Utilities/Tables/Table2'
 import './Dashboard.css'
 import SampleCal from '../../../Utilities/CalendarComp/SampleCal'
+import MaterialTable from "material-table";
+import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
+import DeleteModal from '../../../Utilities/Popups/DeletionModal'
 
 
 const Dashboard = () => {
+
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     checkValidate();
@@ -37,46 +41,52 @@ const Dashboard = () => {
     ["Dec", 21.45, "color: #e5e4e2"], 
   ];
 
-  const [workoutDetailsTableHead] = useState([
-    { id: "Time", label: "Time", numeric: false },
-    { id: "TrainerName", label: "Trainee Name", numeric: false },
-    { id: "TraineeName", label: "Type", numeric: false }
-  ]);
+  const [appoinmentDetails] = useState([
+    {
+      
+      Time: "8:30A.M",
+      TraineeName: "Nilupul Madhuwantha",
+      Type: "Appoinment", 
+      
+    },
+    {
+      
+      Time: "10:30A.M",
+      TraineeName: "Ishara Rodrigo",
+      Type: "Reservation",   
+      
+    },
+    {
+      
+      Time: "11:30A.M",
+      TraineeName: "Ruwan Gamage",
+      Type: "Reservation",
+      
+    },
+    {
+      
+      Time: "1:00P.M",
+      TraineeName: "Imesh Kasthurirathna",
+      Type: "Appoinment",
+      
+    },
+    {
+      
+      Time: "2:00P.M",
+      TraineeName: "Mayori Ekanayake",
+      Type: "Reservation",
+     
+      
+    },
+    {
+      
+      Time: "3:00P.M",
+      TraineeName: "KG Hasara",
+      Type: "Appoinment",
+     
+      
+    },
 
-  const [workoutDetails] = useState([
-    {
-      Time: "09.30 AM",
-      TrainerName: "Kasun Perera",
-      TraineeName: "Appoinment"
-    },
-    {
-      Time: "10.30 AM",
-      TrainerName: "Rasul Silva",
-      TraineeName: "Reservation"
-    },
-    {
-      Time: "09.30 AM",
-      TrainerName: "Kasun Perera",
-      TraineeName: "Appoinment"
-    },
-    {
-      Time: "10.30 AM",
-      TrainerName: "Sadaru Ekanayake",
-      TraineeName: "Reservation"
-    },
-    {
-      Time: "10.30 AM",
-      TrainerName: "Kalmi Siriwardane",
-      TraineeName: "Reservation"
-    },
-    
-    {
-      Time: "10.30 AM",
-      TrainerName: "Denuka Perera",
-      TraineeName: "Reservation"
-
-      // abc
-    },
   ]);
 
   return (
@@ -103,10 +113,29 @@ const Dashboard = () => {
             <div className='trainer-dashboard-table-container'>
               <div className='trainer-dashboard-container-head'>Appoinments & Reservations</div>
               <div className='trainer-dashboard-card trainer-dashboard-table-cards'>
-                <Table
-                  rows={workoutDetails}
-                  headCells={workoutDetailsTableHead}
-                />
+              <div className="table-div">
+            <MaterialTable
+              title="Upcoming"
+              columns={[
+                { title: "Time", field: "Time" },
+                { title: "Trainee Name", field: "TraineeName" },
+                { title: "Type", field: "Type" },
+                
+
+              ]}
+              icons={TableIcons}
+              data={appoinmentDetails}
+         
+              options={{
+                headerStyle: {
+                  backgroundColor: '#1F0106',
+                  color: '#FFF',
+                  hover: '#FFF'
+                }
+              }}
+            />
+            <DeleteModal open={openModal} onClose={() => setOpenModal(false)} />
+          </div>
               </div>
             </div>
           </div>

@@ -31,7 +31,7 @@ public class WorkoutSchedule {
     StaffMember staffMember;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "tranieeId")
+    @JoinColumn(name = "traineeId")
     Trainee trainee;
 
     @OneToOne(cascade = CascadeType.ALL)

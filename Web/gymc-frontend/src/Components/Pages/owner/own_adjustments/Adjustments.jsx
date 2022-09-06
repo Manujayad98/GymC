@@ -8,6 +8,7 @@ import Edit from '../../../../images/Icons/pen-solid.svg'
 import Trash from '../../../../images/Icons/trash-solid.svg'
 import Button1 from '@mui/material/Button';
 import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
+<<<<<<< HEAD
 import { Link } from 'react-router-dom'
 
 import DeleteModal from '../../../Utilities/Popups/DeletionModal'
@@ -32,6 +33,7 @@ export default function Exercises() {
 
     const [excerciseDetails] = useState([
         {
+<<<<<<< HEAD
             ExerciseID: 'E0001',
             ExerciseName: "Incline Press",
             PrimaryMuscle: "Muscle 1",
@@ -39,6 +41,7 @@ export default function Exercises() {
 
         },
         {
+<<<<<<< HEAD
             ExerciseID: 'E0002',
             ExerciseName: "Incline Press",
             PrimaryMuscle: "Muscle 1",
@@ -46,6 +49,7 @@ export default function Exercises() {
 
         },
         {
+<<<<<<< HEAD
             ExerciseID: 'E0003',
             ExerciseName: "Incline Press",
             PrimaryMuscle: "Muscle 1",
@@ -111,50 +115,51 @@ export default function Exercises() {
                     <div className="ex">
                         <div className="header">
                             <h3 id="own-adjustment-titles">Exercises</h3>
-                            <Link to='/ONewExercise' style={{ textDecoration: 'none' }}>
-                                <Button1 variant="contained" className="Hbutton">New Exercise</Button1>
-                            </Link>
-                        </div>
-                        <div className='own-adjustment-card'>
-                            {/* <Table
+<<<<<<< HEAD
+    <Link to='/ONewExercise' style={{ textDecoration: 'none' }}>
+        <Button1 variant="contained" className="Hbutton">New Exercise</Button1>
+    </Link>
+                        </div >
+        <div className='own-adjustment-card'>
+            {/* <Table
                                 rows={excerciseDetails}
                                 headCells={excerciseDetailsTableHead}
                                 tableName={"Exercises"}
                             /> */}
-                            <MaterialTable
-                                title="Exercices"
-                                columns={[
-                                    { title: "ExerciseID", field: "Exercise ID" },
-                                    { title: "ExerciseName", field: "Exercise Name" },
-                                    { title: "PrimaryMuscle", field: "Primary Muscle" },
-                                    { title: "SecondaryMuscle", field: "Secondary Muscle" },
-                                ]}
-                                icons={TableIcons}
-                                data={excerciseDetails}
-                                actions={[
-                                    {
-                                        icon: () => {
-                                            return (
-                                                <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} onClick={() => setOpenModal(true)} alt="" height={20} width={20} /></span>
-                                            );
-                                        },
-                                        onClick: (event, rowData) => {
-                                        },
-                                    },
-                                ]}
-                                options={{
-                                    pageSize: 3,
-                                    pageSizeOptions: [6, 12, 15],
-                                    headerStyle: {
-                                        backgroundColor: '#1F0106',
-                                        color: '#FFF',
-                                        hover: '#FFF'
-                                    }
-                                }}
-                            />
+            <MaterialTable
+                title="Exercices"
+                columns={[
+                    { title: "ExerciseID", field: "Exercise ID" },
+                    { title: "ExerciseName", field: "Exercise Name" },
+                    { title: "PrimaryMuscle", field: "Primary Muscle" },
+                    { title: "SecondaryMuscle", field: "Secondary Muscle" },
+                ]}
+                icons={TableIcons}
+                data={excerciseDetails}
+                actions={[
+                    {
+                        icon: () => {
+                            return (
+                                <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} onClick={() => setOpenModal(true)} alt="" height={20} width={20} /></span>
+                            );
+                        },
+                        onClick: (event, rowData) => {
+                        },
+                    },
+                ]}
+                options={{
+                    pageSize: 3,
+                    pageSizeOptions: [6, 12, 15],
+                    headerStyle: {
+                        backgroundColor: '#1F0106',
+                        color: '#FFF',
+                        hover: '#FFF'
+                    }
+                }}
+            />
 
-                        </div>
-                    </div>
+        </div>
+                    </div >
                     <div className="ex">
                         <div className="header">
                             <h3 id="own-adjustment-titles">Payment Plans</h3>
@@ -241,9 +246,9 @@ export default function Exercises() {
                             </div>
                         </div>
                     </div>
-                </div>
-                {/* <DeleteModal open={openModal} onClose={() => setOpenModal(false)} /> */}
-            </div>
-        </div>
+                </div >
+        {/* <DeleteModal open={openModal} onClose={() => setOpenModal(false)} /> */ }
+            </div >
+        </div >
     )
 }
