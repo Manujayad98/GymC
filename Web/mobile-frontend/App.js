@@ -13,6 +13,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // import TraineeNavBar from './src/pages/Trainee/TraineeNavBar'
 import TrainerNavBar from './src/pages/Trainer/TraineeNavBar'
 
+import MyAppointment from './src/pages/Trainer/TraineePages/Trainee_Appointment'
+
 
 import {
   SafeAreaView,
@@ -24,16 +26,16 @@ const App = () => {
 
   return (
 
-   <TrainerNavBar/>
+    <TrainerNavBar />
 
     // <NavigationContainer>
     //   <Stack.Navigator>
 
     //     <Stack.Screen
     //       name="Startup"
-    //       component={StartPage}
-          
-    //       options={{ title: 'Startup' }}
+    //       component={MyAppointment}
+
+    //       options={{ title: 'MyAppointment' }}
     //     />
     //     <Stack.Screen name="Login" component={LoginPage} />
     //     <Stack.Screen name="Forgot" component={ForgotPasswordPage} />
@@ -45,6 +47,7 @@ const App = () => {
 
     //   </Stack.Navigator>
     // </NavigationContainer>
+
   );
 };
 const styles = StyleSheet.create({
