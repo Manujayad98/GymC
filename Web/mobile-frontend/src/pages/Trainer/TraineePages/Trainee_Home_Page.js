@@ -1,6 +1,6 @@
 import { View, Text, Image, StyleSheet, useWindowDimensions, ScrollView, SafeAreaView, FlatList, StatusBar } from 'react-native'
 import React, { useState } from 'react'
-// import Logo from '../../../../assets/logo.png'
+import Logo from '../../../../assets/logo.png'
 import CustomInput from '../../../components/CustomInput/CustomInput'
 import CustomButton from '../../../components/CustomButton/CustomButton'
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -9,30 +9,49 @@ import Icon3 from 'react-native-vector-icons/MaterialIcons';
 
 
 
-import ScrollableFeed from 'react-scrollable-feed'
+// import ScrollableFeed from 'react-scrollable-feed'
 
 
 //announcement Feed
 
 const DATA = [
     {
-        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+        id: '1',
         title: 'Annoucement 1',
+        Date:'2nd May 2022',
+        Note:'Gym c will be closed on 20th May 2022'
     },
     {
-        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+        id: '2',
         title: 'Annoucement 2',
+        Date:'2nd May 2022',
+        Note:'Gym c will be closed on 10th August 2022'
     },
     {
-        id: '58694a0f-3da1-471f-bd96-145571e29d72',
+        id: '3',
         title: 'Annoucement 3',
+        Date:'2nd May 2022',
+        Note:'Gym c will be closed on 2nd September 2022'
     },
+    // {
+    //     id: '4',
+    //     title: 'Annoucement 4',
+    //     Date:'2nd May 2022',
+    //     Note:'Gym c will be closed on 20th May 2022'
+    // },
+    // {
+    //     id: '5',
+    //     title: 'Annoucement 5',
+    //     Date:'2nd May 2022',
+    //     Note:'Gym c will be closed on 20th May 2022'
+    // },
+    
 ];
-const Item = ({ title }) => (
-    <View style={styles.item}>
-        <Text style={styles.title}>{title}</Text>
-    </View>
-);
+// const Item = ({ title }) => (
+//     <View style={styles.item}>
+//         <Text style={styles.title}>{title}</Text>
+//     </View>
+// );
 
 export default function Trainer_Home_Page({ navigation }) {
     return (
@@ -48,8 +67,10 @@ export default function Trainer_Home_Page({ navigation }) {
                             <Text style={styles.profilename}>Sumudu Perera</Text>
 
                         </Text>
+
                     </View>
-                    <View style={styles.homebody}>
+                    <Text style={styles.sectionHeader}>Quick Access</Text>
+                    <View style={styles.cardbody}>
                         <View style={styles.box}>
                             <View style={styles.inner}>
                                 <br></br>
@@ -58,7 +79,7 @@ export default function Trainer_Home_Page({ navigation }) {
                                         navigation.navigate('Startup')}
 
                                 /></Text>
-                                <Text>Appointment</Text>
+                                <Text style={styles.cardHeader}>Appointment</Text>
 
                             </View>
                         </View>
@@ -69,7 +90,7 @@ export default function Trainer_Home_Page({ navigation }) {
                                         navigation.navigate('Startup')}
 
                                 /></Text>
-                                <Text>Payments</Text>
+                                <Text style={styles.cardHeader}>Payments</Text>
 
                             </View>
                         </View>
@@ -80,40 +101,44 @@ export default function Trainer_Home_Page({ navigation }) {
                                         navigation.navigate('Startup')}
 
                                 /></Text>
-                                <Text>Attendance</Text>
+                                <Text style={styles.cardHeader}>Attendance</Text>
                             </View>
                         </View>
                         <View style={styles.box}>
                             <View style={styles.inner}>
                                 <Text><Icon3 name="feedback" size={55} color="#fff"
                                     onPress={() =>
-                                        navigation.navigate('Startup')}
+                                        navigation.navigate('TraineeFeedback')}
 
                                 /></Text>
-                                <Text>Feedback</Text>
+                                <Text style={styles.cardHeader}>Feedback</Text>
                             </View>
                         </View>
+
                     </View>
-                    <View style={styles.lowScrollFeed}>
-                        <ScrollableFeed>
-                            {/* {items.map((item, i) => <div key={i}>{item}</div>)} */}
+                    <Text style={styles.sectionHeader}>Annoucements</Text>
+                    <View style={styles.announcementbody}>
+                        <FlatList
+                        keyExtractor={(item)=> item.id}
+                        data={DATA}
+                        renderItem={({item}) => 
+                    (
+                        <Text style={styles.item}>{item.title}</Text>,
+                        <Text style={styles.item}>{item.Date}</Text>,
+                        <Text style={styles.item}>{item.Note}</Text>
+                    )}
+
+                    />
+
+                    </View>
 
 
-                            <SafeAreaView style={styles.container}>
-                                <FlatList
-                                    data={DATA}
-                                    renderItem={renderItem}
-                                    keyExtractor={item => item.id}
-                                />
-                            </SafeAreaView>
-                        </ScrollableFeed>
-                    </View>
                 </View>
 
 
             </View>
         </ScrollView>
-    
+
     );
 }
 const styles = StyleSheet.create({
@@ -127,6 +152,7 @@ const styles = StyleSheet.create({
         height: 800,
         textAlign: 'left',
         // width: 360,
+        color: 'white',
     },
     logo: {
         width: '70%',
@@ -155,28 +181,44 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     header: {
-        // display:'flex',
         paddingLeft: 180,
         width: '100%',
-        height: '15%',
+        height: '10%',
         alignContent: 'right',
         // backgroundColor: '#eee',
         color: 'white',
-        borderBottomColor: 'white',
-        borderBottomWidth: StyleSheet.hairlineWidth,
+
     },
     profilename: {
         color: 'white',
+        marginLeft:'10px',
+        marginBottom: '20px',
     },
-    homebody: {
+    sectionHeader: {
+        marginTop:20,
+        fontSize:18,
+        paddingBottom: 10,
+        paddingRight: 50,
+        color: 'white',
+        alignContent: 'left',
+        // fontFamily:'Poppins',
+        fontWeight:600,
+
+
+    },
+    cardHeader: {
+        color: 'white',
+    },
+
+    cardbody: {
         color: 'white',
         width: '100%',
         height: '30%',
         padding: 5,
         flexDirection: 'row',
         flexWrap: 'wrap',
-        borderBottomColor: 'white',
-        borderBottomWidth: StyleSheet.hairlineWidth,
+        borderTopColor: 'white',
+        borderTopWidth: StyleSheet.hairlineWidth,
     },
     box: {
         width: '50%',
@@ -186,23 +228,31 @@ const styles = StyleSheet.create({
     },
     inner: {
         flex: 1,
-        backgroundColor: 'grey',
+        backgroundColor: 'rgba(152,144,144,0.3)',
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 10,
         // color:'white'
     },
+
+    //annoucement part
+    announcementbody:{
+        borderTopColor: 'white',
+        borderTopWidth: StyleSheet.hairlineWidth,
+    },
+
     lowScrollFeed: {
         color: 'white',
         flex: 1,
         marginTop: StatusBar.currentHeight || 0,
     },
     item: {
-        backgroundColor: '#989090',
-        padding: 20,
-        marginVertical: 8,
-        marginHorizontal: 16,
-        borderRadius:5
+        backgroundColor: 'rgba(152,144,144,0.3)',
+        color: 'white',
+        padding: 40,
+        marginVertical: 7,
+        marginHorizontal: 5,
+        borderRadius: 5
     },
     title: {
         fontSize: 32,
