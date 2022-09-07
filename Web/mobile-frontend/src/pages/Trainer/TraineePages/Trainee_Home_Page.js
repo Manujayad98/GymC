@@ -18,20 +18,20 @@ const DATA = [
     {
         id: '1',
         title: 'Annoucement 1',
-        Date:'2nd May 2022',
-        Note:'Gym c will be closed on 20th May 2022'
+        Date: '2nd May 2022',
+        Note: 'Gym c will be closed on 20th May 2022'
     },
     {
         id: '2',
         title: 'Annoucement 2',
-        Date:'2nd May 2022',
-        Note:'Gym c will be closed on 10th August 2022'
+        Date: '2nd May 2022',
+        Note: 'Gym c will be closed on 10th August 2022'
     },
     {
         id: '3',
         title: 'Annoucement 3',
-        Date:'2nd May 2022',
-        Note:'Gym c will be closed on 2nd September 2022'
+        Date: '2nd May 2022',
+        Note: 'Gym c will be closed on 2nd September 2022'
     },
     // {
     //     id: '4',
@@ -45,7 +45,7 @@ const DATA = [
     //     Date:'2nd May 2022',
     //     Note:'Gym c will be closed on 20th May 2022'
     // },
-    
+
 ];
 // const Item = ({ title }) => (
 //     <View style={styles.item}>
@@ -73,7 +73,7 @@ export default function Trainer_Home_Page({ navigation }) {
                     <View style={styles.cardbody}>
                         <View style={styles.box}>
                             <View style={styles.inner}>
-                                <br></br>
+                                {/* <br></br> */}
                                 <Text><Icon name="calendar" size={45} color="#fff"
                                     onPress={() =>
                                         navigation.navigate('Startup')}
@@ -119,16 +119,16 @@ export default function Trainer_Home_Page({ navigation }) {
                     <Text style={styles.sectionHeader}>Annoucements</Text>
                     <View style={styles.announcementbody}>
                         <FlatList
-                        keyExtractor={(item)=> item.id}
-                        data={DATA}
-                        renderItem={({item}) => 
-                    (
-                        <Text style={styles.item}>{item.title}</Text>,
-                        <Text style={styles.item}>{item.Date}</Text>,
-                        <Text style={styles.item}>{item.Note}</Text>
-                    )}
+                            keyExtractor={(item) => item.id}
+                            data={DATA}
+                            renderItem={({ item }) =>
+                            (
+                                <Text style={styles.item}>{item.title}</Text>,
+                                <Text style={styles.item}>{item.Date}</Text>,
+                                <Text style={styles.item}>{item.Note}</Text>
+                            )}
 
-                    />
+                        />
 
                     </View>
 
@@ -191,18 +191,18 @@ const styles = StyleSheet.create({
     },
     profilename: {
         color: 'white',
-        marginLeft:'10px',
+        marginLeft: '10px',
         marginBottom: '20px',
     },
     sectionHeader: {
-        marginTop:20,
-        fontSize:18,
+        marginTop: 20,
+        fontSize: 18,
         paddingBottom: 10,
         paddingRight: 50,
         color: 'white',
         alignContent: 'left',
         // fontFamily:'Poppins',
-        fontWeight:600,
+        fontWeight: 600,
 
 
     },
@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
     },
 
     //annoucement part
-    announcementbody:{
+    announcementbody: {
         borderTopColor: 'white',
         borderTopWidth: StyleSheet.hairlineWidth,
     },

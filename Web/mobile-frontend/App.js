@@ -3,7 +3,7 @@ import LoginPage from './src/pages/Common/LoginPage/LoginPage'
 import ForgotPasswordPage from './src/pages/Common/ForgotPasswordPage/ForgotPasswordPage'
 import ResetPasswordPage from './src/pages/Common/ResetPasswordPage/ResetPasswordPage'
 import TraineeHomeScreen from './src/pages/Trainer/TraineePages/Trainee_Home_Page'
-// import TraineeFeedbackScreen from './src/pages/Trainer/TraineePages/Trainee_Feedback_Screen'
+import TraineeFeedbackScreen from './src/pages/Trainer/TraineePages/Trainee_Feedback_Screen'
 
 import StartPage from './src/pages/Common/StartPage/StartPage'
 // import { NavigationContainer } from '@react-navigation/native';
@@ -29,14 +29,14 @@ const App = () => {
 
   return (
 
-    //  <TrainerNavBar/>
+    // <TrainerNavBar />
 
     <NavigationContainer>
       <Stack.Navigator>
 
         <Stack.Screen
           name="<MyAppointments>"
-          component={MyAppointment}
+          component={StartPage}
 
           options={{ title: 'Startup' }}
         />
@@ -48,7 +48,7 @@ const App = () => {
         <Stack.Screen name="Guide" component={AppoinmentGuidePage} />
         <Stack.Screen name="Explore" component={ExploreAppPage} />
         <Stack.Screen name="TraineeHome" component={TraineeHomeScreen} />
-        {/* <Stack.Screen name="TraineeFeedback" component={TraineeFeedbackScreen} /> */}
+        <Stack.Screen name="TraineeFeedback" component={TraineeFeedbackScreen} />
         {/* <Stack.Screen name="Profile" component={ProfilePage} /> */}
 
       </Stack.Navigator>
