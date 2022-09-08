@@ -25,6 +25,9 @@ import Checkout from '../../../../images/Icons/exit.png'
 import T1 from '../../../../images/t1.png'
 import { Link } from 'react-router-dom'
 import Arrow from '../../../../images/Icons/arrow-square-right.svg'
+import MaterialTable from "material-table";
+import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
+
 
 
 
@@ -52,157 +55,158 @@ const Trainees = () => {
   const [duecmodal, openduec] = useState(false)
   const [paymentModal, openpaymentModal] = useState(false)
 
-  const [trainerDetails] = useState([
-    {
-      TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TrainerID: "T001",
-      TrainerName: "Kasun Perera",
-      PaymentType: "Daily",
-      RegDate: "2021-10-24",
-      Check: (
-        <span>
-          <span style={{ margin: "10px" }}><Button disabled onClick={() => opencheckin(true)} variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button>
-          </span>
-          <span><Button onClick={() => opencheckout(true)} variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
-        </span>
-      ),
-      Pay: (
-        <Button variant='success' onClick={() => openpaymentModal(true) }>Pay</Button>
-      ),
-      Actions: (
-        <span >
-          <span style={{ paddingRight: "20px" }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
-        </span >
-      ),
-    },
-    {
-      TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TrainerID: "T002",
-      TrainerName: "Rasul Silve",
-      PaymentType: "Daily",
-      RegDate: "2021-08-14",
-      Check: (
-        <span>
-          <span style={{ margin: "10px" }}><Button disabled onClick={() => opencheckin(true)} variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
-          <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
-        </span>
-      ),
-      Pay: (
-        <Button variant='success'>Pay</Button>
-      ),
-      Actions: (
-        <span >
-          <span style={{ paddingRight: "20px" }}><button style={{backgroundColor:"white"}} onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
-        </span >
-      ),
-    },
-    {
-      TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TrainerID: "T003",
-      TrainerName: "Dominic Gape",
-      PaymentType: "Monthly - Personal",
-      RegDate: "2021-10-24",
-      Check: (
-        <span>
-          <span style={{ margin: "10px" }}><Button disabled variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
-          <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
-        </span>
-      ),
-      Pay: (
-        <Button variant='success'>Pay</Button>
-      ),
-      Actions: (
-        <span >
-          <span style={{ paddingRight: "20px" }}><button style={{backgroundColor:"white"}} onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
-        </span >
-      ),
-    },
-    {
-      TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TrainerID: "T004",
-      TrainerName: "Natasha Perera",
-      PaymentType: "Monthly - Non Personal",
-      RegDate: "2021-10-24",
-      Check: (
-        <span>
-          <span style={{ margin: "10px" }}><Button onClick={() => opencheckin(true)} variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
-          <span><Button disabled variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
-        </span>
-      ),
-      Pay: (
-        <Button variant='success'>Pay</Button>
-      ),
-      Actions: (
-        <span >
-          <span style={{ paddingRight: "20px" }}><button style={{backgroundColor:"white"}} onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
-        </span >
-      ),
-    },
-    {
-      TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TrainerID: "T005",
-      TrainerName: "Rajeewa Senevirathne",
-      PaymentType: "Daily",
-      RegDate: "2022-01-05",
-      Check: (
-        <span>
-          <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
-          <span><Button disabled variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
-        </span>
-      ),
-      Pay: (
-        <Button variant='success'>Pay</Button>
-      ),
-      Actions: (
-        <span >
-          <span style={{ paddingRight: "20px" }}><button style={{backgroundColor:"white"}} onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
-        </span >
-      ),
-    },
-    {
-      TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TrainerID: "T006",
-      TrainerName: "Denuwan Wijesekara",
-      PaymentType: "Daily",
-      RegDate: "2022-02-14",
-      Check: (
-        <span>
-          <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
-          <span><Button disabled variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
-        </span>
-      ),
-      Pay: (
-        <Button variant='success'>Pay</Button>
-      ),
-      Actions: (
-        <span >
-          <span style={{ paddingRight: "20px" }}><button style={{backgroundColor:"white"}} onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
-        </span >
-      ),
-    },
-    {
-      TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TrainerID: "T007",
-      TrainerName: "Pasindu Pathberiya",
-      PaymentType: "Monthly - Personal",
-      RegDate: "2022-06-11",
-      Check: (
-        <span>
-          <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
-          <span><Button disabled variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
-        </span>
-      ),
-      Pay: (
-        <Button variant='success'>Pay</Button>
-      ),
-      Actions: (
-        <span >
-          <span style={{ paddingRight: "20px" }}><button style={{backgroundColor:"white"}} onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
-        </span >
-      ),
-    }
-  ]);
+  // const [trainerDetails] = useState([
+  //   {
+  //     TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+  //     TrainerID: "T001",
+  //     TrainerName: "Kasun Perera",
+  //     PaymentType: "Daily",
+  //     RegDate: "2021-10-24",
+  //     Check: (
+  //       <span>
+  //         <span style={{ margin: "10px" }}><Button disabled onClick={() => opencheckin(true)} variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button>
+  //         </span>
+  //         <span><Button onClick={() => opencheckout(true)} variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+  //       </span>
+  //     ),
+  //     Pay: (
+  //       <Button variant='success' onClick={() => openpaymentModal(true) }>Pay</Button>
+  //     ),
+  //     Actions: (
+  //       <span >
+  //         <span style={{ paddingRight: "20px" }}><button onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+  //       </span >
+  //     ),
+  //   },
+  //   {
+  //     TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+  //     TrainerID: "T002",
+  //     TrainerName: "Rasul Silve",
+  //     PaymentType: "Daily",
+  //     RegDate: "2021-08-14",
+  //     Check: (
+  //       <span>
+  //         <span style={{ margin: "10px" }}><Button disabled onClick={() => opencheckin(true)} variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+  //         <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+  //       </span>
+  //     ),
+  //     Pay: (
+  //       <Button variant='success'>Pay</Button>
+  //     ),
+  //     Actions: (
+  //       <span >
+  //         <span style={{ paddingRight: "20px" }}><button style={{backgroundColor:"white"}} onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+  //       </span >
+  //     ),
+  //   },
+  //   {
+  //     TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+  //     TrainerID: "T003",
+  //     TrainerName: "Dominic Gape",
+  //     PaymentType: "Monthly - Personal",
+  //     RegDate: "2021-10-24",
+  //     Check: (
+  //       <span>
+  //         <span style={{ margin: "10px" }}><Button disabled variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+  //         <span><Button variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+  //       </span>
+  //     ),
+  //     Pay: (
+  //       <Button variant='success'>Pay</Button>
+  //     ),
+  //     Actions: (
+  //       <span >
+  //         <span style={{ paddingRight: "20px" }}><button style={{backgroundColor:"white"}} onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+  //       </span >
+  //     ),
+  //   },
+  //   {
+  //     TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+  //     TrainerID: "T004",
+  //     TrainerName: "Natasha Perera",
+  //     PaymentType: "Monthly - Non Personal",
+  //     RegDate: "2021-10-24",
+  //     Check: (
+  //       <span>
+  //         <span style={{ margin: "10px" }}><Button onClick={() => opencheckin(true)} variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+  //         <span><Button disabled variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+  //       </span>
+  //     ),
+  //     Pay: (
+  //       <Button variant='success'>Pay</Button>
+  //     ),
+  //     Actions: (
+  //       <span >
+  //         <span style={{ paddingRight: "20px" }}><button style={{backgroundColor:"white"}} onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+  //       </span >
+  //     ),
+  //   },
+  //   {
+  //     TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+  //     TrainerID: "T005",
+  //     TrainerName: "Rajeewa Senevirathne",
+  //     PaymentType: "Daily",
+  //     RegDate: "2022-01-05",
+  //     Check: (
+  //       <span>
+  //         <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+  //         <span><Button disabled variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+  //       </span>
+  //     ),
+  //     Pay: (
+  //       <Button variant='success'>Pay</Button>
+  //     ),
+  //     Actions: (
+  //       <span >
+  //         <span style={{ paddingRight: "20px" }}><button style={{backgroundColor:"white"}} onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+  //       </span >
+  //     ),
+  //   },
+  //   {
+  //     TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+  //     TrainerID: "T006",
+  //     TrainerName: "Denuwan Wijesekara",
+  //     PaymentType: "Daily",
+  //     RegDate: "2022-02-14",
+  //     Check: (
+  //       <span>
+  //         <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+  //         <span><Button disabled variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+  //       </span>
+  //     ),
+  //     Pay: (
+  //       <Button variant='success'>Pay</Button>
+  //     ),
+  //     Actions: (
+  //       <span >
+  //         <span style={{ paddingRight: "20px" }}><button style={{backgroundColor:"white"}} onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+  //       </span >
+  //     ),
+  //   },
+  //   {
+  //     TrainerImg: (<img src={T1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
+  //     TrainerID: "T007",
+  //     TrainerName: "Pasindu Pathberiya",
+  //     PaymentType: "Monthly - Personal",
+  //     RegDate: "2022-06-11",
+  //     Check: (
+  //       <span>
+  //         <span style={{ margin: "10px" }}><Button variant='outline-success' size='sm'><img src={Checkin} alt="" height={20} width={20} /></Button></span>
+  //         <span><Button disabled variant='outline-warning' size='sm'><img src={Checkout} alt="" height={20} width={20} /></Button></span>
+  //       </span>
+  //     ),
+  //     Pay: (
+  //       <Button variant='success'>Pay</Button>
+  //     ),
+  //     Actions: (
+  //       <span >
+  //         <span style={{ paddingRight: "20px" }}><button style={{backgroundColor:"white"}} onClick={() => setOpenModal(true)}><img src={Trash} alt="" height={20} width={20} /></button></span>
+  //       </span >
+  //     ),
+  //   }
+  // ]);
 
+  
   const [trainerDetailsTableHead] = useState([
     { id: "TraineeImg", label: "", numeric: false },
     { id: "TraineeID", label: "TRAINEE ID", numeric: false },
@@ -300,11 +304,59 @@ const Trainees = () => {
             </div>
           </form>
 
-          <Table
+          {/* <Table
             rows={trainerDetails}
             headCells={trainerDetailsTableHead}
             tableName={"Trainers"}
-          />
+          /> */}
+
+                      {/* <div className="table-div">
+                        <MaterialTable
+                            title="Trainees"
+                            columns={[
+                                { title: "", field: "TraineeImg" },
+                                { title: "TRAINEE ID", field: "TraineeID" },
+                                { title: "TRAINEE NAME", field: "TrainerName" },
+                                { title: "PAYMENT TYPE", field: "PaymentType" },
+                                { title: "REG ON", field: "RegDate" },
+                                {title: "CHECK ON", field: "Check" },
+                                {title: "CHECK ON", field: "Check" },
+                            ]}
+                            icons={TableIcons}
+                            data={}
+                            actions={[
+                                {
+                                    icon: () => {
+                                        return (
+
+                                            <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} onClick={() => setOpenModal(true)} alt="" height={20} width={20} /></span>
+                                        );
+                                    },
+                                    onClick: (event, rowData) => {
+
+                                    },
+                                },
+                                {
+                                    icon: () => {
+                                        return (
+                                            <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Hold} alt="" onClick={() => setOpenModal2(true)} height={20} width={20} /></span>
+                                        );
+                                    },
+                                    onClick: (event, rowData) => {
+
+                                    },
+                                },
+                            ]}
+                            options={{
+                                headerStyle: {
+                                    backgroundColor: '#1F0106',
+                                    color: '#FFF',
+                                    hover: '#FFF'
+                                }
+                            }}
+                        />
+                    </div> */}
+
           <div>
             <DeleteModal open={openModal} onClose={() => setOpenModal(false)} />
             <CheckinModal open={checkinmodal} onClose={() => opencheckin(false)} />

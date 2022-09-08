@@ -107,6 +107,25 @@ const AddWorkout = () => {
         // }
     };
 
+
+    //reps editor part
+
+    const [num, setNum] = useState(15);
+    let incNum = () => {
+        if (num < 20) {
+            setNum(num + 1);
+            console.log(num)
+        }
+    };
+    let decNum = () => {
+        if (num > 0) {
+            setNum(num - 1);
+        }
+    }
+    let handleCounter = (e) => {
+        setNum(e.target.value);
+    }
+
     //table data
 
     const [excerciseDetails] = useState([
@@ -114,9 +133,9 @@ const AddWorkout = () => {
             Name: "Incline Press",
             Repetitions: (
                 <span >
-                    <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "10px" }}>15 Reps</span>
-                    <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "10px" }}><button onClick={incNum}><img src={Plus} alt="" height={20} width={20} /></button></span>
+                    <span style={{ paddingRight: "10px" }}><input type="text" className='reps-edit' value={num} onChange={handleCounter} style={{size:"20"}} />Reps</span>
+                    <span style={{ paddingRight: "10px" }}><button onClick={decNum}><img src={Minus} alt="" height={20} width={20} /></button></span>
 
                 </span >
                 
@@ -135,9 +154,9 @@ const AddWorkout = () => {
             Name: "Incline Press",
             Repetitions: (
                 <span >
-                    <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "10px" }}>15 Reps</span>
-                    <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
+                    <span style={{ paddingRight: "10px" }}><button onClick={incNum}><img src={Plus} alt="" height={20} width={20} /></button></span>
+                    <span style={{ paddingRight: "10px" }}><input type="text" className='reps-edit' value={num} onChange={handleCounter} style={{size:"20"}} />Reps</span>
+                    <span style={{ paddingRight: "10px" }}><button onClick={decNum}><img src={Minus} alt="" height={20} width={20} /></button></span>
 
                 </span >
                 

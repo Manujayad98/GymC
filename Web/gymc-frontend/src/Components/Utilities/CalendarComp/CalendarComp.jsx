@@ -25,12 +25,33 @@ const localizer = dateFnsLocalizer({
 // );
 
 
-const events = [
-    {
+// const allEvents = [
+//     {
+//         title: "Big Meeting",
+//         allDay: true,
+//         start: new Date(2021, 6, 0),
+//         end: new Date(2021, 6, 0),
+//     },
+//     {
+//         title: "Vacation",
+//         start: new Date(2021, 6, 7),
+//         end: new Date(2021, 6, 10),
+//     },
+//     {
+//         title: "Conference",
+//         start: new Date(2021, 6, 20),
+//         end: new Date(2021, 6, 23),
+//     },
+// ];
+
+function CalendarComp() {
+    const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
+    const [allEvents, setAllEvents] = useState([{
+
         title: "Big Meeting",
         allDay: true,
-        start: new Date(2021, 6, 0),
-        end: new Date(2021, 6, 0),
+        start: new Date(2022, 8, 10),
+        end: new Date(2022, 8, 10),
     },
     {
         title: "Vacation",
@@ -41,12 +62,7 @@ const events = [
         title: "Conference",
         start: new Date(2021, 6, 20),
         end: new Date(2021, 6, 23),
-    },
-];
-
-function CalendarComp() {
-    const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
-    const [allEvents, setAllEvents] = useState(events);
+    },]);
     const[value, onChange] = useState(new Date());
     
     function handleAddEvent() {
@@ -55,8 +71,8 @@ function CalendarComp() {
 
     return (
         <div className="App">
-            <h1>Calendar</h1>
-            <h2>Add New Event</h2>
+            {/* <h1>Calendar</h1>
+            <h2>Add New Event</h2> */}
             <div>
                 <input type="text" placeholder="Add Title" style={{ width: "20%", marginRight: "10px" }} value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} />
                 <DatePicker placeholderText="Start Date" style={{ marginRight: "10px" }} selected={newEvent.start} onChange={(start) => setNewEvent({ ...newEvent, start})} />
@@ -75,6 +91,7 @@ function CalendarComp() {
                     style={{ height: 500, margin: "50px" }}
                      />
              <p>{value.toString()};</p>
+             {console.log(allEvents)}
                     
         </div>
     );

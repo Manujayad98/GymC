@@ -49,6 +49,7 @@ import SidebarO from './Components/Pages/owner/own_sidebar/Sidebar';
 import ViewWorkout from './Components/Pages/owner/own_view_workout/ViewWorkout';
 import AddWorkoutO from './Components/Pages/owner/own_add_workout/AddWorkout';
 import UpdateWorkoutO from './Components/Pages/owner/own_update_workout/UpdateWorkout';
+import TraineeProgressO from './Components/Pages/owner/own_trainee_progress/TraineeProgress';
 import NewExercise from './Components/Pages/owner/own_adjustments/NewExercise';
 
 
@@ -125,6 +126,7 @@ function App() {
           <Route path="/OviewWorkout" element={<ViewWorkout />}></Route>
           <Route path="/OaddWorkout" element={<AddWorkoutO />}></Route>
           <Route path="/OupdateWorkout" element={<UpdateWorkoutO />}></Route>
+          <Route path="/OtraineeProgress" element={<TraineeProgressO />}></Route>
           <Route path="/ONewExercise" element={<NewExercise />}></Route>
 
           {/* ADMIN ROUTES */}

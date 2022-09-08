@@ -235,7 +235,7 @@ export default function Trainers() {
                         <MaterialTable
                             title="System Users"
                             columns={[
-                                { title: "TrainerImg", field: "TrainerImg" },
+                                { title: "", field: "TrainerImg" },
                                 { title: "TrainerID", field: "TrainerID" },
                                 { title: "name", field: "Name" },
                                 { title: "phone", field: "Phone" },
@@ -287,8 +287,8 @@ export default function Trainers() {
                             }}
                         />
                     </div>
-                    <DeleteModal open={openModal} onClose={() => setOpenModal(false)} />
-                    <HoldModal open={openModal2} onClose={() => setOpenModal2(false)} />
+                    {/* <DeleteModal open={openModal} onClose={() => setOpenModal(false)} />
+                    <HoldModal open={openModal2} onClose={() => setOpenModal2(false)} /> */}
                 </div>
             </div >
         </div >

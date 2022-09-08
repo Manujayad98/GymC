@@ -3,6 +3,7 @@ package com.example.gymcbackend.entities;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Table(name = "workoutPlan")
 @Entity
@@ -16,8 +17,8 @@ public class WorkoutPlan {
     @Column(name = "weight_class")
     private String weightClass;
 
-    @Column(name = "tights")
-    private Double tights;
+    @Column(name = "thighs")
+    private Double thighs;
 
     @Column(name = "hips")
     private Double hips;
@@ -37,13 +38,30 @@ public class WorkoutPlan {
     @Column(name = "weight")
     private Double weight;
 
-//    @ManyToMany(cascade = CascadeType.ALL)
+//    @OneToMany(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "exerciseID")
 //    Exercise exercise;
 
+//    @OneToMany(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "exerciseID")
+//    Exercise exercise;
+
+//    @ManyToMany
+//    Set<Exercise> trainingDate;
+
+
+
     @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinTable(name = "workoutPlan_exercise", joinColumns = @JoinColumn(referencedColumnName = "workoutPlanID"),inverseJoinColumns = @JoinColumn(referencedColumnName ="exerciseID"))
-    private List<Exercise> exercise;
+    @JoinTable(name = "workout_plan_exercise", joinColumns = @JoinColumn(referencedColumnName = "workoutPlanID"),inverseJoinColumns = @JoinColumn(referencedColumnName ="exerciseID"))
+    Set<Exercise> trainingDate;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "staffId")
+    StaffMember staffMember;
+
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "trainerId")
+//    Trainer trainer;
 
     public void setId(long id) {
         this.id = id;
@@ -53,8 +71,8 @@ public class WorkoutPlan {
         this.weightClass = weightClass;
     }
 
-    public void setTights(Double tights) {
-        this.tights = tights;
+    public void setThighs(Double thighs) {
+        this.thighs = thighs;
     }
 
     public void setHips(Double hips) {
@@ -81,9 +99,9 @@ public class WorkoutPlan {
         this.weight = weight;
     }
 
-    public void setExercise(List<Exercise> exercise) {
-        this.exercise = exercise;
-    }
+//    public void setExercise(List<Exercise> exercise) {
+//        this.exercise = exercise;
+//    }
 
     public long getId() {
         return id;
@@ -93,8 +111,8 @@ public class WorkoutPlan {
         return weightClass;
     }
 
-    public Double getTights() {
-        return tights;
+    public Double getThighs() {
+        return thighs;
     }
 
     public Double getHips() {
@@ -121,7 +139,7 @@ public class WorkoutPlan {
         return weight;
     }
 
-    public List<Exercise> getExercise() {
-        return exercise;
-    }
+//    public List<Exercise> getExercise() {
+//        return exercise;
+//    }
 }
