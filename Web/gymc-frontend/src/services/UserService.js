@@ -120,4 +120,48 @@ export const deleteTrainee = (traineeID) => {
     });
 };
 
+//GET TRAINER TABLE DETAILS
+
+export const getTrainerTableDetails = () => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/trainers`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+export const deleteTrainer = (trainerID) => {
+    return axios({
+        method: "PUT",
+        url: `${USER_URL}/deleteTrainer/${trainerID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+export const holdTrainer = (trainerID) => {
+    console.log(trainerID);
+    return axios({
+        method: "PUT",
+        url: `${USER_URL}/holdTrainer/${trainerID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+export const activeTrainer = (TrainerID) => {
+    console.log(TrainerID);
+    return axios({
+        method: "PUT",
+        url: `${USER_URL}/activeTrainer/${TrainerID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
 
