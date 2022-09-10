@@ -20,6 +20,8 @@ import LeaveModal from "../../../Utilities/Popups/LeaveModal";
 import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 
+import { getTrainerTableDetails} from "../../../../services/UserService";
+
 
 import './Trainers.css'
 
@@ -34,6 +36,7 @@ export default function Trainers() {
 
     useEffect(() => {
         checkValidate();
+        getTrainers();
     }, []);
 
     const checkValidate = async () => {
@@ -43,13 +46,20 @@ export default function Trainers() {
         }
     };
 
+    const getTrainers = async () => {
+        const res = await getTrainerTableDetails();
+        console.log(res.data);
+        setTrainers(
+            [...res.data]
+        );
+        console.log(trainers);
+    };
+
     const [openModal, setOpenModal] = useState(false)
     const [openadjustModal, setadjustModal] = useState(false)
     const [openleaveModal, setleaveModal] = useState(false)
+    const [trainers, setTrainers] = useState([]);
 
-    const [trainerDetails] = useState([
-       
-      ]);
    
     return (
 
@@ -63,15 +73,15 @@ export default function Trainers() {
             <MaterialTable
               title="Trainers"
               columns={[
-                { title: "Trainer ID", field: "TrainerID" },
-                { title: "Trainer Name", field: "TrainerName" },
-                { title: "Phone", field: "Phone" },
-                { title: "Address", field: "Address" },
-                { title: "Status", field: "Status" },
+                { title: "Trainer ID", field: "trainer_id" },
+                { title: "Trainer Name", field: "full_name" },
+                { title: "Phone", field: "phone" },
+                { title: "Address", field: "address" },
+                { title: "Status", field: "status" },
 
               ]}
               icons={TableIcons}
-              data={trainerDetails}
+              data={trainers}
               actions={[
                 {
                   icon: () => {
