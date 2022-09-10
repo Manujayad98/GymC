@@ -8,10 +8,8 @@ import Edit from '../../../../images/Icons/pen-solid.svg'
 import Trash from '../../../../images/Icons/trash-solid.svg'
 import Button1 from '@mui/material/Button';
 import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
-<<<<<<< HEAD
 import { Link } from 'react-router-dom'
-=======
->>>>>>> Nips
+
 
 import DeleteModal from '../../../Utilities/Popups/DeletionModal'
 import MaterialTable from "material-table";
@@ -35,45 +33,22 @@ export default function Exercises() {
 
     const [excerciseDetails] = useState([
         {
-<<<<<<< HEAD
+
             ExerciseID: 'E0001',
             ExerciseName: "Incline Press",
             PrimaryMuscle: "Muscle 1",
             SecondaryMuscle: "Muscle 2",
-=======
-            Name: "Incline Press",
-            Repetitions: "15 Reps",
 
-            Actions: (
-                <span >
-                    <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={trash} alt="" height={20} width={20} /></span>
-
-                </span >
->>>>>>> Nips
 
         },
         {
-<<<<<<< HEAD
             ExerciseID: 'E0002',
             ExerciseName: "Incline Press",
             PrimaryMuscle: "Muscle 1",
             SecondaryMuscle: "Muscle 2",
-=======
-            Name: "Incline Press",
-            Repetitions: "15 Reps",
-
-            Actions: (
-                <span >
-                    <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={trash} alt="" height={20} width={20} /></span>
-
-                </span >
->>>>>>> Nips
 
         },
         {
-<<<<<<< HEAD
             ExerciseID: 'E0003',
             ExerciseName: "Incline Press",
             PrimaryMuscle: "Muscle 1",
@@ -86,40 +61,6 @@ export default function Exercises() {
         { id: "ExerciseName", label: "Exercise NAME", numeric: false },
         { id: "PrimaryMuscle", label: "PRIMARY MUSCLE", numeric: false },
         { id: "SecondaryMuscle", label: "SECONDARY MUSCLE", numeric: false },
-=======
-            Name: "Incline Press",
-            Repetitions: "15 Reps",
-
-            Actions: (
-                <span >
-                    <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "20px" }}><img src={trash} alt="" height={20} width={20} /></span>
-
-                </span >
-
-            ),
-        },
-        {
-            Name: "Incline Press",
-            Repetitions: "15 Reps",
-
-            Actions: (
-                <span >
-                    <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span>
-
-
-                    <span style={{ paddingRight: "20px" }}><img src={trash} alt="" height={20} width={20} /></span>
-
-                </span >
-
-            ),
-        },
-    ]);
-    const [excerciseDetailsTableHead] = useState([
-        { id: "Name", label: "NAME", numeric: false },
-        { id: "Repetitions", label: "REPETITIONS", numeric: false },
-
->>>>>>> Nips
     ]);
 
     const [paymentPlanDetails] = useState([
@@ -173,7 +114,6 @@ export default function Exercises() {
                     <div className="ex">
                         <div className="header">
                             <h3 id="own-adjustment-titles">Exercises</h3>
-<<<<<<< HEAD
                             <Link to='/ONewExercise' style={{ textDecoration: 'none' }}>
                                 <Button1 variant="contained" className="Hbutton">New Exercise</Button1>
                             </Link>
@@ -291,38 +231,6 @@ export default function Exercises() {
                             <div className="center_div">
                                 {/* <h2 id="count">{count}</h2> */}
                                 <div class="adjustment-input-group">
-=======
-                            <Button1 variant="contained" className="Hbutton">New Exercise</Button1>
-                        </div>
-                        <div className='own-adjustment-card '>
-                            <Table
-                                rows={excerciseDetails}
-                                headCells={excerciseDetailsTableHead}
-                                tableName={"Exercises"}
-                            />
-                        </div>
-                    </div>
-                    <div className="ex">
-                        <div className="header">
-                            <h3 id="own-adjustment-titles">Payment Plans</h3>
-                            <Button1 variant="contained" className="Hbutton">New Payment</Button1>
-                        </div>
-                        <div className='own-adjustment-card '>
-                            <Table
-                                rows={paymentPlanDetails}
-                                headCells={paymentPlanDetailsTableHead}
-                                tableName={"PaymentPlans"}
-                            />
-                        </div>
-                    </div>
-                    <div className="ex">
-                        <h3 id="own-adjustment-titles">No of appoinments per timeslot</h3>
-
-                        <div className="main_div">
-                            <div className="center_div">
-                                {/* <h2 id="count">{count}</h2> */}
-                                <div class="input-group">
->>>>>>> Nips
                                     <div class="input-group-prepend">
                                         <button class="btn btn-outline-primary" type="button" onClick={decNum}>-</button>
                                     </div>
@@ -337,11 +245,7 @@ export default function Exercises() {
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
-                <DeleteModal open={openModal} onClose={() => setOpenModal(false)} />
-=======
-
->>>>>>> Nips
+                {/* <DeleteModal open={openModal} onClose={() => setOpenModal(false)} /> */}
             </div>
         </div>
     )

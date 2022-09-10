@@ -9,7 +9,7 @@ import View from '../../../../images/Icons/eye-solid.svg'
 import T1 from '../../../../images/t1.png'
 import Pic1 from '../../../../images/owner.png'
 import Card from 'react-bootstrap/Card'
-import Collapsible from 'react-collapsible';
+// import Collapsible from 'react-collapsible';
 
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
