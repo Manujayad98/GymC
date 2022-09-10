@@ -1,7 +1,9 @@
 package com.example.gymcbackend.repository.ExerciseDao;
 
 import com.example.gymcbackend.dto.ExerciseDetailsResponse;
+import com.example.gymcbackend.dto.ExerciseTableData;
 import com.example.gymcbackend.dto.TraineeViewScheduleDetailsResponse;
+import com.example.gymcbackend.dto.TrainerTableData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -19,6 +21,14 @@ public class ExerciseJdbcRepository {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
+
+    public List<ExerciseTableData> findAllExerciseDetails(){
+        String query = "SELECT exerciseid AS exercise_id, name AS exercise_name, primary_muscle AS primary_muscle, secondary_muscle AS secondary_muscle FROM exercise WHERE status='1'";
+
+        List<ExerciseTableData> ExerciseList = jdbc.query(query, new BeanPropertyRowMapper<ExerciseTableData>(ExerciseTableData.class));
+        return ExerciseList;
+    }
+
 
     public List<ExerciseDetailsResponse> getExerciseDetails(Long traineeId) {
 

@@ -24,6 +24,9 @@ public class Exercise {
     @Column(name = "secondary_muscle")
     private String secondaryMuscle;
 
+    @Column(name = "status")
+    private String status;
+
 //    @ManyToMany(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "equipmentID")
 //    Equipment equipment;
@@ -41,6 +44,13 @@ public class Exercise {
     @JoinColumn(name = "equipmentid")
     Equipment equipment;
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public void setId(long id) {
         this.id = id;
