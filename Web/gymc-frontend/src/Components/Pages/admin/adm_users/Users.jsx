@@ -268,31 +268,6 @@ export default function Trainers() {
                     <form action="">
                         <div className="filter-container">
                             <div className="inputFields-container">
-                                {/* <div className='searchbar-container'>
-                                    <div className="form-label-container">
-                                        <label class="form-label" for="form1">Trainer ID</label>
-                                    </div>
-                                    <div class="input-group">
-                                        <button type="button" class="btn btn-dark" style={{ height: '38px', width: '50px' }}>
-                                            <FontAwesomeIcon icon={faSearch} />
-                                        </button>
-                                        <div class="form-outline">
-                                            <input type="search" id="form1" class="form-control" placeholder='Search here' />
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div className="dropdown-container">
-                                    <div className="form-label-container">
-                                        <label class="form-label" for="form1">Status</label>
-                                    </div>
-                                    <select class="form-control form-control-sm" style={{ padding: '8px' }}>
-                                        <option> select 1</option>
-                                        <option> select 2</option>
-                                        <option> select 3</option>
-                                        <option> select 4</option>
-                                    </select>
-                                </div> */}
                             </div>
                             <div className="button-container">
                                 <Link to='/AaddUsers'>
@@ -302,11 +277,6 @@ export default function Trainers() {
 
                         </div>
                     </form>
-                    {/* <Table
-                        rows={trainerDetails}
-                        headCells={trainerDetailsTableHead}
-                        tableName={"Trainers"}
-                    /> */}
                     <div className="table-div">
                         <MaterialTable
                             title="System Users"
@@ -332,7 +302,7 @@ export default function Trainers() {
                                             setPopUp("delete");
                                         }
                                         setMsg(
-                                            rowData.trainee_id
+                                            rowData.user_id
                                         );
                                     },
 
@@ -351,7 +321,7 @@ export default function Trainers() {
                                             setPopUp("hold");
                                         }
                                         setMsg(
-                                            rowData.trainee_id
+                                            rowData.user_id
                                         );
                                     },
                                     disabled: rowData.status == "Hold"
@@ -380,7 +350,7 @@ export default function Trainers() {
                                             setPopUp("active");
                                         }
                                         setMsg(
-                                            rowData.trainee_id
+                                            rowData.user_id
                                         );
                                     },
                                     disabled: rowData.status == "Active"
