@@ -21,9 +21,6 @@ import './Trainees.css'
 import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 import DeleteModal from '../../../Utilities/Popups/DeletionModal'
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 
 const Dashboard = () => {
