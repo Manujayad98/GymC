@@ -18,8 +18,6 @@ public class UserAccount implements UserDetails {
 
     @Column(name = "userName", unique = true)
     private String userName;
-//    @Column(name = "memberId")
-//    private Long memberId;
 
     @CreationTimestamp
     @Column(name = "registered_date")
@@ -37,6 +35,9 @@ public class UserAccount implements UserDetails {
 
     @Column(name = "status")
     private boolean status=true;
+
+    @Column(name = "is_hold")
+    private Integer isHold;
 
     @Column(name = "email")
     private String email;
@@ -84,10 +85,6 @@ public class UserAccount implements UserDetails {
         return userName;
     }
 
-//    public Long getMemberId() {
-//        return memberId;
-//    }
-
     public Date getRegisteredDate() {
         return registeredDate;
     }
@@ -120,10 +117,6 @@ public class UserAccount implements UserDetails {
         return status;
     }
 
-//    public void setMemberId(Long memberId) {
-//        this.memberId = memberId;
-//    }
-
     public void setRegisteredDate(Date registeredDate) {
         this.registeredDate = registeredDate;
     }
@@ -146,5 +139,13 @@ public class UserAccount implements UserDetails {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Integer getIsHold() {
+        return isHold;
+    }
+
+    public void setIsHold(Integer isHold) {
+        this.isHold = isHold;
     }
 }

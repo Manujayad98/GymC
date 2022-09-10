@@ -47,9 +47,9 @@ public class TraineeJdbcRepository {
 //    @Autowired
 //    JdbcTemplate jdbcTemplate;
     public List<TraineeInfo> findAllTrainees() {
-        String query ="SELECT t.trainee_id, t.first_name, t.last_name, t.phone_number, t.address, u.status " +
+        String query ="SELECT CONCAT('T000', t.trainee_id) AS trainee_id, CONCAT(t.first_name,' ', t.last_name) AS full_name, t.phone_number, t.address, u.registered_date " +
                 "FROM trainee as t " +
-                "INNER JOIN user_account as u ON t.user_id = u.user_id ";
+                "INNER JOIN user_account as u ON t.user_id = u.user_id AND u.status=1 ";
 
         List<TraineeInfo> traineeList = jdbc.query(query, new BeanPropertyRowMapper<TraineeInfo>(TraineeInfo.class));
         return traineeList;

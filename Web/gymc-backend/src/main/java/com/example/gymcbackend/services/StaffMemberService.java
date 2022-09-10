@@ -134,4 +134,34 @@ public class StaffMemberService {
         return staffMemberJdbcRepository.findAllStaffMembers();
     }
 
+    public long changeStaffUserStatus(String staffUserID, Integer sts){
+
+        String staffID = staffUserID.substring(4);
+
+        Long result = Long.parseLong(String.valueOf(staffID));
+
+//        long userID = staffMemberJdbcRepository.getUserIdOfStaffUser(result);
+
+        if (sts == 0){
+            return staffMemberJdbcRepository.changeUserDeleteStatus(result);
+        } else if (sts==1) {
+            System.out.println("AWA");
+            return staffMemberJdbcRepository.changeUserHoldActiveStatus(result, 0);
+        } else {
+            return staffMemberJdbcRepository.changeUserHoldActiveStatus(result, 1);
+        }
+
+    }
+
+    public long changeTraineeStatus(String traineeID){
+
+        String traineeid = traineeID.substring(4);
+
+        Long result = Long.parseLong(String.valueOf(traineeid));
+
+        long userID = staffMemberJdbcRepository.getUserIdOfTrainee(result);
+
+        return staffMemberJdbcRepository.changeUserDeleteStatus(userID);
+    }
+
 }

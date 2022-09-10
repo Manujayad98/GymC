@@ -22,7 +22,7 @@ const Tab = createBottomTabNavigator();
 function TrainerNavBar() {
   return (
     <NavigationContainer>
-      <Tab.Navigator 
+      <Tab.Navigator
         initialRouteName={home}
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
@@ -38,30 +38,30 @@ function TrainerNavBar() {
             } else if (rn === profile) {
               iconName = focused ? 'user-tie' : 'user-tie';
 
-            }else if (rn === schedule) {
-                iconName = focused ? 'calendar-alt' : 'calendar-alt';
+            } else if (rn === schedule) {
+              iconName = focused ? 'calendar-alt' : 'calendar-alt';
 
-            }else if (rn === notification) {
-                iconName = focused ? 'bell' : 'bell';
+            } else if (rn === notification) {
+              iconName = focused ? 'bell' : 'bell';
             }
 
             // You can return any component that you like here!
             return <FontAwesome name={iconName} size={size} color={color} />;
           },
         })}
-        tabBarOptions={{ 
+        tabBarOptions={{
           activeTintColor: '#fff',
           inactiveTintColor: '#989090',
           labelPosition: 'below-icon',
-         
+
           labelStyle: { paddingBottom: 10, fontSize: 10, },
-          style: { backgroundColor:'tomato',paddingTop: 20, height: 80,},
-          tabStyle:{
-            height : 70,
-            backgroundColor:'#121928',    
+          style: { backgroundColor: 'tomato', paddingTop: 20, height: 80, },
+          tabStyle: {
+            height: 70,
+            backgroundColor: '#121928',
           },
-        
-          
+
+
         }}>
 
         <Tab.Screen name={home} component={Trainer_Home_Page} />

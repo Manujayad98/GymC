@@ -10,7 +10,6 @@ import Button1 from '@mui/material/Button';
 import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
 import { Link } from 'react-router-dom'
 
-
 import DeleteModal from '../../../Utilities/Popups/DeletionModal'
 import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
@@ -33,12 +32,10 @@ export default function Exercises() {
 
     const [excerciseDetails] = useState([
         {
-
             ExerciseID: 'E0001',
             ExerciseName: "Incline Press",
             PrimaryMuscle: "Muscle 1",
             SecondaryMuscle: "Muscle 2",
-
 
         },
         {

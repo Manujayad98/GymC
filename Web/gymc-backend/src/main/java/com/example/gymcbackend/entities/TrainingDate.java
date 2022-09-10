@@ -33,6 +33,14 @@ public class TrainingDate {
     @Column(name = "no_of_repetions")
     private Integer noOfRepetitions;
 
+    @Column(name="start_time")
+    private Time startTime;
+
+
+
+    @Column(name="end_time")
+    private Time endTime;
+
 //    @ManyToOne(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "workoutPlanID")
 //    WorkoutPlan workoutPlan;
@@ -83,5 +91,21 @@ public class TrainingDate {
 
     public void setExercise(Exercise exercise) {
         this.exercise = exercise;
+    }
+
+    public Time getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Time startTime) {
+        this.startTime = startTime;
+    }
+
+    public Time getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Time endTime) {
+        this.endTime = endTime;
     }
 }

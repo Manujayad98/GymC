@@ -13,8 +13,13 @@ import Table from '../../../Utilities/Tables/Table2';
 import Trash from '../../../../images/Icons/trash-solid.svg'
 import Edit from '../../../../images/Icons/pen-solid.svg'
 import View from '../../../../images/Icons/eye-solid.svg'
+import MaterialTable from "material-table";
+import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
+import DeleteModal from '../../../Utilities/Popups/DeletionModal'
 
 const AAnnouncements = () => {
+
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     checkValidate();
@@ -38,74 +43,40 @@ const AAnnouncements = () => {
   ]);
   const [announcementDetails] = useState([
     {
-      Date_Time: "2022/08/15",
-      Topic: "Center Closure",
+      Date: "2022/08/15",
+      Announcements: "Center Closure",
 
-      Actions: (
-        <span >
-          <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-        </span >
-      ),
     },
     {
-      Date_Time: "2022/08/15",
-      Topic: "Center Closure",
+      Date: "2022/08/15",
+      Announcements: "Center Closure",
 
-      Actions: (
-        <span >
-          <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-        </span >
-      ),
     },
     {
-      Date_Time: "2022/08/15",
-      Topic: "Center Closure",
+      Date: "2022/08/15",
+      Announcements: "Center Closure",
 
-      Actions: (
-        <span >
-          <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-        </span >
-      ),
     },
     {
-      Date_Time: "2022/08/15",
-      Topic: "Center Closure",
+      Date: "2022/08/15",
+      Announcements: "Center Closure",
 
-      Actions: (
-        <span >
-          <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-        </span >
-      ),
+
     },
     {
-      Date_Time: "2022/08/15",
-      Topic: "Center Closure",
+      Date: "2022/08/15",
+      Announcements: "Center Closure",
 
-      Actions: (
-        <span >
-          <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-        </span >
-      ),
     },
     {
-      Date_Time: "2022/08/15",
-      Topic: "Center Closure",
+      Date: "2022/08/15",
+      Announcements: "Center Closure",
 
-      Actions: (
-        <span >
-          <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-        </span >
-      ),
     },
     {
-      Date_Time: "2022/08/15",
-      Topic: "Center Closure",
+      Date: "2022/08/15",
+      Announcements: "Center Closure",
 
-      Actions: (
-        <span >
-          <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-        </span >
-      ),
     },
 
   ]);
@@ -187,10 +158,41 @@ const AAnnouncements = () => {
 
             <h1>All Announcements</h1>
             <div className='adm-announcement-table-card'>
-              <Table
+              {/* <Table
                 rows={announcementDetails}
                 headCells={announcementDetailsTableHead}
+              /> */}
+              <MaterialTable
+                title="System Users"
+                columns={[
+                  { title: "Date", field: "Date" },
+                  { title: "Announcement", field: "Announcements" },
+
+                ]}
+                icons={TableIcons}
+                data={announcementDetails}
+                actions={[
+                  {
+                    icon: () => {
+                      return (
+                        <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} onClick={() => setOpenModal(true)} alt="" height={20} width={20} /></span>
+                      );
+                    },
+                    onClick: (event, rowData) => {
+
+                    },
+                  },
+
+                ]}
+                options={{
+                  headerStyle: {
+                    backgroundColor: '#1F0106',
+                    color: '#FFF',
+                    hover: '#FFF'
+                  }
+                }}
               />
+              {/* <DeleteModal open={openModal} onClose={() => setOpenModal(false)} /> */}
             </div>
           </div>
           {/* end table */}

@@ -11,6 +11,7 @@ import T1 from '../../../../images/t1.png'
 import Arrow from '../../../../images/Icons/arrow-square-right.svg'
 import DeleteModal from '../../../Utilities/Popups/DeletionModal'
 import HoldModal from '../../../Utilities/Popups/HoldModel'
+import ActiveModal from '../../../Utilities/Popups/ActiveModel'
 import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 
@@ -28,13 +29,11 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 import { Link } from 'react-router-dom'
 
-import { getAllStaffUsers } from "../../../../services/UserService";
+import { getAllStaffUsers, deleteStaffUser, holdStaffUser, activeStaffUser } from "../../../../services/UserService";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Trainers() {
-
-    const [users, setAllUsers] = useState([]);
-    const [openModal, setOpenModal] = useState(false);
-    const [openModal2, setOpenModal2] = useState(false);
 
     useEffect(() => {
         checkValidate();
@@ -48,6 +47,17 @@ export default function Trainers() {
         }
     };
 
+    const [users, setAllUsers] = useState([]);
+    const [openModal, setOpenModal] = useState(false);
+    const [openModal2, setOpenModal2] = useState(false);
+    const [selectedUserData, setSelectedUserData] = useState({});
+    const [popup, setPopUp] = useState("");
+    const [msg, setMsg] = useState("");
+
+    const closePopUp = () => {
+        setPopUp("");
+    };
+
     const getAllUsers = async () => {
         const res = await getAllStaffUsers();
         console.log(res.data);
@@ -55,6 +65,66 @@ export default function Trainers() {
             [...res.data]
         );
         console.log(users);
+    };
+
+    const deleteSelectedStaffUser = () => {
+        console.log("deleted " + selectedUserData.user_id);
+        deleteStaffUser(selectedUserData.user_id)
+            .then((response) => {
+                if (response.status === 200 && response.data == 1) {
+                    window.location.href = "/Ausers";
+                    // evt.preventDefault();
+                    toast.success("User has deleted !");
+                } else {
+                    toast.error("Failed !!!");
+                }
+            })
+            .catch((err) => {
+                if (err && err.response) {
+                    console.log(err.message);
+                    toast.error("Failed !!!");
+                }
+            });
+        setPopUp("");
+    };
+
+    const holdSelectedStaffUser = () => {
+        console.log("hold " + selectedUserData.user_id);
+        holdStaffUser(selectedUserData.user_id)
+            .then((response) => {
+                if (response.status === 200 && response.data == 1) {
+                    window.location.href = "/Ausers";
+                    toast.success("User has hold !");
+                } else {
+                    toast.error("Failed !!!");
+                }
+            })
+            .catch((err) => {
+                if (err && err.response) {
+                    console.log(err.message);
+                    toast.error("Failed !!!");
+                }
+            });
+        setPopUp("");
+    };
+    const activeSelectedStaffUser = () => {
+        console.log("hold " + selectedUserData.user_id);
+        activeStaffUser(selectedUserData.user_id)
+            .then((response) => {
+                if (response.status === 200 && response.data == 1) {
+                    window.location.href = "/Ausers";
+                    toast.success("User has activated !");
+                } else {
+                    toast.error("Failed !!!");
+                }
+            })
+            .catch((err) => {
+                if (err && err.response) {
+                    console.log(err.message);
+                    toast.error("Failed !!!");
+                }
+            });
+        setPopUp("");
     };
 
     // const [trainerDetailsTableHead] = useState([
@@ -241,11 +311,10 @@ export default function Trainers() {
                         <MaterialTable
                             title="System Users"
                             columns={[
-                                { title: "first_name", field: "first_name" },
-                                { title: "last_name", field: "last_name" },
-                                { title: "staff_type", field: "staff_type" },
-                                { title: "status", field: "status" },
-                                { title: "user_id", field: "user_id" },
+                                { title: "User ID", field: "user_id" },
+                                { title: "Full Name", field: "full_name" },
+                                { title: "Staff Type", field: "staff_type" },
+                                { title: "Status", field: "status" },
                             ]}
                             icons={TableIcons}
                             data={users}
@@ -254,23 +323,68 @@ export default function Trainers() {
                                     icon: () => {
                                         return (
 
-                                            <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} onClick={() => setOpenModal(true)} alt="" height={20} width={20} /></span>
+                                            <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} alt="" height={20} width={20} /></span>
                                         );
                                     },
                                     onClick: (event, rowData) => {
-
+                                        setSelectedUserData(rowData);
+                                        {
+                                            setPopUp("delete");
+                                        }
+                                        setMsg(
+                                            rowData.trainee_id
+                                        );
                                     },
+
                                 },
-                                {
+                                rowData => ({
+
                                     icon: () => {
                                         return (
-                                            <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Hold} alt="" onClick={() => setOpenModal2(true)} height={20} width={20} /></span>
+
+                                            <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Hold} alt="" height={20} width={20} /></span>
                                         );
                                     },
                                     onClick: (event, rowData) => {
-
+                                        setSelectedUserData(rowData);
+                                        {
+                                            setPopUp("hold");
+                                        }
+                                        setMsg(
+                                            rowData.trainee_id
+                                        );
                                     },
-                                },
+                                    disabled: rowData.status == "Hold"
+                                }),
+                                rowData => ({
+
+                                    icon: () => {
+                                        return (
+
+                                            <button
+                                                type="button"
+                                                className="btn mt-0"
+                                                style={{
+                                                    backgroundColor: "#32E04E",
+                                                    border: "none",
+                                                    // marginRight: "2px",
+                                                }}
+                                            >
+                                                Active
+                                            </button>
+                                        );
+                                    },
+                                    onClick: (event, rowData) => {
+                                        setSelectedUserData(rowData);
+                                        {
+                                            setPopUp("active");
+                                        }
+                                        setMsg(
+                                            rowData.trainee_id
+                                        );
+                                    },
+                                    disabled: rowData.status == "Active"
+                                }),
                             ]}
                             options={{
                                 headerStyle: {
@@ -282,10 +396,33 @@ export default function Trainers() {
                         />
                     </div>
 
-                    <DeleteModal open={openModal} onClose={() => setOpenModal(false)} />
-                    <HoldModal open={openModal2} onClose={() => setOpenModal2(false)} />
+                    {/* <DeleteModal open={openModal} onClose={() => setOpenModal(false)} />
+                    <HoldModal open={openModal2} onClose={() => setOpenModal2(false)} /> */}
                 </div>
             </div >
+            {popup === "delete" && (
+                <DeleteModal
+                    msg={msg}
+                    closePopUp={closePopUp}
+                    handleSubmit={deleteSelectedStaffUser}
+                />
+            )}
+
+            {popup === "hold" && (
+                <HoldModal
+                    msg={msg}
+                    closePopUp={closePopUp}
+                    handleSubmit={holdSelectedStaffUser}
+                />
+            )}
+
+            {popup === "active" && (
+                <ActiveModal
+                    msg={msg}
+                    closePopUp={closePopUp}
+                    handleSubmit={activeSelectedStaffUser}
+                />
+            )}
         </div >
     )
 }

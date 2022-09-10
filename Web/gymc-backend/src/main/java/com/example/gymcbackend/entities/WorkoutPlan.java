@@ -17,8 +17,8 @@ public class WorkoutPlan {
     @Column(name = "weight_class")
     private String weightClass;
 
-    @Column(name = "tights")
-    private Double tights;
+    @Column(name = "thighs")
+    private Double thighs;
 
     @Column(name = "hips")
     private Double hips;
@@ -59,6 +59,10 @@ public class WorkoutPlan {
     @JoinColumn(name = "staffId")
     StaffMember staffMember;
 
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "trainerId")
+//    Trainer trainer;
+
     public void setId(long id) {
         this.id = id;
     }
@@ -67,8 +71,8 @@ public class WorkoutPlan {
         this.weightClass = weightClass;
     }
 
-    public void setTights(Double tights) {
-        this.tights = tights;
+    public void setThighs(Double thighs) {
+        this.thighs = thighs;
     }
 
     public void setHips(Double hips) {
@@ -107,8 +111,8 @@ public class WorkoutPlan {
         return weightClass;
     }
 
-    public Double getTights() {
-        return tights;
+    public Double getThighs() {
+        return thighs;
     }
 
     public Double getHips() {

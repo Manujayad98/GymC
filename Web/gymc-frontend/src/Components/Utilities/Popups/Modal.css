@@ -79,9 +79,19 @@
     background-color: #cbce24 !important;
 }
 
+.rec-activebtn {
+    background-color: #3DA2FF !important;
+    border-color: #3DA2FF !important;
+}
+
+.rec-activebtn:hover {
+    background-color: #80bdf7 !important;
+}
+
 
 .delete-model-btn-container,
-.hold-model-btn-container {
+.hold-model-btn-container,
+.active-model-btn-container {
     display: flex;
     justify-content: space-evenly;
 }

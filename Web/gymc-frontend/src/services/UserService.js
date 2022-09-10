@@ -5,7 +5,6 @@ const getToken = () => {
 };
 
 export const getUsers = () => {
-    // return axios.get(USER_URL);
     return axios({
         method: "GET",
         url: `${USER_URL}/users`,
@@ -16,8 +15,6 @@ export const getUsers = () => {
 };
 
 export const getProfile = (userName) => {
-    // return axios.get(USER_URL);
-    // console.log('awa');
     return axios({
         method: "GET",
         url: `${USER_URL}/users/${userName}`,
@@ -28,8 +25,6 @@ export const getProfile = (userName) => {
 };
 
 export const updatePassword = (password, userName) => {
-    console.log(userName);
-    // return axios.get(USER_URL);
     return axios({
         method: "PUT",
         url: `${USER_URL}/changePassword/${userName}`,
@@ -72,4 +67,101 @@ export const getAllStaffUsers = () => {
         },
     });
 };
+
+export const deleteStaffUser = (staffUserID) => {
+    return axios({
+        method: "PUT",
+        url: `${USER_URL}/deleteStaffUser/${staffUserID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+export const holdStaffUser = (staffUserID) => {
+    console.log(staffUserID);
+    return axios({
+        method: "PUT",
+        url: `${USER_URL}/holdStaffUser/${staffUserID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+export const activeStaffUser = (staffUserID) => {
+    console.log(staffUserID);
+    return axios({
+        method: "PUT",
+        url: `${USER_URL}/activeStaffUser/${staffUserID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+export const getTrainees = () => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/trainees`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+export const deleteTrainee = (traineeID) => {
+    return axios({
+        method: "PUT",
+        url: `${USER_URL}/deleteTrainee/${traineeID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+//GET TRAINER TABLE DETAILS
+
+export const getTrainerTableDetails = () => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/trainers`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+export const deleteTrainer = (trainerID) => {
+    return axios({
+        method: "PUT",
+        url: `${USER_URL}/deleteTrainer/${trainerID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+export const holdTrainer = (trainerID) => {
+    console.log(trainerID);
+    return axios({
+        method: "PUT",
+        url: `${USER_URL}/holdTrainer/${trainerID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+export const activeTrainer = (TrainerID) => {
+    console.log(TrainerID);
+    return axios({
+        method: "PUT",
+        url: `${USER_URL}/activeTrainer/${TrainerID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
 
