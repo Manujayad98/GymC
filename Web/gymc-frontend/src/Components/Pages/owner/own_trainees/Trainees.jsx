@@ -83,6 +83,9 @@ const Dashboard = () => {
     setPopUp("");
   };
 
+  const moveToMoreView = (trainee_id) => {
+    window.location.href = `/ViewWorkout/${trainee_id}`;
+  }
   // const [trainerDetails] = useState([
   //   {
   //     TraineeImg: (<img src={trainer1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
@@ -252,7 +255,7 @@ const Dashboard = () => {
                     );
                   },
                   onClick: (event, rowData) => {
-
+                    moveToMoreView(rowData.trainee_id);
                   },
                 },
                 {
