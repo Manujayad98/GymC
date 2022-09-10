@@ -14,12 +14,17 @@ import DeleteModal from '../../../Utilities/Popups/DeletionModal'
 import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 
+import { getExerciseTableDetails } from "../../../../services/UserService";
+
 
 export default function Exercises() {
 
     useEffect(() => {
         checkValidate();
+        getExercises();
     }, []);
+
+    const [exercices, setExercises] = useState([]);
 
     const checkValidate = async () => {
         const y = localStorage.getItem("USER_KEY");
@@ -28,36 +33,39 @@ export default function Exercises() {
         }
     };
 
+    const getExercises = async () => {
+        const res = await getExerciseTableDetails();
+        console.log(res.data);
+        setExercises(
+            [...res.data]
+        );
+        console.log(exercices);
+    };
+
     const [openModal, setOpenModal] = useState(false);
 
     const [excerciseDetails] = useState([
-        {
-            ExerciseID: 'E0001',
-            ExerciseName: "Incline Press",
-            PrimaryMuscle: "Muscle 1",
-            SecondaryMuscle: "Muscle 2",
+        // {
+        //     ExerciseID: 'E0001',
+        //     ExerciseName: "Incline Press",
+        //     PrimaryMuscle: "Muscle 1",
+        //     SecondaryMuscle: "Muscle 2",
 
-        },
-        {
-            ExerciseID: 'E0002',
-            ExerciseName: "Incline Press",
-            PrimaryMuscle: "Muscle 1",
-            SecondaryMuscle: "Muscle 2",
+        // },
+        // {
+        //     ExerciseID: 'E0002',
+        //     ExerciseName: "Incline Press",
+        //     PrimaryMuscle: "Muscle 1",
+        //     SecondaryMuscle: "Muscle 2",
 
-        },
-        {
-            ExerciseID: 'E0003',
-            ExerciseName: "Incline Press",
-            PrimaryMuscle: "Muscle 1",
-            SecondaryMuscle: "Muscle 2",
+        // },
+        // {
+        //     ExerciseID: 'E0003',
+        //     ExerciseName: "Incline Press",
+        //     PrimaryMuscle: "Muscle 1",
+        //     SecondaryMuscle: "Muscle 2",
 
-        },
-    ]);
-    const [excerciseDetailsTableHead] = useState([
-        { id: "ExerciseID", label: "EXERCISE ID", numeric: false },
-        { id: "ExerciseName", label: "Exercise NAME", numeric: false },
-        { id: "PrimaryMuscle", label: "PRIMARY MUSCLE", numeric: false },
-        { id: "SecondaryMuscle", label: "SECONDARY MUSCLE", numeric: false },
+        // },
     ]);
 
     const [paymentPlanDetails] = useState([
@@ -116,21 +124,17 @@ export default function Exercises() {
                             </Link>
                         </div>
                         <div className='own-adjustment-card'>
-                            {/* <Table
-                                rows={excerciseDetails}
-                                headCells={excerciseDetailsTableHead}
-                                tableName={"Exercises"}
-                            /> */}
+                           
                             <MaterialTable
                                 title="Exercices"
                                 columns={[
-                                    { title: "ExerciseID", field: "Exercise ID" },
-                                    { title: "ExerciseName", field: "Exercise Name" },
-                                    { title: "PrimaryMuscle", field: "Primary Muscle" },
-                                    { title: "SecondaryMuscle", field: "Secondary Muscle" },
+                                    { title: "Exercise ID", field: "exercise_id" },
+                                    { title: "Exercise Name", field: "exercise_name" },
+                                    { title: "Primary Muscle", field: "primary_muscle" },
+                                    { title: "Secondary Muscle", field: "secondary_muscle" },
                                 ]}
                                 icons={TableIcons}
-                                data={excerciseDetails}
+                                data={exercices}
                                 actions={[
                                     {
                                         icon: () => {
@@ -161,20 +165,16 @@ export default function Exercises() {
                             <Button1 variant="contained" className="Hbutton">New Payment</Button1>
                         </div>
                         <div className='own-adjustment-card '>
-                            {/* <Table
-                                rows={paymentPlanDetails}
-                                headCells={paymentPlanDetailsTableHead}
-                                tableName={"PaymentPlans"}
-                            /> */}
+                           
                             <MaterialTable
                                 title="Payments"
                                 columns={[
-                                    { title: "PaymentID", field: "Payment ID" },
-                                    { title: "PaymentType", field: "Payment Type" },
+                                    { title: "Payment ID", field: "PaymentID" },
+                                    { title: "Payment Type", field: "PaymentType" },
                                     { title: "Price", field: "Price" },
                                 ]}
                                 icons={TableIcons}
-                                data={excerciseDetails}
+                                data={paymentPlanDetails}
                                 actions={[
                                     {
                                         icon: () => {
