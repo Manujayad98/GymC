@@ -7,6 +7,8 @@ import javax.persistence.*;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 @Table(name = "staff_member")
 @Entity
@@ -50,6 +52,14 @@ public class StaffMember implements UserDetails {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userId")
     UserAccount userAccount;
+
+
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "shift_id")
+//    ShiftDetails shiftDetails;
+
+//    @OneToMany(mappedBy = "staffMember")
+//    private List<ShiftDetails> shiftDetailsList;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -181,4 +191,6 @@ public class StaffMember implements UserDetails {
     public String getQualification() {
         return qualification;
     }
+
+
 }

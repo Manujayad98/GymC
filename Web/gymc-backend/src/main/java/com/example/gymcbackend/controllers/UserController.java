@@ -1,9 +1,7 @@
 package com.example.gymcbackend.controllers;
 
-import com.example.gymcbackend.dto.Profile;
-import com.example.gymcbackend.dto.Password;
-import com.example.gymcbackend.dto.StaffUsers;
-import com.example.gymcbackend.dto.TraineeInfo;
+import com.example.gymcbackend.dto.*;
+import com.example.gymcbackend.entities.ShiftDetails;
 import com.example.gymcbackend.entities.StaffMember;
 import com.example.gymcbackend.entities.Trainee;
 import com.example.gymcbackend.entities.UserAccount;
@@ -78,6 +76,12 @@ public class UserController {
     @PostMapping("/registerUser")
     public String registerUser(@RequestBody StaffMember staffMember){
         return staffMemberService.register(staffMember);
+    }
+
+    @PostMapping("/registerTrainer")
+    public String registerTrainer(@RequestBody TrainerFormDetails trainerFormDetails){
+        System.out.println("aaaaaaa");
+        return staffMemberService.registerTrainer(trainerFormDetails);
     }
 
     // UPDATE USER'S PROFILE DETAILS
