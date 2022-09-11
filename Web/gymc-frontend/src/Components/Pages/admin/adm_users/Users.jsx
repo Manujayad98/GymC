@@ -24,9 +24,6 @@ import user6 from '../../../../images/owner/te5.png'
 
 import './Users.css'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
-
 import { Link } from 'react-router-dom'
 
 import { getAllStaffUsers, deleteStaffUser, holdStaffUser, activeStaffUser } from "../../../../services/UserService";
@@ -265,43 +262,7 @@ export default function Trainers() {
             <div className='body-container'>
                 <HeaderO title="System Users" />
                 <div className="content-container">
-                    <form action="">
-                        <div className="filter-container">
-                            <div className="inputFields-container">
-                                {/* <div className='searchbar-container'>
-                                    <div className="form-label-container">
-                                        <label class="form-label" for="form1">Trainer ID</label>
-                                    </div>
-                                    <div class="input-group">
-                                        <button type="button" class="btn btn-dark" style={{ height: '38px', width: '50px' }}>
-                                            <FontAwesomeIcon icon={faSearch} />
-                                        </button>
-                                        <div class="form-outline">
-                                            <input type="search" id="form1" class="form-control" placeholder='Search here' />
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div className="dropdown-container">
-                                    <div className="form-label-container">
-                                        <label class="form-label" for="form1">Status</label>
-                                    </div>
-                                    <select class="form-control form-control-sm" style={{ padding: '8px' }}>
-                                        <option> select 1</option>
-                                        <option> select 2</option>
-                                        <option> select 3</option>
-                                        <option> select 4</option>
-                                    </select>
-                                </div> */}
-                            </div>
-                            <div className="button-container">
-                                <Link to='/AaddUsers'>
-                                    <button type="button" class="btn" style={{ backgroundColor: '#3DA2FF', width: '100px' }}>New User</button>
-                                </Link>
-                            </div>
-
-                        </div>
-                    </form>
+                    
                     {/* <Table
                         rows={trainerDetails}
                         headCells={trainerDetailsTableHead}
