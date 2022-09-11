@@ -167,12 +167,10 @@ const deleteSelectedTrainee = () => {
                             title="Trainees"
                             columns={[
                                 { title: "", field: "TraineeImg" },
-                                { title: "TRAINEE ID", field: "traineeID" },
-                                { title: "TRAINEE NAME", field: "TrainerName" },
+                                { title: "TRAINEE ID", field: "trainee_id" },
+                                { title: "TRAINEE NAME", field: "full_name" },
                                 { title: "PAYMENT TYPE", field: "PaymentType" },
-                                { title: "REG ON", field: "RegDate" },
-                                {title: "CHECK ON", field: "Check" },
-                                {title: "CHECK ON", field: "Check" },
+                                { title: "REG ON", field: "registered_date" },
                             ]}
                             icons={TableIcons}
                             data={users}
@@ -227,7 +225,7 @@ const deleteSelectedTrainee = () => {
                                 icon: () => {
                                     return (
 
-                                      <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Checkin} onClick={() => setOpenModal(true)} alt="" height={20} width={20} /></span>
+                                      <span style={{ paddingRight: "20px", cursor: 'pointer' }}><Button variant='outline-success' size='sm'><img src={Checkin} onClick={() => setOpenModal(true)} alt="" height={20} width={20} /></Button></span>
 
                                     );
                                 },
@@ -241,6 +239,25 @@ const deleteSelectedTrainee = () => {
                                     );
                                 },
                             }),
+                            rowData => ({
+
+                              icon: () => {
+                                  return (
+
+                                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><Button variant='outline-warning' size='sm'><img src={Checkout} onClick={() => setOpenModal(true)} alt="" height={20} width={20} /></Button></span>
+
+                                  );
+                              },
+                              onClick: (event, rowData) => {
+                                  setSelectedUserData(rowData);
+                                  {
+                                      setPopUp("checkout");
+                                  }
+                                  setMsg(
+                                      rowData.trainee_id
+                                  );
+                              },
+                          }),
                                 
                             ]}
                             options={{
@@ -278,9 +295,17 @@ const deleteSelectedTrainee = () => {
                 />
             )}
 
+            {popup === "checkout" && (
+                <CheckinModal
+                    msg={msg}
+                    closePopUp={closePopUp}
+                    open={checkoutmodal}
+                />
+            )}
+
             {/* <DeleteModal open={openModal} onClose={() => setOpenModal(false)} /> */}
             {/* <CheckinModal open={checkinmodal} onClose={() => opencheckin(false)} /> */}
-            <CheckoutModal open={checkoutmodal} onClose={() => opencheckout(false)} />
+            {/* <CheckoutModal open={checkoutmodal} onClose={() => opencheckout(false)} /> */}
             <NowinModal open={nowinmodal} onClose={() => opennowin(false)} />
             <DuecheckModal open={duecmodal} onCloseD={() => openduec(false)} />
             {/* <PaymentModal open={paymentModal} onClose={() => openpaymentModal(false)} /> */}

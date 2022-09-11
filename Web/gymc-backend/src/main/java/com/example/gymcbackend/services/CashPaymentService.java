@@ -1,10 +1,14 @@
 package com.example.gymcbackend.services;
 
+import com.example.gymcbackend.dto.PaymentInfo;
+import com.example.gymcbackend.dto.TraineeInfo;
 import com.example.gymcbackend.entities.Payment;
 import com.example.gymcbackend.repository.cashPaymentDao.CashPaymentJdbcRepository;
 import com.example.gymcbackend.repository.cashPaymentDao.CashPaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CashPaymentService {
@@ -27,5 +31,7 @@ public class CashPaymentService {
         cashPaymentRepository.save(newPayment);
         return "payment Added";
     }
+    //public List<PaymentInfo> getPlanInfo(){return cashPaymentJdbcRepository.getPlanInfo();}
+
 
 }
