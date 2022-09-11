@@ -188,14 +188,4 @@ export const deleteExercise = (exerciseID) => {
     });
 };
 
-//GET PAYMENT PLAN TABLE DETAILS
 
-export const getPaymentPlanTableDetails = () => {
-    return axios({
-        method: "GET",
-        url: `${USER_URL}/paymentPlanMethods`,
-        headers: {
-            Authorization: "Bearer " + getToken(),
-        },
-    });
-};
