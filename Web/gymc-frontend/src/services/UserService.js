@@ -178,15 +178,15 @@ export const getExerciseTableDetails = () => {
 
 //DELETE EXERCISE
 
-// export const deleteExercise = (exerciseID) => {
-//     return axios({
-//         method: "PUT",
-//         url: `${USER_URL}/deleteExercise/${exerciseID}`,
-//         headers: {
-//             Authorization: "Bearer " + getToken(),
-//         },
-//     });
-// };
+export const deleteExercise = (exerciseID) => {
+    return axios({
+        method: "PUT",
+        url: `${USER_URL}/deleteExercise/${exerciseID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
 
 //GET PAYMENT PLAN TABLE DETAILS
 

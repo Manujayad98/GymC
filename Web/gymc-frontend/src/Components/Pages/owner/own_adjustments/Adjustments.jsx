@@ -15,7 +15,7 @@ import DeleteModal from '../../../Utilities/Popups/DeletionModal'
 import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 
-import { getExerciseTableDetails, getPaymentPlanTableDetails } from "../../../../services/UserService";
+import { getExerciseTableDetails, deleteExercise, getPaymentPlanTableDetails } from "../../../../services/UserService";
 
 
 export default function Exercises() {
@@ -62,26 +62,26 @@ export default function Exercises() {
         console.log(paymentPlans);
     };
 
-    // const deleteSelectedExercise = () => {
-    //     console.log("deleted " + selectedExerciseData.exercise_id);
-    //     deleteExercise(selectedExerciseData.exercise_id)
-    //         .then((response) => {
-    //             if (response.status === 200 && response.data == 1) {
-    //                 window.location.href = "/Oadjustments";
-    //                 // evt.preventDefault();
-    //                 toast.success("User has deleted !");
-    //             } else {
-    //                 toast.error("Failed !!!");
-    //             }
-    //         })
-    //         .catch((err) => {
-    //             if (err && err.response) {
-    //                 console.log(err.message);
-    //                 toast.error("Failed !!!");
-    //             }
-    //         });
-    //     setPopUp("");
-    // };
+    const deleteSelectedExercise = () => {
+        console.log("deleted " + selectedExerciseData.exercise_id);
+        deleteExercise(selectedExerciseData.exercise_id)
+            .then((response) => {
+                if (response.status === 200 && response.data == 1) {
+                    window.location.href = "/Oadjustments";
+                    // evt.preventDefault();
+                    toast.success("User has deleted !");
+                } else {
+                    toast.error("Failed !!!");
+                }
+            })
+            .catch((err) => {
+                if (err && err.response) {
+                    console.log(err.message);
+                    toast.error("Failed !!!");
+                }
+            });
+        setPopUp("");
+    };
 
     const [openModal, setOpenModal] = useState(false);
 
@@ -244,13 +244,13 @@ export default function Exercises() {
                 {/* <DeleteModal open={openModal} onClose={() => setOpenModal(false)} /> */}
             </div>
 
-            {/* {popup === "delete" && (
+            {popup === "delete" && (
                 <DeleteModal
                     msg={msg}
                     closePopUp={closePopUp}
                     handleSubmit={deleteSelectedExercise}
                 />
-            )} */}
+            )}
         </div>
     )
 }
