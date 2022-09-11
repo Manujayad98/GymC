@@ -9,12 +9,13 @@ import Trash from '../../../../images/Icons/trash-solid.svg'
 import Button1 from '@mui/material/Button';
 import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
 import { Link } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
 
 import DeleteModal from '../../../Utilities/Popups/DeletionModal'
 import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 
-import { getExerciseTableDetails } from "../../../../services/UserService";
+import { getExerciseTableDetails, getPaymentPlanTableDetails } from "../../../../services/UserService";
 
 
 export default function Exercises() {
@@ -22,9 +23,19 @@ export default function Exercises() {
     useEffect(() => {
         checkValidate();
         getExercises();
+        getPaymentPlans();
+
     }, []);
 
     const [exercices, setExercises] = useState([]);
+    const [paymentPlans, setPaymentPlans] = useState([]);
+    const [selectedExerciseData, setSelectedExerciseData] = useState({});
+    const [popup, setPopUp] = useState("");
+    const [msg, setMsg] = useState("");
+
+    const closePopUp = () => {
+        setPopUp("");
+    };
 
     const checkValidate = async () => {
         const y = localStorage.getItem("USER_KEY");
@@ -42,56 +53,37 @@ export default function Exercises() {
         console.log(exercices);
     };
 
+    const getPaymentPlans = async () => {
+        const res = await getPaymentPlanTableDetails();
+        console.log(res.data);
+        setPaymentPlans(
+            [...res.data]
+        );
+        console.log(paymentPlans);
+    };
+
+    // const deleteSelectedExercise = () => {
+    //     console.log("deleted " + selectedExerciseData.exercise_id);
+    //     deleteExercise(selectedExerciseData.exercise_id)
+    //         .then((response) => {
+    //             if (response.status === 200 && response.data == 1) {
+    //                 window.location.href = "/Oadjustments";
+    //                 // evt.preventDefault();
+    //                 toast.success("User has deleted !");
+    //             } else {
+    //                 toast.error("Failed !!!");
+    //             }
+    //         })
+    //         .catch((err) => {
+    //             if (err && err.response) {
+    //                 console.log(err.message);
+    //                 toast.error("Failed !!!");
+    //             }
+    //         });
+    //     setPopUp("");
+    // };
+
     const [openModal, setOpenModal] = useState(false);
-
-    const [excerciseDetails] = useState([
-        // {
-        //     ExerciseID: 'E0001',
-        //     ExerciseName: "Incline Press",
-        //     PrimaryMuscle: "Muscle 1",
-        //     SecondaryMuscle: "Muscle 2",
-
-        // },
-        // {
-        //     ExerciseID: 'E0002',
-        //     ExerciseName: "Incline Press",
-        //     PrimaryMuscle: "Muscle 1",
-        //     SecondaryMuscle: "Muscle 2",
-
-        // },
-        // {
-        //     ExerciseID: 'E0003',
-        //     ExerciseName: "Incline Press",
-        //     PrimaryMuscle: "Muscle 1",
-        //     SecondaryMuscle: "Muscle 2",
-
-        // },
-    ]);
-
-    const [paymentPlanDetails] = useState([
-        {
-            PaymentID: 'P0001',
-            PaymentType: "Daily",
-            Price: "Rs.550",
-        },
-        {
-            PaymentID: 'P0001',
-            PaymentType: "Monthly-Personal",
-            Price: "Rs.550",
-        },
-        {
-            PaymentID: 'P0001',
-            PaymentType: "Monthly-NonPersonal",
-            Price: "Rs.550",
-        },
-
-    ]);
-    const [paymentPlanDetailsTableHead] = useState([
-        { id: "Type", label: "TYPE", numeric: false },
-        { id: "Price", label: "PRICE", numeric: false },
-        { id: "NextAmount", label: "NEXT AMOUNT", numeric: false },
-        // { id: "Actions", label: "ACTIONS", numeric: false },
-    ]);
 
 
 
@@ -139,10 +131,19 @@ export default function Exercises() {
                                     {
                                         icon: () => {
                                             return (
-                                                <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} onClick={() => setOpenModal(true)} alt="" height={20} width={20} /></span>
+                                                <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash}  alt="" height={20} width={20} /></span>
                                             );
                                         },
+                                       
                                         onClick: (event, rowData) => {
+                                            console.log(rowData.trainer_id);
+                                            setSelectedExerciseData(rowData);
+                                            {
+                                                setPopUp("delete");
+                                            }
+                                            setMsg(
+                                                rowData.exercise_id
+                                            );
                                         },
                                     },
                                 ]}
@@ -167,14 +168,14 @@ export default function Exercises() {
                         <div className='own-adjustment-card '>
                            
                             <MaterialTable
-                                title="Payments"
+                                title="Payment Plans"
                                 columns={[
-                                    { title: "Payment ID", field: "PaymentID" },
-                                    { title: "Payment Type", field: "PaymentType" },
-                                    { title: "Price", field: "Price" },
+                                    { title: "Payment ID", field: "plan_id" },
+                                    { title: "Payment Type", field: "type" },
+                                    { title: "Price", field: "amount" },
                                 ]}
                                 icons={TableIcons}
-                                data={paymentPlanDetails}
+                                data={paymentPlans}
                                 actions={[
                                     {
                                         icon: () => {
@@ -205,7 +206,6 @@ export default function Exercises() {
                         </div>
                         <div className="main_div">
                             <div className="center_div">
-                                {/* <h2 id="count">{count}</h2> */}
                                 <div class="adjustment-input-group ">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-outline-primary" type="button" onClick={decNum}>-</button>
@@ -226,7 +226,6 @@ export default function Exercises() {
                         </div>
                         <div className="main_div">
                             <div className="center_div">
-                                {/* <h2 id="count">{count}</h2> */}
                                 <div class="adjustment-input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-outline-primary" type="button" onClick={decNum}>-</button>
@@ -244,6 +243,14 @@ export default function Exercises() {
                 </div>
                 {/* <DeleteModal open={openModal} onClose={() => setOpenModal(false)} /> */}
             </div>
+
+            {/* {popup === "delete" && (
+                <DeleteModal
+                    msg={msg}
+                    closePopUp={closePopUp}
+                    handleSubmit={deleteSelectedExercise}
+                />
+            )} */}
         </div>
     )
 }
