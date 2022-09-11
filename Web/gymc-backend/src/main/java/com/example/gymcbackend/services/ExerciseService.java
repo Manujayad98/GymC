@@ -1,6 +1,5 @@
 package com.example.gymcbackend.services;
 
-import com.example.gymcbackend.dto.TrainerTableData;
 import com.example.gymcbackend.entities.Exercise;
 import com.example.gymcbackend.repository.ExerciseDao.ExerciseJdbcRepository;
 import com.example.gymcbackend.repository.ExerciseDao.ExerciseRepository;
@@ -35,6 +34,20 @@ public class ExerciseService {
         exerciseRepository.save(exercise1);
 
         return "Your have successfully added a new exercise";
+
+    }
+
+    public long changeExerciseStatus(String staffUserID, Integer sts) {
+
+        String staffID = staffUserID;
+//        System.out.println("trainerservice");
+
+        Long result = Long.parseLong(String.valueOf(staffID));
+//        System.out.println("trainerservic2");
+
+        
+        return exerciseJdbcRepository.changeExerciseDeleteStatus(result);
+
 
     }
 }

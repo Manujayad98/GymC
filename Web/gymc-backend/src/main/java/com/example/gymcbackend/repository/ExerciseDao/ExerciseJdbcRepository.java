@@ -2,8 +2,6 @@ package com.example.gymcbackend.repository.ExerciseDao;
 
 import com.example.gymcbackend.dto.ExerciseDetailsResponse;
 import com.example.gymcbackend.dto.ExerciseTableData;
-import com.example.gymcbackend.dto.TraineeViewScheduleDetailsResponse;
-import com.example.gymcbackend.dto.TrainerTableData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -27,6 +25,22 @@ public class ExerciseJdbcRepository {
 
         List<ExerciseTableData> ExerciseList = jdbc.query(query, new BeanPropertyRowMapper<ExerciseTableData>(ExerciseTableData.class));
         return ExerciseList;
+    }
+
+    public long changeExerciseDeleteStatus(Long userID) {
+
+        Integer x = 0;
+        MapSqlParameterSource namedParameters =
+                new MapSqlParameterSource();
+        String update = "UPDATE exercise " +
+                "SET status = :status WHERE exerciseid = :exerciseid;";
+
+        namedParameters.addValue("status", x);
+        namedParameters.addValue("exerciseid", userID);
+
+        int rowAffected = jdbc.update(update, namedParameters);
+
+        return rowAffected;
     }
 
 
