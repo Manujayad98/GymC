@@ -164,28 +164,4 @@ export const activeTrainer = (TrainerID) => {
     });
 };
 
-//GET EXERCISE TABLE DETAILS
-
-export const getExerciseTableDetails = () => {
-    return axios({
-        method: "GET",
-        url: `${USER_URL}/exercises`,
-        headers: {
-            Authorization: "Bearer " + getToken(),
-        },
-    });
-};
-
-//DELETE EXERCISE
-
-export const deleteExercise = (exerciseID) => {
-    return axios({
-        method: "PUT",
-        url: `${USER_URL}/deleteExercise/${exerciseID}`,
-        headers: {
-            Authorization: "Bearer " + getToken(),
-        },
-    });
-};
-
 

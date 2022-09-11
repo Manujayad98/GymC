@@ -15,7 +15,8 @@ import DeleteModal from '../../../Utilities/Popups/DeletionModal'
 import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 
-import { getExerciseTableDetails, deleteExercise, getPaymentPlanTableDetails } from "../../../../services/UserService";
+import { getExerciseTableDetails, deleteExercise } from "../../../../services/ExerciseService";
+import { getPaymentPlanTableDetails } from "../../../../services/PaymentService";
 
 
 export default function Exercises() {
