@@ -10,6 +10,7 @@ import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 
 import { getExerciseTableDetails } from "../../../../services/ExerciseService";
+import { getPaymentPlanTableDetails } from "../../../../services/PaymentService";
 
 
 const Dashboard = () => {
@@ -17,9 +18,12 @@ const Dashboard = () => {
   useEffect(() => {
     checkValidate();
     getExercises();
+    getPaymentPlans();
+
   }, []);
 
   const [exercices, setExercises] = useState([]);
+  const [paymentPlans, setPaymentPlans] = useState([]);
 
   const checkValidate = async () => {
     const y = localStorage.getItem("USER_KEY");
@@ -35,6 +39,15 @@ const Dashboard = () => {
         [...res.data]
     );
     console.log(exercices);
+};
+
+const getPaymentPlans = async () => {
+  const res = await getPaymentPlanTableDetails();
+  console.log(res.data);
+  setPaymentPlans(
+      [...res.data]
+  );
+  console.log(paymentPlans);
 };
 
   //ANNUAL INCOME CHART
@@ -175,26 +188,25 @@ const Dashboard = () => {
                   <div className='own-analytics-container-head'>Available Payment Plans</div>
                   <div className='own-analytics-card1'>
                     
-                    <MaterialTable
-                      title="Payments"
-                      columns={[
-                        { title: "Payment ID", field: "PaymentID" },
-                        { title: "Payment Type", field: "PaymentType" },
-                        { title: "Price", field: "Price" },
-                      ]}
-                      icons={TableIcons}
-                      data={priceDetails}
-
-                      options={{
-                        pageSize: 3,
-                        pageSizeOptions: [6, 12, 15],
-                        headerStyle: {
-                          backgroundColor: '#1F0106',
-                          color: '#FFF',
-                          hover: '#FFF'
-                        }
-                      }}
-                    />
+                  <MaterialTable
+                                title="Payment Plans"
+                                columns={[
+                                    { title: "Payment ID", field: "plan_id" },
+                                    { title: "Payment Type", field: "type" },
+                                    { title: "Price", field: "amount" },
+                                ]}
+                                icons={TableIcons}
+                                data={paymentPlans}
+                                options={{
+                                    pageSize: 3,
+                                    pageSizeOptions: [6, 12, 15],
+                                    headerStyle: {
+                                        backgroundColor: '#1F0106',
+                                        color: '#FFF',
+                                        hover: '#FFF'
+                                    }
+                                }}
+                            />
                   </div>
                 </div>
               </div>
