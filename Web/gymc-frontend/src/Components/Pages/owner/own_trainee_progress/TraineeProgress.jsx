@@ -20,6 +20,9 @@ import './TraineeProgress.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
+import MaterialTable from "material-table";
+import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
+
 const TraineeProgress = () => {
   const LineData = [
     ['x', 'Biceps', 'Forearm', 'Chest', 'Thighs', 'Hips'],
@@ -89,23 +92,69 @@ const TraineeProgress = () => {
     { id: "delete", numeric: false },
 
   ]);
+  // const [dietDetails] = useState([
+  //   {
+  //     Date_Time: "2022/08/15 09.30 AM",
+  //     Topic: "Center Closure",
+  //     Note: "Fitness center is closed on 20 th August 2022"
+
+
+  //   },
+  //   {
+  //     Date_Time: "2022/08/15 09.30 AM",
+  //     Topic: "Center Closure",
+  //     Note: "Fitness center is closed on 20 th August 2022",
+  //   },
+
+  // ]);
+
   const [dietDetails] = useState([
     {
-      Date_Time: "2022/08/15 09.30 AM",
-      Topic: "Center Closure",
-      Note: "Fitness center is closed on 20 th August 2022"
-
-
+      nutrition: "Nutrition 1",
+      CalorieIntake: "25",
     },
     {
-      Date_Time: "2022/08/15 09.30 AM",
-      Topic: "Center Closure",
-      Note: "Fitness center is closed on 20 th August 2022",
+      nutrition: "Nutrition 1",
+      CalorieIntake: "25",
+    },
+    {
+      nutrition: "Nutrition 1",
+      CalorieIntake: "25",
     },
 
   ]);
+  const [excerciseDetails, setExcerciseDetails] = useState([
+    {
+      // ExerciseID: 1,
+      Name: "Incline Press",
+      Repititions: 0
+    },
+    {
+      // ExerciseID: 2,
+      Name: "Incline Press",
+      Repititions: 0
 
+    },
+    {
+      // ExerciseID: 3,
+      Name: "Incline Press",
+      Repititions: 0
 
+    },
+    {
+      // ExerciseID: 4,
+      Name: "Incline Press",
+      Repititions: 0
+
+    },
+    {
+      // ExerciseID: 5,
+      Name: "Incline Press",
+      Repititions: 0
+
+    },
+
+  ]);
 
   return (
     <div className='main-container'>
@@ -160,17 +209,57 @@ const TraineeProgress = () => {
                 <Tabs className="dietworkout_tab">
                   <Tab eventKey="home" title="Workout" >
 
-                    <Table
+                    {/* <Table
                       rows={workoutDetails}
                       headCells={workoutDetailsTableHead}
-                    />
-
+                    /> */}
+                    <div style={{ padding: '20px' }}>
+                      <MaterialTable
+                        title="Exersices"
+                        columns={[
+                          // { title: "Exercice ID", field: "ExerciseID" },
+                          { title: "Name", field: "Name" },
+                          { title: "Repitition Count", field: "Repititions" },
+                        ]}
+                        icons={TableIcons}
+                        data={excerciseDetails}
+                        options={{
+                          pageSize: 3,
+                          pageSizeOptions: [6, 12, 15],
+                          headerStyle: {
+                            backgroundColor: '#1F0106',
+                            color: '#FFF',
+                            hover: '#FFF'
+                          }
+                        }}
+                      />
+                    </div>
                   </Tab>
                   <Tab eventKey="profile" title="Diet" >
-                    <Table
+                    {/* <Table
                       rows={dietDetails}
                       headCells={dietDetailsTableHead}
-                    />
+                    /> */}
+                    <div style={{ padding: '20px' }}>
+                      <MaterialTable
+                        title="Diet Plan"
+                        columns={[
+                          { title: "nutrition", field: "nutrition" },
+                          { title: "CalorieIntake", field: "CalorieIntake" },
+                        ]}
+                        icons={TableIcons}
+                        data={dietDetails}
+                        options={{
+                          pageSize: 3,
+                          pageSizeOptions: [6, 12, 15],
+                          headerStyle: {
+                            backgroundColor: '#1F0106',
+                            color: '#FFF',
+                            hover: '#FFF'
+                          }
+                        }}
+                      />
+                    </div>
 
                   </Tab>
 
