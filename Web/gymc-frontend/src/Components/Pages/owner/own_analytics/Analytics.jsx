@@ -5,18 +5,21 @@ import SidebarO from '../own_sidebar/Sidebar'
 import HeaderO from '../own_header/Header'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-// import BarChart from '../../../Utilities/Charts/BarChart'
-import Table from '../../../Utilities/Tables/Table2'
 import { Chart } from "react-google-charts";
 import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
+
+import { getExerciseTableDetails } from "../../../../services/ExerciseService";
 
 
 const Dashboard = () => {
 
   useEffect(() => {
     checkValidate();
+    getExercises();
   }, []);
+
+  const [exercices, setExercises] = useState([]);
 
   const checkValidate = async () => {
     const y = localStorage.getItem("USER_KEY");
@@ -25,18 +28,14 @@ const Dashboard = () => {
     }
   };
 
-  // const [ChartData] = useState([
-  //   ["Month", "Income"],
-  //   ["Jan", 11000],
-  //   ["Feb", 2000],
-  //   ["Mar", 2000],
-  //   ["Apr", 5000],
-  //   ["May", 7000],
-  //   ["Jun", 8000],
-  //   ["Jul", 7000],
-  //   ["Aug", 8000],
-
-  // ]);
+  const getExercises = async () => {
+    const res = await getExerciseTableDetails();
+    console.log(res.data);
+    setExercises(
+        [...res.data]
+    );
+    console.log(exercices);
+};
 
   //ANNUAL INCOME CHART
   const Annualdata = [
@@ -63,42 +62,6 @@ const Dashboard = () => {
     ["week 3", 19.3, "gold"],
     ["week 4", 21.45, "color: #e5e4e2"],
   ];
-
-  // EXCERCISE TABLE
-
-  const [excerciseDetails] = useState([
-    {
-      ExerciseID: 'E0001',
-      ExerciseName: "Incline Press",
-      PrimaryMuscle: "Muscle 1",
-      SecondaryMuscle: "Muscle 2",
-    },
-    {
-      ExerciseID: 'E0002',
-      ExerciseName: "Incline Press",
-      PrimaryMuscle: "Muscle 1",
-      SecondaryMuscle: "Muscle 2",
-    },
-    {
-      ExerciseID: 'E0003',
-      ExerciseName: "Incline Press",
-      PrimaryMuscle: "Muscle 1",
-      SecondaryMuscle: "Muscle 2",
-    },
-  ]);
-  // const [excerciseDetailsTableHead] = useState([
-  //   { id: "ExerciseID", label: "EXERCISE ID", numeric: false },
-  //   { id: "ExerciseName", label: "Exercise NAME", numeric: false },
-  //   { id: "PrimaryMuscle", label: "PRIMARY MUSCLE", numeric: false },
-  //   { id: "SecondaryMuscle", label: "SECONDARY MUSCLE", numeric: false },
-  // ]);
-
-  // PRICING TABLE
-
-  // const [priceDetailsTableHead] = useState([
-  //   { id: "Type", label: "TYPE", numeric: false },
-  //   { id: "Price", label: "PRICE", numeric: false }
-  // ]);
 
   const [priceDetails] = useState([
     {
@@ -142,15 +105,7 @@ const Dashboard = () => {
                   </div>
 
                 </div>
-                {/* <div className='own-analytics-card1 analytics-cards'>
-
-                  <div className='own-analytics-card-content'>
-                    <div className='staffID'>No of Trainees</div>
-                    <div className='staffName'>5</div>
-                  </div>
-
-                </div>
-                {/*   */}
+               
                 <div className='own-analytics-card1 analytics-cards'>
 
                   <div className='own-analytics-card-content'>
@@ -191,41 +146,35 @@ const Dashboard = () => {
                 <div className='own-analytics-table-container'>
                   <div className='own-analytics-container-head'>Available Excercises</div>
                   <div className='own-analytics-card1'>
-                    {/* <Table
-                      rows={excerciseDetails}
-                      headCells={excerciseDetailsTableHead}
-                    /> */}
+                    
                     <MaterialTable
-                      title="Exercices"
-                      columns={[
-                        { title: "Exercise ID", field: "ExerciseID" },
-                        { title: "Exercise Name", field: "ExerciseName" },
-                        { title: "Primary Muscle", field: "PrimaryMuscle" },
-                        { title: "Secondary Muscle", field: "SecondaryMuscle" },
-                      ]}
-                      icons={TableIcons}
-                      data={excerciseDetails}
+                                title="Exercices"
+                                columns={[
+                                    { title: "Exercise ID", field: "exercise_id" },
+                                    { title: "Exercise Name", field: "exercise_name" },
+                                    { title: "Primary Muscle", field: "primary_muscle" },
+                                    { title: "Secondary Muscle", field: "secondary_muscle" },
+                                ]}
+                                icons={TableIcons}
+                                data={exercices}
+                                options={{
+                                    pageSize: 3,
+                                    pageSizeOptions: [6, 12, 15],
+                                    headerStyle: {
+                                        backgroundColor: '#1F0106',
+                                        color: '#FFF',
+                                        hover: '#FFF'
+                                    }
+                                }}
+                            />
 
-                      options={{
-                        pageSize: 3,
-                        pageSizeOptions: [6, 12, 15],
-                        headerStyle: {
-                          backgroundColor: '#1F0106',
-                          color: '#FFF',
-                          hover: '#FFF'
-                        }
-                      }}
-                    />
                   </div>
                 </div>
 
                 <div className='own-analytics-table-container'>
                   <div className='own-analytics-container-head'>Available Payment Plans</div>
                   <div className='own-analytics-card1'>
-                    {/* <Table
-                      rows={priceDetails}
-                      headCells={priceDetailsTableHead}
-                    /> */}
+                    
                     <MaterialTable
                       title="Payments"
                       columns={[
