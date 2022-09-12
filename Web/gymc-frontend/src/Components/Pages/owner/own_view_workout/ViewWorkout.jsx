@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import '../own_sidebar/Sidebar.css'
 import './ViewWorkout.css'
 import SidebarO from '../own_sidebar/Sidebar'
@@ -12,11 +12,31 @@ import Edit from '../../../../images/Icons/pen-solid.svg'
 import InputField from "../../../Utilities/Form/InputField";
 import { Validators } from "../../../Utilities/Form/Validator/Validator";
 import Table from '../../../Utilities/Tables/Table2';
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import CalendarComp from "../../../Utilities/CalendarComp/CalendarComp";
-
+import MaterialTable from "material-table";
+import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 
 export default function ViewWorkout() {
+
+    const { id } = useParams();
+
+    useEffect(() => {
+        checkValidate();
+    }, []);
+
+    const checkValidate = async () => {
+        console.log(id);
+        const y = localStorage.getItem("USER_KEY");
+        if (!y) {
+            window.location.href = "/";
+        }
+    };
+
+    const moveToMoreView = () => {
+        window.location.href = `/AddWorkout/${id}`;
+    }
+
     const [requestData, setState] = useState({
         text: '',
         occupation: '',
@@ -80,29 +100,60 @@ export default function ViewWorkout() {
 
 
     ]);
-    const [dietDetailsTableHead] = useState([
-        { label: "Nutrition", id: "nutrition", numeric: false },
-        { label: "Calorie Intake", id: "CalorieIntake", numeric: false },
-        { id: "delete", numeric: false },
+    // const [dietDetailsTableHead] = useState([
+    //     { label: "Nutrition", id: "nutrition", numeric: false },
+    //     { label: "Calorie Intake", id: "CalorieIntake", numeric: false },
+    //     { id: "delete", numeric: false },
 
-    ]);
+    // ]);
     const [dietDetails] = useState([
         {
-            Date_Time: "2022/08/15 09.30 AM",
-            Topic: "Center Closure",
-            Note: "Fitness center is closed on 20 th August 2022"
-
-
+            nutrition: "Nutrition 1",
+            CalorieIntake: "25",
         },
         {
-            Date_Time: "2022/08/15 09.30 AM",
-            Topic: "Center Closure",
-            Note: "Fitness center is closed on 20 th August 2022",
+            nutrition: "Nutrition 1",
+            CalorieIntake: "25",
+        },
+        {
+            nutrition: "Nutrition 1",
+            CalorieIntake: "25",
         },
 
     ]);
 
+    const [excerciseDetails, setExcerciseDetails] = useState([
+        {
+            // ExerciseID: 1,
+            Name: "Incline Press",
+            Repititions: 0
+        },
+        {
+            // ExerciseID: 2,
+            Name: "Incline Press",
+            Repititions: 0
 
+        },
+        {
+            // ExerciseID: 3,
+            Name: "Incline Press",
+            Repititions: 0
+
+        },
+        {
+            // ExerciseID: 4,
+            Name: "Incline Press",
+            Repititions: 0
+
+        },
+        {
+            // ExerciseID: 5,
+            Name: "Incline Press",
+            Repititions: 0
+
+        },
+
+    ]);
     return (
         <div className='main-container'>
             <SidebarO />
@@ -126,18 +177,16 @@ export default function ViewWorkout() {
 
                             </div>
                             <div className="workout-button-card">
-                                <Link to='/OaddWorkout'>
-                                    <button class="newworkoutbtn">New Workout</button>
-                                </Link>
-                                <Link to='/Otraineeprogress'>
+                                {/* <Link to='/OaddWorkout/'> */}
+                                <button class="newworkoutbtn" onClick={moveToMoreView}>New Workout</button>
+                                {/* </Link> */}
+                                <Link to='/Otraineeprogress' style={{ textDecoration: 'none' }}>
                                     <button class="progressbtn">Progress</button>
                                 </Link>
-
+                                <Link to='/OupdateWorkout' style={{ textDecoration: 'none' }}>
+                                    <button className="update_btn">Update</button>
+                                </Link>
                             </div>
-
-
-
-
 
                         </div>
                         <div className="own-trainee-form">
@@ -239,7 +288,8 @@ export default function ViewWorkout() {
                             <div className="own-viewworkout-calender">
 
                                 <div className="own-viewworkout-calender-card">
-                                    <CalendarComp />
+                                    {/* <CalendarComp /> */}
+                                    <SampleCal />
                                 </div>
                             </div>
 
@@ -251,20 +301,60 @@ export default function ViewWorkout() {
                                 <Tabs className="dietworkout_tab">
                                     <Tab eventKey="home" title="Workout" >
 
-                                        <Table
+                                        {/* <Table
                                             rows={workoutDetails}
                                             headCells={workoutDetailsTableHead}
-                                        />
-                                        <Link to='/OupdateWorkout'>
+                                        /> */}
+                                        {/* <Link to='/OupdateWorkout'>
                                             <button className="update_btn">Update</button>
-                                        </Link>
+                                        </Link> */}
+                                        <div style={{ padding: '20px' }}>
+                                            <MaterialTable
+                                                title="Exersices"
+                                                columns={[
+                                                    // { title: "Exercice ID", field: "ExerciseID" },
+                                                    { title: "Name", field: "Name" },
+                                                    { title: "Repitition Count", field: "Repititions" },
+                                                ]}
+                                                icons={TableIcons}
+                                                data={excerciseDetails}
+                                                options={{
+                                                    pageSize: 3,
+                                                    pageSizeOptions: [6, 12, 15],
+                                                    headerStyle: {
+                                                        backgroundColor: '#1F0106',
+                                                        color: '#FFF',
+                                                        hover: '#FFF'
+                                                    }
+                                                }}
+                                            />
+                                        </div>
                                     </Tab>
                                     <Tab eventKey="profile" title="Diet" >
-                                        <Table
+                                        {/* <Table
                                             rows={dietDetails}
                                             headCells={dietDetailsTableHead}
-                                        />
-
+                                        /> */}
+                                        <div style={{ padding: '20px' }}>
+                                            <MaterialTable
+                                                title="Diet Plan"
+                                                columns={[
+                                                    { title: "nutrition", field: "nutrition" },
+                                                    { title: "CalorieIntake", field: "CalorieIntake" },
+                                                ]}
+                                                icons={TableIcons}
+                                                data={dietDetails}
+                                                options={{
+                                                    pageSize: 3,
+                                                    pageSizeOptions: [6, 12, 15],
+                                                    headerStyle: {
+                                                        backgroundColor: '#1F0106',
+                                                        color: '#FFF',
+                                                        hover: '#FFF'
+                                                    }
+                                                }}
+                                            />
+                                        </div>
                                     </Tab>
 
                                 </Tabs>
