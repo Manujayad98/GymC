@@ -7,10 +7,10 @@ export default function ProfilePage({ navigation }) {
 
     const [index, setIndex] = React.useState(0);
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' ,backgroundColor:'#121928'}}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#121928' }}>
             <Text
                 onPress={() => navigation.navigate('Home')}
-                style={{ fontSize: 26, fontWeight: 'bold', color:'white' }}>Profile
+                style={{ fontSize: 26, fontWeight: 'bold', color: 'white' }}>Profile
             </Text>
             {/* <Avatar
                 activeOpacity={0.2}
@@ -54,7 +54,7 @@ export default function ProfilePage({ navigation }) {
                 </Tab>
                 <TabView value={index} onChange={setIndex} animationType="spring">
                     <TabView.Item style={{ backgroundColor: 'red', width: '100%' }}> */}
-                        {/* <Formik
+            {/* <Formik
                             initialValues={{ email: '' }}
                             onSubmit={values => console.log(values)}
                         >
@@ -69,17 +69,17 @@ export default function ProfilePage({ navigation }) {
                             </View>
                             )}
                         </Formik> */}
-                    {/* </TabView.Item>
+            {/* </TabView.Item>
                     <TabView.Item style={{ backgroundColor: 'blue', width: '100%' }}>
                         <Text h1>PW reset form here</Text>
                     </TabView.Item>
                 </TabView>
             </View> */}
         </View>
-        
+
 
     );
 }
-const styles= Stylesheet.create({
+const styles = Stylesheet.create({
 
 });

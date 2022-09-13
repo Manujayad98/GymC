@@ -76,7 +76,7 @@ export default function Trainer_Home_Page({ navigation }) {
                                 {/* <br></br> */}
                                 <Text><Icon name="calendar" size={45} color="#fff"
                                     onPress={() =>
-                                        navigation.navigate('Startup')}
+                                        navigation.navigate('MyAppointment')}
 
                                 /></Text>
                                 <Text style={styles.cardHeader}>Appointment</Text>
@@ -87,7 +87,7 @@ export default function Trainer_Home_Page({ navigation }) {
                             <View style={styles.inner}>
                                 <Text><Icon2 name="wallet" size={55} color="#fff"
                                     onPress={() =>
-                                        navigation.navigate('Startup')}
+                                        navigation.navigate('Payment')}
 
                                 /></Text>
                                 <Text style={styles.cardHeader}>Payments</Text>
