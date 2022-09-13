@@ -21,7 +21,7 @@ public class TrainerJdbcRepository {
     JdbcTemplate jdbcTemplate;
 
     public List<TrainerTableData> findAllTrainers() {
-        String query ="SELECT CONCAT('S000', u.user_id) AS trainer_id, CONCAT(s.first_name,' ', s.last_name) AS full_name,s.phone_number AS phone, s.address AS address," +
+        String query ="SELECT CONCAT('S000', u.user_id) AS trainer_id, CONCAT(s.first_name,' ', s.last_name) AS full_name,s.phone_number AS phone,s.qualification AS qualifications, s.address AS address," +
 //                "IF(u.status=1, \"Active\", \"Inactive\") AS status " +
                 "CASE u.is_hold " +
                 "WHEN 1 THEN \"Hold\" \n" +
