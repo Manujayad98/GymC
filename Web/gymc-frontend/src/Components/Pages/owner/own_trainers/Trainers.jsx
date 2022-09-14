@@ -126,146 +126,7 @@ export default function Trainers() {
         setPopUp("");
     };
 
-    // const [trainerDetails] = useState([
-    //     {
-    //         TrainerImg: (<img src={trainee1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-    //         TrainerID: "S001",
-    //         Name: "Thiyangi Senevirathna",
-    //         Phone: "0714558741",
-    //         Address: "No. 46/4, Tample road, Narammala",
-    //         // RegDate: "2019-06-30",
-    //         Status: (
-    //             <span >
-    //                 <button type="button" class="btn" disabled style={{ backgroundColor: '#E4E074', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Hold</button>
-    //             </span>),
-    //         Actions: (
-    //             <span >
-    //                 <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-    //                 {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
-    //                 <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-    //                 <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
-    //             </span >
-    //         ),
-    //     },
-    //     {
-    //         TrainerImg: (<img src={trainee2} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-    //         TrainerID: "S002",
-    //         Name: "Bashitha Marasinghe",
-    //         Phone: "075584736",
-    //         Address: "No. 46/4, Church road, Dambadeniya",
-    //         // RegDate: "2019-07-21",
-    //         Status: (
-    //             <span >
-    //                 <button type="button" class="btn" disabled style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Active</button>
-    //             </span>),
-    //         Actions: (
-    //             <span >
-    //                 <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-    //                 {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
-    //                 <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-    //                 <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
-
-    //             </span >
-    //         ),
-    //     },
-    //     {
-    //         TrainerImg: (<img src={trainee3} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-    //         TrainerID: "S003",
-    //         Name: "Inosha Perera",
-    //         Phone: "0775587511",
-    //         Address: "No. 16/4, Temple Road, Pannala",
-    //         // RegDate: "2020-17-15",
-    //         Status: (
-    //             <span >
-    //                 <button type="button" class="btn" disabled style={{ backgroundColor: '#E47474', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Remove</button>
-    //             </span>),
-    //         Actions: (
-    //             <span >
-    //                 <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-    //                 {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
-    //                 <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-    //                 <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
-
-    //             </span >
-    //         ),
-    //     },
-    //     {
-    //         TrainerImg: (<img src={trainee4} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-    //         TrainerID: "S004",
-    //         Name: "Rasangi Madhushika",
-    //         Phone: "078558456",
-    //         Address: "Negombo Road, Giriulla",
-    //         // RegDate: "2020-08-17",
-    //         Status: (
-    //             <span >
-    //                 <button type="button" class="btn" disabled style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Active</button>
-    //             </span>),
-    //         Actions: (
-    //             <span >
-    //                 <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-    //                 {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
-    //                 <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-    //                 <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
-
-    //             </span >
-    //         ),
-    //     },
-    //     {
-    //         TrainerImg: (<img src={trainee5} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-    //         TrainerID: "S005",
-    //         Name: "Ishan Karunananyake",
-    //         Phone: "0765584751",
-    //         Address: "Temple road, Damabadeniya",
-    //         // RegDate: "2020-10-23",
-    //         Status: (
-    //             <span >
-    //                 <button type="button" class="btn" disabled style={{ backgroundColor: '#74E486', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Active</button>
-    //             </span>),
-    //         Actions: (
-    //             <span >
-    //                 <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-    //                 {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
-    //                 <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-    //                 <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
-
-    //             </span >
-    //         ),
-    //     },
-    //     {
-    //         TrainerImg: (<img src={trainee6} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-    //         TrainerID: "S006",
-    //         Name: "Madhupa Minol",
-    //         Phone: "0765584751",
-    //         Address: "Church road, Giriulla",
-    //         // RegDate: "2020-11-11",
-    //         Status: (
-    //             <span >
-    //                 <button type="button" class="btn" disabled style={{ backgroundColor: '#E47474', width: '90px', padding: '0 5px 0 5px', border: 'none' }}>Remove</button>
-    //             </span>),
-    //         Actions: (
-    //             <span >
-    //                 <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-    //                 {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
-    //                 <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-    //                 <span style={{ paddingRight: "20px" }}><img src={Hold} alt="" height={20} width={20} /></span>
-
-    //             </span >
-    //         ),
-    //     },
-
-    // ]);
-
-    // const [trainerDetailsTableHead] = useState([
-    //     { id: "TrainerImg", label: "", numeric: false },
-    //     { id: "TrainerID", label: "TRAINER ID", numeric: false },
-    //     { id: "TrainerName", label: "TRAINER NAME", numeric: false },
-    //     { id: "Phone", label: "PHONE", numeric: false },
-    //     { id: "Address", label: "ADDRESS", numeric: false },
-    //     // { id: "RegDate", label: "REG ON", numeric: false },
-    //     { id: "Status", label: "STATUS", numeric: false },
-    //     { id: "Actions", label: "ACTIONS", numeric: false },
-    // ]);
-
+    
 
     return (
 
@@ -277,31 +138,7 @@ export default function Trainers() {
                     <form action="">
                         <div className="filter-container">
                             <div className="inputFields-container">
-                                {/* <div className='searchbar-container'>
-                                    <div className="form-label-container">
-                                        <label class="form-label" for="form1">Trainer ID</label>
-                                    </div>
-                                    <div class="input-group">
-                                        <button type="button" class="btn btn-dark" style={{ height: '38px', width: '50px' }}>
-                                            <FontAwesomeIcon icon={faSearch} />
-                                        </button>
-                                        <div class="form-outline">
-                                            <input type="search" id="form1" class="form-control" placeholder='Search here' />
-                                        </div>
-                                    </div>
-
-                                </div> */}
-                                {/* <div className="dropdown-container">
-                                    <div className="form-label-container">
-                                        <label class="form-label" for="form1">Status</label>
-                                    </div>
-                                    <select class="form-control form-control-sm" style={{ padding: '8px' }}>
-                                        <option> select 1</option>
-                                        <option> select 2</option>
-                                        <option> select 3</option>
-                                        <option> select 4</option>
-                                    </select>
-                                </div> */}
+                                
                             </div>
                             <div className="button-container">
                                 <Link to='/OaddTrainer'>
@@ -311,16 +148,12 @@ export default function Trainers() {
 
                         </div>
                     </form>
-                    {/* <Table
-                        rows={trainerDetails}
-                        headCells={trainerDetailsTableHead}
-                        tableName={"Trainers"}
-                    /> */}
+                    
                     <div className="table-div">
                         <MaterialTable
                             title="System Users"
                             columns={[
-                                // { title: "", field: "TrainerImg" },
+                                
                                 { title: "TrainerID", field: "trainer_id" },
                                 { title: "name", field: "full_name" },
                                 { title: "phone", field: "phone" },
@@ -331,14 +164,7 @@ export default function Trainers() {
                             icons={TableIcons}
                             data={trainers}
                             actions={[
-                                {
-                                    icon: () => {
-                                        return (
-
-                                            <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Arrow} alt="" height={20} width={20} /></span>
-                                        );
-                                    },
-                                },
+                                
                                 {
                                     icon: () => {
                                         return (
@@ -406,6 +232,27 @@ export default function Trainers() {
                                     disabled: rowData.status == "Active"
                                 }),
                             ]}
+                            detailPanel={[
+                                {
+                                  tooltip: 'Show Name',
+                                  render: rowData => {
+                                    return (
+                                      <div
+                                        style={{
+                                          fontSize: 16,
+                                          textAlign: 'center',
+                                          color: 'black',
+                                          backgroundColor: 'white',
+                                        }}
+                                      >
+                                        Qualifications : 
+                                        {rowData.qualifications}
+                                      </div>
+                                    )
+                                  },
+                                },
+                               
+                              ]}
                             options={{
                                 headerStyle: {
                                     backgroundColor: '#1F0106',
