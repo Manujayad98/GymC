@@ -79,6 +79,8 @@
     font-weight: 520;
     font-size: 20px;
     color: #1F0106;
+    margin-left: 10px;
+
 }
 
 .update-workout-form-inputs {
@@ -103,5 +105,9 @@
 
     .own_update_workout_div2 {
         width: 100%;
+    }
+
+    .own_update_workout_card2 {
+        margin-left: 0;
     }
 }
