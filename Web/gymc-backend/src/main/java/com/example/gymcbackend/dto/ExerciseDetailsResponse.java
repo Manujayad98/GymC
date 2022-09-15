@@ -6,7 +6,6 @@ public class ExerciseDetailsResponse {
 
     private String name;
 
-    private String primaryMuscle;
 
     public long getId() {
         return id;
@@ -24,22 +23,6 @@ public class ExerciseDetailsResponse {
         this.name = name;
     }
 
-    public String getPrimaryMuscle() {
-        return primaryMuscle;
-    }
 
-    public void setPrimaryMuscle(String primaryMuscle) {
-        this.primaryMuscle = primaryMuscle;
-    }
-
-    public String getSecondaryMuscle() {
-        return secondaryMuscle;
-    }
-
-    public void setSecondaryMuscle(String secondaryMuscle) {
-        this.secondaryMuscle = secondaryMuscle;
-    }
-
-    private String secondaryMuscle;
 
 }
