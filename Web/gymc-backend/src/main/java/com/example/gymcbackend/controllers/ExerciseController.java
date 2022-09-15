@@ -24,7 +24,7 @@ public class ExerciseController {
         return exerciseService.getExerciseDetails();
     }
 
-    // DELETE TRAINER
+    // DELETE EXERCISE
     @PutMapping("/deleteExercise/{exerciseID}")
     public long deleteExercise(@PathVariable String exerciseID){
         int sts= 0;

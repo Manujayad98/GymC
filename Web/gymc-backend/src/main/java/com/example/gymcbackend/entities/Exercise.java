@@ -25,7 +25,7 @@ public class Exercise {
     private String secondaryMuscle;
 
     @Column(name = "status")
-    private String status;
+    private boolean status=true;
 
 //    @ManyToMany(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "equipmentID")
@@ -44,11 +44,11 @@ public class Exercise {
     @JoinColumn(name = "equipmentid")
     Equipment equipment;
 
-    public String getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 
