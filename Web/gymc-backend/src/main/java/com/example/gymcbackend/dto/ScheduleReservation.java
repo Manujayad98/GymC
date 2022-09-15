@@ -1,2 +1,4 @@
-package com.example.gymcbackend.dto;public class ScheduleReservation {
+package com.example.gymcbackend.dto;
+
+public class ScheduleReservation {
 }

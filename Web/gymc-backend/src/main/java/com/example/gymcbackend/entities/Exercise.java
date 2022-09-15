@@ -24,18 +24,18 @@ public class Exercise {
     @Column(name = "secondary_muscle")
     private String secondaryMuscle;
 
+    @Column(name = "default_reps")
+    private String defaultReps;
+
 //    @ManyToMany(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "equipmentID")
 //    Equipment equipment;
 
     //for many to many map
 
-    @OneToMany(mappedBy = "trainingDate")
-    Set<WorkoutPlan> workoutPlans;
+    @OneToMany(mappedBy = "workoutPlan")
+    Set<TrainingDate> trainingDates;
 
-//    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-//    @JoinTable(name = "exercise_equipments", joinColumns = @JoinColumn(referencedColumnName = "exerciseID"),inverseJoinColumns = @JoinColumn(referencedColumnName ="equipmentID"))
-//    private List<Equipment> equipment;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "equipmentid")
@@ -69,6 +69,10 @@ public class Exercise {
     public void setEquipment(Equipment equipment) {
         this.equipment = equipment;
     }
+    public void setDefaultReps(String defaultReps) {
+        this.defaultReps = defaultReps;
+    }
+
 
     public long getId() {
         return id;
@@ -93,6 +97,11 @@ public class Exercise {
 //    public List<Equipment> getEquipment() {
 //        return equipment;
 //    }
+
+    public String getDefaultReps() {
+        return defaultReps;
+    }
+
 
     public Equipment getEquipment() {
         return equipment;

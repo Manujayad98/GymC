@@ -20,14 +20,15 @@ public class ExerciseJdbcRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    public List<ExerciseDetailsResponse> getExerciseDetails(Long traineeId) {
+    public List<ExerciseDetailsResponse> getExerciseDetails() {
 
         MapSqlParameterSource namedParameters =
                 new MapSqlParameterSource();
 
-        namedParameters.addValue("id", traineeId);
+//        namedParameters.addValue("id", traineeId);
 
-        String query = "SELECT exerciseid,name,primary_muscle,secondary_muscle FROM exercise";
+        String query = "SELECT exerciseid,name FROM exercise";
+        //add colum reps and return 0 for all
         List<ExerciseDetailsResponse> exerciseDetails = jdbc.query(query, new BeanPropertyRowMapper<ExerciseDetailsResponse>(ExerciseDetailsResponse.class));
 
         return exerciseDetails;
