@@ -3,6 +3,7 @@ package com.example.gymcbackend.controllers;
 import com.example.gymcbackend.dto.ExerciseDetailsResponse;
 import com.example.gymcbackend.dto.TraineeViewScheduleDetailsResponse;
 import com.example.gymcbackend.dto.WorkoutPlanSchedule;
+import com.example.gymcbackend.dto.WorkoutReservation;
 import com.example.gymcbackend.services.TraineeViewScheduleService;
 import com.example.gymcbackend.services.AddWorkoutService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +34,9 @@ public class TraineeViewScheduleController {
     //Add workout
 
     //Add trainee body measures and health condition, workout type
-    @PostMapping("/addWorkout/{traineeId}")
+    @PostMapping("/addWorkoutSchedule/{traineeId}")
     public String addWorkout(@RequestBody WorkoutPlanSchedule workoutPlanSchedule, @PathVariable Long traineeId){
-        return addWorkoutService.addWorkout(workoutPlanSchedule);
+        return addWorkoutService.addWorkoutSchedule(workoutPlanSchedule);
     }
     @GetMapping("/scheduleWorkout/{traineeId}")
     public List<ExerciseDetailsResponse> getExercises(@PathVariable Long traineeId){
@@ -47,6 +48,8 @@ public class TraineeViewScheduleController {
 //    @GetMapping("/allTrainingReservations")
 //    public List<TrainingReservationsResponse> getAllReservations(){ return }
 
-//    @PostMapping("/addReservation/{traineeId}")
-//    public String addReservation(@RequestBody )
+    @PostMapping("/addReservation/{traineeId}")
+    public String addReservation(@RequestBody List<WorkoutReservation> workoutReservations, @PathVariable Long traineeId){
+        return addWorkoutService.addReservation(workoutReservations);
+    }
 }
