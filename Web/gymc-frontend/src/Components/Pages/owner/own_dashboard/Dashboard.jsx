@@ -25,12 +25,17 @@ import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 
 import { getAnnualIncomeChartData } from "../../../../services/ChartDataService";
+import { getTodaysTrainers } from "../../../../services/StaffService";
+import { getTodaysTrainees } from "../../../../services/TraineeService";
+
 
 const Dashboard = () => {
 
   useEffect(() => {
     checkValidate();
     getAnnualIncome();
+    getTodayAvailableTrainers();
+    getTodayAvailableTrainees();
   }, []);
 
   const checkValidate = async () => {
@@ -43,6 +48,9 @@ const Dashboard = () => {
   const [annualIncome, setAnnualIncome] = useState({});
   const annualIncomeObj = [["Month", "Income"]];
 
+  const [todayTrainers, setTodayTrainers] = useState({});
+  const [todayTrainees, setTodayTrainees] = useState({});
+
   const getAnnualIncome = async () => {
     const res = await getAnnualIncomeChartData();
     console.log(res.data);
@@ -50,6 +58,23 @@ const Dashboard = () => {
       [...res.data]
     );
   };
+
+  const getTodayAvailableTrainers = async () => {
+    const res = await getTodaysTrainers();
+    console.log(res.data);
+    setTodayTrainers(
+      [...res.data]
+    );
+  };
+
+  const getTodayAvailableTrainees = async () => {
+    const res = await getTodaysTrainees();
+    console.log(res.data);
+    setTodayTrainees(
+      [...res.data]
+    );
+  };
+
 
   const rows = Object.values(annualIncome).map(
     (value) => (
@@ -133,7 +158,7 @@ const Dashboard = () => {
 
           <div className='own-dashboard-card-container'>
 
-            <div className='own-dashboard-card own-dashboard-profile-cards'>
+            {/* <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
                 <img src={trainer1} className='owner-dashboard-images' alt="" />
               </div>
@@ -181,14 +206,27 @@ const Dashboard = () => {
                 <div className='staffID'>S0005</div>
                 <div className='staffName'>Sanjana Rajapaksha</div>
               </div>
-            </div>
+            </div> */}
+
+
+            {Object.values(todayTrainers).map((trainer) => (
+              <div className='own-dashboard-card own-dashboard-profile-cards'>
+                <div className='own-dashboard-card-img-container'>
+                  <img src={trainer5} className='owner-dashboard-images' alt="" />
+                </div>
+                <div className='own-dashboard-card-content'>
+                  <div className='staffID'>{trainer.trainer_id}</div>
+                  <div className='staffName'>{trainer.full_name}</div>
+                </div>
+              </div>
+            ))}
 
           </div>
 
           <div className='own-dashboard-titles'>Today's Available Trainees</div>
 
           <div className='own-dashboard-card-container'>
-            <div className='own-dashboard-card own-dashboard-profile-cards'>
+            {/* <div className='own-dashboard-card own-dashboard-profile-cards'>
               <div className='own-dashboard-card-img-container'>
                 <img src={trainee1} className='owner-dashboard-images' alt="" />
               </div>
@@ -236,7 +274,19 @@ const Dashboard = () => {
                 <div className='staffID'>M0005</div>
                 <div className='staffName'>Yuhas Thenul</div>
               </div>
-            </div>
+            </div> */}
+
+            {Object.values(todayTrainees).map((trainee) => (
+              <div className='own-dashboard-card own-dashboard-profile-cards'>
+                <div className='own-dashboard-card-img-container'>
+                  <img src={trainee5} className='owner-dashboard-images' alt="" />
+                </div>
+                <div className='own-dashboard-card-content'>
+                  <div className='staffID'>{trainee.trainee_id}</div>
+                  <div className='staffName'>{trainee.full_name}</div>
+                </div>
+              </div>
+            ))}
 
           </div>
 
