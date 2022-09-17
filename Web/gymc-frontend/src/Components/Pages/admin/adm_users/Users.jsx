@@ -24,9 +24,6 @@ import user6 from '../../../../images/owner/te5.png'
 
 import './Users.css'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
-
 import { Link } from 'react-router-dom'
 
 import { getAllStaffUsers, deleteStaffUser, holdStaffUser, activeStaffUser } from "../../../../services/UserService";
@@ -265,18 +262,12 @@ export default function Trainers() {
             <div className='body-container'>
                 <HeaderO title="System Users" />
                 <div className="content-container">
-                    <form action="">
-                        <div className="filter-container">
-                            <div className="inputFields-container">
-                            </div>
-                            <div className="button-container">
-                                <Link to='/AaddUsers'>
-                                    <button type="button" class="btn" style={{ backgroundColor: '#3DA2FF', width: '100px' }}>New User</button>
-                                </Link>
-                            </div>
 
-                        </div>
-                    </form>
+                    {/* <Table
+                        rows={trainerDetails}
+                        headCells={trainerDetailsTableHead}
+                        tableName={"Trainers"}
+                    /> */}
                     <div className="table-div">
                         <MaterialTable
                             title="System Users"

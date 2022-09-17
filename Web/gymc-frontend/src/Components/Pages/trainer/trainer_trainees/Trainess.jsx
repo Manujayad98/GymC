@@ -23,6 +23,7 @@ import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import DeleteModal from '../../../Utilities/Popups/DeletionModal'
 import { Link } from 'react-router-dom'
 
 import { getTrainees } from "../../../../services/UserService";

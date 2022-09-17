@@ -18,7 +18,7 @@ public class TraineeController {
     @Autowired
     TraineeService traineeService;
 
-    @GetMapping("/getAllTrainees")
+    @GetMapping("/getTrainees")
     public List<TraineeInfo> getAllTrainees(){
         return traineeService.getAllTrainees();
     }

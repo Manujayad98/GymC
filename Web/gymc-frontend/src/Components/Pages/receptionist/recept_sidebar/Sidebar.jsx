@@ -66,7 +66,7 @@ const Sidebar = ({ children }) => {
         },
         {
             path: "/Ranalytics",
-            name: "Analytics",
+            name: "Transactions",
             icon: <FaRegChartBar />
         },
         {
