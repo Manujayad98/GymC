@@ -1,6 +1,7 @@
 package com.example.gymcbackend.controllers;
 
 import com.example.gymcbackend.dto.StaffUsers;
+import com.example.gymcbackend.dto.TodayAvailableTrainers;
 import com.example.gymcbackend.dto.TrainerTableData;
 import com.example.gymcbackend.repository.staffMemberDao.StaffMemberRepository;
 import com.example.gymcbackend.services.TrainerService;
@@ -43,4 +44,13 @@ public class TrainerController {
         int sts= 1;
         return trainerService.changeTrainerStatus(trainerID,sts);
     }
+
+    //  TODAY'S AVAILABLE TRAINER
+
+    @GetMapping("/todayAvailableTrainers")
+    public List<TodayAvailableTrainers> getTodayAvailableTrainers(){
+        return trainerService.getTodayAvailableTrainers();
+    }
+
+
 }
