@@ -24,9 +24,8 @@ public class Exercise {
     @Column(name = "secondary_muscle")
     private String secondaryMuscle;
 
-<<<<<<< HEAD
     @Column(name = "status")
-    private String status;
+    private boolean status=true;
 =======
     @Column(name = "default_reps")
     private String defaultReps;
@@ -46,11 +45,11 @@ public class Exercise {
     @JoinColumn(name = "equipmentid")
     Equipment equipment;
 
-    public String getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 

@@ -16,3 +16,15 @@ export const getPaymentPlanTableDetails = () => {
     });
 };
 
+// DELETE PAYMENT PLAN 
+
+export const deletePaymentPlan = (planID) => {
+    return axios({
+        method: "PUT",
+        url: `${USER_URL}/deletePaymentPlan/${planID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
