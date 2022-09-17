@@ -40,21 +40,8 @@ const Dashboard = () => {
     }
   };
 
-  // const [ChartData] = useState([
-  //   ["Month", "Income"],
-  //   ["Jan", 11000],
-  //   ["Feb", 2000],
-  //   ["Mar", 2000],
-  //   ["Apr", 5000],
-  //   ["May", 7000],
-  //   ["Jun", 8000],
-  //   ["Jul", 7000],
-  //   ["Aug", 8000],
-
-  // ]);
-
   const [annualIncome, setAnnualIncome] = useState({});
-
+  const annualIncomeObj = [["Month", "Income"]];
 
   const getAnnualIncome = async () => {
     const res = await getAnnualIncomeChartData();
@@ -63,6 +50,19 @@ const Dashboard = () => {
       [...res.data]
     );
   };
+
+  const rows = Object.values(annualIncome).map(
+    (value) => (
+      annualIncomeObj.push(
+        [
+          value.month,
+          value.totalIncome
+        ]
+      )
+    )
+  )
+  // obj.push(rows)
+  // console.log(obj);
 
   //ANNUAL INCOME CHART
   const Annualdata = [
@@ -246,7 +246,9 @@ const Dashboard = () => {
               <div className='own-dashboard-container-head'>Annual Income</div>
               <div className='own-dashboard-card own-dashboard-chart-cards'>
                 {/* <BarChart data={ChartData} /> */}
-                <Chart chartType="ColumnChart" width="100%" height="400px" data={annualIncome} />
+                <Chart chartType="ColumnChart" width="100%" height="400px"
+                  data={annualIncomeObj} />
+                {/* <Chart chartType="ColumnChart" width="100%" height="400px" data={chartdata} /> */}
               </div>
             </div>
 
@@ -287,4 +289,14 @@ const Dashboard = () => {
   )
 }
 
+
+// const AnnualIncomeChart = (props) => {
+//   return(
+//     <>
+
+//     </>
+//   )
+// }
+
 export default Dashboard
+
