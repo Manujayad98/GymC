@@ -44,7 +44,7 @@ public class ExerciseJdbcRepository {
     }
 
 
-    public List<ExerciseDetailsResponse> getExerciseDetails(Long traineeId) {
+    public List<ExerciseDetailsResponse> getExerciseDetailsList() {
 
         MapSqlParameterSource namedParameters =
                 new MapSqlParameterSource();

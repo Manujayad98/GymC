@@ -26,10 +26,10 @@ public class Exercise {
 
     @Column(name = "status")
     private boolean status=true;
-=======
+
     @Column(name = "default_reps")
     private String defaultReps;
->>>>>>> Nips
+
 
 //    @ManyToMany(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "equipmentID")
