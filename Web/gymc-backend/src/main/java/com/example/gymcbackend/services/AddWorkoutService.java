@@ -49,7 +49,7 @@ public class AddWorkoutService {
 
     public List<ExerciseDetailsResponse> getExerciseDetails() {
         System.out.println("schedule service exercise details response");
-        List<ExerciseDetailsResponse> exerciseDetails = exerciseJdbcRepository.getExerciseDetails();
+        List<ExerciseDetailsResponse> exerciseDetails = exerciseJdbcRepository.getExerciseDetailsList();
         return exerciseDetails;
 
     }
