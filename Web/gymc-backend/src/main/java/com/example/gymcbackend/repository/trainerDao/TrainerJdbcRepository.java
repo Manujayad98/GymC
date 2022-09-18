@@ -1,9 +1,6 @@
 package com.example.gymcbackend.repository.trainerDao;
 
-import com.example.gymcbackend.dto.StaffUsers;
-import com.example.gymcbackend.dto.TodayAvailableTrainees;
-import com.example.gymcbackend.dto.TodayAvailableTrainers;
-import com.example.gymcbackend.dto.TrainerTableData;
+import com.example.gymcbackend.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -105,4 +102,11 @@ public class TrainerJdbcRepository {
     }
 
 
+
+    public List<TodayWorkouts> findTodayWorkouts(String today) {
+        String query ="";
+
+        List<TodayWorkouts> todayWorkoutsList = jdbcTemplate.query(query, new Object[] {today}, new BeanPropertyRowMapper<TodayWorkouts>(TodayWorkouts.class));
+        return todayWorkoutsList;
+    }
 }

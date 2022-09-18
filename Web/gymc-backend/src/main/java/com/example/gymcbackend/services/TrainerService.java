@@ -2,6 +2,7 @@ package com.example.gymcbackend.services;
 
 import com.example.gymcbackend.dto.StaffUsers;
 import com.example.gymcbackend.dto.TodayAvailableTrainers;
+import com.example.gymcbackend.dto.TodayWorkouts;
 import com.example.gymcbackend.dto.TrainerTableData;
 import com.example.gymcbackend.repository.trainerDao.TrainerJdbcRepository;
 import com.example.gymcbackend.repository.userDao.UserAccountDetailsJdbcRepository;
@@ -45,5 +46,11 @@ public class TrainerService {
         String today = String.valueOf(java.time.LocalDate.now());
 
         return trainerJdbcRepository.findTodayAvailableTrainers(today);
+    }
+
+    public List<TodayWorkouts> getTodayWorkouts() {
+        String today = String.valueOf(java.time.LocalDate.now());
+
+        return trainerJdbcRepository.findTodayWorkouts(today);
     }
 }
