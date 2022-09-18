@@ -1,4 +1,4 @@
-package com.example.gymcbackend.config;
+package com.example.gymcbackend.controllers.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

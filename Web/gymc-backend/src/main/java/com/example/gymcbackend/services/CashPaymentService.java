@@ -1,5 +1,6 @@
 package com.example.gymcbackend.services;
 
+import com.example.gymcbackend.dto.ExerciseTableData;
 import com.example.gymcbackend.dto.PaymentInfo;
 import com.example.gymcbackend.dto.TraineeInfo;
 import com.example.gymcbackend.entities.Payment;
@@ -31,6 +32,19 @@ public class CashPaymentService {
         cashPaymentRepository.save(newPayment);
         return "payment Added";
     }
+
+    public PaymentInfo getAllPayments(long trainee_ID) {
+
+        System.out.println("awaservice");
+        //does this work?
+        PaymentInfo payment = cashPaymentJdbcRepository.getPaymentById(trainee_ID);
+
+        System.out.println(trainee_ID);
+        return cashPaymentJdbcRepository.getPaymentById(trainee_ID);
+
+    }
+
+
     //public List<PaymentInfo> getPlanInfo(){return cashPaymentJdbcRepository.getPlanInfo();}
 
 
