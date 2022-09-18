@@ -24,6 +24,9 @@ import './UpdateWorkout.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
+import MaterialTable from "material-table";
+import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
+
 export default function UpdateWorkout() {
 
     useEffect(() => {
@@ -109,142 +112,173 @@ export default function UpdateWorkout() {
     };
     //table data
 
-    const [excerciseDetails] = useState([
+    // const [excerciseDetails] = useState([
+    //     {
+    //         Exercise: "Incline Press",
+    //         Repetitions: (
+    //             <span >
+    //                 <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
+    //                 <span style={{ paddingRight: "10px" }}>15 Reps</span>
+    //                 <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
+
+    //             </span >
+
+    //         ),
+
+    //         Actions: (
+    //             <span >
+    //                 <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={50} width={80} /></span>
+
+
+    //             </span >
+
+    //         ),
+    //     },
+    //     {
+    //         Exercise: "Incline Press",
+    //         Repetitions: (
+    //             <span >
+    //                 <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
+    //                 <span style={{ paddingRight: "10px" }}>15 Reps</span>
+    //                 <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
+
+    //             </span >
+
+    //         ),
+
+    //         Actions: (
+    //             <span >
+    //                 <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={50} width={80} /></span>
+    //                 {/* <span style={{ paddingRight: "20px" }}><img src={Clear} alt="" height={20} width={20} /></span> */}
+
+    //             </span >
+
+    //         ),
+    //     },
+    //     {
+    //         Exercise: "Incline Press",
+    //         Repetitions: (
+    //             <span >
+    //                 <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
+    //                 <span style={{ paddingRight: "10px" }}>15 Reps</span>
+    //                 <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
+
+    //             </span >
+
+    //         ),
+
+    //         Actions: (
+    //             <span >
+    //                 {/* <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={20} width={20} /></span> */}
+    //                 <span style={{ paddingRight: "20px" }}><img src={Clear} alt="" height={50} width={80} /></span>
+
+    //             </span >
+
+    //         ),
+    //     },
+    //     {
+    //         Exercise: "Incline Press",
+    //         Repetitions: (
+    //             <span >
+    //                 <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
+    //                 <span style={{ paddingRight: "10px" }}>15 Reps</span>
+    //                 <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
+
+    //             </span >
+
+    //         ),
+
+    //         Actions: (
+    //             <span >
+    //                 <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={50} width={80} /></span>
+    //                 {/* <span style={{ paddingRight: "20px" }}><img src={Clear} alt="" height={20} width={20} /></span> */}
+
+    //             </span >
+
+    //         ),
+    //     },
+    //     {
+    //         Exercise: "Incline Press",
+    //         Repetitions: (
+    //             <span >
+    //                 <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
+    //                 <span style={{ paddingRight: "10px" }}>15 Reps</span>
+    //                 <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
+
+    //             </span >
+
+    //         ),
+
+    //         Actions: (
+    //             <span >
+    //                 {/* <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={20} width={20} /></span> */}
+    //                 <span style={{ paddingRight: "20px" }}><img src={Clear} alt="" height={50} width={80} /></span>
+
+    //             </span >
+
+    //         ),
+    //     },
+    //     {
+    //         Exercise: "Incline Press",
+    //         Repetitions: (
+    //             <span >
+    //                 <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
+    //                 <span style={{ paddingRight: "10px" }}>15 Reps</span>
+    //                 <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
+
+    //             </span >
+
+    //         ),
+
+    //         Actions: (
+    //             <span >
+    //                 <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={50} width={80} /></span>
+    //                 {/* <span style={{ paddingRight: "20px" }}><img src={Clear} alt="" height={20} width={20} /></span> */}
+
+    //             </span >
+
+    //         ),
+    //     },
+
+
+    // ]);
+    // const [excerciseDetailsTableHead] = useState([
+    //     { id: "Exercise", label: "EXERCISE", numeric: false },
+    //     { id: "Repetitions", label: "REPETITIONS", numeric: false },
+
+    // ]);
+    const [excerciseDetails, setExcerciseDetails] = useState([
         {
-            Exercise: "Incline Press",
-            Repetitions: (
-                <span >
-                    <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "10px" }}>15 Reps</span>
-                    <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
-
-                </span >
-                
-                ),
-
-            Actions: (
-                <span >
-                    <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={50} width={80} /></span>
-                    
-
-                </span >
-
-            ),
+            // ExerciseID: 1,
+            Name: "Incline Press",
+            Repititions: 0
         },
         {
-            Exercise: "Incline Press",
-            Repetitions: (
-                <span >
-                    <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "10px" }}>15 Reps</span>
-                    <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
+            // ExerciseID: 2,
+            Name: "Incline Press",
+            Repititions: 0
 
-                </span >
-                
-                ),
-
-            Actions: (
-                <span >
-                    <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={50} width={80} /></span>
-                    {/* <span style={{ paddingRight: "20px" }}><img src={Clear} alt="" height={20} width={20} /></span> */}
-
-                </span >
-
-            ),
         },
         {
-            Exercise: "Incline Press",
-            Repetitions: (
-                <span >
-                    <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "10px" }}>15 Reps</span>
-                    <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
+            // ExerciseID: 3,
+            Name: "Incline Press",
+            Repititions: 0
 
-                </span >
-                
-                ),
-
-            Actions: (
-                <span >
-                    {/* <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={20} width={20} /></span> */}
-                    <span style={{ paddingRight: "20px" }}><img src={Clear} alt="" height={50} width={80} /></span>
-
-                </span >
-
-            ),
         },
         {
-            Exercise: "Incline Press",
-            Repetitions:  (
-                <span >
-                    <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "10px" }}>15 Reps</span>
-                    <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
+            // ExerciseID: 4,
+            Name: "Incline Press",
+            Repititions: 0
 
-                </span >
-                
-                ),
-
-            Actions: (
-                <span >
-                    <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={50} width={80} /></span>
-                    {/* <span style={{ paddingRight: "20px" }}><img src={Clear} alt="" height={20} width={20} /></span> */}
-
-                </span >
-
-            ),
         },
         {
-            Exercise: "Incline Press",
-            Repetitions:  (
-                <span >
-                    <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "10px" }}>15 Reps</span>
-                    <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
+            // ExerciseID: 5,
+            Name: "Incline Press",
+            Repititions: 0
 
-                </span >
-                
-                ),
-
-            Actions: (
-                <span >
-                    {/* <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={20} width={20} /></span> */}
-                    <span style={{ paddingRight: "20px" }}><img src={Clear} alt="" height={50} width={80} /></span>
-
-                </span >
-
-            ),
         },
-        {
-            Exercise: "Incline Press",
-            Repetitions:  (
-                <span >
-                    <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
-                    <span style={{ paddingRight: "10px" }}>15 Reps</span>
-                    <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
 
-                </span >
-                
-                ),
-
-            Actions: (
-                <span >
-                    <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={50} width={80} /></span>
-                    {/* <span style={{ paddingRight: "20px" }}><img src={Clear} alt="" height={20} width={20} /></span> */}
-
-                </span >
-
-            ),
-        },
-        
-        
     ]);
-    const [excerciseDetailsTableHead] = useState([
-        { id: "Exercise", label: "EXERCISE", numeric: false },
-        { id: "Repetitions", label: "REPETITIONS", numeric: false },
-
-    ]);
-
 
     return (
 
@@ -252,205 +286,249 @@ export default function UpdateWorkout() {
             <SidebarO />
             <div className='body-container'>
                 <HeaderO title="Update Workout" />
-                <div className="workout-profile-card">
-                    <div className='own-dashboard-card own-dashboard-profile-cards'>
-                        <div className='own-dashboard-card-img-container'>
-                            <img src={Pic1} alt="" />
+                <div style={{ margin: '20px' }}>
+                    <div className="workout-profile-card">
+                        <div className='own-dashboard-card own-dashboard-profile-cards'>
+                            <div className='own-dashboard-card-img-container'>
+                                <img src={Pic1} alt="" />
+                            </div>
+                            <div className='own-dashboard-card-content'>
+                                <div className='staffID'>T00001</div>
+                                <div className='staffName'>Sanjana Rajapaksha</div>
+                            </div>
                         </div>
-                        <div className='own-dashboard-card-content'>
-                            <div className='staffID'>T00001</div>
-                            <div className='staffName'>Sanjana Rajapaksha</div>
-                        </div>
+
                     </div>
+                    <div className="own_update_workout_content-container">
 
-                </div>
-                <div className="own_update_workout_content-container">
+                        <div className="own_update_workout_div1">
+                            <div className="own_update_workout_card1">
 
-                    <div className="own_update_workout_div1">
-                        <div className="own_update_workout_card1">
+                                <form className onSubmit={handleSubmit} noValidate={false}>
 
-                            <form className onSubmit={handleSubmit} noValidate={false}>
+                                    <div className="update-workout-form">
+                                        <div className="update-workout-form-inputs">
+                                            <h4 className='update-workout-form-subHeading'>Body Measures</h4>
+                                            <hr className="add-trainer-hr" />
 
-                                <div className="update-workout-form">
-                                    <div className="update-workout-form-inputs">
-                                        <h4 className='update-workout-form-subHeading'>Body Measures</h4>
-                                        <hr className="add-trainer-hr" />
+                                            <div className="form-row">
+                                                <div className="form-col1">
+                                                    <InputField
+                                                        value={requestData.height}
+                                                        type='text'
+                                                        label="Height"
+                                                        placeholder='Type'
+                                                        validators={[
+                                                            { check: Validators.required, message: 'NIC is not valid' }
+                                                        ]}
+                                                        onChange={handleChange('height')} />
+                                                    {!requestData.height && click && <span className='text-danger'>This Field is required</span>}
+                                                </div>
+                                                <div className="form-col2">
+                                                    <InputField
+                                                        value={requestData.weight}
+                                                        type='text'
+                                                        label="Weight"
+                                                        placeholder='Type'
 
-                                        <div className="form-row">
-                                            <div className="form-col1">
-                                                <InputField
-                                                    value={requestData.height}
-                                                    type='text'
-                                                    label="Height"
-                                                    placeholder='Type'
-                                                    validators={[
-                                                        { check: Validators.required, message: 'NIC is not valid' }
-                                                    ]}
-                                                    onChange={handleChange('height')} />
-                                                {!requestData.height && click && <span className='text-danger'>This Field is required</span>}
+                                                        validators={[
+                                                            { check: Validators.required, message: 'This field is required' }
+                                                        ]}
+                                                        onChange={handleChange('weight')} />
+                                                    {!requestData.weight && click && <span className='text-danger'>This Field is required</span>}
+                                                </div>
                                             </div>
-                                            <div className="form-col2">
-                                                <InputField
-                                                    value={requestData.weight}
-                                                    type='text'
-                                                    label="Weight"
-                                                    placeholder='Type'
-
-                                                    validators={[
-                                                        { check: Validators.required, message: 'This field is required' }
-                                                    ]}
-                                                    onChange={handleChange('weight')} />
-                                                {!requestData.weight && click && <span className='text-danger'>This Field is required</span>}
-                                            </div>
-                                        </div>
 
 
-                                        <h4 className='add-trainer-form-subHeading'>Health Conditions</h4>
-                                        <hr className="add-trainer-hr" />
-                                        <div className="form-row">
-                                            <div className="form-col1">
-                                                <InputField
-                                                    value={requestData.diseases}
-                                                    type='text'
-                                                    label="Diseases"
-                                                    placeholder='Type'
-                                                    validators={[
-                                                        { check: Validators.required, message: 'This field is required' }
-                                                    ]}
-                                                    onChange={handleChange('diseases')} />
-                                                {!requestData.diseases && click && <span className='text-danger'>This Field is required</span>}
+                                            <h4 className='add-trainer-form-subHeading'>Health Conditions</h4>
+                                            <hr className="add-trainer-hr" />
+                                            <div className="form-row">
+                                                <div className="form-col1">
+                                                    <InputField
+                                                        value={requestData.diseases}
+                                                        type='text'
+                                                        label="Diseases"
+                                                        placeholder='Type'
+                                                        validators={[
+                                                            { check: Validators.required, message: 'This field is required' }
+                                                        ]}
+                                                        onChange={handleChange('diseases')} />
+                                                    {!requestData.diseases && click && <span className='text-danger'>This Field is required</span>}
 
-                                            </div>
-                                            <div className="form-col2">
-                                                {/* <label htmlFor="">Affected Bone</label> */}
-                                                <Dropdown
-                                                    data={[
-                                                        { value: "UpperArm", label: 'Upper Arm' },
-                                                        { value: "Ankle", label: 'Ankle' },
-                                                        { value: "Foot", label: 'Foot' },
-                                                        { value: "KneeCap", label: 'KneeCap' },
-                                                    ]}
-                                                    label="Affected Bone"
-                                                    // styleClass='mt-3'
-                                                    value={requestData.bones}
-                                                    placeholder='Select'
-                                                    onChange={handleDropdown}
-                                                /><br></br>
+                                                </div>
+                                                <div className="form-col2">
+                                                    {/* <label htmlFor="">Affected Bone</label> */}
+                                                    <Dropdown
+                                                        data={[
+                                                            { value: "UpperArm", label: 'Upper Arm' },
+                                                            { value: "Ankle", label: 'Ankle' },
+                                                            { value: "Foot", label: 'Foot' },
+                                                            { value: "KneeCap", label: 'KneeCap' },
+                                                        ]}
+                                                        label="Affected Bone"
+                                                        // styleClass='mt-3'
+                                                        value={requestData.bones}
+                                                        placeholder='Select'
+                                                        onChange={handleDropdown}
+                                                    /><br></br>
 
-                                                {!requestData.bones && click && <span className='text-danger'>This Field is required</span>}
+                                                    {!requestData.bones && click && <span className='text-danger'>This Field is required</span>}
 
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <h4 className='update-workout-form-subHeading'>Body Dyno Chart(Inches)</h4>
-                                        <hr className="add-trainer-hr" />
+                                            <h4 className='update-workout-form-subHeading'>Body Dyno Chart(Inches)</h4>
+                                            <hr className="add-trainer-hr" />
 
-                                        <div className="form-row">
-                                            <div className="form-col1">
-                                                <InputField
-                                                    value={requestData.biceps}
-                                                    type='text'
-                                                    label="Biceps"
-                                                    placeholder='Type'
-                                                    validators={[
-                                                        { check: Validators.required, message: 'NIC is not valid' }
-                                                    ]}
-                                                    onChange={handleChange('biceps')} />
-                                                {!requestData.biceps && click && <span className='text-danger'>This Field is required</span>}
+                                            <div className="form-row">
+                                                <div className="form-col1">
+                                                    <InputField
+                                                        value={requestData.biceps}
+                                                        type='text'
+                                                        label="Biceps"
+                                                        placeholder='Type'
+                                                        validators={[
+                                                            { check: Validators.required, message: 'NIC is not valid' }
+                                                        ]}
+                                                        onChange={handleChange('biceps')} />
+                                                    {!requestData.biceps && click && <span className='text-danger'>This Field is required</span>}
+                                                </div>
+                                                <div className="form-col2">
+                                                    <InputField
+                                                        value={requestData.forearms}
+                                                        type='text'
+                                                        label="Forearms"
+                                                        placeholder='Type'
+                                                        validators={[
+                                                            { check: Validators.required, message: 'This field is required' }
+                                                        ]}
+                                                        onChange={handleChange('forearms')} />
+                                                    {!requestData.forearms && click && <span className='text-danger'>This Field is required</span>}
+                                                </div>
                                             </div>
-                                            <div className="form-col2">
-                                                <InputField
-                                                    value={requestData.forearms}
-                                                    type='text'
-                                                    label="Forearms"
-                                                    placeholder='Type'
-                                                    validators={[
-                                                        { check: Validators.required, message: 'This field is required' }
-                                                    ]}
-                                                    onChange={handleChange('forearms')} />
-                                                {!requestData.forearms && click && <span className='text-danger'>This Field is required</span>}
+                                            <div className="form-row">
+                                                <div className="form-col1">
+                                                    <InputField
+                                                        value={requestData.chest}
+                                                        type='text'
+                                                        label="Chest"
+                                                        placeholder='Type'
+                                                        validators={[
+                                                            { check: Validators.required, message: 'This Field is not valid' }
+                                                        ]}
+                                                        onChange={handleChange('chest')} />
+                                                    {!requestData.chest && click && <span className='text-danger'>This Field is required</span>}
+                                                </div>
+                                                <div className="form-col2">
+                                                    <InputField
+                                                        value={requestData.hips}
+                                                        type='text'
+                                                        label="Hips"
+                                                        placeholder='Type'
+                                                        validators={[
+                                                            { check: Validators.required, message: 'This field is required' }
+                                                        ]}
+                                                        onChange={handleChange('hips')} />
+                                                    {!requestData.hips && click && <span className='text-danger'>This Field is required</span>}
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="form-row">
-                                            <div className="form-col1">
-                                                <InputField
-                                                    value={requestData.chest}
-                                                    type='text'
-                                                    label="Chest"
-                                                    placeholder='Type'
-                                                    validators={[
-                                                        { check: Validators.required, message: 'This Field is not valid' }
-                                                    ]}
-                                                    onChange={handleChange('chest')} />
-                                                {!requestData.chest && click && <span className='text-danger'>This Field is required</span>}
-                                            </div>
-                                            <div className="form-col2">
-                                                <InputField
-                                                    value={requestData.hips}
-                                                    type='text'
-                                                    label="Hips"
-                                                    placeholder='Type'
-                                                    validators={[
-                                                        { check: Validators.required, message: 'This field is required' }
-                                                    ]}
-                                                    onChange={handleChange('hips')} />
-                                                {!requestData.hips && click && <span className='text-danger'>This Field is required</span>}
-                                            </div>
-                                        </div>
-                                        <div className="form-row">
-                                            <div className="form-col1">
-                                                <InputField
-                                                    value={requestData.thighs}
-                                                    type='text'
-                                                    label="Thighs"
-                                                    placeholder='Type'
-                                                    validators={[
-                                                        { check: Validators.required, message: 'NIC is not valid' }
-                                                    ]}
-                                                    onChange={handleChange('thighs')} />
-                                                {!requestData.thighs && click && <span className='text-danger'>This Field is required</span>}
-                                            </div>
-                                            <div className="form-col2">
+                                            <div className="form-row">
+                                                <div className="form-col1">
+                                                    <InputField
+                                                        value={requestData.thighs}
+                                                        type='text'
+                                                        label="Thighs"
+                                                        placeholder='Type'
+                                                        validators={[
+                                                            { check: Validators.required, message: 'NIC is not valid' }
+                                                        ]}
+                                                        onChange={handleChange('thighs')} />
+                                                    {!requestData.thighs && click && <span className='text-danger'>This Field is required</span>}
+                                                </div>
+                                                <div className="form-col2">
 
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="form-row">
-                                            <div className="form-col1">
-                                                
+                                            <div className="form-row">
+                                                <div className="form-col1">
+
+                                                </div>
+                                                <div className="form-col2">
+
+                                                </div>
+                                                {/* <button onClick={handleSubmit} className="suggest-button">Suggest</button> */}
                                             </div>
-                                            <div className="form-col2">
-                                            
-                                            </div>
-                                            <button onClick={handleSubmit} className="suggest-button">Suggest</button>
                                         </div>
                                     </div>
+
+
+
+                                </form>
+                                <ToastContainer />
+                                {/* </div> */}
+
+                            </div>
+                        </div>
+                        <div className="own_update_workout_div2">
+                            <div className="own_update_workout_card2">
+                                {/* <Table
+                                    rows={excerciseDetails}
+                                    headCells={excerciseDetailsTableHead}
+                                    tableName={"Exercises"}
+                                /> */}
+                                <div style={{ padding: '20px' }}>
+                                    <MaterialTable
+                                        title="Exersices"
+                                        columns={[
+                                            { title: "Exercice ID", field: "ExerciseID", editable: 'never' },
+                                            { title: "Name", field: "Name", editable: 'never' },
+                                            { title: "Repitition Count", field: "Repititions", editable: 'onUpdate', type: 'numeric' },
+                                        ]}
+                                        icons={TableIcons}
+                                        data={excerciseDetails}
+                                        editable={{
+                                            onRowUpdate: (newData, oldData, rowData) =>
+                                                new Promise((resolve, reject) => {
+                                                    setTimeout(() => {
+                                                        const dataUpdate = [...excerciseDetails];
+                                                        const index = oldData.tableData.id;
+                                                        dataUpdate[index] = newData;
+                                                        setExcerciseDetails([...dataUpdate]);
+
+                                                        resolve();
+                                                    }, 1000)
+                                                    // if (newData.Repititions != 0) {
+                                                    //     console.log(requestData);
+                                                    //     console.log(id);
+                                                    //     console.log(newData);
+                                                    //     requestData.exercices.push({ ...newData })
+
+                                                    // }
+
+                                                }),
+                                        }}
+                                        options={{
+                                            pageSize: 3,
+                                            pageSizeOptions: [6, 12, 15],
+                                            headerStyle: {
+                                                backgroundColor: '#1F0106',
+                                                color: '#FFF',
+                                                hover: '#FFF'
+                                            }
+                                        }}
+                                    />
                                 </div>
-
-                            
-
-                            </form>
-                            <ToastContainer />
-                            {/* </div> */}
-
+                                <button className="own_update_workout-btn">Update</button>
+                            </div>
                         </div>
+                        {/* <div className="own_update_workout_btn"> */}
+
+
+
+                        {/* </div> */}
+
+
                     </div>
-                    <div className="own_update_workout_div2">
-                        <div className="own_update_workout_card2">
-                        <Table
-                                rows={excerciseDetails}
-                                headCells={excerciseDetailsTableHead}
-                                tableName={"Exercises"}
-                            />
-                        <button  className="own_update_workout-btn">Update</button>
-                        </div>
-                    </div>
-                    {/* <div className="own_update_workout_btn"> */}
-
-                    
-
-                    {/* </div> */}
-
-
                 </div>
             </div >
         </div >

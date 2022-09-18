@@ -2,6 +2,7 @@ package com.example.gymcbackend.entities;
 
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Table(name = "dietPlan")
 @Entity
@@ -12,9 +13,6 @@ public class DietPlan {
     @Column(name = "dietPlanID")
     private long id;
 
-    @Column(name = "meal_Type")
-    private String mealType;
-
     @Column(name = "proteins")
     private Double proteins;
 
@@ -24,13 +22,17 @@ public class DietPlan {
     @Column(name = "fats")
     private Double fats;
 
+    @Column(name = "training_date")
+    private Date trainingDate;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "workoutScheduleID")
+    WorkoutSchedule workoutSchedule;
+
     public void setId(long id) {
         this.id = id;
     }
 
-    public void setMealType(String mealType) {
-        this.mealType = mealType;
-    }
 
     public void setProteins(Double proteins) {
         this.proteins = proteins;
@@ -44,13 +46,20 @@ public class DietPlan {
         this.fats = fats;
     }
 
+
+
+    public void setWorkoutSchedule(WorkoutSchedule workoutSchedule) {
+        this.workoutSchedule = workoutSchedule;
+    }
+
+    public void setTrainingDate(Date trainingDate) {
+        this.trainingDate = trainingDate;
+    }
+
     public long getId() {
         return id;
     }
 
-    public String getMealType() {
-        return mealType;
-    }
 
     public Double getProteins() {
         return proteins;
@@ -63,4 +72,12 @@ public class DietPlan {
     public Double getFats() {
         return fats;
     }
+
+    public WorkoutSchedule getWorkoutSchedule() {
+        return workoutSchedule;
+    }
+    public Date getTrainingDate() {
+        return trainingDate;
+    }
+
 }

@@ -25,7 +25,7 @@ const InputField = ({ value, label, placeholder, validators, type, readonly, onC
                     defaultValue={value}
                     onChange={handleChange}
                 />
-            ) : (
+            ) : type === 'date' ? (
                 <input
                     type={type}
                     value={value}
@@ -34,7 +34,17 @@ const InputField = ({ value, label, placeholder, validators, type, readonly, onC
                     placeholder={placeholder}
                     onChange={handleChange}
                 />
-            )}
+            )
+                : (
+                    <input
+                        type={type}
+                        value={value}
+                        className='form-control'
+                        readOnly={readonly}
+                        placeholder={placeholder}
+                        onChange={handleChange}
+                    />
+                )}
             {error && <span className='text-danger'>{error.message}</span>}
         </div>
     )

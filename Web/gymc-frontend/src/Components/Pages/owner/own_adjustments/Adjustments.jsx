@@ -16,7 +16,7 @@ import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 
 import { getExerciseTableDetails, deleteExercise } from "../../../../services/ExerciseService";
-import { getPaymentPlanTableDetails } from "../../../../services/PaymentService";
+import { getPaymentPlanTableDetails, deletePaymentPlan } from "../../../../services/PaymentService";
 
 
 export default function Exercises() {
@@ -31,6 +31,7 @@ export default function Exercises() {
     const [exercices, setExercises] = useState([]);
     const [paymentPlans, setPaymentPlans] = useState([]);
     const [selectedExerciseData, setSelectedExerciseData] = useState({});
+    const [selectedPaymentPlanData, setSelectedPaymentPlanData] = useState({});
     const [popup, setPopUp] = useState("");
     const [msg, setMsg] = useState("");
 
@@ -66,6 +67,28 @@ export default function Exercises() {
     const deleteSelectedExercise = () => {
         console.log("deleted " + selectedExerciseData.exercise_id);
         deleteExercise(selectedExerciseData.exercise_id)
+            .then((response) => {
+                if (response.status === 200 && response.data == 1) {
+                    window.location.href = "/Oadjustments";
+                    // evt.preventDefault();
+                    toast.success("User has deleted !");
+                } else {
+                    toast.error("Failed !!!");
+                }
+            })
+            .catch((err) => {
+                if (err && err.response) {
+                    console.log(err.message);
+                    toast.error("Failed !!!");
+                }
+            });
+        setPopUp("");
+    };
+
+    const deleteSelectedPaymentPlan = () => {
+        console.log("ko");
+        console.log("deleted " + selectedPaymentPlanData.plan_id);
+        deletePaymentPlan(selectedPaymentPlanData.plan_id)
             .then((response) => {
                 if (response.status === 200 && response.data == 1) {
                     window.location.href = "/Oadjustments";
@@ -137,7 +160,7 @@ export default function Exercises() {
                                         },
                                        
                                         onClick: (event, rowData) => {
-                                            console.log(rowData.trainer_id);
+                                            console.log(rowData.exercise_id);
                                             setSelectedExerciseData(rowData);
                                             {
                                                 setPopUp("delete");
@@ -181,10 +204,19 @@ export default function Exercises() {
                                     {
                                         icon: () => {
                                             return (
-                                                <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} onClick={() => setOpenModal(true)} alt="" height={20} width={20} /></span>
+                                                <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash}  alt="" height={20} width={20} /></span>
                                             );
                                         },
+                                       
                                         onClick: (event, rowData) => {
+                                            console.log(rowData.paymentPlan_id);
+                                            setSelectedPaymentPlanData(rowData);
+                                            {
+                                                setPopUp("delete1");
+                                            }
+                                            setMsg(
+                                                rowData.paymentPlan_id
+                                            );
                                         },
                                     },
                                 ]}
@@ -250,6 +282,13 @@ export default function Exercises() {
                     msg={msg}
                     closePopUp={closePopUp}
                     handleSubmit={deleteSelectedExercise}
+                />
+            )}
+             {popup === "delete1" && (
+                <DeleteModal
+                    msg={msg}
+                    closePopUp={closePopUp}
+                    handleSubmit={deleteSelectedPaymentPlan}
                 />
             )}
         </div>

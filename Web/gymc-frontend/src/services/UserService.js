@@ -46,6 +46,17 @@ export const registerUser = (requestData) => {
     });
 };
 
+export const registerTrainer = (requestData) => {
+    return axios({
+        method: "POST",
+        url: `${USER_URL}/registerTrainer`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+        data: requestData,
+    });
+};
+
 
 export const updateUserProfile = (profile) => {
     return axios({

@@ -262,7 +262,7 @@ export default function Trainers() {
             <div className='body-container'>
                 <HeaderO title="System Users" />
                 <div className="content-container">
-                    
+
                     {/* <Table
                         rows={trainerDetails}
                         headCells={trainerDetailsTableHead}
@@ -293,7 +293,7 @@ export default function Trainers() {
                                             setPopUp("delete");
                                         }
                                         setMsg(
-                                            rowData.trainee_id
+                                            rowData.user_id
                                         );
                                     },
 
@@ -312,7 +312,7 @@ export default function Trainers() {
                                             setPopUp("hold");
                                         }
                                         setMsg(
-                                            rowData.trainee_id
+                                            rowData.user_id
                                         );
                                     },
                                     disabled: rowData.status == "Hold"
@@ -341,7 +341,7 @@ export default function Trainers() {
                                             setPopUp("active");
                                         }
                                         setMsg(
-                                            rowData.trainee_id
+                                            rowData.user_id
                                         );
                                     },
                                     disabled: rowData.status == "Active"

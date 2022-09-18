@@ -2,8 +2,11 @@ package com.example.gymcbackend.services;
 
 import com.example.gymcbackend.dto.Profile;
 import com.example.gymcbackend.dto.StaffUsers;
+import com.example.gymcbackend.dto.TrainerFormDetails;
+import com.example.gymcbackend.entities.ShiftDetails;
 import com.example.gymcbackend.entities.StaffMember;
 import com.example.gymcbackend.entities.UserAccount;
+import com.example.gymcbackend.repository.shiftDetailsDao.ShiftDetailsRepository;
 import com.example.gymcbackend.repository.staffMemberDao.StaffMemberJdbcRepository;
 import com.example.gymcbackend.repository.staffMemberDao.StaffMemberRepository;
 import com.example.gymcbackend.repository.userDao.UserAccountDetailsJdbcRepository;
@@ -28,6 +31,9 @@ public class StaffMemberService {
 
     @Autowired
     StaffMemberJdbcRepository staffMemberJdbcRepository;
+
+    @Autowired
+    ShiftDetailsRepository shiftDetailsRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -109,6 +115,100 @@ public class StaffMemberService {
             return "Your have successfully registered!";
         }
     }
+
+    public String registerTrainer(TrainerFormDetails trainerFormDetails) {
+
+        int emailCount = userAccountDetailsJdbcRepository.checkNICExistsInStaffMember(trainerFormDetails.getEmail());
+        int nicCount = userAccountDetailsJdbcRepository.checkNICExists(trainerFormDetails.getNic());
+
+        SimpleMailMessage message=new SimpleMailMessage();
+
+        if(emailCount>0){
+            return "Already has an account!";
+        }else if(nicCount>0) {
+            return "There is a issue. Here already has a nic!";
+        }else{
+            String pw=generateRandomPassword(8, 97, 122);
+
+            UserAccount user=new UserAccount();
+
+            user.setUserName(trainerFormDetails.getNic());
+            user.setEmail(trainerFormDetails.getEmail());
+            user.setPassword(passwordEncoder.encode(pw));
+            user.setStatus(true);
+            user.setIsHold(0);
+
+            if (trainerFormDetails.getStaffType() == "Owner" ){
+                user.setUserLevel("Owner");
+            } else if (trainerFormDetails.getStaffType() == "Receptionist" ) {
+                user.setUserLevel("Receptionist");
+            } else if (trainerFormDetails.getStaffType() == "Trainer") {
+                user.setUserLevel("Trainer");
+            } else {
+                user.setUserLevel("Admin");
+            }
+
+            userAccountDetailsRepository.save(user);
+
+            StaffMember staffMemberEnt = new StaffMember();
+
+            staffMemberEnt.setFirstName(trainerFormDetails.getFirstName());
+            staffMemberEnt.setLastName(trainerFormDetails.getLastName());
+            staffMemberEnt.setNic(trainerFormDetails.getNic());
+            staffMemberEnt.setDob(trainerFormDetails.getDob());
+            staffMemberEnt.setGender(trainerFormDetails.getGender());
+            staffMemberEnt.setAddress(trainerFormDetails.getAddress());
+            staffMemberEnt.setEmail(trainerFormDetails.getEmail());
+            staffMemberEnt.setStaffType("Trainer");
+            staffMemberEnt.setPhoneNumber(trainerFormDetails.getPhoneNumber());
+            staffMemberEnt.setQualification(trainerFormDetails.getQualification());
+            staffMemberEnt.setUserAccount(user);
+
+            staffMemberRepository.save(staffMemberEnt);
+
+            ShiftDetails shiftDetailsEnt = new ShiftDetails();
+
+            System.out.println("shiftDetails.getMonday()");
+            System.out.println(trainerFormDetails.getShiftMonday());
+            System.out.println(Integer.valueOf(trainerFormDetails.getShiftMonday()));
+
+            shiftDetailsEnt.setMonday(Integer.valueOf(trainerFormDetails.getShiftMonday()));
+            shiftDetailsEnt.setTuesday(Integer.valueOf(trainerFormDetails.getShiftTuesday()));
+            shiftDetailsEnt.setWednesday(Integer.valueOf(trainerFormDetails.getShiftWednesday()));
+            shiftDetailsEnt.setThursday(Integer.valueOf(trainerFormDetails.getShiftThursday()));
+            shiftDetailsEnt.setFriday(Integer.valueOf(trainerFormDetails.getShiftFriday()));
+            shiftDetailsEnt.setSaturday(Integer.valueOf(trainerFormDetails.getShiftSaturday()));
+            shiftDetailsEnt.setStaffMember(staffMemberEnt);
+
+            shiftDetailsRepository.save(shiftDetailsEnt);
+//            shiftDetails.setMonday(staffMember.);
+
+//            shiftDetails.setMonday(staffMember.);
+
+//            staffMemberEnt.setShifts(staffMember.getShifts());
+
+//            staffMemberEnt.setShiftDetails(staffMember.getShiftDetails());
+
+            System.out.println(trainerFormDetails);
+
+            message.setFrom("thirdyeargroupproject2@gmail.com");
+            message.setTo(trainerFormDetails.getEmail());
+
+            String mainContent="Welcome to the Gym C.\n"+
+                    "Your have successfully registered as a trainer.\n" +
+                    "Initially We have provided your NIC as the username.\n" +
+                    "And we have provided a auto generated password for you.\n" +
+                    "You can change your username and password.\nYour Password : ";
+
+            message.setText(mainContent + pw + "\n" + "Your Username : "+trainerFormDetails.getNic());
+            message.setSubject("Welcome to the GYM C!");
+
+//            mailSender.send(message);
+
+            return "Your have successfully registered!";
+        }
+    }
+
 
     public static String generateRandomPassword(int len, int randNumOrigin, int randNumBound)
     {

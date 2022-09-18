@@ -20,15 +20,25 @@ import './Trainees.css'
 
 import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import DeleteModal from '../../../Utilities/Popups/DeletionModal'
 import { Link } from 'react-router-dom'
+
+import { getTrainees } from "../../../../services/UserService";
 
 const Dashboard = () => {
 
   const [openModal, setOpenModal] = useState(false);
+  const [trainees, setTrainees] = useState([]);
+  const [selectedTraineeData, setSelectedTraineeData] = useState({});
+  const [popup, setPopUp] = useState("");
+  const [msg, setMsg] = useState("");
 
   useEffect(() => {
     checkValidate();
+    getAllTrainees();
   }, []);
 
   const checkValidate = async () => {
@@ -38,99 +48,21 @@ const Dashboard = () => {
     }
   };
 
-  const [trainerDetails] = useState([
-    {
-      TraineeImg: (<img src={trainer1} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TraineeID: "M001",
-      TraineeName: "Nilupul Madhuwantha",
-      Type: "Personal",
-      Phone: "0714558741",
-      RegOn: "2018-10-24",
-      Actions: (
-        <span >
-          <span style={{ paddingRight: "20px" }}><Link to='/OviewWorkout'><img src={Arrow} alt="" height={20} width={20} /></Link></span>
-          {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
-          <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-        </span >
-      ),
-    },
-    {
-      TraineeImg: (<img src={trainer2} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TraineeID: "M002",
-      TraineeName: "Ishara Rodrigo",
-      Type: "Personal",
-      Phone: "0765145632",
-      RegOn: "2018-12-11",
-      Actions: (
-        <span >
-          <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-          {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
-          <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-        </span >
-      ),
-    },
-    {
-      TraineeImg: (<img src={trainer3} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TraineeID: "M002",
-      TraineeName: "Ruwan Gamage",
-      Type: "Non-Personal",
-      Phone: "0775145632",
-      RegOn: "2019-06-22",
-      Actions: (
-        <span >
-          <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-          {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
-          <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-        </span >
-      ),
-    },
-    {
-      TraineeImg: (<img src={trainer4} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TraineeID: "M002",
-      TraineeName: "Imesh Kasthurirathna",
-      Type: "Personal",
-      Phone: "0774564751",
-      RegOn: "2020-08-19",
-      Actions: (
-        <span >
-          <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-          {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
-          <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-        </span >
-      ),
-    },
-    {
-      TraineeImg: (<img src={trainer5} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TraineeID: "M002",
-      TraineeName: "Mayori Ekanayake",
-      Type: "Daily",
-      Phone: "0765545127",
-      RegOn: "2021-10-31",
-      Actions: (
-        <span >
-          <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-          {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
-          <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-        </span >
-      ),
-    },
-    {
-      TraineeImg: (<img src={trainer6} style={{ borderRadius: "50%" }} height={40} width={40}></img>),
-      TraineeID: "M002",
-      TraineeName: "KG Hasara",
-      Type: "Non-Personal",
-      Phone: "0765584751",
-      RegOn: "2020-11-11",
-      Actions: (
-        <span >
-          <span style={{ paddingRight: "20px" }}><img src={Arrow} alt="" height={20} width={20} /></span>
-          {/* <span style={{ paddingRight: "20px" }}><img src={Edit} alt="" height={20} width={20} /></span> */}
-          <span style={{ paddingRight: "20px" }}><img src={Trash} alt="" height={20} width={20} /></span>
-        </span >
-      ),
-    },
+  const getAllTrainees = async () => {
+    const res = await getTrainees();
+    console.log(res.data);
+    setTrainees(
+      [...res.data]
+    );
+  };
 
-  ]);
+  const closePopUp = () => {
+    setPopUp("");
+  };
+
+  const moveToMoreView = (trainee_id) => {
+    window.location.href = `/ViewWorkout/${trainee_id}`;
+  }
 
   return (
     <div className='main-container'>
@@ -138,19 +70,19 @@ const Dashboard = () => {
       <div className='body-container'>
         <HeaderO title="Trainees" />
         <div className="content-container">
-        <div className="table-div">
+          <div className="table-div">
             <MaterialTable
               title="Trainees"
               columns={[
-                { title: "Trainee ID", field: "TraineeID" },
-                { title: "Trainee Name", field: "TraineeName" },
-                { title: "Trainee Type", field: "Type" },
-                { title: "Phone", field: "Phone" },
-                { title: "Reg On", field: "RegOn" },
+                { title: "Trainee ID", field: "trainee_id" },
+                { title: "Trainee Name", field: "full_name" },
+                { title: "Phone", field: "phone_number" },
+                { title: "Reg Date", field: "registered_date" },
+                { title: "Address", field: "address" },
 
               ]}
               icons={TableIcons}
-              data={trainerDetails}
+              data={trainees}
               actions={[
                 {
                   icon: () => {
@@ -160,17 +92,7 @@ const Dashboard = () => {
                     );
                   },
                   onClick: (event, rowData) => {
-
-                  },
-                },
-                {
-                  icon: () => {
-                    return (
-                      <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} onClick={() => setOpenModal(true)} alt="" height={20} width={20} /></span>
-                    );
-                  },
-                  onClick: (event, rowData) => {
-
+                    moveToMoreView(rowData.trainee_id);
                   },
                 },
 
@@ -183,9 +105,8 @@ const Dashboard = () => {
                 }
               }}
             />
-            <DeleteModal open={openModal} onClose={() => setOpenModal(false)} />
           </div>
-          
+
         </div>
 
       </div>

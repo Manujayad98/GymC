@@ -40,11 +40,11 @@ const Sidebar = ({ children }) => {
             name: "Users",
             icon: <FaUserAlt />
         },
-        {
-            path: "/AsystemLogs",
-            name: "System Logs",
-            icon: <FaRegChartBar />
-        },
+        // {
+        //     path: "/AsystemLogs",
+        //     name: "System Logs",
+        //     icon: <FaRegChartBar />
+        // },
         // {
         //     path: "/Anotifications",
         //     name: "Notifications",

@@ -5,6 +5,8 @@ public class TrainerTableData {
     private String full_name;
     private  String phone;
     private  String address;
+
+    private String qualifications;
     private  String status;
 
     public String getTrainer_id() {
@@ -41,6 +43,14 @@ public class TrainerTableData {
 
     public String getStatus() {
         return status;
+    }
+
+    public String getQualifications() {
+        return qualifications;
+    }
+
+    public void setQualifications(String qualifications) {
+        this.qualifications = qualifications;
     }
 
     public void setStatus(String status) {

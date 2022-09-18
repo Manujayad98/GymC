@@ -18,7 +18,7 @@ import Checkbox from "../../../Utilities/Form/Checkbox";
 import Radiobutton from "../../../Utilities/Form/Radiobutton";
 import PictureUploader from "../../../Utilities/Form/PictureUploader/PictureUploader";
 
-import { registerUser } from "../../../../services/UserService";
+import { registerUser, registerTrainer } from "../../../../services/UserService";
 
 export default function AddTrainer() {
 
@@ -45,8 +45,18 @@ export default function AddTrainer() {
         phoneNumber: '',
         qualification: '',
         staffType: 3,
+        shiftMonday: '',
+        shiftTuesday: '',
+        shiftWednesday: '',
+        shiftThursday: '',
+        shiftFriday: '',
+        shiftSaturday: '',
+
     });
+
+
     const [click, setClick] = useState(false);
+    const [shiftDay, setShiftDay] = useState();
 
     const handleChange = (key) => (value) => {
         console.log(key, value);
@@ -64,6 +74,52 @@ export default function AddTrainer() {
         console.log(requestData.gender)
     };
 
+    const handleRadioShiftDays = (key) => (event) => {
+        if (key == '1') {
+            console.log(key);
+            setState({
+                ...requestData,
+                shiftMonday: event.target.value
+            });
+            console.log(requestData.shiftMonday)
+        }
+        else if (key == '2') {
+            console.log(key);
+            setState({
+                ...requestData,
+                shiftTuesday: event.target.value
+            });
+        }
+        else if (key == '3') {
+            console.log(key);
+            setState({
+                ...requestData,
+                shiftWednesday: event.target.value
+            });
+        }
+        else if (key == '4') {
+            console.log(key);
+            setState({
+                ...requestData,
+                shiftThursday: event.target.value
+            });
+        }
+        else if (key == '5') {
+            console.log(key);
+            setState({
+                ...requestData,
+                shiftFriday: event.target.value
+            });
+        }
+        else if (key == '6') {
+            console.log(key);
+            setState({
+                ...requestData,
+                shiftSaturday: event.target.value
+            });
+        }
+    };
+
     // const handleClick = (event) => {
     //     event.preventDefault();
     //     alert('Button Clicked');
@@ -73,14 +129,15 @@ export default function AddTrainer() {
         console.log(requestData);
         evt.preventDefault();
 
-        if (!requestData.firstName || !requestData.lastName || !requestData.nic || !requestData.dob || !requestData.address || !requestData.email || !requestData.phoneNumber || !requestData.gender || !requestData.qualification) {
+        if (!requestData.firstName || !requestData.lastName || !requestData.nic || !requestData.dob || !requestData.address || !requestData.email || !requestData.phoneNumber || !requestData.gender || !requestData.qualification || !requestData.shiftMonday || !requestData.shiftTuesday || !requestData.shiftWednesday || !requestData.shiftThursday || !requestData.shiftFriday || !requestData.shiftSaturday) {
             console.log('Please fill out the form correctly');
             setClick({ click: true, })
             toast.warning('Please fill out the form correctly');
         }
         else {
+            console.log(requestData);
 
-            registerUser(requestData)
+            registerTrainer(requestData)
                 .then((response) => {
                     if (response.status === 200) {
                         console.log(response.data);
@@ -279,6 +336,107 @@ export default function AddTrainer() {
                                         </div>
                                     </div>
 
+                                    <h4 className='add-trainer-form-subHeading'>Shift Details</h4>
+                                    <hr className="add-trainer-hr" />
+                                    <div className="form-row">
+                                        <div className="form-col111">
+                                            <InputField
+                                                type='text'
+                                                label="Day"
+                                                placeholder='Monday'
+                                                readonly
+                                            />
+                                        </div>
+                                        <div className="form-col112">
+                                            <div className='radio-div-addTrainer' onChange={handleRadioShiftDays('1')}>
+                                                <input type="radio" className='form-radio' value="1" name="shiftMonday" /> Shift 01
+                                                <input type="radio" className='form-radio' value="2" name="shiftMonday" style={{ marginLeft: '10px' }} /> Shift 02
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div className="form-row">
+                                        <div className="form-col111">
+                                            <InputField
+                                                type='text'
+                                                placeholder='Tuesday'
+                                                readonly
+                                            />
+                                        </div>
+                                        <div className="form-col112">
+                                            <div className='radio-div' onChange={handleRadioShiftDays('2')}>
+                                                <input type="radio" className='form-radio' value="1" name="shiftTuesday" /> Shift 01
+                                                <input type="radio" className='form-radio' value="2" name="shiftTuesday" style={{ marginLeft: '10px' }} /> Shift 02
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="form-row">
+                                        <div className="form-col111">
+                                            <InputField
+                                                type='text'
+                                                placeholder='Wednesday'
+                                                readonly
+                                            />
+                                        </div>
+                                        <div className="form-col112">
+                                            <div className='radio-div' onChange={handleRadioShiftDays('3')}>
+                                                <input type="radio" className='form-radio' value="1" name="shiftWednesday" /> Shift 01
+                                                <input type="radio" className='form-radio' value="2" name="shiftWednesday" style={{ marginLeft: '10px' }} /> Shift 02
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="form-row">
+                                        <div className="form-col111">
+                                            <InputField
+                                                type='text'
+                                                placeholder='Thursday'
+                                                readonly
+                                            />
+                                        </div>
+                                        <div className="form-col112">
+                                            <div className='radio-div' onChange={handleRadioShiftDays('4')}>
+                                                <input type="radio" className='form-radio' value="1" name="shiftThursday" /> Shift 01
+                                                <input type="radio" className='form-radio' value="2" name="shiftThursday" style={{ marginLeft: '10px' }} /> Shift 02
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="form-row">
+                                        <div className="form-col111">
+                                            <InputField
+                                                type='text'
+                                                placeholder='Friday'
+                                                readonly
+                                            />
+                                        </div>
+                                        <div className="form-col112">
+                                            <div className='radio-div' onChange={handleRadioShiftDays('5')}>
+                                                <input type="radio" className='form-radio' value="1" name="shiftFriday" /> Shift 01
+                                                <input type="radio" className='form-radio' value="2" name="shiftFriday" style={{ marginLeft: '10px' }} /> Shift 02
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="form-row">
+                                        <div className="form-col111">
+                                            <InputField
+                                                type='text'
+                                                placeholder='Saterday'
+                                                readonly
+                                            />
+                                            {(!requestData.shiftMonday || !requestData.shiftTuesday || !requestData.shiftWednesday || !requestData.shiftThursday || !requestData.shiftFriday || !requestData.shiftSaturday) && click && <span className='text-danger'>Tik radios correctly</span>}
+
+                                        </div>
+                                        <div className="form-col112">
+                                            <div className='radio-div' onChange={handleRadioShiftDays('6')}>
+                                                <input type="radio" className='form-radio' value="1" name="shiftSaturday" /> Shift 01
+                                                <input type="radio" className='form-radio' value="2" name="shiftSaturday" style={{ marginLeft: '10px' }} /> Shift 02
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <div className="form-row">
                                         <div className="form-col1"></div>

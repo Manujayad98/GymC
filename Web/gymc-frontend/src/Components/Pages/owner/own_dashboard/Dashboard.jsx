@@ -15,19 +15,22 @@ import trainee3 from '../../../../images/owner/te3.png'
 import trainee4 from '../../../../images/owner/te4.png'
 import trainee5 from '../../../../images/owner/te5.png'
 
-import BarChart from '../../../Utilities/Charts/BarChart'
-import Table from '../../../Utilities/Tables/Table2'
-import Edit from '../../../../images/Icons/pen-solid.svg'
+// import BarChart from '../../../Utilities/Charts/BarChart'
+// import Table from '../../../Utilities/Tables/Table2'
+// import Edit from '../../../../images/Icons/pen-solid.svg'
 import './Dashboard.css'
 import { Chart } from "react-google-charts";
-import { width } from '@mui/system'
+// import { width } from '@mui/system'
 import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
+
+import { getAnnualIncomeChartData } from "../../../../services/ChartDataService";
 
 const Dashboard = () => {
 
   useEffect(() => {
     checkValidate();
+    getAnnualIncome();
   }, []);
 
   const checkValidate = async () => {
@@ -49,6 +52,17 @@ const Dashboard = () => {
   //   ["Aug", 8000],
 
   // ]);
+
+  const [annualIncome, setAnnualIncome] = useState({});
+
+
+  const getAnnualIncome = async () => {
+    const res = await getAnnualIncomeChartData();
+    console.log(res.data);
+    setAnnualIncome(
+      [...res.data]
+    );
+  };
 
   //ANNUAL INCOME CHART
   const Annualdata = [
@@ -232,7 +246,7 @@ const Dashboard = () => {
               <div className='own-dashboard-container-head'>Annual Income</div>
               <div className='own-dashboard-card own-dashboard-chart-cards'>
                 {/* <BarChart data={ChartData} /> */}
-                <Chart chartType="ColumnChart" width="100%" height="400px" data={Annualdata} />
+                <Chart chartType="ColumnChart" width="100%" height="400px" data={annualIncome} />
               </div>
             </div>
 

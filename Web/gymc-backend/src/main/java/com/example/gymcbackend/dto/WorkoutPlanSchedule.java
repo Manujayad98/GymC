@@ -1,45 +1,38 @@
 package com.example.gymcbackend.dto;
 
 import javax.persistence.Column;
+import java.util.Date;
 
 public class WorkoutPlanSchedule {
 
-    private long id;
-
-    private String weightClass;
-
-
     private Double thighs;
     private Double hips;
-
     private Double chest;
-
-
     private Double forearms;
-
-
     private Double biceps;
-
-
     private Double height;
-
     private Double weight;
     private String workoutType;
+    private String trainerId;
+    private Date start_date;
+    private Date end_date;
+    private String workoutName;
 
-    public long getId() {
-        return id;
+//    public long getId() {
+//        return id;
+//    }
+//
+//    public void setId(long id) {
+//        this.id = id;
+//    }
+
+
+    public String getWorkoutName() {
+        return workoutName;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getWeightClass() {
-        return weightClass;
-    }
-
-    public void setWeightClass(String weightClass) {
-        this.weightClass = weightClass;
+    public void setWorkoutName(String workoutName) {
+        this.workoutName = workoutName;
     }
 
     public Double getThighs() {
@@ -105,4 +98,28 @@ public class WorkoutPlanSchedule {
     public void setWorkoutType(String workoutType) {
         this.workoutType = workoutType;
     }
+    public String getTrainerId() {
+        return trainerId;
+    }
+
+    public void setTrainerId(String trainerId) {
+        this.trainerId = trainerId;
+    }
+
+    public Date getStart_date() {
+        return start_date;
+    }
+
+    public void setStart_date(Date start_date) {
+        this.start_date = start_date;
+    }
+
+    public Date getEnd_date() {
+        return end_date;
+    }
+
+    public void setEnd_date(Date end_date) {
+        this.end_date = end_date;
+    }
+
 }

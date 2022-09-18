@@ -262,7 +262,8 @@ const styles = StyleSheet.create({
         paddingTop: StatusBar.currentHeight,
         alignItems: 'center',
         justifyContent: 'space-around',
-        backgroundColor: '#121928'
+        backgroundColor: '#121928',
+        width: 360
     },
     scrollView: {
         marginHorizontal: 20,
@@ -271,7 +272,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'gray',
         height: 380,
-        width: 370,
+        width: 330,
         borderRadius: 10,
         marginTop: 10,
         marginBottom: 20

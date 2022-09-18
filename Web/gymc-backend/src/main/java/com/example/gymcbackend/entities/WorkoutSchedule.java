@@ -20,8 +20,8 @@ public class WorkoutSchedule {
     @Column(name = "status")
     private String status;
 
-    @Column(name = "duration")
-    private Integer duration;
+    @Column(name = "end_date")
+    private Date endDate;
 
     @Column(name = "start_date")
     private Date startDate;
@@ -34,13 +34,13 @@ public class WorkoutSchedule {
     @JoinColumn(name = "traineeId")
     Trainee trainee;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "workoutPlanID")
-    WorkoutPlan workoutPlan;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "workoutPlanID")
+//    WorkoutPlan workoutPlan;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "dietPlanID")
-    DietPlan dietPlan;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "dietPlanID")
+//    DietPlan dietPlan;
 
     public void setId(long id) {
         this.id = id;
@@ -58,13 +58,15 @@ public class WorkoutSchedule {
         this.status = status;
     }
 
-    public void setDuration(Integer duration) {
-        this.duration = duration;
-    }
+
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
 
     public void setStaffMember(StaffMember staffMember) {
         this.staffMember = staffMember;
@@ -74,13 +76,13 @@ public class WorkoutSchedule {
         this.trainee = trainee;
     }
 
-    public void setWorkoutPlan(WorkoutPlan workoutPlan) {
-        this.workoutPlan = workoutPlan;
-    }
+//    public void setWorkoutPlan(WorkoutPlan workoutPlan) {
+//        this.workoutPlan = workoutPlan;
+//    }
 
-    public void setDietPlan(DietPlan dietPlan) {
-        this.dietPlan = dietPlan;
-    }
+//    public void setDietPlan(DietPlan dietPlan) {
+//        this.dietPlan = dietPlan;
+//    }
 
     public long getId() {
         return id;
@@ -98,9 +100,10 @@ public class WorkoutSchedule {
         return status;
     }
 
-    public Integer getDuration() {
-        return duration;
+    public Date getEndDate() {
+        return endDate;
     }
+
 
     public Date getStartDate() {
         return startDate;
@@ -114,11 +117,11 @@ public class WorkoutSchedule {
         return trainee;
     }
 
-    public WorkoutPlan getWorkoutPlan() {
-        return workoutPlan;
-    }
+//    public WorkoutPlan getWorkoutPlan() {
+//        return workoutPlan;
+//    }
 
-    public DietPlan getDietPlan() {
-        return dietPlan;
-    }
+//    public DietPlan getDietPlan() {
+//        return dietPlan;
+//    }
 }
