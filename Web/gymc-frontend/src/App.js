@@ -51,6 +51,7 @@ import AddWorkoutO from './Components/Pages/owner/own_add_workout/AddWorkout';
 import UpdateWorkoutO from './Components/Pages/owner/own_update_workout/UpdateWorkout';
 // import TraineeProgressO from './Components/Pages/owner/own_trainee_progress/TraineeProgress';
 import NewExercise from './Components/Pages/owner/own_adjustments/NewExercise';
+import NewPaymentPlan from './Components/Pages/owner/own_adjustments/NewPaymentPlan';
 
 
 // RECEPTIONIST
@@ -128,6 +129,7 @@ function App() {
           <Route path="/OupdateWorkout" element={<UpdateWorkoutO />}></Route>
           {/* <Route path="/OtraineeProgress" element={<TraineeProgressO />}></Route> */}
           <Route path="/ONewExercise" element={<NewExercise />}></Route>
+          <Route path="/ONewPaymentPlan" element={<NewPaymentPlan />}></Route>
 
           {/* ADMIN ROUTES */}
           <Route path="/Aannouncements" element={<AnnouncementsA />}></Route>
