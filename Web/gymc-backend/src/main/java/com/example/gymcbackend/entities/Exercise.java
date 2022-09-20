@@ -25,21 +25,19 @@ public class Exercise {
     private String secondaryMuscle;
 
     @Column(name = "status")
-    private boolean status=true;
-=======
+    private boolean status = true;
+
     @Column(name = "default_reps")
     private String defaultReps;
->>>>>>> Nips
 
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "equipmentID")
-//    Equipment equipment;
+    // @ManyToMany(cascade = CascadeType.ALL)
+    // @JoinColumn(name = "equipmentID")
+    // Equipment equipment;
 
-    //for many to many map
+    // for many to many map
 
     @OneToMany(mappedBy = "workoutPlan")
     Set<TrainingDate> trainingDates;
-
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "equipmentid")
@@ -73,17 +71,17 @@ public class Exercise {
         this.secondaryMuscle = secondaryMuscle;
     }
 
-//    public void setEquipment(List<Equipment> equipment) {
-//        this.equipment = equipment;
-//    }
+    // public void setEquipment(List<Equipment> equipment) {
+    // this.equipment = equipment;
+    // }
 
     public void setEquipment(Equipment equipment) {
         this.equipment = equipment;
     }
+
     public void setDefaultReps(String defaultReps) {
         this.defaultReps = defaultReps;
     }
-
 
     public long getId() {
         return id;
@@ -105,14 +103,13 @@ public class Exercise {
         return secondaryMuscle;
     }
 
-//    public List<Equipment> getEquipment() {
-//        return equipment;
-//    }
+    // public List<Equipment> getEquipment() {
+    // return equipment;
+    // }
 
     public String getDefaultReps() {
         return defaultReps;
     }
-
 
     public Equipment getEquipment() {
         return equipment;

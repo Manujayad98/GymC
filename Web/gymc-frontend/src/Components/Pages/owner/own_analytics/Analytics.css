@@ -149,3 +149,7 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+.staffID {
+    font-weight: 900;
+}

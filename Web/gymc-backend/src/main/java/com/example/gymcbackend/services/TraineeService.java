@@ -1,6 +1,8 @@
 package com.example.gymcbackend.services;
 
 import com.example.gymcbackend.dto.StaffUsers;
+import com.example.gymcbackend.dto.TodayAvailableTrainees;
+import com.example.gymcbackend.dto.TodayAvailableTrainers;
 import com.example.gymcbackend.dto.TraineeInfo;
 import com.example.gymcbackend.repository.traineeDao.TraineeJdbcRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +16,16 @@ public class TraineeService {
     @Autowired
     private TraineeJdbcRepository traineeJdbcRepository;
 
+
     public List<TraineeInfo> getAllTrainees() {
         return traineeJdbcRepository.findAllTrainees();
+    }
+
+
+    public List<TodayAvailableTrainees> getTodayAvailableTrainees() {
+        String today = String.valueOf(java.time.LocalDate.now());
+
+        return traineeJdbcRepository.findTodayAvailableTrainees(today);
     }
 
 }
