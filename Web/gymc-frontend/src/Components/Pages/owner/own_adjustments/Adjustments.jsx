@@ -17,6 +17,7 @@ import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 
 import { getExerciseTableDetails, deleteExercise } from "../../../../services/ExerciseService";
 import { getPaymentPlanTableDetails, deletePaymentPlan } from "../../../../services/PaymentService";
+import { getAdjustmentCountDetails } from "../../../../services/AdjustmentCountService";
 
 
 export default function Exercises() {
@@ -25,11 +26,13 @@ export default function Exercises() {
         checkValidate();
         getExercises();
         getPaymentPlans();
+        getAdjustmentCounts();
 
     }, []);
 
     const [exercices, setExercises] = useState([]);
     const [paymentPlans, setPaymentPlans] = useState([]);
+    const [adjustmentCounts, setadjustmentCounts] = useState([]);
     const [selectedExerciseData, setSelectedExerciseData] = useState({});
     const [selectedPaymentPlanData, setSelectedPaymentPlanData] = useState({});
     const [popup, setPopUp] = useState("");
@@ -107,24 +110,39 @@ export default function Exercises() {
         setPopUp("");
     };
 
+    const getAdjustmentCounts = async () => {
+        const res = await getAdjustmentCountDetails();
+        console.log(res.data);
+        setadjustmentCounts(
+            [...res.data]
+        );
+        console.log(adjustmentCounts);
+    };
+
     const [openModal, setOpenModal] = useState(false);
 
+    const [columns, setColumns] = useState([
+  
+        { title: 'Appoinment Count', field: 'appoinment_count', initialEditValue: 'numeric' },
+        { title: 'Leave Count', field: 'leave_count', type: 'numeric' },
+      ]);
+    
 
 
-    let [num, setNum] = useState(5);
-    let incNum = () => {
-        if (num < 10) {
-            setNum(Number(num) + 1);
-        }
-    };
-    let decNum = () => {
-        if (num > 0) {
-            setNum(num - 1);
-        }
-    }
-    let handleChange = (e) => {
-        setNum(e.target.value);
-    }
+    // let [num, setNum] = useState(5);
+    // let incNum = () => {
+    //     if (num < 10) {
+    //         setNum(Number(num) + 1);
+    //     }
+    // };
+    // let decNum = () => {
+    //     if (num > 0) {
+    //         setNum(num - 1);
+    //     }
+    // }
+    // let handleChange = (e) => {
+    //     setNum(e.target.value);
+    // }
 
     return (
         <div className='main-container'>
@@ -187,7 +205,9 @@ export default function Exercises() {
                     <div className="ex">
                         <div className="header">
                             <h3 id="own-adjustment-titles">Payment Plans</h3>
+                            <Link to='/ONewPaymentPlan' style={{ textDecoration: 'none' }}>
                             <Button1 variant="contained" className="Hbutton">New Payment</Button1>
+                            </Link>
                         </div>
                         <div className='own-adjustment-card '>
                            
@@ -233,7 +253,7 @@ export default function Exercises() {
 
                         </div>
                     </div>
-                    <div className="ex">
+                    {/* <div className="ex">
                         <div className="header">
                             <h3 id="own-adjustment-titles">No of appoinments per timeslot</h3>
                         </div>
@@ -252,8 +272,8 @@ export default function Exercises() {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="ex">
+                    </div> */}
+                    {/* <div className="ex">
                         <div className="header">
                             <h3 id="own-adjustment-titles">Leave limit per month</h3>
                         </div>
@@ -272,9 +292,49 @@ export default function Exercises() {
                                 </div>
                             </div>
                         </div>
+                    </div> */}
+                             <div className="ex">
+                    <div className="header">
+                        <h3 id="own-adjustment-titles">Adjustment Counts</h3>
+                       
                     </div>
+                <div className='own-adjustment-card '>
+                    <MaterialTable
+                        title="Adjustment Count"
+                        columns={columns}
+                        data={adjustmentCounts}
+                        icons={TableIcons}
+                        editable={{
+                        
+                            onRowUpdate: (newData, oldData) =>
+                            new Promise((resolve, reject) => {
+                                setTimeout(() => {
+                                const dataUpdate = [...adjustmentCounts];
+                                const index = oldData.tableData.id;
+                                dataUpdate[index] = newData;
+                                setadjustmentCounts([...dataUpdate]);
+
+                                resolve();
+                                }, 1000)
+                            }),
+                            
+                        }}
+                        options={{
+                            pageSize: 1,
+                            pageSizeOptions: [6, 12, 15],
+                            headerStyle: {
+                                backgroundColor: '#1F0106',
+                                color: '#FFF',
+                                hover: '#FFF',
+                                // textAlign:'center'
+                            },
+                           
+                        }}
+                        />
+    </div></div>
                 </div>
                 {/* <DeleteModal open={openModal} onClose={() => setOpenModal(false)} /> */}
+       
             </div>
 
             {popup === "delete" && (
@@ -290,6 +350,7 @@ export default function Exercises() {
                     closePopUp={closePopUp}
                     handleSubmit={deleteSelectedPaymentPlan}
                 />
+                
             )}
         </div>
     )
