@@ -28,3 +28,16 @@ export const deletePaymentPlan = (planID) => {
     });
 };
 
+// ADD PAYMENT PLAN
+
+export const addPaymentPlan = (requestData) => {
+    return axios({
+        method: "POST",
+        url: `${USER_URL}/newPaymentPlan`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+        data: requestData,
+    });
+};
+
