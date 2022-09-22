@@ -24,19 +24,23 @@ public class TraineeViewScheduleJdbcRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    public List<TraineeViewScheduleDetailsResponse> getTraineeSchedule(Long traineeId) {
+    public List<TraineeViewScheduleDetailsResponse> getTraineeSchedule(String traineeId) {
+
+        String staffID = traineeId.substring(4);
+
+        Long result = Long.parseLong(String.valueOf(staffID));
 
         //        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
         MapSqlParameterSource namedParameters =
                 new MapSqlParameterSource();
 
         LocalDate traineeDate = LocalDate.now();
-        namedParameters.addValue("traineeId", traineeId);
+        namedParameters.addValue("traineeId", result);
         namedParameters.addValue("traineeDate", traineeDate);
 
 
-        String query1="SELECT trainee.trainee_id,trainee.first_name,trainee.last_name,trainee.phone_number," +
-                "trainee.address,exercise.name,training_date.no_of_repetitions " +
+        String query1="SELECT trainee.trainee_id,trainee.first_name,trainee.last_name,  DATE_FORMAT(trainee.dob, '%y-%m-%d') AS dob, trainee.phone_number, trainee.emergency_number," +
+                "trainee.address,exercise.name AS eName,training_date.no_of_repetitions, workout_plan.training_date " +
                 "FROM workout_schedule " +
                 "INNER JOIN workout_plan  ON  workout_schedule.workout_scheduleid=workout_plan.workout_scheduleid " +
                 "INNER JOIN training_date  ON workout_plan.workout_planid=training_date.workout_planid " +

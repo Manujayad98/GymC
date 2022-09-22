@@ -18,7 +18,7 @@ public class TraineeViewScheduleService {
     @Autowired
     TraineeViewScheduleJdbcRepository traineeViewScheduleJdbcRepository;
 
-    public List<TraineeViewScheduleDetailsResponse> getTraineeSchedule(Long traineeId) {
+    public List<TraineeViewScheduleDetailsResponse> getTraineeSchedule(String traineeId) {
         System.out.println("schedule service");
         List<TraineeViewScheduleDetailsResponse> traineeViewSchedule = traineeViewScheduleJdbcRepository.getTraineeSchedule(traineeId);
         return traineeViewSchedule;

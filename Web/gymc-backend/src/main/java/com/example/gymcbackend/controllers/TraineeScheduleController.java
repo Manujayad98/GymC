@@ -27,7 +27,7 @@ public class TraineeScheduleController {
 
     //View Trainee Current workout schedule,on trainee row click view more
     @GetMapping("/getTraineeSchedule/{traineeId}")
-    public List<TraineeViewScheduleDetailsResponse> getTraineeSchedule(@PathVariable Long traineeId){
+    public List<TraineeViewScheduleDetailsResponse> getTraineeSchedule(@PathVariable String traineeId){
         System.out.println("gettraineeSchedule");
         return traineeViewScheduleService.getTraineeSchedule(traineeId);
     }
