@@ -4,14 +4,14 @@ const getToken = () => {
     return localStorage.getItem("USER_KEY");
 };
 
-export const getTrainerData = () => {
-    // return axios({
-    //     method: "GET",
-    //     url: `${USER_URL}/xxxxxxxx`,
-    //     headers: {
-    //         Authorization: "Bearer " + getToken(),
-    //     },
-    // });
+export const getTrainerData = (traineeID) => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/getTraineeSchedule/${traineeID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
 };
 
 export const addWorkoutDetails = (requestData) => {
