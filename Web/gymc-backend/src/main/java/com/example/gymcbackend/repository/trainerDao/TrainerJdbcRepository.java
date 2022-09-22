@@ -93,7 +93,7 @@ public class TrainerJdbcRepository {
                 "INNER JOIN workout_schedule AS ws\n" +
                 "ON\n" +
                 "    ws.traniee_id = t.trainee_id\n" +
-                "    AND DATE(t.training_date) = ? ";
+                "    AND DATE(w.training_date) = ? ";
 
 //        namedParameters.addValue("today", today);
 
