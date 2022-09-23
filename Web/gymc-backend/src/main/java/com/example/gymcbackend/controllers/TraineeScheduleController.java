@@ -2,6 +2,7 @@ package com.example.gymcbackend.controllers;
 
 import com.example.gymcbackend.dto.*;
 import com.example.gymcbackend.entities.DietPlan;
+import com.example.gymcbackend.entities.TimeSlot;
 import com.example.gymcbackend.services.TraineeViewScheduleService;
 import com.example.gymcbackend.services.AddWorkoutService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.Date;
+//import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 @RestController
@@ -25,6 +27,8 @@ public class TraineeScheduleController {
     @Autowired
     AddWorkoutService addWorkoutService;
 
+    //    --------------------View section---------------------
+
     //View Trainee Current workout schedule,on trainee row click view more
     @GetMapping("/getTraineeSchedule/{traineeId}")
     public List<TraineeViewScheduleDetailsResponse> getTraineeSchedule(@PathVariable Long traineeId){
@@ -35,6 +39,7 @@ public class TraineeScheduleController {
     //View trainee workout on date click,pass date on url
     @GetMapping("/getTraineeWorkout/{date}/{traineeId}")
     public List<TraineeViewWorkoutDateResponse> getTraineeWorkoutDate(@PathVariable String date,@PathVariable Long traineeId){
+//       Date date1= java.sql.Date.valueOf(date);
         LocalDate date1 = LocalDate.parse(date);
         System.out.println("getTraineeDateOnclick");
         return traineeViewScheduleService.getTraineeDateWorkoutPlan(date1,traineeId);
@@ -48,11 +53,11 @@ public class TraineeScheduleController {
         return traineeViewScheduleService.getTraineeDateDietPlan(traineeDate,traineeId);
     }
 
-    //Add workout
+//    --------------------Add section---------------------
 
     //Add trainee body measures and health condition, workout type
     @PostMapping("/addWorkoutSchedule/{traineeId}")
-    public String addWorkout(@RequestBody WorkoutPlanSchedule workoutPlanSchedule, @PathVariable Long traineeId){
+    public Long addWorkoutSchedule(@RequestBody WorkoutPlanSchedule workoutPlanSchedule, @PathVariable Long traineeId){
         return addWorkoutService.addWorkoutSchedule(workoutPlanSchedule,traineeId);
         //pass trainee id in dto
     }
@@ -63,17 +68,38 @@ public class TraineeScheduleController {
     }
 
     //method to check availabilty
-//    @GetMapping("/allTrainingReservations/")
-//    public List<TrainingReservationsResponse> getAllReservations(){ return }
+    @GetMapping("/availabilityDate/{date}")
+    public TimeSlot getAvailability(@PathVariable String date){
+        LocalDate date1 = LocalDate.parse(date);
+        return traineeViewScheduleService.getDate(date1);
+    }
 
 //    @PostMapping("/addReservation/{traineeId}")
-//    public String addReservation(@RequestBody List<WorkoutReservation> workoutReservations, @PathVariable Long traineeId){
-//        return addWorkoutService.addReservation(workoutReservations);
+//    public String addReservation(@RequestBody WorkoutReservation workoutReservation, @PathVariable Long traineeId){
+//        return addWorkoutService.addReservation(workoutReservation);
 //    }
 
 
     @PostMapping("/addReservation/{carbs}/{fat}/{protein}")
-    public String addReservation(@RequestBody WorkoutReservation workoutReservation, @PathVariable Long traineeId,@PathVariable Integer carbs,@PathVariable Integer fat,@PathVariable Integer protein){
+    public String addReservation(@RequestBody WorkoutReservation workoutReservation, @PathVariable Integer carbs,@PathVariable Integer fat,@PathVariable Integer protein){
         return addWorkoutService.addReservation(workoutReservation,carbs,fat,protein);
     }
+
+//    --------------------Update section---------------------
+
+
+//    @GetMapping("/updateView/")
+//    public String getUodateView (@PathVariable ){
+//        return "string";
+//    }
+
+
+
+
+
+
+
+
+
+
 }
