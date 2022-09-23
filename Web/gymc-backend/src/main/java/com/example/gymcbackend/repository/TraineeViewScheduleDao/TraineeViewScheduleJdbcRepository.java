@@ -4,6 +4,7 @@ import com.example.gymcbackend.dto.TraineeDetailsResponse;
 import com.example.gymcbackend.dto.TraineeViewScheduleDetailsResponse;
 import com.example.gymcbackend.dto.TraineeViewWorkoutDateResponse;
 import com.example.gymcbackend.entities.DietPlan;
+import com.example.gymcbackend.entities.TimeSlot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -92,6 +93,16 @@ public class TraineeViewScheduleJdbcRepository {
 
 //        int count = jdbcTemplate.queryForObject(sql, new Object[] { nic }, Integer.class);
         return traineeDiet;
+    }
+
+    public TimeSlot getCalDate(LocalDate date1) {
+        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+        namedParameters.addValue("date1", date1);
+        String query="SELECT * FROM time_slot WHERE date=:date1";
+
+        TimeSlot timeSlot = (TimeSlot) jdbcTemplate.queryForObject(query, new Object[]{date1}, new BeanPropertyRowMapper(TimeSlot.class));
+
+        return timeSlot;
     }
 }
 
