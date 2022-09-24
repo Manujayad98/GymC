@@ -34,18 +34,24 @@ public class TraineeScheduleController {
 
     //View trainee workout on date click,pass date on url
     @GetMapping("/getTraineeWorkout/{date}/{traineeId}")
-    public List<TraineeViewWorkoutDateResponse> getTraineeWorkoutDate(@PathVariable String date,@PathVariable Long traineeId){
+    public List<TraineeViewWorkoutDateResponse> getTraineeWorkoutDate(@PathVariable String date,@PathVariable String traineeId){
         LocalDate date1 = LocalDate.parse(date);
-        System.out.println("getTraineeDateOnclick");
-        return traineeViewScheduleService.getTraineeDateWorkoutPlan(date1,traineeId);
+        System.out.println("awa");
+        String traineeID = traineeId.substring(4);
+        Long result = Long.parseLong(String.valueOf(traineeID));
+        System.out.println(result);
+        return traineeViewScheduleService.getTraineeDateWorkoutPlan(date1,result);
     }
 
     //View trainee diet on date click,pass date on url
     @GetMapping("/getTraineeDiet/{date}/{traineeId}")
-    public DietPlan getTraineeDietDate(@PathVariable String date,@PathVariable Long traineeId){
+    public DietPlan getTraineeDietDate(@PathVariable String date,@PathVariable String traineeId){
         LocalDate traineeDate = LocalDate.parse(date);
-        System.out.println("getTraineeDateOnclick");
-        return traineeViewScheduleService.getTraineeDateDietPlan(traineeDate,traineeId);
+
+        String traineeID = traineeId.substring(4);
+        Long result = Long.parseLong(String.valueOf(traineeID));
+
+        return traineeViewScheduleService.getTraineeDateDietPlan(traineeDate,result);
     }
 
     //Add workout

@@ -14,6 +14,27 @@ export const getTrainerData = (traineeID) => {
     });
 };
 
+export const getWorkoutDetails = (date, traineeID) => {
+    console.log('sasa');
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/getTraineeWorkout/${date}/${traineeID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+export const getTraineeDiet = (date, traineeID) => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/getTraineeDiet/${date}/${traineeID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
 export const addWorkoutDetails = (requestData) => {
     // return axios({
     //     method: "POST",
