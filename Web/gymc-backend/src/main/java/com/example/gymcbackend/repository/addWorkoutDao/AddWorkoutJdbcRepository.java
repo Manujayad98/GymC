@@ -225,36 +225,35 @@ public class AddWorkoutJdbcRepository {
         namedParameters.addValue("trainingDate",trainingDate );
 
         if(count==0){
-            for(Long i=startSlot;i<=endSlot;i++){
-                namedParameters.addValue("i",i );
-                System.out.println("i :"+i);
+            String query1 = "INSERT INTO time_slot " +
+                        "(date) " +
+                        "values (:trainingDate)";
 
-                String query1 = "INSERT INTO time_slot " +
-                        "(date,`:i`) " +
-                        "values (:trainingDate,1 )";
-                int rowsAffected = jdbc.update(query1 , namedParameters);
-            }
-
-
-        }else{
+            int rowsAffected1 = jdbc.update(query1, namedParameters);
+        }
 
             for(Long i=startSlot;i<=endSlot;i++){
 
                 namedParameters.addValue("i",i );
+
                 //get current reserved count
                 namedParameters.addValue("trainingDate",trainingDate );
 
-                String query1="SELECT :i FROM time_slot WHERE date=trainingDate";
-                int reservedCount = jdbcTemplate.queryForObject(query, new Object[] {trainingDate }, Integer.class);
+                String query1="SELECT `$col` FROM time_slot WHERE date=?";
+                query1 =query1.replace("$col",i.toString());
+
+                int reservedCount = jdbcTemplate.queryForObject(query1, new Object[] {trainingDate }, Integer.class);
+                System.out.println("resrv count:"+reservedCount);
                 reservedCount +=1;
 
                 namedParameters.addValue("reservedCount",reservedCount );
-                String query2 = "INSERT INTO time_slot " +
-                        "(date,:i) " +
-                        "values (:trainingDate,:reservedCount )";
+                String query2 = "UPDATE time_slot SET `$col`=:reservedCount WHERE date=:trainingDate";
+
+                query2 =query2.replace("$col",i.toString());
+                System.out.println("query2"+query2);
                 int rowsAffected = jdbc.update(query2 , namedParameters);
 
-            }
+
         }
 
 

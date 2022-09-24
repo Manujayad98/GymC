@@ -1,5 +1,6 @@
 package com.example.gymcbackend.services;
 
+import com.example.gymcbackend.dto.BodyFactorsResponse;
 import com.example.gymcbackend.dto.ExerciseDetailsResponse;
 import com.example.gymcbackend.dto.TraineeViewScheduleDetailsResponse;
 import com.example.gymcbackend.dto.TraineeViewWorkoutDateResponse;
@@ -41,5 +42,10 @@ public class TraineeViewScheduleService {
     public TimeSlot getDate(LocalDate date1) {
         TimeSlot timeSlot= traineeViewScheduleJdbcRepository.getCalDate(date1);
         return timeSlot;
+    }
+
+    public BodyFactorsResponse getWorkoutPlanBodyFactors(LocalDate date1, Long traineeId) {
+        BodyFactorsResponse bodyFactors= traineeViewScheduleJdbcRepository.getBodyFactors(date1,traineeId);
+        return bodyFactors;
     }
 }

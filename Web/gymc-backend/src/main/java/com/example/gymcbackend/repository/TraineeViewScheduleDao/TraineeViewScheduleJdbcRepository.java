@@ -1,5 +1,6 @@
 package com.example.gymcbackend.repository.TraineeViewScheduleDao;
 
+import com.example.gymcbackend.dto.BodyFactorsResponse;
 import com.example.gymcbackend.dto.TraineeDetailsResponse;
 import com.example.gymcbackend.dto.TraineeViewScheduleDetailsResponse;
 import com.example.gymcbackend.dto.TraineeViewWorkoutDateResponse;
@@ -103,6 +104,12 @@ public class TraineeViewScheduleJdbcRepository {
         TimeSlot timeSlot = (TimeSlot) jdbcTemplate.queryForObject(query, new Object[]{date1}, new BeanPropertyRowMapper(TimeSlot.class));
 
         return timeSlot;
+    }
+
+    public BodyFactorsResponse getBodyFactors(LocalDate date1, Long traineeId) {
+        String query="SELECT weight,height,biceps,chest,forearms,hips,thighs FROM workout_plan WHERE  ";
+        BodyFactorsResponse bodyFactors = (BodyFactorsResponse) jdbcTemplate.queryForObject(query, new Object[]{date1}, new BeanPropertyRowMapper(BodyFactorsResponse.class));
+        return bodyFactors;
     }
 }
 
