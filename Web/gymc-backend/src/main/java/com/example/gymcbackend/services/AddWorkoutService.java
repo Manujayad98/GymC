@@ -81,10 +81,10 @@ public class AddWorkoutService {
         System.out.println(endSlotNo);
 
         //Set availability
-//        String availabilitySuccess = traineeAddWorkoutJdbcRepository.setAvailability(startSlotNo,endSlotNo, tempStartDate);
+        String availabilitySuccess = traineeAddWorkoutJdbcRepository.setAvailability(startSlotNo,endSlotNo, tempStartDate);
 
         // Adding diet plan
-        String dietPlanSuccess = traineeAddWorkoutJdbcRepository.addDietPlan(tempStartDate,carbs, fat, protein,ScheduleId,traineeId);
+//        String dietPlanSuccess = traineeAddWorkoutJdbcRepository.addDietPlan(tempStartDate,carbs, fat, protein,ScheduleId,traineeId);
 
 //        Adding training workout
 //        String trainingDateSuccess= traineeAddWorkoutJdbcRepository.addTrainingDate(workoutReservation.getWorkoutPlanId(),tempStartDate,tempStartTime,tempEndTime,workoutReservation.getTrainingDateList(),ScheduleId);

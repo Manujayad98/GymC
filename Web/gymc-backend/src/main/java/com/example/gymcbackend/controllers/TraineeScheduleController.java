@@ -36,7 +36,7 @@ public class TraineeScheduleController {
         return traineeViewScheduleService.getTraineeSchedule(traineeId);
     }
 
-    //View trainee workout on date click,pass date on url
+    //View trainee workout exerciese on date click,pass date on url
     @GetMapping("/getTraineeWorkout/{date}/{traineeId}")
     public List<TraineeViewWorkoutDateResponse> getTraineeWorkoutDate(@PathVariable String date,@PathVariable Long traineeId){
 //       Date date1= java.sql.Date.valueOf(date);
@@ -44,6 +44,14 @@ public class TraineeScheduleController {
         System.out.println("getTraineeDateOnclick");
         return traineeViewScheduleService.getTraineeDateWorkoutPlan(date1,traineeId);
     }
+//    view workout body measures(for update workout)
+@GetMapping("/getBodyFactors/{date}/{traineeId}")
+public BodyFactorsResponse getBodyFactors(@PathVariable String date,@PathVariable Long traineeId){
+//       Date date1= java.sql.Date.valueOf(date);
+    LocalDate date1 = LocalDate.parse(date);
+    System.out.println("getTraineeDateOnclick");
+    return traineeViewScheduleService.getWorkoutPlanBodyFactors(date1,traineeId);
+}
 
     //View trainee diet on date click,pass date on url
     @GetMapping("/getTraineeDiet/{date}/{traineeId}")
