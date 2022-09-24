@@ -4,13 +4,13 @@ import SidebarO from '../own_sidebar/Sidebar'
 import HeaderO from '../own_header/Header'
 // import Table from '../../../Utilities/Tables/Table1'
 
-import Add from '../../../../images/Add.svg'
-import Clear from '../../../../images/clear.svg'
-import T1 from '../../../../images/t1.png'
+// import Add from '../../../../images/Add.svg'
+// import Clear from '../../../../images/clear.svg'
+// import T1 from '../../../../images/t1.png'
 import Pic1 from '../../../../images/owner.png'
-import Card from 'react-bootstrap/Card'
-import Plus from '../../../../images/plus.svg'
-import Minus from '../../../../images/minus.svg'
+// import Card from 'react-bootstrap/Card'
+// import Plus from '../../../../images/plus.svg'
+// import Minus from '../../../../images/minus.svg'
 
 import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
@@ -20,10 +20,10 @@ import InputField from "../../../Utilities/Form/InputField";
 import '../../../Utilities/Form/Form.css'
 import { Validators } from "../../../Utilities/Form/Validator/Validator";
 import Dropdown from "../../../Utilities/Form/Dropdown";
-import Table from '../../../Utilities/Tables/Table2'
+// import Table from '../../../Utilities/Tables/Table2'
 import { Link, useParams } from 'react-router-dom'
 
-import Button1 from '@mui/material/Button';
+// import Button1 from '@mui/material/Button';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -87,8 +87,8 @@ const AddWorkout = () => {
         console.log(requestData);
         evt.preventDefault();
 
-        setPopUp("show");
-        setMainPopUp("hide");
+        // setPopUp("show");
+        // setMainPopUp("hide");
         if (!requestData.trainee_id || !requestData.height || !requestData.weight || !requestData.diseases || !requestData.biceps || !requestData.forearms || !requestData.chest || !requestData.hips || !requestData.thighs || !requestData.paymentPlan || !requestData.startDate || !requestData.endDate) {
             console.log('Please fill out the form correctly');
             setClick({ click: true, })
@@ -512,323 +512,323 @@ const ShowWorkoutDates = () => {
 
     return (
         <>
-            {mainpopup === "" && (
-                <div>
-                    <div className='add-workout-main-topics'>Workout Info
-                        <hr />
-                    </div>
-                    <form className="" onSubmit={addDates} noValidate={false}>
-                        <div className="own-addworkout-content-container">
-                            <div className="own-addworkout-left">
-                                <div className="addworkout_card1">
-                                    {/* <form className onSubmit={addDates} noValidate={false}> */}
-                                    <div className="update-workout-form">
-                                        <div className="add-workout-form-inputs" style={{ marginTop: '-35px' }}>
-                                            <h4 className='update-workout-form-subHeading'>Workout Plan</h4>
-                                            <hr className="add-trainer-hr" />
-                                            <div style={{ margin: '20px 0px' }}>
-                                                <MaterialTable
-                                                    title="Exersices"
-                                                    columns={[
-                                                        { title: "Exercice ID", field: "ExerciseID", editable: 'never' },
-                                                        { title: "Name", field: "Name", editable: 'never' },
-                                                        { title: "Repitition Count", field: "Repititions", editable: 'onUpdate', type: 'numeric' },
-                                                    ]}
-                                                    icons={TableIcons}
-                                                    data={excerciseDetails}
-                                                    editable={{
-                                                        onRowUpdate: (newData, oldData, rowData) =>
-                                                            new Promise((resolve, reject) => {
-                                                                setTimeout(() => {
-                                                                    const dataUpdate = [...excerciseDetails];
-                                                                    const index = oldData.tableData.id;
-                                                                    dataUpdate[index] = newData;
-                                                                    setExcerciseDetails([...dataUpdate]);
+            {/* {mainpopup === "" && ( */}
+            <div>
+                <div className='add-workout-main-topics'>Workout Info
+                    <hr />
+                </div>
+                <form className="" onSubmit={addDates} noValidate={false}>
+                    <div className="own-addworkout-content-container">
+                        <div className="own-addworkout-left">
+                            <div className="addworkout_card1">
+                                {/* <form className onSubmit={addDates} noValidate={false}> */}
+                                <div className="update-workout-form">
+                                    <div className="add-workout-form-inputs" style={{ marginTop: '-35px' }}>
+                                        <h4 className='update-workout-form-subHeading'>Workout Plan</h4>
+                                        <hr className="add-trainer-hr" />
+                                        <div style={{ margin: '20px 0px' }}>
+                                            <MaterialTable
+                                                title="Exersices"
+                                                columns={[
+                                                    { title: "Exercice ID", field: "ExerciseID", editable: 'never' },
+                                                    { title: "Name", field: "Name", editable: 'never' },
+                                                    { title: "Repitition Count", field: "Repititions", editable: 'onUpdate', type: 'numeric' },
+                                                ]}
+                                                icons={TableIcons}
+                                                data={excerciseDetails}
+                                                editable={{
+                                                    onRowUpdate: (newData, oldData, rowData) =>
+                                                        new Promise((resolve, reject) => {
+                                                            setTimeout(() => {
+                                                                const dataUpdate = [...excerciseDetails];
+                                                                const index = oldData.tableData.id;
+                                                                dataUpdate[index] = newData;
+                                                                setExcerciseDetails([...dataUpdate]);
 
-                                                                    resolve();
-                                                                }, 1000)
-                                                                if (newData.Repititions != 0) {
-                                                                    console.log(workoutDates);
-                                                                    console.log(id);
-                                                                    console.log(newData);
-                                                                    workoutDates.exercices.push({ ...newData })
+                                                                resolve();
+                                                            }, 1000)
+                                                            if (newData.Repititions != 0) {
+                                                                console.log(workoutDates);
+                                                                console.log(id);
+                                                                console.log(newData);
+                                                                workoutDates.exercices.push({ ...newData })
 
-                                                                }
+                                                            }
 
-                                                            }),
-                                                    }}
-                                                    options={{
-                                                        pageSize: 3,
-                                                        pageSizeOptions: [6, 12, 15],
-                                                        headerStyle: {
-                                                            backgroundColor: '#1F0106',
-                                                            color: '#FFF',
-                                                            hover: '#FFF'
-                                                        }
-                                                    }}
-                                                />
-                                            </div>
-                                            {/* <h4 className='update-workout-form-subHeading'>Diet Plan</h4>
-                                            <hr className="add-trainer-hr" />
-                                            <div className="form-row">
-                                                <div className="form-col1">
-                                                    <InputField
-                                                        value={workoutDates.carbs}
-                                                        type='text'
-                                                        label="Carbs"
-                                                        placeholder='Type'
-                                                        validators={[
-                                                            { check: Validators.required, message: 'NIC is not valid' }
-                                                        ]}
-                                                        onChange={handleChange('carbs')} />
-                                                    {!workoutDates.carbs && click && <span className='text-danger'>This Field is required</span>}
-                                                </div>
-                                                <div className="form-col2">
-                                                    <InputField
-                                                        value={workoutDates.facts}
-                                                        type='text'
-                                                        label="Facts"
-                                                        placeholder='Type'
-                                                        validators={[
-                                                            { check: Validators.required, message: 'NIC is not valid' }
-                                                        ]}
-                                                        onChange={handleChange('facts')} />
-                                                    {!workoutDates.facts && click && <span className='text-danger'>This Field is required</span>}
-                                                </div>
-                                            </div>
-                                            <div className="form-row">
-                                                <div className="form-col1">
-                                                    <InputField
-                                                        value={workoutDates.protein}
-                                                        type='text'
-                                                        label="Protein"
-                                                        placeholder='Type'
-                                                        validators={[
-                                                            { check: Validators.required, message: 'NIC is not valid' }
-                                                        ]}
-                                                        onChange={handleChange('protein')} />
-                                                    {!workoutDates.protein && click && <span className='text-danger'>This Field is required</span>}
-                                                </div>
-                                                <div className="form-col2">
-
-                                                </div>
-                                            </div> */}
-                                        </div>
-                                    </div>
-                                    {/* </form> */}
-                                </div>
-                            </div>
-                            <div className="own-addworkout-right">
-                                <div style={{ margin: '20px' }}>
-
-                                    <h4 className='update-workout-form-subHeading'>Workout Dates</h4>
-                                    {/* <hr className="add-trainer-hr" /> */}
-                                    <div className="own-viewworkout-calender" style={{ marginTop: '20px' }}>
-                                        <div className="own-viewworkout-calender-card">
-                                            {/* <CalendarComp /> */}
-                                            <SampleCal
-                                            // mindate={requestData.startDate}
-                                            // maxdate={requestData.endDate}
+                                                        }),
+                                                }}
+                                                options={{
+                                                    pageSize: 3,
+                                                    pageSizeOptions: [6, 12, 15],
+                                                    headerStyle: {
+                                                        backgroundColor: '#1F0106',
+                                                        color: '#FFF',
+                                                        hover: '#FFF'
+                                                    }
+                                                }}
                                             />
                                         </div>
-                                    </div>
-                                </div>
-                                <div className="addworkout_card4">
-                                    <div className="update-workout-form-inputs">
-                                        <h4 className='add-trainer-form-subHeading' style={{ marginTop: '10px' }}>Time Slot</h4>
+                                        <h4 className='update-workout-form-subHeading'>Diet Plan</h4>
                                         <hr className="add-trainer-hr" />
                                         <div className="form-row">
                                             <div className="form-col1">
-                                                <Dropdown
-                                                    data={[
-                                                        { value: 1, label: '8.00 Am' },
-                                                        { value: 2, label: '8.30 AM' },
-                                                        { value: 3, label: '9.00 AM' },
+                                                <InputField
+                                                    value={workoutDates.carbs}
+                                                    type='text'
+                                                    label="Carbs"
+                                                    placeholder='Type'
+                                                    validators={[
+                                                        { check: Validators.required, message: 'NIC is not valid' }
                                                     ]}
-                                                    label="Start Time"
-                                                    value={workoutDates.startTime}
-                                                    placeholder='Select'
-                                                    onChange={handleDropdownStartTime['startTime']}
-                                                />
-                                                {!workoutDates.startTime && click && <span className='text-danger'>This Field is required</span>}
-
+                                                    onChange={handleChange('carbs')} />
+                                                {!workoutDates.carbs && click && <span className='text-danger'>This Field is required</span>}
                                             </div>
                                             <div className="form-col2">
-                                                <Dropdown
-                                                    data={[
-                                                        { value: "", label: '8.00 Am' },
-                                                        { value: "", label: '8.30 AM' },
-                                                        { value: "", label: '9.00 AM' },
+                                                <InputField
+                                                    value={workoutDates.facts}
+                                                    type='text'
+                                                    label="Facts"
+                                                    placeholder='Type'
+                                                    validators={[
+                                                        { check: Validators.required, message: 'NIC is not valid' }
                                                     ]}
-                                                    label="End Time"
-                                                    value={workoutDates.endTime}
-                                                    placeholder='Select'
-                                                    onChange={handleDropdownEndtTime['endTime']}
-                                                />
-                                                {!workoutDates.startTime && click && <span className='text-danger'>This Field is required</span>}
-
+                                                    onChange={handleChange('facts')} />
+                                                {!workoutDates.facts && click && <span className='text-danger'>This Field is required</span>}
                                             </div>
                                         </div>
                                         <div className="form-row">
-                                            <div className="form-col1"></div>
+                                            <div className="form-col1">
+                                                <InputField
+                                                    value={workoutDates.protein}
+                                                    type='text'
+                                                    label="Protein"
+                                                    placeholder='Type'
+                                                    validators={[
+                                                        { check: Validators.required, message: 'NIC is not valid' }
+                                                    ]}
+                                                    onChange={handleChange('protein')} />
+                                                {!workoutDates.protein && click && <span className='text-danger'>This Field is required</span>}
+                                            </div>
                                             <div className="form-col2">
-                                                <button className="own_add_workout-btn" >Add Date</button>
+
                                             </div>
                                         </div>
-
                                     </div>
-
                                 </div>
-                                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', margin: '20px' }}>
-                                    <button className="own_next_workout-btn" onClick={next}> Next</button>
-                                </div>
-
+                                {/* </form> */}
                             </div>
-
                         </div>
+                        <div className="own-addworkout-right">
+                            <div style={{ margin: '20px' }}>
 
-                    </form>
-
-                </div>
-
-            )}
-            {popup === "diet" && (
-                <ShowDiet
-                />
-            )}
-        </>
-    )
-}
-
-const ShowDiet = () => {
-    const { id } = useParams();
-
-    const [click, setClick] = useState(false);
-
-    const [dietPlan, setDietPlan] = useState({
-        trainee_id: id,
-        carbs: '',
-        facts: '',
-        protein: '',
-    });
-
-    const handleChange = (key) => (value) => {
-        setDietPlan({
-            ...dietPlan,
-            [key]: value
-        });
-    };
-
-
-    const addDietPlan = (evt) => {
-        console.log(dietPlan);
-        evt.preventDefault();
-
-
-
-
-        // if (!dietPlan.carbs || !dietPlan.facts || !dietPlan.protein) {
-        //     console.log('Please fill out the form correctly');
-        //     setClick({ click: true, })
-        //     toast.warning('Please fill out the form correctly');
-        // }
-
-        // else {
-        //     addDietPlanDetails(requestData)
-        //         .then((response) => {
-        //             if (response.status === 200) {
-        //                 console.log(response.data);
-        //                 if (response.data === "You have already an account!") {
-        //                     toast.warning('You have already an account!');
-        //                 } else {
-        //                     window.location.href = "/";
-        //                     toast.success("successfully registered!!!");
-        window.location.href = `/ViewWorkout/${id}`;
-
-        //                 }
-        //             }
-        //         })
-        //         .catch((err) => {
-        //             if (err && err.response) {
-        //                 console.log(err);
-        //                 toast.error('Failed!!!');
-        //             }
-        //         });
-        // }
-
-    }
-
-    return (
-        <>
-
-            <form className="" onSubmit={addDietPlan} noValidate={false}>
-                <div className="own-addworkout-content-container">
-                    <div className="own-addworkout-left">
-                        <div className="addworkout_card1">
-                            {/* <form className onSubmit={addDates} noValidate={false}> */}
-                            <div className="update-workout-form">
-                                <div className="add-workout-form-inputs" style={{ marginTop: '-35px' }}>
-                                    <h4 className='update-workout-form-subHeading'>Diet Plan</h4>
+                                {/* <h4 className='update-workout-form-subHeading'>Workout Dates</h4> */}
+                                {/* <hr className="add-trainer-hr" /> */}
+                                <div className="own-viewworkout-calender" style={{ marginTop: '20px' }}>
+                                    <div className="own-viewworkout-calender-card">
+                                        {/* <CalendarComp /> */}
+                                        <SampleCal
+                                        // mindate={requestData.startDate}
+                                        // maxdate={requestData.endDate}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="addworkout_card4">
+                                <div className="update-workout-form-inputs">
+                                    <h4 className='add-trainer-form-subHeading' style={{ marginTop: '10px' }}>Time Slot</h4>
                                     <hr className="add-trainer-hr" />
                                     <div className="form-row">
                                         <div className="form-col1">
-                                            <InputField
-                                                value={dietPlan.carbs}
-                                                type='text'
-                                                label="Carbs"
-                                                placeholder='Type'
-                                                validators={[
-                                                    { check: Validators.required, message: 'NIC is not valid' }
+                                            <Dropdown
+                                                data={[
+                                                    { value: 1, label: '8.00 Am' },
+                                                    { value: 2, label: '8.30 AM' },
+                                                    { value: 3, label: '9.00 AM' },
                                                 ]}
-                                                onChange={handleChange('carbs')} />
-                                            {!dietPlan.carbs && click && <span className='text-danger'>This Field is required</span>}
+                                                label="Start Time"
+                                                value={workoutDates.startTime}
+                                                placeholder='Select'
+                                                onChange={handleDropdownStartTime['startTime']}
+                                            />
+                                            {!workoutDates.startTime && click && <span className='text-danger'>This Field is required</span>}
+
                                         </div>
                                         <div className="form-col2">
-                                            <InputField
-                                                value={dietPlan.facts}
-                                                type='text'
-                                                label="Facts"
-                                                placeholder='Type'
-                                                validators={[
-                                                    { check: Validators.required, message: 'NIC is not valid' }
+                                            <Dropdown
+                                                data={[
+                                                    { value: "", label: '8.00 Am' },
+                                                    { value: "", label: '8.30 AM' },
+                                                    { value: "", label: '9.00 AM' },
                                                 ]}
-                                                onChange={handleChange('facts')} />
-                                            {!dietPlan.facts && click && <span className='text-danger'>This Field is required</span>}
+                                                label="End Time"
+                                                value={workoutDates.endTime}
+                                                placeholder='Select'
+                                                onChange={handleDropdownEndtTime['endTime']}
+                                            />
+                                            {!workoutDates.startTime && click && <span className='text-danger'>This Field is required</span>}
+
                                         </div>
                                     </div>
                                     <div className="form-row">
-                                        <div className="form-col1">
-                                            <InputField
-                                                value={dietPlan.protein}
-                                                type='text'
-                                                label="Protein"
-                                                placeholder='Type'
-                                                validators={[
-                                                    { check: Validators.required, message: 'NIC is not valid' }
-                                                ]}
-                                                onChange={handleChange('protein')} />
-                                            {!dietPlan.protein && click && <span className='text-danger'>This Field is required</span>}
-                                        </div>
+                                        <div className="form-col1"></div>
                                         <div className="form-col2">
-
+                                            <button className="own_add_workout-btn" >Add Date</button>
                                         </div>
                                     </div>
 
                                 </div>
+
                             </div>
-                        </div>
-                        <div>
-                            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', margin: '20px 0 0 20px' }}>
-                                <button className="own_next_workout-btn"> Finish</button>
+                            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', margin: '20px' }}>
+                                <button className="own_next_workout-btn" > Finish</button>
                             </div>
+
                         </div>
+
                     </div>
 
-                </div>
-            </form>
+                </form>
 
+            </div>
+
+            {/* )} */}
+            {/* {popup === "diet" && (
+                <ShowDiet
+                />
+            )} */}
         </>
     )
 }
+
+// const ShowDiet = () => {
+//     const { id } = useParams();
+
+//     const [click, setClick] = useState(false);
+
+//     const [dietPlan, setDietPlan] = useState({
+//         trainee_id: id,
+//         carbs: '',
+//         facts: '',
+//         protein: '',
+//     });
+
+//     const handleChange = (key) => (value) => {
+//         setDietPlan({
+//             ...dietPlan,
+//             [key]: value
+//         });
+//     };
+
+
+//     const addDietPlan = (evt) => {
+//         console.log(dietPlan);
+//         evt.preventDefault();
+
+
+
+
+//         // if (!dietPlan.carbs || !dietPlan.facts || !dietPlan.protein) {
+//         //     console.log('Please fill out the form correctly');
+//         //     setClick({ click: true, })
+//         //     toast.warning('Please fill out the form correctly');
+//         // }
+
+//         // else {
+//         //     addDietPlanDetails(requestData)
+//         //         .then((response) => {
+//         //             if (response.status === 200) {
+//         //                 console.log(response.data);
+//         //                 if (response.data === "You have already an account!") {
+//         //                     toast.warning('You have already an account!');
+//         //                 } else {
+//         //                     window.location.href = "/";
+//         //                     toast.success("successfully registered!!!");
+//         window.location.href = `/ViewWorkout/${id}`;
+
+//         //                 }
+//         //             }
+//         //         })
+//         //         .catch((err) => {
+//         //             if (err && err.response) {
+//         //                 console.log(err);
+//         //                 toast.error('Failed!!!');
+//         //             }
+//         //         });
+//         // }
+
+//     }
+
+//     return (
+//         <>
+
+//             <form className="" onSubmit={addDietPlan} noValidate={false}>
+//                 <div className="own-addworkout-content-container">
+//                     <div className="own-addworkout-left">
+//                         <div className="addworkout_card1">
+//                             {/* <form className onSubmit={addDates} noValidate={false}> */}
+//                             <div className="update-workout-form">
+//                                 <div className="add-workout-form-inputs" style={{ marginTop: '-35px' }}>
+//                                     <h4 className='update-workout-form-subHeading'>Diet Plan</h4>
+//                                     <hr className="add-trainer-hr" />
+//                                     <div className="form-row">
+//                                         <div className="form-col1">
+//                                             <InputField
+//                                                 value={dietPlan.carbs}
+//                                                 type='text'
+//                                                 label="Carbs"
+//                                                 placeholder='Type'
+//                                                 validators={[
+//                                                     { check: Validators.required, message: 'NIC is not valid' }
+//                                                 ]}
+//                                                 onChange={handleChange('carbs')} />
+//                                             {!dietPlan.carbs && click && <span className='text-danger'>This Field is required</span>}
+//                                         </div>
+//                                         <div className="form-col2">
+//                                             <InputField
+//                                                 value={dietPlan.facts}
+//                                                 type='text'
+//                                                 label="Facts"
+//                                                 placeholder='Type'
+//                                                 validators={[
+//                                                     { check: Validators.required, message: 'NIC is not valid' }
+//                                                 ]}
+//                                                 onChange={handleChange('facts')} />
+//                                             {!dietPlan.facts && click && <span className='text-danger'>This Field is required</span>}
+//                                         </div>
+//                                     </div>
+//                                     <div className="form-row">
+//                                         <div className="form-col1">
+//                                             <InputField
+//                                                 value={dietPlan.protein}
+//                                                 type='text'
+//                                                 label="Protein"
+//                                                 placeholder='Type'
+//                                                 validators={[
+//                                                     { check: Validators.required, message: 'NIC is not valid' }
+//                                                 ]}
+//                                                 onChange={handleChange('protein')} />
+//                                             {!dietPlan.protein && click && <span className='text-danger'>This Field is required</span>}
+//                                         </div>
+//                                         <div className="form-col2">
+
+//                                         </div>
+//                                     </div>
+
+//                                 </div>
+//                             </div>
+//                         </div>
+//                         <div>
+//                             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', margin: '20px 0 0 20px' }}>
+//                                 <button className="own_next_workout-btn"> Finish</button>
+//                             </div>
+//                         </div>
+//                     </div>
+
+//                 </div>
+//             </form>
+
+//         </>
+//     )
+// }
 
 export default AddWorkout

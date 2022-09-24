@@ -3918,6 +3918,11 @@
   "resolved" "https://registry.npmjs.org/date-fns/-/date-fns-2.0.0-alpha.27.tgz"
   "version" "2.0.0-alpha.27"
 
+"dayjs@^1.11.5":
+  "integrity" "sha512-CAdX5Q3YW3Gclyo5Vpqkgpj8fSdLQcRuzfX6mC6Phy0nfJ0eGYOeS7m4mt2plDWLAtA4TqTakvbboHvUxfe4iA=="
+  "resolved" "https://registry.npmjs.org/dayjs/-/dayjs-1.11.5.tgz"
+  "version" "1.11.5"
+
 "debounce@1.2.0":
   "integrity" "sha512-mYtLl1xfZLi1m4RtQYlZgJUNQjl4ZxVnHzIR8nLLgi4q1YT8o/WM+MK/f8yfcc9s5Ir5zRaPZyZU6xs1Syoocg=="
   "resolved" "https://registry.npmjs.org/debounce/-/debounce-1.2.0.tgz"
