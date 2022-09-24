@@ -4,6 +4,7 @@ import com.example.gymcbackend.dto.TraineeDetailsResponse;
 import com.example.gymcbackend.dto.TraineeViewScheduleDetailsResponse;
 import com.example.gymcbackend.dto.TraineeViewWorkoutDateResponse;
 import com.example.gymcbackend.entities.DietPlan;
+import com.example.gymcbackend.entities.TimeSlot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -24,19 +25,23 @@ public class TraineeViewScheduleJdbcRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    public List<TraineeViewScheduleDetailsResponse> getTraineeSchedule(Long traineeId) {
+    public List<TraineeViewScheduleDetailsResponse> getTraineeSchedule(String traineeId) {
+
+        String staffID = traineeId.substring(4);
+
+        Long result = Long.parseLong(String.valueOf(staffID));
 
         //        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
         MapSqlParameterSource namedParameters =
                 new MapSqlParameterSource();
 
         LocalDate traineeDate = LocalDate.now();
-        namedParameters.addValue("traineeId", traineeId);
+        namedParameters.addValue("traineeId", result);
         namedParameters.addValue("traineeDate", traineeDate);
 
 
-        String query1="SELECT trainee.trainee_id,trainee.first_name,trainee.last_name,trainee.phone_number," +
-                "trainee.address,exercise.name,training_date.no_of_repetitions " +
+        String query1="SELECT trainee.trainee_id,trainee.first_name,trainee.last_name,  DATE_FORMAT(trainee.dob, '%y-%m-%d') AS dob, trainee.phone_number, trainee.emergency_number," +
+                "trainee.address,exercise.name AS eName,training_date.no_of_repetitions, workout_plan.training_date " +
                 "FROM workout_schedule " +
                 "INNER JOIN workout_plan  ON  workout_schedule.workout_scheduleid=workout_plan.workout_scheduleid " +
                 "INNER JOIN training_date  ON workout_plan.workout_planid=training_date.workout_planid " +
@@ -88,6 +93,16 @@ public class TraineeViewScheduleJdbcRepository {
 
 //        int count = jdbcTemplate.queryForObject(sql, new Object[] { nic }, Integer.class);
         return traineeDiet;
+    }
+
+    public TimeSlot getCalDate(LocalDate date1) {
+        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+        namedParameters.addValue("date1", date1);
+        String query="SELECT * FROM time_slot WHERE date=:date1";
+
+        TimeSlot timeSlot = (TimeSlot) jdbcTemplate.queryForObject(query, new Object[]{date1}, new BeanPropertyRowMapper(TimeSlot.class));
+
+        return timeSlot;
     }
 }
 

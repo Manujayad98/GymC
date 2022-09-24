@@ -1,7 +1,8 @@
 package com.example.gymcbackend.dto;
 
 import javax.persistence.Column;
-import java.util.Date;
+import java.time.LocalDate;
+import java.sql.Date;
 
 public class WorkoutPlanSchedule {
 
@@ -14,6 +15,8 @@ public class WorkoutPlanSchedule {
     private Double weight;
     private String workoutType;
     private String trainerId;
+
+    private String staff_id;
     private Date start_date;
     private Date end_date;
     private String workoutName;
@@ -100,6 +103,14 @@ public class WorkoutPlanSchedule {
     }
     public String getTrainerId() {
         return trainerId;
+    }
+
+    public String getStaff_id() {
+        return staff_id;
+    }
+
+    public void setStaff_id(String staff_id) {
+        this.staff_id = staff_id;
     }
 
     public void setTrainerId(String trainerId) {

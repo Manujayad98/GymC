@@ -16,6 +16,7 @@ import { Link, useParams } from 'react-router-dom'
 import CalendarComp from "../../../Utilities/CalendarComp/CalendarComp";
 import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
+import { getTrainerData } from "../../../../services/WorkoutService";
 
 export default function ViewWorkout() {
 
@@ -23,6 +24,7 @@ export default function ViewWorkout() {
 
     useEffect(() => {
         checkValidate();
+        getTraineeDetails();
     }, []);
 
     const checkValidate = async () => {
@@ -31,6 +33,17 @@ export default function ViewWorkout() {
         if (!y) {
             window.location.href = "/";
         }
+    };
+
+    const [traineeDetails, setTraineeDetails] = useState([]);
+
+
+    const getTraineeDetails = async () => {
+        const res = await getTrainerData(id);
+        console.log(res.data);
+        setTraineeDetails(
+            res.data[0]
+        );
     };
 
     const moveToMoreView = () => {
@@ -201,74 +214,100 @@ export default function ViewWorkout() {
                                     <div className="form-row">
                                         <div className="form-col1">
                                             <InputField
-                                                value={requestData.fullname}
+                                                value={traineeDetails.firstName}
                                                 type='text'
                                                 name='userId'
-                                                label="Full Name"
-                                                placeholder='Type'
-                                                validators={[
-                                                    { check: Validators.required, message: 'This field is required' }
-                                                ]}
-                                                onChange={handleChange('fullname')} />
-                                        </div>
-                                    </div>
-                                    <div className="form-row">
-                                        <div className="form-col1">
-                                            <InputField
-                                                value={requestData.fullname}
-                                                type='text'
-                                                name='userId'
-                                                label="NIC"
-                                                placeholder='Type'
-                                                validators={[
-                                                    { check: Validators.required, message: 'This field is required' }
-                                                ]}
-                                                onChange={handleChange('fullname')} />
-                                        </div>
-                                    </div>
-
-                                    <div className="form-row">
-                                        <div className="form-col1">
-                                            <InputField
-                                                value={requestData.fullname}
-                                                type='text'
-                                                name='userId'
-                                                label="Phone"
-                                                placeholder='Type'
+                                                label="First Name"
+                                                // placeholder='Type'
                                                 readonly
-                                                validators={[
-                                                    { check: Validators.required, message: 'This field is required' }
-                                                ]}
-                                                onChange={handleChange('fullname')} />
+                                            // validators={[
+                                            //     { check: Validators.required, message: 'This field is required' }
+                                            // ]}
+                                            // onChange={handleChange('fullname')}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-row">
+                                        <div className="form-col1">
+                                            <InputField
+                                                value={traineeDetails.lastName}
+                                                type='text'
+                                                name='userId'
+                                                label="Last Name"
+                                                // placeholder='Type'
+                                                readonly
+                                            // validators={[
+                                            //     { check: Validators.required, message: 'This field is required' }
+                                            // ]}
+                                            // onChange={handleChange('fullname')} 
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className="form-row">
+                                        <div className="form-col1">
+                                            <InputField
+                                                value={traineeDetails.dob}
+                                                type='text'
+                                                name='DOB'
+                                                label="DOB"
+                                                // placeholder='Type'
+                                                readonly
+                                            // validators={[
+                                            //     { check: Validators.required, message: 'This field is required' }
+                                            // ]}
+                                            // onChange={handleChange('fullname')} 
+                                            />
                                         </div>
                                     </div>
 
                                     <div className='form-row'>
                                         <div className="form-col1">
                                             <InputField
-                                                value={requestData.password}
+                                                value={traineeDetails.phoneNumber}
                                                 type='text'
-                                                name='password'
-                                                label="DOB"
-                                                placeholder='Type'
-                                                validators={[
-                                                    { check: Validators.required, message: 'This field is required' }
-                                                ]}
-                                                onChange={handleChange('password')} />
+                                                name='Phone Number'
+                                                label="Phone Number"
+                                                // placeholder='Type'
+                                                readonly
+
+                                            // validators={[
+                                            //     { check: Validators.required, message: 'This field is required' }
+                                            // ]}
+                                            // onChange={handleChange('password')}
+                                            />
                                         </div>
                                     </div>
                                     <div className='form-row'>
                                         <div className="form-col1">
                                             <InputField
-                                                value={requestData.password}
+                                                value={traineeDetails.emergencyNumber}
                                                 type='text'
-                                                name='password'
+                                                name='emergencyNumber'
+                                                label="Emergency Number"
+                                                // placeholder='Type'
+                                                readonly
+                                            // validators={[
+                                            //     { check: Validators.required, message: 'This field is required' }
+                                            // ]}
+                                            // onChange={handleChange('password')}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className='form-row'>
+                                        <div className="form-col1">
+                                            <InputField
+                                                value={traineeDetails.address}
+                                                type='text'
+                                                name='address'
                                                 label="Address"
-                                                placeholder='Type'
-                                                validators={[
-                                                    { check: Validators.required, message: 'This field is required' }
-                                                ]}
-                                                onChange={handleChange('password')} />
+                                                // placeholder='Type'
+                                                readonly
+                                            // validators={[
+                                            //     { check: Validators.required, message: 'This field is required' }
+                                            // ]}
+                                            // onChange={handleChange('password')}
+                                            />
                                         </div>
                                     </div>
 

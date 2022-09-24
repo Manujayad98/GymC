@@ -73,7 +73,7 @@ public class TraineeJdbcRepository {
                 "INNER JOIN training_date AS t\n" +
                 "ON\n" +
                 "    w.workout_planid = t.workout_planid\n" +
-                "    AND DATE(t.training_date) = ? ";
+                "    AND DATE(w.training_date) = ? ";
 
         List<TodayAvailableTrainees> todayAvailableTraineesList = jdbcTemplate.query(query, new Object[] {today}, new BeanPropertyRowMapper<TodayAvailableTrainees>(TodayAvailableTrainees.class));
         return todayAvailableTraineesList;

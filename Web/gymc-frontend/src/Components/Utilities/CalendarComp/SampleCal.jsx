@@ -36,7 +36,7 @@ const SampleCal = ({ mindate, maxdate }) => {
         minDate={mindate}
         maxDate={maxdate}
       />
-      {/* <p>{value.toString()};</p>  */}
+      <p>{value.toString()};</p>
     </div>
   )
 }
