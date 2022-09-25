@@ -29,7 +29,7 @@ const DATA = [
         Note: 'Gym c will be closed on 2nd September 2022'
     },
 ];
-const Home = () => {
+const Home = ({navigation}) => {
   return (
     <View style={{ flex: 1, backgroundColor: COLORS.backgroundColor }}>
     <Header title={"GYMC"} /> 
@@ -40,7 +40,7 @@ const Home = () => {
                     <View style={styles.header}>
                         <Text><Icon name="user-circle" size={30} color="#000"
                             onPress={() =>
-                                navigation.navigate('Startup')}
+                                navigation.navigate('notification')}
 
                         />
                             <Text style={styles.profilename}>Sumudu Perera</Text>
@@ -55,7 +55,7 @@ const Home = () => {
                                 {/* <br></br> */}
                                 <Text><Icon name="calendar" size={45} color="#000"
                                     onPress={() =>
-                                        navigation.navigate('MyAppointment')}
+                                        navigation.navigate('appoinment')}
 
                                 /></Text>
                                 <Text style={styles.cardHeader}>Appointment</Text>
@@ -66,7 +66,7 @@ const Home = () => {
                             <View style={styles.inner}>
                                 <Text><Icon2 name="wallet" size={55} color="#000"
                                     onPress={() =>
-                                        navigation.navigate('Payment')}
+                                        navigation.navigate('payments')}
 
                                 /></Text>
                                 <Text style={styles.cardHeader}>Payments</Text>
@@ -77,7 +77,7 @@ const Home = () => {
                             <View style={styles.inner}>
                                 <Text><Icon name="qrcode" size={55} color="#000"
                                     onPress={() =>
-                                        navigation.navigate('Startup')}
+                                        navigation.navigate('attendance')}
 
                                 /></Text>
                                 <Text style={styles.cardHeader}>Attendance</Text>
@@ -87,7 +87,7 @@ const Home = () => {
                             <View style={styles.inner}>
                                 <Text><Icon3 name="feedback" size={55} color="#000"
                                     onPress={() =>
-                                        navigation.navigate('TraineeFeedback')}
+                                        navigation.navigate('feedback')}
 
                                 /></Text>
                                 <Text style={styles.cardHeader}>Feedback</Text>
