@@ -2,10 +2,10 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import CustomButton from '../components/CustomButtonComponent'
 
-const Feedback = ({navigation}) => {
+const Attendance = ({navigation}) => {
   return (
     <View>
-      <Text>feedback</Text>
+      <Text>Attendance</Text>
       <CustomButton text="back"
       onPress={() =>
         navigation.navigate('Tabs')}
@@ -14,4 +14,4 @@ const Feedback = ({navigation}) => {
   )
 }
 
-export default Feedback
+export default Attendance
