@@ -10,6 +10,12 @@ import {
   LoginForm,
   ResetPassword,
   SettingUpOne,
+  MyProgress,
+  Notification,
+  Appoinment,
+  Feedback,
+  Payments,
+  Attendance
 } from "./src/screens";
 import Tabs from "./src/navigation/tabs";
 // import { Provider } from "react-redux";
@@ -39,6 +45,11 @@ export default function App() {
         <Stack.Screen name="SettingUpOne" component={SettingUpOne} />
 
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+        <Stack.Screen name="notification" component={Notification} />
+        <Stack.Screen name="feedback" component={Feedback} />
+        <Stack.Screen name="appoinment" component={Appoinment} />
+        <Stack.Screen name="payments" component={Payments} />
+        <Stack.Screen name="attendance" component={Attendance} />
         {/* <Stack.Screen name="Register" component={Register} /> */}
         <Stack.Screen name="Home" component={Home} />
       </Stack.Navigator>

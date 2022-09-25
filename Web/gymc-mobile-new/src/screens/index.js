@@ -8,6 +8,10 @@ import MyProgress from "./MyProgress";
 import Schedule from "./Schedule";
 import Profile from "./Profile";
 import Notification from "./Notification";
+import Feedback from "./Feedback";
+import Appoinment from "./Appoinment";
+import Payments from "./Payments";
+import Attendance from "./Attendance";
 
 export {
     Login,
@@ -20,4 +24,8 @@ export {
     Schedule,
     Profile,
     Notification,
+    Feedback,
+    Appoinment,
+    Payments,
+    Attendance,
 };
