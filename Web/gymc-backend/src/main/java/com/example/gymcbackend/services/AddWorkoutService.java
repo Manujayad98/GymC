@@ -1,16 +1,12 @@
 package com.example.gymcbackend.services;
 
-import com.example.gymcbackend.dto.ExerciseDetailsResponse;
-import com.example.gymcbackend.dto.WorkoutPlanSchedule;
-import com.example.gymcbackend.dto.WorkoutReservation;
+import com.example.gymcbackend.dto.*;
 import com.example.gymcbackend.repository.ExerciseDao.ExerciseJdbcRepository;
 import com.example.gymcbackend.repository.addWorkoutDao.AddWorkoutJdbcRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Time;
 import java.time.Duration;
-import java.time.temporal.Temporal;
 import java.sql.Date;
 import java.util.List;
 import java.time.LocalTime;
@@ -95,5 +91,13 @@ public class AddWorkoutService {
     }
 
 
+    public String updateFactors(Long workoutPlanId, BodyFactorsResponse updatedBodyFactors) {
+        String factorSuccess= traineeAddWorkoutJdbcRepository.updateBodyFactors(workoutPlanId,updatedBodyFactors);
+        return factorSuccess;
+    }
 
+    public String updateReps(Long workoutPlanId, List<ExerciseTrainingDate> newExerciseList) {
+        String repsSuccess= traineeAddWorkoutJdbcRepository.updateExercises(workoutPlanId,newExerciseList);
+        return repsSuccess;
+    }
 }

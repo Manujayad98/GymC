@@ -101,9 +101,14 @@ public BodyFactorsResponse getBodyFactors(@PathVariable String date,@PathVariabl
 
     // --------------------Update section---------------------
 
-    // @GetMapping("/updateView/")
-    // public String getUodateView (@PathVariable ){
-    // return "string";
-    // }
+     @PutMapping("/updateBodyFactors/")
+     public String updateBodyFactors (@RequestBody BodyFactorsResponse newBodyFactors,@PathVariable Long workoutPlanId){
+     return addWorkoutService.updateFactors(workoutPlanId,newBodyFactors);
+     }
+
+     @PutMapping("/updateExercises/")
+     public String updateExercises (@RequestBody List<ExerciseTrainingDate> newExerciseList ,@PathVariable Long workoutPlanId){
+         return addWorkoutService.updateReps(workoutPlanId,newExerciseList);
+     }
 
 }
