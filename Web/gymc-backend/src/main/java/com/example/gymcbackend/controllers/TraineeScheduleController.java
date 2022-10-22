@@ -34,7 +34,7 @@ public class TraineeScheduleController {
         return traineeViewScheduleService.getTraineeSchedule(traineeId);
     }
 
-    // View trainee workout on date click,pass date on url
+    //View trainee workout exerciese on date click,pass date on url
     @GetMapping("/getTraineeWorkout/{date}/{traineeId}")
     public List<TraineeViewWorkoutDateResponse> getTraineeWorkoutDate(@PathVariable String date,
             @PathVariable String traineeId) {
@@ -45,10 +45,18 @@ public class TraineeScheduleController {
         System.out.println(result);
         return traineeViewScheduleService.getTraineeDateWorkoutPlan(date1, result);
     }
+//    view workout body measures(for update workout)
+@GetMapping("/getBodyFactors/{date}/{traineeId}")
+public BodyFactorsResponse getBodyFactors(@PathVariable String date,@PathVariable Long traineeId){
+//       Date date1= java.sql.Date.valueOf(date);
+    LocalDate date1 = LocalDate.parse(date);
+    System.out.println("getTraineeDateOnclick");
+    return traineeViewScheduleService.getWorkoutPlanBodyFactors(date1,traineeId);
+}
 
     // View trainee diet on date click,pass date on url
     @GetMapping("/getTraineeDiet/{date}/{traineeId}")
-    public DietPlan getTraineeDietDate(@PathVariable String date, @PathVariable String traineeId) {
+    public DietPlanResponse getTraineeDietDate(@PathVariable String date, @PathVariable String traineeId) {
         LocalDate traineeDate = LocalDate.parse(date);
 
         String traineeID = traineeId.substring(4);
@@ -56,10 +64,17 @@ public class TraineeScheduleController {
 
         return traineeViewScheduleService.getTraineeDateDietPlan(traineeDate, result);
     }
+    
+    @GetMapping("getTraineeProgress/{traineeId}")
+    public List<TraineeProgressResponse> getTraineeProgress(@PathVariable String traineeId){
+        String traineeID = traineeId.substring(4);
+        Long result = Long.parseLong(String.valueOf(traineeID));
+        return traineeViewScheduleService.getTraineeProgressServ(result);
+    }
 
     // --------------------Add section---------------------
 
-    // Add trainee body measures and health condition, workout type
+    // Add trainee body measures and health condition, workout type for schedule
     @PostMapping("/addWorkoutSchedule/{traineeId}")
     public Long addWorkoutSchedule(@RequestBody WorkoutPlanSchedule workoutPlanSchedule, @PathVariable Long traineeId) {
         System.out.println("AW1");
@@ -92,11 +107,22 @@ public class TraineeScheduleController {
         return addWorkoutService.addReservation(workoutReservation, carbs, fat, protein);
     }
 
+    @PostMapping("/addAppointment/{carbs}/{fat}/{protein}")
+    public String addAppointment(@RequestBody WorkoutReservation workoutReservation, @PathVariable Integer carbs,
+                                 @PathVariable Integer fat, @PathVariable Integer protein) {
+        return addWorkoutService.addReservation(workoutReservation, carbs, fat, protein);
+    }
+
     // --------------------Update section---------------------
 
-    // @GetMapping("/updateView/")
-    // public String getUodateView (@PathVariable ){
-    // return "string";
-    // }
+     @PutMapping("/updateBodyFactors/")
+     public String updateBodyFactors (@RequestBody BodyFactorsResponse newBodyFactors,@PathVariable Long workoutPlanId){
+     return addWorkoutService.updateFactors(workoutPlanId,newBodyFactors);
+     }
+
+     @PutMapping("/updateExercises/")
+     public String updateExercises (@RequestBody List<ExerciseTrainingDate> newExerciseList ,@PathVariable Long workoutPlanId){
+         return addWorkoutService.updateReps(workoutPlanId,newExerciseList);
+     }
 
 }

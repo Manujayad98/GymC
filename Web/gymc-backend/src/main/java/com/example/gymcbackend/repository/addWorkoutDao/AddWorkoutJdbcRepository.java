@@ -1,5 +1,6 @@
 package com.example.gymcbackend.repository.addWorkoutDao;
 
+import com.example.gymcbackend.dto.BodyFactorsResponse;
 import com.example.gymcbackend.dto.ExerciseTrainingDate;
 import com.example.gymcbackend.dto.WorkoutPlanSchedule;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -225,42 +226,88 @@ public class AddWorkoutJdbcRepository {
         namedParameters.addValue("trainingDate",trainingDate );
 
         if(count==0){
-            for(Long i=startSlot;i<=endSlot;i++){
-                namedParameters.addValue("i",i );
-                System.out.println("i :"+i);
+            String query1 = "INSERT INTO time_slot " +
+                        "(date) " +
+                        "values (:trainingDate)";
 
-                String query1 = "INSERT INTO time_slot " +
-                        "(date,`:i`) " +
-                        "values (:trainingDate,1 )";
-                int rowsAffected = jdbc.update(query1 , namedParameters);
-            }
-
-
-        }else{
+            int rowsAffected1 = jdbc.update(query1, namedParameters);
+        }
 
             for(Long i=startSlot;i<=endSlot;i++){
 
                 namedParameters.addValue("i",i );
+
                 //get current reserved count
                 namedParameters.addValue("trainingDate",trainingDate );
 
-                String query1="SELECT :i FROM time_slot WHERE date=trainingDate";
-                int reservedCount = jdbcTemplate.queryForObject(query, new Object[] {trainingDate }, Integer.class);
+                String query1="SELECT `$col` FROM time_slot WHERE date=?";
+                query1 =query1.replace("$col",i.toString());
+
+                int reservedCount = jdbcTemplate.queryForObject(query1, new Object[] {trainingDate }, Integer.class);
+                System.out.println("resrv count:"+reservedCount);
                 reservedCount +=1;
 
                 namedParameters.addValue("reservedCount",reservedCount );
-                String query2 = "INSERT INTO time_slot " +
-                        "(date,:i) " +
-                        "values (:trainingDate,:reservedCount )";
+                String query2 = "UPDATE time_slot SET `$col`=:reservedCount WHERE date=:trainingDate";
+
+                query2 =query2.replace("$col",i.toString());
+                System.out.println("query2"+query2);
                 int rowsAffected = jdbc.update(query2 , namedParameters);
 
-            }
+
         }
 
-
-
-
-
         return "testing";
+    }
+
+    public String updateBodyFactors(Long workoutPlanId, BodyFactorsResponse updatedBodyFactors) {
+        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+
+        namedParameters.addValue("thighs",updatedBodyFactors.getThighs() );
+        namedParameters.addValue("hips",updatedBodyFactors.getHips() );
+        namedParameters.addValue("forearms",updatedBodyFactors.getForearms() );
+        namedParameters.addValue("chest",updatedBodyFactors.getChest() );
+        namedParameters.addValue("biceps",updatedBodyFactors.getBiceps() );
+        namedParameters.addValue("height",updatedBodyFactors.getHeight() );
+        namedParameters.addValue("weight",updatedBodyFactors.getWeight() );
+        namedParameters.addValue("workoutPlanId",workoutPlanId );
+
+        String query="UPDATE workout_plan SET thighs=:thighs,hips=:hips,forearms=:forearms,chest=:chest,biceps=:biceps,height=:height,weight:weight WHERE workout_planid=:workoutPlanId";
+        int rowsAffected = jdbc.update(query , namedParameters);
+        if(rowsAffected==1){
+            return "factors updated";
+        }
+        else{
+            return "factors update failure";
+        }
+    }
+
+    public String updateExercises(Long workoutPlanId, List<ExerciseTrainingDate> newExerciseList) {
+        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+
+        //optimize for new exercise
+        int updated=0;
+
+        for(int i=0;i<newExerciseList.size();i++){
+
+            namedParameters.addValue("workoutPlanId",workoutPlanId);
+            namedParameters.addValue("exerciseId",newExerciseList.get(i).getExerciseId());
+            System.out.println("Exercise id :"+newExerciseList.get(i).getExerciseId());
+            namedParameters.addValue("noOfRepetitions",newExerciseList.get(i).getNoOfRepetitions());
+            String query2 = "UPDATE training_date SET " +
+                    "no_of_repetitions=:noOfRepetitions " +
+                    "WHERE exercise_id:exerciseId,workout_planid:workoutPlanId";
+
+            int rowsAffected2 = jdbc.update(query2 , namedParameters);
+            if(i == newExerciseList.size()-1){
+                updated=1;
+            }
+        }
+        if(updated==1){
+            return "Reps updated";
+        }
+        else{
+            return "Reps update failure";
+        }
     }
 }

@@ -1,8 +1,6 @@
 package com.example.gymcbackend.repository.TraineeViewScheduleDao;
 
-import com.example.gymcbackend.dto.TraineeDetailsResponse;
-import com.example.gymcbackend.dto.TraineeViewScheduleDetailsResponse;
-import com.example.gymcbackend.dto.TraineeViewWorkoutDateResponse;
+import com.example.gymcbackend.dto.*;
 import com.example.gymcbackend.entities.DietPlan;
 import com.example.gymcbackend.entities.TimeSlot;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,7 +73,7 @@ public class TraineeViewScheduleJdbcRepository {
         return traineeWorkout;
     }
 
-    public DietPlan getDietDate(LocalDate traineeDate,Long traineeId) {
+    public DietPlanResponse getDietDate(LocalDate traineeDate,Long traineeId) {
 
         MapSqlParameterSource namedParameters =
                 new MapSqlParameterSource();
@@ -84,25 +82,41 @@ public class TraineeViewScheduleJdbcRepository {
 
         String query1= "SELECT diet_plan.* FROM workout_schedule " +
                 "INNER JOIN diet_plan ON workout_schedule.workout_scheduleid= diet_plan.workout_scheduleid " +
-                "AND diet_plan.training_date=? ";
+                "AND diet_plan.training_date=? AND diet_plan.trainee_id=? ";
 
-//        DietPlan traineeDiet=
-//                jdbc.query(query1, namedParameters, new Object[] {traineeId} DietPlan.class);
 
-        DietPlan traineeDiet = (DietPlan) jdbcTemplate.queryForObject(query1, new Object[]{traineeDate}, new BeanPropertyRowMapper(DietPlan.class));
-
+//        DietPlan traineeDiet = (DietPlan) jdbcTemplate.queryForObject(query1, new Object[]{traineeDate,traineeId}, new BeanPropertyRowMapper(DietPlan.class));
+        DietPlanResponse dietPlanResponse= (DietPlanResponse)  jdbcTemplate.queryForObject(query1, new Object[]{traineeDate,traineeId}, new BeanPropertyRowMapper(DietPlanResponse.class));
 //        int count = jdbcTemplate.queryForObject(sql, new Object[] { nic }, Integer.class);
-        return traineeDiet;
+        return dietPlanResponse;
     }
 
     public TimeSlot getCalDate(LocalDate date1) {
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-        namedParameters.addValue("date1", date1);
-        String query="SELECT * FROM time_slot WHERE date=:date1";
+//        namedParameters.addValue("date1", date1);
+        String query="SELECT * FROM time_slot WHERE date=?";
 
         TimeSlot timeSlot = (TimeSlot) jdbcTemplate.queryForObject(query, new Object[]{date1}, new BeanPropertyRowMapper(TimeSlot.class));
+System.out.println(timeSlot.getEleven());
 
         return timeSlot;
+    }
+
+    public BodyFactorsResponse getBodyFactors(LocalDate date1, Long traineeId) {
+        String query="SELECT weight,height,biceps,chest,forearms,hips,thighs FROM workout_plan WHERE  ";
+        BodyFactorsResponse bodyFactors = (BodyFactorsResponse) jdbcTemplate.queryForObject(query, new Object[]{date1}, new BeanPropertyRowMapper(BodyFactorsResponse.class));
+        return bodyFactors;
+    }
+
+    public List<TraineeProgressResponse> getTraineeProgress(Long traineeId) {
+        MapSqlParameterSource namedParameters =
+                new MapSqlParameterSource();
+        namedParameters.addValue("traineeId", traineeId);
+        String query="SELECT weight,height,biceps,chest,forearms,hips,thighs FROM workout_plan INNER JOIN workout_schedule ON " +
+                "workout_plan.workout_scheduleid=workout_schedule.workout_scheduleid " +
+                "AND workout_schedule.trainee_id=:traineeId AND workout_plan.height IS NOT NULL";
+        List<TraineeProgressResponse> traineeProgressResponses = jdbc.query(query, namedParameters, new BeanPropertyRowMapper<TraineeProgressResponse>(TraineeProgressResponse.class));
+        return traineeProgressResponses;
     }
 }
 
