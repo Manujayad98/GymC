@@ -72,7 +72,8 @@ export default function ViewWorkout() {
             ...selectedDate,
             [key]: dayjs(value).format('YYYY-MM-DD')
         });
-        const res = await getWorkoutDetails(dateToday, id);
+        console.log(selectedDate);
+        const res = await getWorkoutDetails(selectedDate, id);
         console.log(res.data);
         setTraineeWorkoutDetails(
             res.data
@@ -82,7 +83,7 @@ export default function ViewWorkout() {
     // var dateSelected = dayjs(selectedDate).format('YYYY-MM-DD')
 
     console.log(selectedDate);
-
+    // console.log(dateToday);
     // console.log(dayjs(selectedDate).format('YYYY-MM-DD'));
 
     const getTraineeDetails = async () => {
@@ -370,6 +371,7 @@ export default function ViewWorkout() {
                                     // minDate={mindate}
                                     // maxDate={maxdate}
                                     />
+                                    <button class="newworkoutbtn">New Workout</button>
                                 </div>
                             </div>
                             {/* <div className="viewBtnDiv">

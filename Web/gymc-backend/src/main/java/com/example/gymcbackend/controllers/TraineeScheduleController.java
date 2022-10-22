@@ -62,6 +62,7 @@ public class TraineeScheduleController {
     // Add trainee body measures and health condition, workout type
     @PostMapping("/addWorkoutSchedule/{traineeId}")
     public Long addWorkoutSchedule(@RequestBody WorkoutPlanSchedule workoutPlanSchedule, @PathVariable Long traineeId) {
+        System.out.println("AW1");
         return addWorkoutService.addWorkoutSchedule(workoutPlanSchedule, traineeId);
         // pass trainee id in dto
     }

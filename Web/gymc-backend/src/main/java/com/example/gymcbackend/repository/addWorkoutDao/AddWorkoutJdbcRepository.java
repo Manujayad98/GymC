@@ -29,7 +29,7 @@ public class AddWorkoutJdbcRepository {
 
 //        LocalDate traineeStartDate = parse(workoutPlanSchedule.getStart_date());
 //        LocalDate traineeEndDate = parse(workoutPlanSchedule.getEnd_date());
-
+//        double d=Double.parseDouble("23.6");
 
         MapSqlParameterSource namedParameters =
                 new MapSqlParameterSource();
@@ -79,8 +79,8 @@ public class AddWorkoutJdbcRepository {
         namedParameters.addValue("schedule_id", schedule_id);
 
         String query2 = "INSERT INTO workout_plan " +
-                "(workout_scheduleid,height,weight,biceps,chest,hips,thighs,forearms) " +
-                "values (:schedule_id,:height, :weight, :biceps,:chest, :hips,:thighs,:forearms )";
+                "(workout_scheduleid,height,weight,biceps,chest,hips,thighs,forearms, staff_id) " +
+                "values (:schedule_id,:height, :weight, :biceps,:chest, :hips,:thighs,:forearms, :staff_id )";
 
         int rowsAffected2 = jdbc.update(query2 , namedParameters);
 

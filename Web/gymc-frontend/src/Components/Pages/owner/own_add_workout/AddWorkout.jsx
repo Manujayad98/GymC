@@ -38,7 +38,7 @@ const AddWorkout = () => {
     const { id } = useParams();
 
     const [requestData, setState] = useState({
-        trainee_id: id,
+        traineeId: id,
         height: '',
         weight: '',
         diseases: '',
@@ -47,10 +47,11 @@ const AddWorkout = () => {
         chest: '',
         hips: '',
         thighs: '',
-        paymentPlan: '',
-        trainer_id: '',
-        startDate: '',
-        endDate: '',
+        workoutType: '',
+        staff_id: '1',
+        start_date: '',
+        end_date: '',
+        workoutName: 'WTest'
 
     });
     const [mainpopup, setMainPopUp] = useState("");
@@ -87,9 +88,8 @@ const AddWorkout = () => {
         console.log(requestData);
         evt.preventDefault();
 
-        // setPopUp("show");
-        // setMainPopUp("hide");
-        if (!requestData.trainee_id || !requestData.height || !requestData.weight || !requestData.diseases || !requestData.biceps || !requestData.forearms || !requestData.chest || !requestData.hips || !requestData.thighs || !requestData.paymentPlan || !requestData.startDate || !requestData.endDate) {
+
+        if (!requestData.traineeId || !requestData.height || !requestData.weight || !requestData.biceps || !requestData.forearms || !requestData.chest || !requestData.hips || !requestData.thighs || !requestData.workoutType || !requestData.start_date || !requestData.end_date) {
             console.log('Please fill out the form correctly');
             setClick({ click: true, })
             toast.warning('Please fill out the form correctly');
@@ -97,25 +97,27 @@ const AddWorkout = () => {
 
         else {
 
-            // addWorkoutDetails(requestData)
+            // addWorkoutDetails(requestData, id)
             //     .then((response) => {
             //         if (response.status === 200) {
             //             console.log(response.data);
-            //             // setMessage(response.data);
-            //             if (response.data === "You have already an account!") {
-            //                 toast.warning('You have already an account!');
-            //             } else {
-            //                 window.location.href = "/";
-            //                 toast.success("successfully registered!!!");
+            // setMessage(response.data);
+            // if (response.data === "You have already an account!") {
+            // toast.warning('You have already an account!');
+            // } else {
+            // window.location.href = "/";
+            // toast.success("successfully registered!!!");
+            // }
+            // setPopUp("show");
+            // setMainPopUp("hide");
             //             }
-            //         }
-            //     })
-            //     .catch((err) => {
-            //         if (err && err.response) {
-            //             console.log(err);
-            //             toast.error('Failed!!!');
-            //         }
-            //     });
+            //         })
+            //         .catch((err) => {
+            //             if (err && err.response) {
+            //                 console.log(err);
+            //                 toast.error('Failed!!!');
+            //             }
+            //         });
         }
     };
 
@@ -316,11 +318,11 @@ const AddWorkout = () => {
                                                         { value: 3, label: 'Daily' },
 
                                                     ]}
-                                                    value={requestData.paymentPlan}
+                                                    value={requestData.workoutType}
                                                     placeholder='Select'
-                                                    onChange={handleDropdownPayment('paymentPlan')}
+                                                    onChange={handleDropdownPayment('workoutType')}
                                                 />
-                                                {!requestData.paymentPlan && click && <span className='text-danger'>This Field is required</span>}
+                                                {!requestData.workoutType && click && <span className='text-danger'>This Field is required</span>}
 
                                             </div>
                                             <div className="form-col2">
@@ -342,11 +344,11 @@ const AddWorkout = () => {
                                                         { value: 3, label: 'R.P.Nishantha' },
 
                                                     ]}
-                                                    value={requestData.trainer_id}
+                                                    value={requestData.staff_id}
                                                     placeholder='Select'
-                                                    onChange={handleDropdownTrainer('trainer_id')}
+                                                    onChange={handleDropdownTrainer('staff_id')}
                                                 />
-                                                {!requestData.trainer_id && click && <span className='text-danger'>This Field is required</span>}
+                                                {!requestData.staff_id && click && <span className='text-danger'>This Field is required</span>}
                                             </div>
                                             <div className="form-col2">
 
@@ -361,27 +363,27 @@ const AddWorkout = () => {
                                         <div className="form-row">
                                             <div className="form-col1">
                                                 <InputField
-                                                    value={requestData.startDate}
+                                                    value={requestData.start_date}
                                                     type='date'
                                                     label="Start Date"
                                                     placeholder='Type'
                                                     validators={[
                                                         { check: Validators.required, message: 'This field is required' }
                                                     ]}
-                                                    onChange={handleChange('startDate')} />
-                                                {!requestData.startDate && click && <span className='text-danger'>This Field is required</span>}
+                                                    onChange={handleChange('start_date')} />
+                                                {!requestData.start_date && click && <span className='text-danger'>This Field is required</span>}
                                             </div>
                                             <div className="form-col2">
                                                 <InputField
-                                                    value={requestData.endDate}
+                                                    value={requestData.end_date}
                                                     type='date'
                                                     label="End Date"
                                                     placeholder='Type'
                                                     validators={[
                                                         { check: Validators.required, message: 'This field is required' }
                                                     ]}
-                                                    onChange={handleChange('endDate')} />
-                                                {!requestData.endDate && click && <span className='text-danger'>This Field is required</span>}
+                                                    onChange={handleChange('end_date')} />
+                                                {!requestData.end_date && click && <span className='text-danger'>This Field is required</span>}
                                             </div>
                                         </div>
 
