@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../own_sidebar/Sidebar.css'
 import SidebarO from '../own_sidebar/Sidebar'
 import HeaderO from '../own_header/Header'
@@ -31,7 +31,7 @@ import './AddWorkout.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import { getTrainerData, addWorkoutDetails, addWorkoutDateExerciseDetails, addDietPlanDetails } from "../../../../services/WorkoutService";
+import { getTrainerData, addWorkoutDetails, addWorkoutDateExerciseDetails, addDietPlanDetails, getExerciseDetails } from "../../../../services/WorkoutService";
 
 const AddWorkout = () => {
 
@@ -89,36 +89,36 @@ const AddWorkout = () => {
         evt.preventDefault();
 
 
-        if (!requestData.traineeId || !requestData.height || !requestData.weight || !requestData.biceps || !requestData.forearms || !requestData.chest || !requestData.hips || !requestData.thighs || !requestData.workoutType || !requestData.start_date || !requestData.end_date) {
-            console.log('Please fill out the form correctly');
-            setClick({ click: true, })
-            toast.warning('Please fill out the form correctly');
-        }
+        // if (!requestData.traineeId || !requestData.height || !requestData.weight || !requestData.biceps || !requestData.forearms || !requestData.chest || !requestData.hips || !requestData.thighs || !requestData.workoutType || !requestData.start_date || !requestData.end_date) {
+        //     console.log('Please fill out the form correctly');
+        //     setClick({ click: true, })
+        //     toast.warning('Please fill out the form correctly');
+        // }
 
-        else {
+        // else {
 
-            // addWorkoutDetails(requestData, id)
-            //     .then((response) => {
-            //         if (response.status === 200) {
-            //             console.log(response.data);
-            // setMessage(response.data);
-            // if (response.data === "You have already an account!") {
-            // toast.warning('You have already an account!');
-            // } else {
-            // window.location.href = "/";
-            // toast.success("successfully registered!!!");
-            // }
-            // setPopUp("show");
-            // setMainPopUp("hide");
-            //             }
-            //         })
-            //         .catch((err) => {
-            //             if (err && err.response) {
-            //                 console.log(err);
-            //                 toast.error('Failed!!!');
-            //             }
-            //         });
-        }
+        // addWorkoutDetails(requestData, id)
+        //     .then((response) => {
+        //         if (response.status === 200) {
+        //             console.log(response.data);
+        // setMessage(response.data);
+        // if (response.data === "You have already an account!") {
+        // toast.warning('You have already an account!');
+        // } else {
+        // window.location.href = "/";
+        // toast.success("successfully registered!!!");
+        // }
+        setPopUp("show");
+        setMainPopUp("hide");
+        //             }
+        //         })
+        //         .catch((err) => {
+        //             if (err && err.response) {
+        //                 console.log(err);
+        //                 toast.error('Failed!!!');
+        //             }
+        //         });
+        // }
     };
 
 
@@ -337,17 +337,31 @@ const AddWorkout = () => {
                                         <hr className="add-trainer-hr" />
                                         <div className="form-row">
                                             <div className="form-col1">
-                                                <Dropdown
-                                                    data={[
-                                                        { value: 1, label: 'N.P.Kumara' },
-                                                        { value: 2, label: 'S.Saantha' },
-                                                        { value: 3, label: 'R.P.Nishantha' },
+                                                {(requestData.workoutType == 2) ?
+                                                    <Dropdown
+                                                        data={[
+                                                            { value: 1, label: 'N.P.Kumara' },
+                                                            { value: 2, label: 'S.Saantha' },
+                                                            { value: 3, label: 'R.P.Nishantha' },
 
-                                                    ]}
-                                                    value={requestData.staff_id}
-                                                    placeholder='Select'
-                                                    onChange={handleDropdownTrainer('staff_id')}
-                                                />
+                                                        ]}
+                                                        value={requestData.staff_id == 0}
+                                                        placeholder='Select'
+                                                        readonly
+                                                    />
+                                                    :
+                                                    <Dropdown
+                                                        data={[
+                                                            { value: 1, label: 'N.P.Kumara' },
+                                                            { value: 2, label: 'S.Saantha' },
+                                                            { value: 3, label: 'R.P.Nishantha' },
+
+                                                        ]}
+                                                        value={requestData.staff_id}
+                                                        placeholder='Select'
+                                                        onChange={handleDropdownTrainer('staff_id')}
+                                                    />
+                                                }
                                                 {!requestData.staff_id && click && <span className='text-danger'>This Field is required</span>}
                                             </div>
                                             <div className="form-col2">
@@ -412,6 +426,18 @@ const AddWorkout = () => {
 }
 
 const ShowWorkoutDates = () => {
+    useEffect(() => {
+        getExerciseDetailsForView();
+    }, []);
+
+    const getExerciseDetailsForView = async () => {
+        const res = await getExerciseDetails();
+        console.log(res.data);
+        setExcerciseDetails(
+            [...res.data]
+        );
+    };
+
     const { id } = useParams();
 
     const [workoutDates, setWorkoutDates] = useState({
@@ -469,38 +495,34 @@ const ShowWorkoutDates = () => {
             [key]: value
         });
     };
-    const [excerciseDetails, setExcerciseDetails] = useState([
-        {
-            ExerciseID: 1,
-            Name: "Incline Press",
-            Repititions: 0
-        },
-        {
-            ExerciseID: 2,
-            Name: "Incline Press",
-            Repititions: 0
+    const [excerciseDetails, setExcerciseDetails] = useState([]);
+    // const [excerciseDetails, setExcerciseDetails] = useState([
+    //     {
+    //         Name: "Incline Press",
+    //         Repititions: 0
+    //     },
+    //     {
+    //         Name: "Incline Press",
+    //         Repititions: 0
 
-        },
-        {
-            ExerciseID: 3,
-            Name: "Incline Press",
-            Repititions: 0
+    //     },
+    //     {
+    //         Name: "Incline Press",
+    //         Repititions: 0
 
-        },
-        {
-            ExerciseID: 4,
-            Name: "Incline Press",
-            Repititions: 0
+    //     },
+    //     {
+    //         Name: "Incline Press",
+    //         Repititions: 0
 
-        },
-        {
-            ExerciseID: 5,
-            Name: "Incline Press",
-            Repititions: 0
+    //     },
+    //     {
+    //         Name: "Incline Press",
+    //         Repititions: 0
 
-        },
+    //     },
 
-    ]);
+    // ]);
 
     const handleDropdownStartTime = (startTime) => (value) => {
         console.log('hi');
@@ -532,9 +554,9 @@ const ShowWorkoutDates = () => {
                                             <MaterialTable
                                                 title="Exersices"
                                                 columns={[
-                                                    { title: "Exercice ID", field: "ExerciseID", editable: 'never' },
-                                                    { title: "Name", field: "Name", editable: 'never' },
-                                                    { title: "Repitition Count", field: "Repititions", editable: 'onUpdate', type: 'numeric' },
+                                                    { title: "Exercice ID", field: "exerciseid", editable: 'never' },
+                                                    { title: "Name", field: "name", editable: 'never' },
+                                                    { title: "Repitition Count", field: "repCount", editable: 'onUpdate', type: 'numeric' },
                                                 ]}
                                                 icons={TableIcons}
                                                 data={excerciseDetails}

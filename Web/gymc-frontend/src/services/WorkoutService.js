@@ -46,6 +46,17 @@ export const addWorkoutDetails = (requestData, traineeID) => {
     });
 };
 
+export const getExerciseDetails = () => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/scheduleWorkout`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+
 export const addWorkoutDateExerciseDetails = (requestData) => {
     // return axios({
     //     method: "POST",
