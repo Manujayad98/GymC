@@ -1,9 +1,6 @@
 package com.example.gymcbackend.services;
 
-import com.example.gymcbackend.dto.BodyFactorsResponse;
-import com.example.gymcbackend.dto.ExerciseDetailsResponse;
-import com.example.gymcbackend.dto.TraineeViewScheduleDetailsResponse;
-import com.example.gymcbackend.dto.TraineeViewWorkoutDateResponse;
+import com.example.gymcbackend.dto.*;
 import com.example.gymcbackend.entities.DietPlan;
 import com.example.gymcbackend.entities.TimeSlot;
 import com.example.gymcbackend.repository.TraineeViewScheduleDao.TraineeViewScheduleJdbcRepository;
@@ -34,8 +31,8 @@ public class TraineeViewScheduleService {
     }
 
 
-    public DietPlan getTraineeDateDietPlan(LocalDate traineeDate,Long traineeId) {
-        DietPlan traineeViewDietDate = traineeViewScheduleJdbcRepository.getDietDate(traineeDate,traineeId);
+    public DietPlanResponse getTraineeDateDietPlan(LocalDate traineeDate,Long traineeId) {
+        DietPlanResponse traineeViewDietDate = traineeViewScheduleJdbcRepository.getDietDate(traineeDate,traineeId);
         return traineeViewDietDate;
     }
 
@@ -47,5 +44,10 @@ public class TraineeViewScheduleService {
     public BodyFactorsResponse getWorkoutPlanBodyFactors(LocalDate date1, Long traineeId) {
         BodyFactorsResponse bodyFactors= traineeViewScheduleJdbcRepository.getBodyFactors(date1,traineeId);
         return bodyFactors;
+    }
+
+    public List<TraineeProgressResponse> getTraineeProgressServ(Long result) {
+        List<TraineeProgressResponse> traineeProgressResponses= traineeViewScheduleJdbcRepository.getTraineeProgress(result);
+        return traineeProgressResponses;
     }
 }
