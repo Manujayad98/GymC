@@ -31,8 +31,8 @@ public class TraineeViewScheduleService {
     }
 
 
-    public DietPlanResponse getTraineeDateDietPlan(LocalDate traineeDate,Long traineeId) {
-        DietPlanResponse traineeViewDietDate = traineeViewScheduleJdbcRepository.getDietDate(traineeDate,traineeId);
+    public List<DietPlanResponse> getTraineeDateDietPlan(LocalDate traineeDate,Long traineeId) {
+        List<DietPlanResponse> traineeViewDietDate = traineeViewScheduleJdbcRepository.getDietDate(traineeDate,traineeId);
         return traineeViewDietDate;
     }
 

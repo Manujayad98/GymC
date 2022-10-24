@@ -73,21 +73,29 @@ public class TraineeViewScheduleJdbcRepository {
         return traineeWorkout;
     }
 
-    public DietPlanResponse getDietDate(LocalDate traineeDate,Long traineeId) {
+    public List<DietPlanResponse> getDietDate(LocalDate traineeDate,Long traineeId) {
 
         MapSqlParameterSource namedParameters =
                 new MapSqlParameterSource();
         namedParameters.addValue("traineeId", traineeId);
         namedParameters.addValue("traineeDate", traineeDate);
 
-        String query1= "SELECT diet_plan.* FROM workout_schedule " +
+//        String query1= "SELECT diet_plan.* FROM workout_schedule " +
+//                "INNER JOIN diet_plan ON workout_schedule.workout_scheduleid= diet_plan.workout_scheduleid " +
+//                "AND diet_plan.training_date=? AND diet_plan.trainee_id=? ";
+        System.out.println(traineeDate);
+        String query1= "SELECT CONCAT('D000', diet_plan.diet_planid) AS diet_planid, diet_plan.carbohydrate, diet_plan.fats, diet_plan.proteins FROM workout_schedule " +
                 "INNER JOIN diet_plan ON workout_schedule.workout_scheduleid= diet_plan.workout_scheduleid " +
-                "AND diet_plan.training_date=? AND diet_plan.trainee_id=? ";
+                "AND diet_plan.training_date=:traineeDate AND diet_plan.trainee_id=:traineeId ";
 
 
 //        DietPlan traineeDiet = (DietPlan) jdbcTemplate.queryForObject(query1, new Object[]{traineeDate,traineeId}, new BeanPropertyRowMapper(DietPlan.class));
-        DietPlanResponse dietPlanResponse= (DietPlanResponse)  jdbcTemplate.queryForObject(query1, new Object[]{traineeDate,traineeId}, new BeanPropertyRowMapper(DietPlanResponse.class));
+//        DietPlanResponse dietPlanResponse= (DietPlanResponse)  jdbcTemplate.queryForObject(query1, new Object[]{traineeDate,traineeId}, new BeanPropertyRowMapper(DietPlanResponse.class));
 //        int count = jdbcTemplate.queryForObject(sql, new Object[] { nic }, Integer.class);
+        List<DietPlanResponse> dietPlanResponse = jdbc.query(query1, namedParameters, new BeanPropertyRowMapper<DietPlanResponse>(DietPlanResponse.class));
+
+        System.out.println(dietPlanResponse);
+
         return dietPlanResponse;
     }
 

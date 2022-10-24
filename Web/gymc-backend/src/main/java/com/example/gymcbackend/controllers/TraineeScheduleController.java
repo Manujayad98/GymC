@@ -56,7 +56,7 @@ public BodyFactorsResponse getBodyFactors(@PathVariable String date,@PathVariabl
 
     // View trainee diet on date click,pass date on url
     @GetMapping("/getTraineeDiet/{date}/{traineeId}")
-    public DietPlanResponse getTraineeDietDate(@PathVariable String date, @PathVariable String traineeId) {
+    public List<DietPlanResponse> getTraineeDietDate(@PathVariable String date, @PathVariable String traineeId) {
         LocalDate traineeDate = LocalDate.parse(date);
 
         String traineeID = traineeId.substring(4);

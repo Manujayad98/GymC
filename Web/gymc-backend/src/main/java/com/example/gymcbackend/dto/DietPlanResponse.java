@@ -11,7 +11,7 @@ import java.util.Date;
 
 public class DietPlanResponse {
 
-    private long dietPlanid;
+    private String dietPlanid;
 
     private Double proteins;
 
@@ -19,27 +19,27 @@ public class DietPlanResponse {
 
     private Double fats;
 
-    private Long workoutScheduleId;
+//    private Long workoutScheduleId;
+//
+//    private Long traineeId;
+//
+//    private Date traineeDate;
 
-    private Long traineeId;
-
-    private Date traineeDate;
 
 
-
-    public long getDietPlanid() {
+    public String getDietPlanid() {
         return dietPlanid;
     }
 
-    public Date getTraineeDate() {
-        return traineeDate;
-    }
+//    public Date getTraineeDate() {
+//        return traineeDate;
+//    }
+//
+//    public void setTraineeDate(Date traineeDate) {
+//        this.traineeDate = traineeDate;
+//    }
 
-    public void setTraineeDate(Date traineeDate) {
-        this.traineeDate = traineeDate;
-    }
-
-    public void setDietPlanid(long dietPlanid) {
+    public void setDietPlanid(String dietPlanid) {
         this.dietPlanid = dietPlanid;
     }
 
@@ -67,19 +67,19 @@ public class DietPlanResponse {
         this.fats = fats;
     }
 
-    public Long getWorkoutScheduleId() {
-        return workoutScheduleId;
-    }
-
-    public void setWorkoutScheduleId(Long workoutScheduleId) {
-        this.workoutScheduleId = workoutScheduleId;
-    }
-
-    public Long getTraineeId() {
-        return traineeId;
-    }
-
-    public void setTraineeId(Long traineeId) {
-        this.traineeId = traineeId;
-    }
+//    public Long getWorkoutScheduleId() {
+//        return workoutScheduleId;
+//    }
+//
+//    public void setWorkoutScheduleId(Long workoutScheduleId) {
+//        this.workoutScheduleId = workoutScheduleId;
+//    }
+//
+//    public Long getTraineeId() {
+//        return traineeId;
+//    }
+//
+//    public void setTraineeId(Long traineeId) {
+//        this.traineeId = traineeId;
+//    }
 }
