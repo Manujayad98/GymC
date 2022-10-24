@@ -55,7 +55,7 @@ public class TraineeJdbcRepository {
 
     public List<TodayAvailableTrainees> findTodayAvailableTrainees(String today) {
 
-        String query ="SELECT\n" +
+        String query ="SELECT DISTINCT \n" +
                 "    CONCAT('T000', te.trainee_id) AS trainee_id,\n" +
                 "    CONCAT(te.first_name, ' ', te.last_name) AS full_name\n" +
                 "FROM\n" +
@@ -65,7 +65,7 @@ public class TraineeJdbcRepository {
                 "    #te.user_id = u.user_id\n" +
                 "INNER JOIN workout_schedule AS ws\n" +
                 "ON\n" +
-                "    ws.traniee_id = te.trainee_id\n" +
+                "    ws.trainee_id = te.trainee_id\n" +
                 "    \n" +
                 "INNER JOIN workout_plan AS w\n" +
                 "ON\n" +
