@@ -38,7 +38,7 @@ import AddUserA from './Components/Pages/admin/adm_add_user/AddUser'
 
 //OWNER
 import TrainerO from './Components/Pages/owner/own_trainers/Trainers';
-// import AdjustmentsO from './Components/Pages/owner/own_adjustments/Adjustments';
+import AdjustmentsO from './Components/Pages/owner/own_adjustments/Adjustments';
 import TraineesO from './Components/Pages/owner/own_trainees/Trainees';
 import AddTrainer from './Components/Pages/owner/own_add_trainer/AddTrainer';
 import DashboardO from './Components/Pages/owner/own_dashboard/Dashboard';
@@ -120,7 +120,7 @@ function App() {
           {/* OWNER ROUTES */}
           <Route path="/Otrainers" element={<TrainerO />}></Route>
           <Route path="/OaddTrainer" element={<AddTrainer />}></Route>
-          {/* <Route path="/Oadjustments" element={<AdjustmentsO />}></Route> */}
+          <Route path="/Oadjustments" element={<AdjustmentsO />}></Route>
           <Route path="/Otrainees" element={<TraineesO />}></Route>
           <Route path="/Odashboard" element={<DashboardO />}></Route>
           <Route path="/Onotifications" element={<NotificationsO />}></Route>
