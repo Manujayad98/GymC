@@ -19,4 +19,8 @@ public class TransactionService {
     public List<Transactions> getAllTransactionTableData() {
         return transactionJdbcRepository.findAllTransactions();
     }
+
+    public Long getAllTransactionCardData() {
+        return transactionJdbcRepository.findAllCardData();
+    }
 }

@@ -25,4 +25,12 @@ public class TransactionJdbcRepository {
         List<Transactions> TransactionList = jdbc.query(query, new BeanPropertyRowMapper<Transactions>(Transactions.class));
         return TransactionList;
     }
+
+    public Long findAllCardData() {
+
+        String query ="SELECT SUM(amount) as Total FROM payment ";
+
+        Long CardList = jdbcTemplate.queryForObject(query, new Object[] {}, Long.class);
+        return CardList;
+    }
 }

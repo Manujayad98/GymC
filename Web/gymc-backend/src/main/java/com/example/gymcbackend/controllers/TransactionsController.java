@@ -22,4 +22,11 @@ public class TransactionsController {
         return transactionService.getAllTransactionTableData();
     }
 
+    // GET DATA FOR TOTAL PAYMENTS
+    @GetMapping("/cards")
+    public Long getAllTransactionCardData(){
+        return transactionService.getAllTransactionCardData();
+    }
+
+    
 }
