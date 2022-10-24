@@ -53,3 +53,16 @@ export const getTransactionDetails = () => {
     });
 };
 
+//RECEPTIONIST TRANSACTIONS TOTAL PAYMENTS
+
+export const getTotalPayments = () => {
+    console.log("hhhh");
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/cards`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+

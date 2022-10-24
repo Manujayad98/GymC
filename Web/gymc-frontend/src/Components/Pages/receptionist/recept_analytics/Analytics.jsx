@@ -9,7 +9,7 @@ import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 import Arrow from '../../../../images/Icons/arrow-square-right.svg'
 
-import { getTransactionDetails} from "../../../../services/PaymentService";
+import { getTransactionDetails , getTotalPayments} from "../../../../services/PaymentService";
 
 import './Analytics.css'
 
@@ -18,6 +18,8 @@ const Analytics = () => {
   useEffect(() => {
     checkValidate();
     getTransactions();
+    getTotalCard();
+
 }, []);
 
 const checkValidate = async () => {
@@ -36,7 +38,17 @@ const getTransactions = async () => {
     console.log(transactions);
 };
 
+const getTotalCard = async () => {
+  const res = await getTotalPayments();
+  console.log(res.data);
+  setTotalPayments(
+    [res.data]
+  );
+  console.log(totalPayments);
+};
+
 const [transactions, setTransactions] = useState([]);
+const [totalPayments,setTotalPayments] = useState([]);
 
   return (
     <div className='main-container'>
@@ -66,10 +78,22 @@ const [transactions, setTransactions] = useState([]);
             </Tab>
           </Tabs> */}
           <div className='rep-transactions-cards-container'>
+          {/* {Object.values(totalPayments).map((total) => (
+              <div className='rec-analytics-card-container'>
+                
+                <div className='rec-analytics-total-card'>
+                <div className='rec-analytics-card-title'>Total Payments</div>
+                  <div className='rec-analytics-card-value'>{totalPayments}</div>
+                  <div className='staffName'>{trainer.full_name}</div>
+                </div>
+              </div>
+            ))} */}
           <div className='rec-analytics-card-container'>
               <div className='rec-analytics-total-card'>
                 <div className='rec-analytics-card-title'>Total Payments</div>
-                <div className='rec-analytics-card-value'>Rs. 8500</div>
+                <div className='rec-analytics-card-value'>Rs. {totalPayments}</div>
+                {/* <div className='rec-analytics-card-value'>abc</div> */}
+                
               </div>
           </div>
           <div className='rec-analytics-card-container'>
