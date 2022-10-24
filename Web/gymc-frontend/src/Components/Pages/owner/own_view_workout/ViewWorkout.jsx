@@ -57,6 +57,7 @@ export default function ViewWorkout() {
     const [traineeDetails, setTraineeDetails] = useState([]);
     const [traineeWorkoutDetails, setTraineeWorkoutDetails] = useState([]);
     const [traineeDietDetails, setTraineeDietDetails] = useState([]);
+    const newTraineeDietDetails = {};
 
     const [value, onChange] = useState(new Date());
     const now = new Date();
@@ -107,7 +108,13 @@ export default function ViewWorkout() {
         setTraineeDietDetails(
             res.data
         );
+        // newTraineeDietDetails = { ...newTraineeDietDetails };
+        // console.log(newTraineeDietDetails);
     };
+
+    // names.forEach((elem, i) => {
+    //     obj[i] = elem
+    //   })
 
     const moveToMoreView = () => {
         window.location.href = `/AddWorkout/${id}`;
@@ -155,21 +162,21 @@ export default function ViewWorkout() {
     //     { id: "delete", numeric: false },
 
     // ]);
-    const [dietDetails] = useState([
-        {
-            nutrition: "Nutrition 1",
-            CalorieIntake: "25",
-        },
-        {
-            nutrition: "Nutrition 1",
-            CalorieIntake: "25",
-        },
-        {
-            nutrition: "Nutrition 1",
-            CalorieIntake: "25",
-        },
+    // const [dietDetails] = useState([
+    //     {
+    //         nutrition: "Nutrition 1",
+    //         CalorieIntake: "25",
+    //     },
+    //     {
+    //         nutrition: "Nutrition 1",
+    //         CalorieIntake: "25",
+    //     },
+    //     {
+    //         nutrition: "Nutrition 1",
+    //         CalorieIntake: "25",
+    //     },
 
-    ]);
+    // ]);
 
     const [excerciseDetails, setExcerciseDetails] = useState([
         {
@@ -371,7 +378,7 @@ export default function ViewWorkout() {
                                     // minDate={mindate}
                                     // maxDate={maxdate}
                                     />
-                                    <button class="newworkoutbtn">New Workout</button>
+                                    {/* <button class="newworkoutbtn">New Workout</button> */}
                                 </div>
                             </div>
                             {/* <div className="viewBtnDiv">
@@ -381,7 +388,7 @@ export default function ViewWorkout() {
                         <div className="own-trainee-table">
                             <div className="t-content">
                                 <Tabs className="dietworkout_tab">
-                                    <Tab eventKey="home" title="Workout" >
+                                    <Tab eventKey="home" title="Exercises" >
 
                                         {/* <Table
                                             rows={workoutDetails}
@@ -421,13 +428,15 @@ export default function ViewWorkout() {
                                             <MaterialTable
                                                 title="Diet Plan"
                                                 columns={[
-                                                    { title: "nutrition", field: "nutrition" },
-                                                    { title: "CalorieIntake", field: "CalorieIntake" },
+                                                    { title: "Diet Plan Id", field: "dietPlanid" },
+                                                    { title: "Carbohydrate (Cal)", field: "carbohydrate" },
+                                                    { title: "Fats (Cal)", field: "fats" },
+                                                    { title: "Proteins (Cal)", field: "proteins" },
                                                 ]}
                                                 icons={TableIcons}
                                                 data={traineeDietDetails}
                                                 options={{
-                                                    pageSize: 3,
+                                                    pageSize: 1,
                                                     pageSizeOptions: [6, 12, 15],
                                                     headerStyle: {
                                                         backgroundColor: '#1F0106',
