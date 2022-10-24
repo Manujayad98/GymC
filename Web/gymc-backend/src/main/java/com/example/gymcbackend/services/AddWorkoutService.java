@@ -1,7 +1,6 @@
 package com.example.gymcbackend.services;
 
 import com.example.gymcbackend.dto.*;
-import com.example.gymcbackend.entities.Appointment;
 import com.example.gymcbackend.repository.ExerciseDao.ExerciseJdbcRepository;
 import com.example.gymcbackend.repository.addWorkoutDao.AddWorkoutJdbcRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,6 +100,7 @@ public class AddWorkoutService {
         return factorSuccess;
     }
 
+    //ok
     public String updateReps(Long workoutPlanId, List<ExerciseTrainingDate> newExerciseList) {
         String repsSuccess= traineeAddWorkoutJdbcRepository.updateExercises(workoutPlanId,newExerciseList);
         return repsSuccess;
@@ -143,9 +143,11 @@ public class AddWorkoutService {
         return  appSuccess;
     }
 
+    public String updateDietPlan(DietPlanInput dietPlan) {
+        String dietSuccess = traineeAddWorkoutJdbcRepository.updateDiet(dietPlan);
+        return dietSuccess;
+    }
 
-//    public String addAppointmentmobile() {
-//
-//
-//    }
+
+
 }

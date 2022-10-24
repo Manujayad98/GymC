@@ -113,22 +113,26 @@ public BodyFactorsResponse getBodyFactors(@PathVariable String date,@PathVariabl
         return addWorkoutService.addReservation(workoutReservation, carbs, fat, protein);
     }
 
-    //meka hadanna add appointment in mobile app
-//    @PostMapping("/addAppointment/{carbs}/{fat}/{protein}")
-//    public String addAppointment(@PathVariable ) {
-//        return addWorkoutService.addAppointmentmobile();
-//    }
+
 
     // --------------------Update section---------------------
 
+    //ok
      @PutMapping("/updateBodyFactors/")
      public String updateBodyFactors (@RequestBody BodyFactorsResponse newBodyFactors,@PathVariable Long workoutPlanId){
      return addWorkoutService.updateFactors(workoutPlanId,newBodyFactors);
      }
 
-     @PutMapping("/updateExercises/")
+     //ok
+     @PutMapping("/updateExercises/{workoutPlanId}")
      public String updateExercises (@RequestBody List<ExerciseTrainingDate> newExerciseList ,@PathVariable Long workoutPlanId){
          return addWorkoutService.updateReps(workoutPlanId,newExerciseList);
+     }
+
+     //ok
+     @PutMapping("/updateDiet")
+     public String updateDiet (@RequestBody DietPlanInput dietPlan ){
+         return addWorkoutService.updateDietPlan(dietPlan);
      }
 
 }
