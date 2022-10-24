@@ -9,8 +9,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import InputField from "../../../Utilities/Form/InputField";
 import { Validators } from "../../../Utilities/Form/Validator/Validator";
-import PictureUploader from "../../../Utilities/Form/PictureUploader/PictureUploader";
-
 import { addNewExercise } from "../../../../services/ExerciseService";
 
 

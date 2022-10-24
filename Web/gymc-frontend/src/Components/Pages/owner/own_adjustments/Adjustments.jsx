@@ -128,22 +128,6 @@ export default function Exercises() {
       ]);
     
 
-
-    // let [num, setNum] = useState(5);
-    // let incNum = () => {
-    //     if (num < 10) {
-    //         setNum(Number(num) + 1);
-    //     }
-    // };
-    // let decNum = () => {
-    //     if (num > 0) {
-    //         setNum(num - 1);
-    //     }
-    // }
-    // let handleChange = (e) => {
-    //     setNum(e.target.value);
-    // }
-
     return (
         <div className='main-container'>
             <SidebarO />
@@ -253,46 +237,7 @@ export default function Exercises() {
 
                         </div>
                     </div>
-                    {/* <div className="ex">
-                        <div className="header">
-                            <h3 id="own-adjustment-titles">No of appoinments per timeslot</h3>
-                        </div>
-                        <div className="main_div">
-                            <div className="center_div">
-                                <div class="adjustment-input-group ">
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-outline-primary" type="button" onClick={decNum}>-</button>
-                                    </div>
-                                    <div className="adjustments-count">
-                                        <input id="count" type="text" class="form-control" value={num} onChange={handleChange} />
-                                    </div>
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-outline-primary" type="button" onClick={incNum}>+</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
-                    {/* <div className="ex">
-                        <div className="header">
-                            <h3 id="own-adjustment-titles">Leave limit per month</h3>
-                        </div>
-                        <div className="main_div">
-                            <div className="center_div">
-                                <div class="adjustment-input-group">
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-outline-primary" type="button" onClick={decNum}>-</button>
-                                    </div>
-                                    <div className="adjustments-count">
-                                        <input id="count" type="text" class="form-control" value={num} onChange={handleChange} />
-                                    </div>
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-outline-primary" type="button" onClick={incNum}>+</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
+                    
                              <div className="ex">
                     <div className="header">
                         <h3 id="own-adjustment-titles">Adjustment Counts</h3>

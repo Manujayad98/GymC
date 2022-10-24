@@ -1,11 +1,8 @@
 package com.example.gymcbackend.controllers;
 
-import com.example.gymcbackend.dto.StaffUsers;
 import com.example.gymcbackend.dto.TodayAvailableTrainers;
 import com.example.gymcbackend.dto.TodayWorkouts;
 import com.example.gymcbackend.dto.TrainerTableData;
-import com.example.gymcbackend.entities.OwnerDashboardCards;
-import com.example.gymcbackend.repository.staffMemberDao.StaffMemberRepository;
 import com.example.gymcbackend.services.TrainerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
