@@ -2,7 +2,8 @@ package com.example.gymcbackend.entities;
 
 import javax.persistence.*;
 import java.sql.Time;
-import java.util.Date;
+import java.time.LocalTime;
+import java.sql.Date;
 
 @Table(name = "appointment")
 @Entity
@@ -16,10 +17,10 @@ public class Appointment {
     private Date date;
 
     @Column(name = "start_time")
-    private Time startTime;
+    private LocalTime startTime;
 
     @Column(name = "end_time")
-    private Time endTime;
+    private LocalTime endTime;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "staffId")
@@ -37,11 +38,11 @@ public class Appointment {
         this.date = date;
     }
 
-    public void setStartTime(Time startTime) {
+    public void setStartTime(LocalTime startTime) {
         this.startTime = startTime;
     }
 
-    public void setEndTime(Time endTime) {
+    public void setEndTime(LocalTime endTime) {
         this.endTime = endTime;
     }
 
@@ -61,11 +62,11 @@ public class Appointment {
         return date;
     }
 
-    public Time getStartTime() {
+    public LocalTime getStartTime() {
         return startTime;
     }
 
-    public Time getEndTime() {
+    public LocalTime getEndTime() {
         return endTime;
     }
 

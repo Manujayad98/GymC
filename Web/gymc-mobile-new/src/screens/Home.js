@@ -5,31 +5,48 @@ import { icons, COLORS, SIZES } from "../constans";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Entypo';
 import Icon3 from 'react-native-vector-icons/MaterialIcons';
+import { Card, Title, Paragraph } from 'react-native-paper';
 
 // const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
+
 const DATA = [
     {
         id: '1',
-        title: 'Annoucement 1',
-        Date: '2nd May 2022',
-        Note: 'Gym c will be closed on 20th May 2022'
+        title: 'Gym closure',
+        author: 'by Owner - 2nd May 2022',
+        note: 'Gym c will be closed on 20th May 2022 sdsdsddsds sdsa dasd sadsad sadasd dsdsad dsdad dsadsasd dsadasd sdasd adasd ',
+
     },
     {
         id: '2',
-        title: 'Annoucement 2',
-        Date: '2nd May 2022',
-        Note: 'Gym c will be closed on 10th August 2022'
+        title: 'Maintenance',
+        author: 'by Admin -2nd May 2022',
+        note: 'Gym c will be closed on 10th August 2022',
+
+
     },
     {
         id: '3',
         title: 'Annoucement 3',
-        Date: '2nd May 2022',
-        Note: 'Gym c will be closed on 2nd September 2022'
+        author: 'by Owner - 2nd May 2022',
+        note: 'Gym c will be closed on 2nd September 2022'
     },
 ];
 const Home = ({ navigation }) => {
+
+    // useEffect(() => {
+    //     console.log("gget jobs called");
+    //     axios
+    //       .get("http://10.22.162.153:8080/api/v1/annoucements")
+    //       .then((res) => {
+    //         setPosts(res.data);
+    //       })
+    //       .catch((err) => {
+    //         console.log(err);
+    //       });
+    //   });
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.backgroundColor }}>
             <Header title={"GYMC"} />
@@ -73,17 +90,17 @@ const Home = ({ navigation }) => {
 
                                 </View>
                             </View>
-                            <View style={styles.box}>
-                                <View style={styles.inner}>
-                                    <Text><Icon name="qrcode" size={55} color="#000"
-                                        onPress={() =>
-                                            navigation.navigate('attendance')}
+                            {/* <View style={styles.box}>
+                            <View style={styles.inner}>
+                                <Text><Icon name="qrcode" size={55} color="#000"
+                                    onPress={() =>
+                                        navigation.navigate('attendance')}
 
-                                    /></Text>
-                                    <Text style={styles.cardHeader}>Attendance</Text>
-                                </View>
+                                /></Text>
+                                <Text style={styles.cardHeader}>Attendance</Text>
                             </View>
-                            <View style={styles.box}>
+                        </View> */}
+                            <View style={styles.box1}>
                                 <View style={styles.inner}>
                                     <Text><Icon3 name="feedback" size={55} color="#000"
                                         onPress={() =>
@@ -97,28 +114,40 @@ const Home = ({ navigation }) => {
                         </View>
                         <Text style={styles.sectionHeader}>Annoucements</Text>
                         <View style={styles.announcementbody}>
-                            <FlatList
+                            {/* <FlatList
                                 keyExtractor={(item) => item.id}
                                 data={DATA}
                                 renderItem={({ item }) =>
                                 (
                                     <Text style={styles.item}>{item.title}</Text>,
-                                    <Text style={styles.item}>{item.Date}</Text>,
-                                    <Text style={styles.item}>{item.Note}</Text>
+                                    <Text style={styles.item}>{item.author}</Text>,
+                                    <Text style={styles.item}>{item.note}</Text>
                                 )}
 
-                            />
+                            /> */}
+                            {DATA.map((DATA) => (
+                                <Card style={styles.item}>
+                                    <Card.Content>
+                                        <Title key={DATA.id} style={styles.announcementTitle}>{DATA.title}</Title>
+                                        {/* <Title>Card title</Title> */}
+                                        <Paragraph style={styles.announcementAuthor}>{DATA.author}</Paragraph>
+                                        <Paragraph style={styles.announcementNote}>{DATA.note}</Paragraph>
+                                    </Card.Content>
+                                </Card>
+                            ))}
+
+
 
                         </View>
+
 
 
                     </View>
 
 
-                </View>
-            </ScrollView>
 
-        </View>
+                </View>
+            </ScrollView></View>
     );
 };
 
@@ -209,6 +238,12 @@ const styles = StyleSheet.create({
         padding: 4,
         // color: 'black'
     },
+    box1: {
+        width: '100%',
+        height: '50%',
+        padding: 4,
+        // color: 'black'
+    },
     inner: {
         flex: 1,
         backgroundColor: '#90E0EF',
@@ -222,7 +257,21 @@ const styles = StyleSheet.create({
     announcementbody: {
         borderTopColor: 'black',
         borderTopWidth: StyleSheet.hairlineWidth,
+        fontFamily: 'poppins',
     },
+    announcementTitle: {
+
+        fontWeight: 'bold',
+    },
+    announcementAuthor: {
+        color: '#5c5b5e',
+        fontWeight: 'bold',
+
+    },
+    announcementNote: {
+        paddingTop: 10,
+    },
+
 
     lowScrollFeed: {
         color: 'black',
@@ -232,7 +281,7 @@ const styles = StyleSheet.create({
     item: {
         backgroundColor: '#90E0EF',
         color: 'black',
-        padding: 40,
+        // padding: 2,
         marginVertical: 7,
         marginHorizontal: 5,
         borderRadius: 5

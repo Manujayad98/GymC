@@ -1,14 +1,13 @@
 package com.example.gymcbackend.services;
 
 import com.example.gymcbackend.dto.*;
-import com.example.gymcbackend.entities.DietPlan;
 import com.example.gymcbackend.entities.TimeSlot;
+import com.example.gymcbackend.entities.TimeSlotTwo;
 import com.example.gymcbackend.repository.TraineeViewScheduleDao.TraineeViewScheduleJdbcRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -36,9 +35,13 @@ public class TraineeViewScheduleService {
         return traineeViewDietDate;
     }
 
-    public TimeSlot getDate(LocalDate date1) {
-        TimeSlot timeSlot= traineeViewScheduleJdbcRepository.getCalDate(date1);
-        return timeSlot;
+    public TimeSlotResponse getDate(LocalDate date1, Long staffId) {
+        TimeSlotTwo timeSlot= traineeViewScheduleJdbcRepository.getDateAvailability(date1,staffId);
+        Integer shiftNo= traineeViewScheduleJdbcRepository.getShiftNo(staffId,date1);
+        TimeSlotResponse timeSlotResponse = new TimeSlotResponse();
+        timeSlotResponse.setShiftNo(shiftNo);
+        timeSlotResponse.setTimeSlot(timeSlot);
+        return timeSlotResponse;
     }
 
     public BodyFactorsResponse getWorkoutPlanBodyFactors(LocalDate date1, Long traineeId) {
