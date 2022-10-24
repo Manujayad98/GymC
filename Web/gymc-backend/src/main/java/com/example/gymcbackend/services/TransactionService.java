@@ -23,4 +23,12 @@ public class TransactionService {
     public Long getAllTransactionCardData() {
         return transactionJdbcRepository.findAllCardData();
     }
+
+    public Long getAllCashPayments() {
+        return transactionJdbcRepository.findAllCashPayments();
+    }
+
+    public Long getAllOnlinePayments() {
+        return transactionJdbcRepository.findAllOnlinePayments();
+    }
 }

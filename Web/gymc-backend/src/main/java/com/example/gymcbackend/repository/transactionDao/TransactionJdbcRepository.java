@@ -33,4 +33,20 @@ public class TransactionJdbcRepository {
         Long CardList = jdbcTemplate.queryForObject(query, new Object[] {}, Long.class);
         return CardList;
     }
+
+    public Long findAllCashPayments() {
+
+        String query ="SELECT SUM(amount) as Total FROM payment WHERE type='cash'";
+
+        Long CashList = jdbcTemplate.queryForObject(query, new Object[] {}, Long.class);
+        return CashList;
+    }
+
+    public Long findAllOnlinePayments() {
+
+        String query ="SELECT SUM(amount) as Total FROM payment WHERE type='online'";
+
+        Long OnlineList = jdbcTemplate.queryForObject(query, new Object[] {}, Long.class);
+        return OnlineList;
+    }
 }

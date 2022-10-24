@@ -28,5 +28,15 @@ public class TransactionsController {
         return transactionService.getAllTransactionCardData();
     }
 
-    
+    // GET DATA FOR TOTAL CASH PAYMENTS
+    @GetMapping("/cash")
+    public Long getAllCashPayments(){
+        return transactionService.getAllCashPayments();
+    }
+
+    // GET DATA FOR TOTAL ONLINE PAYMENTS
+    @GetMapping("/online")
+    public Long getAllOnlinePayments(){
+        return transactionService.getAllOnlinePayments();
+    }
 }
