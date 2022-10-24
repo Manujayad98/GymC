@@ -106,18 +106,18 @@ public class AddWorkoutService {
         return repsSuccess;
     }
 
-    public String addAppoint(Appointment appointment) {
+    public String addAppoint(AppointmentInput appointment) {
 
-        System.out.println("trainee id:"+appointment.getTrainee().getId());
+//        System.out.println("trainee id:"+appointment.getTrainee().getId());
 
         LocalTime midnight = LocalTime.parse("00:00");
         Date tempStartDate = appointment.getDate();
         LocalTime tempStartTime = appointment.getStartTime();
         LocalTime tempEndTime = appointment.getEndTime();
-        Long traineeId = appointment.getTrainee().getId();
+        Long traineeId = appointment.getTraineeId();
 
 //        System.out.println("trainee id:"+appointment.getTrainee().getId());
-        Long staffId= appointment.getStaffMember().getId();
+        Long staffId= appointment.getStaffId();
 
 
         int minutesUnit = 30;

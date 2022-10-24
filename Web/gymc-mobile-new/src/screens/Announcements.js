@@ -38,25 +38,34 @@ const windowHeight = Dimensions.get('window').height;
 const Announcements = () => {
 
     const [ann, setAnnoucements] = useState([]);
-    console.log(ann.title);
+    // console.log(ann.title);
     useEffect(() => {
-        console.log("annocement get called");
-        axios
-          .get("http://10.22.162.153:8080/api/v1/annoucements", {
-            headers: {
-              'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHWU1DIiwic3ViIjoiU3VkYW0iLCJpYXQiOjE2NjY1MjM2OTEsImV4cCI6MTY2Njg4MzY5MX0.R8xf3VfPSpMQruyFjjGLbOti7HljY_Jr05N2MuocmK0` 
-            }})
-          .then((res) => {
-            console.log(res.data)
-            
-            console.log(res.data[0])
-            setAnnoucements(res.data[0]);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        console.log("announcement get called");
+        // 
+        const setResponse = async (data) => {
+            await axios
+              .get("http://10.22.162.153:8080/api/v1/annoucements", {
+                headers: {
+                  'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHWU1DIiwic3ViIjoiU3VkYW0iLCJpYXQiOjE2NjY1MjM2OTEsImV4cCI6MTY2Njg4MzY5MX0.R8xf3VfPSpMQruyFjjGLbOti7HljY_Jr05N2MuocmK0` 
+                }})
+              .then((res) => {
+                console.log(res.data)
+                
+                // console.log(res.data[0])
+                setAnnoucements(res.data);
+                console.log(ann);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+    
+    
+        }
+        setResponse();
       },[]);
+   
 
+    
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.backgroundColor }}>
             <Header title={"GYMC"} />
@@ -78,6 +87,7 @@ const Announcements = () => {
                         <Text style={styles.titletext}>Announcements</Text>
                         <Text style={styles.sectionHeader}></Text>
                         <View style={styles.notificationbody}>
+                            {console.log(ann)}
                         {ann.map((ann) => (
                                 <Card style={styles.item}>
                                     <Card.Content>
@@ -86,7 +96,8 @@ const Announcements = () => {
                                         <Paragraph style={styles.announcementNote}>{ann.note}</Paragraph>
                                     </Card.Content>
                                 </Card>
-                            ))};
+                        ))};
+                        
                             
                         </View>
                         
