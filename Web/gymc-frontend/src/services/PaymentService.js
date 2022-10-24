@@ -41,3 +41,15 @@ export const addPaymentPlan = (requestData) => {
     });
 };
 
+//RECEPTIONIST TRANSACTIONS TABLE
+
+export const getTransactionDetails = () => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/transactions`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
