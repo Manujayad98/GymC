@@ -43,6 +43,7 @@ public class AddWorkoutJdbcRepository {
         namedParameters.addValue("thighs", workoutPlanSchedule.getThighs());
         namedParameters.addValue("forearms", workoutPlanSchedule.getForearms());
         namedParameters.addValue("chest", workoutPlanSchedule.getChest());
+        namedParameters.addValue("diseases", workoutPlanSchedule.getDiseases());
         namedParameters.addValue("workout_name", workoutPlanSchedule.getWorkoutName());
 //        namedParameters.addValue("trainee_id", workoutPlanSchedule.getTrainerId());
         namedParameters.addValue("workout_type", workoutPlanSchedule.getWorkoutType());
@@ -80,8 +81,8 @@ public class AddWorkoutJdbcRepository {
         namedParameters.addValue("schedule_id", schedule_id);
 
         String query2 = "INSERT INTO workout_plan " +
-                "(workout_scheduleid,height,weight,biceps,chest,hips,thighs,forearms, staff_id) " +
-                "values (:schedule_id,:height, :weight, :biceps,:chest, :hips,:thighs,:forearms, :staff_id )";
+                "(workout_scheduleid,height,weight,biceps,chest,hips,thighs,forearms,diseases, staff_id) " +
+                "values (:schedule_id,:height, :weight, :biceps,:chest, :hips,:thighs,:forearms,:diseases, :staff_id )";
 
         int rowsAffected2 = jdbc.update(query2 , namedParameters);
 

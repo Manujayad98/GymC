@@ -21,9 +21,13 @@ public class AddWorkoutService {
     @Autowired
     ExerciseJdbcRepository exerciseJdbcRepository;
 
-    public Long addWorkoutSchedule(WorkoutPlanSchedule workoutPlanSchedule, Long traineeId) {
+    public Long addWorkoutSchedule(WorkoutPlanSchedule workoutPlanSchedule, String traineeId) {
 
-        Long success = traineeAddWorkoutJdbcRepository.addWorkout(workoutPlanSchedule, traineeId);
+        String traineeid = traineeId.substring(4);
+
+        Long result = Long.parseLong(String.valueOf(traineeid));
+
+        Long success = traineeAddWorkoutJdbcRepository.addWorkout(workoutPlanSchedule, result);
 //        return traineeaddWorkout.toString();
 
 //        WorkoutSchedule workoutSchedule=new WorkoutSchedule();

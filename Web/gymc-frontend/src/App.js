@@ -38,7 +38,7 @@ import AddUserA from './Components/Pages/admin/adm_add_user/AddUser'
 
 //OWNER
 import TrainerO from './Components/Pages/owner/own_trainers/Trainers';
-import AdjustmentsO from './Components/Pages/owner/own_adjustments/Adjustments';
+// import AdjustmentsO from './Components/Pages/owner/own_adjustments/Adjustments';
 import TraineesO from './Components/Pages/owner/own_trainees/Trainees';
 import AddTrainer from './Components/Pages/owner/own_add_trainer/AddTrainer';
 import DashboardO from './Components/Pages/owner/own_dashboard/Dashboard';
@@ -52,6 +52,8 @@ import UpdateWorkoutO from './Components/Pages/owner/own_update_workout/UpdateWo
 import TraineeProgressO from './Components/Pages/owner/own_trainee_progress/TraineeProgress';
 import NewExercise from './Components/Pages/owner/own_adjustments/NewExercise';
 import NewPaymentPlan from './Components/Pages/owner/own_adjustments/NewPaymentPlan';
+import AddWorkoutPart2O from './Components/Pages/owner/own_add_workout_Part2/AddWorkout2';
+
 
 
 // RECEPTIONIST
@@ -118,7 +120,7 @@ function App() {
           {/* OWNER ROUTES */}
           <Route path="/Otrainers" element={<TrainerO />}></Route>
           <Route path="/OaddTrainer" element={<AddTrainer />}></Route>
-          <Route path="/Oadjustments" element={<AdjustmentsO />}></Route>
+          {/* <Route path="/Oadjustments" element={<AdjustmentsO />}></Route> */}
           <Route path="/Otrainees" element={<TraineesO />}></Route>
           <Route path="/Odashboard" element={<DashboardO />}></Route>
           <Route path="/Onotifications" element={<NotificationsO />}></Route>
@@ -130,6 +132,7 @@ function App() {
           <Route path="/OtraineeProgress" element={<TraineeProgressO />}></Route>
           <Route path="/ONewExercise" element={<NewExercise />}></Route>
           <Route path="/ONewPaymentPlan" element={<NewPaymentPlan />}></Route>
+          <Route path="/AddWorkout2/:trainerid/:scheduleid/:trainerid" component={AddWorkoutPart2O} element={<AddWorkoutPart2O />}></Route>
 
           {/* ADMIN ROUTES */}
           <Route path="/Aannouncements" element={<AnnouncementsA />}></Route>

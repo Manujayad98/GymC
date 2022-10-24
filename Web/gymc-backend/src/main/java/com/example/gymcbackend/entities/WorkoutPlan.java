@@ -38,6 +38,9 @@ public class WorkoutPlan {
     @Column(name = "weight")
     private Double weight;
 
+    @Column(name="diseases")
+    private String diseases;
+
     @Column(name = "training_date")
     private Date trainingDate;
 
@@ -165,5 +168,37 @@ public class WorkoutPlan {
 
     public void setTrainingDate(Date trainingDate) {
         this.trainingDate = trainingDate;
+    }
+
+    public long getWorkoutPlanId() {
+        return workoutPlanId;
+    }
+
+    public void setWorkoutPlanId(long workoutPlanId) {
+        this.workoutPlanId = workoutPlanId;
+    }
+
+    public String getDiseases() {
+        return diseases;
+    }
+
+    public void setDiseases(String diseases) {
+        this.diseases = diseases;
+    }
+
+    public Set<TrainingDate> getTrainingDates() {
+        return trainingDates;
+    }
+
+    public void setTrainingDates(Set<TrainingDate> trainingDates) {
+        this.trainingDates = trainingDates;
+    }
+
+    public StaffMember getStaffMember() {
+        return staffMember;
+    }
+
+    public void setStaffMember(StaffMember staffMember) {
+        this.staffMember = staffMember;
     }
 }

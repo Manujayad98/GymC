@@ -76,7 +76,7 @@ public BodyFactorsResponse getBodyFactors(@PathVariable String date,@PathVariabl
 
     // Add trainee body measures and health condition, workout type for schedule
     @PostMapping("/addWorkoutSchedule/{traineeId}")
-    public Long addWorkoutSchedule(@RequestBody WorkoutPlanSchedule workoutPlanSchedule, @PathVariable Long traineeId) {
+    public Long addWorkoutSchedule(@RequestBody WorkoutPlanSchedule workoutPlanSchedule, @PathVariable String traineeId) {
         System.out.println("AW1");
         return addWorkoutService.addWorkoutSchedule(workoutPlanSchedule, traineeId);
         // pass trainee id in dto
