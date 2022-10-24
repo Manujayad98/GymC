@@ -1,11 +1,9 @@
 package com.example.gymcbackend.repository.transactionDao;
 
 import com.example.gymcbackend.dto.Transactions;
-import com.example.gymcbackend.entities.Payment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
