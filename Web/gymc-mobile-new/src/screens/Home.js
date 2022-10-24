@@ -32,7 +32,7 @@ const DATA = [
 const Home = ({navigation}) => {
   return (
     <View style={{ flex: 1, backgroundColor: COLORS.backgroundColor }}>
-    <Header title={"GYMC"} /> 
+    {/* <Header title={"GYMC"} />  */}
     <ScrollView>
      
             <View style={styles.root}>
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
       flex: 1,
   },
   header: {
-      paddingLeft: 180,
+      paddingLeft: '50%',
       width: '100%',
       height: '10%',
       alignContent: 'right',

@@ -3,8 +3,7 @@ import React from "react";
 import Header from "../components/HeaderComponent";
 import { icons, COLORS, SIZES } from "../constans";
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Icon2 from 'react-native-vector-icons/Entypo';
-import Icon3 from 'react-native-vector-icons/MaterialIcons';
+import { Card, Button } from 'react-native-paper';
 
 // const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -32,7 +31,7 @@ const DATA = [
 const Home = () => {
   return (
     <View style={{ flex: 1, backgroundColor: COLORS.backgroundColor }}>
-    <Header title={"GYMC"} /> 
+    {/* <Header title={"GYMC"} />  */}
     <ScrollView>
      
             <View style={styles.root}>
@@ -70,7 +69,7 @@ const Home = () => {
                             data={DATA}
                             renderItem={({ item }) =>
                             (
-                                <Text style={styles.item}>{item.title}</Text>,
+                                <Card style={styles.item}>{item.title}</Card>,
                                 <Text style={styles.item}>{item.Date}</Text>,
                                 <Text style={styles.item}>{item.Note}</Text>
                             )}
@@ -123,7 +122,7 @@ const styles = StyleSheet.create({
       flex: 1,
   },
   header: {
-      paddingLeft: 180,
+      paddingLeft: '50%',
       width: '100%',
       height: '10%',
       alignContent: 'right',
