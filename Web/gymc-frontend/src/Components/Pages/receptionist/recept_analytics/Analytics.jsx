@@ -9,7 +9,7 @@ import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 import Arrow from '../../../../images/Icons/arrow-square-right.svg'
 
-import { getTransactionDetails , getTotalPayments} from "../../../../services/PaymentService";
+import { getTransactionDetails , getTotalPayments ,getTotalCashPayments ,getTotalOnlinePayments} from "../../../../services/PaymentService";
 
 import './Analytics.css'
 
@@ -19,6 +19,8 @@ const Analytics = () => {
     checkValidate();
     getTransactions();
     getTotalCard();
+    getTotalCashCard();
+    getTotalOnlineCard();
 
 }, []);
 
@@ -47,8 +49,28 @@ const getTotalCard = async () => {
   console.log(totalPayments);
 };
 
+const getTotalCashCard = async () => {
+  const res = await getTotalCashPayments();
+  console.log(res.data);
+  setTotalCashPayments(
+    [res.data]
+  );
+  console.log(totalCashPayments);
+};
+
+const getTotalOnlineCard = async () => {
+  const res = await getTotalOnlinePayments();
+  console.log(res.data);
+  setTotalOnlinePayments(
+    [res.data]
+  );
+  console.log(totalOnlinePayments);
+};
+
 const [transactions, setTransactions] = useState([]);
 const [totalPayments,setTotalPayments] = useState([]);
+const [totalCashPayments,setTotalCashPayments] = useState([]);
+const [totalOnlinePayments,setTotalOnlinePayments] = useState([]);
 
   return (
     <div className='main-container'>
@@ -99,13 +121,13 @@ const [totalPayments,setTotalPayments] = useState([]);
           <div className='rec-analytics-card-container'>
               <div className='rec-analytics-total-card'>
                 <div className='rec-analytics-card-title'>Total Cash Payments</div>
-                <div className='rec-analytics-card-value'>Rs. 6500</div>
+                <div className='rec-analytics-card-value'>Rs. {totalCashPayments}</div>
               </div>
           </div>
           <div className='rec-analytics-card-container'>
               <div className='rec-analytics-total-card'>
                 <div className='rec-analytics-card-title'>Total Online Payments</div>
-                <div className='rec-analytics-card-value'>Rs. 2000</div>
+                <div className='rec-analytics-card-value'>Rs. {totalOnlinePayments}</div>
               </div>
           </div>
           </div>

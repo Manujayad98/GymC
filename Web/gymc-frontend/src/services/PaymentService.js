@@ -56,10 +56,36 @@ export const getTransactionDetails = () => {
 //RECEPTIONIST TRANSACTIONS TOTAL PAYMENTS
 
 export const getTotalPayments = () => {
-    console.log("hhhh");
+    
     return axios({
         method: "GET",
         url: `${USER_URL}/cards`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+//RECEPTIONIST TRANSACTIONS TOTAL CASH PAYMENTS
+
+export const getTotalCashPayments = () => {
+    
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/cash`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+//RECEPTIONIST TRANSACTIONS TOTAL ONLINE PAYMENTS
+
+export const getTotalOnlinePayments = () => {
+    
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/online`,
         headers: {
             Authorization: "Bearer " + getToken(),
         },
