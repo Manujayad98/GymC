@@ -103,7 +103,7 @@ public BodyFactorsResponse getBodyFactors(@PathVariable String date,@PathVariabl
 
 
      @PostMapping("/addAppointment")
-     public String addAppointment(@RequestBody Appointment appointment){
+     public String addAppointment(@RequestBody AppointmentInput appointment){
      return addWorkoutService.addAppoint(appointment);
      }
 

@@ -537,7 +537,7 @@ public class AddWorkoutJdbcRepository {
 
 
 
-        String query = "INSERT INTO time_slot_two values(:tempStartDate,:startTime,:endTime,:staffId,:traineeId)";
+        String query = "INSERT INTO appointment (date,start_time,end_time,staff_id,trainee_id) values(:tempStartDate,:startTime,:endTime,:staffId,:traineeId)";
         int rowsAffected = jdbc.update(query , namedParameters);
 
         if(rowsAffected==1){
