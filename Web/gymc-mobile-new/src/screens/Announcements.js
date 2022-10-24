@@ -1,39 +1,62 @@
 import { View, Text, Image, StyleSheet, Dimensions, ScrollView, SafeAreaView, FlatList, StatusBar } from 'react-native'
-import React from "react";
+import React,{useState,useEffect} from "react";
 import Header from "../components/HeaderComponent";
 import { icons, COLORS, SIZES } from "../constans";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Entypo';
 import Icon3 from 'react-native-vector-icons/MaterialIcons';
 import { Card, Title, Paragraph } from 'react-native-paper';
+import axios from "axios";
 
 // const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const DATA = [
-    {
-        id: '1',
-        title: 'Gym closure',
-        author: 'by Owner - 2nd May 2022',
-        note: 'Gym c will be closed on 20th May 2022 sdsdsddsds sdsa dasd sadsad sadasd dsdsad dsdad dsadsasd dsadasd sdasd adasd ',
 
-    },
-    {
-        id: '2',
-        title: 'Maintenance',
-        author: 'by Admin -2nd May 2022',
-        note: 'Gym c will be closed on 10th August 2022',
+// const ann = [
+//     {
+//         id: '1',
+//         title: 'Gym closure',
+//         author: 'by Owner - 2nd May 2022',
+//         note: 'Gym c will be closed on 20th May 2022 sdsdsddsds sdsa dasd sadsad sadasd dsdsad dsdad dsadsasd dsadasd sdasd adasd ',
+
+//     },
+//     {
+//         id: '2',
+//         title: 'Maintenance',
+//         author: 'by Admin -2nd May 2022',
+//         note: 'Gym c will be closed on 10th August 2022',
 
 
-    },
-    {
-        id: '3',
-        title: 'Annoucement 3',
-        author: 'by Owner - 2nd May 2022',
-        note: 'Gym c will be closed on 2nd September 2022'
-    },
-];
-const Home = () => {
+//     },
+//     {
+//         id: '3',
+//         title: 'Annoucement 3',
+//         author: 'by Owner - 2nd May 2022',
+//         note: 'Gym c will be closed on 2nd September 2022'
+//     },
+// ];
+const Announcements = () => {
+
+    const [ann, setAnnoucements] = useState([]);
+    console.log(ann.title);
+    useEffect(() => {
+        console.log("annocement get called");
+        axios
+          .get("http://10.22.162.153:8080/api/v1/annoucements", {
+            headers: {
+              'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHWU1DIiwic3ViIjoiU3VkYW0iLCJpYXQiOjE2NjY1MjM2OTEsImV4cCI6MTY2Njg4MzY5MX0.R8xf3VfPSpMQruyFjjGLbOti7HljY_Jr05N2MuocmK0` 
+            }})
+          .then((res) => {
+            console.log(res.data)
+            
+            console.log(res.data[0])
+            setAnnoucements(res.data[0]);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      },[]);
+
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.backgroundColor }}>
             <Header title={"GYMC"} />
@@ -52,35 +75,21 @@ const Home = () => {
                             </Text>
 
                         </View>
-                        <Text style={styles.titletext}>Notifications</Text>
-                        <Text style={styles.sectionHeader}>New</Text>
+                        <Text style={styles.titletext}>Announcements</Text>
+                        <Text style={styles.sectionHeader}></Text>
                         <View style={styles.notificationbody}>
-                            {DATA.map((DATA) => (
+                        {ann.map((ann) => (
                                 <Card style={styles.item}>
                                     <Card.Content>
-                                        <Title key={DATA.id} style={styles.announcementTitle}>{DATA.title}</Title>
-                                        {/* <Title>Card title</Title> */}
-                                        <Paragraph style={styles.announcementAuthor}>{DATA.author}</Paragraph>
-                                        <Paragraph style={styles.announcementNote}>{DATA.note}</Paragraph>
+                                        <Title  style={styles.announcementTitle} key={ann.id}>{ann.title}</Title>
+                                        <Paragraph style={styles.announcementAuthor}>{ann.author}</Paragraph>
+                                        <Paragraph style={styles.announcementNote}>{ann.note}</Paragraph>
                                     </Card.Content>
                                 </Card>
-                            ))}
-
+                            ))};
+                            
                         </View>
-                        <Text style={styles.sectionHeader}>Earlier</Text>
-                        <View style={styles.notificationbody}>
-                            {DATA.map((DATA) => (
-                                <Card style={styles.item}>
-                                    <Card.Content>
-                                        <Title key={DATA.id} style={styles.announcementTitle}>{DATA.title}</Title>
-                                        {/* <Title>Card title</Title> */}
-                                        <Paragraph style={styles.announcementAuthor}>{DATA.author}</Paragraph>
-                                        <Paragraph style={styles.announcementNote}>{DATA.note}</Paragraph>
-                                    </Card.Content>
-                                </Card>
-                            ))}
-
-                        </View>
+                        
 
 
                     </View>
@@ -91,7 +100,7 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default Announcements;
 
 const styles = StyleSheet.create({
 
@@ -105,6 +114,13 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         width: '100%',
         color: 'black',
+    },
+    titletext :{
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#000',
+        textAlign:'center',
+    
     },
 
     text: {
@@ -121,13 +137,6 @@ const styles = StyleSheet.create({
         padding: 30,
         alignSelf: 'center'
     },
-    titletext :{
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: '#000',
-        textAlign:'center',
-    
-      },
 
     homecontainer: {
         flex: 1,

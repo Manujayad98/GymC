@@ -3,7 +3,7 @@ package com.example.gymcbackend.entities;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 
 @Table(name = "time_slot")
 @Entity

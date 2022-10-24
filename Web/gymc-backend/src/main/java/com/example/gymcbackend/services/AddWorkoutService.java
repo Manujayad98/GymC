@@ -1,6 +1,7 @@
 package com.example.gymcbackend.services;
 
 import com.example.gymcbackend.dto.*;
+import com.example.gymcbackend.entities.Appointment;
 import com.example.gymcbackend.repository.ExerciseDao.ExerciseJdbcRepository;
 import com.example.gymcbackend.repository.addWorkoutDao.AddWorkoutJdbcRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,10 +81,10 @@ public class AddWorkoutService {
         String availabilitySuccess = traineeAddWorkoutJdbcRepository.setAvailability(startSlotNo,endSlotNo, tempStartDate);
 
         // Adding diet plan
-//        String dietPlanSuccess = traineeAddWorkoutJdbcRepository.addDietPlan(tempStartDate,carbs, fat, protein,ScheduleId,traineeId);
+        String dietPlanSuccess = traineeAddWorkoutJdbcRepository.addDietPlan(tempStartDate,carbs, fat, protein,ScheduleId,traineeId);
 
 //        Adding training workout
-//        String trainingDateSuccess= traineeAddWorkoutJdbcRepository.addTrainingDate(workoutReservation.getWorkoutPlanId(),tempStartDate,tempStartTime,tempEndTime,workoutReservation.getTrainingDateList(),ScheduleId);
+        String trainingDateSuccess= traineeAddWorkoutJdbcRepository.addTrainingDate(tempStartDate,tempStartTime,tempEndTime,workoutReservation.getTrainingDateList(),ScheduleId);
 
 
 
@@ -100,4 +101,47 @@ public class AddWorkoutService {
         String repsSuccess= traineeAddWorkoutJdbcRepository.updateExercises(workoutPlanId,newExerciseList);
         return repsSuccess;
     }
+
+    public String addAppoint(Appointment appointment) {
+
+        System.out.println("trainee id:"+appointment.getTrainee().getId());
+
+        LocalTime midnight = LocalTime.parse("00:00");
+        Date tempStartDate = appointment.getDate();
+        LocalTime tempStartTime = appointment.getStartTime();
+        LocalTime tempEndTime = appointment.getEndTime();
+        Long traineeId = appointment.getTrainee().getId();
+
+//        System.out.println("trainee id:"+appointment.getTrainee().getId());
+        Long staffId= appointment.getStaffMember().getId();
+
+
+        int minutesUnit = 30;
+        //get reservation starting slot number
+
+        Duration duration1 = Duration.between( midnight, tempStartTime);
+        long startSlotNo = (duration1.toMinutes() / minutesUnit) - 11;
+        System.out.println("start slot:");
+        System.out.println(startSlotNo);
+
+        //get reservation ending slot number
+
+        Duration duration2 = Duration.between(midnight,tempEndTime);
+        long endSlotNo = (duration2.toMinutes() / minutesUnit) - 11;
+        System.out.println("end slot:");
+        System.out.println(endSlotNo);
+
+
+        String availSuccess = traineeAddWorkoutJdbcRepository.setAppointmentAvailability(tempStartDate,startSlotNo,endSlotNo);
+        String appSuccess= traineeAddWorkoutJdbcRepository.addAppointment(tempStartDate,tempStartTime,tempEndTime,staffId,traineeId);
+
+
+        return  appSuccess;
+    }
+
+
+//    public String addAppointmentmobile() {
+//
+//
+//    }
 }

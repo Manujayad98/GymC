@@ -1,13 +1,10 @@
 package com.example.gymcbackend.repository.traineeDao;
 
-import com.example.gymcbackend.dto.StaffUsers;
-import com.example.gymcbackend.dto.TodayAvailableTrainees;
-import com.example.gymcbackend.dto.TraineeInfo;
+import com.example.gymcbackend.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import com.example.gymcbackend.dto.TraineeDetailsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -80,4 +77,12 @@ public class TraineeJdbcRepository {
     }
 
 
+    public List<AnnoucementsResponse> getAnnouncements() {
+
+        String query="SELECT announcementid AS id,topic AS title,CONCAT('by -',staff_member.staff_type,' ',time) as author,description AS note FROM announcement INNER JOIN staff_member ON announcement.staff_id=staff_member.staff_id ORDER BY announcement.announcementid DESC LIMIT 20";
+        List<AnnoucementsResponse> annoucementsResponses = jdbc.query(query, new BeanPropertyRowMapper<AnnoucementsResponse>(AnnoucementsResponse.class));
+        System.out.println("annocements retrival");
+        return annoucementsResponses;
+
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.gymcbackend.controllers;
 
 import com.example.gymcbackend.dto.*;
+import com.example.gymcbackend.entities.Appointment;
 import com.example.gymcbackend.entities.DietPlan;
 import com.example.gymcbackend.entities.TimeSlot;
 import com.example.gymcbackend.services.TraineeViewScheduleService;
@@ -9,10 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 //import java.util.Date;
 import java.sql.Date;
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -26,6 +30,8 @@ public class TraineeScheduleController {
     AddWorkoutService addWorkoutService;
 
     // --------------------View section---------------------
+
+    //view appointment details of trainee user
 
     // View Trainee Current workout schedule,on trainee row click view more
     @GetMapping("/getTraineeSchedule/{traineeId}")
@@ -65,7 +71,7 @@ public BodyFactorsResponse getBodyFactors(@PathVariable String date,@PathVariabl
         return traineeViewScheduleService.getTraineeDateDietPlan(traineeDate, result);
     }
     
-    @GetMapping("getTraineeProgress/{traineeId}")
+    @GetMapping("/getTraineeProgress/{traineeId}")
     public List<TraineeProgressResponse> getTraineeProgress(@PathVariable String traineeId){
         String traineeID = traineeId.substring(4);
         Long result = Long.parseLong(String.valueOf(traineeID));
@@ -88,17 +94,17 @@ public BodyFactorsResponse getBodyFactors(@PathVariable String date,@PathVariabl
     }
 
     // method to check availabilty
-    @GetMapping("/availabilityDate/{date}")
-    public TimeSlot getAvailability(@PathVariable String date) {
+    @GetMapping("/availabilityDate/{date}/{StaffId}")
+    public TimeSlotResponse getAvailability(@PathVariable String date,@PathVariable Long StaffId) {
         LocalDate date1 = LocalDate.parse(date);
-        return traineeViewScheduleService.getDate(date1);
+        return traineeViewScheduleService.getDate(date1,StaffId);
     }
 
-    // @PostMapping("/addReservation/{traineeId}")
-    // public String addReservation(@RequestBody WorkoutReservation
-    // workoutReservation, @PathVariable Long traineeId){
-    // return addWorkoutService.addReservation(workoutReservation);
-    // }
+
+     @PostMapping("/addAppointment")
+     public String addAppointment(@RequestBody Appointment appointment){
+     return addWorkoutService.addAppoint(appointment);
+     }
 
     @PostMapping("/addReservation/{carbs}/{fat}/{protein}")
     public String addReservation(@RequestBody WorkoutReservation workoutReservation, @PathVariable Integer carbs,
@@ -106,11 +112,11 @@ public BodyFactorsResponse getBodyFactors(@PathVariable String date,@PathVariabl
         return addWorkoutService.addReservation(workoutReservation, carbs, fat, protein);
     }
 
-    @PostMapping("/addAppointment/{carbs}/{fat}/{protein}")
-    public String addAppointment(@RequestBody WorkoutReservation workoutReservation, @PathVariable Integer carbs,
-                                 @PathVariable Integer fat, @PathVariable Integer protein) {
-        return addWorkoutService.addReservation(workoutReservation, carbs, fat, protein);
-    }
+    //meka hadanna add appointment in mobile app
+//    @PostMapping("/addAppointment/{carbs}/{fat}/{protein}")
+//    public String addAppointment(@PathVariable ) {
+//        return addWorkoutService.addAppointmentmobile();
+//    }
 
     // --------------------Update section---------------------
 

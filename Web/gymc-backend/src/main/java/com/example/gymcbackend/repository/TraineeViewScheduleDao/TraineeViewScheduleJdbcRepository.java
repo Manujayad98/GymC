@@ -1,8 +1,8 @@
 package com.example.gymcbackend.repository.TraineeViewScheduleDao;
 
 import com.example.gymcbackend.dto.*;
-import com.example.gymcbackend.entities.DietPlan;
 import com.example.gymcbackend.entities.TimeSlot;
+import com.example.gymcbackend.entities.TimeSlotTwo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -10,9 +10,12 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.Date;
+import java.time.format.TextStyle;
 import java.util.List;
+import java.util.Locale;
+
 @Repository
 
 public class TraineeViewScheduleJdbcRepository {
@@ -91,16 +94,53 @@ public class TraineeViewScheduleJdbcRepository {
         return dietPlanResponse;
     }
 
-    public TimeSlot getCalDate(LocalDate date1) {
-        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-//        namedParameters.addValue("date1", date1);
-        String query="SELECT * FROM time_slot WHERE date=?";
+    //trainer availability check karanna hadanna one
 
-        TimeSlot timeSlot = (TimeSlot) jdbcTemplate.queryForObject(query, new Object[]{date1}, new BeanPropertyRowMapper(TimeSlot.class));
-System.out.println(timeSlot.getEleven());
+    public TimeSlotTwo getDateAvailability(LocalDate date1, Long staffId) {
+
+        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+        namedParameters.addValue("staffId", staffId);
+
+
+//        namedParameters.addValue("date1", date1);
+        String query="SELECT * FROM time_slot_two WHERE date=?";
+
+        TimeSlotTwo timeSlot = (TimeSlotTwo) jdbcTemplate.queryForObject(query, new Object[]{date1}, new BeanPropertyRowMapper(TimeSlotTwo.class));
+        System.out.println(timeSlot.getEleven()+" time slot response");
+
+
+//        Integer c= (Integer) jdbcTemplate.queryForObject(query, new Object[]{date1}, new BeanPropertyRowMapper(Integer.class));
+
+
 
         return timeSlot;
     }
+
+    public static String getDayStringNew(LocalDate date, Locale locale) {
+        DayOfWeek day = date.getDayOfWeek();
+        return day.getDisplayName(TextStyle.FULL, locale);
+    }
+
+    public Integer getShiftNo(Long staffId, LocalDate date1) {
+
+        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+        //getting shift no of the day of the trainer
+        Integer shiftNo=0;
+        if(staffId!=0){
+            Locale locale1 = new Locale("EN", "INDIA");
+            String day = getDayStringNew(date1,locale1).toLowerCase();
+            namedParameters.addValue("day", day);
+            System.out.println("Day:"+day);
+
+
+            String query1="SELECT "+ day+" FROM shift_details WHERE staff_id=?";
+            shiftNo = jdbcTemplate.queryForObject(query1, new Object[] {staffId }, Integer.class);
+            System.out.println("Shift No:"+shiftNo);
+        }
+
+        return shiftNo;
+    }
+
 
     public BodyFactorsResponse getBodyFactors(LocalDate date1, Long traineeId) {
         String query="SELECT weight,height,biceps,chest,forearms,hips,thighs FROM workout_plan WHERE  ";
@@ -108,15 +148,20 @@ System.out.println(timeSlot.getEleven());
         return bodyFactors;
     }
 
+    //to progress chart
+
     public List<TraineeProgressResponse> getTraineeProgress(Long traineeId) {
         MapSqlParameterSource namedParameters =
                 new MapSqlParameterSource();
         namedParameters.addValue("traineeId", traineeId);
         String query="SELECT weight,height,biceps,chest,forearms,hips,thighs FROM workout_plan INNER JOIN workout_schedule ON " +
                 "workout_plan.workout_scheduleid=workout_schedule.workout_scheduleid " +
-                "AND workout_schedule.trainee_id=:traineeId AND workout_plan.height IS NOT NULL";
+                "AND workout_schedule.trainee_id=:traineeId AND workout_plan.height IS NOT NULL ORDER BY workout_plan.training_date DESC LIMIT 5";
         List<TraineeProgressResponse> traineeProgressResponses = jdbc.query(query, namedParameters, new BeanPropertyRowMapper<TraineeProgressResponse>(TraineeProgressResponse.class));
+        System.out.println("progress retrived :"+traineeProgressResponses);
         return traineeProgressResponses;
     }
+
+
 }
 
