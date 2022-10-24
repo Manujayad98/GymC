@@ -35,16 +35,27 @@ export const getTraineeDiet = (date, traineeID) => {
     });
 };
 
-export const addWorkoutDetails = (requestData) => {
-    // return axios({
-    //     method: "POST",
-    //     url: `${USER_URL}/xxxxxxx`,
-    //     headers: {
-    //         Authorization: "Bearer " + getToken(),
-    //     },
-    //     data: requestData,
-    // });
+export const addWorkoutDetails = (requestData, traineeID) => {
+    return axios({
+        method: "POST",
+        url: `${USER_URL}/addWorkoutSchedule/${traineeID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+        data: requestData,
+    });
 };
+
+export const getExerciseDetails = () => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/scheduleWorkout`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
 
 export const addWorkoutDateExerciseDetails = (requestData) => {
     // return axios({

@@ -15,7 +15,9 @@ import {
   Appoinment,
   Feedback,
   Payments,
-  Attendance
+  Attendance,
+  // Schedule
+  Announcements
 } from "./src/screens";
 import Tabs from "./src/navigation/tabs";
 // import { Provider } from "react-redux";
@@ -49,9 +51,12 @@ export default function App() {
         <Stack.Screen name="feedback" component={Feedback} />
         <Stack.Screen name="appoinment" component={Appoinment} />
         <Stack.Screen name="payments" component={Payments} />
+        <Stack.Screen name="announcements" component={Announcements} />
         <Stack.Screen name="attendance" component={Attendance} />
         {/* <Stack.Screen name="Register" component={Register} /> */}
         <Stack.Screen name="Home" component={Home} />
+        {/* <Stack.Screen name="Schedule" component={Schedule} /> */}
+
       </Stack.Navigator>
     </NavigationContainer>
     // </Provider>

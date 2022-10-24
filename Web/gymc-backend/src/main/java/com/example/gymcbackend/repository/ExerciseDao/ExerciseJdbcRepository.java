@@ -49,10 +49,9 @@ public class ExerciseJdbcRepository {
 
         // namedParameters.addValue("id", traineeId);
 
-        String query = "SELECT exerciseid,name FROM exercise";
+        String query = "SELECT CONCAT('E000',exerciseID) AS exerciseID,name FROM exercise";
         // add colum reps and return 0 for all
-        List<ExerciseDetailsResponse> exerciseDetails = jdbc.query(query,
-                new BeanPropertyRowMapper<ExerciseDetailsResponse>(ExerciseDetailsResponse.class));
+        List<ExerciseDetailsResponse> exerciseDetails = jdbc.query(query, new BeanPropertyRowMapper<ExerciseDetailsResponse>(ExerciseDetailsResponse.class));
 
         return exerciseDetails;
     }
