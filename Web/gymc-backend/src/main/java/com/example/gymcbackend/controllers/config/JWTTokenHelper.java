@@ -1,4 +1,4 @@
-package com.example.gymcbackend.config;
+package com.example.gymcbackend.controllers.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

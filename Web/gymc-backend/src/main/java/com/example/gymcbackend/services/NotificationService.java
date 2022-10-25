@@ -12,9 +12,15 @@ public class NotificationService {
 
     @Autowired
     NotificationJdbcRepository notificationJdbcRepository;
-    public List<NotificationResponse> getUnreadNotify() {
-        List<NotificationResponse> notificationResponses = notificationJdbcRepository.getUnreadNotifications();
+    public List<NotificationResponse> getUnreadNotify(long userId) {
+        System.out.println("inside the unread notifi service");
+        List<NotificationResponse> notificationResponses = notificationJdbcRepository.getUnreadNotifications(userId);
         return notificationResponses;
 
+    }
+
+    public List<NotificationResponse> getReadNotify(long userId) {
+        List<NotificationResponse> notificationResponses = notificationJdbcRepository.getReadNotifications(userId);
+        return notificationResponses;
     }
 }
