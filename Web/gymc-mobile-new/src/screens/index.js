@@ -12,7 +12,6 @@ import Feedback from "./Feedback";
 import Appoinment from "./Appoinment";
 import Payments from "./Payments";
 import Attendance from "./Attendance";
-import Announcements from "./Announcements";
 
 export {
     Login,
@@ -29,5 +28,4 @@ export {
     Appoinment,
     Payments,
     Attendance,
-    Announcements,
 };

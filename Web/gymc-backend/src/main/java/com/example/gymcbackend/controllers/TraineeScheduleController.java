@@ -2,6 +2,8 @@ package com.example.gymcbackend.controllers;
 
 import com.example.gymcbackend.dto.*;
 import com.example.gymcbackend.entities.Appointment;
+import com.example.gymcbackend.entities.DietPlan;
+import com.example.gymcbackend.entities.TimeSlot;
 import com.example.gymcbackend.services.TraineeViewScheduleService;
 import com.example.gymcbackend.services.AddWorkoutService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +26,6 @@ public class TraineeScheduleController {
 
     // --------------------View section---------------------
 
-    //view appointment details of trainee user
-
     // View Trainee Current workout schedule,on trainee row click view more
     @GetMapping("/getTraineeSchedule/{traineeId}")
     public List<TraineeViewScheduleDetailsResponse> getTraineeSchedule(@PathVariable String traineeId) {
@@ -33,9 +33,7 @@ public class TraineeScheduleController {
         return traineeViewScheduleService.getTraineeSchedule(traineeId);
     }
 
-
-
-    //View trainee workout exerciese on date click,pass date on url
+    // View trainee workout exerciese on date click,pass date on url
     @GetMapping("/getTraineeWorkout/{date}/{traineeId}")
     public List<TraineeViewWorkoutDateResponse> getTraineeWorkoutDate(@PathVariable String date,
             @PathVariable String traineeId) {
@@ -46,18 +44,19 @@ public class TraineeScheduleController {
         System.out.println(result);
         return traineeViewScheduleService.getTraineeDateWorkoutPlan(date1, result);
     }
-//    view workout body measures(for update workout)
-@GetMapping("/getBodyFactors/{date}/{traineeId}")
-public BodyFactorsResponse getBodyFactors(@PathVariable String date,@PathVariable Long traineeId){
-//       Date date1= java.sql.Date.valueOf(date);
-    LocalDate date1 = LocalDate.parse(date);
-    System.out.println("getTraineeDateOnclick");
-    return traineeViewScheduleService.getWorkoutPlanBodyFactors(date1,traineeId);
-}
+
+    // view workout body measures(for update workout)
+    @GetMapping("/getBodyFactors/{date}/{traineeId}")
+    public BodyFactorsResponse getBodyFactors(@PathVariable String date, @PathVariable Long traineeId) {
+        // Date date1= java.sql.Date.valueOf(date);
+        LocalDate date1 = LocalDate.parse(date);
+        System.out.println("getTraineeDateOnclick");
+        return traineeViewScheduleService.getWorkoutPlanBodyFactors(date1, traineeId);
+    }
 
     // View trainee diet on date click,pass date on url
     @GetMapping("/getTraineeDiet/{date}/{traineeId}")
-    public List<DietPlanResponse> getTraineeDietDate(@PathVariable String date, @PathVariable String traineeId) {
+    public DietPlan getTraineeDietDate(@PathVariable String date, @PathVariable String traineeId) {
         LocalDate traineeDate = LocalDate.parse(date);
 
         String traineeID = traineeId.substring(4);
@@ -65,20 +64,12 @@ public BodyFactorsResponse getBodyFactors(@PathVariable String date,@PathVariabl
 
         return traineeViewScheduleService.getTraineeDateDietPlan(traineeDate, result);
     }
-    
-    @GetMapping("/getTraineeProgress/{traineeId}")
-    public List<TraineeProgressResponse> getTraineeProgress(@PathVariable String traineeId){
-        String traineeID = traineeId.substring(4);
-        Long result = Long.parseLong(String.valueOf(traineeID));
-        return traineeViewScheduleService.getTraineeProgressServ(result);
-    }
 
     // --------------------Add section---------------------
 
-    // Add trainee body measures and health condition, workout type for schedule
+    // Add trainee body measures and health condition, workout type
     @PostMapping("/addWorkoutSchedule/{traineeId}")
-    public Long addWorkoutSchedule(@RequestBody WorkoutPlanSchedule workoutPlanSchedule, @PathVariable String traineeId) {
-        System.out.println("AW1");
+    public Long addWorkoutSchedule(@RequestBody WorkoutPlanSchedule workoutPlanSchedule, @PathVariable Long traineeId) {
         return addWorkoutService.addWorkoutSchedule(workoutPlanSchedule, traineeId);
         // pass trainee id in dto
     }
@@ -90,17 +81,17 @@ public BodyFactorsResponse getBodyFactors(@PathVariable String date,@PathVariabl
     }
 
     // method to check availabilty
-    @GetMapping("/availabilityDate/{date}/{StaffId}")
-    public TimeSlotResponse getAvailability(@PathVariable String date,@PathVariable Long StaffId) {
+    @GetMapping("/availabilityDate/{date}")
+    public TimeSlot getAvailability(@PathVariable String date) {
         LocalDate date1 = LocalDate.parse(date);
-        return traineeViewScheduleService.getDate(date1,StaffId);
+        return traineeViewScheduleService.getDate(date1);
     }
 
-
-     @PostMapping("/addAppointment")
-     public String addAppointment(@RequestBody Appointment appointment){
-     return addWorkoutService.addAppoint(appointment);
-     }
+    // @PostMapping("/addReservation/{traineeId}")
+    // public String addReservation(@RequestBody WorkoutReservation
+    // workoutReservation, @PathVariable Long traineeId){
+    // return addWorkoutService.addReservation(workoutReservation);
+    // }
 
     @PostMapping("/addReservation/{carbs}/{fat}/{protein}")
     public String addReservation(@RequestBody WorkoutReservation workoutReservation, @PathVariable Integer carbs,
@@ -108,28 +99,27 @@ public BodyFactorsResponse getBodyFactors(@PathVariable String date,@PathVariabl
         return addWorkoutService.addReservation(workoutReservation, carbs, fat, protein);
     }
 
-    //meka hadanna add appointment in mobile app
-//    @PostMapping("/addAppointment/{carbs}/{fat}/{protein}")
-//    public String addAppointment(@PathVariable ) {
-//        return addWorkoutService.addAppointmentmobile();
-//    }
-
     // --------------------Update section---------------------
 
     @GetMapping("/isExistAWorkout/{traineeId}/{date}")
-    public long getUserById(@PathVariable String traineeId, @PathVariable String date){
+    public long getUserById(@PathVariable String traineeId, @PathVariable String date) {
         LocalDate dateNew = LocalDate.parse(date);
         return traineeViewScheduleService.isExistAWorkout(traineeId, dateNew);
     }
 
-     @PutMapping("/updateBodyFactors/")
-     public String updateBodyFactors (@RequestBody BodyFactorsResponse newBodyFactors,@PathVariable Long workoutPlanId){
-     return addWorkoutService.updateFactors(workoutPlanId,newBodyFactors);
-     }
+    @PutMapping("/updateBodyFactors/")
+    public String updateBodyFactors(@RequestBody BodyFactorsResponse newBodyFactors, @PathVariable Long workoutPlanId) {
+        return addWorkoutService.updateFactors(workoutPlanId, newBodyFactors);
+    }
 
-     @PutMapping("/updateExercises/")
-     public String updateExercises (@RequestBody List<ExerciseTrainingDate> newExerciseList ,@PathVariable Long workoutPlanId){
-         return addWorkoutService.updateReps(workoutPlanId,newExerciseList);
-     }
+    @PutMapping("/updateExercises/")
+    public String updateExercises(@RequestBody List<ExerciseTrainingDate> newExerciseList,
+            @PathVariable Long workoutPlanId) {
+        return addWorkoutService.updateReps(workoutPlanId, newExerciseList);
+    }
+    // @GetMapping("/updateView/")
+    // public String getUodateView (@PathVariable ){
+    // return "string";
+    // }
 
 }

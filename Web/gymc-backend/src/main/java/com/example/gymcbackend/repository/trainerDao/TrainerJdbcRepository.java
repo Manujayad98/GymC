@@ -76,7 +76,7 @@ public class TrainerJdbcRepository {
 
         System.out.println(today);
 
-        String query ="SELECT DISTINCT\n" +
+        String query ="SELECT\n" +
                 "    CONCAT('S000', s.staff_id) AS trainer_id,\n" +
                 "    CONCAT(s.first_name, ' ', s.last_name) AS full_name\n" +
                 "FROM\n" +
@@ -90,9 +90,9 @@ public class TrainerJdbcRepository {
                 "INNER JOIN training_date AS t\n" +
                 "ON\n" +
                 "    w.workout_planid = t.workout_planid\n" +
-//                "INNER JOIN workout_schedule AS ws\n" +
-//                "ON\n" +
-//                "    ws.trainee_id = t.trainee_id\n" +
+                "INNER JOIN workout_schedule AS ws\n" +
+                "ON\n" +
+                "    ws.traniee_id = t.trainee_id\n" +
                 "    AND DATE(w.training_date) = ? ";
 
 //        namedParameters.addValue("today", today);

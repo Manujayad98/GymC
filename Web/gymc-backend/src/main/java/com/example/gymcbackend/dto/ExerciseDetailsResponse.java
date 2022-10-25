@@ -8,8 +8,6 @@ public class ExerciseDetailsResponse {
 
     private Integer noOfRepetitions = 0;
 
-
-
     public String getName() {
         return name;
     }

@@ -23,7 +23,7 @@ public class WorkoutReservation {
 
     private LocalTime endTime;
 
-//    private long workoutPlanId;
+    private long workoutPlanId;
 
     private Long traineeId;
 
@@ -53,13 +53,13 @@ public class WorkoutReservation {
         this.endTime = endTime;
     }
 
-//    public long getWorkoutPlanId() {
-//        return workoutPlanId;
-//    }
-//
-//    public void setWorkoutPlanId(long workoutPlanId) {
-//        this.workoutPlanId = workoutPlanId;
-//    }
+    public long getWorkoutPlanId() {
+        return workoutPlanId;
+    }
+
+    public void setWorkoutPlanId(long workoutPlanId) {
+        this.workoutPlanId = workoutPlanId;
+    }
 
     public Long getExerciseId() {
         return exerciseId;

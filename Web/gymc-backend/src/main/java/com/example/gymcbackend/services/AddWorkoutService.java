@@ -1,13 +1,16 @@
 package com.example.gymcbackend.services;
 
-import com.example.gymcbackend.dto.*;
-import com.example.gymcbackend.entities.Appointment;
+import com.example.gymcbackend.dto.ExerciseDetailsResponse;
+import com.example.gymcbackend.dto.WorkoutPlanSchedule;
+import com.example.gymcbackend.dto.WorkoutReservation;
 import com.example.gymcbackend.repository.ExerciseDao.ExerciseJdbcRepository;
 import com.example.gymcbackend.repository.addWorkoutDao.AddWorkoutJdbcRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Time;
 import java.time.Duration;
+import java.time.temporal.Temporal;
 import java.sql.Date;
 import java.util.List;
 import java.time.LocalTime;
@@ -22,13 +25,9 @@ public class AddWorkoutService {
     @Autowired
     ExerciseJdbcRepository exerciseJdbcRepository;
 
-    public Long addWorkoutSchedule(WorkoutPlanSchedule workoutPlanSchedule, String traineeId) {
+    public Long addWorkoutSchedule(WorkoutPlanSchedule workoutPlanSchedule, Long traineeId) {
 
-        String traineeid = traineeId.substring(4);
-
-        Long result = Long.parseLong(String.valueOf(traineeid));
-
-        Long success = traineeAddWorkoutJdbcRepository.addWorkout(workoutPlanSchedule, result);
+        Long success = traineeAddWorkoutJdbcRepository.addWorkout(workoutPlanSchedule, traineeId);
 //        return traineeaddWorkout.toString();
 
 //        WorkoutSchedule workoutSchedule=new WorkoutSchedule();
@@ -85,10 +84,10 @@ public class AddWorkoutService {
         String availabilitySuccess = traineeAddWorkoutJdbcRepository.setAvailability(startSlotNo,endSlotNo, tempStartDate);
 
         // Adding diet plan
-        String dietPlanSuccess = traineeAddWorkoutJdbcRepository.addDietPlan(tempStartDate,carbs, fat, protein,ScheduleId,traineeId);
+//        String dietPlanSuccess = traineeAddWorkoutJdbcRepository.addDietPlan(tempStartDate,carbs, fat, protein,ScheduleId,traineeId);
 
 //        Adding training workout
-        String trainingDateSuccess= traineeAddWorkoutJdbcRepository.addTrainingDate(tempStartDate,tempStartTime,tempEndTime,workoutReservation.getTrainingDateList(),ScheduleId);
+//        String trainingDateSuccess= traineeAddWorkoutJdbcRepository.addTrainingDate(workoutReservation.getWorkoutPlanId(),tempStartDate,tempStartTime,tempEndTime,workoutReservation.getTrainingDateList(),ScheduleId);
 
 
 
@@ -96,56 +95,5 @@ public class AddWorkoutService {
     }
 
 
-    public String updateFactors(Long workoutPlanId, BodyFactorsResponse updatedBodyFactors) {
-        String factorSuccess= traineeAddWorkoutJdbcRepository.updateBodyFactors(workoutPlanId,updatedBodyFactors);
-        return factorSuccess;
-    }
 
-    public String updateReps(Long workoutPlanId, List<ExerciseTrainingDate> newExerciseList) {
-        String repsSuccess= traineeAddWorkoutJdbcRepository.updateExercises(workoutPlanId,newExerciseList);
-        return repsSuccess;
-    }
-
-    public String addAppoint(Appointment appointment) {
-
-        System.out.println("trainee id:"+appointment.getTrainee().getId());
-
-        LocalTime midnight = LocalTime.parse("00:00");
-        Date tempStartDate = appointment.getDate();
-        LocalTime tempStartTime = appointment.getStartTime();
-        LocalTime tempEndTime = appointment.getEndTime();
-        Long traineeId = appointment.getTrainee().getId();
-
-//        System.out.println("trainee id:"+appointment.getTrainee().getId());
-        Long staffId= appointment.getStaffMember().getId();
-
-
-        int minutesUnit = 30;
-        //get reservation starting slot number
-
-        Duration duration1 = Duration.between( midnight, tempStartTime);
-        long startSlotNo = (duration1.toMinutes() / minutesUnit) - 11;
-        System.out.println("start slot:");
-        System.out.println(startSlotNo);
-
-        //get reservation ending slot number
-
-        Duration duration2 = Duration.between(midnight,tempEndTime);
-        long endSlotNo = (duration2.toMinutes() / minutesUnit) - 11;
-        System.out.println("end slot:");
-        System.out.println(endSlotNo);
-
-
-        String availSuccess = traineeAddWorkoutJdbcRepository.setAppointmentAvailability(tempStartDate,startSlotNo,endSlotNo);
-        String appSuccess= traineeAddWorkoutJdbcRepository.addAppointment(tempStartDate,tempStartTime,tempEndTime,staffId,traineeId);
-
-
-        return  appSuccess;
-    }
-
-
-//    public String addAppointmentmobile() {
-//
-//
-//    }
 }
