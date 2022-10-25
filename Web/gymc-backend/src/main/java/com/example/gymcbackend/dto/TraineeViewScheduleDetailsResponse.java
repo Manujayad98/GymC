@@ -17,11 +17,12 @@ public class TraineeViewScheduleDetailsResponse {
 
     private String phoneNumber;
 
+    private String emergencyNumber;
     private String address;
 
     private Date trainingDate;
 
-
+    private String dob;
     private Integer noOfRepetitions;
 
     private String eName;
@@ -94,5 +95,19 @@ public class TraineeViewScheduleDetailsResponse {
         this.eName = eName;
     }
 
+    public String getEmergencyNumber() {
+        return emergencyNumber;
+    }
 
+    public void setEmergencyNumber(String emergencyNumber) {
+        this.emergencyNumber = emergencyNumber;
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
 }

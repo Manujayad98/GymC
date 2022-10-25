@@ -38,11 +38,11 @@ public class GymcBackendApplication {
 //		UserAccount user=new UserAccount();
 //		StaffMember staffMember= new StaffMember();
 //
-//		user.setUserName("Sudam Munasinghe");
+//		user.setUserName("Sudam");
 ////		user.setMemberId(staffMemId);
 //		user.setPassword("123456789");
 //		user.setEmail("sudam123@gmail.com");
-//		user.setUserLevel("Receptionist");
+//		user.setUserLevel("Owner");
 //		user.setPassword(passwordEncoder.encode("123456789"));
 //		user.setStatus(true);
 //
@@ -55,7 +55,7 @@ public class GymcBackendApplication {
 //		staffMember.setNic("199874511111");
 //		staffMember.setPhoneNumber("0763514133");
 //		staffMember.setEmail("sudam123@gmail.com");
-//		staffMember.setStaffType(2);
+//		staffMember.setStaffType("Owner");
 ////		staffMember.setUserAccount(user);
 ////		staffMember.setId(8);
 //

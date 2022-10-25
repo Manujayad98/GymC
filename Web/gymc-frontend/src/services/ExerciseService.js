@@ -27,3 +27,16 @@ export const deleteExercise = (exerciseID) => {
         },
     });
 };
+
+// ADD NEW EXERCISE
+
+export const addNewExercise = (requestData) => {
+    return axios({
+        method: "POST",
+        url: `${USER_URL}/newExercise`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+        data: requestData,
+    });
+};

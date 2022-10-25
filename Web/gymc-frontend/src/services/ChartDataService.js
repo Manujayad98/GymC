@@ -13,3 +13,23 @@ export const getAnnualIncomeChartData = () => {
         },
     });
 };
+export const getThisMonthIncomeIncomeChartData = () => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/thisMonthIncome`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+
+export const getCardData = () => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/ownerDashboardCardData`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};

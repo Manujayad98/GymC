@@ -29,6 +29,10 @@ public class DietPlan {
     @JoinColumn(name = "workoutScheduleID")
     WorkoutSchedule workoutSchedule;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "traineeId")
+    Trainee trainee;
+
     public void setId(long id) {
         this.id = id;
     }
@@ -46,6 +50,9 @@ public class DietPlan {
         this.fats = fats;
     }
 
+    public void setTrainee(Trainee trainee) {
+        this.trainee = trainee;
+    }
 
 
     public void setWorkoutSchedule(WorkoutSchedule workoutSchedule) {
@@ -79,5 +86,10 @@ public class DietPlan {
     public Date getTrainingDate() {
         return trainingDate;
     }
+
+    public Trainee getTrainee() {
+        return trainee;
+    }
+
 
 }

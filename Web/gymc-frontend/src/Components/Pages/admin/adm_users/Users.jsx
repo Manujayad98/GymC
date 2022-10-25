@@ -262,6 +262,18 @@ export default function Trainers() {
             <div className='body-container'>
                 <HeaderO title="System Users" />
                 <div className="content-container">
+                    <form action="">
+                        <div className="filter-container">
+                            <div className="inputFields-container">
+
+                            </div>
+                            <div className="button-container">
+                                <Link to='/AaddUsers'>
+                                    <button type="button" class="btn" style={{ backgroundColor: '#3DA2FF', width: '100px' }}>Add</button>
+                                </Link>
+                            </div>
+                        </div>
+                    </form>
 
                     {/* <Table
                         rows={trainerDetails}

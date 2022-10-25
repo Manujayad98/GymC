@@ -2,18 +2,11 @@ package com.example.gymcbackend.dto;
 
 public class ExerciseDetailsResponse {
 
-    private long id;
+    private String exerciseId;
 
     private String name;
 
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+    private Integer noOfRepetitions = 0;
 
     public String getName() {
         return name;
@@ -23,6 +16,19 @@ public class ExerciseDetailsResponse {
         this.name = name;
     }
 
+    public String getExerciseId() {
+        return exerciseId;
+    }
 
+    public void setExerciseId(String exerciseId) {
+        this.exerciseId = exerciseId;
+    }
 
+    public Integer getNoOfRepetitions() {
+        return noOfRepetitions;
+    }
+
+    public void setNoOfRepetitions(Integer noOfRepetitions) {
+        this.noOfRepetitions = noOfRepetitions;
+    }
 }

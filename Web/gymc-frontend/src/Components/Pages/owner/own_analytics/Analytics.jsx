@@ -11,6 +11,7 @@ import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 
 import { getExerciseTableDetails } from "../../../../services/ExerciseService";
 import { getPaymentPlanTableDetails } from "../../../../services/PaymentService";
+import { getCardData, getAnnualIncomeChartData, getThisMonthIncomeIncomeChartData } from "../../../../services/ChartDataService";
 
 
 const Dashboard = () => {
@@ -19,11 +20,21 @@ const Dashboard = () => {
     checkValidate();
     getExercises();
     getPaymentPlans();
-
+    getCardDetails();
+    getAnnualIncome();
+    getThisMonthIncome();
   }, []);
+
+  const [cardData, setCardData] = useState([]);
+  const [cardDataObj, setCardDataObj] = useState([]);
 
   const [exercices, setExercises] = useState([]);
   const [paymentPlans, setPaymentPlans] = useState([]);
+  const [annualIncome, setAnnualIncome] = useState({});
+  const annualIncomeObj = [["Month", "Income"]];
+
+  const [thisMonthIncome, setThisMonthIncome] = useState({});
+  const thisMonthIncomeObj = [["Date", "Income"]];
 
   const checkValidate = async () => {
     const y = localStorage.getItem("USER_KEY");
@@ -32,23 +43,86 @@ const Dashboard = () => {
     }
   };
 
+  const getCardDetails = async () => {
+    const res = await getCardData();
+    console.log(res.data);
+    setCardData(
+      [res.data]
+    );
+  };
+  console.log(cardData);
+  const getAnnualIncome = async () => {
+    const res = await getAnnualIncomeChartData();
+    console.log(res.data);
+    setAnnualIncome(
+      [...res.data]
+    );
+  };
+
+  const getThisMonthIncome = async () => {
+    const res = await getThisMonthIncomeIncomeChartData();
+    console.log(res.data);
+    setThisMonthIncome(
+      [...res.data]
+    );
+  };
+
+  const rows1 = Object.values(annualIncome).map(
+    (value) => (
+      annualIncomeObj.push(
+        [
+          value.month,
+          value.totalIncome
+        ]
+      )
+    )
+  )
+
+  const rows2 = Object.values(thisMonthIncome).map(
+    (value) => (
+      thisMonthIncomeObj.push(
+        [
+          value.dateN,
+          value.totalIncome
+        ]
+      )
+    )
+  )
+
+  // const rows3 = Object.values(cardData).map(
+  //   (value) => (
+  //     cardDataObj.push(
+  //       [
+  //         value.no_of_trainers,
+  //         value.total_income,
+  //         value.no_of_appointments,
+  //         value.no_of_workouts
+  //       ]
+  //     )
+  //   )
+  // )
+
+
   const getExercises = async () => {
     const res = await getExerciseTableDetails();
     console.log(res.data);
     setExercises(
-        [...res.data]
+      [...res.data]
     );
     console.log(exercices);
-};
+  };
 
-const getPaymentPlans = async () => {
-  const res = await getPaymentPlanTableDetails();
-  console.log(res.data);
-  setPaymentPlans(
+  const getPaymentPlans = async () => {
+    const res = await getPaymentPlanTableDetails();
+    console.log(res.data);
+    setPaymentPlans(
       [...res.data]
-  );
-  console.log(paymentPlans);
-};
+    );
+    console.log(paymentPlans);
+  };
+
+
+  console.log(cardData);
 
   //ANNUAL INCOME CHART
   const Annualdata = [
@@ -99,7 +173,7 @@ const getPaymentPlans = async () => {
     <div className='main-container'>
       <SidebarO />
       <div className='body-container'>
-        <HeaderO title="Analytics" />
+        <HeaderO title="Summary" />
         <div className="content-container">
           <Tabs
             defaultActiveKey="home"
@@ -107,42 +181,54 @@ const getPaymentPlans = async () => {
             className="mb-3">
 
             <Tab eventKey="home" title="Gym Progress" >
+              {cardData.map((cardData) => (
 
-              <div className='own-analytics-card-container'>
+                <div className='own-analytics-card-container'>
 
-                <div className='own-analytics-card1 analytics-cards'>
+                  <div className='own-analytics-card1 analytics-cards'>
 
-                  <div className='own-analytics-card-content'>
-                    <div className='staffID'>No of Trainers</div>
-                    <div className='staffName'>5</div>
+                    <div className='own-analytics-card-content'>
+                      <div className='staffID'>No of Trainers</div>
+                      <div className='staffName'>{cardData.no_of_trainers}</div>
+                    </div>
+
                   </div>
 
-                </div>
-               
-                <div className='own-analytics-card1 analytics-cards'>
+                  <div className='own-analytics-card1 analytics-cards'>
 
-                  <div className='own-analytics-card-content'>
-                    <div className='staffID'>No of Excercises</div>
-                    <div className='staffName'>5</div>
+                    <div className='own-analytics-card-content'>
+                      <div className='staffID'>Total Income</div>
+                      <div className='staffName'>LKR {cardData.total_income}</div>
+                    </div>
+
+                  </div>
+                  <div className='own-analytics-card1 analytics-cards'>
+
+                    <div className='own-analytics-card-content'>
+                      <div className='staffID'>No of Appointments</div>
+                      <div className='staffName'>{cardData.no_of_appointments}</div>
+                    </div>
+
+                  </div>
+                  <div className='own-analytics-card1 analytics-cards'>
+
+                    <div className='own-analytics-card-content'>
+                      <div className='staffID'>No of Workouts</div>
+                      <div className='staffName'>{cardData.no_of_workouts}</div>
+                    </div>
+
                   </div>
 
-                </div>
-                <div className='own-analytics-card1 analytics-cards'>
-
-                  <div className='own-analytics-card-content'>
-                    <div className='staffID'>No of Equipments</div>
-                    <div className='staffName'>5</div>
-                  </div>
 
                 </div>
-              </div>
+              ))}
               <div className='own-analytics-chart-table-container'>
 
                 <div className='own-analytics-chart-container'>
                   <div className='own-analytics-container-head'>Annual Income</div>
                   <div className='own-analytics-card '>
                     {/* <BarChart data={ChartData} /> */}
-                    <Chart chartType="ColumnChart" width="90%" height="400px" data={Annualdata} />
+                    <Chart chartType="ColumnChart" width="90%" height="400px" data={annualIncomeObj} />
                   </div>
                 </div>
 
@@ -150,7 +236,19 @@ const getPaymentPlans = async () => {
                   <div className='own-analytics-container-head'>This Month's Income</div>
                   <div className='own-analytics-card '>
                     {/* <BarChart data={ChartData} /> */}
-                    <Chart chartType="ColumnChart" width="100%" height="400px" data={Monthlydata} />
+                    <Chart
+                      chartType="LineChart"
+                      width="100%"
+                      height="400px"
+                      data={thisMonthIncomeObj}
+                    // options={
+                    //   hAxis = {
+                    //     direction: -1,
+                    //     slantedText: true, /* Enable slantedText for horizontal axis */
+                    //     slantedTextAngle: 90 /* Define slant Angle */
+                    //   }
+                    // }
+                    />
                   </div>
                 </div>
               </div>
@@ -159,27 +257,27 @@ const getPaymentPlans = async () => {
                 <div className='own-analytics-table-container'>
                   <div className='own-analytics-container-head'>Available Excercises</div>
                   <div className='own-analytics-card1'>
-                    
+
                     <MaterialTable
-                                title="Exercices"
-                                columns={[
-                                    { title: "Exercise ID", field: "exercise_id" },
-                                    { title: "Exercise Name", field: "exercise_name" },
-                                    { title: "Primary Muscle", field: "primary_muscle" },
-                                    { title: "Secondary Muscle", field: "secondary_muscle" },
-                                ]}
-                                icons={TableIcons}
-                                data={exercices}
-                                options={{
-                                    pageSize: 3,
-                                    pageSizeOptions: [6, 12, 15],
-                                    headerStyle: {
-                                        backgroundColor: '#1F0106',
-                                        color: '#FFF',
-                                        hover: '#FFF'
-                                    }
-                                }}
-                            />
+                      title="Exercices"
+                      columns={[
+                        { title: "Exercise ID", field: "exercise_id" },
+                        { title: "Exercise Name", field: "exercise_name" },
+                        { title: "Primary Muscle", field: "primary_muscle" },
+                        { title: "Secondary Muscle", field: "secondary_muscle" },
+                      ]}
+                      icons={TableIcons}
+                      data={exercices}
+                      options={{
+                        pageSize: 3,
+                        pageSizeOptions: [6, 12, 15],
+                        headerStyle: {
+                          backgroundColor: '#1F0106',
+                          color: '#FFF',
+                          hover: '#FFF'
+                        }
+                      }}
+                    />
 
                   </div>
                 </div>
@@ -187,26 +285,26 @@ const getPaymentPlans = async () => {
                 <div className='own-analytics-table-container'>
                   <div className='own-analytics-container-head'>Available Payment Plans</div>
                   <div className='own-analytics-card1'>
-                    
-                  <MaterialTable
-                                title="Payment Plans"
-                                columns={[
-                                    { title: "Payment ID", field: "plan_id" },
-                                    { title: "Payment Type", field: "type" },
-                                    { title: "Price", field: "amount" },
-                                ]}
-                                icons={TableIcons}
-                                data={paymentPlans}
-                                options={{
-                                    pageSize: 3,
-                                    pageSizeOptions: [6, 12, 15],
-                                    headerStyle: {
-                                        backgroundColor: '#1F0106',
-                                        color: '#FFF',
-                                        hover: '#FFF'
-                                    }
-                                }}
-                            />
+
+                    <MaterialTable
+                      title="Payment Plans"
+                      columns={[
+                        { title: "Payment ID", field: "plan_id" },
+                        { title: "Payment Type", field: "type" },
+                        { title: "Price", field: "amount" },
+                      ]}
+                      icons={TableIcons}
+                      data={paymentPlans}
+                      options={{
+                        pageSize: 3,
+                        pageSizeOptions: [6, 12, 15],
+                        headerStyle: {
+                          backgroundColor: '#1F0106',
+                          color: '#FFF',
+                          hover: '#FFF'
+                        }
+                      }}
+                    />
                   </div>
                 </div>
               </div>

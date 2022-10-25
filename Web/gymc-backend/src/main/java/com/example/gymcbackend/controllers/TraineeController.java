@@ -1,5 +1,7 @@
 package com.example.gymcbackend.controllers;
 
+import com.example.gymcbackend.dto.TodayAvailableTrainees;
+import com.example.gymcbackend.dto.TodayAvailableTrainers;
 import com.example.gymcbackend.dto.TraineeInfo;
 import com.example.gymcbackend.services.TraineeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +23,10 @@ public class TraineeController {
     @GetMapping("/getTrainees")
     public List<TraineeInfo> getAllTrainees(){
         return traineeService.getAllTrainees();
+    }
+
+    @GetMapping("/todayAvailableTrainees")
+    public List<TodayAvailableTrainees> getTodayAvailableTrainees(){
+        return traineeService.getTodayAvailableTrainees();
     }
 }

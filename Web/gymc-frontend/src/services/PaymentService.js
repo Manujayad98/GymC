@@ -28,3 +28,67 @@ export const deletePaymentPlan = (planID) => {
     });
 };
 
+// ADD PAYMENT PLAN
+
+export const addPaymentPlan = (requestData) => {
+    return axios({
+        method: "POST",
+        url: `${USER_URL}/newPaymentPlan`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+        data: requestData,
+    });
+};
+
+//RECEPTIONIST TRANSACTIONS TABLE
+
+export const getTransactionDetails = () => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/transactions`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+//RECEPTIONIST TRANSACTIONS TOTAL PAYMENTS
+
+export const getTotalPayments = () => {
+    
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/cards`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+//RECEPTIONIST TRANSACTIONS TOTAL CASH PAYMENTS
+
+export const getTotalCashPayments = () => {
+    
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/cash`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+//RECEPTIONIST TRANSACTIONS TOTAL ONLINE PAYMENTS
+
+export const getTotalOnlinePayments = () => {
+    
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/online`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+

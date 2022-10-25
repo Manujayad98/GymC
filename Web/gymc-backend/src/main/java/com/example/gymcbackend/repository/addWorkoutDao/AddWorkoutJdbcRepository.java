@@ -1,16 +1,18 @@
 package com.example.gymcbackend.repository.addWorkoutDao;
 
+import com.example.gymcbackend.dto.ExerciseTrainingDate;
 import com.example.gymcbackend.dto.WorkoutPlanSchedule;
-import com.example.gymcbackend.entities.TrainingDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Time;
-import java.util.Date;
+import java.sql.Date;
+import java.time.LocalTime;
 import java.util.List;
+
+import static java.time.LocalDate.parse;
 
 @Repository
 public class AddWorkoutJdbcRepository {
@@ -21,43 +23,18 @@ public class AddWorkoutJdbcRepository {
     JdbcTemplate jdbcTemplate;
 
     //hadanna one
-    public String addWorkout(WorkoutPlanSchedule workoutPlanSchedule,Long traineeId) {
+    public Long addWorkout(WorkoutPlanSchedule workoutPlanSchedule,Long traineeId) {
 
         WorkoutPlanSchedule workoutSchedule=new WorkoutPlanSchedule();
 
-//        workoutPlanSchedule.setDuration(workoutPlanSchedule.getDuration());
-//        workoutPlanSchedule.setStartDate(workoutPlanSchedule.getStartDate());
-//        workoutPlanSchedule.setWorkoutName(workoutPlanSchedule.getWorkoutName(
+//        LocalDate traineeStartDate = parse(workoutPlanSchedule.getStart_date());
+//        LocalDate traineeEndDate = parse(workoutPlanSchedule.getEnd_date());
+
 
         MapSqlParameterSource namedParameters =
                 new MapSqlParameterSource();
 
-        //to insert a workout schedule
-
-        String query0="INSERT INTO workout_schedule (status,workout_type,staff_id,trainee_id) " +
-                "values(0,:workout_name,:workout_type,:staff_id,:trainee_id) ";
-
-        int rowsAffected0 = jdbc.update(query0 , namedParameters);
-
-        System.out.println("q1");
-
-        //to get the above latest row of above entered trainee
-
-        String query1="SELECT workout_schedule.workout_scheduleid FROM workout_schedule WHERE trainee_id=1 " +
-                "ORDER BY workout_scheduleid DESC LIMIT 1";
-
-
-        Long schedule_id= jdbcTemplate.queryForObject(query1, new Object[] { workoutSchedule }, Long.class);
-
-
-
-
-        String query2 = "INSERT INTO workout_plan " +
-                "(workout_scheduleid,height,weight,biceps,chest,hips,thighs,forearms) " +
-                "values (:schedule_id,:height, :weight, :biceps,:chest, :hips,:thighs,:forearms )";
-
-        //execute karanna one
-
+        namedParameters.addValue("traineeId", traineeId);
         namedParameters.addValue("height", workoutPlanSchedule.getHeight());
         namedParameters.addValue("weight", workoutPlanSchedule.getWeight());
         namedParameters.addValue("biceps", workoutPlanSchedule.getBiceps());
@@ -65,25 +42,53 @@ public class AddWorkoutJdbcRepository {
         namedParameters.addValue("thighs", workoutPlanSchedule.getThighs());
         namedParameters.addValue("forearms", workoutPlanSchedule.getForearms());
         namedParameters.addValue("chest", workoutPlanSchedule.getChest());
-//        namedParameters.addValue("workout_name", workoutPlanSchedule.getWorkoutName());
-        namedParameters.addValue("trainee_id", workoutPlanSchedule.getTrainerId());
+        namedParameters.addValue("workout_name", workoutPlanSchedule.getWorkoutName());
+//        namedParameters.addValue("trainee_id", workoutPlanSchedule.getTrainerId());
         namedParameters.addValue("workout_type", workoutPlanSchedule.getWorkoutType());
+        namedParameters.addValue("staff_id", workoutPlanSchedule.getStaff_id());
+//        namedParameters.addValue("start_date",traineeStartDate );
+//        namedParameters.addValue("end_date",traineeEndDate );
+        namedParameters.addValue("start_date", workoutPlanSchedule.getStart_date());
+        namedParameters.addValue("end_date", workoutPlanSchedule.getEnd_date());
 
-//        namedParameters.addValue("startDate", workoutPlanSchedule.getStart_date());
-//        namedParameters.addValue("endDate", workoutPlanSchedule.getEnd_date());
-
-
-
-
-        int rowsAffected4 = jdbc.update(query2 , namedParameters);
-        if(rowsAffected4==1){
+        //to insert a workout schedule
 
 
-            return "added";
-        };
-            return "failed";
-//        List<TraineeAddWorkoutDetailsResponse> traineeAddWorkout = jdbc.query(query, new BeanPropertyRowMapper<TraineeAddWorkoutDetailsResponse>(TraineeAddWorkoutDetailsResponse.class));
-//
+        String query0="INSERT INTO workout_schedule (status,workout_name,workout_type,staff_id,trainee_id,start_date,end_date) " +
+                "values(0,:workout_name,:workout_type,:staff_id,:traineeId,:start_date,:end_date) ";
+
+        int rowsAffected0 = jdbc.update(query0 , namedParameters);
+
+        System.out.println(workoutPlanSchedule.getStart_date());
+
+        //to get the above latest row of above entered trainee
+//        MapSqlParameterSource namedParameters1 =
+//                new MapSqlParameterSource();
+//        namedParameters1.addValue("traineeId1", traineeId);
+////        namedParameters.addValue("traineeId", traineeId);
+
+        String query1="SELECT workout_scheduleid FROM workout_schedule " +
+                "WHERE trainee_id=? " +
+                "ORDER BY workout_scheduleid DESC LIMIT 1";
+
+
+        Long schedule_id= jdbcTemplate.queryForObject(query1, new Object[] { traineeId }, Long.class);
+        System.out.println(schedule_id);
+
+        //add workout plan for starting date
+        namedParameters.addValue("schedule_id", schedule_id);
+
+        String query2 = "INSERT INTO workout_plan " +
+                "(workout_scheduleid,height,weight,biceps,chest,hips,thighs,forearms) " +
+                "values (:schedule_id,:height, :weight, :biceps,:chest, :hips,:thighs,:forearms )";
+
+        int rowsAffected2 = jdbc.update(query2 , namedParameters);
+
+        if(rowsAffected2==1 && rowsAffected0==1){
+            return schedule_id;
+        }
+
+        return schedule_id;
     }
 //    public String addTrainingDate(List<WorkoutReservation> workoutReservations){
 //
@@ -116,18 +121,20 @@ public class AddWorkoutJdbcRepository {
 //    }
 
 
-    public String addDietPlan(Integer carbohydrate, Integer fat, Integer protein) {
+    public String addDietPlan(Date trainingDate, Integer carbohydrate, Integer fat, Integer protein, long workoutScheduleId, Long traineeId) {
 
-        System.out.println(carbohydrate);
-        MapSqlParameterSource namedParameters =
-                new MapSqlParameterSource();
+        System.out.println("inside diet plan"+carbohydrate);
+        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+        namedParameters.addValue("trainingDate", trainingDate);
         namedParameters.addValue("carbohydrate", carbohydrate);
         namedParameters.addValue("fat", fat);
         namedParameters.addValue("protein", protein);
+        namedParameters.addValue("workoutScheduleId", workoutScheduleId);
+        namedParameters.addValue("traineeId", traineeId);
 
         String query = "INSERT INTO diet_plan " +
-                "(carbohydrate,fats,proteins) " +
-                "values (:carbohydrate,:fat,:protein )";
+                "(training_date,carbohydrate,fats,proteins,workout_scheduleid,trainee_id) " +
+                "values (:trainingDate,:carbohydrate,:fat,:protein,:workoutScheduleId,:traineeId )";
         int rowsAffected = jdbc.update(query , namedParameters);
         if(rowsAffected==1){
             return "diet plan added";
@@ -138,42 +145,68 @@ public class AddWorkoutJdbcRepository {
 
     //default value for workout plan id
 
-    public String addTrainingDate(long workoutPlanId, Date trainingDate, Time startTime, Time endTime, List<TrainingDate> trainingDateList) {
+    public String addTrainingDate(long workoutPlanId, Date trainingDate, LocalTime startTime, LocalTime endTime, List<ExerciseTrainingDate> trainingDateList, Long scheduleId) {
                 MapSqlParameterSource namedParameters =
                 new MapSqlParameterSource();
 
 
-        namedParameters.addValue("training_date",trainingDate );
+        namedParameters.addValue("trainingDate",trainingDate );
+        namedParameters.addValue("workoutPlanId",workoutPlanId );
+        namedParameters.addValue("scheduleId",scheduleId );
 //        namedParameters.addValue("exercise_id",exerciseId);
 //        namedParameters.addValue("no_of_repetitions",no_of_repetitions);
-        namedParameters.addValue("start_time",startTime);
-        namedParameters.addValue("end_time",endTime );
-        namedParameters.addValue("end_time",endTime );
+        namedParameters.addValue("startTime",startTime);
+        namedParameters.addValue("endTime",endTime );
 
 
-//        String query1 = "INSERT INTO workout_plan " +
-//                "(exercise_id,training_date,workout_planid,trainee_id,start_time,end_time) " +
-//                "values (1,:training_date,1,1, :start_time,:end_time )";
-
-        String query1 = "UPDATE workout_plan SET training_date=:trainingDate,start_time:startTime,end_time=:endTime WHERE workout_planid=:workoutPlanId ";
-        int rowsAffected1 = jdbc.update(query1 , namedParameters);
-
-        String query2 = "INSERT INTO training_date " +
-                "(exercise_id,workout_planid,no_of_repetitions) " +
-                "values (:exerciseId,:workotPlanId,:no_of_repetitions)";
-
-        int rowsAffected2 = jdbc.update(query2 , namedParameters);
+        String query="SELECT COUNT(workout_planid) FROM workout_plan WHERE workout_planid=?  ";
+        int count = jdbcTemplate.queryForObject(query, new Object[] {workoutPlanId }, Integer.class);
 
 
-        //availability setting part
+        int rowsAffected1=0;int rowsAffected0=0;
+        Long insertedWorkoutPlanId;
+        if(count==0){
+            //if no row exists
+            String query0 = "INSERT INTO workout_plan " +
+                    "(training_date,start_time,end_time,workout_scheduleid) " +
+                    "values (:trainingDate,:startTime,:endTime,:scheduleId )";
+            rowsAffected0 = jdbc.update(query0 , namedParameters);
 
-        if(rowsAffected1==1){
-            String query3 = "INSERT INTO training_date " +
-                    "(exercise_id,training_date,workout_planid,no_of_repetitions,start_time,end_time) " +
-                    "values (:exerciseId,:training_date,:workoutPlanId,:no_of_repetitions,1, :start_time,:end_time )";
+            //get the inserted row's workout plan id
+            String query2="SELECT workout_planid FROM workout_plan WHERE workout_scheduleid=? AND training_date=?  ";
+            insertedWorkoutPlanId = jdbcTemplate.queryForObject(query2, new Object[] {scheduleId,trainingDate }, Long.class);
+
+        }else{
+            //if row exists
+            String query1 = "UPDATE workout_plan SET training_date=:trainingDate,start_time=:startTime,end_time=:endTime WHERE workout_planid=:workoutPlanId ";
+            rowsAffected1 = jdbc.update(query1 , namedParameters);
+            insertedWorkoutPlanId = workoutPlanId;
+        }
+
+        namedParameters.addValue("insertedWorkoutPlanId",insertedWorkoutPlanId);
+        //adding training date exercise list
+        System.out.println("trainingDateList");
+        System.out.println(trainingDateList);
+
+        if(rowsAffected1==1 || rowsAffected0==1 ){
 
 
-            int rowsAffected3 = jdbc.update(query3 , namedParameters);
+            for(int i=0;i<trainingDateList.size();i++){
+
+                String traineeid = trainingDateList.get(i).getExerciseId().substring(4);
+
+                Long result = Long.parseLong(String.valueOf(traineeid));
+
+                namedParameters.addValue("insertedWorkoutPlanId",insertedWorkoutPlanId);
+                namedParameters.addValue("exerciseId",result);
+                System.out.println("Exercise id :"+result);
+                namedParameters.addValue("no_of_repetitions",trainingDateList.get(i).getNoOfRepetitions());
+                String query2 = "INSERT INTO training_date " +
+                        "(exercise_id,workout_planid,no_of_repetitions) " +
+                        "values (:exerciseId,:insertedWorkoutPlanId,:no_of_repetitions)";
+
+                int rowsAffected2 = jdbc.update(query2 , namedParameters);
+            }
 
             return "added";
         };
@@ -182,44 +215,50 @@ public class AddWorkoutJdbcRepository {
 
     }
 
-    public String setAvailability(Long startSlot,Long endSlot, Date tempStartDate) {
+    public String setAvailability(Long startSlot,Long endSlot, Date trainingDate) {
 
         MapSqlParameterSource namedParameters =
                 new MapSqlParameterSource();
 
         namedParameters.addValue("startSlot",startSlot );
         namedParameters.addValue("endSlot",endSlot );
-        namedParameters.addValue("slot_no",tempStartDate );
+        namedParameters.addValue("trainingDate",trainingDate );
 
-        String query="SELECT COUNT(date) FROM time_slot WHERE date=:tempStartDate  ";
-        int count = jdbcTemplate.queryForObject(query, new Object[] {tempStartDate }, Integer.class);
+        String query="SELECT COUNT(date) FROM time_slot WHERE date=?  ";
+        int count = jdbcTemplate.queryForObject(query, new Object[] {trainingDate }, Integer.class);
+        System.out.println("count "+count);
+        namedParameters.addValue("trainingDate",trainingDate );
 
         if(count==0){
-            for(Long i=startSlot;i<=endSlot;i++){
+            String query1 = "INSERT INTO time_slot " +
+                        "(date) " +
+                        "values (:trainingDate)";
 
-                String query1 = "INSERT INTO time_slot " +
-                        "(date,:i) " +
-                        "values (:tempStartDate,1 )";
-                int rowsAffected = jdbc.update(query1 , namedParameters);
-            }
-
-
-        }else{
+            int rowsAffected1 = jdbc.update(query1, namedParameters);
+        }
 
             for(Long i=startSlot;i<=endSlot;i++){
+
+                namedParameters.addValue("i",i );
 
                 //get current reserved count
+                namedParameters.addValue("trainingDate",trainingDate );
 
-                String query1="SELECT :i FROM time_slot WHERE date=:tempStartDate";
-                int reservedCount = jdbcTemplate.queryForObject(query, new Object[] {tempStartDate }, Integer.class);
+                String query1="SELECT `$col` FROM time_slot WHERE date=?";
+                query1 =query1.replace("$col",i.toString());
+
+                int reservedCount = jdbcTemplate.queryForObject(query1, new Object[] {trainingDate }, Integer.class);
+                System.out.println("resrv count:"+reservedCount);
                 reservedCount +=1;
 
-                String query2 = "INSERT INTO time_slot " +
-                        "(date,:i) " +
-                        "values (:tempStartDate,reservedCount )";
+                namedParameters.addValue("reservedCount",reservedCount );
+                String query2 = "UPDATE time_slot SET `$col`=:reservedCount WHERE date=:trainingDate";
+
+                query2 =query2.replace("$col",i.toString());
+                System.out.println("query2"+query2);
                 int rowsAffected = jdbc.update(query2 , namedParameters);
 
-            }
+
         }
 
 

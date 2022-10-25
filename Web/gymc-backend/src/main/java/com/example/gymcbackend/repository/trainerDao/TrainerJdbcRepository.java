@@ -1,7 +1,6 @@
 package com.example.gymcbackend.repository.trainerDao;
 
-import com.example.gymcbackend.dto.StaffUsers;
-import com.example.gymcbackend.dto.TrainerTableData;
+import com.example.gymcbackend.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -69,4 +68,45 @@ public class TrainerJdbcRepository {
         return rowAffected;
     }
 
+    public List<TodayAvailableTrainers> findTodayAvailableTrainers(String today) {
+
+//        MapSqlParameterSource namedParameters =
+//                new MapSqlParameterSource();
+
+
+        System.out.println(today);
+
+        String query ="SELECT\n" +
+                "    CONCAT('S000', s.staff_id) AS trainer_id,\n" +
+                "    CONCAT(s.first_name, ' ', s.last_name) AS full_name\n" +
+                "FROM\n" +
+                "    staff_member AS s\n" +
+//                "INNER JOIN user_account AS u\n" +
+//                "ON\n" +
+//                "    s.user_id = u.user_id\n" +
+                "INNER JOIN workout_plan AS w\n" +
+                "ON\n" +
+                "    s.staff_id = w.staff_id\n" +
+                "INNER JOIN training_date AS t\n" +
+                "ON\n" +
+                "    w.workout_planid = t.workout_planid\n" +
+                "INNER JOIN workout_schedule AS ws\n" +
+                "ON\n" +
+                "    ws.traniee_id = t.trainee_id\n" +
+                "    AND DATE(w.training_date) = ? ";
+
+//        namedParameters.addValue("today", today);
+
+        List<TodayAvailableTrainers> todayAvailableTrainersList = jdbcTemplate.query(query, new Object[] {today}, new BeanPropertyRowMapper<TodayAvailableTrainers>(TodayAvailableTrainers.class));
+        return todayAvailableTrainersList;
+    }
+
+
+
+    public List<TodayWorkouts> findTodayWorkouts(String today) {
+        String query ="";
+
+        List<TodayWorkouts> todayWorkoutsList = jdbcTemplate.query(query, new Object[] {today}, new BeanPropertyRowMapper<TodayWorkouts>(TodayWorkouts.class));
+        return todayWorkoutsList;
+    }
 }

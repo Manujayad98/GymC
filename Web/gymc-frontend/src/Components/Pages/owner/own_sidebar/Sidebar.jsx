@@ -66,7 +66,7 @@ const Sidebar = ({ children }) => {
         },
         {
             path: "/Oanalytics",
-            name: "Analytics",
+            name: "Summary",
             icon: <FaRegChartBar />
         }, {
             path: "/",
