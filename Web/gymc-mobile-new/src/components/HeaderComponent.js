@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {
   View,
   Text,
@@ -16,8 +16,7 @@ import { icons, SIZES, COLORS } from "../constans";
 // import { useDispatch } from 'react-redux';
 // import * as Notifications from 'expo-notifications';
 // import Constants from 'expo-constants';
-// import storage from "@react-native-async-storage/async-storage";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import storage from "@react-native-async-storage/async-storage";
 
 // Notifications.setNotificationHandler({
 //   handleNotification: async () => ({
@@ -30,62 +29,61 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const Header = (props) => {
   const [logout, setlogout] = useState(COLORS.black);
   const navigation = useNavigation();
-  //   const dispatch = useDispatch();
+//   const dispatch = useDispatch();
 
   const [notification, setNotification] = useState(false);
   const notificationListener = useRef();
   const responseListener = useRef();
 
-  //   useEffect(() => {
-  //     const getPermission = async () => {
-  //       if (Constants.isDevice) {
-  //           const { status: existingStatus } = await Notifications.getPermissionsAsync();
-  //           let finalStatus = existingStatus;
-  //           if (existingStatus !== 'granted') {
-  //             const { status } = await Notifications.requestPermissionsAsync();
-  //             finalStatus = status;
-  //           }
-  //           if (finalStatus !== 'granted') {
-  //             alert('Enable push notifications to use the app!');
-  //             await storage.setItem('expopushtoken', "");
-  //             return;
-  //           }
-  //           const token = (await Notifications.getExpoPushTokenAsync()).data;
-  //           await storage.setItem('expopushtoken', token);
-  //       } else {
-  //         alert('Must use physical device for Push Notifications');
-  //       }
+//   useEffect(() => {
+//     const getPermission = async () => {
+//       if (Constants.isDevice) {
+//           const { status: existingStatus } = await Notifications.getPermissionsAsync();
+//           let finalStatus = existingStatus;
+//           if (existingStatus !== 'granted') {
+//             const { status } = await Notifications.requestPermissionsAsync();
+//             finalStatus = status;
+//           }
+//           if (finalStatus !== 'granted') {
+//             alert('Enable push notifications to use the app!');
+//             await storage.setItem('expopushtoken', "");
+//             return;
+//           }
+//           const token = (await Notifications.getExpoPushTokenAsync()).data;
+//           await storage.setItem('expopushtoken', token);
+//       } else {
+//         alert('Must use physical device for Push Notifications');
+//       }
 
-  //         if (Platform.OS === 'android') {
-  //           Notifications.setNotificationChannelAsync('default', {
-  //             name: 'default',
-  //             importance: Notifications.AndroidImportance.MAX,
-  //             vibrationPattern: [0, 250, 250, 250],
-  //             lightColor: '#FF231F7C',
-  //           });
-  //         }
-  //     }
+//         if (Platform.OS === 'android') {
+//           Notifications.setNotificationChannelAsync('default', {
+//             name: 'default',
+//             importance: Notifications.AndroidImportance.MAX,
+//             vibrationPattern: [0, 250, 250, 250],
+//             lightColor: '#FF231F7C',
+//           });
+//         }
+//     }
 
-  //     getPermission();
+//     getPermission();
 
-  //     notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
-  //       setNotification(notification);
-  //     });
+//     notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
+//       setNotification(notification);
+//     });
 
-  //     responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {});
+//     responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {});
 
-  //     afterLoginNotification();
-  //     return () => {
-  //       Notifications.removeNotificationSubscription(notificationListener.current);
-  //       Notifications.removeNotificationSubscription(responseListener.current);
-  //     };
+//     afterLoginNotification();
+//     return () => {
+//       Notifications.removeNotificationSubscription(notificationListener.current);
+//       Notifications.removeNotificationSubscription(responseListener.current);
+//     };
+    
+//   }, []);
 
-  //   }, []);
-
-  const signOut = async () => {
+  const signOut = () => {
     // setlogout(COLORS.primary);
     // dispatch(Logout());
-    await AsyncStorage.removeItem("userToken");
     navigation.navigate("Login");
   };
 
@@ -93,31 +91,31 @@ const Header = (props) => {
     console.log("Notification press");
   }
 
-  //   const pressNotification = async () => {
-  //     await Notifications.scheduleNotificationAsync({
-  //       content: {
-  //         title: "Check New Post",
-  //         body: "Check newly addedd post...",
-  //         data: { data: "data goes here" }
-  //       },
-  //       trigger: {
-  //         seconds: 2
-  //       }
-  //     });
-  //   };
+//   const pressNotification = async () => {
+//     await Notifications.scheduleNotificationAsync({
+//       content: {
+//         title: "Check New Post",
+//         body: "Check newly addedd post...",
+//         data: { data: "data goes here" }
+//       },
+//       trigger: {
+//         seconds: 2
+//       }
+//     });
+//   };
 
-  //   const afterLoginNotification = async () => {
-  //     await Notifications.scheduleNotificationAsync({
-  //       content: {
-  //         title: "Login",
-  //         body: "Successfully login to the system",
-  //         data: { data: "data goes here" }
-  //       },
-  //       trigger: {
-  //         seconds: 2
-  //       }
-  //     });
-  //   };
+//   const afterLoginNotification = async () => {
+//     await Notifications.scheduleNotificationAsync({
+//       content: {
+//         title: "Login",
+//         body: "Successfully login to the system",
+//         data: { data: "data goes here" }
+//       },
+//       trigger: {
+//         seconds: 2
+//       }
+//     });
+//   };
 
   return (
     <View

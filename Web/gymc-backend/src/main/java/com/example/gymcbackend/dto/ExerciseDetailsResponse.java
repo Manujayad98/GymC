@@ -2,23 +2,17 @@ package com.example.gymcbackend.dto;
 
 public class ExerciseDetailsResponse {
 
-    private String exerciseid;
+    private long id;
 
     private String name;
 
-    private Integer repCount = 0;
 
-
-    public void setId(Long id) {
-        this.exerciseid = exerciseid;
+    public long getId() {
+        return id;
     }
 
-    public String getExerciseid() {
-        return exerciseid;
-    }
-
-    public void setExerciseid(String exerciseid) {
-        this.exerciseid = exerciseid;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -29,11 +23,6 @@ public class ExerciseDetailsResponse {
         this.name = name;
     }
 
-    public Integer getRepCount() {
-        return repCount;
-    }
 
-    public void setRepCount(Integer repCount) {
-        this.repCount = repCount;
-    }
+
 }

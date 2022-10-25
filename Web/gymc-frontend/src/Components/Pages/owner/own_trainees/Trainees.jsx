@@ -258,17 +258,17 @@ const Dashboard = () => {
                     moveToMoreView(rowData.trainee_id);
                   },
                 },
-                // {
-                //   icon: () => {
-                //     return (
+                {
+                  icon: () => {
+                    return (
 
-                //       <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Edit} alt="" height={20} width={20} /></span>
-                //     );
-                //   },
-                //   onClick: (event, rowData) => {
+                      <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Edit} alt="" height={20} width={20} /></span>
+                    );
+                  },
+                  onClick: (event, rowData) => {
 
-                //   },
-                // },
+                  },
+                },
                 {
                   icon: () => {
                     return (

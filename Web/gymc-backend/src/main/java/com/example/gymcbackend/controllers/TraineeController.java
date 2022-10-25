@@ -1,6 +1,5 @@
 package com.example.gymcbackend.controllers;
 
-import com.example.gymcbackend.dto.AnnoucementsResponse;
 import com.example.gymcbackend.dto.TodayAvailableTrainees;
 import com.example.gymcbackend.dto.TodayAvailableTrainers;
 import com.example.gymcbackend.dto.TraineeInfo;
@@ -15,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3000")
 public class TraineeController {
 
     @Autowired
@@ -29,9 +28,5 @@ public class TraineeController {
     @GetMapping("/todayAvailableTrainees")
     public List<TodayAvailableTrainees> getTodayAvailableTrainees(){
         return traineeService.getTodayAvailableTrainees();
-    }
-    @GetMapping("/annoucements")
-    public List<AnnoucementsResponse> getAnnoucements(){
-        return traineeService.getAnn();
     }
 }
