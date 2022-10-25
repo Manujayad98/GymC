@@ -132,7 +132,7 @@ function App() {
           <Route path="/OtraineeProgress" element={<TraineeProgressO />}></Route>
           <Route path="/ONewExercise" element={<NewExercise />}></Route>
           <Route path="/ONewPaymentPlan" element={<NewPaymentPlan />}></Route>
-          <Route path="/AddWorkout2/:trainerid/:scheduleid/:trainerid" component={AddWorkoutPart2O} element={<AddWorkoutPart2O />}></Route>
+          <Route path="/AddWorkout2/:traineeid/:scheduleid/:trainerid" component={AddWorkoutPart2O} element={<AddWorkoutPart2O />}></Route>
 
           {/* ADMIN ROUTES */}
           <Route path="/Aannouncements" element={<AnnouncementsA />}></Route>
