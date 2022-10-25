@@ -90,7 +90,79 @@ export default function AddWorkout2() {
         console.log(dietPlanDetails);
         evt.preventDefault();
 
-        if (!workoutDates.exercices || !workoutDates.trainingDate || !workoutDates.startTime || !workoutDates.endTime) {
+        workoutDates.trainingDate = selectedDate['trainingDate'];
+
+
+
+        switch (workoutDates.startTime) {
+            case '1': return workoutDates.startTime = "06:00:00";
+            case '2': return workoutDates.startTime = "06:30:00";
+            case '3': return workoutDates.startTime = "07:00:00";
+            case '4': return workoutDates.startTime = "07:30:00";
+            case '5': return workoutDates.startTime = "08:00:00";
+            case '6': return workoutDates.startTime = "08:30:00";
+            case '7': return workoutDates.startTime = "09:00:00";
+            case '8': return workoutDates.startTime = "09:30:00";
+            case '9': return workoutDates.startTime = "10:00:00";
+            case '10': return workoutDates.startTime = "10:30:00";
+            case '11': return workoutDates.startTime = "11:00:00";
+            case '12': return workoutDates.startTime = "11:30:00";
+            case '13': return workoutDates.startTime = "12:00:00";
+            case '14': return workoutDates.startTime = "12:30:00";
+            case '15': return workoutDates.startTime = "13:00:00";
+            case '16': return workoutDates.startTime = "13:30:00";
+            case '17': return workoutDates.startTime = "14:00:00";
+            case '18': return workoutDates.startTime = "14:30:00";
+            case '19': return workoutDates.startTime = "15:00:00";
+            case '20': return workoutDates.startTime = "15:30:00";
+            case '21': return workoutDates.startTime = "16:00:00";
+            case '22': return workoutDates.startTime = "16:30:00";
+            case '23': return workoutDates.startTime = "17:00:00";
+            case '24': return workoutDates.startTime = "17:30:00";
+            case '25': return workoutDates.startTime = "18:00:00";
+            case '26': return workoutDates.startTime = "18:30:00";
+            case '27': return workoutDates.startTime = "19:00:00";
+            case '28': return workoutDates.startTime = "19:30:00";
+            case '29': return workoutDates.startTime = "20:00:00";
+            case '30': return workoutDates.startTime = "20:30:00";
+            case '31': return workoutDates.startTime = "21:00:00";
+            case '32': return workoutDates.startTime = "21:30:00";
+        }
+        switch (workoutDates.endTime) {
+            case '1': return workoutDates.endTime = "06:30:00";
+            case '2': return workoutDates.endTime = "07:00:00";
+            case '3': return workoutDates.endTime = "07:30:00";
+            case '4': return workoutDates.endTime = "08:00:00";
+            case '5': return workoutDates.endTime = "08:30:00";
+            case '6': return workoutDates.endTime = "09:00:00";
+            case '7': return workoutDates.endTime = "09:30:00";
+            case '8': return workoutDates.endTime = "10:00:00";
+            case '9': return workoutDates.endTime = "10:30:00";
+            case '10': return workoutDates.endTime = "11:00:00";
+            case '12': return workoutDates.endTime = "11:30:00";
+            case '11': return workoutDates.endTime = "12:00:00";
+            case '13': return workoutDates.endTime = "12:30:00";
+            case '14': return workoutDates.endTime = "13:00:00";
+            case '15': return workoutDates.endTime = "13:30:00";
+            case '16': return workoutDates.endTime = "14:00:00";
+            case '17': return workoutDates.endTime = "14:30:00";
+            case '18': return workoutDates.endTime = "15:00:00";
+            case '19': return workoutDates.endTime = "15:30:00";
+            case '20': return workoutDates.endTime = "16:00:00";
+            case '21': return workoutDates.endTime = "16:30:00";
+            case '22': return workoutDates.endTime = "17:00:00";
+            case '23': return workoutDates.endTime = "17:30:00";
+            case '24': return workoutDates.endTime = "18:00:00";
+            case '25': return workoutDates.endTime = "18:30:00";
+            case '26': return workoutDates.endTime = "19:00:00";
+            case '27': return workoutDates.endTime = "19:30:00";
+            case '28': return workoutDates.endTime = "20:00:00";
+            case '29': return workoutDates.endTime = "20:30:00";
+            case '30': return workoutDates.endTime = "21:00:00";
+            case '31': return workoutDates.endTime = "21:30:00";
+            case '32': return workoutDates.endTime = "22:00:00";
+        }
+        if (!workoutDates.trainingDateList || !workoutDates.trainingDate || !workoutDates.startTime || !workoutDates.endTime || !dietPlanDetails.carbohydrate || !dietPlanDetails.fats || !dietPlanDetails.proteins) {
             console.log('Please fill out the form correctly');
             setClick({ click: true, })
             toast.warning('Please fill out the form correctly');
@@ -139,12 +211,10 @@ export default function AddWorkout2() {
     const [excerciseDetails, setExcerciseDetails] = useState([]);
 
     const handleDropdownStartTime = (startTime) => (value) => {
-        console.log('hi');
-        // console.log(startTime, value);
+        console.log(startTime, value);
         setWorkoutDates({ ...workoutDates, [startTime]: value });
     };
     const handleDropdownEndtTime = (endTime) => (value) => {
-        // console.log(endTime, value);
         setWorkoutDates({ ...workoutDates, [endTime]: value });
     };
 
@@ -165,17 +235,11 @@ export default function AddWorkout2() {
                         <div className="own-addworkout-right">
                             <div >
 
-                                {/* <h4 className='update-workout-form-subHeading'>Workout Dates</h4> */}
-                                {/* <hr className="add-trainer-hr" /> */}
+
                                 <div className="own-addworkout-calender" style={{ marginTop: '10px' }}>
                                     <div className="own-viewworkout-calender-card">
-                                        {/* <CalendarComp /> */}
                                         <Calendar
-                                            onChange={handleChangeDate('selectedDate')}
-                                        // data={myEvents}
-                                        // value={value}
-                                        // minDate={mindate}
-                                        // maxDate={maxdate}
+                                            onChange={handleChangeDate('trainingDate')}
                                         />
                                         {!workoutDates.trainingDate && click && <span className='text-danger'>This is required</span>}
                                     </div>
@@ -252,52 +316,72 @@ export default function AddWorkout2() {
 
                                         </div>
                                         <div className="form-col2">
-                                            <Dropdown
-                                                data={[
-                                                    { value: 1, label: '6.30 AM' },
-                                                    { value: 2, label: '7.00 AM' },
-                                                    { value: 3, label: '7.30 Am' },
-                                                    { value: 4, label: '8.00 AM' },
-                                                    { value: 5, label: '8.30 AM' },
 
-                                                    { value: 6, label: '9.00 Am' },
-                                                    { value: 7, label: '9.30 AM' },
-                                                    { value: 8, label: '10.00 AM' },
-                                                    { value: 9, label: '10.30 Am' },
-                                                    { value: 10, label: '11.00 AM' },
-                                                    { value: 11, label: '11.30 AM' },
+                                            {(showEndTimeSlots == false) ?
+                                                <Dropdown
+                                                    data={[
+                                                    ]}
+                                                    label="End Time"
+                                                    placeholder='Select'
+                                                    readonly
+                                                />
+                                                :
+                                                <div>
+                                                    <div>
+                                                        <label>End Time</label>
+                                                    </div>
+                                                    <div>
+                                                        <select
+                                                            type="text"
+                                                            onChange={handleChange}
+                                                            placeholder='Select'
+                                                            name="endTime"
+                                                            id="endTime"
+                                                            value={workoutDates.endTime}
+                                                            className="newDropDown"
+                                                        >
+                                                            {/* {(timeSlots.timeSlot['one'] <= 3) && <option value="1">6.00 AM</option>} */}
+                                                            {(timeSlots.timeSlot['two'] <= 3 && selectedStartTime < 2) ? <option value="1">6.30 AM</option> : <option value="1" disabled>6.30 AM</option>}
+                                                            {(timeSlots.timeSlot['three'] <= 3 && selectedStartTime < 3) ? <option value="2">7.00 AM</option> : <option value="2" disabled>7.00 AM</option>}
+                                                            {(timeSlots.timeSlot['four'] <= 3 && selectedStartTime < 4) ? <option value="3">7.30 AM</option> : <option value="3" disabled>7.30 AM</option>}
+                                                            {(timeSlots.timeSlot['five'] <= 3 && selectedStartTime < 5) ? <option value="4">8.00 AM</option> : <option value="4" disabled>8.00 AM</option>}
+                                                            {(timeSlots.timeSlot['six'] <= 3 && selectedStartTime < 6) ? <option value="5">8.30 AM</option> : <option value="5" disabled>8.30 AM</option>}
+                                                            {(timeSlots.timeSlot['seven'] <= 3 && selectedStartTime < 7) ? <option value="6">9.00 AM</option> : <option value="6" disabled>9.00 AM</option>}
+                                                            {(timeSlots.timeSlot['eight'] <= 3 && selectedStartTime < 8) ? <option value="7">9.30 AM</option> : <option value="7" disabled>9.30 AM</option>}
+                                                            {(timeSlots.timeSlot['nine'] <= 3 && selectedStartTime < 9) ? <option value="8">10.00 AM</option> : <option value="8" disabled>10.00 AM</option>}
+                                                            {(timeSlots.timeSlot['ten'] <= 3 && selectedStartTime < 10) ? <option value="9">10.30 AM</option> : <option value="9" disabled>10.30 AM</option>}
+                                                            {(timeSlots.timeSlot['eleven'] <= 3 && selectedStartTime < 11) ? <option value="10">11.00 AM</option> : <option value="10" disabled>11.00 AM</option>}
+                                                            {(timeSlots.timeSlot['twelve'] <= 3 && selectedStartTime < 12) ? <option value="11">11.30 AM</option> : <option value="11" disabled>11.30 AM</option>}
+                                                            {(timeSlots.timeSlot['thirteen'] <= 3 && selectedStartTime < 13) ? <option value="12">12.00 PM</option> : <option value="12" disabled>12.00 PM</option>}
+                                                            {(timeSlots.timeSlot['fourteen'] <= 3 && selectedStartTime < 14) ? <option value="13">12.30 PM</option> : <option value="13" disabled>12.30 PM</option>}
+                                                            {(timeSlots.timeSlot['fifteen'] <= 3 && selectedStartTime < 15) ? <option value="14">01.00 PM</option> : <option value="14" disabled>01.00 PM</option>}
+                                                            {(timeSlots.timeSlot['sixteen'] <= 3 && selectedStartTime < 16) ? <option value="15">01.30 PM</option> : <option value="15" disabled>01.30 PM</option>}
+                                                            {(timeSlots.timeSlot['sixteen'] <= 3 && selectedStartTime < 17) ? <option value="16">02.00 PM</option> : <option value="16" disabled>02.00 PM</option>}
+                                                            {(timeSlots.timeSlot['seventeen'] <= 3 && selectedStartTime < 18) ? <option value="17">02.30 PM</option> : <option value="17" disabled>02.30 PM</option>}
+                                                            {(timeSlots.timeSlot['eighteen'] <= 3 && selectedStartTime < 19) ? <option value="18">03.00 PM</option> : <option value="18" disabled>03.00 PM</option>}
+                                                            {(timeSlots.timeSlot['nineteen'] <= 3 && selectedStartTime < 20) ? <option value="19">03.30 PM</option> : <option value="19" disabled>03.30 PM</option>}
+                                                            {(timeSlots.timeSlot['twenty'] <= 3 && selectedStartTime < 21) ? <option value="20">04.00 PM</option> : <option value="20" disabled>04.00 PM</option>}
+                                                            {(timeSlots.timeSlot['thirtyone'] <= 3 && selectedStartTime < 22) ? <option value="21">04.30 PM</option> : <option value="21" disabled>04.30 PM</option>}
+                                                            {(timeSlots.timeSlot['thirtytwo'] <= 3 && selectedStartTime < 23) ? <option value="22">05.00 PM</option> : <option value="22" disabled>05.00 PM</option>}
+                                                            {(timeSlots.timeSlot['twentythree'] <= 3 && selectedStartTime < 24) ? <option value="23">05.30 PM</option> : <option value="23" disabled>05.30 PM</option>}
+                                                            {(timeSlots.timeSlot['twentyfour'] <= 3 && selectedStartTime < 25) ? <option value="24">06.00 PM</option> : <option value="24" disabled>06.00 PM</option>}
+                                                            {(timeSlots.timeSlot['twentyfive'] <= 3 && selectedStartTime < 26) ? <option value="25">06.30 PM</option> : <option value="25" disabled>06.30 PM</option>}
+                                                            {(timeSlots.timeSlot['twentysix'] <= 3 && selectedStartTime < 27) ? <option value="26">07.00 PM</option> : <option value="26" disabled>07.00 PM</option>}
+                                                            {(timeSlots.timeSlot['twentyseven'] <= 3 && selectedStartTime < 28) ? <option value="27">07.30 PM</option> : <option value="27" disabled>07.30 PM</option>}
+                                                            {(timeSlots.timeSlot['twentyeight'] <= 3 && selectedStartTime < 29) ? <option value="28">08.00 PM</option> : <option value="28" disabled>08.00 PM</option>}
+                                                            {(timeSlots.timeSlot['twentynine'] <= 3 && selectedStartTime < 30) ? <option value="29">08.30 PM</option> : <option value="29" disabled>08.30 PM</option>}
+                                                            {(timeSlots.timeSlot['thirty'] <= 3 && selectedStartTime < 31) ? <option value="30">09.00 PM</option> : <option value="30" disabled>09.00 PM</option>}
+                                                            {(timeSlots.timeSlot['thirtyone'] <= 3 && selectedStartTime < 32) ? <option value="31">09.30 PM</option> : <option value="31" disabled>09.30 PM</option>}
+                                                            {(timeSlots.timeSlot['thirtytwo'] <= 3 && selectedStartTime < 33) ? <option value="32">10.00 PM</option> : <option value="32" disabled>10.00 PM</option>}
 
-                                                    { value: 12, label: '12.00 PM' },
-                                                    { value: 13, label: '12.30 PM' },
-                                                    { value: 14, label: '13.00 PM' },
-                                                    { value: 15, label: '13.30 PM' },
-                                                    { value: 16, label: '14.00 PM' },
-                                                    { value: 17, label: '14.30 PM' },
+                                                        </select>
+                                                    </div>
+                                                    {!workoutDates.endTime && click && <span className='text-danger'>This Field is required</span>}
 
-                                                    { value: 18, label: '15.00 PM' },
-                                                    { value: 19, label: '15.30 PM' },
-                                                    { value: 20, label: '16.00 PM' },
-                                                    { value: 21, label: '16.30 PM' },
-                                                    { value: 22, label: '17.00 PM' },
-                                                    { value: 23, label: '17.30 AM' },
+                                                    {!workoutDates.trainingDate && workoutDates.endTime && click && <span className='text-danger'>Please select a date first</span>}
+                                                </div>
+                                            }
 
-                                                    { value: 24, label: '18.00 PM' },
-                                                    { value: 25, label: '18.30 PM' },
-                                                    { value: 26, label: '19.00 PM' },
-                                                    { value: 27, label: '19.30 PM' },
-                                                    { value: 28, label: '20.00 PM' },
-                                                    { value: 29, label: '20.30 PM' },
-
-                                                    { value: 30, label: '21.00 PM' },
-                                                    { value: 31, label: '21.30 PM' },
-                                                    { value: 32, label: '22.00 PM' },
-                                                ]}
-                                                label="End Time"
-                                                value={workoutDates.endTime}
-                                                placeholder='Select'
-                                                onChange={handleDropdownEndtTime['endTime']}
-                                            />
-                                            {!workoutDates.endTime && click && <span className='text-danger'>This Field is required</span>}
 
                                             {!workoutDates.trainingDate && workoutDates.endTime && click && <span className='text-danger'>Please select a date first</span>}
 
