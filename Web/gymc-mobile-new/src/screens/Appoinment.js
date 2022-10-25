@@ -33,7 +33,7 @@ const Appoinment = ({ navigation }) => {
     <View style={{ flex: 1, backgroundColor: '#CAF0F8' }}>
       <Appbar.Header  style={styles.top}>
       <Appbar.BackAction onPress={_goBack} />
-      <Appbar.Content title="Feedback" />
+      <Appbar.Content title="Appointment" />
       </Appbar.Header>
       <ScrollView style={styles.scrollView}>
         <Text
