@@ -46,15 +46,27 @@ export const addWorkoutDetails = (requestData) => {
     // });
 };
 
-export const addWorkoutDateExerciseDetails = (requestData) => {
-    // return axios({
-    //     method: "POST",
-    //     url: `${USER_URL}/xxxxxxx`,
-    //     headers: {
-    //         Authorization: "Bearer " + getToken(),
-    //     },
-    //     data: requestData,
-    // });
+export const getAvailableSlots = (date, staffID) => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/availabilityDate/${date}/${staffID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+
+
+export const addWorkoutDate = (requestData, carbs, fats, protein) => {
+    return axios({
+        method: "POST",
+        url: `${USER_URL}/addReservation/${carbs}/${fats}/${protein}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+        data: requestData,
+    });
 };
 
 export const addDietPlanDetails = (requestData) => {

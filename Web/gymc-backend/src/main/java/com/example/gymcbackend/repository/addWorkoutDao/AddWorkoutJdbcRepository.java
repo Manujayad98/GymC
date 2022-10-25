@@ -185,16 +185,21 @@ public class AddWorkoutJdbcRepository {
 
         namedParameters.addValue("insertedWorkoutPlanId",insertedWorkoutPlanId);
         //adding training date exercise list
-
+        System.out.println("trainingDateList");
+        System.out.println(trainingDateList);
 
         if(rowsAffected1==1 || rowsAffected0==1 ){
 
 
             for(int i=0;i<trainingDateList.size();i++){
 
+                String traineeid = trainingDateList.get(i).getExerciseId().substring(4);
+
+                Long result = Long.parseLong(String.valueOf(traineeid));
+
                 namedParameters.addValue("insertedWorkoutPlanId",insertedWorkoutPlanId);
-                namedParameters.addValue("exerciseId",trainingDateList.get(i).getExerciseId());
-                System.out.println("Exercise id :"+trainingDateList.get(i).getExerciseId());
+                namedParameters.addValue("exerciseId",result);
+                System.out.println("Exercise id :"+result);
                 namedParameters.addValue("no_of_repetitions",trainingDateList.get(i).getNoOfRepetitions());
                 String query2 = "INSERT INTO training_date " +
                         "(exercise_id,workout_planid,no_of_repetitions) " +

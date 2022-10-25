@@ -54,8 +54,8 @@ public class AddWorkoutService {
 
         Long traineeId = workoutReservation.getTraineeId();
 
-        System.out.println("training date list in service eid:"+workoutReservation.getTrainingDateList().get(0).getExerciseId());
-        System.out.println("training date list in service reps:"+workoutReservation.getTrainingDateList().get(0).getNoOfRepetitions());
+//        System.out.println("training date list in service eid:"+workoutReservation.getTrainingDateList().get(0).getExerciseId());
+//        System.out.println("training date list in service reps:"+workoutReservation.getTrainingDateList().get(0).getNoOfRepetitions());
 
 
         LocalTime midnight = LocalTime.parse("00:00");
@@ -63,7 +63,7 @@ public class AddWorkoutService {
         LocalTime tempStartTime = workoutReservation.getStartTime();
         LocalTime tempEndTime = workoutReservation.getEndTime();
         Long ScheduleId= workoutReservation.getWorkoutScheduleId();
-
+        System.out.println(workoutReservation.getWorkoutScheduleId());
 
         int minutesUnit = 30;
         //get reservation starting slot number

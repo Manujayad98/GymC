@@ -43,7 +43,7 @@ const Login = () => {
 
     } else {
       axios
-        .post("http://172.20.10.3:8080/api/v1/auth/login", {
+        .post("http://10.22.167.203:8080/api/v1/auth/login", {
           userName,
           password,
         })
@@ -162,8 +162,8 @@ const Login = () => {
           text="Forgot password?"
           onPress={onForgotPasswordPressed}
           type="TERTIARY"
-          //   bgColor="#E7EAF4"
-          //   fgColor="#4765A9"
+        //   bgColor="#E7EAF4"
+        //   fgColor="#4765A9"
         />
 
         {/* {Platform.OS === "android" ? <SocialSignInButtons /> : null} */}
