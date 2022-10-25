@@ -140,6 +140,8 @@ export default function AddWorkout2() {
 
         workoutDates.trainingDate = selectedDate['trainingDate'];
 
+
+
         switch (workoutDates.startTime) {
             case '1': return workoutDates.startTime = "06:00:00";
             case '2': return workoutDates.startTime = "06:30:00";
@@ -266,11 +268,9 @@ export default function AddWorkout2() {
 
     const handleDropdownStartTime = (startTime) => (value) => {
         console.log(startTime, value);
-        // console.log(startTime, value);
         setWorkoutDates({ ...workoutDates, [startTime]: value });
     };
     const handleDropdownEndtTime = (endTime) => (value) => {
-        // console.log(endTime, value);
         setWorkoutDates({ ...workoutDates, [endTime]: value });
     };
 
@@ -304,17 +304,11 @@ export default function AddWorkout2() {
                         <div className="own-addworkout-right">
                             <div >
 
-                                {/* <h4 className='update-workout-form-subHeading'>Workout Dates</h4> */}
-                                {/* <hr className="add-trainer-hr" /> */}
+
                                 <div className="own-addworkout-calender" style={{ marginTop: '10px' }}>
                                     <div className="own-viewworkout-calender-card">
-                                        {/* <CalendarComp /> */}
                                         <Calendar
                                             onChange={handleChangeDate('trainingDate')}
-                                        // data={myEvents}
-                                        // value={value}
-                                        // minDate={mindate}
-                                        // maxDate={maxdate}
                                         />
                                         {!workoutDates.trainingDate && click && <span className='text-danger'>This is required</span>}
                                         <div style={{ display: 'flex', justifyContent: 'flex-end', margin: '18px 0px' }}>
@@ -396,51 +390,6 @@ export default function AddWorkout2() {
                                             }
                                         </div>
                                         <div className="form-col2">
-                                            {/* <Dropdown
-                                                data={[
-                                                    { value: 1, label: '6.30 AM' },
-                                                    { value: 2, label: '7.00 AM' },
-                                                    { value: 3, label: '7.30 Am' },
-                                                    { value: 4, label: '8.00 AM' },
-                                                    { value: 5, label: '8.30 AM' },
-
-                                                    { value: 6, label: '9.00 Am' },
-                                                    { value: 7, label: '9.30 AM' },
-                                                    { value: 8, label: '10.00 AM' },
-                                                    { value: 9, label: '10.30 Am' },
-                                                    { value: 10, label: '11.00 AM' },
-                                                    { value: 11, label: '11.30 AM' },
-
-                                                    { value: 12, label: '12.00 PM' },
-                                                    { value: 13, label: '12.30 PM' },
-                                                    { value: 14, label: '13.00 PM' },
-                                                    { value: 15, label: '13.30 PM' },
-                                                    { value: 16, label: '14.00 PM' },
-                                                    { value: 17, label: '14.30 PM' },
-
-                                                    { value: 18, label: '15.00 PM' },
-                                                    { value: 19, label: '15.30 PM' },
-                                                    { value: 20, label: '16.00 PM' },
-                                                    { value: 21, label: '16.30 PM' },
-                                                    { value: 22, label: '17.00 PM' },
-                                                    { value: 23, label: '17.30 AM' },
-
-                                                    { value: 24, label: '18.00 PM' },
-                                                    { value: 25, label: '18.30 PM' },
-                                                    { value: 26, label: '19.00 PM' },
-                                                    { value: 27, label: '19.30 PM' },
-                                                    { value: 28, label: '20.00 PM' },
-                                                    { value: 29, label: '20.30 PM' },
-
-                                                    { value: 30, label: '21.00 PM' },
-                                                    { value: 31, label: '21.30 PM' },
-                                                    { value: 32, label: '22.00 PM' },
-                                                ]}
-                                                label="End Time"
-                                                value={workoutDates.endTime}
-                                                placeholder='Select'
-                                                onChange={handleDropdownEndtTime['endTime']}
-                                            /> */}
 
                                             {(showEndTimeSlots == false) ?
                                                 <Dropdown
