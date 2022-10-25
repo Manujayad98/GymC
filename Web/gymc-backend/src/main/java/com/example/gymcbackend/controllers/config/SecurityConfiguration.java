@@ -1,4 +1,4 @@
-package com.example.gymcbackend.config;
+package com.example.gymcbackend.controllers.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -62,7 +62,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests((request) -> request.antMatchers(
                                 "/api/v1/auth/login",
                                 "/api/v1/gymc-home",
-                                "/api/v1/signUp"
+                                "/api/v1/signUp",
+                                "/api/vi/announcements"
 
                         )
                         .permitAll()

@@ -79,9 +79,7 @@ const PaymentModal = (props) => {
                     readonly={true}
                     />
                     </div>
-                    if (condition) {
-                        
-                    }
+                    
                     <div className="rec-leave-input">
                         <InputField 
                         label="AMOUNT"

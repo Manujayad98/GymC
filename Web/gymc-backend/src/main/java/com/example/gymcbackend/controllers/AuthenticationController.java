@@ -1,6 +1,6 @@
 package com.example.gymcbackend.controllers;
 
-import com.example.gymcbackend.config.JWTTokenHelper;
+import com.example.gymcbackend.controllers.config.JWTTokenHelper;
 import com.example.gymcbackend.entities.UserAccount;
 import com.example.gymcbackend.dto.LoginResponse;
 import com.example.gymcbackend.dto.UserInfo;
@@ -20,7 +20,7 @@ import com.example.gymcbackend.dto.AuthenticationRequet;
 
 @RestController
 @RequestMapping("/api/v1")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 public class AuthenticationController {
     @Autowired
     private AuthenticationManager authenticationManager;

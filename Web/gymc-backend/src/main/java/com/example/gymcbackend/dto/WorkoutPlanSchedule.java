@@ -13,6 +13,8 @@ public class WorkoutPlanSchedule {
     private Double biceps;
     private Double height;
     private Double weight;
+
+    private String diseases;
     private String workoutType;
     private String trainerId;
 
@@ -133,4 +135,11 @@ public class WorkoutPlanSchedule {
         this.end_date = end_date;
     }
 
+    public String getDiseases() {
+        return diseases;
+    }
+
+    public void setDiseases(String diseaases) {
+        this.diseases = diseaases;
+    }
 }
