@@ -36,7 +36,47 @@ const Login = () => {
   } = useForm();
 
   const onSignInPressed = async (data) => {
-    navigation.navigate("Tabs", "1");
+    // navigation.navigate("Tabs", "1");
+    if (!userName || !password) {
+
+      setClick({ click: true, })
+
+    } else {
+      axios
+        .post("http://172.20.10.3:8080/api/v1/auth/login", {
+          userName,
+          password,
+        })
+        .then((res) => {
+          console.log("sign in response: ", res.data);
+          navigation.navigate("Tabs", "1");
+          const token = res.data;
+          setUserToken(token);
+          console.log(userToken);
+          AsyncStorage.setItem("userToken", JSON.stringify(userToken));
+          // getUser();
+        })
+        .catch((e) => {
+          console.log("log in error: ", e);
+          alert("Somthing went wrong. Check credentials again !!!");
+        });
+    }
+    console.log(userName);
+    // try {
+    //   const response = await axios.post(`${baseUrl}/auth/login`, {
+    //     userName,
+    //     password,
+    //   });
+    //   if (response.status === 200) {
+    //     alert(` You have created: ${JSON.stringify(response.data)}`);
+    //     console.log(response.data);
+    //   } else {
+    //     throw new Error("An error has occurred1");
+    //   }
+    // } catch (error) {
+    //   alert("An error has occurred2");
+    // }
+
     // try {
     //   let response = await fetch('http://192.168.8.187:5000/api/v1/auth/login', {
     //     method: 'POST',
