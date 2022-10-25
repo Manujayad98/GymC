@@ -27,6 +27,12 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 
+
+import { Calendar } from 'react-calendar'
+import "react-calendar/dist/Calendar.css";
+import dayjs from "dayjs";
+
+
 export default function UpdateWorkout() {
 
     useEffect(() => {
@@ -40,8 +46,11 @@ export default function UpdateWorkout() {
         }
     };
 
-    const [requestData, setState] = useState({
+    const [selectedDate, setSelectedDate] = useState({
+        selectedDate: ''
+    });
 
+    const [requestData, setState] = useState({
         height: '',
         weight: '',
         biceps: '',
@@ -61,24 +70,17 @@ export default function UpdateWorkout() {
             [key]: value
         });
     };
-    const handleRadio = (event) => {
-
-        setState({
-            ...requestData,
-            gender: event.target.value
+    const handleChangeDate = (key) => (value) => {
+        console.log(value);
+        setSelectedDate({
+            ...selectedDate,
+            [key]: dayjs(value).format('YYYY-MM-DD')
         });
-        console.log(requestData.gender)
-    };
-    const handleDropdown = (gender) => (value) => {
-        console.log(gender, value);
-        setState({ ...requestData, [gender]: value });
-    };
+    }
 
-    const handleClick = (event) => {
-        event.preventDefault();
-        alert('Button Clicked');
-    };
-    const handleSubmit = (evt) => {
+    console.log(selectedDate);
+
+    const updateWOrkout = (evt) => {
         console.log(requestData);
         evt.preventDefault();
 
@@ -110,143 +112,7 @@ export default function UpdateWorkout() {
         //         });
         // }
     };
-    //table data
 
-    // const [excerciseDetails] = useState([
-    //     {
-    //         Exercise: "Incline Press",
-    //         Repetitions: (
-    //             <span >
-    //                 <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
-    //                 <span style={{ paddingRight: "10px" }}>15 Reps</span>
-    //                 <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
-
-    //             </span >
-
-    //         ),
-
-    //         Actions: (
-    //             <span >
-    //                 <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={50} width={80} /></span>
-
-
-    //             </span >
-
-    //         ),
-    //     },
-    //     {
-    //         Exercise: "Incline Press",
-    //         Repetitions: (
-    //             <span >
-    //                 <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
-    //                 <span style={{ paddingRight: "10px" }}>15 Reps</span>
-    //                 <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
-
-    //             </span >
-
-    //         ),
-
-    //         Actions: (
-    //             <span >
-    //                 <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={50} width={80} /></span>
-    //                 {/* <span style={{ paddingRight: "20px" }}><img src={Clear} alt="" height={20} width={20} /></span> */}
-
-    //             </span >
-
-    //         ),
-    //     },
-    //     {
-    //         Exercise: "Incline Press",
-    //         Repetitions: (
-    //             <span >
-    //                 <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
-    //                 <span style={{ paddingRight: "10px" }}>15 Reps</span>
-    //                 <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
-
-    //             </span >
-
-    //         ),
-
-    //         Actions: (
-    //             <span >
-    //                 {/* <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={20} width={20} /></span> */}
-    //                 <span style={{ paddingRight: "20px" }}><img src={Clear} alt="" height={50} width={80} /></span>
-
-    //             </span >
-
-    //         ),
-    //     },
-    //     {
-    //         Exercise: "Incline Press",
-    //         Repetitions: (
-    //             <span >
-    //                 <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
-    //                 <span style={{ paddingRight: "10px" }}>15 Reps</span>
-    //                 <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
-
-    //             </span >
-
-    //         ),
-
-    //         Actions: (
-    //             <span >
-    //                 <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={50} width={80} /></span>
-    //                 {/* <span style={{ paddingRight: "20px" }}><img src={Clear} alt="" height={20} width={20} /></span> */}
-
-    //             </span >
-
-    //         ),
-    //     },
-    //     {
-    //         Exercise: "Incline Press",
-    //         Repetitions: (
-    //             <span >
-    //                 <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
-    //                 <span style={{ paddingRight: "10px" }}>15 Reps</span>
-    //                 <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
-
-    //             </span >
-
-    //         ),
-
-    //         Actions: (
-    //             <span >
-    //                 {/* <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={20} width={20} /></span> */}
-    //                 <span style={{ paddingRight: "20px" }}><img src={Clear} alt="" height={50} width={80} /></span>
-
-    //             </span >
-
-    //         ),
-    //     },
-    //     {
-    //         Exercise: "Incline Press",
-    //         Repetitions: (
-    //             <span >
-    //                 <span style={{ paddingRight: "10px" }}><img src={Plus} alt="" height={20} width={20} /></span>
-    //                 <span style={{ paddingRight: "10px" }}>15 Reps</span>
-    //                 <span style={{ paddingRight: "10px" }}><img src={Minus} alt="" height={20} width={20} /></span>
-
-    //             </span >
-
-    //         ),
-
-    //         Actions: (
-    //             <span >
-    //                 <span style={{ paddingRight: "20px" }}><img src={Add} alt="" height={50} width={80} /></span>
-    //                 {/* <span style={{ paddingRight: "20px" }}><img src={Clear} alt="" height={20} width={20} /></span> */}
-
-    //             </span >
-
-    //         ),
-    //     },
-
-
-    // ]);
-    // const [excerciseDetailsTableHead] = useState([
-    //     { id: "Exercise", label: "EXERCISE", numeric: false },
-    //     { id: "Repetitions", label: "REPETITIONS", numeric: false },
-
-    // ]);
     const [excerciseDetails, setExcerciseDetails] = useState([
         {
             // ExerciseID: 1,
@@ -299,12 +165,32 @@ export default function UpdateWorkout() {
                         </div>
 
                     </div>
-                    <div className="own_update_workout_content-container">
+                    <form className="" onSubmit={updateWOrkout} noValidate={false}>
 
-                        <div className="own_update_workout_div1">
-                            <div className="own_update_workout_card1">
+                        <div className="own_update_workout_content-container">
 
-                                <form className onSubmit={handleSubmit} noValidate={false}>
+                            <div className="own_update_workout_div1">
+
+                                <div className="own-updateworkout-calender" style={{ marginTop: '10px' }}>
+                                    <div className="own-viewworkout-calender-card">
+                                        {/* <CalendarComp /> */}
+                                        <Calendar
+                                            onChange={handleChangeDate['selectedDate']}
+                                        // data={myEvents}
+                                        // value={value}
+                                        // minDate={mindate}
+                                        // maxDate={maxdate}
+                                        />
+                                        {!selectedDate.selectedDate && click && <span className='text-danger'>This is required</span>}
+
+                                        <div style={{ display: 'flex', justifyContent: 'flex-end', margin: '9px 0px' }}>
+                                            <button className="own_next_workout-btn" > Check </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="own_update_workout_card1">
+
+                                    {/* <form className onSubmit={handleSubmit} noValidate={false}> */}
 
                                     <div className="update-workout-form">
                                         <div className="update-workout-form-inputs">
@@ -319,7 +205,7 @@ export default function UpdateWorkout() {
                                                         label="Height"
                                                         placeholder='Type'
                                                         validators={[
-                                                            { check: Validators.required, message: 'NIC is not valid' }
+                                                            { check: Validators.number, message: 'Type is not valid' }
                                                         ]}
                                                         onChange={handleChange('height')} />
                                                     {!requestData.height && click && <span className='text-danger'>This Field is required</span>}
@@ -332,7 +218,7 @@ export default function UpdateWorkout() {
                                                         placeholder='Type'
 
                                                         validators={[
-                                                            { check: Validators.required, message: 'This field is required' }
+                                                            { check: Validators.number, message: 'Type is not valid' }
                                                         ]}
                                                         onChange={handleChange('weight')} />
                                                     {!requestData.weight && click && <span className='text-danger'>This Field is required</span>}
@@ -346,33 +232,17 @@ export default function UpdateWorkout() {
                                                 <div className="form-col1">
                                                     <InputField
                                                         value={requestData.diseases}
-                                                        type='text'
+                                                        type='textarea'
                                                         label="Diseases"
                                                         placeholder='Type'
                                                         validators={[
-                                                            { check: Validators.required, message: 'This field is required' }
+                                                            { check: Validators.number, message: 'Type is not valid' }
                                                         ]}
                                                         onChange={handleChange('diseases')} />
                                                     {!requestData.diseases && click && <span className='text-danger'>This Field is required</span>}
 
                                                 </div>
                                                 <div className="form-col2">
-                                                    {/* <label htmlFor="">Affected Bone</label> */}
-                                                    <Dropdown
-                                                        data={[
-                                                            { value: "UpperArm", label: 'Upper Arm' },
-                                                            { value: "Ankle", label: 'Ankle' },
-                                                            { value: "Foot", label: 'Foot' },
-                                                            { value: "KneeCap", label: 'KneeCap' },
-                                                        ]}
-                                                        label="Affected Bone"
-                                                        // styleClass='mt-3'
-                                                        value={requestData.bones}
-                                                        placeholder='Select'
-                                                        onChange={handleDropdown}
-                                                    /><br></br>
-
-                                                    {!requestData.bones && click && <span className='text-danger'>This Field is required</span>}
 
                                                 </div>
                                             </div>
@@ -388,7 +258,7 @@ export default function UpdateWorkout() {
                                                         label="Biceps"
                                                         placeholder='Type'
                                                         validators={[
-                                                            { check: Validators.required, message: 'NIC is not valid' }
+                                                            { check: Validators.number, message: 'Type is not valid' }
                                                         ]}
                                                         onChange={handleChange('biceps')} />
                                                     {!requestData.biceps && click && <span className='text-danger'>This Field is required</span>}
@@ -400,7 +270,7 @@ export default function UpdateWorkout() {
                                                         label="Forearms"
                                                         placeholder='Type'
                                                         validators={[
-                                                            { check: Validators.required, message: 'This field is required' }
+                                                            { check: Validators.number, message: 'Type is not valid' }
                                                         ]}
                                                         onChange={handleChange('forearms')} />
                                                     {!requestData.forearms && click && <span className='text-danger'>This Field is required</span>}
@@ -414,7 +284,7 @@ export default function UpdateWorkout() {
                                                         label="Chest"
                                                         placeholder='Type'
                                                         validators={[
-                                                            { check: Validators.required, message: 'This Field is not valid' }
+                                                            { check: Validators.number, message: 'Type is not valid' }
                                                         ]}
                                                         onChange={handleChange('chest')} />
                                                     {!requestData.chest && click && <span className='text-danger'>This Field is required</span>}
@@ -426,7 +296,7 @@ export default function UpdateWorkout() {
                                                         label="Hips"
                                                         placeholder='Type'
                                                         validators={[
-                                                            { check: Validators.required, message: 'This field is required' }
+                                                            { check: Validators.number, message: 'Type is not valid' }
                                                         ]}
                                                         onChange={handleChange('hips')} />
                                                     {!requestData.hips && click && <span className='text-danger'>This Field is required</span>}
@@ -440,7 +310,7 @@ export default function UpdateWorkout() {
                                                         label="Thighs"
                                                         placeholder='Type'
                                                         validators={[
-                                                            { check: Validators.required, message: 'NIC is not valid' }
+                                                            { check: Validators.number, message: 'Type is not valid' }
                                                         ]}
                                                         onChange={handleChange('thighs')} />
                                                     {!requestData.thighs && click && <span className='text-danger'>This Field is required</span>}
@@ -463,74 +333,136 @@ export default function UpdateWorkout() {
 
 
 
-                                </form>
-                                <ToastContainer />
-                                {/* </div> */}
+                                    {/* </form> */}
+                                    <ToastContainer />
+                                    {/* </div> */}
 
+                                </div>
                             </div>
-                        </div>
-                        <div className="own_update_workout_div2">
-                            <div className="own_update_workout_card2">
-                                {/* <Table
+                            <div className="own_update_workout_div2">
+                                <div className="own_update_workout_card2">
+                                    {/* <Table
                                     rows={excerciseDetails}
                                     headCells={excerciseDetailsTableHead}
                                     tableName={"Exercises"}
                                 /> */}
-                                <div style={{ padding: '20px' }}>
-                                    <MaterialTable
-                                        title="Exersices"
-                                        columns={[
-                                            { title: "Exercice ID", field: "ExerciseID", editable: 'never' },
-                                            { title: "Name", field: "Name", editable: 'never' },
-                                            { title: "Repitition Count", field: "Repititions", editable: 'onUpdate', type: 'numeric' },
-                                        ]}
-                                        icons={TableIcons}
-                                        data={excerciseDetails}
-                                        editable={{
-                                            onRowUpdate: (newData, oldData, rowData) =>
-                                                new Promise((resolve, reject) => {
-                                                    setTimeout(() => {
-                                                        const dataUpdate = [...excerciseDetails];
-                                                        const index = oldData.tableData.id;
-                                                        dataUpdate[index] = newData;
-                                                        setExcerciseDetails([...dataUpdate]);
+                                    <div style={{ padding: '20px' }}>
+                                        <MaterialTable
+                                            title="Exersices"
+                                            columns={[
+                                                { title: "Exercice ID", field: "ExerciseID", editable: 'never' },
+                                                { title: "Name", field: "Name", editable: 'never' },
+                                                { title: "Repitition Count", field: "Repititions", editable: 'onUpdate', type: 'numeric' },
+                                            ]}
+                                            icons={TableIcons}
+                                            data={excerciseDetails}
+                                            editable={{
+                                                onRowUpdate: (newData, oldData, rowData) =>
+                                                    new Promise((resolve, reject) => {
+                                                        setTimeout(() => {
+                                                            const dataUpdate = [...excerciseDetails];
+                                                            const index = oldData.tableData.id;
+                                                            dataUpdate[index] = newData;
+                                                            setExcerciseDetails([...dataUpdate]);
 
-                                                        resolve();
-                                                    }, 1000)
-                                                    // if (newData.Repititions != 0) {
-                                                    //     console.log(requestData);
-                                                    //     console.log(id);
-                                                    //     console.log(newData);
-                                                    //     requestData.exercices.push({ ...newData })
+                                                            resolve();
+                                                        }, 1000)
+                                                        // if (newData.Repititions != 0) {
+                                                        //     console.log(requestData);
+                                                        //     console.log(id);
+                                                        //     console.log(newData);
+                                                        //     requestData.exercices.push({ ...newData })
 
-                                                    // }
+                                                        // }
 
-                                                }),
-                                        }}
-                                        options={{
-                                            pageSize: 3,
-                                            pageSizeOptions: [6, 12, 15],
-                                            headerStyle: {
-                                                backgroundColor: '#1F0106',
-                                                color: '#FFF',
-                                                hover: '#FFF'
-                                            }
-                                        }}
-                                    />
+                                                    }),
+                                            }}
+                                            options={{
+                                                pageSize: 3,
+                                                pageSizeOptions: [6, 12, 15],
+                                                headerStyle: {
+                                                    backgroundColor: '#1F0106',
+                                                    color: '#FFF',
+                                                    hover: '#FFF'
+                                                }
+                                            }}
+                                        />
+                                    </div>
                                 </div>
-                                <button className="own_update_workout-btn">Update</button>
+                                <div className="own_update_workout_card3">
+                                    <div className="update-workout-form">
+                                        <div className="update-workout-form-inputs">
+                                            <h4 className='update-workout-form-subHeading'>Diet Plan</h4>
+                                            <hr className="add-trainer-hr" />
+
+                                            <div className="form-row">
+                                                <div className="form-col1">
+                                                    <InputField
+                                                        value={requestData.height}
+                                                        type='text'
+                                                        label="Carbs"
+                                                        placeholder='Type'
+                                                        validators={[
+                                                            { check: Validators.number, message: 'Type is not valid' }
+                                                        ]}
+                                                        onChange={handleChange('height')} />
+                                                    {!requestData.height && click && <span className='text-danger'>This Field is required</span>}
+                                                </div>
+                                                <div className="form-col2">
+                                                    <InputField
+                                                        value={requestData.weight}
+                                                        type='text'
+                                                        label="Fats"
+                                                        placeholder='Type'
+                                                        validators={[
+                                                            { check: Validators.number, message: 'Type is not valid' }
+                                                        ]}
+                                                        onChange={handleChange('weight')} />
+                                                    {!requestData.weight && click && <span className='text-danger'>This Field is required</span>}
+                                                </div>
+                                            </div>
+
+                                            <div className="form-row">
+                                                <div className="form-col1">
+                                                    <InputField
+                                                        value={requestData.height}
+                                                        type='text'
+                                                        label="Protein"
+                                                        placeholder='Type'
+                                                        validators={[
+                                                            { check: Validators.number, message: 'Type is not valid' }
+                                                        ]}
+                                                        onChange={handleChange('height')} />
+                                                    {!requestData.height && click && <span className='text-danger'>This Field is required</span>}
+                                                </div>
+                                                <div className="form-col2">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <ToastContainer />
+                                        {/* </div> */}
+
+                                    </div>
+                                </div>
+                                <div style={{ marginRight: '-36px', display: 'flex' }}>
+                                    <button style={{ justifyContent: 'flex-end' }} className="own_update_workout-btn">Update</button>
+
+                                </div>
+
+                                {/* <div className="own_update_workout_btn"> */}
+
+
+
+                                {/* </div> */}
+
+
                             </div>
                         </div>
-                        {/* <div className="own_update_workout_btn"> */}
+                    </form>
 
-
-
-                        {/* </div> */}
-
-
-                    </div>
-                </div>
+                </div >
             </div >
-        </div >
+        </div>
     )
 }

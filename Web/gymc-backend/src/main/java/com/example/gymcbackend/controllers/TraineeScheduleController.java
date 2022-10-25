@@ -2,21 +2,14 @@ package com.example.gymcbackend.controllers;
 
 import com.example.gymcbackend.dto.*;
 import com.example.gymcbackend.entities.Appointment;
-import com.example.gymcbackend.entities.DietPlan;
-import com.example.gymcbackend.entities.TimeSlot;
 import com.example.gymcbackend.services.TraineeViewScheduleService;
 import com.example.gymcbackend.services.AddWorkoutService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 //import java.util.Date;
-import java.sql.Date;
 import java.util.List;
-import java.util.Locale;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -39,6 +32,8 @@ public class TraineeScheduleController {
         System.out.println("gettraineeSchedule");
         return traineeViewScheduleService.getTraineeSchedule(traineeId);
     }
+
+
 
     //View trainee workout exerciese on date click,pass date on url
     @GetMapping("/getTraineeWorkout/{date}/{traineeId}")
@@ -120,6 +115,12 @@ public BodyFactorsResponse getBodyFactors(@PathVariable String date,@PathVariabl
 //    }
 
     // --------------------Update section---------------------
+
+    @GetMapping("/isExistAWorkout/{traineeId}/{date}")
+    public long getUserById(@PathVariable String traineeId, @PathVariable String date){
+        LocalDate dateNew = LocalDate.parse(date);
+        return traineeViewScheduleService.isExistAWorkout(traineeId, dateNew);
+    }
 
      @PutMapping("/updateBodyFactors/")
      public String updateBodyFactors (@RequestBody BodyFactorsResponse newBodyFactors,@PathVariable Long workoutPlanId){
