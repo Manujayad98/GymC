@@ -12,7 +12,7 @@ public class Notification {
     @Column(name = "notification_id")
     private long notificationId;
 
-    @Column(name = "Topic")
+    @Column(name = "topic")
     private String topic;
 
     @Column(name = "time")

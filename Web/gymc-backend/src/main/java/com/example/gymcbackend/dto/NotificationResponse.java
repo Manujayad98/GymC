@@ -10,12 +10,21 @@ import java.sql.Time;
 
 public class NotificationResponse {
 
-
+    private long notificationId;
     private String topic;
 
     private Time time;
 
     private String description;
+
+    public long getNotificationId() {
+        return notificationId;
+    }
+
+    public void setNotificationId(long notificationId) {
+        this.notificationId = notificationId;
+    }
+
 
     public String getTopic() {
         return topic;
