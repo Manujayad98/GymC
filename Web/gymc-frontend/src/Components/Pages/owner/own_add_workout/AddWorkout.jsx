@@ -35,7 +35,7 @@ import dayjs from "dayjs";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import { getTrainerData, addWorkoutDetails, addWorkoutDateExerciseDetails, addDietPlanDetails, getAvailableSlots, getExerciseDetails } from "../../../../services/WorkoutService";
+import { getTrainerData, addWorkoutDetails, addWorkoutDateExerciseDetails, addDietPlanDetails, getExerciseDetails } from "../../../../services/WorkoutService";
 
 const AddWorkout = () => {
 
@@ -119,6 +119,25 @@ const AddWorkout = () => {
         }
     };
 
+
+    //reps editor part
+
+    // const [num, setNum] = useState(15);
+    // let incNum = () => {
+    //     if (num < 20) {
+    //         setNum(num + 1);
+    //         console.log(num)
+    //     }
+    // };
+    // let decNum = () => {
+    //     if (num > 0) {
+    //         setNum(num - 1);
+    //     }
+    // }
+    // let handleCounter = (e) => {
+    //     setNum(e.target.value);
+    // }
+
     const moveToMoreView = (trainee_id, schedule_id, trainer_id) => {
         window.location.href = `/AddWorkout2/${trainee_id}/${schedule_id}/${trainer_id}`;
     }
@@ -165,7 +184,7 @@ const AddWorkout = () => {
                                                         label="Height"
                                                         placeholder='Type'
                                                         validators={[
-                                                            { check: Validators.number, message: 'Type is not valid' }
+                                                            { check: Validators.required, message: 'This field is required' }
                                                         ]}
                                                         onChange={handleChange('height')} />
                                                     {!requestData.height && click && <span className='text-danger'>This Field is required</span>}
@@ -178,7 +197,7 @@ const AddWorkout = () => {
                                                         placeholder='Type'
 
                                                         validators={[
-                                                            { check: Validators.number, message: 'Type is not valid' }
+                                                            { check: Validators.required, message: 'This field is required' }
                                                         ]}
                                                         onChange={handleChange('weight')} />
                                                     {!requestData.weight && click && <span className='text-danger'>This Field is required</span>}
@@ -219,7 +238,7 @@ const AddWorkout = () => {
                                                         label="Biceps"
                                                         placeholder='Type'
                                                         validators={[
-                                                            { check: Validators.number, message: 'Type is not valid' }
+                                                            { check: Validators.required, message: 'NIC is not valid' }
                                                         ]}
                                                         onChange={handleChange('biceps')} />
                                                     {!requestData.biceps && click && <span className='text-danger'>This Field is required</span>}
@@ -231,7 +250,7 @@ const AddWorkout = () => {
                                                         label="Forearms"
                                                         placeholder='Type'
                                                         validators={[
-                                                            { check: Validators.number, message: 'Type is not valid' }
+                                                            { check: Validators.required, message: 'This field is required' }
                                                         ]}
                                                         onChange={handleChange('forearms')} />
                                                     {!requestData.forearms && click && <span className='text-danger'>This Field is required</span>}
@@ -245,7 +264,7 @@ const AddWorkout = () => {
                                                         label="Chest"
                                                         placeholder='Type'
                                                         validators={[
-                                                            { check: Validators.number, message: 'Type is not valid' }
+                                                            { check: Validators.required, message: 'This Field is not valid' }
                                                         ]}
                                                         onChange={handleChange('chest')} />
                                                     {!requestData.chest && click && <span className='text-danger'>This Field is required</span>}
@@ -257,7 +276,7 @@ const AddWorkout = () => {
                                                         label="Hips"
                                                         placeholder='Type'
                                                         validators={[
-                                                            { check: Validators.number, message: 'Type is not valid' }
+                                                            { check: Validators.required, message: 'This field is required' }
                                                         ]}
                                                         onChange={handleChange('hips')} />
                                                     {!requestData.hips && click && <span className='text-danger'>This Field is required</span>}
@@ -271,7 +290,7 @@ const AddWorkout = () => {
                                                         label="Thighs"
                                                         placeholder='Type'
                                                         validators={[
-                                                            { check: Validators.number, message: 'Type is not valid' }
+                                                            { check: Validators.required, message: 'NIC is not valid' }
                                                         ]}
                                                         onChange={handleChange('thighs')} />
                                                     {!requestData.thighs && click && <span className='text-danger'>This Field is required</span>}
@@ -408,7 +427,6 @@ const AddWorkout = () => {
 }
 
 const ShowWorkoutDates = () => {
-
     useEffect(() => {
         getExerciseDetailsForView();
     }, []);
@@ -420,8 +438,6 @@ const ShowWorkoutDates = () => {
             [...res.data]
         );
     };
-
-
 
     const { id } = useParams();
 

@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
 
 
         axios
-            .post("http://10.22.167.203:8080/api/v1/user/auth/login", {
+            .post("http://192.168.43.134:8080/api/v1/user/auth/login", {
                 userName,
                 password,
             })

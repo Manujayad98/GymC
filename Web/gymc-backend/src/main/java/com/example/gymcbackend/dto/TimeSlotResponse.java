@@ -8,7 +8,7 @@ import javax.persistence.Column;
 
 public class TimeSlotResponse {
 
-   private TimeSlotTwo timeSlot;
+    private TimeSlotTwo timeSlot;
     private Integer shiftNo;
 
     public Integer getShiftNo() {

@@ -79,7 +79,7 @@
     
 }
 */
-.rec-split-left{
+/* .rec-split-left{
     width: 20%;
     float: left;
 }
@@ -88,7 +88,7 @@
     margin: 10px;
     width: 60%;
     float: right;
-}
+} */
 /*
 .rec-content-container::after{
     display: table;
@@ -150,7 +150,7 @@
 .rec-dashboard-container-head {
     font-size: 1.1rem;
     font-weight: 600;
-    margin: 5px 0 5px -10px;
+    margin: 5px 0 25px -10px;
     text-align: left;
 }
 /*

@@ -9,7 +9,7 @@ const getToken = () => {
 export const getPaymentPlanTableDetails = () => {
     return axios({
         method: "GET",
-        url: `${USER_URL}/paymentPlanMethods`,
+        url: `${USER_URL}/(CashPaymentController)`,
         headers: {
             Authorization: "Bearer " + getToken(),
         },
@@ -38,6 +38,57 @@ export const addPaymentPlan = (requestData) => {
             Authorization: "Bearer " + getToken(),
         },
         data: requestData,
+    });
+};
+
+//RECEPTIONIST TRANSACTIONS TABLE
+
+export const getTransactionDetails = () => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/transactions`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+//RECEPTIONIST TRANSACTIONS TOTAL PAYMENTS
+
+export const getTotalPayments = () => {
+    
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/cards`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+//RECEPTIONIST TRANSACTIONS TOTAL CASH PAYMENTS
+
+export const getTotalCashPayments = () => {
+    
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/cash`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+//RECEPTIONIST TRANSACTIONS TOTAL ONLINE PAYMENTS
+
+export const getTotalOnlinePayments = () => {
+    
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/online`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
     });
 };
 

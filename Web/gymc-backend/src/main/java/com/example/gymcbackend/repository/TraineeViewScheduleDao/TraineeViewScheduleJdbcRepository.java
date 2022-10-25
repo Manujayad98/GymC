@@ -20,176 +20,156 @@ import java.util.Locale;
 
 public class TraineeViewScheduleJdbcRepository {
 
-    @Autowired
-    protected NamedParameterJdbcTemplate jdbc;
+        @Autowired
+        protected NamedParameterJdbcTemplate jdbc;
 
-    @Autowired
-    JdbcTemplate jdbcTemplate;
+        @Autowired
+        JdbcTemplate jdbcTemplate;
 
-    public List<TraineeViewScheduleDetailsResponse> getTraineeSchedule(String traineeId) {
+        public List<TraineeViewScheduleDetailsResponse> getTraineeSchedule(String traineeId) {
 
-        String staffID = traineeId.substring(4);
+                String staffID = traineeId.substring(4);
 
-        Long result = Long.parseLong(String.valueOf(staffID));
+                Long result = Long.parseLong(String.valueOf(staffID));
 
-        //        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-        MapSqlParameterSource namedParameters =
-                new MapSqlParameterSource();
+                //        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+                MapSqlParameterSource namedParameters =
+                        new MapSqlParameterSource();
 
-        LocalDate traineeDate = LocalDate.now();
-        namedParameters.addValue("traineeId", result);
-        namedParameters.addValue("traineeDate", traineeDate);
-
-
-        String query1="SELECT trainee.trainee_id,trainee.first_name,trainee.last_name,  DATE_FORMAT(trainee.dob, '%y-%m-%d') AS dob, trainee.phone_number, trainee.emergency_number," +
-                "trainee.address,exercise.name AS eName,training_date.no_of_repetitions, workout_plan.training_date " +
-                "FROM workout_schedule " +
-                "INNER JOIN workout_plan  ON  workout_schedule.workout_scheduleid=workout_plan.workout_scheduleid " +
-                "INNER JOIN training_date  ON workout_plan.workout_planid=training_date.workout_planid " +
-                "INNER JOIN exercise ON training_date.exercise_id=exercise.exerciseid "+
-                "INNER JOIN trainee ON trainee.trainee_id=workout_schedule.trainee_id "+
-                "AND workout_schedule.trainee_id=:traineeId AND workout_plan.training_date=:traineeDate";
+                LocalDate traineeDate = LocalDate.now();
+                namedParameters.addValue("traineeId", result);
+                namedParameters.addValue("traineeDate", traineeDate);
 
 
+                String query1="SELECT trainee.trainee_id,trainee.first_name,trainee.last_name,  DATE_FORMAT(trainee.dob, '%y-%m-%d') AS dob, trainee.phone_number, trainee.emergency_number," +
+                        "trainee.address,exercise.name AS eName,training_date.no_of_repetitions, workout_plan.training_date " +
+                        "FROM workout_schedule " +
+                        "INNER JOIN workout_plan  ON  workout_schedule.workout_scheduleid=workout_plan.workout_scheduleid " +
+                        "INNER JOIN training_date  ON workout_plan.workout_planid=training_date.workout_planid " +
+                        "INNER JOIN exercise ON training_date.exercise_id=exercise.exerciseid "+
+                        "INNER JOIN trainee ON trainee.trainee_id=workout_schedule.trainee_id "+
+                        "AND workout_schedule.trainee_id=:traineeId AND workout_plan.training_date=:traineeDate";
 
-        List<TraineeViewScheduleDetailsResponse> traineeViewSchedule = jdbc.query(query1, namedParameters, new BeanPropertyRowMapper<TraineeViewScheduleDetailsResponse>(TraineeViewScheduleDetailsResponse.class));
-        return traineeViewSchedule;
-    }
-
-    public List<TraineeViewWorkoutDateResponse> getWorkoutDate(LocalDate traineeDate,Long traineeId) {
-        MapSqlParameterSource namedParameters =
-                new MapSqlParameterSource();
 
 
-        namedParameters.addValue("traineeId", traineeId);
-        namedParameters.addValue("traineeDate", traineeDate);
-        System.out.println(traineeDate);
+                List<TraineeViewScheduleDetailsResponse> traineeViewSchedule = jdbc.query(query1, namedParameters, new BeanPropertyRowMapper<TraineeViewScheduleDetailsResponse>(TraineeViewScheduleDetailsResponse.class));
+                return traineeViewSchedule;
+        }
 
-        String query1= "SELECT exercise.name,training_date.no_of_repetitions " +
-                "FROM workout_schedule " +
-                "INNER JOIN workout_plan  ON  workout_schedule.workout_scheduleid=workout_plan.workout_scheduleid " +
-                "INNER JOIN training_date  ON workout_plan.workout_planid=training_date.workout_planid " +
-                "INNER JOIN exercise ON training_date.exercise_id=exercise.exerciseid "+
-                "AND workout_schedule.trainee_id=:traineeId AND workout_plan.training_date=:traineeDate ";
+        public List<TraineeViewWorkoutDateResponse> getWorkoutDate(LocalDate traineeDate,Long traineeId) {
+                MapSqlParameterSource namedParameters =
+                        new MapSqlParameterSource();
 
-        List<TraineeViewWorkoutDateResponse> traineeWorkout = jdbc.query(query1, namedParameters, new BeanPropertyRowMapper<TraineeViewWorkoutDateResponse>(TraineeViewWorkoutDateResponse.class));
-        return traineeWorkout;
-    }
 
-    public List<DietPlanResponse> getDietDate(LocalDate traineeDate,Long traineeId) {
+                namedParameters.addValue("traineeId", traineeId);
+                namedParameters.addValue("traineeDate", traineeDate);
+                System.out.println(traineeDate);
 
-        MapSqlParameterSource namedParameters =
-                new MapSqlParameterSource();
-        namedParameters.addValue("traineeId", traineeId);
-        namedParameters.addValue("traineeDate", traineeDate);
+                String query1= "SELECT exercise.name,training_date.no_of_repetitions " +
+                        "FROM workout_schedule " +
+                        "INNER JOIN workout_plan  ON  workout_schedule.workout_scheduleid=workout_plan.workout_scheduleid " +
+                        "INNER JOIN training_date  ON workout_plan.workout_planid=training_date.workout_planid " +
+                        "INNER JOIN exercise ON training_date.exercise_id=exercise.exerciseid "+
+                        "AND workout_schedule.trainee_id=:traineeId AND workout_plan.training_date=:traineeDate ";
+
+                List<TraineeViewWorkoutDateResponse> traineeWorkout = jdbc.query(query1, namedParameters, new BeanPropertyRowMapper<TraineeViewWorkoutDateResponse>(TraineeViewWorkoutDateResponse.class));
+                return traineeWorkout;
+        }
+
+        public List<DietPlanResponse> getDietDate(LocalDate traineeDate,Long traineeId) {
+
+                MapSqlParameterSource namedParameters =
+                        new MapSqlParameterSource();
+                namedParameters.addValue("traineeId", traineeId);
+                namedParameters.addValue("traineeDate", traineeDate);
 
 //        String query1= "SELECT diet_plan.* FROM workout_schedule " +
 //                "INNER JOIN diet_plan ON workout_schedule.workout_scheduleid= diet_plan.workout_scheduleid " +
 //                "AND diet_plan.training_date=? AND diet_plan.trainee_id=? ";
-        System.out.println(traineeDate);
-        String query1= "SELECT CONCAT('D000', diet_plan.diet_planid) AS diet_planid, diet_plan.carbohydrate, diet_plan.fats, diet_plan.proteins FROM workout_schedule " +
-                "INNER JOIN diet_plan ON workout_schedule.workout_scheduleid= diet_plan.workout_scheduleid " +
-                "AND diet_plan.training_date=:traineeDate AND diet_plan.trainee_id=:traineeId ";
+                System.out.println(traineeDate);
+                String query1= "SELECT CONCAT('D000', diet_plan.diet_planid) AS diet_planid, diet_plan.carbohydrate, diet_plan.fats, diet_plan.proteins FROM workout_schedule " +
+                        "INNER JOIN diet_plan ON workout_schedule.workout_scheduleid= diet_plan.workout_scheduleid " +
+                        "AND diet_plan.training_date=:traineeDate AND diet_plan.trainee_id=:traineeId ";
 
 
 //        DietPlan traineeDiet = (DietPlan) jdbcTemplate.queryForObject(query1, new Object[]{traineeDate,traineeId}, new BeanPropertyRowMapper(DietPlan.class));
 //        DietPlanResponse dietPlanResponse= (DietPlanResponse)  jdbcTemplate.queryForObject(query1, new Object[]{traineeDate,traineeId}, new BeanPropertyRowMapper(DietPlanResponse.class));
 //        int count = jdbcTemplate.queryForObject(sql, new Object[] { nic }, Integer.class);
-        List<DietPlanResponse> dietPlanResponse = jdbc.query(query1, namedParameters, new BeanPropertyRowMapper<DietPlanResponse>(DietPlanResponse.class));
+                List<DietPlanResponse> dietPlanResponse = jdbc.query(query1, namedParameters, new BeanPropertyRowMapper<DietPlanResponse>(DietPlanResponse.class));
 
-        System.out.println(dietPlanResponse);
+                System.out.println(dietPlanResponse);
 
-        return dietPlanResponse;
-    }
+                return dietPlanResponse;
+        }
 
-    //trainer availability check karanna hadanna one
+        //trainer availability check karanna hadanna one
 
-    public TimeSlotTwo getDateAvailability(LocalDate date1, Long staffId) {
+        public TimeSlotTwo getDateAvailability(LocalDate date1, Long staffId) {
 
-        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-        namedParameters.addValue("staffId", staffId);
+                MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+                namedParameters.addValue("staffId", staffId);
 
 
 //        namedParameters.addValue("date1", date1);
-        String query="SELECT * FROM time_slot_two WHERE date=?";
+                String query="SELECT * FROM time_slot_two WHERE date=?";
 
-        TimeSlotTwo timeSlot = (TimeSlotTwo) jdbcTemplate.queryForObject(query, new Object[]{date1}, new BeanPropertyRowMapper(TimeSlotTwo.class));
-        System.out.println(timeSlot.getEleven()+" time slot response");
+                TimeSlotTwo timeSlot = (TimeSlotTwo) jdbcTemplate.queryForObject(query, new Object[]{date1}, new BeanPropertyRowMapper(TimeSlotTwo.class));
+                System.out.println(timeSlot.getEleven()+" time slot response");
 
 
 //        Integer c= (Integer) jdbcTemplate.queryForObject(query, new Object[]{date1}, new BeanPropertyRowMapper(Integer.class));
 
 
 
-        return timeSlot;
-    }
-
-    public static String getDayStringNew(LocalDate date, Locale locale) {
-        DayOfWeek day = date.getDayOfWeek();
-        return day.getDisplayName(TextStyle.FULL, locale);
-    }
-
-    public Integer getShiftNo(Long staffId, LocalDate date1) {
-
-        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-        //getting shift no of the day of the trainer
-        Integer shiftNo=0;
-        if(staffId!=0){
-            Locale locale1 = new Locale("EN", "INDIA");
-            String day = getDayStringNew(date1,locale1).toLowerCase();
-            namedParameters.addValue("day", day);
-            System.out.println("Day:"+day);
-
-
-            String query1="SELECT "+ day+" FROM shift_details WHERE staff_id=?";
-            shiftNo = jdbcTemplate.queryForObject(query1, new Object[] {staffId }, Integer.class);
-            System.out.println("Shift No:"+shiftNo);
+                return timeSlot;
         }
 
-        return shiftNo;
-    }
+        public static String getDayStringNew(LocalDate date, Locale locale) {
+                DayOfWeek day = date.getDayOfWeek();
+                return day.getDisplayName(TextStyle.FULL, locale);
+        }
+
+        public Integer getShiftNo(Long staffId, LocalDate date1) {
+
+                MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+                //getting shift no of the day of the trainer
+                Integer shiftNo=0;
+                if(staffId!=0){
+                        Locale locale1 = new Locale("EN", "INDIA");
+                        String day = getDayStringNew(date1,locale1).toLowerCase();
+                        namedParameters.addValue("day", day);
+                        System.out.println("Day:"+day);
 
 
-    public BodyFactorsResponse getBodyFactors(LocalDate date1, Long traineeId) {
-        String query="SELECT weight,height,biceps,chest,forearms,hips,thighs FROM workout_plan WHERE  ";
-        BodyFactorsResponse bodyFactors = (BodyFactorsResponse) jdbcTemplate.queryForObject(query, new Object[]{date1}, new BeanPropertyRowMapper(BodyFactorsResponse.class));
-        return bodyFactors;
-    }
+                        String query1="SELECT "+ day+" FROM shift_details WHERE staff_id=?";
+                        shiftNo = jdbcTemplate.queryForObject(query1, new Object[] {staffId }, Integer.class);
+                        System.out.println("Shift No:"+shiftNo);
+                }
 
-    //to progress chart
-
-    public List<TraineeProgressResponse> getTraineeProgress(Long traineeId) {
-        MapSqlParameterSource namedParameters =
-                new MapSqlParameterSource();
-        namedParameters.addValue("traineeId", traineeId);
-        String query="SELECT weight,height,biceps,chest,forearms,hips,thighs FROM workout_plan INNER JOIN workout_schedule ON " +
-                "workout_plan.workout_scheduleid=workout_schedule.workout_scheduleid " +
-                "AND workout_schedule.trainee_id=:traineeId AND workout_plan.height IS NOT NULL ORDER BY workout_plan.training_date DESC LIMIT 5";
-        List<TraineeProgressResponse> traineeProgressResponses = jdbc.query(query, namedParameters, new BeanPropertyRowMapper<TraineeProgressResponse>(TraineeProgressResponse.class));
-        System.out.println("progress retrived :"+traineeProgressResponses);
-        return traineeProgressResponses;
-    }
-
-    public long isExistAWorkout(Long traineeId, LocalDate date){
-
-        System.out.println(date);
-        System.out.println(traineeId);
-        MapSqlParameterSource namedParameters =
-                new MapSqlParameterSource();
-        namedParameters.addValue("traineeId", traineeId);
-        namedParameters.addValue("date", date);
-
-        String query = "SELECT COUNT(*) FROM workout_schedule " +
-                "INNER JOIN workout_plan  ON  workout_schedule.workout_scheduleid=workout_plan.workout_scheduleid " +
-                "AND workout_schedule.trainee_id =? AND workout_plan.training_date=? " ;
-
-        long count = jdbcTemplate.queryForObject(query, new Object[] {traineeId, date}, Long.class);
-
-        System.out.println(count);
+                return shiftNo;
+        }
 
 
-        return count;
-    }
+        public BodyFactorsResponse getBodyFactors(LocalDate date1, Long traineeId) {
+                String query="SELECT weight,height,biceps,chest,forearms,hips,thighs FROM workout_plan WHERE  ";
+                BodyFactorsResponse bodyFactors = (BodyFactorsResponse) jdbcTemplate.queryForObject(query, new Object[]{date1}, new BeanPropertyRowMapper(BodyFactorsResponse.class));
+                return bodyFactors;
+        }
+
+        //to progress chart
+
+        public List<TraineeProgressResponse> getTraineeProgress(Long traineeId) {
+                MapSqlParameterSource namedParameters =
+                        new MapSqlParameterSource();
+                namedParameters.addValue("traineeId", traineeId);
+                String query="SELECT weight,height,biceps,chest,forearms,hips,thighs FROM workout_plan INNER JOIN workout_schedule ON " +
+                        "workout_plan.workout_scheduleid=workout_schedule.workout_scheduleid " +
+                        "AND workout_schedule.trainee_id=:traineeId AND workout_plan.height IS NOT NULL ORDER BY workout_plan.training_date DESC LIMIT 5";
+                List<TraineeProgressResponse> traineeProgressResponses = jdbc.query(query, namedParameters, new BeanPropertyRowMapper<TraineeProgressResponse>(TraineeProgressResponse.class));
+                System.out.println("progress retrived :"+traineeProgressResponses);
+                return traineeProgressResponses;
+        }
+
 
 }
 

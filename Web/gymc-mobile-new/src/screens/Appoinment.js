@@ -3,9 +3,12 @@ import React, { useState } from 'react'
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import DropDownPicker from 'react-native-dropdown-picker';
 import CustomButton from "../components/CustomButtonComponent";
-import { Card, Title, Paragraph } from 'react-native-paper';
+import { Card, Title, Paragraph, Appbar } from 'react-native-paper';
 
 const Appoinment = ({ navigation }) => {
+
+  const _goBack = () => navigation.navigate('Tabs');
+
   const [open1, setOpen1] = useState(false);
   const [value1, setValue1] = useState(null);
   const [items1, setItems1] = useState([
@@ -27,7 +30,11 @@ const Appoinment = ({ navigation }) => {
     //     navigation.navigate('Tabs')}
     //   />
     // </View>
-    <View style={{ flex: 1, padding: 20, backgroundColor: '#CAF0F8' }}>
+    <View style={{ flex: 1, backgroundColor: '#CAF0F8' }}>
+      <Appbar.Header  style={styles.top}>
+      <Appbar.BackAction onPress={_goBack} />
+      <Appbar.Content title="Feedback" />
+      </Appbar.Header>
       <ScrollView style={styles.scrollView}>
         <Text
           // onPress={() => navigation.navigate('Home')}
@@ -38,7 +45,7 @@ const Appoinment = ({ navigation }) => {
             borderBottomColor: '#000',
             borderBottomWidth: StyleSheet.hairlineWidth,
             marginBottom: 20,
-            marginTop: 6,
+            marginTop: 20,
           }}
         />
         <Calendar
@@ -248,6 +255,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     backgroundColor: '#121928',
     width: 360
+  },
+  top: {
+    backgroundColor: "#000",
+    marginBottom:10,
   },
   scrollView: {
     marginHorizontal: 20,

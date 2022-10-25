@@ -6,7 +6,7 @@
 .rec-analytics-total-card{
     padding: 20px;
     margin: 10px 5px;
-    width: 180px;
+    width: 325px;
     height: 120px;
     display: flex;
     flex-direction: column;
@@ -23,6 +23,11 @@
     color: rgb(0, 0, 0);
     font-size: 1rem;
     font-weight: 600;
+}
+.rep-transactions-cards-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 

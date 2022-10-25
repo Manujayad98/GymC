@@ -1,7 +1,6 @@
 package com.example.gymcbackend.services;
 
 import com.example.gymcbackend.dto.*;
-import com.example.gymcbackend.entities.Appointment;
 import com.example.gymcbackend.repository.ExerciseDao.ExerciseJdbcRepository;
 import com.example.gymcbackend.repository.addWorkoutDao.AddWorkoutJdbcRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,8 +54,8 @@ public class AddWorkoutService {
 
         Long traineeId = workoutReservation.getTraineeId();
 
-//        System.out.println("training date list in service eid:"+workoutReservation.getTrainingDateList().get(0).getExerciseId());
-//        System.out.println("training date list in service reps:"+workoutReservation.getTrainingDateList().get(0).getNoOfRepetitions());
+        System.out.println("training date list in service eid:"+workoutReservation.getTrainingDateList().get(0).getExerciseId());
+        System.out.println("training date list in service reps:"+workoutReservation.getTrainingDateList().get(0).getNoOfRepetitions());
 
 
         LocalTime midnight = LocalTime.parse("00:00");
@@ -64,7 +63,7 @@ public class AddWorkoutService {
         LocalTime tempStartTime = workoutReservation.getStartTime();
         LocalTime tempEndTime = workoutReservation.getEndTime();
         Long ScheduleId= workoutReservation.getWorkoutScheduleId();
-        System.out.println(workoutReservation.getWorkoutScheduleId());
+
 
         int minutesUnit = 30;
         //get reservation starting slot number
@@ -101,23 +100,24 @@ public class AddWorkoutService {
         return factorSuccess;
     }
 
+    //ok
     public String updateReps(Long workoutPlanId, List<ExerciseTrainingDate> newExerciseList) {
         String repsSuccess= traineeAddWorkoutJdbcRepository.updateExercises(workoutPlanId,newExerciseList);
         return repsSuccess;
     }
 
-    public String addAppoint(Appointment appointment) {
+    public String addAppoint(AppointmentInput appointment) {
 
-        System.out.println("trainee id:"+appointment.getTrainee().getId());
+//        System.out.println("trainee id:"+appointment.getTrainee().getId());
 
         LocalTime midnight = LocalTime.parse("00:00");
         Date tempStartDate = appointment.getDate();
         LocalTime tempStartTime = appointment.getStartTime();
         LocalTime tempEndTime = appointment.getEndTime();
-        Long traineeId = appointment.getTrainee().getId();
+        Long traineeId = appointment.getTraineeId();
 
 //        System.out.println("trainee id:"+appointment.getTrainee().getId());
-        Long staffId= appointment.getStaffMember().getId();
+        Long staffId= appointment.getStaffId();
 
 
         int minutesUnit = 30;
@@ -143,9 +143,11 @@ public class AddWorkoutService {
         return  appSuccess;
     }
 
+    public String updateDietPlan(DietPlanInput dietPlan) {
+        String dietSuccess = traineeAddWorkoutJdbcRepository.updateDiet(dietPlan);
+        return dietSuccess;
+    }
 
-//    public String addAppointmentmobile() {
-//
-//
-//    }
+
+
 }
