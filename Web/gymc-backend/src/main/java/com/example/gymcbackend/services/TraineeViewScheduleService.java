@@ -53,4 +53,13 @@ public class TraineeViewScheduleService {
         List<TraineeProgressResponse> traineeProgressResponses= traineeViewScheduleJdbcRepository.getTraineeProgress(result);
         return traineeProgressResponses;
     }
+
+    public long isExistAWorkout(String traineeId, LocalDate date){
+
+        String traineeID = traineeId.substring(4);
+
+        Long result = Long.parseLong(String.valueOf(traineeID));
+
+        return traineeViewScheduleJdbcRepository.isExistAWorkout(result, date);
+    }
 }

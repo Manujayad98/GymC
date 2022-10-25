@@ -170,6 +170,26 @@ public class TraineeViewScheduleJdbcRepository {
         return traineeProgressResponses;
     }
 
+    public long isExistAWorkout(Long traineeId, LocalDate date){
+
+        System.out.println(date);
+        System.out.println(traineeId);
+        MapSqlParameterSource namedParameters =
+                new MapSqlParameterSource();
+        namedParameters.addValue("traineeId", traineeId);
+        namedParameters.addValue("date", date);
+
+        String query = "SELECT COUNT(*) FROM workout_schedule " +
+                "INNER JOIN workout_plan  ON  workout_schedule.workout_scheduleid=workout_plan.workout_scheduleid " +
+                "AND workout_schedule.trainee_id =? AND workout_plan.training_date=? " ;
+
+        long count = jdbcTemplate.queryForObject(query, new Object[] {traineeId, date}, Long.class);
+
+        System.out.println(count);
+
+
+        return count;
+    }
 
 }
 
