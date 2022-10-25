@@ -58,7 +58,7 @@ const Login = () => {
 
     } else {
       axios
-        .post("http://192.168.43.134:8080/api/v1/auth/login", {
+        .post("http://172.20.10.3:8080/api/v1/auth/login", {
           userName,
           password,
         })
