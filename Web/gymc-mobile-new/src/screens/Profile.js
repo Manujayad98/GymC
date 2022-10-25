@@ -5,7 +5,7 @@ import Header from "../components/HeaderComponent";
 import { COLORS } from "../constans";
 import * as ImagePicker from 'expo-image-picker';
 
-import UploadImage from '../components/UploadImage';
+
 import { TextInput , Button} from 'react-native-paper'
 // import imag from '../../assets/images/icon.png'
 

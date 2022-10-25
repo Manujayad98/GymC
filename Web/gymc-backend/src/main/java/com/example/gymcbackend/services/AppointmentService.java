@@ -20,7 +20,7 @@ public class AppointmentService {
     private AppointmentJdbcRepository appointmentJdbcRepository;
 
     public List<AppointmentTableData> getAllAppointmentTableData() {
-        System.out.println("awa");
+//        System.out.println("awa");
         return appointmentJdbcRepository.findAllAppointments();
     }
 

@@ -17,10 +17,10 @@ public class AppointmentJdbcRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
     public List<AppointmentTableData> findAllAppointments() {
-        System.out.println("awa2");
+//        System.out.println("awa2");
 
         String query ="SELECT CONCAT('A000', appointmentID) AS appointmentID, date AS date, start_time AS start_time, end_time AS end_time, CONCAT('S000', staff_id) AS staff_id, CONCAT('T000', trainee_id) AS trainee_id FROM appointment ";
-        System.out.println("awa3");
+//        System.out.println("awa3");
 
         List<AppointmentTableData> AppointmentList = jdbc.query(query, new BeanPropertyRowMapper<AppointmentTableData>(AppointmentTableData.class));
         return AppointmentList;

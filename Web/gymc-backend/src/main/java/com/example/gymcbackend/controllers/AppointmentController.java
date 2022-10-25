@@ -1,5 +1,6 @@
 package com.example.gymcbackend.controllers;
 import com.example.gymcbackend.dto.AppointmentTableData;
+import com.example.gymcbackend.dto.MyAppointments;
 import com.example.gymcbackend.services.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,4 +20,10 @@ public class AppointmentController {
     public List<AppointmentTableData> getAllAppointmentTableData(){
         return appointmentService.getAllAppointmentTableData();
     }
+
+    // GET DATA FOR TRAINEE MY APPOINTMENTS
+//    @GetMapping("/myappointments")
+//    public List<MyAppointments> getAllMyAppointments(){
+//        return appointmentService.getAllAppointmentTableData();
+//    }
 }
