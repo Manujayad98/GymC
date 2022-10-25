@@ -15,3 +15,15 @@ export const getAppointmentTableDetails = () => {
         },
     });
 };
+
+//GET UPCOMING APPOINMENT TABLE DETAILS FOR RECEPT DASHBOARD
+
+export const getUpcomingAppointmentTableDetails = () => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/upcomingappointments`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};

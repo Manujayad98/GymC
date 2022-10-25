@@ -21,9 +21,16 @@ public class AppointmentController {
         return appointmentService.getAllAppointmentTableData();
     }
 
+    // GET UPCOMING APPOINTMENT TABLE DATA FOR RECEPTIONIST DASHBOARD
+    @GetMapping("/upcomingappointments")
+    public List<AppointmentTableData> getAllUpcomingAppointmentTableData(){
+        return appointmentService.getAllUpcomingAppointmentTableData();
+    }
+
     // GET DATA FOR TRAINEE MY APPOINTMENTS
-//    @GetMapping("/myappointments")
-//    public List<MyAppointments> getAllMyAppointments(){
-//        return appointmentService.getAllAppointmentTableData();
-//    }
+    @PutMapping("/myappointments/{traineeID}")
+    public List<MyAppointments> getAllMyAppointments(@PathVariable String traineeID){
+        System.out.println("one");
+        return appointmentService.getAllMyAppointments(traineeID);
+    }
 }
