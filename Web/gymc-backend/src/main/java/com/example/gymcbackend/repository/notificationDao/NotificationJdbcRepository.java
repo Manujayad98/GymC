@@ -1,6 +1,5 @@
 package com.example.gymcbackend.repository.notificationDao;
 
-import com.example.gymcbackend.dto.AnnoucementsResponse;
 import com.example.gymcbackend.dto.NotificationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
