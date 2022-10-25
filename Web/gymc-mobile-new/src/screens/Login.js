@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   View,
   Text,
@@ -6,6 +6,7 @@ import {
   StyleSheet,
   useWindowDimensions,
   ScrollView,
+  TextInput
 } from "react-native";
 import CustomInput from "../components/CustomInputComponent";
 import CustomButton from "../components/CustomButtonComponent";
@@ -15,18 +16,29 @@ import { useForm, Controller } from "react-hook-form";
 // import { useSelector, useDispatch } from "react-redux";
 // import { UserLogin } from '../store/actions';
 import { LogBox } from "react-native";
+import axios from "axios";
+import { AuthContext } from "../context/AuthContext";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import jwt_decode from "jwt-decode";
 
 LogBox.ignoreLogs(["new NativeEventEmitter"]); // Ignore log notification by message
 LogBox.ignoreAllLogs();
 
 // const URL = "https://localhost:5000/api/v1/auth/login";
+const baseUrl = "https://10.22.167.203:8080/api/v1";
 
 const Login = () => {
   const [role, setRole] = useState("");
   const { height } = useWindowDimensions();
   const navigation = useNavigation();
 
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [userToken, setUserToken] = useState("");
+  // const { Login } = useContext(AuthContext);
+
   //   const dispatch = useDispatch();
+  const [click, setClick] = useState(false);
 
   const {
     control,
@@ -34,6 +46,9 @@ const Login = () => {
     formState: { errors },
     reset,
   } = useForm();
+
+  console.log(userName);
+  console.log(password);
 
   const onSignInPressed = async (data) => {
     // navigation.navigate("Tabs", "1");
@@ -43,7 +58,7 @@ const Login = () => {
 
     } else {
       axios
-        .post("http://10.22.167.203:8080/api/v1/auth/login", {
+        .post("http://192.168.43.134:8080/api/v1/auth/login", {
           userName,
           password,
         })
@@ -116,6 +131,22 @@ const Login = () => {
     //   alert("Username or Password is incorrect!");
     // }
   };
+  const getUser = async () => {
+    if (userToken != null) {
+      try {
+        // const savedUser = await AsyncStorage.getItem("userToken");
+        // const currentUser = JSON.parse(savedUser);
+        // console.log(currentUser);
+        const value = await AsyncStorage.getItem('userToken');
+        console.log(value);
+        console.log("not null called", userToken.size);
+        var decoded = jwt_decode(userToken);
+        console.log("decoded values: ", decoded);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
 
   const onForgotPasswordPressed = () => {
     navigation.navigate("ForgotPassword");
@@ -135,15 +166,34 @@ const Login = () => {
           resizeMode="contain"
         />
 
-        <CustomInput
+        {/* <CustomInput
           name="username"
+          value={userName}
           placeholder="Username"
           control={control}
           rules={{ required: "Username is required" }}
-        />
+          onchange={(userName) => setUserName(userName)}
+        /> */}
+        <View
+          style={[
+            styles.container2,
+          ]}>
+          <TextInput
+            value={userName}
+            onChangeText={(userName) => setUserName(userName)}
+            // onBlur={onBlur}
+            placeholder="Username"
+            required="Username is required"
+          // style={styles.input}
+          // secureTextEntry={secureTextEntry}
+          />
 
-        <CustomInput
+        </View>
+        {!userName && click && <Text style={{ color: 'red', alignSelf: 'stretch', marginLeft: '3' }}>Username is required</Text>}
+
+        {/* <CustomInput
           name="password"
+          value={password}
           placeholder="Password"
           secureTextEntry
           control={control}
@@ -154,7 +204,24 @@ const Login = () => {
               message: "Password should be minimum 3 characters long",
             },
           }}
-        />
+        /> */}
+        <View
+          style={[
+            styles.container2,
+          ]}>
+          <TextInput
+            value={password}
+            onChangeText={(password) => setPassword(password)}
+            // onBlur={onBlur}
+            placeholder="Password"
+            // style={styles.input}
+            required="Password is required"
+            minLength={3}
+            secureTextEntry
+          />
+          {/* <Text style={{ color: 'red', alignSelf: 'stretch' }}>{error.message || 'Error'}</Text> */}
+        </View>
+        {!password && click && <Text style={{ color: 'red', alignSelf: 'stretch', marginLeft: '3' }}>Password is required</Text>}
 
         <CustomButton text="Sign In" onPress={handleSubmit(onSignInPressed)} />
 
@@ -168,11 +235,11 @@ const Login = () => {
 
         {/* {Platform.OS === "android" ? <SocialSignInButtons /> : null} */}
 
-        <CustomButton
+        {/* <CustomButton
           text="Don't have an account? Create one"
           onPress={onSignUpPress}
           type="TERTIARY"
-        />
+        /> */}
       </View>
     </ScrollView>
   );
@@ -204,6 +271,20 @@ const styles = StyleSheet.create({
     maxWidth: 300,
     maxHeight: 200,
   },
+
+  container2: {
+    backgroundColor: 'white',
+    width: '100%',
+
+    borderColor: '#e8e8e8',
+    borderWidth: 1,
+    borderRadius: 5,
+
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    marginVertical: 5,
+  },
+  input: {},
 });
 
 export default Login;

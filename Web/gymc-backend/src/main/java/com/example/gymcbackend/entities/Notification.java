@@ -3,14 +3,12 @@ package com.example.gymcbackend.entities;
 import javax.persistence.*;
 import java.sql.Time;
 
-@Table(name = "notification")
-@Entity
 public class Notification {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "notification_id")
-    private long notificationId;
+    @Column(name = "notificationID")
+    private long notificationID;
 
     @Column(name = "Topic")
     private String topic;
@@ -21,19 +19,16 @@ public class Notification {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "state")
-    private Integer state;
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userId")
     UserAccount userAccount;
 
-    public long getNotificationId() {
-        return notificationId;
+    public long getNotificationID() {
+        return notificationID;
     }
 
-    public void setNotificationId(long notificationId) {
-        this.notificationId = notificationId;
+    public void setNotificationID(long notificationID) {
+        this.notificationID = notificationID;
     }
 
     public String getTopic() {
