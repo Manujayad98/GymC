@@ -5,7 +5,7 @@ import { icons, COLORS, SIZES } from "../constans";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Entypo';
 import Icon3 from 'react-native-vector-icons/MaterialIcons';
-import { Card, Title, Paragraph } from 'react-native-paper';
+import { Card, Title, Paragraph, Button } from 'react-native-paper';
 
 // const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -49,7 +49,7 @@ const Home = ({ navigation }) => {
     //   });
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.backgroundColor }}>
-            <Header title={"GYMC"} />
+            {/* <Header title={"GYMC"} /> */}
             <ScrollView>
 
                 <View style={styles.root}>
@@ -112,8 +112,16 @@ const Home = ({ navigation }) => {
                             </View>
 
                         </View>
-                        <Text style={styles.sectionHeader}>Annoucements</Text>
+                        <View style={styles.announcementheader}>
+                            <Text style={styles.sectionHeader}>Annoucements</Text>
+                            <Text onPress={() => navigation.navigate('feedback')} style={styles.viewmore}>View more</Text>
+                            {/* <Button mode="contained" onPress={() => navigation.navigate('feedback')}>
+                                View more
+                            </Button> */}
+                        </View>
                         <View style={styles.announcementbody}>
+                        
+
                             {/* <FlatList
                                 keyExtractor={(item) => item.id}
                                 data={DATA}
@@ -178,6 +186,11 @@ const styles = StyleSheet.create({
         fontSize: 18,
         padding: 20,
     },
+    announcementheader: {
+        flexDirection: 'row',
+        marginTop: 20,
+        justifyContent: 'space-around',
+    },
     title: {
         color: 'black',
         fontSize: 30,
@@ -185,6 +198,9 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         padding: 30,
         alignSelf: 'center'
+    },
+    viewmore: {
+        fontWeight: 'bold',
     },
     button: {
         marginTop: 20,
@@ -207,9 +223,9 @@ const styles = StyleSheet.create({
         marginBottom: '20px',
     },
     sectionHeader: {
-        marginTop: 20,
+        
         fontSize: 18,
-        paddingBottom: 10,
+        
         paddingRight: 50,
         color: 'black',
         alignContent: 'left',
