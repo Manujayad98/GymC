@@ -136,7 +136,7 @@ const AddWorkout = () => {
                         </div>
                         <div className="own-addworkout-content-container">
                             <div className="own-addworkout-left">
-                                <div className="own-addworkout-profile">
+                                {/* <div className="own-addworkout-profile">
 
                                     <div className='own-dashboard-card own-dashboard-profile-cards'>
                                         <div className='own-dashboard-card-img-container'>
@@ -148,7 +148,7 @@ const AddWorkout = () => {
                                         </div>
                                     </div>
 
-                                </div>
+                                </div> */}
                                 <div className="addworkout_card1">
 
 
