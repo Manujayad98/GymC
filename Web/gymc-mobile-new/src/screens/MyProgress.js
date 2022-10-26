@@ -49,7 +49,7 @@ const Home = () => {
      
             <View style={styles.root}>
                 <View style={styles.homecontainer}>
-                    <View style={styles.header}>
+                    {/* <View style={styles.header}>
                         <Text><Icon name="user-circle" size={30} color="#000"
                             onPress={() =>
                                 navigation.navigate('Startup')}
@@ -59,7 +59,7 @@ const Home = () => {
 
                         </Text>
 
-                    </View>
+                    </View> */}
                     <Text style={styles.sectionHeader}>My Progess</Text>
                     <View >
                     {/* <View style={{ flexDirection: 'row', alignItems: 'center' ,paddingBottom:20}}>
@@ -123,14 +123,15 @@ const styles = StyleSheet.create({
   },
   sectionHeader: {
       marginTop: 20,
+      marginBottom: 20,
       fontSize: 18,
       paddingBottom: 10,
       paddingRight: 50,
       color: 'black',
-      alignContent: 'left',
+      alignContent: 'center',
       // fontFamily:'Poppins',
       fontWeight: 'bold',
-
+      textAlign:'center',
 
   },
 

@@ -2,11 +2,20 @@ import { View, Text, SafeAreaView, ScrollView, StyleSheet, StatusBar, Image } fr
 import React, { Component, useState } from 'react'
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import CustomButton from "../components/CustomButtonComponent";
+import SegmentedControlTab from 'react-native-segmented-control-tab';
 import DataTable, { COL_TYPES } from 'react-native-datatable-component';
 import { icons, COLORS, SIZES } from "../constans";
 
 const Schedule = () => {
   const [shouldShow, setShouldShow] = useState(true);
+
+  // For custom SegmentedControlTab
+  const [customStyleIndex, setCustomStyleIndex] = useState(0);
+
+  const handleCustomIndexSelect = (index) => {
+    //handle tab selection for custom Tab Selection SegmentedControlTab
+    setCustomStyleIndex(index);
+  };
 
   return (
     // <View>
@@ -131,7 +140,29 @@ const Schedule = () => {
             <View style={styles.dateContainer}>
               <Text style={{ color: 'black' }}>2022 - 09 - 16</Text>
             </View>
-            <DataTable
+            <View style={styles.container2}>
+          
+          {/* Simple Segmented with Custom Styling*/}
+          <SegmentedControlTab
+            values={['Workout Plan', 'Diet Plan']}
+            selectedIndex={customStyleIndex}
+            onTabPress={handleCustomIndexSelect}
+            borderRadius={5}
+            tabsContainerStyle={{ height: 50,width: 300, backgroundColor: '#F2F2F2',marginBottom:20 }}
+            tabStyle={{
+              backgroundColor: '#F2F2F2',
+              borderWidth: 0,
+              borderColor: 'transparent',
+              borderRadius:5,
+              alignItems:'center',
+            }}
+            activeTabStyle={{ backgroundColor: 'black' }}
+            tabTextStyle={{ color: '#444444', fontWeight: 'bold' }}
+            activeTabTextStyle={{ color: '#888888' }}
+          />
+          {customStyleIndex === 0 && (
+            <>
+                <DataTable
               data={[
                 { Exercise: 'Sreching & Warmup', Repititions: 21 },
                 { Exercise: 'Bench press', Repititions: 22 },
@@ -148,7 +179,31 @@ const Schedule = () => {
               noOfPages={2} //number
               backgroundColor={'#90E0EF'} //Table Background Color
               headerLabelStyle={{ color: 'black', fontSize: 15 }} //Text Style Works
-            />
+            />  </>
+                  
+          )}
+          {customStyleIndex === 1 && (
+            <><DataTable
+            data={[
+              { Nutrition: 'Protens', Calories: 100 },
+              { Nutrition: 'Carbs', Calories: 45 },
+              { Nutrition: 'Fats', Calories: 60 },
+              
+            ]} // list of objects
+            colNames={['Nutrition', 'Calories']} //List of Strings
+            colSettings={[
+              { name: 'Nutrition', type: COL_TYPES.STRING, width: '70%' },
+              { name: 'Calories', type: COL_TYPES.INT, width: '30%' },
+            ]}//List of Objects
+            noOfPages={1} //number
+            backgroundColor={'#90E0EF'} //Table Background Color
+            headerLabelStyle={{ color: 'black', fontSize: 15 }} //Text Style Works
+          />
+                </>
+          
+          )}
+          
+        </View>
           </View>
         ) : null}
       </ScrollView>
