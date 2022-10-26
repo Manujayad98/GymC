@@ -19,7 +19,7 @@ public class Announcement {
     private String topic;
 
     @Column(name = "time")
-    private Time time;
+    private Date time;
 
     @Column(name = "description")
     private String description;
@@ -52,7 +52,7 @@ public class Announcement {
         return topic;
     }
 
-    public Time getTime() {
+    public Date getTime() {
         return time;
     }
 

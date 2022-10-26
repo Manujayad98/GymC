@@ -104,9 +104,14 @@ public class TrainerJdbcRepository {
 
 
     public List<TodayWorkouts> findTodayWorkouts(String today) {
-        String query ="";
 
-        List<TodayWorkouts> todayWorkoutsList = jdbcTemplate.query(query, new Object[] {today}, new BeanPropertyRowMapper<TodayWorkouts>(TodayWorkouts.class));
+        String query ="SELECT w.start_time, w.end_time, CONCAT(s.first_name,' ', s.last_name) AS trainer_name,CONCAT(t.first_name,' ', t.last_name) AS trainee_name  FROM workout_plan AS w \n" +
+                "INNER JOIN workout_schedule AS ws ON ws.workout_scheduleid= w.workout_scheduleid \n" +
+                "INNER JOIN staff_member AS s ON s.staff_id=w.staff_id \n" +
+                "INNER JOIN trainee AS t ON t.trainee_id=ws.trainee_id \n" +
+                "AND w.training_date = CURDATE() ";
+
+        List<TodayWorkouts> todayWorkoutsList = jdbcTemplate.query(query, new Object[] {}, new BeanPropertyRowMapper<TodayWorkouts>(TodayWorkouts.class));
         return todayWorkoutsList;
     }
 }

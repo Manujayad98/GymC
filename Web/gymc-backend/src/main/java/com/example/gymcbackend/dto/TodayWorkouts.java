@@ -5,6 +5,8 @@ import java.util.Date;
 public class TodayWorkouts {
 
     private String start_time;
+
+    private String end_time;
     private String trainer_name;
     private String trainee_name;
 
@@ -30,5 +32,13 @@ public class TodayWorkouts {
 
     public void setTrainee_name(String trainee_name) {
         this.trainee_name = trainee_name;
+    }
+
+    public String getEnd_time() {
+        return end_time;
+    }
+
+    public void setEnd_time(String end_time) {
+        this.end_time = end_time;
     }
 }

@@ -109,4 +109,10 @@ public class UserAccountDetailsJdbcRepository {
         return rowAffected;
     }
 
+//    public long addAnnouncement(AnnouncementAdd announcementAdd) {
+//        String query = "INSERT INTO announcement (description ,start_time,end_time,staff_id,trainee_id) values(:tempStartDate,:startTime,:endTime,:staffId,:traineeId)";
+//
+//        return rowAffected;
+//    }
+
 }
