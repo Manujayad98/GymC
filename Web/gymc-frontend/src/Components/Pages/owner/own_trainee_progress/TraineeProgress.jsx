@@ -163,27 +163,22 @@ const TraineeProgress = () => {
         <HeaderO title="Trainee Progress" />
         <div className="own-trainee-progress-content-container">
           <div className="own-trainee-progress-left">
-            <div className="own-trainee-progress-profile">
+            {/* <div className="own-trainee-progress-profile">
               <div className="otpp-card">
                 <div className="own-trainee-progress-profile-pic">
                   <img src={Pic1} alt="" />
-
                 </div>
                 <div className="own-trainee-progress-profile-content">
                   <h6>Sanjana Rajapakse</h6>
                   <h5>T0001</h5>
                 </div>
-
-
-
-
               </div>
-            </div>
+            </div> */}
             <div className="own-trainee-progress-chart">
               <div className="otpc-card">
 
                 <Chart
-                  width={'550px'}
+                  width={'1150px'}
                   height={'410px'}
                   chartType="LineChart"
                   loader={<div>Loading Chart</div>}
@@ -195,29 +190,17 @@ const TraineeProgress = () => {
               </div>
             </div>
           </div>
-          <div className="own-trainee-progress-right">
+          {/* <div className="own-trainee-progress-right">
             <div className="own-trainee-progress-workout">
               <div className="otpw-card">
                 <h4 className="progress-workout-head">Workout No-W003</h4>
-                {/* <Collapsible trigger="Workout Plan ^">
-                  <Table
-                    rows={workoutDetails}
-                    headCells={workoutDetailsTableHead}
-                  />
-                </Collapsible> */}
-                {/* <div className="t-content"> */}
                 <Tabs className="dietworkout_tab">
                   <Tab eventKey="home" title="Workout" >
 
-                    {/* <Table
-                      rows={workoutDetails}
-                      headCells={workoutDetailsTableHead}
-                    /> */}
                     <div style={{ padding: '20px' }}>
                       <MaterialTable
                         title="Exersices"
                         columns={[
-                          // { title: "Exercice ID", field: "ExerciseID" },
                           { title: "Name", field: "Name" },
                           { title: "Repitition Count", field: "Repititions" },
                         ]}
@@ -236,10 +219,7 @@ const TraineeProgress = () => {
                     </div>
                   </Tab>
                   <Tab eventKey="profile" title="Diet" >
-                    {/* <Table
-                      rows={dietDetails}
-                      headCells={dietDetailsTableHead}
-                    /> */}
+                   
                     <div style={{ padding: '20px' }}>
                       <MaterialTable
                         title="Diet Plan"
@@ -264,11 +244,6 @@ const TraineeProgress = () => {
                   </Tab>
 
                 </Tabs>
-
-
-
-
-                {/* </div> */}
                 <div className="own-trainee-progress-btn">
                   <button className="otp-btn">Compare</button>
                 </div>
@@ -276,7 +251,7 @@ const TraineeProgress = () => {
 
             </div>
 
-          </div>
+          </div> */}
 
         </div>
 
