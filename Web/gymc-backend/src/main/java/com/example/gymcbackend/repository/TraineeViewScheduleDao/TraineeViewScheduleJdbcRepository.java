@@ -65,7 +65,7 @@ public class TraineeViewScheduleJdbcRepository {
                 namedParameters.addValue("traineeDate", traineeDate);
                 System.out.println(traineeDate);
 
-                String query1= "SELECT exercise.name,training_date.no_of_repetitions " +
+                String query1= "SELECT CONCAT('E000', exercise.exerciseid) AS exercise_id , exercise.name,training_date.no_of_repetitions " +
                         "FROM workout_schedule " +
                         "INNER JOIN workout_plan  ON  workout_schedule.workout_scheduleid=workout_plan.workout_scheduleid " +
                         "INNER JOIN training_date  ON workout_plan.workout_planid=training_date.workout_planid " +
@@ -124,6 +124,17 @@ public class TraineeViewScheduleJdbcRepository {
                 return timeSlot;
         }
 
+        public TimeSlotTwo getDateAvailabilityTimes(LocalDate date1) {
+
+                String query="SELECT * FROM time_slot_two WHERE date=?";
+
+                TimeSlotTwo timeSlot = (TimeSlotTwo) jdbcTemplate.queryForObject(query, new Object[]{date1}, new BeanPropertyRowMapper(TimeSlotTwo.class));
+
+                System.out.println("sdsdsdsdsds");
+
+                return timeSlot;
+        }
+
         public static String getDayStringNew(LocalDate date, Locale locale) {
                 DayOfWeek day = date.getDayOfWeek();
                 return day.getDisplayName(TextStyle.FULL, locale);
@@ -151,8 +162,15 @@ public class TraineeViewScheduleJdbcRepository {
 
 
         public BodyFactorsResponse getBodyFactors(LocalDate date1, Long traineeId) {
-                String query="SELECT weight,height,biceps,chest,forearms,hips,thighs FROM workout_plan WHERE  ";
-                BodyFactorsResponse bodyFactors = (BodyFactorsResponse) jdbcTemplate.queryForObject(query, new Object[]{date1}, new BeanPropertyRowMapper(BodyFactorsResponse.class));
+                MapSqlParameterSource namedParameters =
+                        new MapSqlParameterSource();
+                namedParameters.addValue("traineeId", traineeId);
+                namedParameters.addValue("date", date1);
+
+                String query="SELECT weight,height,biceps,chest,forearms,hips,thighs, diseases FROM workout_plan " +
+                        "INNER JOIN workout_schedule ON workout_plan.workout_scheduleid=workout_schedule.workout_scheduleid " +
+                        "AND  workout_schedule.trainee_id= ? AND workout_plan.training_date= ? ";
+                BodyFactorsResponse bodyFactors = (BodyFactorsResponse) jdbcTemplate.queryForObject(query, new Object[]{traineeId,date1}, new BeanPropertyRowMapper(BodyFactorsResponse.class));
                 return bodyFactors;
         }
 

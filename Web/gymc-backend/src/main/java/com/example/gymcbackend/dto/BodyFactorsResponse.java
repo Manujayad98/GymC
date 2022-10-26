@@ -24,6 +24,8 @@ public class BodyFactorsResponse {
     @Column(name = "weight")
     private Double weight;
 
+    private String diseases;
+
     public Double getThighs() {
         return thighs;
     }
@@ -78,5 +80,13 @@ public class BodyFactorsResponse {
 
     public void setWeight(Double weight) {
         this.weight = weight;
+    }
+
+    public String getDiseases() {
+        return diseases;
+    }
+
+    public void setDiseases(String diseases) {
+        this.diseases = diseases;
     }
 }

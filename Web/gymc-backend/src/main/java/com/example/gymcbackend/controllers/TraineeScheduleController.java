@@ -4,6 +4,7 @@ import com.example.gymcbackend.dto.*;
 import com.example.gymcbackend.entities.Appointment;
 import com.example.gymcbackend.entities.DietPlan;
 import com.example.gymcbackend.entities.TimeSlot;
+import com.example.gymcbackend.entities.TimeSlotTwo;
 import com.example.gymcbackend.services.TraineeViewScheduleService;
 import com.example.gymcbackend.services.AddWorkoutService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,11 +54,14 @@ public class TraineeScheduleController {
     }
     //    view workout body measures(for update workout)
     @GetMapping("/getBodyFactors/{date}/{traineeId}")
-    public BodyFactorsResponse getBodyFactors(@PathVariable String date,@PathVariable Long traineeId){
+    public BodyFactorsResponse getBodyFactors(@PathVariable String date,@PathVariable String traineeId){
 //       Date date1= java.sql.Date.valueOf(date);
         LocalDate date1 = LocalDate.parse(date);
         System.out.println("getTraineeDateOnclick");
-        return traineeViewScheduleService.getWorkoutPlanBodyFactors(date1,traineeId);
+        String traineeID = traineeId.substring(4);
+        Long result = Long.parseLong(String.valueOf(traineeID));
+
+        return traineeViewScheduleService.getWorkoutPlanBodyFactors(date1,result);
     }
 
     // View trainee diet on date click,pass date on url
@@ -101,6 +105,11 @@ public class TraineeScheduleController {
         return traineeViewScheduleService.getDate(date1,StaffId);
     }
 
+    @GetMapping("/availabilityTimes/{date}")
+    public TimeSlotTwo getAvailabilityTimesForMobile(@PathVariable String date) {
+        LocalDate date1 = LocalDate.parse(date);
+        return traineeViewScheduleService.getTimeSlots(date1);
+    }
 
     @PostMapping("/addAppointment")
     public String addAppointment(@RequestBody AppointmentInput appointment){
