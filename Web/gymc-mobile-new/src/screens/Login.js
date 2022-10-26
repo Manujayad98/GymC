@@ -20,6 +20,7 @@ import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import jwt_decode from "jwt-decode";
+import { useEffect } from "react";
 
 LogBox.ignoreLogs(["new NativeEventEmitter"]); // Ignore log notification by message
 LogBox.ignoreAllLogs();
@@ -39,6 +40,11 @@ const Login = () => {
 
   //   const dispatch = useDispatch();
   const [click, setClick] = useState(false);
+  useEffect(() => {
+    if (userToken != "") {
+      console.log(userToken)
+    }
+  })
 
   const {
     control,
@@ -64,10 +70,10 @@ const Login = () => {
         })
         .then((res) => {
           console.log("sign in response: ", res.data);
-          navigation.navigate("Tabs", "1");
+          // navigation.navigate("Tabs", "1");
           const token = res.data;
-          setUserToken(token);
-          console.log(userToken);
+          setUserToken(res.data);
+
           AsyncStorage.setItem("userToken", JSON.stringify(userToken));
           // getUser();
         })
@@ -76,7 +82,10 @@ const Login = () => {
           alert("Somthing went wrong. Check credentials again !!!");
         });
     }
+
+
     console.log(userName);
+    console.log(userToken);
     // try {
     //   const response = await axios.post(`${baseUrl}/auth/login`, {
     //     userName,
