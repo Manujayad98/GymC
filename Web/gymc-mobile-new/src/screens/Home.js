@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
     announcementheader: {
         flexDirection: 'row',
         marginTop: 20,
-        
+        justifyContent: 'space-around',
     },
     title: {
         color: 'black',
