@@ -5,16 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
-import java.util.List;
-
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Repository
@@ -86,5 +82,31 @@ public class TraineeJdbcRepository {
         System.out.println("annocements retrival");
         return annoucementsResponses;
 
+    }
+
+    public String addAnnouncement(AnnouncementInput announcementInput) {
+
+        LocalDate time=java.time.LocalDate.now();
+
+
+        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+//        namedParameters.addValue("date", date);
+        namedParameters.addValue("topic", announcementInput.getTopic());
+        namedParameters.addValue("time",time);
+        namedParameters.addValue("staffId", announcementInput.getStaffId());
+        namedParameters.addValue("description", announcementInput.getDescription());
+
+
+
+        String query = "INSERT INTO announcement (description,time,topic,staff_id) " +
+                "values(:description,:time,:topic,:staffId)";
+        int rowsAffected = jdbc.update(query , namedParameters);
+
+        if(rowsAffected==1){
+            return "annocement added";
+        }
+        else{
+            return "annocement failed";
+        }
     }
 }

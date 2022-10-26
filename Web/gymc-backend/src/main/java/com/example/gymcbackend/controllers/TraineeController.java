@@ -1,15 +1,9 @@
 package com.example.gymcbackend.controllers;
 
-import com.example.gymcbackend.dto.AnnoucementsResponse;
-import com.example.gymcbackend.dto.TodayAvailableTrainees;
-import com.example.gymcbackend.dto.TodayAvailableTrainers;
-import com.example.gymcbackend.dto.TraineeInfo;
+import com.example.gymcbackend.dto.*;
 import com.example.gymcbackend.services.TraineeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,4 +28,9 @@ public class TraineeController {
     public List<AnnoucementsResponse> getAnnoucements(){
         return traineeService.getAnn();
     }
+    @PostMapping("/addAnnoucements")
+    public String addAnnoucement(@RequestBody AnnouncementInput announcementInput){
+        return traineeService.addAnnouce(announcementInput);
+    }
+
 }

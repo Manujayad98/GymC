@@ -102,7 +102,7 @@ public class TraineeViewScheduleJdbcRepository {
                 return dietPlanResponse;
         }
 
-        //trainer availability check karanna hadanna one
+
 
         public TimeSlotTwo getDateAvailability(LocalDate date1, Long staffId) {
 
@@ -110,7 +110,19 @@ public class TraineeViewScheduleJdbcRepository {
                 namedParameters.addValue("staffId", staffId);
 
 
-//        namedParameters.addValue("date1", date1);
+                namedParameters.addValue("date1", date1);
+                String query0="SELECT COUNT(date) FROM time_slot_two WHERE date=?";
+                Integer dateCount = jdbcTemplate.queryForObject(query0, new Object[] {date1 }, Integer.class);
+
+                int rowsAffected1=0;
+                if(dateCount==0){
+
+                        String query2="INSERT INTO time_slot_two (date) VALUES (:date1) ";
+                        rowsAffected1 = jdbc.update(query2 , namedParameters);
+                }
+
+
+                namedParameters.addValue("date1", date1);
                 String query="SELECT * FROM time_slot_two WHERE date=?";
 
                 TimeSlotTwo timeSlot = (TimeSlotTwo) jdbcTemplate.queryForObject(query, new Object[]{date1}, new BeanPropertyRowMapper(TimeSlotTwo.class));
@@ -189,5 +201,13 @@ public class TraineeViewScheduleJdbcRepository {
         }
 
 
+        public List<TrainerListResponse> getTrainers() {
+                String query="SELECT staff_id as id,CONCAT(staff_member.first_name,' ',staff_member.last_name) as name" +
+                        " FROM staff_member INNER JOIN user_account ON staff_member.user_id=user_account.user_id " +
+                        "AND user_account.status=1 AND user_account.user_level='Owner' OR user_account.user_level='Trainer' " +
+                        "AND is_hold=0 " ;
+                List<TrainerListResponse> traineeProgressResponses = jdbc.query(query, new BeanPropertyRowMapper<TrainerListResponse>(TrainerListResponse.class));
+                return traineeProgressResponses;
+        }
 }
 
