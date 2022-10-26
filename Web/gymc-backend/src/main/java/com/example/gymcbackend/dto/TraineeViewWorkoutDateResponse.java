@@ -4,6 +4,7 @@ public class TraineeViewWorkoutDateResponse {
 
     private String name;
 
+    private String exercise_id;
     private Integer noOfRepetitions;
 
     public String getName() {
@@ -21,5 +22,13 @@ public class TraineeViewWorkoutDateResponse {
 
     public void setNoOfRepetitions(Integer noOfRepetitions) {
         this.noOfRepetitions = noOfRepetitions;
+    }
+
+    public String getExercise_id() {
+        return exercise_id;
+    }
+
+    public void setExercise_id(String exercise_id) {
+        this.exercise_id = exercise_id;
     }
 }

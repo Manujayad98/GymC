@@ -128,11 +128,11 @@ function App() {
           <Route path="/Oanalytics" element={<AnalyticsO />}></Route>
           <Route path="/ViewWorkout/:id" component={ViewWorkout} element={<ViewWorkout />}></Route>
           <Route path="/AddWorkout/:id" component={AddWorkoutO} element={<AddWorkoutO />}></Route>
-          <Route path="/OupdateWorkout" element={<UpdateWorkoutO />}></Route>
+          <Route path="/OupdateWorkout/:id" component={UpdateWorkoutO} element={<UpdateWorkoutO />}></Route>
           <Route path="/OtraineeProgress" element={<TraineeProgressO />}></Route>
           <Route path="/ONewExercise" element={<NewExercise />}></Route>
           <Route path="/ONewPaymentPlan" element={<NewPaymentPlan />}></Route>
-          <Route path="/AddWorkout2/:trainerid/:scheduleid/:trainerid" component={AddWorkoutPart2O} element={<AddWorkoutPart2O />}></Route>
+          <Route path="/AddWorkout2/:traineeid/:scheduleid/:trainerid" component={AddWorkoutPart2O} element={<AddWorkoutPart2O />}></Route>
 
           {/* ADMIN ROUTES */}
           <Route path="/Aannouncements" element={<AnnouncementsA />}></Route>

@@ -31,13 +31,24 @@ import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 import { Calendar } from 'react-calendar'
 import "react-calendar/dist/Calendar.css";
 import dayjs from "dayjs";
+import { getBodyFactorsForUpdate } from "../../../../services/WorkoutService";
+import { Link, useParams } from 'react-router-dom'
 
 
 export default function UpdateWorkout() {
 
+    const { id } = useParams();
+
+
     useEffect(() => {
         checkValidate();
+        getBodyFactorsForToday();
     }, []);
+
+    var MyDate = new Date();
+    var dateToday;
+    dateToday = MyDate.getFullYear() + '-' + ('0' + (MyDate.getMonth() + 1)).slice(-2) + '-' + ('0' + MyDate.getDate()).slice(-2);
+    console.log(dateToday);
 
     const checkValidate = async () => {
         const y = localStorage.getItem("USER_KEY");
@@ -63,6 +74,7 @@ export default function UpdateWorkout() {
         bones: ''
     });
     const [click, setClick] = useState(false);
+    const [traineeBodyFactors, setTraineeBodyFactors] = useState([]);
 
     const handleChange = (key) => (value) => {
         setState({
@@ -78,7 +90,15 @@ export default function UpdateWorkout() {
         });
     }
 
-    console.log(selectedDate);
+    const getBodyFactorsForToday = async () => {
+        const res = await getBodyFactorsForUpdate(dateToday, id);
+        console.log(res.data);
+        setTraineeBodyFactors(
+            res.data
+        );
+    };
+
+    console.log(traineeBodyFactors);
 
     const updateWOrkout = (evt) => {
         console.log(requestData);
@@ -200,10 +220,9 @@ export default function UpdateWorkout() {
                                             <div className="form-row">
                                                 <div className="form-col1">
                                                     <InputField
-                                                        value={requestData.height}
+                                                        value={traineeBodyFactors.height}
                                                         type='text'
-                                                        label="Height"
-                                                        placeholder='Type'
+                                                        label="Height(Inches)"
                                                         validators={[
                                                             { check: Validators.number, message: 'Type is not valid' }
                                                         ]}
@@ -212,11 +231,9 @@ export default function UpdateWorkout() {
                                                 </div>
                                                 <div className="form-col2">
                                                     <InputField
-                                                        value={requestData.weight}
+                                                        value={traineeBodyFactors.weight}
                                                         type='text'
-                                                        label="Weight"
-                                                        placeholder='Type'
-
+                                                        label="Weight(Kg)"
                                                         validators={[
                                                             { check: Validators.number, message: 'Type is not valid' }
                                                         ]}
@@ -231,10 +248,9 @@ export default function UpdateWorkout() {
                                             <div className="form-row">
                                                 <div className="form-col1">
                                                     <InputField
-                                                        value={requestData.diseases}
+                                                        value={traineeBodyFactors.diseases}
                                                         type='textarea'
                                                         label="Diseases"
-                                                        placeholder='Type'
                                                         validators={[
                                                             { check: Validators.number, message: 'Type is not valid' }
                                                         ]}
@@ -253,10 +269,9 @@ export default function UpdateWorkout() {
                                             <div className="form-row">
                                                 <div className="form-col1">
                                                     <InputField
-                                                        value={requestData.biceps}
+                                                        value={traineeBodyFactors.biceps}
                                                         type='text'
                                                         label="Biceps"
-                                                        placeholder='Type'
                                                         validators={[
                                                             { check: Validators.number, message: 'Type is not valid' }
                                                         ]}
@@ -265,10 +280,9 @@ export default function UpdateWorkout() {
                                                 </div>
                                                 <div className="form-col2">
                                                     <InputField
-                                                        value={requestData.forearms}
+                                                        value={traineeBodyFactors.forearms}
                                                         type='text'
                                                         label="Forearms"
-                                                        placeholder='Type'
                                                         validators={[
                                                             { check: Validators.number, message: 'Type is not valid' }
                                                         ]}
@@ -279,10 +293,9 @@ export default function UpdateWorkout() {
                                             <div className="form-row">
                                                 <div className="form-col1">
                                                     <InputField
-                                                        value={requestData.chest}
+                                                        value={traineeBodyFactors.chest}
                                                         type='text'
                                                         label="Chest"
-                                                        placeholder='Type'
                                                         validators={[
                                                             { check: Validators.number, message: 'Type is not valid' }
                                                         ]}
@@ -291,10 +304,9 @@ export default function UpdateWorkout() {
                                                 </div>
                                                 <div className="form-col2">
                                                     <InputField
-                                                        value={requestData.hips}
+                                                        value={traineeBodyFactors.hips}
                                                         type='text'
                                                         label="Hips"
-                                                        placeholder='Type'
                                                         validators={[
                                                             { check: Validators.number, message: 'Type is not valid' }
                                                         ]}
@@ -305,10 +317,9 @@ export default function UpdateWorkout() {
                                             <div className="form-row">
                                                 <div className="form-col1">
                                                     <InputField
-                                                        value={requestData.thighs}
+                                                        value={traineeBodyFactors.thighs}
                                                         type='text'
                                                         label="Thighs"
-                                                        placeholder='Type'
                                                         validators={[
                                                             { check: Validators.number, message: 'Type is not valid' }
                                                         ]}

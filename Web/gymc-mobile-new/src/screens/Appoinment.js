@@ -4,10 +4,14 @@ import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import DropDownPicker from 'react-native-dropdown-picker';
 import CustomButton from "../components/CustomButtonComponent";
 import { Card, Title, Paragraph, Appbar } from 'react-native-paper';
+import DataTable, { COL_TYPES } from 'react-native-datatable-component';
+import axios from "axios";
 
 const Appoinment = ({ navigation }) => {
 
   const _goBack = () => navigation.navigate('Tabs');
+
+  const [selectedDate, setSelectedDate] = useState("");
 
   const [open1, setOpen1] = useState(false);
   const [value1, setValue1] = useState(null);
@@ -22,6 +26,12 @@ const Appoinment = ({ navigation }) => {
     { label: '9.00 AM', value: '9.00' },
     { label: '9.30 AM', value: '9.30' }
   ]);
+
+  const getTimeSLots = async (data) => {
+    console.log(data);
+
+  }
+
   return (
     // <View>
     //   <Text>Appoinment</Text>
@@ -31,14 +41,14 @@ const Appoinment = ({ navigation }) => {
     //   />
     // </View>
     <View style={{ flex: 1, backgroundColor: '#CAF0F8' }}>
-      <Appbar.Header  style={styles.top}>
-      <Appbar.BackAction onPress={_goBack} />
-      <Appbar.Content title="Feedback" />
+      <Appbar.Header style={styles.top}>
+        <Appbar.BackAction onPress={_goBack} />
+        <Appbar.Content title="Appointment" />
       </Appbar.Header>
       <ScrollView style={styles.scrollView}>
         <Text
           // onPress={() => navigation.navigate('Home')}
-          style={{ fontSize: 26, fontWeight: 'bold', color: 'black' }}>My Calendar
+          style={{ fontSize: 26, fontWeight: 'bold', color: 'black', marginTop: 10 }}>New Appointment
         </Text>
         <View
           style={{
@@ -89,7 +99,24 @@ const Appoinment = ({ navigation }) => {
 
           // Handler which gets executed on day press. Default = undefined
           onDayPress={day => {
-            console.log('selected day', day);
+            setSelectedDate(day)
+            getTimeSLots(selectedDate)
+            // console.log(dateString);
+            console.log('selected day', day['dateString']);
+
+            axios
+              .get(`http://192.168.43.134:8080/api/v1/availabilityTimes/${selectedDate}`, {
+                headers: {
+                  'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHWU1DIiwic3ViIjoiM…1MDB9.vBeoSW_8f-MvUwpXnfnMTmZNR3HbrnQTlGMqffnJaxc`
+                }
+              })
+              .then((res) => {
+                console.log(res.data)
+
+              })
+              .catch((err) => {
+                console.log(err);
+              });
           }}
 
           // Handler which gets executed on day long press. Default = undefined
@@ -168,42 +195,30 @@ const Appoinment = ({ navigation }) => {
           }}
         />
         <View>
-          <Text
-            onPress={() => navigation.navigate('Home')}
-            style={{ fontSize: 26, fontWeight: 'bold', color: 'black' }}>Upcomming Appointments
-          </Text>
-          <View
-            style={{
-              borderBottomColor: '#fff',
-              borderBottomWidth: StyleSheet.hairlineWidth,
-              marginBottom: 20,
-              marginTop: 6,
-            }}
+          <DataTable
+            data={[
+              { Exercise: 'Sreching & Warmup', Repititions: 21 },
+              { Exercise: 'Bench press', Repititions: 22 },
+              { Exercise: 'Incline Press', Repititions: 21 },
+              { Exercise: 'Barbell push press ', Repititions: 22 },
+              { Exercise: 'Goblet squat', Repititions: 20 },
+              { Exercise: 'Dumbbell single arm row ', Repititions: 13 }
+            ]} // list of objects
+            colNames={['Exercise', 'Repititions']} //List of Strings
+            colSettings={[
+              { name: 'Exercise', type: COL_TYPES.STRING, width: '70%' },
+              { name: 'Repititions', type: COL_TYPES.INT, width: '30%' },
+            ]}//List of Objects
+            noOfPages={2} //number
+            backgroundColor={'#90E0EF'} //Table Background Color
+            headerLabelStyle={{ color: 'black', fontSize: 15 }} //Text Style Works
           />
-          <Card style={{ marginBottom: 20, backgroundColor: '#90E0EF' }}>
-            <Card.Content>
-              <Title style={{ color: '#000' }}>With Trainer: S.M.Munasinghe</Title>
-              <Paragraph style={{ color: 'gray' }}>Date: 2022-09-06</Paragraph>
-            </Card.Content>
-          </Card>
-          <Card style={{ marginBottom: 20, backgroundColor: '#90E0EF' }}>
-            <Card.Content>
-              <Title style={{ color: '#000' }}>With Trainer: S.M.Munasinghe</Title>
-              <Paragraph style={{ color: 'gray' }}>Date: 2022-09-08</Paragraph>
-            </Card.Content>
-          </Card>
-          <Card style={{ marginBottom: 20, backgroundColor: '#90E0EF' }}>
-            <Card.Content>
-              <Title style={{ color: '#000' }}>With Trainer: S.M.Munasinghe</Title>
-              <Paragraph style={{ color: 'gray' }}>Date: 2022-09-10</Paragraph>
-            </Card.Content>
-          </Card>
         </View>
         <View style={{ height: 300 }}>
-          <Text
+          {/* <Text
             onPress={() => navigation.navigate('Home')}
             style={{ fontSize: 26, fontWeight: 'bold', color: 'black' }}>New Appointment
-          </Text>
+          </Text> */}
           <View
             style={{
               borderBottomColor: '#000',
@@ -242,6 +257,39 @@ const Appoinment = ({ navigation }) => {
             <CustomButton style={styles.addBtn} text="Add" type="PRIMARY" borderRadius={15} width={150} bgColor="#3DA2FF" />
           </View>
         </View>
+        <View>
+          <Text
+            onPress={() => navigation.navigate('Home')}
+            style={{ fontSize: 26, fontWeight: 'bold', color: 'black' }}>Upcomming Appointments
+          </Text>
+          <View
+            style={{
+              borderBottomColor: '#000',
+              borderBottomWidth: StyleSheet.hairlineWidth,
+              marginBottom: 20,
+              marginTop: 6,
+            }}
+          />
+          <Card style={{ marginBottom: 20, backgroundColor: '#90E0EF' }}>
+            <Card.Content>
+              <Title style={{ color: '#000' }}>With Trainer: S.M.Munasinghe</Title>
+              <Paragraph style={{ color: 'gray' }}>Date: 2022-09-06</Paragraph>
+            </Card.Content>
+          </Card>
+          <Card style={{ marginBottom: 20, backgroundColor: '#90E0EF' }}>
+            <Card.Content>
+              <Title style={{ color: '#000' }}>With Trainer: S.M.Munasinghe</Title>
+              <Paragraph style={{ color: 'gray' }}>Date: 2022-09-08</Paragraph>
+            </Card.Content>
+          </Card>
+          <Card style={{ marginBottom: 20, backgroundColor: '#90E0EF' }}>
+            <Card.Content>
+              <Title style={{ color: '#000' }}>With Trainer: S.M.Munasinghe</Title>
+              <Paragraph style={{ color: 'gray' }}>Date: 2022-09-10</Paragraph>
+            </Card.Content>
+          </Card>
+        </View>
+
       </ScrollView>
     </View >
   )
@@ -258,7 +306,7 @@ const styles = StyleSheet.create({
   },
   top: {
     backgroundColor: "#000",
-    marginBottom:10,
+    marginBottom: 10,
   },
   scrollView: {
     marginHorizontal: 20,
@@ -297,7 +345,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: 30,
+    marginTop: 15,
   },
 
 });
