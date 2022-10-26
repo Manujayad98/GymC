@@ -1,12 +1,29 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import { Button } from "react-bootstrap";
 import Print from '../../../images/Icons/print-solid.svg'
 import InputField from "../Form/InputField";
 import { Validators } from "../Form/Validator/Validator";
-import './leavemodal.css'
+import {getPaymentPlanTableDetails} from "../../../services/PaymentService";
+import './leavemodal.css';
+
+
+
 
 const PaymentModal = (props) => {
 
+    useEffect(() => {
+        getAllPayments();
+      }, []);
+
+    const [payment, setPayment] = useState("");
+
+    const getAllPayments = async () => {
+        const res = await getPaymentPlanTableDetails(props);
+        console.log(res.data);
+        setPayment(
+            [...res.data]
+        );
+    };
     // const [requestData, setState] = useState({
 
     //     traineeid: '',
@@ -63,10 +80,10 @@ const PaymentModal = (props) => {
                     </div> */}
                     <div className="rec-leave-input">
                     <InputField 
-                    // value={requestData.lastpaymentdate}
+                    value={payment.date}
                     type='text'
                     label="LAST PAYMENT DATE"
-                    placeholder="2022/01/07"
+                    placeholder={payment.date}
                     readonly={true}
                     />
                     </div>
@@ -74,8 +91,9 @@ const PaymentModal = (props) => {
                     <InputField 
                     //value={requestData.membershiptype}
                     type='text'
+                    value={props.type}
                     label="MEMBERSHIP TYPE"
-                    placeholder="Daily"
+                    placeholder={props.type}
                     readonly={true}
                     />
                     </div>

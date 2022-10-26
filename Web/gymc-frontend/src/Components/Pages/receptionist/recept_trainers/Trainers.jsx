@@ -54,12 +54,17 @@ export default function Trainers() {
         );
         console.log(trainers);
     };
-
+    const [popup, setPopUp] = useState("");
+    const [msg, setMsg] = useState("");
+    const [selectedUserData, setSelectedUserData] = useState({});
     const [openModal, setOpenModal] = useState(false)
     const [openadjustModal, setadjustModal] = useState(false)
     const [openleaveModal, setleaveModal] = useState(false)
     const [trainers, setTrainers] = useState([]);
 
+    const closePopUp = () => {
+      setPopUp("");
+    };
    
     return (
 
@@ -110,7 +115,17 @@ export default function Trainers() {
                                 Leave
                             </button>
                         );
-                    }}
+                              },
+                              onClick: (event, rowData) => {
+                                setSelectedUserData(rowData);
+                                {
+                                    setPopUp("leave");
+                                }
+                                setMsg(
+                                    rowData.trainee_id
+                                );
+                            },
+                    }
                 
 
               ]}
@@ -126,10 +141,17 @@ export default function Trainers() {
             />
             {/* <DeleteModal open={openModal} onClose={() => setOpenModal(false)} /> */}
           </div>
+            {popup === "leave" && (
+                <LeaveModal
+                    msg={msg}
+                    closePopUp={closePopUp}
+                    open={openleaveModal}
+                />
+            )}
                     {/* <Button onClick={() => setadjustModal(true)}>Add Next Amount</Button> */}
                     {/* <AdjustModal open={openadjustModal} onClose={() => setadjustModal(false)} />
-                    <DeleteModal open={openModal} onClose={() => setOpenModal(false)} />
-                    <LeaveModal open={openleaveModal} onClose={() => setleaveModal(false)} /> */}
+                    <DeleteModal open={openModal} onClose={() => setOpenModal(false)} /> */}
+                    {/* <LeaveModal open={openleaveModal} onClose={() => setleaveModal(false)} /> */}
                 </div>
             </div >
         </div >

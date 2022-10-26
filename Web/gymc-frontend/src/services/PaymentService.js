@@ -9,7 +9,7 @@ const getToken = () => {
 export const getPaymentPlanTableDetails = () => {
     return axios({
         method: "GET",
-        url: `${USER_URL}/(CashPaymentController)`,
+        url: `${USER_URL}/getPayment/${trainee_ID}`,
         headers: {
             Authorization: "Bearer " + getToken(),
         },

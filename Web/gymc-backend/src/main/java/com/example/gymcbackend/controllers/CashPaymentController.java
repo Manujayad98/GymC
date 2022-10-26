@@ -30,8 +30,10 @@ public class CashPaymentController {
     }
     //GET CASH PAYMENT
     @GetMapping("/getPayment/{trainee_ID}")
-    public PaymentInfo getPaymentById(@PathVariable long trainee_ID) {
-        return cashPaymentService.getAllPayments(trainee_ID);
+    public PaymentInfo getPaymentById(@PathVariable String trainee_ID) {
+        String traineeID = trainee_ID.substring(4);
+        Long result = Long.parseLong(String.valueOf(traineeID));
+        return cashPaymentService.getAllPayments(result);
     }
 
 }

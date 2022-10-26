@@ -37,9 +37,9 @@ public class CashPaymentService {
 
         System.out.println("awaservice");
         //does this work?
-        PaymentInfo payment = cashPaymentJdbcRepository.getPaymentById(trainee_ID);
+//        PaymentInfo payment = cashPaymentJdbcRepository.getPaymentById(trainee_ID);
 
-        System.out.println(trainee_ID);
+//        System.out.println(trainee_ID);
         return cashPaymentJdbcRepository.getPaymentById(trainee_ID);
 
     }
