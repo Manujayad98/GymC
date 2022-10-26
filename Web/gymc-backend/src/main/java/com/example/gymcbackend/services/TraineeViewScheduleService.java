@@ -62,4 +62,9 @@ public class TraineeViewScheduleService {
         List<TraineeProgressResponse> traineeProgressResponses= traineeViewScheduleJdbcRepository.getTraineeProgress(result);
         return traineeProgressResponses;
     }
+
+    public List<TrainerListResponse> getTrainerList() {
+        List<TrainerListResponse> trainerListResponses= traineeViewScheduleJdbcRepository.getTrainers();
+        return trainerListResponses;
+    }
 }

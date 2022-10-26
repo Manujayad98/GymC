@@ -40,6 +40,10 @@ public class TraineeScheduleController {
         System.out.println("gettraineeSchedule");
         return traineeViewScheduleService.getTraineeSchedule(traineeId);
     }
+    @GetMapping("/getTrainers")
+    public List<TrainerListResponse> getTrainers(){
+        return traineeViewScheduleService.getTrainerList();
+    }
 
     //View trainee workout exerciese on date click,pass date on url
     @GetMapping("/getTraineeWorkout/{date}/{traineeId}")
@@ -63,6 +67,8 @@ public class TraineeScheduleController {
 
         return traineeViewScheduleService.getWorkoutPlanBodyFactors(date1,result);
     }
+
+
 
     // View trainee diet on date click,pass date on url
     @GetMapping("/getTraineeDiet/{date}/{traineeId}")

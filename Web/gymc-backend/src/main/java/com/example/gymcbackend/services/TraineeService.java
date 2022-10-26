@@ -29,4 +29,9 @@ public class TraineeService {
 
         return traineeJdbcRepository.getAnnouncements();
     }
+
+    public String addAnnouce(AnnouncementInput announcementInput) {
+        String annSuccess= traineeJdbcRepository.addAnnouncement(announcementInput);
+        return annSuccess;
+    }
 }
