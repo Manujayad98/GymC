@@ -120,6 +120,10 @@ export default function ViewWorkout() {
         window.location.href = `/AddWorkout/${id}`;
     }
 
+    const moveToUpdateView = () => {
+        window.location.href = `/OupdateWorkout/${id}`;
+    }
+
     // const handleChange = (key) => (value) => {
     //     setState({
     //         ...requestData,
@@ -239,7 +243,7 @@ export default function ViewWorkout() {
                                 <Link to='/Otraineeprogress' style={{ textDecoration: 'none' }}>
                                     <button class="progressbtn">Progress</button>
                                 </Link>
-                                <Link to='/OupdateWorkout' style={{ textDecoration: 'none' }}>
+                                <Link to='/OupdateWorkout' onClick={moveToUpdateView} style={{ textDecoration: 'none' }}>
                                     <button className="update_btn">Update</button>
                                 </Link>
                             </div>

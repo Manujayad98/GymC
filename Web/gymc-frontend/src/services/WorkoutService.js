@@ -89,3 +89,13 @@ export const addDietPlanDetails = (requestData) => {
     //     data: requestData,
     // });
 };
+
+export const getBodyFactorsForUpdate = (date, traineeID) => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/getBodyFactors/${date}/${traineeID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
