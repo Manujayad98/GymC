@@ -92,9 +92,30 @@ export const addDietPlanDetails = (requestData) => {
 };
 
 export const getBodyFactorsForUpdate = (date, traineeID) => {
+    console.log("factors");
     return axios({
         method: "GET",
         url: `${USER_URL}/getBodyFactors/${date}/${traineeID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+export const getExercisesForUpdate = (date, traineeID) => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/getTraineeWorkout/${date}/${traineeID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+export const getDietPlanForUpdate = (date, traineeID) => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/getTraineeDiet/${date}/${traineeID}`,
         headers: {
             Authorization: "Bearer " + getToken(),
         },

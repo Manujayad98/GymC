@@ -175,6 +175,27 @@ export const activeTrainer = (TrainerID) => {
     });
 };
 
+
+export const addAnnouncement = (annData) => {
+    return axios({
+        method: "POST",
+        url: `${USER_URL}/addAnnouncement`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+        data: annData,
+    });
+};
+export const getAllAnnouncements = () => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/annoucements`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
 // TRAINEE PAYMENT
 
 

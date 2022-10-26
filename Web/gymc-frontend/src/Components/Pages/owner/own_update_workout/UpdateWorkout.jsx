@@ -31,7 +31,7 @@ import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 import { Calendar } from 'react-calendar'
 import "react-calendar/dist/Calendar.css";
 import dayjs from "dayjs";
-import { getBodyFactorsForUpdate } from "../../../../services/WorkoutService";
+import { getBodyFactorsForUpdate, getExercisesForUpdate, getDietPlanForUpdate } from "../../../../services/WorkoutService";
 import { Link, useParams } from 'react-router-dom'
 
 
@@ -42,7 +42,9 @@ export default function UpdateWorkout() {
 
     useEffect(() => {
         checkValidate();
-        getBodyFactorsForToday();
+        // getBodyFactorsForToday();
+        // getExercisesForToday();
+        // getDietPlanForToday();
     }, []);
 
     var MyDate = new Date();
@@ -56,10 +58,6 @@ export default function UpdateWorkout() {
             window.location.href = "/";
         }
     };
-
-    const [selectedDate, setSelectedDate] = useState({
-        selectedDate: ''
-    });
 
     const [requestData, setState] = useState({
         height: '',
@@ -75,40 +73,76 @@ export default function UpdateWorkout() {
     });
     const [click, setClick] = useState(false);
     const [traineeBodyFactors, setTraineeBodyFactors] = useState([]);
+    const [traineeExercises, setTraineeExercises] = useState([]);
+    const [traineeDietPlan, setTraineeDietPlan] = useState([]);
+
+    const [selectedDate, setSelectedDate] = useState("");
 
     const handleChange = (key) => (value) => {
+        console.log(key, value);
         setState({
             ...requestData,
             [key]: value
         });
     };
-    const handleChangeDate = (key) => (value) => {
-        console.log(value);
-        setSelectedDate({
-            ...selectedDate,
-            [key]: dayjs(value).format('YYYY-MM-DD')
-        });
-    }
+    // const handleChangeDate = (key) => (value) => {
+    //     console.log(value);
+    //     setSelectedDate(dayjs(value).format('YYYY-MM-DD'));
+    // }
 
-    const getBodyFactorsForToday = async () => {
+    const handleChangeDate = (key) => (value) => {
+        console.log(key, value);
+        // setSelectedDate(selectedDate);
+        checkWorkoutDetails(dayjs(value).format('YYYY-MM-DD'));
+        // const res = await getWorkoutDetails(selectedDate, id);
+        // console.log(res.data);
+        // setTraineeWorkoutDetails(
+        //     res.data
+        // );
+    };
+
+    // console.log(selectedDate['selectedDate']);
+
+    const getBodyFactorsForToday = async (date) => {
         const res = await getBodyFactorsForUpdate(dateToday, id);
-        console.log(res.data);
+        // console.log(res.data);
         setTraineeBodyFactors(
             res.data
         );
     };
+    const getExercisesForToday = async (date) => {
+        const res = await getExercisesForUpdate(dateToday, id);
+        // console.log(res.data);
+        setTraineeExercises(
+            res.data
+        );
+    };
 
-    console.log(traineeBodyFactors);
+    const getDietPlanForToday = async (date) => {
+        const res = await getDietPlanForUpdate(dateToday, id);
+        // console.log(res.data);
+        setTraineeDietPlan([
+            ...res.data
+        ]);
+    };
+    // console.log(traineeBodyFactors);
+
+    const checkWorkoutDetails = async (value) => {
+        console.log(value);
+        await getBodyFactorsForToday(value);
+        await getExercisesForToday(value);
+        await getDietPlanForToday(value);
+    }
 
     const updateWOrkout = (evt) => {
-        console.log(requestData);
-        evt.preventDefault();
+        // console.log(requestData);
+        // evt.preventDefault();
 
-        if (!requestData.firstName || !requestData.lastName || !requestData.nic || !requestData.dob || !requestData.occupation || !requestData.address || !requestData.email || !requestData.phoneNumber || !requestData.emergencyNumber || !requestData.gender) {
-            console.log('Please fill out the form correctly');
-            setClick({ click: true, })
-            toast.warning('Please fill out the form correctly');
-        }
+        // if (!requestData.firstName || !requestData.lastName || !requestData.nic || !requestData.dob || !requestData.occupation || !requestData.address || !requestData.email || !requestData.phoneNumber || !requestData.emergencyNumber || !requestData.gender) {
+        //     console.log('Please fill out the form correctly');
+        //     setClick({ click: true, })
+        //     toast.warning('Please fill out the form correctly');
+        // }
         // else {
 
         //     signUp(requestData)
@@ -173,7 +207,7 @@ export default function UpdateWorkout() {
             <div className='body-container'>
                 <HeaderO title="Update Workout" />
                 <div style={{ margin: '20px' }}>
-                    <div className="workout-profile-card">
+                    {/* <div className="workout-profile-card">
                         <div className='own-dashboard-card own-dashboard-profile-cards'>
                             <div className='own-dashboard-card-img-container'>
                                 <img src={Pic1} alt="" />
@@ -184,8 +218,8 @@ export default function UpdateWorkout() {
                             </div>
                         </div>
 
-                    </div>
-                    <form className="" onSubmit={updateWOrkout} noValidate={false}>
+                    </div> */}
+                    <form className="" noValidate={false}>
 
                         <div className="own_update_workout_content-container">
 
@@ -195,7 +229,7 @@ export default function UpdateWorkout() {
                                     <div className="own-viewworkout-calender-card">
                                         {/* <CalendarComp /> */}
                                         <Calendar
-                                            onChange={handleChangeDate['selectedDate']}
+                                            onClickDay={handleChangeDate('selectedDate')}
                                         // data={myEvents}
                                         // value={value}
                                         // minDate={mindate}
@@ -361,12 +395,12 @@ export default function UpdateWorkout() {
                                         <MaterialTable
                                             title="Exersices"
                                             columns={[
-                                                { title: "Exercice ID", field: "ExerciseID", editable: 'never' },
-                                                { title: "Name", field: "Name", editable: 'never' },
-                                                { title: "Repitition Count", field: "Repititions", editable: 'onUpdate', type: 'numeric' },
+                                                { title: "Exercice ID", field: "exercise_id", editable: 'never' },
+                                                { title: "Name", field: "name", editable: 'never' },
+                                                { title: "Repitition Count", field: "noOfRepetitions", editable: 'onUpdate', type: 'numeric' },
                                             ]}
                                             icons={TableIcons}
-                                            data={excerciseDetails}
+                                            data={traineeExercises}
                                             editable={{
                                                 onRowUpdate: (newData, oldData, rowData) =>
                                                     new Promise((resolve, reject) => {
@@ -403,16 +437,15 @@ export default function UpdateWorkout() {
                                 <div className="own_update_workout_card3">
                                     <div className="update-workout-form">
                                         <div className="update-workout-form-inputs">
-                                            <h4 className='update-workout-form-subHeading'>Diet Plan</h4>
+                                            <h4 className='update-workout-form-subHeading'>Diet Plan (Cals)</h4>
                                             <hr className="add-trainer-hr" />
 
                                             <div className="form-row">
                                                 <div className="form-col1">
                                                     <InputField
-                                                        value={requestData.height}
+                                                        value={traineeDietPlan[0].carbohydrate}
                                                         type='text'
                                                         label="Carbs"
-                                                        placeholder='Type'
                                                         validators={[
                                                             { check: Validators.number, message: 'Type is not valid' }
                                                         ]}
@@ -421,10 +454,9 @@ export default function UpdateWorkout() {
                                                 </div>
                                                 <div className="form-col2">
                                                     <InputField
-                                                        value={requestData.weight}
+                                                        value={traineeDietPlan[0].fats}
                                                         type='text'
                                                         label="Fats"
-                                                        placeholder='Type'
                                                         validators={[
                                                             { check: Validators.number, message: 'Type is not valid' }
                                                         ]}
@@ -436,10 +468,9 @@ export default function UpdateWorkout() {
                                             <div className="form-row">
                                                 <div className="form-col1">
                                                     <InputField
-                                                        value={requestData.height}
+                                                        value={traineeDietPlan[0].proteins}
                                                         type='text'
                                                         label="Protein"
-                                                        placeholder='Type'
                                                         validators={[
                                                             { check: Validators.number, message: 'Type is not valid' }
                                                         ]}

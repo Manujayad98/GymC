@@ -46,7 +46,7 @@ const Announcements = () => {
             await axios
                 .get("http://10.22.167.203:8080/api/v1/annoucements", {
                     headers: {
-                        'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHWU1DIiwic3ViIjoiU3VkYW0iLCJpYXQiOjE2NjY1MjM2OTEsImV4cCI6MTY2Njg4MzY5MX0.R8xf3VfPSpMQruyFjjGLbOti7HljY_Jr05N2MuocmK0`
+                        'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHWU1DIiwic3ViIjoiU2FuamFuYSBSYWphcGFrc2hhIiwiaWF0IjoxNjY2NzgxMTQ5LCJleHAiOjE2NjY3ODQ3NDl9.xf_Bn9sGxyK7VUuarNJJ65wgKh88tC8HbbZwcYwAbVM`
                     }
                 })
                 .then((res) => {
