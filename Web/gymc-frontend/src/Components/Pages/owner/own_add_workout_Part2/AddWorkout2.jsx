@@ -224,21 +224,21 @@ export default function AddWorkout2() {
 
 
 
-            // addWorkoutDate(workoutDates, dietPlanDetails.carbohydrate, dietPlanDetails.fats, dietPlanDetails.proteins)
-            //     .then((response) => {
-            //         if (response.status === 200) {
-            //             console.log(response.data);
-            //             toast.success("successfully added!!!");
-            //         } else {
-            //             toast.warning('Something went wrong!!!');
-            //         }
-            //     })
-            //     .catch((err) => {
-            //         if (err && err.response) {
-            //             console.log(err);
-            //             toast.error('Failed!!!');
-            //         }
-            //     });
+            addWorkoutDate(workoutDates, dietPlanDetails.carbohydrate, dietPlanDetails.fats, dietPlanDetails.proteins)
+                .then((response) => {
+                    if (response.status === 200) {
+                        console.log(response.data);
+                        toast.success("successfully added!!!");
+                    } else {
+                        toast.warning('Something went wrong!!!');
+                    }
+                })
+                .catch((err) => {
+                    if (err && err.response) {
+                        console.log(err);
+                        toast.error('Failed!!!');
+                    }
+                });
         }
     }
 

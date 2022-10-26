@@ -57,14 +57,14 @@ const Login = () => {
   console.log(password);
 
   const onSignInPressed = async (data) => {
-    // navigation.navigate("Tabs", "1");
+    navigation.navigate("Tabs", "1");
     if (!userName || !password) {
 
       setClick({ click: true, })
 
     } else {
       axios
-        .post("http://192.168.43.134:8080/api/v1/auth/login", {
+        .post("http://10.22.167.203:8080/api/v1/auth/login", {
           userName,
           password,
         })

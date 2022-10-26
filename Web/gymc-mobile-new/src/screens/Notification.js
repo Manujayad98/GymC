@@ -121,13 +121,13 @@ const styles = StyleSheet.create({
         padding: 30,
         alignSelf: 'center'
     },
-    titletext :{
+    titletext: {
         fontSize: 20,
         fontWeight: 'bold',
         color: '#000',
-        textAlign:'center',
-    
-      },
+        textAlign: 'center',
+
+    },
 
     homecontainer: {
         flex: 1,

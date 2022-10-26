@@ -1,5 +1,5 @@
 import { View, Text, Image, StyleSheet, Dimensions, ScrollView, SafeAreaView, FlatList, StatusBar } from 'react-native'
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/HeaderComponent";
 import { icons, COLORS, SIZES } from "../constans";
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -44,28 +44,29 @@ const Announcements = () => {
         // 
         const setResponse = async (data) => {
             await axios
-              .get("http://10.22.162.153:8080/api/v1/annoucements", {
-                headers: {
-                  'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHWU1DIiwic3ViIjoiU3VkYW0iLCJpYXQiOjE2NjY1MjM2OTEsImV4cCI6MTY2Njg4MzY5MX0.R8xf3VfPSpMQruyFjjGLbOti7HljY_Jr05N2MuocmK0` 
-                }})
-              .then((res) => {
-                console.log(res.data)
-                
-                // console.log(res.data[0])
-                setAnnoucements(res.data);
-                console.log(ann);
-              })
-              .catch((err) => {
-                console.log(err);
-              });
-    
-    
+                .get("http://10.22.167.203:8080/api/v1/annoucements", {
+                    headers: {
+                        'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHWU1DIiwic3ViIjoiU3VkYW0iLCJpYXQiOjE2NjY1MjM2OTEsImV4cCI6MTY2Njg4MzY5MX0.R8xf3VfPSpMQruyFjjGLbOti7HljY_Jr05N2MuocmK0`
+                    }
+                })
+                .then((res) => {
+                    console.log(res.data)
+
+                    // console.log(res.data[0])
+                    setAnnoucements(res.data);
+                    console.log(ann);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+
+
         }
         setResponse();
-      },[]);
-   
+    }, []);
 
-    
+
+
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.backgroundColor }}>
             <Header title={"GYMC"} />
@@ -88,19 +89,19 @@ const Announcements = () => {
                         <Text style={styles.sectionHeader}></Text>
                         <View style={styles.notificationbody}>
                             {console.log(ann)}
-                        {ann.map((ann) => (
+                            {ann.map((ann) => (
                                 <Card style={styles.item}>
                                     <Card.Content>
-                                        <Title  style={styles.announcementTitle} key={ann.id}>{ann.title}</Title>
+                                        <Title style={styles.announcementTitle} key={ann.id}>{ann.title}</Title>
                                         <Paragraph style={styles.announcementAuthor}>{ann.author}</Paragraph>
                                         <Paragraph style={styles.announcementNote}>{ann.note}</Paragraph>
                                     </Card.Content>
                                 </Card>
-                        ))};
-                        
-                            
+                            ))};
+
+
                         </View>
-                        
+
 
 
                     </View>
@@ -126,12 +127,12 @@ const styles = StyleSheet.create({
         width: '100%',
         color: 'black',
     },
-    titletext :{
+    titletext: {
         fontSize: 20,
         fontWeight: 'bold',
         color: '#000',
-        textAlign:'center',
-    
+        textAlign: 'center',
+
     },
 
     text: {

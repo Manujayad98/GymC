@@ -57,6 +57,7 @@ export const getExerciseDetails = () => {
 };
 
 export const getAvailableSlots = (date, staffID) => {
+    //initial 0 add
     return axios({
         method: "GET",
         url: `${USER_URL}/availabilityDate/${date}/${staffID}`,
