@@ -26,7 +26,7 @@ import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 
 import { getAnnualIncomeChartData } from "../../../../services/ChartDataService";
 import { getTodaysTrainers } from "../../../../services/StaffService";
-import { getTodaysTrainees } from "../../../../services/TraineeService";
+import { getTodaysTrainees, getTodayWorkoutList } from "../../../../services/TraineeService";
 
 
 const Dashboard = () => {
@@ -36,6 +36,7 @@ const Dashboard = () => {
     getAnnualIncome();
     getTodayAvailableTrainers();
     getTodayAvailableTrainees();
+    getTodayWorkouts();
   }, []);
 
   const checkValidate = async () => {
@@ -50,6 +51,7 @@ const Dashboard = () => {
 
   const [todayTrainers, setTodayTrainers] = useState({});
   const [todayTrainees, setTodayTrainees] = useState({});
+  const [todayWorkouts, setTodayWorkouts] = useState({});
 
   const getAnnualIncome = async () => {
     const res = await getAnnualIncomeChartData();
@@ -75,6 +77,13 @@ const Dashboard = () => {
     );
   };
 
+  const getTodayWorkouts = async () => {
+    const res = await getTodayWorkoutList();
+    console.log(res.data);
+    setTodayWorkouts(
+      [...res.data]
+    );
+  };
 
   const rows = Object.values(annualIncome).map(
     (value) => (
@@ -312,12 +321,14 @@ const Dashboard = () => {
                 <MaterialTable
                   title="Workouts"
                   columns={[
-                    { title: "Time", field: "Time" },
-                    { title: "TraineeName", field: "TraineeName" },
-                    { title: "TrainerName", field: "TrainerName" },
+                    { title: "Start Time", field: "start_time" },
+                    { title: "End Time", field: "end_time" },
+                    { title: "Trainee Name", field: "trainee_name" },
+                    { title: "Trainer Name", field: "trainer_name" },
+
                   ]}
                   icons={TableIcons}
-                  data={workoutDetails}
+                  data={todayWorkouts}
 
                   options={{
                     pageSize: 3,
