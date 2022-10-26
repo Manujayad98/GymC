@@ -33,6 +33,9 @@ import { Calendar } from 'react-calendar'
 import "react-calendar/dist/Calendar.css";
 import dayjs from "dayjs";
 
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+
 import moment from 'moment';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -73,11 +76,42 @@ export default function AddWorkout2() {
         workoutScheduleId: scheduleid,
     });
 
+    
+    
+
+    
+
     const [dietPlanDetails, setDietPlanDetails] = useState({
         carbohydrate: '',
         fats: '',
         proteins: '',
     });
+
+    // let one=false;let two=false;let three=false;let four=false;let five=false;let six=false;let seven=false;let eight=false;
+    //     let nine=false;let ten=false;let eleven=false;let twelve=false;let thirteen=false;let fourteen=false;let fifteen=false;let sixteen=false;
+    //     let seventeen=false;let eighteen=false;let nineteen=false;let twenty=false;let twentyone=false;let twentytwo=false;let twentythree=false;let twentyfour=false;
+    //     let twentyfive=false;let twentysix=false;let twentyseven=false;let twentyeight=false;let twentynine=false;let thirty=false;let thirtyone=false;let thirtytwo=false
+    // const setContinuous =(evt)=>{
+    //     console.log("sconti");
+    //      one=false; two=false; three=false; four=false; five=false; six=false; seven=false; eight=false;
+    //      nine=false; ten=false; eleven=false; twelve=false; thirteen=false; fourteen=false; fifteen=false; sixteen=false;
+    //      seventeen=false; eighteen=false; nineteen=false; twenty=false; twentyone=false; twentytwo=false; twentythree=false; twentyfour=false;
+    //      twentyfive=false; twentysix=false; twentyseven=false; twentyeight=false; twentynine=false; thirty=false; thirtyone=false; thirtytwo=false
+
+    //     let n=Number(workoutDates.startTime);
+    //     console.log(n);
+    //     for (let i = n; i < n+6; i++) {
+            
+    //         switch (i) {
+    //             case 1: one=true;break;case 2: two=true;break;case 3: three=true;break;case 4: four=true;break;case 5: five=true;break;case 6: six=true;break;case 7: seven=true;break;
+    //             case 8: eight=true;break;case 9: nine=true;break;case 10: ten=true;break;case 11: eleven=true;break;case 12: twelve=true;break; case 13: thirteen=true;break;case 14: fourteen=true;break;
+    //             case 15: fifteen=true;break;case 16: sixteen=true;break; case 17: seventeen=true;break;case 18: eighteen=true;break;case 19: nineteen=true;break;case 20: twenty=true;break;
+    //             case 21: twentyone=true;break;case 22: twentytwo=true;break;case 23: twentythree=true;break;case 24: twentyfour=true;break;case 25: twentyfive=true;break;
+    //             case 26: twentysix=true;break;case 27: twentyseven=true;break; case 28: twentyeight=true;break; case 29: twentynine=true;break; case 30: thirty=true;break;
+    //             case 31: thirtyone=true;break;case 32: thirtytwo=true;break;
+    //         }
+    //       }
+    // }
     const [selectedDate, setSelectedDate] = useState(null);
     const [timeSlots, setTimeSlots] = useState({});
     const [showStartTimeSlots, setStartShowTimeSlots] = useState(false);
@@ -135,6 +169,7 @@ export default function AddWorkout2() {
 
 
     }
+    
     const addDates = (evt) => {
         evt.preventDefault();
 
@@ -286,7 +321,19 @@ export default function AddWorkout2() {
         }));
         setShowEndTimeSlots(true);
         setSelectedStartTime(e.target.value);
+        
+        // console.log(one);
     };
+    const handleChange2 = (e) => {
+        e.persist();
+        console.log(e.target.name + "-" + e.target.value);
+        setWorkoutDates((workoutDates) => ({
+            ...workoutDates,
+            [e.target.name]: e.target.value,
+        }));
+        
+    };
+    
     console.log(selectedStartTime);
 
     return (
@@ -320,7 +367,9 @@ export default function AddWorkout2() {
                             <div className="addworkout_card4">
                                 <div className="update-workout-form-inputs">
                                     <h4 className='add-trainer-form-subHeading' style={{ marginTop: '10px' }}>Time Slot</h4>
+                                    
                                     <hr className="add-trainer-hr" />
+                                    <p >Please select continous avaliable time slot for end time</p>
                                     <div className="form-row">
                                         <div className="form-col1">
 
@@ -390,7 +439,7 @@ export default function AddWorkout2() {
                                             }
                                         </div>
                                         <div className="form-col2">
-
+                                        
                                             {(showEndTimeSlots == false) ?
                                                 <Dropdown
                                                     data={[
@@ -404,10 +453,11 @@ export default function AddWorkout2() {
                                                     <div>
                                                         <label>End Time</label>
                                                     </div>
+                                                    
                                                     <div>
                                                         <select
                                                             type="text"
-                                                            onChange={handleChange}
+                                                            onChange={handleChange2}
                                                             placeholder='Select'
                                                             name="endTime"
                                                             id="endTime"
@@ -415,7 +465,7 @@ export default function AddWorkout2() {
                                                             className="newDropDown"
                                                         >
                                                             {/* {(timeSlots.timeSlot['one'] <= 3) && <option value="1">6.00 AM</option>} */}
-                                                            {(timeSlots.timeSlot['two'] <= 3 && selectedStartTime < 2) ? <option value="1">6.30 AM</option> : <option value="1" disabled>6.30 AM</option>}
+                                                            {(timeSlots.timeSlot['two'] <= 3 && selectedStartTime < 2 ) ? <option value="1">6.30 AM</option> : <option value="1" disabled>6.30 AM</option>}
                                                             {(timeSlots.timeSlot['three'] <= 3 && selectedStartTime < 3) ? <option value="2">7.00 AM</option> : <option value="2" disabled>7.00 AM</option>}
                                                             {(timeSlots.timeSlot['four'] <= 3 && selectedStartTime < 4) ? <option value="3">7.30 AM</option> : <option value="3" disabled>7.30 AM</option>}
                                                             {(timeSlots.timeSlot['five'] <= 3 && selectedStartTime < 5) ? <option value="4">8.00 AM</option> : <option value="4" disabled>8.00 AM</option>}
@@ -450,10 +500,13 @@ export default function AddWorkout2() {
 
                                                         </select>
                                                     </div>
+                                                    
                                                     {!workoutDates.endTime && click && <span className='text-danger'>This Field is required</span>}
 
                                                     {!workoutDates.trainingDate && workoutDates.endTime && click && <span className='text-danger'>Please select a date first</span>}
+                                                    
                                                 </div>
+                                                
                                             }
 
 
@@ -611,6 +664,7 @@ export default function AddWorkout2() {
 
                     </div>
                 </form>
+                <ToastContainer />
             </div>
         </div>
     )

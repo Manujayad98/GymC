@@ -52,7 +52,8 @@ public class AddWorkoutService {
     public String addReservation(WorkoutReservation workoutReservation, Integer carbs, Integer fat, Integer protein) {
 //
 
-        Long traineeId = workoutReservation.getTraineeId();
+        String traineeId = workoutReservation.getTraineeId().substring(4);
+//        Long traineeId = workoutReservation.getTraineeId();
 
         System.out.println("training date list in service eid:"+workoutReservation.getTrainingDateList().get(0).getExerciseId());
         System.out.println("training date list in service reps:"+workoutReservation.getTrainingDateList().get(0).getNoOfRepetitions());
