@@ -156,7 +156,7 @@ const Appoinment = ({ navigation }) => {
           />
           <View style={styles.dropDownList}>
             <View style={styles.dropDownListOneItem}>
-              <Text style={styles.dropDownTopic}>Start Time</Text>
+              <Text style={styles.dropDownTopic}>Date</Text>
               <DropDownPicker
                 open={open1}
                 value={value1}
@@ -168,7 +168,7 @@ const Appoinment = ({ navigation }) => {
               />
             </View>
             <View>
-              <Text style={styles.dropDownTopic}>End Time</Text>
+              <Text style={styles.dropDownTopic}>Time</Text>
               <DropDownPicker
                 open={open2}
                 value={value2}
