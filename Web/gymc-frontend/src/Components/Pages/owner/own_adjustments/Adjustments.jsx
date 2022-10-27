@@ -243,7 +243,7 @@ export default function Exercises() {
                         <h3 id="own-adjustment-titles">Adjustment Counts</h3>
                        
                     </div>
-                <div className='own-adjustment-card '>
+                {/* <div className='own-adjustment-card '>
                     <MaterialTable
                         title="Adjustment Count"
                         columns={columns}
@@ -276,7 +276,8 @@ export default function Exercises() {
                            
                         }}
                         />
-    </div></div>
+    </div> */}
+    </div>
                 </div>
                 {/* <DeleteModal open={openModal} onClose={() => setOpenModal(false)} /> */}
        

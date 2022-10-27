@@ -7,6 +7,7 @@ import SampleCal from '../../../Utilities/CalendarComp/SampleCal'
 import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 import DeleteModal from '../../../Utilities/Popups/DeletionModal'
+import { getReservationTableDetails} from "../../../../services/AppointmentService";
 
 
 const Dashboard = () => {
@@ -15,6 +16,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     checkValidate();
+    getAppointments();
   }, []);
 
   const checkValidate = async () => {
@@ -23,6 +25,17 @@ const Dashboard = () => {
       window.location.href = "/";
     }
   };
+
+  const [appointments, setAppointments] = useState([]);
+
+    const getAppointments = async () => {
+        const res = await getReservationTableDetails();
+        console.log(res.data);
+        setAppointments(
+            [...res.data]
+        );
+        console.log(appointments);
+    };
 
   //ANNUAL INCOME CHART
   const Annualdata = [
@@ -101,31 +114,34 @@ const Dashboard = () => {
 
           <div className='trainer-dashboard-chart-table-container'>
 
-            <div className='trainer-dashboard-chart-container'>
+            {/* <div className='trainer-dashboard-chart-container'>
               <div className='trainer-dashboard-container-head'>My Schedule</div>
               <div className='trainer-dashboard-card trainer-dashboard-chart-cards'>
                 <div className='trainer-calender'>
                   <SampleCal />
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div className='trainer-dashboard-table-container'>
-              <div className='trainer-dashboard-container-head'>Appoinments & Reservations</div>
-              <div className='trainer-dashboard-card trainer-dashboard-table-cards'>
+              <div className='trainer-dashboard-container-head'>Reservations</div>
+              {/* <div className='trainer-dashboard-card trainer-dashboard-table-cards'> */}
                 <div className="table-div">
-                  <MaterialTable
-                    title="Upcoming"
+                   <MaterialTable
+                    title="Upcoming Appointments"
                     columns={[
-                      { title: "Time", field: "Time" },
-                      { title: "Trainee Name", field: "TraineeName" },
-                      { title: "Type", field: "Type" },
-
+                      { title: "Trainee ID", field: "trainee_id" },
+                      { title: "Date", field: "training_date" },
+                      { title: "Start Time", field: "start_time" },
+                      { title: "End Time", field: "end_time" },
+                    
 
                     ]}
                     icons={TableIcons}
-                    data={appoinmentDetails}
+                    data={appointments}
+                  
 
+                    
                     options={{
                       headerStyle: {
                         backgroundColor: '#1F0106',
@@ -141,8 +157,8 @@ const Dashboard = () => {
           </div>
 
         </div>
-      </div>
-    </div >
+    //   </div>
+    // </div >
   )
 }
 
