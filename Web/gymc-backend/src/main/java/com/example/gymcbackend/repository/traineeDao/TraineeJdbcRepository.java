@@ -5,16 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
-import java.util.List;
-
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Repository
@@ -79,10 +75,55 @@ public class TraineeJdbcRepository {
 
     public List<AnnoucementsResponse> getAnnouncements() {
 
-        String query="SELECT announcementid AS id,topic AS title,CONCAT('by -',staff_member.staff_type,' ',time) as author,description AS note FROM announcement INNER JOIN staff_member ON announcement.staff_id=staff_member.staff_id ORDER BY announcement.announcementid DESC LIMIT 20";
+        String query="SELECT announcementid AS id,topic AS title,CONCAT('by -',staff_member.staff_type,' ',time) as author,description AS note " +
+                "FROM announcement INNER JOIN staff_member ON announcement.staff_id=staff_member.staff_id " +
+                "ORDER BY announcement.announcementid DESC LIMIT 20";
         List<AnnoucementsResponse> annoucementsResponses = jdbc.query(query, new BeanPropertyRowMapper<AnnoucementsResponse>(AnnoucementsResponse.class));
         System.out.println("annocements retrival");
         return annoucementsResponses;
+
+    }
+
+    public String addAnnouncement(AnnouncementInput announcementInput) {
+
+        LocalDate time=java.time.LocalDate.now();
+
+
+        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+//        namedParameters.addValue("date", date);
+        namedParameters.addValue("topic", announcementInput.getTopic());
+        namedParameters.addValue("time",time);
+        namedParameters.addValue("staffId", announcementInput.getStaffId());
+        namedParameters.addValue("description", announcementInput.getDescription());
+
+
+
+        String query = "INSERT INTO announcement (description,time,topic,staff_id) " +
+                "values(:description,:time,:topic,:staffId)";
+        int rowsAffected = jdbc.update(query , namedParameters);
+
+        if(rowsAffected==1){
+            return "annocement added";
+        }
+        else{
+            return "annocement failed";
+        }
+    }
+
+    public PaymentResponse getPayment(String traineeId) {
+
+
+//        LocalDate futureDate = LocalDate.now().plusMonths(1);
+        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+        namedParameters.addValue("traineeId", traineeId);
+
+        String query="SELECT payment_plan_methods.type,payment.date as lastDate,payment_plan.due_date as nextDate,payment.amount as lastAmount,payment_plan.amount as amount FROM payment_plan_methods " +
+                "INNER JOIN payment_plan ON payment_plan_methods.payment_plan_methodsid=payment_plan.payment_plan_method_id " +
+                "INNER JOIN payment ON payment_plan.payment_planid=payment.payment_planid " +
+                "AND payment.trainee_id=? ORDER BY payment.date DESC LIMIT 1 ";
+
+        PaymentResponse paymentResponse = (PaymentResponse) jdbcTemplate.queryForObject(query, new Object[]{traineeId}, new BeanPropertyRowMapper(PaymentResponse.class));
+        return paymentResponse;
 
     }
 }

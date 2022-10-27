@@ -2,6 +2,7 @@ package com.example.gymcbackend.dto;
 
 public class TraineeViewWorkoutDateResponse {
 
+    private String exercise_id;
     private String name;
 
     private Integer noOfRepetitions;
@@ -21,5 +22,13 @@ public class TraineeViewWorkoutDateResponse {
 
     public void setNoOfRepetitions(Integer noOfRepetitions) {
         this.noOfRepetitions = noOfRepetitions;
+    }
+
+    public String getExercise_id() {
+        return exercise_id;
+    }
+
+    public void setExercise_id(String exercise_id) {
+        this.exercise_id = exercise_id;
     }
 }

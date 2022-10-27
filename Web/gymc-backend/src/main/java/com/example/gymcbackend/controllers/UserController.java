@@ -1,10 +1,7 @@
 package com.example.gymcbackend.controllers;
 
 import com.example.gymcbackend.dto.*;
-import com.example.gymcbackend.entities.ShiftDetails;
-import com.example.gymcbackend.entities.StaffMember;
-import com.example.gymcbackend.entities.Trainee;
-import com.example.gymcbackend.entities.UserAccount;
+import com.example.gymcbackend.entities.*;
 import com.example.gymcbackend.repository.staffMemberDao.StaffMemberRepository;
 import com.example.gymcbackend.repository.traineeDao.TraineeRepository;
 import com.example.gymcbackend.repository.userDao.UserAccountDetailsRepository;
@@ -130,4 +127,11 @@ public class UserController {
         System.out.println("1ta");
         return staffMemberService.changeTraineeStatus(traineeID);
     }
+
+//    // ANNOUNCEMENT
+//    @PostMapping("/addAnnouncement")
+//    public long newAnnouncement(@RequestBody AnnouncementAdd announcementAdd){
+//        System.out.println("aaaaaaa");
+//        return customUserService.addAnnouncement(announcementAdd);
+//    }
 }

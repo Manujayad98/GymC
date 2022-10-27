@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { validateInput } from "../Validator/Validator";
 
-const InputField = ({ value, label, placeholder, validators, type, readonly, onChange }) => {
+const InputField = ({ value, label, placeholder, validators, type, readonly, onChange, maxDate, minDate }) => {
     const [error, setError] = useState(false);
 
     const handleChange = (event) => {
@@ -33,6 +33,8 @@ const InputField = ({ value, label, placeholder, validators, type, readonly, onC
                     readOnly={readonly}
                     placeholder={placeholder}
                     onChange={handleChange}
+                    max={maxDate}
+                    min={minDate}
                 />
             )
                 : (

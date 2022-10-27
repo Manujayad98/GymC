@@ -43,6 +43,15 @@ public class TraineeViewScheduleService {
         timeSlotResponse.setTimeSlot(timeSlot);
         return timeSlotResponse;
     }
+    public TimeSlotTwo getTimeSlots(LocalDate date1) {
+        TimeSlotTwo timeSlot= traineeViewScheduleJdbcRepository.getDateAvailabilityTimes(date1);
+//        Integer shiftNo= traineeViewScheduleJdbcRepository.getShiftNo(staffId,date1);
+//        TimeSlotResponse timeSlotResponse = new TimeSlotResponse();
+//        timeSlotResponse.setShiftNo(shiftNo);
+//        timeSlotResponse.setTimeSlot(timeSlot);
+        return timeSlot;
+    }
+
 
     public BodyFactorsResponse getWorkoutPlanBodyFactors(LocalDate date1, Long traineeId) {
         BodyFactorsResponse bodyFactors= traineeViewScheduleJdbcRepository.getBodyFactors(date1,traineeId);
@@ -52,5 +61,10 @@ public class TraineeViewScheduleService {
     public List<TraineeProgressResponse> getTraineeProgressServ(Long result) {
         List<TraineeProgressResponse> traineeProgressResponses= traineeViewScheduleJdbcRepository.getTraineeProgress(result);
         return traineeProgressResponses;
+    }
+
+    public List<TrainerListResponse> getTrainerList() {
+        List<TrainerListResponse> trainerListResponses= traineeViewScheduleJdbcRepository.getTrainers();
+        return trainerListResponses;
     }
 }

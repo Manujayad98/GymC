@@ -5,6 +5,7 @@ const getToken = () => {
 };
 
 export const getTrainerData = (traineeID) => {
+    console.log(traineeID);
     return axios({
         method: "GET",
         url: `${USER_URL}/getTraineeSchedule/${traineeID}`,
@@ -57,6 +58,7 @@ export const getExerciseDetails = () => {
 };
 
 export const getAvailableSlots = (date, staffID) => {
+    //initial 0 add
     return axios({
         method: "GET",
         url: `${USER_URL}/availabilityDate/${date}/${staffID}`,
@@ -88,4 +90,56 @@ export const addDietPlanDetails = (requestData) => {
     //     },
     //     data: requestData,
     // });
+};
+
+export const getBodyFactorsForUpdate = (date, traineeID) => {
+    console.log("factors");
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/getBodyFactors/${date}/${traineeID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+export const getExercisesForUpdate = (date, traineeID) => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/getTraineeWorkout/${date}/${traineeID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+export const getDietPlanForUpdate = (date, traineeID) => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/getTraineeDiet/${date}/${traineeID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+export const getAvailableTrainers = () => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/getTrainers`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+
+export const getTraineeProgressChart = (traineeID) => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/getTraineeProgress/${traineeID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
 };

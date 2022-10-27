@@ -89,6 +89,9 @@ const Dashboard = () => {
     )
   )
 
+  function currencyFormat(num) {
+    return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+  }
   // const rows3 = Object.values(cardData).map(
   //   (value) => (
   //     cardDataObj.push(
@@ -175,143 +178,143 @@ const Dashboard = () => {
       <div className='body-container'>
         <HeaderO title="Summary" />
         <div className="content-container">
-          <Tabs
+          {/* <Tabs
             defaultActiveKey="home"
             id="uncontrolled-tab-example"
             className="mb-3">
 
-            <Tab eventKey="home" title="Gym Progress" >
-              {cardData.map((cardData) => (
+            <Tab eventKey="home" title="Gym Progress" > */}
+          {cardData.map((cardData) => (
 
-                <div className='own-analytics-card-container'>
+            <div className='own-analytics-card-container'>
 
-                  <div className='own-analytics-card1 analytics-cards'>
+              <div className='own-analytics-card1 analytics-cards'>
 
-                    <div className='own-analytics-card-content'>
-                      <div className='staffID'>No of Trainers</div>
-                      <div className='staffName'>{cardData.no_of_trainers}</div>
-                    </div>
-
-                  </div>
-
-                  <div className='own-analytics-card1 analytics-cards'>
-
-                    <div className='own-analytics-card-content'>
-                      <div className='staffID'>Total Income</div>
-                      <div className='staffName'>LKR {cardData.total_income}</div>
-                    </div>
-
-                  </div>
-                  <div className='own-analytics-card1 analytics-cards'>
-
-                    <div className='own-analytics-card-content'>
-                      <div className='staffID'>No of Appointments</div>
-                      <div className='staffName'>{cardData.no_of_appointments}</div>
-                    </div>
-
-                  </div>
-                  <div className='own-analytics-card1 analytics-cards'>
-
-                    <div className='own-analytics-card-content'>
-                      <div className='staffID'>No of Workouts</div>
-                      <div className='staffName'>{cardData.no_of_workouts}</div>
-                    </div>
-
-                  </div>
-
-
-                </div>
-              ))}
-              <div className='own-analytics-chart-table-container'>
-
-                <div className='own-analytics-chart-container'>
-                  <div className='own-analytics-container-head'>Annual Income</div>
-                  <div className='own-analytics-card '>
-                    {/* <BarChart data={ChartData} /> */}
-                    <Chart chartType="ColumnChart" width="90%" height="400px" data={annualIncomeObj} />
-                  </div>
+                <div className='own-analytics-card-content'>
+                  <div className='staffID'>No of Trainers</div>
+                  <div className='staffName'>{cardData.no_of_trainers}</div>
                 </div>
 
-                <div className='own-analytics-chart-container'>
-                  <div className='own-analytics-container-head'>This Month's Income</div>
-                  <div className='own-analytics-card '>
-                    {/* <BarChart data={ChartData} /> */}
-                    <Chart
-                      chartType="LineChart"
-                      width="100%"
-                      height="400px"
-                      data={thisMonthIncomeObj}
-                    // options={
-                    //   hAxis = {
-                    //     direction: -1,
-                    //     slantedText: true, /* Enable slantedText for horizontal axis */
-                    //     slantedTextAngle: 90 /* Define slant Angle */
-                    //   }
-                    // }
-                    />
-                  </div>
-                </div>
               </div>
-              <div className='own-analytics-chart-table-container'>
 
-                <div className='own-analytics-table-container'>
-                  <div className='own-analytics-container-head'>Available Excercises</div>
-                  <div className='own-analytics-card1'>
+              <div className='own-analytics-card1 analytics-cards'>
 
-                    <MaterialTable
-                      title="Exercices"
-                      columns={[
-                        { title: "Exercise ID", field: "exercise_id" },
-                        { title: "Exercise Name", field: "exercise_name" },
-                        { title: "Primary Muscle", field: "primary_muscle" },
-                        { title: "Secondary Muscle", field: "secondary_muscle" },
-                      ]}
-                      icons={TableIcons}
-                      data={exercices}
-                      options={{
-                        pageSize: 3,
-                        pageSizeOptions: [6, 12, 15],
-                        headerStyle: {
-                          backgroundColor: '#1F0106',
-                          color: '#FFF',
-                          hover: '#FFF'
-                        }
-                      }}
-                    />
-
-                  </div>
+                <div className='own-analytics-card-content'>
+                  <div className='staffID'>Total Income</div>
+                  <div className='staffName'>LKR {cardData.total_income.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</div>
                 </div>
 
-                <div className='own-analytics-table-container'>
-                  <div className='own-analytics-container-head'>Available Payment Plans</div>
-                  <div className='own-analytics-card1'>
+              </div>
+              <div className='own-analytics-card1 analytics-cards'>
 
-                    <MaterialTable
-                      title="Payment Plans"
-                      columns={[
-                        { title: "Payment ID", field: "plan_id" },
-                        { title: "Payment Type", field: "type" },
-                        { title: "Price", field: "amount" },
-                      ]}
-                      icons={TableIcons}
-                      data={paymentPlans}
-                      options={{
-                        pageSize: 3,
-                        pageSizeOptions: [6, 12, 15],
-                        headerStyle: {
-                          backgroundColor: '#1F0106',
-                          color: '#FFF',
-                          hover: '#FFF'
-                        }
-                      }}
-                    />
-                  </div>
+                <div className='own-analytics-card-content'>
+                  <div className='staffID'>No of Appointments</div>
+                  <div className='staffName'>{cardData.no_of_appointments}</div>
                 </div>
+
+              </div>
+              <div className='own-analytics-card1 analytics-cards'>
+
+                <div className='own-analytics-card-content'>
+                  <div className='staffID'>No of Workouts</div>
+                  <div className='staffName'>{cardData.no_of_workouts}</div>
+                </div>
+
               </div>
 
 
-            </Tab>
-            <Tab eventKey="profile" title="Reports">
+            </div>
+          ))}
+          <div className='own-analytics-chart-table-container'>
+
+            <div className='own-analytics-chart-container'>
+              <div className='own-analytics-container-head'>Annual Income</div>
+              <div className='own-analytics-card '>
+                {/* <BarChart data={ChartData} /> */}
+                <Chart chartType="ColumnChart" width="90%" height="400px" data={annualIncomeObj} />
+              </div>
+            </div>
+
+            <div className='own-analytics-chart-container'>
+              <div className='own-analytics-container-head'>This Month's Income</div>
+              <div className='own-analytics-card '>
+                {/* <BarChart data={ChartData} /> */}
+                <Chart
+                  chartType="LineChart"
+                  width="100%"
+                  height="400px"
+                  data={thisMonthIncomeObj}
+                // options={
+                //   hAxis = {
+                //     direction: -1,
+                //     slantedText: true, /* Enable slantedText for horizontal axis */
+                //     slantedTextAngle: 90 /* Define slant Angle */
+                //   }
+                // }
+                />
+              </div>
+            </div>
+          </div>
+          <div className='own-analytics-chart-table-container'>
+
+            <div className='own-analytics-table-container'>
+              <div className='own-analytics-container-head'>Available Excercises</div>
+              <div className='own-analytics-card1'>
+
+                <MaterialTable
+                  title="Exercices"
+                  columns={[
+                    { title: "Exercise ID", field: "exercise_id" },
+                    { title: "Exercise Name", field: "exercise_name" },
+                    { title: "Primary Muscle", field: "primary_muscle" },
+                    { title: "Secondary Muscle", field: "secondary_muscle" },
+                  ]}
+                  icons={TableIcons}
+                  data={exercices}
+                  options={{
+                    pageSize: 3,
+                    pageSizeOptions: [6, 12, 15],
+                    headerStyle: {
+                      backgroundColor: '#1F0106',
+                      color: '#FFF',
+                      hover: '#FFF'
+                    }
+                  }}
+                />
+
+              </div>
+            </div>
+
+            <div className='own-analytics-table-container'>
+              <div className='own-analytics-container-head'>Available Payment Plans</div>
+              <div className='own-analytics-card1'>
+
+                <MaterialTable
+                  title="Payment Plans"
+                  columns={[
+                    { title: "Payment ID", field: "plan_id" },
+                    { title: "Payment Type", field: "type" },
+                    { title: "Price", field: "amount" },
+                  ]}
+                  icons={TableIcons}
+                  data={paymentPlans}
+                  options={{
+                    pageSize: 3,
+                    pageSizeOptions: [6, 12, 15],
+                    headerStyle: {
+                      backgroundColor: '#1F0106',
+                      color: '#FFF',
+                      hover: '#FFF'
+                    }
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+
+
+          {/* </Tab> */}
+          {/* <Tab eventKey="profile" title="Reports">
               <div className='Analytics-dropdown'>
                 <div className="dropdown-container">
                   <div className="form-label-container">
@@ -320,7 +323,6 @@ const Dashboard = () => {
                   <select class="form-control form-control-sm" style={{ padding: '8px' }}>
                     <option> select </option>
                     <option> Income Report</option>
-                    {/* <option> Monthly Report</option> */}
                     <option> Trainer Report</option>
                     <option> Trainee Report</option>
                   </select>
@@ -334,7 +336,6 @@ const Dashboard = () => {
                     <option> Yearly</option>
                     <option> Monthly</option>
                     <option> Daily</option>
-                    {/* <option> select 4</option> */}
                   </select>
                 </div>
                 <div className="dropdown-container">
@@ -356,13 +357,13 @@ const Dashboard = () => {
                   </div>
                 </div>
               </div>
-            </Tab>
+            </Tab> */}
 
-          </Tabs>
+          {/* </Tabs> */}
         </div>
 
       </div>
-    </div>
+    </div >
   )
 }
 

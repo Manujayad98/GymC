@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import '../own_sidebar/Sidebar.css'
-import SidebarO from '../own_sidebar/Sidebar'
-import HeaderO from '../own_header/Header'
+import '../trainer_sidebar/Sidebar.css'
+import SidebarT from '../trainer_sidebar/Sidebar'
+import HeaderT from '../trainer_header/Header'
 import InputField from "../../../Utilities/Form/InputField";
 import '../../../Utilities/Form/Form.css'
 import { Validators } from "../../../Utilities/Form/Validator/Validator";
@@ -203,9 +203,9 @@ export default function UpdateWorkout() {
     return (
 
         <div className='main-container'>
-            <SidebarO />
+            <SidebarT />
             <div className='body-container'>
-                <HeaderO title="Update Workout" />
+                <HeaderT title="Update Workout" />
                 <div style={{ margin: '20px' }}>
                     {/* <div className="workout-profile-card">
                         <div className='own-dashboard-card own-dashboard-profile-cards'>

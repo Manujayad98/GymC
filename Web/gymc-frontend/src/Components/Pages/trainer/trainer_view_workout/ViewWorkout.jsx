@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import '../own_sidebar/Sidebar.css'
+import '../trainer_sidebar/Sidebar.css'
 import './ViewWorkout.css'
-import SidebarO from '../own_sidebar/Sidebar'
-import HeaderO from '../own_header/Header'
+import SidebarT from '../trainer_sidebar/Sidebar'
+import HeaderT from '../trainer_header/Header'
 import SampleCal from '../../../Utilities/CalendarComp/SampleCal'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
@@ -117,16 +117,13 @@ export default function ViewWorkout() {
     //   })
 
     const moveToMoreView = () => {
-        window.location.href = `/AddWorkout/${id}`;
+        window.location.href = `/TAddWorkout/${id}`;
     }
 
     const moveToUpdateView = () => {
-        window.location.href = `/OupdateWorkout/${id}`;
+        window.location.href = `/TOupdateWorkout/${id}`;
     }
 
-    const moveToProgressView = () => {
-        window.location.href = `/OtraineeProgress/${id}`;
-    }
     // const handleChange = (key) => (value) => {
     //     setState({
     //         ...requestData,
@@ -219,9 +216,9 @@ export default function ViewWorkout() {
     ]);
     return (
         <div className='main-container'>
-            <SidebarO />
+            <SidebarT />
             <div className='body-container'>
-                <HeaderO title="Trainees" />
+                <HeaderT title="Trainees" />
                 <div className="own-trainee-content-container">
                     <div className="left">
                         <div className="own-trainee-profile">
@@ -243,10 +240,10 @@ export default function ViewWorkout() {
                                 {/* <Link to='/OaddWorkout/'> */}
                                 <button class="newworkoutbtn" onClick={moveToMoreView}>New Workout</button>
                                 {/* </Link> */}
-                                <Link to='/Otraineeprogress' style={{ textDecoration: 'none' }}>
-                                    <button class="progressbtn" onClick={moveToProgressView}>Progress</button>
+                                <Link to='/Ttraineeprogress' style={{ textDecoration: 'none' }}>
+                                    <button class="progressbtn">Progress</button>
                                 </Link>
-                                <Link to='/OupdateWorkout' onClick={moveToUpdateView} style={{ textDecoration: 'none' }}>
+                                <Link to='/TupdateWorkout' onClick={moveToUpdateView} style={{ textDecoration: 'none' }}>
                                     <button className="update_btn">Update</button>
                                 </Link>
                             </div>

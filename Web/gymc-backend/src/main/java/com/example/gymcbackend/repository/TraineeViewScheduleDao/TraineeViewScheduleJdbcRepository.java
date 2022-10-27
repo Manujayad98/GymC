@@ -65,7 +65,7 @@ public class TraineeViewScheduleJdbcRepository {
                 namedParameters.addValue("traineeDate", traineeDate);
                 System.out.println(traineeDate);
 
-                String query1= "SELECT exercise.name,training_date.no_of_repetitions " +
+                String query1= "SELECT CONCAT('E000', exercise.exerciseid) AS exercise_id , exercise.name,training_date.no_of_repetitions " +
                         "FROM workout_schedule " +
                         "INNER JOIN workout_plan  ON  workout_schedule.workout_scheduleid=workout_plan.workout_scheduleid " +
                         "INNER JOIN training_date  ON workout_plan.workout_planid=training_date.workout_planid " +
@@ -102,7 +102,7 @@ public class TraineeViewScheduleJdbcRepository {
                 return dietPlanResponse;
         }
 
-        //trainer availability check karanna hadanna one
+
 
         public TimeSlotTwo getDateAvailability(LocalDate date1, Long staffId) {
 
@@ -110,7 +110,19 @@ public class TraineeViewScheduleJdbcRepository {
                 namedParameters.addValue("staffId", staffId);
 
 
-//        namedParameters.addValue("date1", date1);
+                namedParameters.addValue("date1", date1);
+                String query0="SELECT COUNT(date) FROM time_slot_two WHERE date=?";
+                Integer dateCount = jdbcTemplate.queryForObject(query0, new Object[] {date1 }, Integer.class);
+
+                int rowsAffected1=0;
+                if(dateCount==0){
+
+                        String query2="INSERT INTO time_slot_two (date) VALUES (:date1) ";
+                        rowsAffected1 = jdbc.update(query2 , namedParameters);
+                }
+
+
+                namedParameters.addValue("date1", date1);
                 String query="SELECT * FROM time_slot_two WHERE date=?";
 
                 TimeSlotTwo timeSlot = (TimeSlotTwo) jdbcTemplate.queryForObject(query, new Object[]{date1}, new BeanPropertyRowMapper(TimeSlotTwo.class));
@@ -120,6 +132,17 @@ public class TraineeViewScheduleJdbcRepository {
 //        Integer c= (Integer) jdbcTemplate.queryForObject(query, new Object[]{date1}, new BeanPropertyRowMapper(Integer.class));
 
 
+
+                return timeSlot;
+        }
+
+        public TimeSlotTwo getDateAvailabilityTimes(LocalDate date1) {
+
+                String query="SELECT * FROM time_slot_two WHERE date=?";
+
+                TimeSlotTwo timeSlot = (TimeSlotTwo) jdbcTemplate.queryForObject(query, new Object[]{date1}, new BeanPropertyRowMapper(TimeSlotTwo.class));
+
+                System.out.println("sdsdsdsdsds");
 
                 return timeSlot;
         }
@@ -151,8 +174,15 @@ public class TraineeViewScheduleJdbcRepository {
 
 
         public BodyFactorsResponse getBodyFactors(LocalDate date1, Long traineeId) {
-                String query="SELECT weight,height,biceps,chest,forearms,hips,thighs FROM workout_plan WHERE  ";
-                BodyFactorsResponse bodyFactors = (BodyFactorsResponse) jdbcTemplate.queryForObject(query, new Object[]{date1}, new BeanPropertyRowMapper(BodyFactorsResponse.class));
+                MapSqlParameterSource namedParameters =
+                        new MapSqlParameterSource();
+                namedParameters.addValue("traineeId", traineeId);
+                namedParameters.addValue("date", date1);
+
+                String query="SELECT weight,height,biceps,chest,forearms,hips,thighs, diseases FROM workout_plan " +
+                        "INNER JOIN workout_schedule ON workout_plan.workout_scheduleid=workout_schedule.workout_scheduleid " +
+                        "AND  workout_schedule.trainee_id= ? AND workout_plan.training_date= ? ";
+                BodyFactorsResponse bodyFactors = (BodyFactorsResponse) jdbcTemplate.queryForObject(query, new Object[]{traineeId,date1}, new BeanPropertyRowMapper(BodyFactorsResponse.class));
                 return bodyFactors;
         }
 
@@ -162,7 +192,7 @@ public class TraineeViewScheduleJdbcRepository {
                 MapSqlParameterSource namedParameters =
                         new MapSqlParameterSource();
                 namedParameters.addValue("traineeId", traineeId);
-                String query="SELECT weight,height,biceps,chest,forearms,hips,thighs FROM workout_plan INNER JOIN workout_schedule ON " +
+                String query="SELECT weight,height,biceps,chest,forearms,hips,thighs,training_date FROM workout_plan INNER JOIN workout_schedule ON " +
                         "workout_plan.workout_scheduleid=workout_schedule.workout_scheduleid " +
                         "AND workout_schedule.trainee_id=:traineeId AND workout_plan.height IS NOT NULL ORDER BY workout_plan.training_date DESC LIMIT 5";
                 List<TraineeProgressResponse> traineeProgressResponses = jdbc.query(query, namedParameters, new BeanPropertyRowMapper<TraineeProgressResponse>(TraineeProgressResponse.class));
@@ -171,5 +201,13 @@ public class TraineeViewScheduleJdbcRepository {
         }
 
 
+        public List<TrainerListResponse> getTrainers() {
+                String query="SELECT staff_id as id,CONCAT(staff_member.first_name,' ',staff_member.last_name) as name" +
+                        " FROM staff_member INNER JOIN user_account ON staff_member.user_id=user_account.user_id " +
+                        "AND user_account.status=1 AND (user_account.user_level='Owner' OR user_account.user_level='Trainer') " +
+                        "AND is_hold=0 AND status=1 " ;
+                List<TrainerListResponse> traineeProgressResponses = jdbc.query(query, new BeanPropertyRowMapper<TrainerListResponse>(TrainerListResponse.class));
+                return traineeProgressResponses;
+        }
 }
 

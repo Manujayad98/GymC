@@ -9,10 +9,10 @@ import { Card, Title, Paragraph, Appbar } from 'react-native-paper';
 import profile from "../../assets/images/profile.jpg"
 
 
-import { TextInput , Button} from 'react-native-paper'
+import { TextInput, Button } from 'react-native-paper'
 // import imag from '../../assets/images/icon.png'
 
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const App = () => {
 
@@ -48,7 +48,7 @@ const App = () => {
 
   const [text, setText] = React.useState('');
   const [name, setName] = React.useState('');
-  
+
   // For custom SegmentedControlTab
   const [customStyleIndex, setCustomStyleIndex] = useState(0);
 
@@ -356,32 +356,32 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     width: '100%',
     color: 'black',
-},
+  },
 
-thumbnail: {
-  width: 200,
-  height: 200,
-  resizeMode: "contain",
-  borderRadius:'100%'
-},
- 
+  thumbnail: {
+    width: 200,
+    height: 200,
+    resizeMode: "contain",
+    borderRadius: '100%'
+  },
+
   container: {
-    padding:20,
+    padding: 20,
     // backgroundColor: '#CAF0F8',
     alignItems: 'center',
     justifyContent: 'center',
-    
+
   },
   container2: {
-    padding:5,
+    padding: 5,
     // backgroundColor: '#CAF0F8',
     alignItems: 'center',
     justifyContent: 'center',
-    
+
   },
   top: {
     backgroundColor: "#90E0EF",
-    borderColor:'white',
+    borderColor: 'white',
     borderRadius: 5,
     height:45,
     marginTop:10,
@@ -390,7 +390,7 @@ thumbnail: {
   },
   updatebutton: {
     backgroundColor: "#0077B6",
-    borderColor:'white',
+    borderColor: 'white',
     borderRadius: 5,
     height:40,
     marginTop:20,
@@ -401,25 +401,25 @@ thumbnail: {
   },
   imagebutton: {
     backgroundColor: "#0077B6",
-    borderColor:'white',
+    borderColor: 'white',
     borderRadius: 5,
-    height:40,
-    marginTop:20,
-    width:'40%',
-    fontSize:14,
-    marginHorizontal:10,
-    alignItems:'center'
+    height: 40,
+    marginTop: 20,
+    width: '40%',
+    fontSize: 14,
+    marginHorizontal: 10,
+    alignItems: 'center'
   },
   button: {
     backgroundColor: "red",
-    borderColor:'white',
+    borderColor: 'white',
     borderRadius: 5,
-    height:40,
-    marginTop:20,
-    width:'40%',
-    fontSize:14,
-    marginHorizontal:10,
-    alignItems:'center'
+    height: 40,
+    marginTop: 20,
+    width: '40%',
+    fontSize: 14,
+    marginHorizontal: 10,
+    alignItems: 'center'
   },
   header: {
     paddingLeft: '50%',
@@ -429,7 +429,7 @@ thumbnail: {
     // backgroundColor: '#eee',
     color: 'black',
 
-},
+  },
   headerText: {
     padding: 8,
     fontSize: 14,
@@ -440,7 +440,7 @@ thumbnail: {
     color: '#444444',
     fontSize: 18,
     margin: 24,
-    width:'50',
+    width: '50',
   },
   seperator: {
     marginHorizontal: -10,

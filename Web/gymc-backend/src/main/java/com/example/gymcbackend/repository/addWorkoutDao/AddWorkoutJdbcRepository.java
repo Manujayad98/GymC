@@ -135,7 +135,7 @@ public class AddWorkoutJdbcRepository {
 //    }
 
 
-    public String addDietPlan(Date trainingDate, Integer carbohydrate, Integer fat, Integer protein, long workoutScheduleId, Long traineeId) {
+    public String addDietPlan(Date trainingDate, Integer carbohydrate, Integer fat, Integer protein, long workoutScheduleId, String traineeId) {
 
         System.out.println("inside diet plan"+carbohydrate);
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
@@ -173,7 +173,7 @@ public class AddWorkoutJdbcRepository {
         namedParameters.addValue("endTime",endTime );
 
 
-        //workout plan id eka nethuwa epa
+
         String query="SELECT COUNT(workout_planid) FROM workout_plan WHERE workout_scheduleid=? AND training_date=?  ";
         int count = jdbcTemplate.queryForObject(query, new Object[] {scheduleId,trainingDate }, Integer.class);
 
@@ -210,7 +210,8 @@ public class AddWorkoutJdbcRepository {
             for(int i=0;i<trainingDateList.size();i++){
 
                 namedParameters.addValue("insertedWorkoutPlanId",insertedWorkoutPlanId);
-                namedParameters.addValue("exerciseId",trainingDateList.get(i).getExerciseId());
+                String exerciseId = trainingDateList.get(i).getExerciseId().substring(4);
+                namedParameters.addValue("exerciseId",exerciseId);
                 System.out.println("Exercise id :"+trainingDateList.get(i).getExerciseId());
                 namedParameters.addValue("no_of_repetitions",trainingDateList.get(i).getNoOfRepetitions());
                 String query2 = "INSERT INTO training_date " +

@@ -32,7 +32,7 @@
     background-color: #3DA2FF;
     padding: 10px 20px;
     border-radius: 8px;
-    
+
 }
 
 .rec-train-card .traineeID {
@@ -49,9 +49,9 @@
     text-align: center;
 }
 
-.recept-dashboard-images{
-    width:70px;
-    border-radius:30px;
+.recept-dashboard-images {
+    width: 70px;
+    border-radius: 30px;
 }
 
 .rec-dashboard-card-img-container {
@@ -72,8 +72,13 @@
     justify-content: space-between;
     width: 100%;
     height: auto;
-    padding: 20px 20px;
+    padding: 20px 8px;
     align-items: center;
     margin-left: auto;
     margin-right: auto;
+}
+
+.recpt-button-container {
+    margin: 20px;
+    justify-content: right;
 }

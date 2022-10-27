@@ -23,9 +23,11 @@ public class WorkoutReservation {
 
     private LocalTime endTime;
 
+    private long Name;
+
 //    private long workoutPlanId;
 
-    private Long traineeId;
+    private String traineeId;
 
 
 
@@ -86,11 +88,19 @@ public class WorkoutReservation {
         this.workoutScheduleId = workoutScheduleId;
     }
 
-    public Long getTraineeId() {
+    public String getTraineeId() {
         return traineeId;
     }
 
-    public void setTraineeId(Long traineeId) {
+    public void setTraineeId(String traineeId) {
         this.traineeId = traineeId;
+    }
+
+    public long getName() {
+        return Name;
+    }
+
+    public void setName(long name) {
+        Name = name;
     }
 }

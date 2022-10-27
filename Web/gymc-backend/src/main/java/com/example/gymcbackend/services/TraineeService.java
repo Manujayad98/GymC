@@ -29,4 +29,14 @@ public class TraineeService {
 
         return traineeJdbcRepository.getAnnouncements();
     }
+
+    public String addAnnouce(AnnouncementInput announcementInput) {
+        String annSuccess= traineeJdbcRepository.addAnnouncement(announcementInput);
+        return annSuccess;
+    }
+
+    public PaymentResponse getPayments(String traineeId) {
+        PaymentResponse paymentResponse= traineeJdbcRepository.getPayment(traineeId);
+        return paymentResponse;
+    }
 }

@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.sql.Date;
 import java.sql.Time;
 
 public class NotificationResponse {
@@ -13,7 +14,7 @@ public class NotificationResponse {
     private long notificationId;
     private String topic;
 
-    private Time time;
+    private Date time;
 
     private String description;
 
@@ -34,11 +35,11 @@ public class NotificationResponse {
         this.topic = topic;
     }
 
-    public Time getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 

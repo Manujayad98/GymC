@@ -1,5 +1,5 @@
 import { View, Text, Image, StyleSheet, Dimensions, ScrollView, SafeAreaView, FlatList, StatusBar } from 'react-native'
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/HeaderComponent";
 import { icons, COLORS, SIZES } from "../constans";
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -63,10 +63,10 @@ const Announcements = ({ navigation }) => {
     
         }
         setResponse();
-      },[]);
-   
+    }, []);
 
-    
+
+
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.backgroundColor }}>
             {/* <Header title={"GYMC"} /> */}
@@ -93,10 +93,10 @@ const Announcements = ({ navigation }) => {
                         <Text style={styles.sectionHeader}></Text>
                         <View style={styles.notificationbody}>
                             {console.log(ann)}
-                        {ann.map((ann) => (
+                            {ann.map((ann) => (
                                 <Card style={styles.item}>
                                     <Card.Content>
-                                        <Title  style={styles.announcementTitle} key={ann.id}>{ann.title}</Title>
+                                        <Title style={styles.announcementTitle} key={ann.id}>{ann.title}</Title>
                                         <Paragraph style={styles.announcementAuthor}>{ann.author}</Paragraph>
                                         <Paragraph style={styles.announcementNote}>{ann.note}</Paragraph>
                                     </Card.Content>
@@ -105,7 +105,7 @@ const Announcements = ({ navigation }) => {
                         
                             
                         </View>
-                        
+
 
 
                     </View>
@@ -131,12 +131,12 @@ const styles = StyleSheet.create({
         width: '100%',
         color: 'black',
     },
-    titletext :{
+    titletext: {
         fontSize: 20,
         fontWeight: 'bold',
         color: '#000',
-        textAlign:'center',
-    
+        textAlign: 'center',
+
     },
 
     text: {

@@ -18,7 +18,7 @@ public class NotificationJdbcRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    public List<NotificationResponse> getUnreadNotifications(long userId) {
+    public List<NotificationResponse> getUnreadNotifications(String  userId) {
 
 
         System.out.println("inside the unread notifi jdbc");
@@ -29,7 +29,7 @@ public class NotificationJdbcRepository {
         System.out.println("userId:"+userId);
         String query="SELECT notification_id AS notificationId,topic,time,description FROM notification " +
                 "INNER JOIN user_account ON notification.user_id=user_account.user_id " +
-                "AND notification.state=0 AND notification.user_id=:userId ORDER BY notification.notification_id DESC ";
+                " AND notification.user_id=:userId ORDER BY notification.notification_id DESC ";
         List<NotificationResponse> notificationResponses = jdbc.query(query,namedParameters, new BeanPropertyRowMapper<NotificationResponse>(NotificationResponse.class));
         System.out.println("un read notification retrival");
         return notificationResponses;

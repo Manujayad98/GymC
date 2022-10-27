@@ -1,4 +1,4 @@
-package com.example.gymcbackend.controllers.config;
+package com.example.gymcbackend.config;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

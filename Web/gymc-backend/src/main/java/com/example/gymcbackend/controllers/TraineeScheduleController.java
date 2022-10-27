@@ -4,6 +4,7 @@ import com.example.gymcbackend.dto.*;
 import com.example.gymcbackend.entities.Appointment;
 import com.example.gymcbackend.entities.DietPlan;
 import com.example.gymcbackend.entities.TimeSlot;
+import com.example.gymcbackend.entities.TimeSlotTwo;
 import com.example.gymcbackend.services.TraineeViewScheduleService;
 import com.example.gymcbackend.services.AddWorkoutService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ import java.util.Locale;
 
 @RestController
 @RequestMapping("/api/v1")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 
 public class TraineeScheduleController {
 
@@ -39,11 +40,14 @@ public class TraineeScheduleController {
         System.out.println("gettraineeSchedule");
         return traineeViewScheduleService.getTraineeSchedule(traineeId);
     }
+    @GetMapping("/getTrainers")
+    public List<TrainerListResponse> getTrainers(){
+        return traineeViewScheduleService.getTrainerList();
+    }
 
     //View trainee workout exerciese on date click,pass date on url
     @GetMapping("/getTraineeWorkout/{date}/{traineeId}")
-    public List<TraineeViewWorkoutDateResponse> getTraineeWorkoutDate(@PathVariable String date,
-                                                                      @PathVariable String traineeId) {
+    public List<TraineeViewWorkoutDateResponse> getTraineeWorkoutDate(@PathVariable String date, @PathVariable String traineeId) {
         LocalDate date1 = LocalDate.parse(date);
         System.out.println("awa");
         String traineeID = traineeId.substring(4);
@@ -53,12 +57,17 @@ public class TraineeScheduleController {
     }
     //    view workout body measures(for update workout)
     @GetMapping("/getBodyFactors/{date}/{traineeId}")
-    public BodyFactorsResponse getBodyFactors(@PathVariable String date,@PathVariable Long traineeId){
+    public BodyFactorsResponse getBodyFactors(@PathVariable String date,@PathVariable String traineeId){
 //       Date date1= java.sql.Date.valueOf(date);
         LocalDate date1 = LocalDate.parse(date);
         System.out.println("getTraineeDateOnclick");
-        return traineeViewScheduleService.getWorkoutPlanBodyFactors(date1,traineeId);
+        String traineeID = traineeId.substring(4);
+        Long result = Long.parseLong(String.valueOf(traineeID));
+
+        return traineeViewScheduleService.getWorkoutPlanBodyFactors(date1,result);
     }
+
+
 
     // View trainee diet on date click,pass date on url
     @GetMapping("/getTraineeDiet/{date}/{traineeId}")
@@ -101,6 +110,11 @@ public class TraineeScheduleController {
         return traineeViewScheduleService.getDate(date1,StaffId);
     }
 
+    @GetMapping("/availabilityTimes/{date}")
+    public TimeSlotTwo getAvailabilityTimesForMobile(@PathVariable String date) {
+        LocalDate date1 = LocalDate.parse(date);
+        return traineeViewScheduleService.getTimeSlots(date1);
+    }
 
     @PostMapping("/addAppointment")
     public String addAppointment(@RequestBody AppointmentInput appointment){

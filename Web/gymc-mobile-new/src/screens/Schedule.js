@@ -1,16 +1,50 @@
 import { View, Text, SafeAreaView, ScrollView, StyleSheet, StatusBar, Image } from 'react-native'
-import React, { Component, useState } from 'react'
+import React, { Component, useState,useEffect } from 'react'
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import CustomButton from "../components/CustomButtonComponent";
 import SegmentedControlTab from 'react-native-segmented-control-tab';
 import DataTable, { COL_TYPES } from 'react-native-datatable-component';
 import { icons, COLORS, SIZES } from "../constans";
+import axios from "axios";
 
 const Schedule = () => {
   const [shouldShow, setShouldShow] = useState(true);
 
   // For custom SegmentedControlTab
   const [customStyleIndex, setCustomStyleIndex] = useState(0);
+
+  // const date="2022-10-24";
+
+  // const [ann, setAnnoucements] = useState([]);
+  //   // console.log(ann.title);
+  //   useEffect(() => {
+  //       console.log("announcement get called");
+  //       // 
+  //       const setResponse = async (data) => {
+  //           await axios
+  //               .get("http://172.20.10.3:8080/api/v1/getTraineeWorkout/"+date+"/"+traineeId, {
+  //                   headers: {
+  //                       'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHWU1DIiwic3ViIjoiU3VkYW0iLCJpYXQiOjE2NjY1MjM2OTEsImV4cCI6MTY2Njg4MzY5MX0.R8xf3VfPSpMQruyFjjGLbOti7HljY_Jr05N2MuocmK0`
+  //                   }
+  //               })
+  //               .then((res) => {
+  //                   console.log(res.data)
+
+  //                   // console.log(res.data[0])
+  //                   setAnnoucements(res.data);
+  //                   console.log(ann);
+  //               })
+  //               .catch((err) => {
+  //                   console.log(err);
+  //               });
+
+
+  //       }
+  //       setResponse();
+  //   }, []);
+
+
+
 
   const handleCustomIndexSelect = (index) => {
     //handle tab selection for custom Tab Selection SegmentedControlTab
@@ -170,7 +204,7 @@ const Schedule = () => {
                 { Exercise: 'Barbell push press ', Repititions: 22 },
                 { Exercise: 'Goblet squat', Repititions: 20 },
                 { Exercise: 'Dumbbell single arm row ', Repititions: 13 }
-              ]} // list of objects
+              ]} // list of objects
               colNames={['Exercise', 'Repititions']} //List of Strings
               colSettings={[
                 { name: 'Exercise', type: COL_TYPES.STRING, width: '70%' },

@@ -67,36 +67,36 @@ const Trainees = () => {
     const res = await getTrainees();
     console.log(res.data);
     setAllUsers(
-        [...res.data]
+      [...res.data]
     );
     console.log(users);
-};
+  };
 
-const closePopUp = () => {
-  setPopUp("");
-};
+  const closePopUp = () => {
+    setPopUp("");
+  };
 
-const deleteSelectedTrainee = () => {
-  console.log("deleted " + selectedUserData.traineeID);
-  deleteTrainee(selectedUserData.traineeID)
+  const deleteSelectedTrainee = () => {
+    console.log("deleted " + selectedUserData.traineeID);
+    deleteTrainee(selectedUserData.traineeID)
       .then((response) => {
-          if (response.status === 200 && response.data == 1) {
-              window.location.href = "/Ausers";
-              // evt.preventDefault();
-              toast.success("User has deleted !");
-          } else {
-              toast.error("Failed !!!");
-          }
+        if (response.status === 200 && response.data == 1) {
+          window.location.href = "/Ausers";
+          // evt.preventDefault();
+          toast.success("User has deleted !");
+        } else {
+          toast.error("Failed !!!");
+        }
       })
       .catch((err) => {
-          if (err && err.response) {
-              console.log(err.message);
-              toast.error("Failed !!!");
-          }
+        if (err && err.response) {
+          console.log(err.message);
+          toast.error("Failed !!!");
+        }
       });
-  setPopUp("");
-};
-  
+    setPopUp("");
+  };
+
   const [trainerDetailsTableHead] = useState([
     { id: "TraineeImg", label: "", numeric: false },
     { id: "traineeID", label: "TRAINEE ID", numeric: false },
@@ -114,193 +114,193 @@ const deleteSelectedTrainee = () => {
         <HeaderR title="Trainees" />
         <div className="content-container">
           <div>
-              <div className='rec-trainee-titles'> Trainees Today</div>
-                <div className='rec-trainee-profile-card-container'>
-                    <div onClick={() => opennowin(true)} className='rec-train-card'>
-                      <div className='rec-dashboard-card-img-container'>
-                        <img className='recept-dashboard-images' src={Pic1} alt="" />
-                      </div>
-                      <div className='traineeID'>S0001</div>
-                      <div className='traineeName'>Manujaya Dasanayaka</div>
-                    </div>
-                    <div onClick={() => opennowin(true)} className='rec-train-card'>
-                      <div className='rec-dashboard-card-img-container'>
-                        <img className='recept-dashboard-images' src={Pic1} alt="" />
-                      </div>
-                      <div className='traineeID'>S0001</div>
-                      <div className='traineeName'>Manujaya Dasanayaka</div>
-                    </div>
-                    <div onClick={() => opennowin(true)} className='rec-train-card'>
-                      <div className='rec-dashboard-card-img-container'>
-                        <img className='recept-dashboard-images' src={Pic1} alt="" />
-                      </div>
-                      <div className='traineeID'>S0001</div>
-                      <div className='traineeName'>Manujaya Dasanayaka</div>
-                    </div>
-                    <div onClick={() => opennowin(true)} className='rec-train-card'>
-                      <div className='rec-dashboard-card-img-container'>
-                        <img className='recept-dashboard-images' src={Pic1} alt="" />
-                      </div>
-                      <div className='traineeID'>S0001</div>
-                      <div className='traineeName'>Manujaya Dasanayaka</div>
-                    </div>
-                    <div onClick={() => opennowin(true)} className='rec-train-card'>
-                      <div className='rec-dashboard-card-img-container'>
-                        <img className='recept-dashboard-images' src={Pic1} alt="" />
-                      </div>
-                      <div className='traineeID'>S0001</div>
-                      <div className='traineeName'>Manujaya Dasanayaka</div>
-                    </div>
-                  
+            <div className='rec-trainee-titles'> Trainees Today</div>
+            <div className='rec-trainee-profile-card-container'>
+              <div onClick={() => opennowin(true)} className='rec-train-card'>
+                <div className='rec-dashboard-card-img-container'>
+                  <img className='recept-dashboard-images' src={Pic1} alt="" />
                 </div>
-              
+                <div className='traineeID'>S0001</div>
+                <div className='traineeName'>Manujaya Dasanayaka</div>
+              </div>
+              <div onClick={() => opennowin(true)} className='rec-train-card'>
+                <div className='rec-dashboard-card-img-container'>
+                  <img className='recept-dashboard-images' src={Pic1} alt="" />
+                </div>
+                <div className='traineeID'>S0001</div>
+                <div className='traineeName'>Manujaya Dasanayaka</div>
+              </div>
+              <div onClick={() => opennowin(true)} className='rec-train-card'>
+                <div className='rec-dashboard-card-img-container'>
+                  <img className='recept-dashboard-images' src={Pic1} alt="" />
+                </div>
+                <div className='traineeID'>S0001</div>
+                <div className='traineeName'>Manujaya Dasanayaka</div>
+              </div>
+              <div onClick={() => opennowin(true)} className='rec-train-card'>
+                <div className='rec-dashboard-card-img-container'>
+                  <img className='recept-dashboard-images' src={Pic1} alt="" />
+                </div>
+                <div className='traineeID'>S0001</div>
+                <div className='traineeName'>Manujaya Dasanayaka</div>
+              </div>
+              <div onClick={() => opennowin(true)} className='rec-train-card'>
+                <div className='rec-dashboard-card-img-container'>
+                  <img className='recept-dashboard-images' src={Pic1} alt="" />
+                </div>
+                <div className='traineeID'>S0001</div>
+                <div className='traineeName'>Manujaya Dasanayaka</div>
+              </div>
+
+            </div>
+
           </div>
 
-          <p style={{ textAlign: 'left', fontWeight: 'bold', fontSize: '30px' }}>All</p>             
-              <div className="button-container">
-                <Link to='/RaddTrainee'>
-                  <button type="button" class="btn" style={{ backgroundColor: '#3DA2FF', width: '100px' }}>Add</button>
-                </Link>
-              </div>
-                      <div className="table-div">
-                        <MaterialTable
-                            title="Trainees"
-                            columns={[
-                                { title: "", field: "TraineeImg" },
-                                { title: "TRAINEE ID", field: "trainee_id" },
-                                { title: "TRAINEE NAME", field: "full_name" },
-                                { title: "PAYMENT TYPE", field: "PaymentType" },
-                                { title: "REG ON", field: "registered_date" },
-                            ]}
-                            icons={TableIcons}
-                            data={users}
-                            actions={[
-                                {
-                                    icon: () => {
-                                        return (
+          <p style={{ textAlign: 'left', fontWeight: 'bold', fontSize: '30px', marginLeft: '20px' }}>All</p>
+          <div className="recpt-button-container">
+            <Link to='/RaddTrainee'>
+              <button type="button" class="btn" style={{ backgroundColor: '#3DA2FF', width: '100px' }}>Add</button>
+            </Link>
+          </div>
+          <div className="table-div">
+            <MaterialTable
+              title="Trainees"
+              columns={[
+                { title: "", field: "TraineeImg" },
+                { title: "TRAINEE ID", field: "trainee_id" },
+                { title: "TRAINEE NAME", field: "full_name" },
+                { title: "PAYMENT TYPE", field: "PaymentType" },
+                { title: "REG ON", field: "registered_date" },
+              ]}
+              icons={TableIcons}
+              data={users}
+              actions={[
+                {
+                  icon: () => {
+                    return (
 
-                                            <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} onClick={() => setOpenModal(true)} alt="" height={20} width={20} /></span>
-                                        );
-                                    },
-                                    onClick: (event, rowData) => {
-                                      setSelectedUserData(rowData);
-                                        {
-                                            setPopUp("delete");
-                                        }
-                                        setMsg(
-                                            rowData.traineeID
-                                        );
-                                    },
-                                },
-                                rowData => ({
+                      <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} onClick={() => setOpenModal(true)} alt="" height={20} width={20} /></span>
+                    );
+                  },
+                  onClick: (event, rowData) => {
+                    setSelectedUserData(rowData);
+                    {
+                      setPopUp("delete");
+                    }
+                    setMsg(
+                      rowData.traineeID
+                    );
+                  },
+                },
+                rowData => ({
 
-                                  icon: () => {
-                                      return (
+                  icon: () => {
+                    return (
 
-                                          <button
-                                              type="button"
-                                              className="btn mt-0"
-                                              style={{
-                                                  backgroundColor: "#32E04E",
-                                                  border: "none",
-                                                  // marginRight: "2px",
-                                              }}
-                                          >
-                                              Pay
-                                          </button>
-                                      );
-                                  },
-                                  onClick: (event, rowData) => {
-                                      setSelectedUserData(rowData);
-                                      {
-                                          setPopUp("pay");
-                                      }
-                                      setMsg(
-                                          rowData.trainee_id
-                                      );
-                                  },
-                              }),
-                              rowData => ({
+                      <button
+                        type="button"
+                        className="btn mt-0"
+                        style={{
+                          backgroundColor: "#32E04E",
+                          border: "none",
+                          // marginRight: "2px",
+                        }}
+                      >
+                        Pay
+                      </button>
+                    );
+                  },
+                  onClick: (event, rowData) => {
+                    setSelectedUserData(rowData);
+                    {
+                      setPopUp("pay");
+                    }
+                    setMsg(
+                      rowData.trainee_id
+                    );
+                  },
+                }),
+                rowData => ({
 
-                                icon: () => {
-                                    return (
+                  icon: () => {
+                    return (
 
-                                      <span style={{ paddingRight: "20px", cursor: 'pointer' }}><Button variant='outline-success' size='sm'><img src={Checkin} onClick={() => setOpenModal(true)} alt="" height={20} width={20} /></Button></span>
+                      <span style={{ paddingRight: "20px", cursor: 'pointer' }}><Button variant='outline-success' size='sm'><img src={Checkin} onClick={() => setOpenModal(true)} alt="" height={20} width={20} /></Button></span>
 
-                                    );
-                                },
-                                onClick: (event, rowData) => {
-                                    setSelectedUserData(rowData);
-                                    {
-                                        setPopUp("checkin");
-                                    }
-                                    setMsg(
-                                        rowData.trainee_id
-                                    );
-                                },
-                            }),
-                            rowData => ({
+                    );
+                  },
+                  onClick: (event, rowData) => {
+                    setSelectedUserData(rowData);
+                    {
+                      setPopUp("checkin");
+                    }
+                    setMsg(
+                      rowData.trainee_id
+                    );
+                  },
+                }),
+                rowData => ({
 
-                              icon: () => {
-                                  return (
+                  icon: () => {
+                    return (
 
-                                    <span style={{ paddingRight: "20px", cursor: 'pointer' }}><Button variant='outline-warning' size='sm'><img src={Checkout} onClick={() => setOpenModal(true)} alt="" height={20} width={20} /></Button></span>
+                      <span style={{ paddingRight: "20px", cursor: 'pointer' }}><Button variant='outline-warning' size='sm'><img src={Checkout} onClick={() => setOpenModal(true)} alt="" height={20} width={20} /></Button></span>
 
-                                  );
-                              },
-                              onClick: (event, rowData) => {
-                                  setSelectedUserData(rowData);
-                                  {
-                                      setPopUp("checkout");
-                                  }
-                                  setMsg(
-                                      rowData.trainee_id
-                                  );
-                              },
-                          }),
-                                
-                            ]}
-                            options={{
-                                headerStyle: {
-                                    backgroundColor: '#1F0106',
-                                    color: '#FFF',
-                                    hover: '#FFF'
-                                }
-                            }}
-                        />
-                    </div>
+                    );
+                  },
+                  onClick: (event, rowData) => {
+                    setSelectedUserData(rowData);
+                    {
+                      setPopUp("checkout");
+                    }
+                    setMsg(
+                      rowData.trainee_id
+                    );
+                  },
+                }),
+
+              ]}
+              options={{
+                headerStyle: {
+                  backgroundColor: '#1F0106',
+                  color: '#FFF',
+                  hover: '#FFF'
+                }
+              }}
+            />
+          </div>
 
           <div>
-          {popup === "delete" && (
-                <DeleteModal
-                    msg={msg}
-                    closePopUp={closePopUp}
-                    handleSubmit={deleteSelectedTrainee}
-                />
+            {popup === "delete" && (
+              <DeleteModal
+                msg={msg}
+                closePopUp={closePopUp}
+                handleSubmit={deleteSelectedTrainee}
+              />
             )}
 
             {popup === "pay" && (
-                <PaymentModal
-                    msg={msg}
-                    closePopUp={closePopUp}
-                    open={paymentModal}
-                />
+              <PaymentModal
+                msg={msg}
+                closePopUp={closePopUp}
+                open={paymentModal}
+              />
             )}
 
             {popup === "checkin" && (
-                <CheckinModal
-                    msg={msg}
-                    closePopUp={closePopUp}
-                    open={checkinmodal}
-                />
+              <CheckinModal
+                msg={msg}
+                closePopUp={closePopUp}
+                open={checkinmodal}
+              />
             )}
 
             {popup === "checkout" && (
-                <CheckinModal
-                    msg={msg}
-                    closePopUp={closePopUp}
-                    open={checkoutmodal}
-                />
+              <CheckinModal
+                msg={msg}
+                closePopUp={closePopUp}
+                open={checkoutmodal}
+              />
             )}
 
             {/* <DeleteModal open={openModal} onClose={() => setOpenModal(false)} /> */}

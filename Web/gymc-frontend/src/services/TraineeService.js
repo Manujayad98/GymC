@@ -13,3 +13,13 @@ export const getTodaysTrainees = () => {
         },
     });
 };
+
+export const getTodayWorkoutList = () => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/todayWorkouts`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
