@@ -34,7 +34,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 import { getTrainees, deleteTrainee } from "../../../../services/UserService";
-
+import { getTodaysTrainees } from "../../../../services/TraineeService";
 
 const Trainees = () => {
 
@@ -42,6 +42,7 @@ const Trainees = () => {
   useEffect(() => {
     checkValidate();
     getAllTrainees();
+    getTodayAvailableTrainees();
   }, []);
 
   const checkValidate = async () => {
@@ -62,6 +63,7 @@ const Trainees = () => {
   const [paymentModal, openpaymentModal] = useState(false)
   const [msg, setMsg] = useState("");
   const [popup, setPopUp] = useState("");
+  const [todayTrainees, setTodayTrainees] = useState({});
 
   const getAllTrainees = async () => {
     const res = await getTrainees();
@@ -70,6 +72,13 @@ const Trainees = () => {
       [...res.data]
     );
     console.log(users);
+  };
+  const getTodayAvailableTrainees = async () => {
+    const res = await getTodaysTrainees();
+    console.log(res.data);
+    setTodayTrainees(
+      [...res.data]
+    );
   };
 
   const closePopUp = () => {
@@ -116,7 +125,7 @@ const Trainees = () => {
           <div>
             <div className='rec-trainee-titles'> Trainees Today</div>
             <div className='rec-trainee-profile-card-container'>
-              <div onClick={() => opennowin(true)} className='rec-train-card'>
+              {/* <div onClick={() => opennowin(true)} className='rec-train-card'>
                 <div className='rec-dashboard-card-img-container'>
                   <img className='recept-dashboard-images' src={Pic1} alt="" />
                 </div>
@@ -150,7 +159,18 @@ const Trainees = () => {
                 </div>
                 <div className='traineeID'>S0001</div>
                 <div className='traineeName'>Manujaya Dasanayaka</div>
-              </div>
+              </div> */}
+
+              {Object.values(todayTrainees).map((trainee) => (
+
+                <div className='rec-train-card'>
+                  <div className='rec-dashboard-card-img-container'>
+                    <img className='recept-dashboard-images' src={Pic1} alt="" />
+                  </div>
+                  <div className='traineeID'>{trainee.trainee_id}</div>
+                  <div className='traineeName'>{trainee.full_name}</div>
+                </div>
+              ))}
 
             </div>
 

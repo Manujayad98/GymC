@@ -20,7 +20,7 @@ public class PaymentPlan {
     @Column(name = "next_amount")
     private Double nextAmount;
 
-    @Column(name = "affected_date")
+    @Column(name = "due_date")
     private Date affectedDate;
 
     @OneToOne(cascade = CascadeType.ALL)

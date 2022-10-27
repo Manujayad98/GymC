@@ -9,7 +9,7 @@ const getToken = () => {
 export const getPaymentPlanTableDetails = () => {
     return axios({
         method: "GET",
-        url: `${USER_URL}/(CashPaymentController)`,
+        url: `${USER_URL}/paymentPlanMethods`,
         headers: {
             Authorization: "Bearer " + getToken(),
         },
@@ -56,7 +56,7 @@ export const getTransactionDetails = () => {
 //RECEPTIONIST TRANSACTIONS TOTAL PAYMENTS
 
 export const getTotalPayments = () => {
-    
+
     return axios({
         method: "GET",
         url: `${USER_URL}/cards`,
@@ -69,7 +69,7 @@ export const getTotalPayments = () => {
 //RECEPTIONIST TRANSACTIONS TOTAL CASH PAYMENTS
 
 export const getTotalCashPayments = () => {
-    
+
     return axios({
         method: "GET",
         url: `${USER_URL}/cash`,
@@ -82,7 +82,7 @@ export const getTotalCashPayments = () => {
 //RECEPTIONIST TRANSACTIONS TOTAL ONLINE PAYMENTS
 
 export const getTotalOnlinePayments = () => {
-    
+
     return axios({
         method: "GET",
         url: `${USER_URL}/online`,

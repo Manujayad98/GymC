@@ -29,8 +29,8 @@ export default function ViewWorkout() {
     useEffect(() => {
         checkValidate();
         getTraineeDetails();
-        // getTraineeWorkoutDetails();
-        // getTraineeDietPlanDetails();
+        getTraineeWorkoutDetails();
+        getTraineeDietPlanDetails();
     }, []);
 
     const checkValidate = async () => {

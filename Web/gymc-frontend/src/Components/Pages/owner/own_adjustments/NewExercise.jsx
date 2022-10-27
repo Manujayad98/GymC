@@ -31,12 +31,12 @@ export default function AddnewExercise() {
         caloriesPerRep: '',
         primaryMuscle: '',
         secondaryMuscle: '',
-        equipmentid: '',
+        equipmentid: 1,
     });
 
 
     const [click, setClick] = useState(false);
-   
+
 
     const handleChange = (key) => (value) => {
         console.log(key, value);
@@ -45,7 +45,7 @@ export default function AddnewExercise() {
             [key]: value
         });
     };
-   
+
     const handleSubmit = (evt) => {
         console.log(requestData);
         evt.preventDefault();
@@ -94,23 +94,23 @@ export default function AddnewExercise() {
                                     <h4 className='add-newExercise-form-subHeading'>Exercise Info</h4>
                                     <hr className="add-newExercise-hr" />
                                     <div className="form-row">
-                                     
-                                     <div className="form-col1">
-                                         <InputField
-                                             value={requestData.name}
-                                             type='text'
-                                             label="Exercise Name"
-                                             placeholder='Type'
-                                             validators={[
-                                                 { check: Validators.required, message: 'This field is required' }
-                                             ]}
-                                             onChange={handleChange('name')} />
-                                         {!requestData.firstName && click && <span className='text-danger'>This Field is required</span>}
-                                     </div>
-                                     
-                                 </div>
+
+                                        <div className="form-col1">
+                                            <InputField
+                                                value={requestData.name}
+                                                type='text'
+                                                label="Exercise Name"
+                                                placeholder='Type'
+                                                validators={[
+                                                    { check: Validators.required, message: 'This field is required' }
+                                                ]}
+                                                onChange={handleChange('name')} />
+                                            {!requestData.firstName && click && <span className='text-danger'>This Field is required</span>}
+                                        </div>
+
+                                    </div>
                                     <div className="form-row">
-                                     
+
                                         <div className="form-col1">
                                             <InputField
                                                 value={requestData.primaryMuscle}
@@ -137,8 +137,8 @@ export default function AddnewExercise() {
                                         </div>
                                     </div>
                                     <div className="form-row">
-                                     
-                                     <div className="form-col1">
+
+                                        {/* <div className="form-col1">
                                          <InputField
                                              value={requestData.equipmentid}
                                              type='text'
@@ -149,22 +149,25 @@ export default function AddnewExercise() {
                                              ]}
                                              onChange={handleChange('equipmentid')} />
                                          {!requestData.firstName && click && <span className='text-danger'>This Field is required</span>}
-                                     </div>
-                                     <div className="form-col2">
-                                         <InputField
-                                             value={requestData.caloriesPerRep}
-                                             type='text'
-                                             label="Calories per repetition"
-                                             placeholder='Type'
-                                             validators={[
-                                                 { check: Validators.required, message: 'This field is required' }
-                                             ]}
-                                             onChange={handleChange('caloriesPerRep')} />
-                                         {!requestData.lastName && click && <span className='text-danger'>This Field is required</span>}
-                                     </div>
-                                 </div>
+                                     </div> */}
+                                        <div className="form-col1">
+                                            <InputField
+                                                value={requestData.caloriesPerRep}
+                                                type='text'
+                                                label="Calories per repetition"
+                                                placeholder='Type'
+                                                validators={[
+                                                    { check: Validators.required, message: 'This field is required' }
+                                                ]}
+                                                onChange={handleChange('caloriesPerRep')} />
+                                            {!requestData.lastName && click && <span className='text-danger'>This Field is required</span>}
+                                        </div>
+                                        <div className="form-col2">
 
-                                    
+                                        </div>
+                                    </div>
+
+
                                     {/* <h4 className='add-newExercise-form-subHeading'>Steps</h4>
                                     <hr className="add-newExercise-hr" />
                                     <div className="form-row">
@@ -202,7 +205,7 @@ export default function AddnewExercise() {
                                         </div>
                                     </div> */}
 
-                                 
+
 
                                     <div className="form-row">
                                         <div className="form-col1"></div>

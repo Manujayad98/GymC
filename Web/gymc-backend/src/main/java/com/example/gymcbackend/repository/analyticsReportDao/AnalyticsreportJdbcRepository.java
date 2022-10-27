@@ -51,7 +51,7 @@ public class AnalyticsreportJdbcRepository {
                 "    staff_member AS s\n" +
                 "INNER JOIN user_account AS u\n" +
                 "ON\n" +
-                "    s.user_id = u.user_id AND u.status = 1; ";
+                "    s.user_id = u.user_id AND u.status = 1 AND u.user_level='Trainer'; ";
 
         OwnerDashboardCards cardData = (OwnerDashboardCards) jdbcTemplate.queryForObject(query, new Object[] {}, new BeanPropertyRowMapper(OwnerDashboardCards.class));
 

@@ -530,7 +530,7 @@ export default function AddWorkout2() {
 
                         </div>
                         <div className="own-addworkout-left">
-                            <div className="addworkout_card1">
+                            <div className="addworkout_card1" style={{ marginTop: '45px' }}>
                                 {/* <form className onSubmit={addDates} noValidate={false}> */}
                                 <div className="update-workout-form">
                                     <div className="add-workout-form-inputs" style={{ marginTop: '-35px' }}>

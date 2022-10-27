@@ -122,11 +122,11 @@ export default function Exercises() {
     const [openModal, setOpenModal] = useState(false);
 
     const [columns, setColumns] = useState([
-  
+
         { title: 'Appoinment Count', field: 'appoinment_count', initialEditValue: 'numeric' },
         { title: 'Leave Count', field: 'leave_count', type: 'numeric' },
-      ]);
-    
+    ]);
+
 
     return (
         <div className='main-container'>
@@ -142,7 +142,7 @@ export default function Exercises() {
                             </Link>
                         </div>
                         <div className='own-adjustment-card'>
-                           
+
                             <MaterialTable
                                 title="Exercices"
                                 columns={[
@@ -157,10 +157,10 @@ export default function Exercises() {
                                     {
                                         icon: () => {
                                             return (
-                                                <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash}  alt="" height={20} width={20} /></span>
+                                                <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} alt="" height={20} width={20} /></span>
                                             );
                                         },
-                                       
+
                                         onClick: (event, rowData) => {
                                             console.log(rowData.exercise_id);
                                             setSelectedExerciseData(rowData);
@@ -189,12 +189,12 @@ export default function Exercises() {
                     <div className="ex">
                         <div className="header">
                             <h3 id="own-adjustment-titles">Payment Plans</h3>
-                            <Link to='/ONewPaymentPlan' style={{ textDecoration: 'none' }}>
+                            {/* <Link to='/ONewPaymentPlan' style={{ textDecoration: 'none' }}>
                             <Button1 variant="contained" className="Hbutton">New Payment</Button1>
-                            </Link>
+                            </Link> */}
                         </div>
                         <div className='own-adjustment-card '>
-                           
+
                             <MaterialTable
                                 title="Payment Plans"
                                 columns={[
@@ -208,10 +208,10 @@ export default function Exercises() {
                                     {
                                         icon: () => {
                                             return (
-                                                <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash}  alt="" height={20} width={20} /></span>
+                                                <span style={{ paddingRight: "20px", cursor: 'pointer' }}><img src={Trash} alt="" height={20} width={20} /></span>
                                             );
                                         },
-                                       
+
                                         onClick: (event, rowData) => {
                                             console.log(rowData.paymentPlan_id);
                                             setSelectedPaymentPlanData(rowData);
@@ -237,49 +237,49 @@ export default function Exercises() {
 
                         </div>
                     </div>
-                    
-                             <div className="ex">
-                    <div className="header">
-                        <h3 id="own-adjustment-titles">Adjustment Counts</h3>
-                       
-                    </div>
-                <div className='own-adjustment-card '>
-                    <MaterialTable
-                        title="Adjustment Count"
-                        columns={columns}
-                        data={adjustmentCounts}
-                        icons={TableIcons}
-                        editable={{
-                        
-                            onRowUpdate: (newData, oldData) =>
-                            new Promise((resolve, reject) => {
-                                setTimeout(() => {
-                                const dataUpdate = [...adjustmentCounts];
-                                const index = oldData.tableData.id;
-                                dataUpdate[index] = newData;
-                                setadjustmentCounts([...dataUpdate]);
 
-                                resolve();
-                                }, 1000)
-                            }),
-                            
-                        }}
-                        options={{
-                            pageSize: 1,
-                            pageSizeOptions: [6, 12, 15],
-                            headerStyle: {
-                                backgroundColor: '#1F0106',
-                                color: '#FFF',
-                                hover: '#FFF',
-                                // textAlign:'center'
-                            },
-                           
-                        }}
-                        />
-    </div></div>
+                    <div className="ex">
+                        <div className="header">
+                            <h3 id="own-adjustment-titles">Adjustment Counts</h3>
+
+                        </div>
+                        <div className='own-adjustment-card '>
+                            <MaterialTable
+                                title="Adjustment Count"
+                                columns={columns}
+                                data={adjustmentCounts}
+                                icons={TableIcons}
+                                editable={{
+
+                                    onRowUpdate: (newData, oldData) =>
+                                        new Promise((resolve, reject) => {
+                                            setTimeout(() => {
+                                                const dataUpdate = [...adjustmentCounts];
+                                                const index = oldData.tableData.id;
+                                                dataUpdate[index] = newData;
+                                                setadjustmentCounts([...dataUpdate]);
+
+                                                resolve();
+                                            }, 1000)
+                                        }),
+
+                                }}
+                                options={{
+                                    pageSize: 1,
+                                    pageSizeOptions: [6, 12, 15],
+                                    headerStyle: {
+                                        backgroundColor: '#1F0106',
+                                        color: '#FFF',
+                                        hover: '#FFF',
+                                        // textAlign:'center'
+                                    },
+
+                                }}
+                            />
+                        </div></div>
                 </div>
                 {/* <DeleteModal open={openModal} onClose={() => setOpenModal(false)} /> */}
-       
+
             </div>
 
             {popup === "delete" && (
@@ -289,13 +289,13 @@ export default function Exercises() {
                     handleSubmit={deleteSelectedExercise}
                 />
             )}
-             {popup === "delete1" && (
+            {popup === "delete1" && (
                 <DeleteModal
                     msg={msg}
                     closePopUp={closePopUp}
                     handleSubmit={deleteSelectedPaymentPlan}
                 />
-                
+
             )}
         </div>
     )
