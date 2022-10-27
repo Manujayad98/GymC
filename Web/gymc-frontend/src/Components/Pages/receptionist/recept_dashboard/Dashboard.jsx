@@ -10,8 +10,14 @@ import piyathpic from "../../../../images/receptionistinterim/kalindu.png"
 import trumppic from "../../../../images/receptionistinterim/trump.png"
 import lahirupic from "../../../../images/receptionistinterim/lahiru.png"
 import lelanipic from "../../../../images/receptionistinterim/lelani.png"
-import MaterialTable from "material-table";
-import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
+
+import trainer1 from '../../../../images/owner/tr1.png'
+import trainer2 from '../../../../images/owner/tr2.png'
+import trainer3 from '../../../../images/owner/tr3.png'
+import trainer4 from '../../../../images/owner/tr4.png'
+import trainer5 from '../../../../images/owner/tr5.png'
+import trainee1 from '../../../../images/owner/te1.png'
+
 import Image from 'react-random-image'
 import Table from '../../../Utilities/Tables/Table2'
 import './Dashboard.css'
@@ -160,8 +166,8 @@ const Dashboard = () => {
           </div>
         </div>
 
-      </div>
-    </div>
+    //   </div>
+    // </div>
   )
 }
 
