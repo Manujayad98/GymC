@@ -2,9 +2,9 @@ package com.example.gymcbackend.dto;
 
 public class TraineeViewWorkoutDateResponse {
 
+    private String exercise_id;
     private String name;
 
-    private String exercise_id;
     private Integer noOfRepetitions;
 
     public String getName() {

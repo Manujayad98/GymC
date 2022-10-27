@@ -44,7 +44,7 @@ const Announcements = () => {
         // 
         const setResponse = async (data) => {
             await axios
-                .get("http://10.22.167.203:8080/api/v1/annoucements", {
+                .get("http://172.20.10.3:8080/api/v1/annoucements", {
                     headers: {
                         'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHWU1DIiwic3ViIjoiU3VkYW0iLCJpYXQiOjE2NjY1MjM2OTEsImV4cCI6MTY2Njg4MzY5MX0.R8xf3VfPSpMQruyFjjGLbOti7HljY_Jr05N2MuocmK0`
                     }

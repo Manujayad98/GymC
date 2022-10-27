@@ -21,7 +21,7 @@ import java.util.Locale;
 
 @RestController
 @RequestMapping("/api/v1")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 
 public class TraineeScheduleController {
 
@@ -47,8 +47,7 @@ public class TraineeScheduleController {
 
     //View trainee workout exerciese on date click,pass date on url
     @GetMapping("/getTraineeWorkout/{date}/{traineeId}")
-    public List<TraineeViewWorkoutDateResponse> getTraineeWorkoutDate(@PathVariable String date,
-                                                                      @PathVariable String traineeId) {
+    public List<TraineeViewWorkoutDateResponse> getTraineeWorkoutDate(@PathVariable String date, @PathVariable String traineeId) {
         LocalDate date1 = LocalDate.parse(date);
         System.out.println("awa");
         String traineeID = traineeId.substring(4);
