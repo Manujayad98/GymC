@@ -31,15 +31,16 @@ const Sidebar = ({ children }) => {
     const toggle = () => setIsOpen(!isOpen);
     const menuItem = [
         {
-            path: "/Aannouncements",
-            name: "Announcements",
-            icon: <FaVolumeDown />
-        },
-        {
             path: "/Ausers",
             name: "Users",
             icon: <FaUserAlt />
         },
+        {
+            path: "/Aannouncements",
+            name: "Announcements",
+            icon: <FaVolumeDown />
+        },
+
         // {
         //     path: "/AsystemLogs",
         //     name: "System Logs",

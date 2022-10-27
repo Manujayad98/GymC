@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import '../own_sidebar/Sidebar.css'
-import SidebarO from '../own_sidebar/Sidebar'
-import HeaderO from '../own_header/Header'
+import '../trainer_sidebar/Sidebar.css'
+import SidebarT from '../trainer_sidebar/Sidebar'
+import HeaderT from '../trainer_header/Header'
 // import Table from '../../../Utilities/Tables/Table1'
 
 // import Add from '../../../../images/Add.svg'
@@ -339,9 +339,9 @@ export default function AddWorkout2() {
 
     return (
         <div className='main-container'>
-            <SidebarO />
+            <SidebarT />
             <div className='body-container'>
-                <HeaderO title="New Workout" />
+                <HeaderT title="New Workout" />
 
                 <div className='add-workout-main-topics'>Workout Info
                     <hr />

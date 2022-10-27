@@ -5,6 +5,7 @@ const getToken = () => {
 };
 
 export const getTrainerData = (traineeID) => {
+    console.log(traineeID);
     return axios({
         method: "GET",
         url: `${USER_URL}/getTraineeSchedule/${traineeID}`,
@@ -116,6 +117,27 @@ export const getDietPlanForUpdate = (date, traineeID) => {
     return axios({
         method: "GET",
         url: `${USER_URL}/getTraineeDiet/${date}/${traineeID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+export const getAvailableTrainers = () => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/getTrainers`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+
+export const getTraineeProgressChart = (traineeID) => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/getTraineeProgress/${traineeID}`,
         headers: {
             Authorization: "Bearer " + getToken(),
         },

@@ -144,25 +144,27 @@ const AAnnouncements = () => {
   }
 
   const addAnnouncementHere = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     if (!requestData.topic || !requestData.description) {
       console.log('Please fill out the form correctly');
       setClick({ click: true, })
       toast.warning('Please fill out the form correctly');
     } else {
       console.log(requestData);
-      //   addAnnouncement(requestData)
-      //       .then((response) => {
-      //           if (response.status === 200) {
-      //               console.log(response.data);
-      //           }
-      //       })
-      //       .catch((err) => {
-      //           if (err && err.response) {
-      //               console.log(err);
-      //               toast.error('Failed!!!');
-      //           }
-      //       });
+      addAnnouncement(requestData)
+        .then((response) => {
+          if (response.status === 200) {
+            console.log(response.data);
+            toast.success("successfully added!!!");
+            window.location.href = "/Aannouncements";
+          }
+        })
+        .catch((err) => {
+          if (err && err.response) {
+            console.log(err);
+            toast.error('Failed!!!');
+          }
+        });
     }
   };
 
@@ -173,17 +175,12 @@ const AAnnouncements = () => {
       <div className='body-container'>
         <HeaderA title="Announcements" />
         <div className="adm-announcement-content-container">
-          {/* <form className="" noValidate={false} onSubmit={addAnnouncementHere}> */}
           <div className="adm-announcement-form">
-            {/* start form */}
-            {/* <div className='own-dashboard-container-head'>New Annoucement</div> */}
-
 
             <h1>New Announcement</h1>
             <div className="form-container">
 
               <div className="form-inputs">
-
 
                 <div className="form-row">
                   <div className="form-col1">
@@ -216,33 +213,19 @@ const AAnnouncements = () => {
 
                   </div>
                 </div>
-
-
-
                 <div className="form-row">
                   <div className="form-col1"></div>
                   <div className="form-col2">
                   </div>
                   <button className="own_next_workout-btn" onClick={addAnnouncementHere}> Add </button>
-                  {/* <Button
-                    onClick={handleClick}
-                    value='Add' /> */}
                 </div>
               </div>
             </div>
-            {/* end form */}
           </div>
-          {/* </form> */}
-
-          {/* start table */}
           <div className="adm-announcement-table">
 
             <h1>All Announcements</h1>
             <div className='adm-announcement-table-card'>
-              {/* <Table
-                rows={announcementDetails}
-                headCells={announcementDetailsTableHead}
-              /> */}
               <MaterialTable
                 title="System Users"
                 columns={[
@@ -282,7 +265,7 @@ const AAnnouncements = () => {
 
           {/* </form> */}
         </div>
-
+        <ToastContainer />
       </div>
     </div>
   )

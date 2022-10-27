@@ -83,6 +83,11 @@ import DashboardT from './Components/Pages/trainer/trainer_dashboard/Dashboard'
 import NotificationsT from './Components/Pages/trainer/trainer_notifications/Notifications'
 import AnnouncementsT from './Components/Pages/trainer/trainer_announcements/Announcements'
 import TraineesT from './Components/Pages/trainer/trainer_trainees/Trainess';
+import ViewWorkoutT from './Components/Pages/trainer/trainer_view_workout/ViewWorkout';
+import UpdateWorkoutT from './Components/Pages/trainer/trainer_update_workout/UpdateWorkout';
+import AddWorkoutT from './Components/Pages/trainer/trainer_add_workout/AddWorkout';
+import AddWorkoutPart2T from './Components/Pages/trainer/trainer_add_workout_Part2/AddWorkout2';
+import TraineeProgressT from './Components/Pages/trainer/trainer_trainee_progress/TraineeProgress';
 
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -129,7 +134,7 @@ function App() {
           <Route path="/ViewWorkout/:id" component={ViewWorkout} element={<ViewWorkout />}></Route>
           <Route path="/AddWorkout/:id" component={AddWorkoutO} element={<AddWorkoutO />}></Route>
           <Route path="/OupdateWorkout/:id" component={UpdateWorkoutO} element={<UpdateWorkoutO />}></Route>
-          <Route path="/OtraineeProgress" element={<TraineeProgressO />}></Route>
+          <Route path="/OtraineeProgress/:id" component={TraineeProgressO} element={<TraineeProgressO />}></Route>
           <Route path="/ONewExercise" element={<NewExercise />}></Route>
           <Route path="/ONewPaymentPlan" element={<NewPaymentPlan />}></Route>
           <Route path="/AddWorkout2/:traineeid/:scheduleid/:trainerid" component={AddWorkoutPart2O} element={<AddWorkoutPart2O />}></Route>
@@ -163,6 +168,11 @@ function App() {
           <Route path="/Tnotifications" element={<NotificationsT />}></Route>
           <Route path="/Tannouncements" element={<AnnouncementsT />}></Route>
           <Route path="/Ttrainees" element={<TraineesT />}></Route>
+          <Route path="/TViewWorkout/:id" component={ViewWorkoutT} element={<ViewWorkoutT />}></Route>
+          <Route path="/TAddWorkout/:id" component={AddWorkoutT} element={<AddWorkoutT />}></Route>
+          <Route path="/TOupdateWorkout/:id" component={UpdateWorkoutT} element={<UpdateWorkoutT />}></Route>
+          <Route path="/TAddWorkout2/:traineeid/:scheduleid/:trainerid" component={AddWorkoutPart2T} element={<AddWorkoutPart2T />}></Route>
+          <Route path="/TtraineeProgress" element={<TraineeProgressT />}></Route>
 
           {/* TRAINEE ROUTES */}
           <Route path="/TRLogedPage" element={<TrainerLogedPage />}></Route>

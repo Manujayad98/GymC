@@ -179,7 +179,7 @@ export const activeTrainer = (TrainerID) => {
 export const addAnnouncement = (annData) => {
     return axios({
         method: "POST",
-        url: `${USER_URL}/addAnnouncement`,
+        url: `${USER_URL}/addAnnoucements`,
         headers: {
             Authorization: "Bearer " + getToken(),
         },

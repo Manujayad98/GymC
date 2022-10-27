@@ -61,7 +61,7 @@ const Dashboard = () => {
   };
 
   const moveToMoreView = (trainee_id) => {
-    window.location.href = `/ViewWorkout/${trainee_id}`;
+    window.location.href = `/TViewWorkout/${trainee_id}`;
   }
 
   return (

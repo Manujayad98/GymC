@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import '../own_sidebar/Sidebar.css'
-import SidebarO from '../own_sidebar/Sidebar'
-import HeaderO from '../own_header/Header'
+import '../trainer_sidebar/Sidebar.css'
+import SidebarT from '../trainer_sidebar/Sidebar'
+import HeaderT from '../trainer_header/Header'
 // import Table from '../../../Utilities/Tables/Table1'
 
 // import Add from '../../../../images/Add.svg'
@@ -155,14 +155,14 @@ const AddWorkout = () => {
     };
 
     const moveToMoreView = (trainee_id, schedule_id, trainer_id) => {
-        window.location.href = `/AddWorkout2/${trainee_id}/${schedule_id}/${trainer_id}`;
+        window.location.href = `/TAddWorkout2/${trainee_id}/${schedule_id}/${trainer_id}`;
     }
 
     return (
         <div className='main-container'>
-            <SidebarO />
+            <SidebarT />
             <div className='body-container'>
-                <HeaderO title="New Workout" />
+                <HeaderT title="New Workout" />
 
                 {mainpopup === "" && (
                     <form className="" onSubmit={addWorkout} noValidate={false}>

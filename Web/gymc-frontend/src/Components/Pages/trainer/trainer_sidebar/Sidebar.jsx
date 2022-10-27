@@ -49,11 +49,11 @@ const Sidebar = ({ children }) => {
             name: "Announcements",
             icon: <FaVolumeDown />
         },
-        {
-            path: "/Tnotifications",
-            name: "Notifications",
-            icon: <FaBell />
-        },
+        // {
+        //     path: "/Tnotifications",
+        //     name: "Notifications",
+        //     icon: <FaBell />
+        // },
         {
             path: "/",
             name: "Logout",

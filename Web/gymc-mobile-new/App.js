@@ -40,7 +40,7 @@ export default function App() {
         }}
         initialRouteName={"Log"}
       >
-        <Stack.Screen name="Login" component={Announcements} />
+        <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Tabs" component={Tabs} />
         <Stack.Screen name="LoginForm" component={LoginForm} />
         <Stack.Screen name="ResetPassword" component={ResetPassword} />

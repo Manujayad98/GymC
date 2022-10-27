@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import '../own_sidebar/Sidebar.css'
-import SidebarO from '../own_sidebar/Sidebar'
-import HeaderO from '../own_header/Header'
+import React, { useState } from 'react'
+import '../trainer_sidebar/Sidebar.css'
+import SidebarT from '../trainer_sidebar/Sidebar'
+import HeaderT from '../trainer_header/Header'
 import Table from '../../../Utilities/Tables/Table1'
 import Trash from '../../../../images/Icons/trash-solid.svg'
 import Edit from '../../../../images/Icons/pen-solid.svg'
@@ -10,7 +10,7 @@ import T1 from '../../../../images/t1.png'
 import Pic1 from '../../../../images/owner.png'
 import Card from 'react-bootstrap/Card'
 // import Collapsible from 'react-collapsible';
-import { Link, useParams } from 'react-router-dom'
+
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
@@ -22,46 +22,18 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
-import { getTraineeProgressChart } from "../../../../services/WorkoutService";
 
 const TraineeProgress = () => {
-
-  const { id } = useParams();
-
-  useEffect(() => {
-    checkValidate();
-    getTraineeProgress();
-  }, []);
-
-  const checkValidate = async () => {
-    console.log(id);
-    const y = localStorage.getItem("USER_KEY");
-    if (!y) {
-      window.location.href = "/";
-    }
-  };
-  const [traineeProgress, setTraineeProgress] = useState({});
-  const annualIncomeObj = [["Month", "Income"]];
-  const getTraineeProgress = async () => {
-    const res = await getTraineeProgressChart(id);
-    console.log(res.data);
-    setTraineeProgress(
-      [...res.data]
-    );
-  };
-
-
-
   const LineData = [
     ['x', 'Biceps', 'Forearm', 'Chest', 'Thighs', 'Hips'],
-    ['2022-10-20', 12, 25, 12, 15, 20],
-    ['2022-10-21', 10, 15, 24, 16, 27],
-    ['2022-10-22', 23, 15, 14, 14, 18],
-    ['2022-10-23', 17, 29, 15, 22, 28],
-    ['2022-10-24', 18, 10, 14, 17, 25],
-    ['2022-10-25', 29, 25, 11, 21, 33],
-    ['2022-10-26', 11, 23, 16, 17, 44],
-    ['2022-10-27', 27, 19, 23, 24, 26],
+    [0, 0, 0, 0, 0, 0],
+    [1, 10, 5, 4, 6, 7],
+    [2, 23, 15, 4, 14, 18],
+    [3, 17, 9, 35, 22, 28],
+    [4, 18, 10, 14, 17, 25],
+    [5, 9, 5, 11, 21, 33],
+    [6, 11, 3, 16, 17, 44],
+    [7, 27, 19, 33, 44, 56],
   ]
   const LineChartOptions = {
     hAxis: {
@@ -186,9 +158,9 @@ const TraineeProgress = () => {
 
   return (
     <div className='main-container'>
-      <SidebarO />
+      <SidebarT />
       <div className='body-container'>
-        <HeaderO title="Trainee Progress" />
+        <HeaderT title="Trainee Progress" />
         <div className="own-trainee-progress-content-container">
           <div className="own-trainee-progress-left">
             {/* <div className="own-trainee-progress-profile">

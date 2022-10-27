@@ -192,7 +192,7 @@ public class TraineeViewScheduleJdbcRepository {
                 MapSqlParameterSource namedParameters =
                         new MapSqlParameterSource();
                 namedParameters.addValue("traineeId", traineeId);
-                String query="SELECT weight,height,biceps,chest,forearms,hips,thighs FROM workout_plan INNER JOIN workout_schedule ON " +
+                String query="SELECT weight,height,biceps,chest,forearms,hips,thighs,training_date FROM workout_plan INNER JOIN workout_schedule ON " +
                         "workout_plan.workout_scheduleid=workout_schedule.workout_scheduleid " +
                         "AND workout_schedule.trainee_id=:traineeId AND workout_plan.height IS NOT NULL ORDER BY workout_plan.training_date DESC LIMIT 5";
                 List<TraineeProgressResponse> traineeProgressResponses = jdbc.query(query, namedParameters, new BeanPropertyRowMapper<TraineeProgressResponse>(TraineeProgressResponse.class));
@@ -204,8 +204,8 @@ public class TraineeViewScheduleJdbcRepository {
         public List<TrainerListResponse> getTrainers() {
                 String query="SELECT staff_id as id,CONCAT(staff_member.first_name,' ',staff_member.last_name) as name" +
                         " FROM staff_member INNER JOIN user_account ON staff_member.user_id=user_account.user_id " +
-                        "AND user_account.status=1 AND user_account.user_level='Owner' OR user_account.user_level='Trainer' " +
-                        "AND is_hold=0 " ;
+                        "AND user_account.status=1 AND (user_account.user_level='Owner' OR user_account.user_level='Trainer') " +
+                        "AND is_hold=0 AND status=1 " ;
                 List<TrainerListResponse> traineeProgressResponses = jdbc.query(query, new BeanPropertyRowMapper<TrainerListResponse>(TrainerListResponse.class));
                 return traineeProgressResponses;
         }

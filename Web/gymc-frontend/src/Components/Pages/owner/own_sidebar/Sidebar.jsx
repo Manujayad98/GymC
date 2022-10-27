@@ -59,11 +59,11 @@ const Sidebar = ({ children }) => {
             name: "Announcements",
             icon: <FaVolumeDown />
         },
-        {
-            path: "/Onotifications",
-            name: "Notifications",
-            icon: <FaBell />
-        },
+        // {
+        //     path: "/Onotifications",
+        //     name: "Notifications",
+        //     icon: <FaBell />
+        // },
         {
             path: "/Oanalytics",
             name: "Summary",

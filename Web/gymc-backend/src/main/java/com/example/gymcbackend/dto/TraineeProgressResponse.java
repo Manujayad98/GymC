@@ -19,6 +19,7 @@ public class TraineeProgressResponse {
 
     private Double biceps;
 
+    public String training_date;
     public Double getHeight() {
         return height;
     }
@@ -73,5 +74,13 @@ public class TraineeProgressResponse {
 
     public void setBiceps(Double biceps) {
         this.biceps = biceps;
+    }
+
+    public String getTraining_date() {
+        return training_date;
+    }
+
+    public void setTraining_date(String training_date) {
+        this.training_date = training_date;
     }
 }
