@@ -240,6 +240,7 @@ const styles = StyleSheet.create({
   newView: {
     marginBottom: 20,
   },
+
   dateContainer: {
     display: 'flex',
     flexDirection: 'row',

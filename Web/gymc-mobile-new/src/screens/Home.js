@@ -114,7 +114,7 @@ const Home = ({ navigation }) => {
                         </View>
                         <View style={styles.announcementheader}>
                             <Text style={styles.sectionHeader}>Annoucements</Text>
-                            <Text onPress={() => navigation.navigate('feedback')} style={styles.viewmore}>View more</Text>
+                            <Text onPress={() => navigation.navigate('announcements')} style={styles.viewmore}>View more</Text>
                             {/* <Button mode="contained" onPress={() => navigation.navigate('feedback')}>
                                 View more
                             </Button> */}
