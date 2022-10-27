@@ -2,6 +2,8 @@ package com.example.gymcbackend.services;
 
 import com.example.gymcbackend.dto.AnnualIncome;
 import com.example.gymcbackend.dto.StaffUsers;
+import com.example.gymcbackend.dto.ThisMonthIncomeChartData;
+import com.example.gymcbackend.entities.OwnerDashboardCards;
 import com.example.gymcbackend.repository.analyticsReportDao.AnalyticsreportJdbcRepository;
 import com.example.gymcbackend.repository.staffMemberDao.StaffMemberJdbcRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +19,12 @@ public class AnalyticsReportService {
     public List<AnnualIncome> getAnnualIncome() {
         System.out.println("getAnnualIncome");
         return analyticsreportJdbcRepository.getAnnualIncomeChartData();
+    }
+    public OwnerDashboardCards getCardData() {
+        return analyticsreportJdbcRepository.getCardData();
+    }
+
+    public List<ThisMonthIncomeChartData> getThisMonthIncome() {
+        return analyticsreportJdbcRepository.getThisMonthsIncome();
     }
 }

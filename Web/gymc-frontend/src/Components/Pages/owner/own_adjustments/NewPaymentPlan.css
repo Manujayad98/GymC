@@ -1,0 +1,76 @@
+.add-paymentPlan-form-container {
+    margin-top: auto;
+    width: 900px;
+    max-width: 800px;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    padding: 25px 60px;
+    border-radius: 10px;
+    background-position: center;
+    color: black;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+  
+  }
+  
+  .add-paymentPlan-form-div {
+    margin-top: 50px;
+    margin-left: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: #D9D9D9;
+  }
+  
+  .add-paymentPlan-form-div .form-container .form-col1 .profile-cards {
+    padding: 20px;
+    margin: 10px 5px;
+    width: 180px;
+    height: 130px;
+  }
+  
+  .add-paymentPlan-form-subHeading {
+    margin-top: 40px;
+    font-weight: 520;
+    font-size: 20px;
+    color: #1F0106;
+  }
+  
+  .add-paymentPlan-form-inputs {
+    text-align: left;
+    font-weight: 100px;
+  }
+  
+  .add-tariner-userID {
+    color: rgb(0, 0, 0);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  .add-paymentPlan-form-button {
+    background: #FF2121;
+    border-radius: 15px;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 7px 25px 7px 25px;
+  }
+  
+  .add-paymentPlan-hr {
+    margin: 6px 0px;
+  }
+  
+  .form-col111 {
+    flex-direction: column;
+    flex: 50%;
+    margin-left: 10px;
+  }
+  
+  .form-col112 {
+    flex-direction: column;
+    flex: 50%;
+    margin-left: 40px;
+  }
+  

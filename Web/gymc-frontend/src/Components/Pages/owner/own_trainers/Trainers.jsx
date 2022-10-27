@@ -2,19 +2,11 @@ import React, { useState, useEffect } from "react";
 import '../own_sidebar/Sidebar.css'
 import SidebarO from '../own_sidebar/Sidebar'
 import HeaderO from '../own_header/Header'
-import Table from '../../../Utilities/Tables/Table1'
+
 import Trash from '../../../../images/Icons/trash-solid.svg'
-import Edit from '../../../../images/Icons/pen-solid.svg'
-import View from '../../../../images/Icons/eye-solid.svg'
+
 import Hold from '../../../../images/Icons/hand-solid.svg'
-import T1 from '../../../../images/t1.png'
-import trainee6 from '../../../../images/owner/tr1.png'
-import trainee1 from '../../../../images/owner/te1.png'
-import trainee2 from '../../../../images/owner/te2.png'
-import trainee3 from '../../../../images/owner/te3.png'
-import trainee4 from '../../../../images/owner/te4.png'
-import trainee5 from '../../../../images/owner/te5.png'
-import Arrow from '../../../../images/Icons/arrow-square-right.svg'
+
 import './Trainers.css'
 import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
@@ -23,9 +15,6 @@ import HoldModal from '../../../Utilities/Popups/HoldModel'
 import ActiveModal from '../../../Utilities/Popups/ActiveModel'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 
 import { getTrainerTableDetails, deleteTrainer, holdTrainer, activeTrainer } from "../../../../services/UserService";
@@ -38,8 +27,6 @@ export default function Trainers() {
     }, []);
 
     const [trainers, setTrainers] = useState([]);
-    const [openModal, setOpenModal] = useState(false);
-    const [openModal2, setOpenModal2] = useState(false);
     const [selectedTrainerData, setSelectedTrainerData] = useState({});
     const [popup, setPopUp] = useState("");
     const [msg, setMsg] = useState("");
@@ -262,8 +249,6 @@ export default function Trainers() {
                             }}
                         />
                     </div>
-                    {/* <DeleteModal open={openModal} onClose={() => setOpenModal(false)} />
-                    <HoldModal open={openModal2} onClose={() => setOpenModal2(false)} /> */}
                 </div>
             </div >
             {popup === "delete" && (

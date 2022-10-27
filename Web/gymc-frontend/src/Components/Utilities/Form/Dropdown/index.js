@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Dropdown = ({ value, data, placeholder, styleClass, onChange, label }) => {
+const Dropdown = ({ value, data, placeholder, styleClass, onChange, label, readonly }) => {
 
     const handleChange = (event) => {
         const { value } = event.target;
@@ -14,12 +14,16 @@ const Dropdown = ({ value, data, placeholder, styleClass, onChange, label }) => 
             <select
                 value={value}
                 className="form-control"
-                onChange={handleChange}>
+                onChange={handleChange}
+                disabled={readonly}
+            >
                 <option value="">{placeholder}</option>
                 {data.map((item, key) => (
                     <option
                         key={key}
-                        value={item.value}>
+                        value={item.value}
+
+                    >
                         {item.label}
                     </option>
                 ))}
@@ -33,7 +37,8 @@ Dropdown.propTypes = {
     placeholder: PropTypes.string,
     data: PropTypes.array.isRequired,
     styleClass: PropTypes.string,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+    readonly: PropTypes.bool
 };
 
 Dropdown.defaultProps = {

@@ -16,6 +16,11 @@ import { Link, useParams } from 'react-router-dom'
 import CalendarComp from "../../../Utilities/CalendarComp/CalendarComp";
 import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
+import { getTrainerData, getWorkoutDetails, getTraineeDiet } from "../../../../services/WorkoutService";
+import Moment from 'moment';
+import { Calendar } from 'react-calendar'
+import "react-calendar/dist/Calendar.css";
+import dayjs from "dayjs";
 
 export default function ViewWorkout() {
 
@@ -23,6 +28,9 @@ export default function ViewWorkout() {
 
     useEffect(() => {
         checkValidate();
+        getTraineeDetails();
+        getTraineeWorkoutDetails();
+        getTraineeDietPlanDetails();
     }, []);
 
     const checkValidate = async () => {
@@ -33,94 +41,142 @@ export default function ViewWorkout() {
         }
     };
 
+    // const current = new Date();
+
+    // console.log(`${current.getMonth() + 1}` / 10);
+    // const date = `${current.getFullYear()}-${current.getMonth() + 1}-${current.getDate()}`;
+
+
+    var MyDate = new Date();
+    var dateToday;
+
+    dateToday = MyDate.getFullYear() + '-' + ('0' + (MyDate.getMonth() + 1)).slice(-2) + '-' + ('0' + MyDate.getDate()).slice(-2);
+
+    console.log(dateToday);
+
+    const [traineeDetails, setTraineeDetails] = useState([]);
+    const [traineeWorkoutDetails, setTraineeWorkoutDetails] = useState([]);
+    const [traineeDietDetails, setTraineeDietDetails] = useState([]);
+    const newTraineeDietDetails = {};
+
+    const [value, onChange] = useState(new Date());
+    const now = new Date();
+    const day = now.getDay();
+    const monday = now.getDate() - day + (day == 0 ? -6 : 1);
+
+    const [selectedDate, setSelectedDate] = useState(null);
+
+
+    const handleChange = (key) => async (value) => {
+        console.log(key, value);
+        setSelectedDate({
+            ...selectedDate,
+            [key]: dayjs(value).format('YYYY-MM-DD')
+        });
+        console.log(selectedDate);
+        const res = await getWorkoutDetails(selectedDate, id);
+        console.log(res.data);
+        setTraineeWorkoutDetails(
+            res.data
+        );
+    };
+
+    // var dateSelected = dayjs(selectedDate).format('YYYY-MM-DD')
+
+    console.log(selectedDate);
+    // console.log(dateToday);
+    // console.log(dayjs(selectedDate).format('YYYY-MM-DD'));
+
+    const getTraineeDetails = async () => {
+        const res = await getTrainerData(id);
+        console.log(res.data);
+        setTraineeDetails(
+            res.data[0]
+        );
+    };
+
+    const getTraineeWorkoutDetails = async () => {
+        const res = await getWorkoutDetails(dateToday, id);
+        console.log(res.data);
+        setTraineeWorkoutDetails(
+            res.data
+        );
+    };
+    const getTraineeDietPlanDetails = async () => {
+        const res = await getTraineeDiet(dateToday, id);
+        console.log(res.data);
+        setTraineeDietDetails(
+            res.data
+        );
+        // newTraineeDietDetails = { ...newTraineeDietDetails };
+        // console.log(newTraineeDietDetails);
+    };
+
+    // names.forEach((elem, i) => {
+    //     obj[i] = elem
+    //   })
+
     const moveToMoreView = () => {
         window.location.href = `/AddWorkout/${id}`;
     }
 
-    const [requestData, setState] = useState({
-        text: '',
-        occupation: '',
-        phone: '',
-        number: '',
-        // emergency: '',
-        address: '',
-        email: '',
-        gender: false,
-    });
+    // const handleChange = (key) => (value) => {
+    //     setState({
+    //         ...requestData,
+    //         [key]: value
+    //     });
+    // };
 
-    const handleChange = (key) => (value) => {
-        setState({
-            ...requestData,
-            [key]: value
-        });
-    };
-    const handleRadio = (event) => {
+    // const [workoutDetailsTableHead] = useState([
+    //     { label: "exercise", id: "incline", numeric: false },
+    //     { label: "Repitions", id: "reps", numeric: false },
+    //     { id: "delete", numeric: false },
 
-        setState({ selectedOption: event.target.value });
-    };
+    // ]);
+    // const [workoutDetails] = useState([
+    //     {
+    //         incline: "Incline Press",
+    //         reps: "15 Reps",
+    //         delete: <img src={Edit} alt="" height={20} width={20} />,
 
-    const handleClick = (event) => {
-        event.preventDefault();
-        alert('Button Clicked');
-    };
+    //     },
+    //     {
+    //         incline: "Incline Press",
+    //         reps: "15 Reps",
+    //         delete: <img src={Edit} alt="" height={20} width={20} />,
 
-    const handleDropdown = (country) => {
-        setState({ country });
-    };
+    //     },
+    //     {
+    //         incline: "Incline Press",
+    //         reps: "15 Reps",
+    //         delete: <img src={Edit} alt="" height={20} width={20} />,
 
-    const handleCheckbox = (acceptance) => {
-        this.setState({ acceptance });
-    };
-    const [workoutDetailsTableHead] = useState([
-        { label: "exercise", id: "incline", numeric: false },
-        { label: "Repitions", id: "reps", numeric: false },
-        { id: "delete", numeric: false },
-
-    ]);
-    const [workoutDetails] = useState([
-        {
-            incline: "Incline Press",
-            reps: "15 Reps",
-            delete: <img src={Edit} alt="" height={20} width={20} />,
-
-        },
-        {
-            incline: "Incline Press",
-            reps: "15 Reps",
-            delete: <img src={Edit} alt="" height={20} width={20} />,
-
-        },
-        {
-            incline: "Incline Press",
-            reps: "15 Reps",
-            delete: <img src={Edit} alt="" height={20} width={20} />,
-
-        },
+    //     },
 
 
 
-    ]);
+    // ]);
     // const [dietDetailsTableHead] = useState([
     //     { label: "Nutrition", id: "nutrition", numeric: false },
     //     { label: "Calorie Intake", id: "CalorieIntake", numeric: false },
     //     { id: "delete", numeric: false },
 
     // ]);
-    const [dietDetails] = useState([
-        {
-            nutrition: "Nutrition 1",
-            CalorieIntake: "25",
-        },
-        {
-            nutrition: "Nutrition 1",
-            CalorieIntake: "25",
-        },
-        {
-            nutrition: "Nutrition 1",
-            CalorieIntake: "25",
-        },
+    // const [dietDetails] = useState([
+    //     {
+    //         nutrition: "Nutrition 1",
+    //         CalorieIntake: "25",
+    //     },
+    //     {
+    //         nutrition: "Nutrition 1",
+    //         CalorieIntake: "25",
+    //     },
+    //     {
+    //         nutrition: "Nutrition 1",
+    //         CalorieIntake: "25",
+    //     },
 
-    ]);
+    // ]);
 
     const [excerciseDetails, setExcerciseDetails] = useState([
         {
@@ -201,74 +257,100 @@ export default function ViewWorkout() {
                                     <div className="form-row">
                                         <div className="form-col1">
                                             <InputField
-                                                value={requestData.fullname}
+                                                value={traineeDetails.firstName}
                                                 type='text'
                                                 name='userId'
-                                                label="Full Name"
-                                                placeholder='Type'
-                                                validators={[
-                                                    { check: Validators.required, message: 'This field is required' }
-                                                ]}
-                                                onChange={handleChange('fullname')} />
-                                        </div>
-                                    </div>
-                                    <div className="form-row">
-                                        <div className="form-col1">
-                                            <InputField
-                                                value={requestData.fullname}
-                                                type='text'
-                                                name='userId'
-                                                label="NIC"
-                                                placeholder='Type'
-                                                validators={[
-                                                    { check: Validators.required, message: 'This field is required' }
-                                                ]}
-                                                onChange={handleChange('fullname')} />
-                                        </div>
-                                    </div>
-
-                                    <div className="form-row">
-                                        <div className="form-col1">
-                                            <InputField
-                                                value={requestData.fullname}
-                                                type='text'
-                                                name='userId'
-                                                label="Phone"
-                                                placeholder='Type'
+                                                label="First Name"
+                                                // placeholder='Type'
                                                 readonly
-                                                validators={[
-                                                    { check: Validators.required, message: 'This field is required' }
-                                                ]}
-                                                onChange={handleChange('fullname')} />
+                                            // validators={[
+                                            //     { check: Validators.required, message: 'This field is required' }
+                                            // ]}
+                                            // onChange={handleChange('fullname')}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-row">
+                                        <div className="form-col1">
+                                            <InputField
+                                                value={traineeDetails.lastName}
+                                                type='text'
+                                                name='userId'
+                                                label="Last Name"
+                                                // placeholder='Type'
+                                                readonly
+                                            // validators={[
+                                            //     { check: Validators.required, message: 'This field is required' }
+                                            // ]}
+                                            // onChange={handleChange('fullname')} 
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className="form-row">
+                                        <div className="form-col1">
+                                            <InputField
+                                                value={traineeDetails.dob}
+                                                type='text'
+                                                name='DOB'
+                                                label="DOB"
+                                                // placeholder='Type'
+                                                readonly
+                                            // validators={[
+                                            //     { check: Validators.required, message: 'This field is required' }
+                                            // ]}
+                                            // onChange={handleChange('fullname')} 
+                                            />
                                         </div>
                                     </div>
 
                                     <div className='form-row'>
                                         <div className="form-col1">
                                             <InputField
-                                                value={requestData.password}
+                                                value={traineeDetails.phoneNumber}
                                                 type='text'
-                                                name='password'
-                                                label="DOB"
-                                                placeholder='Type'
-                                                validators={[
-                                                    { check: Validators.required, message: 'This field is required' }
-                                                ]}
-                                                onChange={handleChange('password')} />
+                                                name='Phone Number'
+                                                label="Phone Number"
+                                                // placeholder='Type'
+                                                readonly
+
+                                            // validators={[
+                                            //     { check: Validators.required, message: 'This field is required' }
+                                            // ]}
+                                            // onChange={handleChange('password')}
+                                            />
                                         </div>
                                     </div>
                                     <div className='form-row'>
                                         <div className="form-col1">
                                             <InputField
-                                                value={requestData.password}
+                                                value={traineeDetails.emergencyNumber}
                                                 type='text'
-                                                name='password'
+                                                name='emergencyNumber'
+                                                label="Emergency Number"
+                                                // placeholder='Type'
+                                                readonly
+                                            // validators={[
+                                            //     { check: Validators.required, message: 'This field is required' }
+                                            // ]}
+                                            // onChange={handleChange('password')}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className='form-row'>
+                                        <div className="form-col1">
+                                            <InputField
+                                                value={traineeDetails.address}
+                                                type='text'
+                                                name='address'
                                                 label="Address"
-                                                placeholder='Type'
-                                                validators={[
-                                                    { check: Validators.required, message: 'This field is required' }
-                                                ]}
-                                                onChange={handleChange('password')} />
+                                                // placeholder='Type'
+                                                readonly
+                                            // validators={[
+                                            //     { check: Validators.required, message: 'This field is required' }
+                                            // ]}
+                                            // onChange={handleChange('password')}
+                                            />
                                         </div>
                                     </div>
 
@@ -289,17 +371,24 @@ export default function ViewWorkout() {
 
                                 <div className="own-viewworkout-calender-card">
                                     {/* <CalendarComp /> */}
-                                    <SampleCal />
+                                    <Calendar
+                                        onChange={handleChange('selectedDate')}
+                                        // data={myEvents}
+                                        value={value}
+                                    // minDate={mindate}
+                                    // maxDate={maxdate}
+                                    />
+                                    {/* <button class="newworkoutbtn">New Workout</button> */}
                                 </div>
                             </div>
-
-
-
+                            {/* <div className="viewBtnDiv">
+                                <button class="viewD">View Details</button>
+                            </div> */}
                         </div>
                         <div className="own-trainee-table">
                             <div className="t-content">
                                 <Tabs className="dietworkout_tab">
-                                    <Tab eventKey="home" title="Workout" >
+                                    <Tab eventKey="home" title="Exercises" >
 
                                         {/* <Table
                                             rows={workoutDetails}
@@ -313,11 +402,11 @@ export default function ViewWorkout() {
                                                 title="Exersices"
                                                 columns={[
                                                     // { title: "Exercice ID", field: "ExerciseID" },
-                                                    { title: "Name", field: "Name" },
-                                                    { title: "Repitition Count", field: "Repititions" },
+                                                    { title: "Name", field: "name" },
+                                                    { title: "Repitition Count", field: "noOfRepetitions" },
                                                 ]}
                                                 icons={TableIcons}
-                                                data={excerciseDetails}
+                                                data={traineeWorkoutDetails}
                                                 options={{
                                                     pageSize: 3,
                                                     pageSizeOptions: [6, 12, 15],
@@ -339,13 +428,15 @@ export default function ViewWorkout() {
                                             <MaterialTable
                                                 title="Diet Plan"
                                                 columns={[
-                                                    { title: "nutrition", field: "nutrition" },
-                                                    { title: "CalorieIntake", field: "CalorieIntake" },
+                                                    { title: "Diet Plan Id", field: "dietPlanid" },
+                                                    { title: "Carbohydrate (Cal)", field: "carbohydrate" },
+                                                    { title: "Fats (Cal)", field: "fats" },
+                                                    { title: "Proteins (Cal)", field: "proteins" },
                                                 ]}
                                                 icons={TableIcons}
-                                                data={dietDetails}
+                                                data={traineeDietDetails}
                                                 options={{
-                                                    pageSize: 3,
+                                                    pageSize: 1,
                                                     pageSizeOptions: [6, 12, 15],
                                                     headerStyle: {
                                                         backgroundColor: '#1F0106',

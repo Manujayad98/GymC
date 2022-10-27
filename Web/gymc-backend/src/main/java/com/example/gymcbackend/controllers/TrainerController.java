@@ -1,8 +1,8 @@
 package com.example.gymcbackend.controllers;
 
-import com.example.gymcbackend.dto.StaffUsers;
+import com.example.gymcbackend.dto.TodayAvailableTrainers;
+import com.example.gymcbackend.dto.TodayWorkouts;
 import com.example.gymcbackend.dto.TrainerTableData;
-import com.example.gymcbackend.repository.staffMemberDao.StaffMemberRepository;
 import com.example.gymcbackend.services.TrainerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -43,4 +43,19 @@ public class TrainerController {
         int sts= 1;
         return trainerService.changeTrainerStatus(trainerID,sts);
     }
+
+    //  TODAY'S AVAILABLE TRAINER
+
+    @GetMapping("/todayAvailableTrainers")
+    public List<TodayAvailableTrainers> getTodayAvailableTrainers(){
+        return trainerService.getTodayAvailableTrainers();
+    }
+
+    //  TODAY'S WORKOUTS
+    @GetMapping("/todayWorkouts")
+    public List<TodayWorkouts> getTodayWorkouts(){
+        return trainerService.getTodayWorkouts();
+    }
+
+
 }

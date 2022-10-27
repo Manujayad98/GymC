@@ -1,12 +1,10 @@
 package com.example.gymcbackend.repository.traineeDao;
 
-import com.example.gymcbackend.dto.StaffUsers;
-import com.example.gymcbackend.dto.TraineeInfo;
+import com.example.gymcbackend.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import com.example.gymcbackend.dto.TraineeDetailsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -24,8 +22,10 @@ public class TraineeJdbcRepository {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
+
     @Autowired
     protected NamedParameterJdbcTemplate jdbc;
+
     public List<TraineeDetailsResponse> getAllTrainees() {
 
 
@@ -41,11 +41,6 @@ public class TraineeJdbcRepository {
 
     }
 
-//    @Autowired
-//    protected NamedParameterJdbcTemplate jdbc;
-
-//    @Autowired
-//    JdbcTemplate jdbcTemplate;
     public List<TraineeInfo> findAllTrainees() {
         String query ="SELECT CONCAT('T000', t.trainee_id) AS trainee_id, CONCAT(t.first_name,' ', t.last_name) AS full_name, t.phone_number, t.address, u.registered_date " +
                 "FROM trainee as t " +
@@ -55,4 +50,39 @@ public class TraineeJdbcRepository {
         return traineeList;
     }
 
+    public List<TodayAvailableTrainees> findTodayAvailableTrainees(String today) {
+
+        String query ="SELECT DISTINCT \n" +
+                "    CONCAT('T000', te.trainee_id) AS trainee_id,\n" +
+                "    CONCAT(te.first_name, ' ', te.last_name) AS full_name\n" +
+                "FROM\n" +
+                "    trainee AS te\n" +
+                "#INNER JOIN user_account AS u\n" +
+                "#ON\n" +
+                "    #te.user_id = u.user_id\n" +
+                "INNER JOIN workout_schedule AS ws\n" +
+                "ON\n" +
+                "    ws.trainee_id = te.trainee_id\n" +
+                "    \n" +
+                "INNER JOIN workout_plan AS w\n" +
+                "ON\n" +
+                "    ws.workout_scheduleid = w.workout_scheduleid\n" +
+                "INNER JOIN training_date AS t\n" +
+                "ON\n" +
+                "    w.workout_planid = t.workout_planid\n" +
+                "    AND DATE(w.training_date) = ? ";
+
+        List<TodayAvailableTrainees> todayAvailableTraineesList = jdbcTemplate.query(query, new Object[] {today}, new BeanPropertyRowMapper<TodayAvailableTrainees>(TodayAvailableTrainees.class));
+        return todayAvailableTraineesList;
+    }
+
+
+    public List<AnnoucementsResponse> getAnnouncements() {
+
+        String query="SELECT announcementid AS id,topic AS title,CONCAT('by -',staff_member.staff_type,' ',time) as author,description AS note FROM announcement INNER JOIN staff_member ON announcement.staff_id=staff_member.staff_id ORDER BY announcement.announcementid DESC LIMIT 20";
+        List<AnnoucementsResponse> annoucementsResponses = jdbc.query(query, new BeanPropertyRowMapper<AnnoucementsResponse>(AnnoucementsResponse.class));
+        System.out.println("annocements retrival");
+        return annoucementsResponses;
+
+    }
 }

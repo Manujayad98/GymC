@@ -2,6 +2,8 @@ package com.example.gymcbackend.controllers;
 
 import com.example.gymcbackend.dto.AnnualIncome;
 import com.example.gymcbackend.dto.StaffUsers;
+import com.example.gymcbackend.dto.ThisMonthIncomeChartData;
+import com.example.gymcbackend.entities.OwnerDashboardCards;
 import com.example.gymcbackend.services.AnalyticsReportService;
 import com.example.gymcbackend.services.TraineeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +27,15 @@ public class AnalyticsReportController {
     public List<AnnualIncome> getAnnualIncomeChartData(){
         System.out.println("getAnnualIncomeChartData");
         return analyticsReportService.getAnnualIncome();
+    }
+
+    @GetMapping("/ownerDashboardCardData")
+    public OwnerDashboardCards getTodayWorkouts(){
+        return analyticsReportService.getCardData();
+    }
+
+    @GetMapping("/thisMonthIncome")
+    public List<ThisMonthIncomeChartData> getThisMonthIncome(){
+        return analyticsReportService.getThisMonthIncome();
     }
 }

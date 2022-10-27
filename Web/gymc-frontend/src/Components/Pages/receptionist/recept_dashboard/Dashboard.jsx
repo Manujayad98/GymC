@@ -22,6 +22,7 @@ import trainee1 from '../../../../images/owner/te1.png'
 import Table from '../../../Utilities/Tables/Table2'
 import './Dashboard.css'
 import { margin } from '@mui/system'
+import { getUpcomingAppointmentTableDetails} from "../../../../services/AppointmentService";
 
 
 
@@ -29,6 +30,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     checkValidate();
+    getAppointments();
   }, []);
 
   const checkValidate = async () => {
@@ -38,51 +40,17 @@ const Dashboard = () => {
     }
   };
 
-  const [workoutDetailsTableHead] = useState([
-    { id: "Time", label: "Time", numeric: false },
-    { id: "TrainerName", label: "Trainer Name", numeric: false },
-    { id: "TraineeName", label: "Trainee Name", numeric: false }
-  ]);
+  const [appointments, setAppointments] = useState([]);
 
-  const [workoutDetails] = useState([
-    {
-      Time: "09.30 AM",
-      TrainerName: "Gihan Sekara",
-      TraineeName: "Kasun Perera"
-    },
-    {
-      Time: "09.30 AM",
-      TrainerName: "Piyath Sandaruwan",
-      TraineeName: "Rasul Silve"
-    },
-    {
-      Time: "10.30 AM",
-      TrainerName: "Gihan Sekara",
-      TraineeName: "Denuwan Wijesekara"
-    },
-    {
-      Time: "10.30 AM",
-      TrainerName: "Piyath Sandaruwan",
-      TraineeName: "Natasha Perera"
-    },
-    {
-      Time: "12.30 PM",
-      TrainerName: "Kalindu Sampath",
-      TraineeName: "Rajeewa Senevirathne"
-    },
-    {
-      Time: "01.00 PM",
-      TrainerName: "Piyath Sandaruwan",
-      TraineeName: "Pasindu Pathberiya"
-    },
-    {
-      Time: "2.30 PM",
-      TrainerName: "Kalindu Sampath",
-      TraineeName: "Dominic Gape"
-    }
-  ]);
+    const getAppointments = async () => {
+        const res = await getUpcomingAppointmentTableDetails();
+        console.log(res.data);
+        setAppointments(
+            [...res.data]
+        );
+        console.log(appointments);
+    };
 
-  
   return (
     <div className='main-container'>
       <SidebarR />
@@ -128,19 +96,40 @@ const Dashboard = () => {
           </div>
           <div className='rec-split-right'>
               <div className='rec-dashboard-chart-container'>
-                <div className='rec-dashboard-container-head'> Upcoming Appointments</div>
-                <div className='rec-dashboard-card2 rec-dashboard-table-cards'>
-                  <Table
-                    rows={workoutDetails}
-                    headCells={workoutDetailsTableHead}
+                <div className='rec-dashboard-container-head'>Upcoming Appointments</div>
+                
+                  
+                  <MaterialTable
+                    title="Upcoming Appointments"
+                    columns={[
+                      { title: "Appointment ID", field: "appointmentID" },
+                      { title: "Date", field: "date" },
+                      { title: "Start Time", field: "start_time" },
+                      { title: "End Time", field: "end_time" },
+                      { title: "Staff ID", field: "staff_id" },
+                      { title: "Trainee ID", field: "trainee_id" },
+
+                    ]}
+                    icons={TableIcons}
+                    data={appointments}
+                  
+
+                    
+                    options={{
+                      headerStyle: {
+                        backgroundColor: '#1F0106',
+                        color: '#FFF',
+                        hover: '#FFF'
+                      }
+                    }}
                   />
-                </div>
+                
               </div>
           </div>
         </div>
 
-      </div>
-    </div>
+    //   </div>
+    // </div>
   )
 }
 
