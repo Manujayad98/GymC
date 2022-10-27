@@ -157,9 +157,9 @@ const Login = () => {
     }
   };
 
-  const onForgotPasswordPressed = () => {
-    navigation.navigate("ForgotPassword");
-  };
+  // const onForgotPasswordPressed = () => {
+  //   navigation.navigate("ForgotPassword");
+  // };
 
   const onSignUpPress = () => {
     console.log("Press register");
@@ -234,13 +234,13 @@ const Login = () => {
 
         <CustomButton text="Sign In" onPress={handleSubmit(onSignInPressed)} />
 
-        <CustomButton
+        {/* <CustomButton
           text="Forgot password?"
           onPress={onForgotPasswordPressed}
           type="TERTIARY"
         //   bgColor="#E7EAF4"
         //   fgColor="#4765A9"
-        />
+        /> */}
 
         {/* {Platform.OS === "android" ? <SocialSignInButtons /> : null} */}
 

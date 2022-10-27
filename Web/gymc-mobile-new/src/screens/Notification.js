@@ -95,7 +95,7 @@ const Home = () => {
                                             <Paragraph style={styles.announcementNote}>{notifi.description}</Paragraph>
                                         </Card.Content>
                                     </Card>
-                                ))};
+                                ))}
                             
 
                         </View>
