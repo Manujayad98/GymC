@@ -264,7 +264,7 @@ export default function ViewWorkout() {
                                     <div className="form-row">
                                         <div className="form-col1">
                                             <InputField
-                                                value={traineeDetails.firstName}
+                                                value={traineeDetails?.firstName}
                                                 type='text'
                                                 name='userId'
                                                 label="First Name"
@@ -280,7 +280,7 @@ export default function ViewWorkout() {
                                     <div className="form-row">
                                         <div className="form-col1">
                                             <InputField
-                                                value={traineeDetails.lastName}
+                                                value={traineeDetails?.lastName}
                                                 type='text'
                                                 name='userId'
                                                 label="Last Name"
@@ -297,7 +297,7 @@ export default function ViewWorkout() {
                                     <div className="form-row">
                                         <div className="form-col1">
                                             <InputField
-                                                value={traineeDetails.dob}
+                                                value={traineeDetails?.dob}
                                                 type='text'
                                                 name='DOB'
                                                 label="DOB"
@@ -331,7 +331,7 @@ export default function ViewWorkout() {
                                     <div className='form-row'>
                                         <div className="form-col1">
                                             <InputField
-                                                value={traineeDetails.emergencyNumber}
+                                                value={traineeDetails?.emergencyNumber}
                                                 type='text'
                                                 name='emergencyNumber'
                                                 label="Emergency Number"
@@ -347,7 +347,7 @@ export default function ViewWorkout() {
                                     <div className='form-row'>
                                         <div className="form-col1">
                                             <InputField
-                                                value={traineeDetails.address}
+                                                value={traineeDetails?.address}
                                                 type='text'
                                                 name='address'
                                                 label="Address"

@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import Print from '../../../images/Icons/print-solid.svg'
 import InputField from "../Form/InputField";
@@ -18,7 +18,7 @@ const PaymentModal = (props) => {
 
     useEffect(() => {
         getAllPayments();
-      }, []);
+    }, []);
 
     const [payment, setPayment] = useState("");
 
@@ -53,7 +53,7 @@ const PaymentModal = (props) => {
 
     const [requestData, setState] = useState({
 
-        trainee_id: props.msg ,
+        trainee_id: props.msg,
         date: '',
         amount: '',
 
@@ -63,7 +63,7 @@ const PaymentModal = (props) => {
     const handleSubmit = (evt) => {
         console.log(requestData);
         evt.preventDefault();
-         {
+        {
             console.log(requestData);
 
             postCashPayment(requestData)
@@ -71,8 +71,8 @@ const PaymentModal = (props) => {
                     if (response.status === 200) {
                         console.log(response.data);
                         // setMessage(response.data);
-                        
-                            toast.success("Cash Payment Successful");
+
+                        toast.success("Cash Payment Successful");
                     }
                 })
                 .catch((err) => {
@@ -84,23 +84,23 @@ const PaymentModal = (props) => {
         }
     };
 
-    return(
-        <div className="rec-check-overlay">
-            <div className="rec-leave-container" style={{top:"10px"}}>
+    return (
+        <div className="rec-check-overlay" style={{ zIndex: "999" }}>
+            <div className="rec-leave-container" style={{ top: "10px" }}>
                 <div className="rec-leave-header">
                     <Button onClick={props.closePopUp} className="rec-cmodal-closebtn">X</Button>
-                    <img src={Print} alt="" height={25} weight={25} style={{float:"left", margin:"20px"}}/>
+                    <img src={Print} alt="" height={25} weight={25} style={{ float: "left", margin: "20px" }} />
                 </div>
                 <div className="rec-leave-title"> <p className="rec-check-title">Payment Slip</p> </div>
                 <div className="rec-leave-body">
                     <div className="rec-leave-input">
-                    <InputField
-                    value={props.msg}
-                    type='text'
-                    label="TRAINEE ID"
-                    placeholder={props.msg}
-                    readonly={true}
-                    />
+                        <InputField
+                            value={props.msg}
+                            type='text'
+                            label="TRAINEE ID"
+                            placeholder={props.msg}
+                            readonly={true}
+                        />
                     </div>
                     {/* <div className="rec-leave-input">
                     <InputField 
@@ -121,33 +121,33 @@ const PaymentModal = (props) => {
                     />
                     </div> */}
                     <div className="rec-leave-input">
-                    <InputField 
-                    name='date'
-                    value={payment.date}
-                    type='text'
-                    label="LAST PAYMENT DATE"
-                    placeholder={payment.date}
-                    readonly={true}
-                    />
+                        <InputField
+                            name='date'
+                            value={payment.date}
+                            type='text'
+                            label="LAST PAYMENT DATE"
+                            placeholder={payment.date}
+                            readonly={true}
+                        />
                     </div>
                     <div className="rec-leave-input">
-                    <InputField 
-                    //value={requestData.membershiptype}
-                    type='text'
-                    value={payment.type}
-                    label="MEMBERSHIP TYPE"
-                    // placeholder={props.type}
-                    readonly={true}
-                    />
+                        <InputField
+                            //value={requestData.membershiptype}
+                            type='text'
+                            value={payment.type}
+                            label="MEMBERSHIP TYPE"
+                            // placeholder={props.type}
+                            readonly={true}
+                        />
                     </div>
-                    
+
                     <div className="rec-leave-input">
-                        <InputField 
-                        name='amount'
-                        label="AMOUNT"
-                        value={payment.amount}
-                        type="number"
-                        readonly={true}
+                        <InputField
+                            name='amount'
+                            label="AMOUNT"
+                            value={payment.amount}
+                            type="number"
+                            readonly={true}
                         />
                     </div>
                     <div>

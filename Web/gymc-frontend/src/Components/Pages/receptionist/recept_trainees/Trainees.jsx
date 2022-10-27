@@ -196,7 +196,7 @@ const Trainees = () => {
                 { title: "", field: "TraineeImg" },
                 { title: "TRAINEE ID", field: "trainee_id" },
                 { title: "TRAINEE NAME", field: "full_name" },
-                { title: "PAYMENT TYPE", field: "PaymentType" },
+                { title: "PAYMENT TYPE", field: "PaymentType", hidden: true, },
                 { title: "REG ON", field: "registered_date" },
               ]}
               icons={TableIcons}

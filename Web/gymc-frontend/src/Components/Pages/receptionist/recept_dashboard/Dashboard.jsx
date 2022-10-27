@@ -24,6 +24,8 @@ import './Dashboard.css'
 import { margin } from '@mui/system'
 import { getUpcomingAppointmentTableDetails } from "../../../../services/AppointmentService";
 import { getTodaysTrainers } from "../../../../services/StaffService";
+import MaterialTable from "material-table";
+import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 
 
 const Dashboard = () => {

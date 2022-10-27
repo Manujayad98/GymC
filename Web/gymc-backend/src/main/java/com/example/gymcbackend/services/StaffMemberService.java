@@ -138,15 +138,15 @@ public class StaffMemberService {
             user.setStatus(true);
             user.setIsHold(0);
 
-            if (trainerFormDetails.getStaffType() == "Owner" ){
-                user.setUserLevel("Owner");
-            } else if (trainerFormDetails.getStaffType() == "Receptionist" ) {
-                user.setUserLevel("Receptionist");
-            } else if (trainerFormDetails.getStaffType() == "Trainer") {
+//            if (trainerFormDetails.getStaffType() == "Owner" ){
+//                user.setUserLevel("Owner");
+//            } else if (trainerFormDetails.getStaffType() == "Receptionist" ) {
+//                user.setUserLevel("Receptionist");
+//            } else if (trainerFormDetails.getStaffType() == "Trainer") {
                 user.setUserLevel("Trainer");
-            } else {
-                user.setUserLevel("Admin");
-            }
+//            } else {
+//                user.setUserLevel("Admin");
+//            }
 
             userAccountDetailsRepository.save(user);
 

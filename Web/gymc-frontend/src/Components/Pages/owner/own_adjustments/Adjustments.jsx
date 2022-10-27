@@ -239,10 +239,10 @@ export default function Exercises() {
                     </div>
 
                     <div className="ex">
-                        <div className="header">
+                        {/* <div className="header">
                             <h3 id="own-adjustment-titles">Adjustment Counts</h3>
 
-                        </div>
+                        </div> */}
                         {/* <div className='own-adjustment-card '>
                     <MaterialTable
                         title="Adjustment Count"

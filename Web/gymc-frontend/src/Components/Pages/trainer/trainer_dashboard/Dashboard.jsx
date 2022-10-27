@@ -7,7 +7,7 @@ import SampleCal from '../../../Utilities/CalendarComp/SampleCal'
 import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 import DeleteModal from '../../../Utilities/Popups/DeletionModal'
-import { getReservationTableDetails} from "../../../../services/AppointmentService";
+import { getReservationTableDetails } from "../../../../services/AppointmentService";
 
 
 const Dashboard = () => {
@@ -28,14 +28,14 @@ const Dashboard = () => {
 
   const [appointments, setAppointments] = useState([]);
 
-    const getAppointments = async () => {
-        const res = await getReservationTableDetails();
-        console.log(res.data);
-        setAppointments(
-            [...res.data]
-        );
-        console.log(appointments);
-    };
+  const getAppointments = async () => {
+    const res = await getReservationTableDetails();
+    console.log(res.data);
+    setAppointments(
+      [...res.data]
+    );
+    console.log(appointments);
+  };
 
   //ANNUAL INCOME CHART
   const Annualdata = [
@@ -126,37 +126,37 @@ const Dashboard = () => {
             <div className='trainer-dashboard-table-container'>
               <div className='trainer-dashboard-container-head'>Reservations</div>
               {/* <div className='trainer-dashboard-card trainer-dashboard-table-cards'> */}
-                <div className="table-div">
-                   <MaterialTable
-                    title="Upcoming Appointments"
-                    columns={[
-                      { title: "Trainee ID", field: "trainee_id" },
-                      { title: "Date", field: "training_date" },
-                      { title: "Start Time", field: "start_time" },
-                      { title: "End Time", field: "end_time" },
-                    
+              <div className="table-div">
+                <MaterialTable
+                  title="Upcoming Reservations"
+                  columns={[
+                    { title: "Trainee ID", field: "trainee_id" },
+                    { title: "Date", field: "training_date" },
+                    { title: "Start Time", field: "start_time" },
+                    { title: "End Time", field: "end_time" },
 
-                    ]}
-                    icons={TableIcons}
-                    data={appointments}
-                  
 
-                    
-                    options={{
-                      headerStyle: {
-                        backgroundColor: '#1F0106',
-                        color: '#FFF',
-                        hover: '#FFF'
-                      }
-                    }}
-                  />
-                  {/* <DeleteModal open={openModal} onClose={() => setOpenModal(false)} /> */}
-                </div>
+                  ]}
+                  icons={TableIcons}
+                  data={appointments}
+
+
+
+                  options={{
+                    headerStyle: {
+                      backgroundColor: '#1F0106',
+                      color: '#FFF',
+                      hover: '#FFF'
+                    }
+                  }}
+                />
+                {/* <DeleteModal open={openModal} onClose={() => setOpenModal(false)} /> */}
               </div>
             </div>
           </div>
-
         </div>
+
+      </div>
     //   </div>
     // </div >
   )

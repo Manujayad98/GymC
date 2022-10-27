@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import './checkModal.css'
 import InputField from "../Form/InputField";
@@ -20,21 +20,21 @@ const CheckoutModal = (props) => {
     const formattedTime = format(today, 'hh.mm');
 
     // if(!open) return null
-    return(
-        <div className="rec-check-overlay">
+    return (
+        <div className="rec-check-overlay" style={{ zIndex: "999" }}>
             <div className="rec-check-container">
                 <div className="rec-check-header"><Button onClick={props.closePopUp} className="rec-cmodal-closebtn">X</Button></div>
                 <div className="rec-check-formtitle"><p className="rec-check-title">Check Out form</p></div>
                 <div className="rec-check-body">
                     <form className="rec-check-form" action="">
                         <div className="rec-check-input">
-                        <InputField
-                        value={props.msg}
-                        type='text'
-                        label="TRAINEE ID"
-                        placeholder={props.msg}
-                        readonly={true}
-                        />
+                            <InputField
+                                value={props.msg}
+                                type='text'
+                                label="TRAINEE ID"
+                                placeholder={props.msg}
+                                readonly={true}
+                            />
                         </div>
                         {/* <div className="rec-check-input">
                         <InputField
@@ -46,20 +46,20 @@ const CheckoutModal = (props) => {
                         />
                         </div> */}
                         <div className="rec-check-input">
-                        <InputField
-                        value={formattedDate}
-                        type='text'
-                        label = "CHECK IN DATE"
-                        placeholder={formattedDate}
-                        readonly={true}
-                        />
-                        <InputField
-                        value={formattedTime}
-                        type='text'
-                        label = "CHECK OUT TIME"
-                        placeholder={formattedTime}
-                        readonly={true}
-                        />
+                            <InputField
+                                value={formattedDate}
+                                type='text'
+                                label="CHECK IN DATE"
+                                placeholder={formattedDate}
+                                readonly={true}
+                            />
+                            <InputField
+                                value={formattedTime}
+                                type='text'
+                                label="CHECK OUT TIME"
+                                placeholder={formattedTime}
+                                readonly={true}
+                            />
                         </div>
                         {/* <div className="rec-check-input">
                         <InputField

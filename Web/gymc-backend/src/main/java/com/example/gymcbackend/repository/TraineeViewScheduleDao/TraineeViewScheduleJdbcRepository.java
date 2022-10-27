@@ -48,7 +48,7 @@ public class TraineeViewScheduleJdbcRepository {
                         "INNER JOIN training_date  ON workout_plan.workout_planid=training_date.workout_planid " +
                         "INNER JOIN exercise ON training_date.exercise_id=exercise.exerciseid "+
                         "INNER JOIN trainee ON trainee.trainee_id=workout_schedule.trainee_id "+
-                        "AND workout_schedule.trainee_id=:traineeId AND workout_plan.training_date=:traineeDate";
+                        "AND workout_schedule.trainee_id=:traineeId OR workout_plan.training_date=:traineeDate";
 
 
 
