@@ -28,6 +28,9 @@ import Arrow from '../../../../images/Icons/arrow-square-right.svg'
 import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 
+import trainee1 from '../../../../images/owner/te1.png'
+
+
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -104,6 +107,10 @@ const Trainees = () => {
         }
       });
     setPopUp("");
+  };
+
+  const paymentSuccesful = () => {
+    toast.success("Payment Successful!");
   };
 
   const [trainerDetailsTableHead] = useState([
@@ -304,6 +311,7 @@ const Trainees = () => {
                 msg={msg}
                 closePopUp={closePopUp}
                 open={paymentModal}
+                handleSubmit={paymentSuccesful}
               />
             )}
 
@@ -316,7 +324,7 @@ const Trainees = () => {
             )}
 
             {popup === "checkout" && (
-              <CheckinModal
+              <CheckoutModal
                 msg={msg}
                 closePopUp={closePopUp}
                 open={checkoutmodal}

@@ -27,3 +27,15 @@ export const getUpcomingAppointmentTableDetails = () => {
         },
     });
 };
+
+//GET TRAINER RESERVATIONS TABLE DETAILS
+
+export const getReservationTableDetails = () => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/reservations`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};

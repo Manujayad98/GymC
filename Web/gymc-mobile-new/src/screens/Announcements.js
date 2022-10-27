@@ -5,9 +5,9 @@ import { icons, COLORS, SIZES } from "../constans";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Entypo';
 import Icon3 from 'react-native-vector-icons/MaterialIcons';
-import { Card, Title, Paragraph } from 'react-native-paper';
+import { Card, Title, Paragraph, Appbar } from 'react-native-paper';
 import axios from "axios";
-
+import utils from "../utils/config"
 // const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
@@ -35,32 +35,32 @@ const windowHeight = Dimensions.get('window').height;
 //         note: 'Gym c will be closed on 2nd September 2022'
 //     },
 // ];
-const Announcements = () => {
+const Announcements = ({ navigation }) => {
 
     const [ann, setAnnoucements] = useState([]);
+    const _goBack = () => navigation.navigate('Tabs');
     // console.log(ann.title);
     useEffect(() => {
         console.log("announcement get called");
         // 
         const setResponse = async (data) => {
             await axios
-                .get("http://172.20.10.3:8080/api/v1/annoucements", {
-                    headers: {
-                        'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHWU1DIiwic3ViIjoiU2FuamFuYSBSYWphcGFrc2hhIiwiaWF0IjoxNjY2NzgxMTQ5LCJleHAiOjE2NjY3ODQ3NDl9.xf_Bn9sGxyK7VUuarNJJ65wgKh88tC8HbbZwcYwAbVM`
-                    }
-                })
-                .then((res) => {
-                    console.log(res.data)
-
-                    // console.log(res.data[0])
-                    setAnnoucements(res.data);
-                    console.log(ann);
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-
-
+              .get("http://10.22.166.174:8080/api/v1/annoucements", {
+                headers: {
+                  'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHWU1DIiwic3ViIjoiU3VkYW0gTXVuYXNpbmdoZSIsImlhdCI6MTY2Njc4MTI2MSwiZXhwIjoxNjY2Nzg0ODYxfQ.lTqy_FEI98XwUWj2oiulyqLll8-euCsTNGtj_8Sk9HE` 
+                }})
+              .then((res) => {
+                console.log(res.data)
+                
+                // console.log(res.data[0])
+                setAnnoucements(res.data);
+                console.log(ann);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+    
+    
         }
         setResponse();
     }, []);
@@ -69,12 +69,16 @@ const Announcements = () => {
 
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.backgroundColor }}>
-            <Header title={"GYMC"} />
+            {/* <Header title={"GYMC"} /> */}
+            <Appbar.Header  style={styles.top}>
+            <Appbar.BackAction onPress={_goBack} />
+            <Appbar.Content title="Annoucements" />
+            </Appbar.Header>
             <ScrollView>
 
                 <View style={styles.root}>
                     <View style={styles.homecontainer}>
-                        <View style={styles.header}>
+                        {/* <View style={styles.header}>
                             <Text><Icon name="user-circle" size={30} color="#000"
                                 onPress={() =>
                                     navigation.navigate('Startup')}
@@ -84,7 +88,7 @@ const Announcements = () => {
 
                             </Text>
 
-                        </View>
+                        </View> */}
                         <Text style={styles.titletext}>Announcements</Text>
                         <Text style={styles.sectionHeader}></Text>
                         <View style={styles.notificationbody}>
@@ -97,9 +101,9 @@ const Announcements = () => {
                                         <Paragraph style={styles.announcementNote}>{ann.note}</Paragraph>
                                     </Card.Content>
                                 </Card>
-                            ))};
-
-
+                        ))}
+                        
+                            
                         </View>
 
 
@@ -179,7 +183,10 @@ const styles = StyleSheet.create({
 
 
     },
-
+    top: {
+        backgroundColor: "#000",
+        marginBottom:10,
+      },
 
     notificationbody: {
         borderTopColor: 'black',

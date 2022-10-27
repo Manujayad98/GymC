@@ -243,40 +243,41 @@ export default function Exercises() {
                             <h3 id="own-adjustment-titles">Adjustment Counts</h3>
 
                         </div>
-                        <div className='own-adjustment-card '>
-                            <MaterialTable
-                                title="Adjustment Count"
-                                columns={columns}
-                                data={adjustmentCounts}
-                                icons={TableIcons}
-                                editable={{
+                        {/* <div className='own-adjustment-card '>
+                    <MaterialTable
+                        title="Adjustment Count"
+                        columns={columns}
+                        data={adjustmentCounts}
+                        icons={TableIcons}
+                        editable={{
+                        
+                            onRowUpdate: (newData, oldData) =>
+                            new Promise((resolve, reject) => {
+                                setTimeout(() => {
+                                const dataUpdate = [...adjustmentCounts];
+                                const index = oldData.tableData.id;
+                                dataUpdate[index] = newData;
+                                setadjustmentCounts([...dataUpdate]);
 
-                                    onRowUpdate: (newData, oldData) =>
-                                        new Promise((resolve, reject) => {
-                                            setTimeout(() => {
-                                                const dataUpdate = [...adjustmentCounts];
-                                                const index = oldData.tableData.id;
-                                                dataUpdate[index] = newData;
-                                                setadjustmentCounts([...dataUpdate]);
-
-                                                resolve();
-                                            }, 1000)
-                                        }),
-
-                                }}
-                                options={{
-                                    pageSize: 1,
-                                    pageSizeOptions: [6, 12, 15],
-                                    headerStyle: {
-                                        backgroundColor: '#1F0106',
-                                        color: '#FFF',
-                                        hover: '#FFF',
-                                        // textAlign:'center'
-                                    },
-
-                                }}
-                            />
-                        </div></div>
+                                resolve();
+                                }, 1000)
+                            }),
+                            
+                        }}
+                        options={{
+                            pageSize: 1,
+                            pageSizeOptions: [6, 12, 15],
+                            headerStyle: {
+                                backgroundColor: '#1F0106',
+                                color: '#FFF',
+                                hover: '#FFF',
+                                // textAlign:'center'
+                            },
+                           
+                        }}
+                        />
+    </div> */}
+                    </div>
                 </div>
                 {/* <DeleteModal open={openModal} onClose={() => setOpenModal(false)} /> */}
 

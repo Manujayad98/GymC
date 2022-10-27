@@ -48,12 +48,12 @@ public class Announcement {
         this.staffMember = staffMember;
     }
 
-    public String getTopic() {
-        return topic;
-    }
-
     public Date getTime() {
         return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
     }
 
     public String getDescription() {

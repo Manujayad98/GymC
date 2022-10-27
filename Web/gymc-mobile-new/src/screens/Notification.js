@@ -67,12 +67,12 @@ const Home = () => {
     }, []);
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.backgroundColor }}>
-            <Header title={"GYMC"} />
+            {/* <Header title={"GYMC"} /> */}
             <ScrollView>
 
                 <View style={styles.root}>
                     <View style={styles.homecontainer}>
-                        <View style={styles.header}>
+                        {/* <View style={styles.header}>
                             <Text><Icon name="user-circle" size={30} color="#000"
                                 onPress={() =>
                                     navigation.navigate('Startup')}
@@ -82,7 +82,7 @@ const Home = () => {
 
                             </Text>
 
-                        </View>
+                        </View> */}
                         <Text style={styles.titletext}>Notifications</Text>
                         <Text style={styles.sectionHeader}></Text>
                         <View style={styles.notificationbody}>

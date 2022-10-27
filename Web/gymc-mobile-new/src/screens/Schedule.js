@@ -59,7 +59,7 @@ const Schedule = () => {
       <ScrollView >
         <Text
           // onPress={() => navigation.navigate('Home')}
-          style={{ fontSize: 26, fontWeight: 'bold', color: 'black' }}>My Calendar
+          style={{ fontSize: 26, fontWeight: 'bold', color: 'black',textAlign:'center' }}>My Calendar
         </Text>
         <View
           style={{
@@ -274,6 +274,7 @@ const styles = StyleSheet.create({
   newView: {
     marginBottom: 20,
   },
+
   dateContainer: {
     display: 'flex',
     flexDirection: 'row',

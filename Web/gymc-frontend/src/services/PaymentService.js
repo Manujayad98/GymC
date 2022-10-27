@@ -92,3 +92,29 @@ export const getTotalOnlinePayments = () => {
     });
 };
 
+
+
+
+                        //PAYMENT MODAL RELATED
+//GET DETAILS FOR PAYMENT POPUP
+export const getPaymentDetails = (trainee_ID) => {
+    return axios({
+        method: "GET",
+        url: `${USER_URL}/getPayment/${trainee_ID}`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+    });
+};
+
+//POST CASH PAYMENT
+export const postCashPayment = (requestData) => {
+    return axios({
+        method: "POST",
+        url: `${USER_URL}/cashPayment`,
+        headers: {
+            Authorization: "Bearer " + getToken(),
+        },
+        data: requestData,
+    });
+};
