@@ -28,6 +28,9 @@ import Arrow from '../../../../images/Icons/arrow-square-right.svg'
 import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 
+import trainee1 from '../../../../images/owner/te1.png'
+
+
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -94,9 +97,13 @@ const Trainees = () => {
           toast.error("Failed !!!");
         }
       });
-    setPopUp("");
-  };
+  setPopUp("");
+};
 
+const paymentSuccesful = () => {
+              toast.success("Payment Successful!");
+};
+  
   const [trainerDetailsTableHead] = useState([
     { id: "TraineeImg", label: "", numeric: false },
     { id: "traineeID", label: "TRAINEE ID", numeric: false },
@@ -114,46 +121,46 @@ const Trainees = () => {
         <HeaderR title="Trainees" />
         <div className="content-container">
           <div>
-            <div className='rec-trainee-titles'> Trainees Today</div>
-            <div className='rec-trainee-profile-card-container'>
-              <div onClick={() => opennowin(true)} className='rec-train-card'>
-                <div className='rec-dashboard-card-img-container'>
-                  <img className='recept-dashboard-images' src={Pic1} alt="" />
+              <div className='rec-trainee-titles'> Trainees Today</div>
+                <div className='rec-trainee-profile-card-container'>
+                    <div onClick={() => opennowin(true)} className='rec-train-card'>
+                      <div className='rec-dashboard-card-img-container'>
+                        <img className='recept-dashboard-images' src={trainee1} alt="" />
+                      </div>
+                      <div className='traineeID'>M0001</div>
+                      <div className='traineeName'>Rasheni Yohana</div>
+                    </div>
+                    {/* <div onClick={() => opennowin(true)} className='rec-train-card'>
+                      <div className='rec-dashboard-card-img-container'>
+                        <img className='recept-dashboard-images' src={Pic1} alt="" />
+                      </div>
+                      <div className='traineeID'>S0001</div>
+                      <div className='traineeName'>Manujaya Dasanayaka</div>
+                    </div>
+                    <div onClick={() => opennowin(true)} className='rec-train-card'>
+                      <div className='rec-dashboard-card-img-container'>
+                        <img className='recept-dashboard-images' src={Pic1} alt="" />
+                      </div>
+                      <div className='traineeID'>S0001</div>
+                      <div className='traineeName'>Manujaya Dasanayaka</div>
+                    </div>
+                    <div onClick={() => opennowin(true)} className='rec-train-card'>
+                      <div className='rec-dashboard-card-img-container'>
+                        <img className='recept-dashboard-images' src={Pic1} alt="" />
+                      </div>
+                      <div className='traineeID'>S0001</div>
+                      <div className='traineeName'>Manujaya Dasanayaka</div>
+                    </div>
+                    <div onClick={() => opennowin(true)} className='rec-train-card'>
+                      <div className='rec-dashboard-card-img-container'>
+                        <img className='recept-dashboard-images' src={Pic1} alt="" />
+                      </div>
+                      <div className='traineeID'>S0001</div>
+                      <div className='traineeName'>Manujaya Dasanayaka</div>
+                    </div> */}
+                  
                 </div>
-                <div className='traineeID'>S0001</div>
-                <div className='traineeName'>Manujaya Dasanayaka</div>
-              </div>
-              <div onClick={() => opennowin(true)} className='rec-train-card'>
-                <div className='rec-dashboard-card-img-container'>
-                  <img className='recept-dashboard-images' src={Pic1} alt="" />
-                </div>
-                <div className='traineeID'>S0001</div>
-                <div className='traineeName'>Manujaya Dasanayaka</div>
-              </div>
-              <div onClick={() => opennowin(true)} className='rec-train-card'>
-                <div className='rec-dashboard-card-img-container'>
-                  <img className='recept-dashboard-images' src={Pic1} alt="" />
-                </div>
-                <div className='traineeID'>S0001</div>
-                <div className='traineeName'>Manujaya Dasanayaka</div>
-              </div>
-              <div onClick={() => opennowin(true)} className='rec-train-card'>
-                <div className='rec-dashboard-card-img-container'>
-                  <img className='recept-dashboard-images' src={Pic1} alt="" />
-                </div>
-                <div className='traineeID'>S0001</div>
-                <div className='traineeName'>Manujaya Dasanayaka</div>
-              </div>
-              <div onClick={() => opennowin(true)} className='rec-train-card'>
-                <div className='rec-dashboard-card-img-container'>
-                  <img className='recept-dashboard-images' src={Pic1} alt="" />
-                </div>
-                <div className='traineeID'>S0001</div>
-                <div className='traineeName'>Manujaya Dasanayaka</div>
-              </div>
-
-            </div>
-
+              
           </div>
 
           <p style={{ textAlign: 'left', fontWeight: 'bold', fontSize: '30px', marginLeft: '20px' }}>All</p>
@@ -280,11 +287,12 @@ const Trainees = () => {
             )}
 
             {popup === "pay" && (
-              <PaymentModal
-                msg={msg}
-                closePopUp={closePopUp}
-                open={paymentModal}
-              />
+                <PaymentModal
+                    msg={msg}
+                    closePopUp={closePopUp}
+                    open={paymentModal}
+                    handleSubmit={paymentSuccesful}
+                />
             )}
 
             {popup === "checkin" && (
@@ -296,11 +304,11 @@ const Trainees = () => {
             )}
 
             {popup === "checkout" && (
-              <CheckinModal
-                msg={msg}
-                closePopUp={closePopUp}
-                open={checkoutmodal}
-              />
+                <CheckoutModal
+                    msg={msg}
+                    closePopUp={closePopUp}
+                    open={checkoutmodal}
+                />
             )}
 
             {/* <DeleteModal open={openModal} onClose={() => setOpenModal(false)} /> */}
