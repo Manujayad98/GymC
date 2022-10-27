@@ -1,11 +1,12 @@
 import { View, Text, Image, StyleSheet, Dimensions, ScrollView, SafeAreaView, FlatList, StatusBar } from 'react-native'
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/HeaderComponent";
 import { icons, COLORS, SIZES } from "../constans";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Entypo';
 import Icon3 from 'react-native-vector-icons/MaterialIcons';
 import { Card, Title, Paragraph, Button } from 'react-native-paper';
+import axios from "axios";
 
 // const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -47,6 +48,34 @@ const Home = ({ navigation }) => {
     //         console.log(err);
     //       });
     //   });
+    const [ann, setAnnoucements] = useState([]);
+
+    useEffect(() => {
+        console.log("announcement get called");
+        // 
+        const setResponse = async (data) => {
+            await axios
+              .get("http://10.22.166.174:8080/api/v1/annoucements", {
+                headers: {
+                  'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHWU1DIiwic3ViIjoiU3VkYW0gTXVuYXNpbmdoZSIsImlhdCI6MTY2Njg1NTA1MSwiZXhwIjoxNjY2ODU4NjUxfQ.BbdKjMfihT6_U4vpeDSv_-6RsVCyTeb3DwvcYQFsBVo` 
+                }})
+              .then((res) => {
+                console.log(res.data)
+                
+                // console.log(res.data[0])
+                setAnnoucements(res.data);
+                console.log(ann);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+    
+    
+        }
+        setResponse();
+    }, []);
+
+
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.backgroundColor }}>
             {/* <Header title={"GYMC"} /> */}
@@ -133,16 +162,25 @@ const Home = ({ navigation }) => {
                                 )}
 
                             /> */}
-                            {DATA.map((DATA) => (
+                            {/* {DATA.map((DATA) => (
                                 <Card style={styles.item}>
                                     <Card.Content>
                                         <Title key={DATA.id} style={styles.announcementTitle}>{DATA.title}</Title>
-                                        {/* <Title>Card title</Title> */}
+                                        <Title>Card title</Title>
                                         <Paragraph style={styles.announcementAuthor}>{DATA.author}</Paragraph>
                                         <Paragraph style={styles.announcementNote}>{DATA.note}</Paragraph>
                                     </Card.Content>
                                 </Card>
-                            ))}
+                            ))} */}
+                            {ann.map((ann) => (
+                                <Card style={styles.item}>
+                                    <Card.Content>
+                                        <Title style={styles.announcementTitle} key={ann.id}>{ann.title}</Title>
+                                        <Paragraph style={styles.announcementAuthor}>{ann.author}</Paragraph>
+                                        <Paragraph style={styles.announcementNote}>{ann.note}</Paragraph>
+                                    </Card.Content>
+                                </Card>
+                        ))}
 
 
 
