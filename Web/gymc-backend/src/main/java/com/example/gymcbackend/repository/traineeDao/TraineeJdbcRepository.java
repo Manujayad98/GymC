@@ -109,4 +109,21 @@ public class TraineeJdbcRepository {
             return "annocement failed";
         }
     }
+
+    public PaymentResponse getPayment(String traineeId) {
+
+
+//        LocalDate futureDate = LocalDate.now().plusMonths(1);
+        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+        namedParameters.addValue("traineeId", traineeId);
+
+        String query="SELECT payment_plan_methods.type,payment.date as lastDate,payment_plan.due_date as nextDate,payment.amount as lastAmount,payment_plan.amount as amount FROM payment_plan_methods " +
+                "INNER JOIN payment_plan ON payment_plan_methods.payment_plan_methodsid=payment_plan.payment_plan_method_id " +
+                "INNER JOIN payment ON payment_plan.payment_planid=payment.payment_planid " +
+                "AND payment.trainee_id=? ORDER BY payment.date DESC LIMIT 1 ";
+
+        PaymentResponse paymentResponse = (PaymentResponse) jdbcTemplate.queryForObject(query, new Object[]{traineeId}, new BeanPropertyRowMapper(PaymentResponse.class));
+        return paymentResponse;
+
+    }
 }

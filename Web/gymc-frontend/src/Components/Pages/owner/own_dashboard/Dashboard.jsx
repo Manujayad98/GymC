@@ -247,7 +247,7 @@ const Dashboard = () => {
 
                   ]}
                   icons={TableIcons}
-                  data={todayWorkouts}
+                  // data={todayWorkouts}
 
                   options={{
                     pageSize: 3,

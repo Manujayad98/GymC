@@ -11,15 +11,15 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 public class NotificationController {
 
     @Autowired
     NotificationService notificationService;
 
 
-    @GetMapping("/unreadNotifications/{userId}")
-    public List<NotificationResponse> getUnreadNotifications(@PathVariable long userId){
+    @GetMapping("/notifications/{userId}")
+    public List<NotificationResponse> getUnreadNotifications(@PathVariable String userId){
         return notificationService.getUnreadNotify(userId);
     }
 

@@ -1,11 +1,13 @@
 import { View, Text, Image, StyleSheet, Dimensions, ScrollView, SafeAreaView, FlatList, StatusBar } from 'react-native'
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/HeaderComponent";
 import { icons, COLORS, SIZES } from "../constans";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Entypo';
 import Icon3 from 'react-native-vector-icons/MaterialIcons';
 import { Card, Title, Paragraph } from 'react-native-paper';
+import axios from "axios";
+
 
 // const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -34,6 +36,35 @@ const DATA = [
     },
 ];
 const Home = () => {
+
+    const [notifi, setNotifications] = useState([]);
+    // console.log(notif.title);
+    const userId="2";
+    useEffect(() => {
+        console.log("announcement get called");
+        // 
+        const setResponse = async (data) => {
+            await axios
+                .get("http://10.22.162.153:8080/api/v1/notifications/"+userId, {
+                    headers: {
+                        'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHWU1DIiwic3ViIjoiU3VkYW0iLCJpYXQiOjE2NjY3ODg2NjEsImV4cCI6MTY2NjgyNDY2MX0.xgjW2erRtGIsFTJuYHPbcwHsiCa1-ucrRdvs6rhOyZM`
+                    }
+                })
+                .then((res) => {
+                    console.log(res.data)
+
+                    // console.log(res.data[0])
+                    setNotifications(res.data);
+                    console.log(notifi);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+
+
+        }
+        setResponse();
+    }, []);
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.backgroundColor }}>
             <Header title={"GYMC"} />
@@ -53,34 +84,22 @@ const Home = () => {
 
                         </View>
                         <Text style={styles.titletext}>Notifications</Text>
-                        <Text style={styles.sectionHeader}>New</Text>
+                        <Text style={styles.sectionHeader}></Text>
                         <View style={styles.notificationbody}>
-                            {DATA.map((DATA) => (
-                                <Card style={styles.item}>
-                                    <Card.Content>
-                                        <Title key={DATA.id} style={styles.announcementTitle}>{DATA.title}</Title>
-                                        {/* <Title>Card title</Title> */}
-                                        <Paragraph style={styles.announcementAuthor}>{DATA.author}</Paragraph>
-                                        <Paragraph style={styles.announcementNote}>{DATA.note}</Paragraph>
-                                    </Card.Content>
-                                </Card>
-                            ))}
+                            {console.log(notifi)}
+                                {notifi.map((notifi) => (
+                                    <Card style={styles.item}>
+                                        <Card.Content>
+                                            <Title style={styles.announcementTitle} key={notifi.notificationId}>{notifi.topic}</Title>
+                                            <Paragraph style={styles.announcementAuthor}>{notifi.time}</Paragraph>
+                                            <Paragraph style={styles.announcementNote}>{notifi.description}</Paragraph>
+                                        </Card.Content>
+                                    </Card>
+                                ))};
+                            
 
                         </View>
-                        <Text style={styles.sectionHeader}>Earlier</Text>
-                        <View style={styles.notificationbody}>
-                            {DATA.map((DATA) => (
-                                <Card style={styles.item}>
-                                    <Card.Content>
-                                        <Title key={DATA.id} style={styles.announcementTitle}>{DATA.title}</Title>
-                                        {/* <Title>Card title</Title> */}
-                                        <Paragraph style={styles.announcementAuthor}>{DATA.author}</Paragraph>
-                                        <Paragraph style={styles.announcementNote}>{DATA.note}</Paragraph>
-                                    </Card.Content>
-                                </Card>
-                            ))}
-
-                        </View>
+                        
 
 
                     </View>
