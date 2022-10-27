@@ -19,7 +19,7 @@ public class Announcement {
     private String topic;
 
     @Column(name = "time")
-    private Time time;
+    private Date time;
 
     @Column(name = "description")
     private String description;
@@ -48,12 +48,12 @@ public class Announcement {
         this.staffMember = staffMember;
     }
 
-    public String getTopic() {
-        return topic;
+    public Date getTime() {
+        return time;
     }
 
-    public Time getTime() {
-        return time;
+    public void setTime(Date time) {
+        this.time = time;
     }
 
     public String getDescription() {

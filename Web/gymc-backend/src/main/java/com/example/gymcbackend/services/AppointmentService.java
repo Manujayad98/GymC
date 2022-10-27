@@ -2,6 +2,7 @@ package com.example.gymcbackend.services;
 
 import com.example.gymcbackend.dto.AppointmentTableData;
 import com.example.gymcbackend.dto.MyAppointments;
+import com.example.gymcbackend.dto.UpcomingReservations;
 import com.example.gymcbackend.repository.appoinmentDao.AppointmentJdbcRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -36,6 +37,10 @@ public class AppointmentService {
         long result = Long.parseLong(String.valueOf(traineeid));
         System.out.println(result);
         return appointmentJdbcRepository.findAllMyAppointments(result);
+    }
+
+    public List<UpcomingReservations> getAllUpcomingReservationsTableData() {
+        return appointmentJdbcRepository.findAllUpcomingReservations();
     }
 
 }
