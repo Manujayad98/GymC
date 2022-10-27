@@ -11,6 +11,14 @@ import trumppic from "../../../../images/receptionistinterim/trump.png"
 import lahirupic from "../../../../images/receptionistinterim/lahiru.png"
 import lelanipic from "../../../../images/receptionistinterim/lelani.png"
 
+import trainer1 from '../../../../images/owner/tr1.png'
+import trainer2 from '../../../../images/owner/tr2.png'
+import trainer3 from '../../../../images/owner/tr3.png'
+import trainer4 from '../../../../images/owner/tr4.png'
+import trainer5 from '../../../../images/owner/tr5.png'
+import trainee1 from '../../../../images/owner/te1.png'
+
+
 import Table from '../../../Utilities/Tables/Table2'
 import './Dashboard.css'
 import { margin } from '@mui/system'
@@ -100,28 +108,20 @@ const Dashboard = () => {
                 <div className='rec-dashboard-container-head'>Trainers Today</div>
                 <div className='rec-dashboard-card1 rec-dashboard-trainers-card'>
                   <div className='rec-dashboard-pic-card'>
-                    <img src={kalindupic} alt="" className='recept-dashboard-images' />
-                    <p className='rec-card-subtitle'>Gihan</p>
+                    <img src={trainer1} alt="" className='recept-dashboard-images' />
+                    <p className='rec-card-subtitle'>Manujaya</p>
                   </div>
                   <div className='rec-dashboard-pic-card'>
-                    <img src={kalindupic} alt="" className='recept-dashboard-images' />
-                    <p className='rec-card-subtitle'>Gihan</p>
+                    <img src={trainer2} alt="" className='recept-dashboard-images' />
+                    <p className='rec-card-subtitle'>Chathura</p>
                   </div>
                   <div className='rec-dashboard-pic-card'>
-                    <img src={kalindupic} alt="" className='recept-dashboard-images' />
-                    <p className='rec-card-subtitle'>Gihan</p>
+                    <img src={trainer5} alt="" className='recept-dashboard-images' />
+                    <p className='rec-card-subtitle'>Sewmini</p>
                   </div>
                   <div className='rec-dashboard-pic-card'>
-                    <img src={kalindupic} alt="" className='recept-dashboard-images' />
-                    <p className='rec-card-subtitle'>Gihan</p>
-                  </div>
-                  <div className='rec-dashboard-pic-card'>
-                    <img src={kalindupic} alt="" className='recept-dashboard-images' />
-                    <p className='rec-card-subtitle'>Gihan</p>
-                  </div>
-                  <div className='rec-dashboard-pic-card'>
-                    <img src={kalindupic} alt="" className='recept-dashboard-images' />
-                    <p className='rec-card-subtitle'>Gihan</p>
+                    <img src={trainer4} alt="" className='recept-dashboard-images' />
+                    <p className='rec-card-subtitle'>Sanjana</p>
                   </div>
                 </div>
               </div>

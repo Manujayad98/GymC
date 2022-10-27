@@ -28,6 +28,9 @@ import Arrow from '../../../../images/Icons/arrow-square-right.svg'
 import MaterialTable from "material-table";
 import TableIcons from '../../../Utilities/Tables/ReactTableIcons'
 
+import trainee1 from '../../../../images/owner/te1.png'
+
+
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -96,6 +99,10 @@ const deleteSelectedTrainee = () => {
       });
   setPopUp("");
 };
+
+const paymentSuccesful = () => {
+              toast.success("Payment Successful!");
+};
   
   const [trainerDetailsTableHead] = useState([
     { id: "TraineeImg", label: "", numeric: false },
@@ -118,12 +125,12 @@ const deleteSelectedTrainee = () => {
                 <div className='rec-trainee-profile-card-container'>
                     <div onClick={() => opennowin(true)} className='rec-train-card'>
                       <div className='rec-dashboard-card-img-container'>
-                        <img className='recept-dashboard-images' src={Pic1} alt="" />
+                        <img className='recept-dashboard-images' src={trainee1} alt="" />
                       </div>
-                      <div className='traineeID'>S0001</div>
-                      <div className='traineeName'>Manujaya Dasanayaka</div>
+                      <div className='traineeID'>M0001</div>
+                      <div className='traineeName'>Rasheni Yohana</div>
                     </div>
-                    <div onClick={() => opennowin(true)} className='rec-train-card'>
+                    {/* <div onClick={() => opennowin(true)} className='rec-train-card'>
                       <div className='rec-dashboard-card-img-container'>
                         <img className='recept-dashboard-images' src={Pic1} alt="" />
                       </div>
@@ -150,7 +157,7 @@ const deleteSelectedTrainee = () => {
                       </div>
                       <div className='traineeID'>S0001</div>
                       <div className='traineeName'>Manujaya Dasanayaka</div>
-                    </div>
+                    </div> */}
                   
                 </div>
               
@@ -284,6 +291,7 @@ const deleteSelectedTrainee = () => {
                     msg={msg}
                     closePopUp={closePopUp}
                     open={paymentModal}
+                    handleSubmit={paymentSuccesful}
                 />
             )}
 
@@ -296,7 +304,7 @@ const deleteSelectedTrainee = () => {
             )}
 
             {popup === "checkout" && (
-                <CheckinModal
+                <CheckoutModal
                     msg={msg}
                     closePopUp={closePopUp}
                     open={checkoutmodal}

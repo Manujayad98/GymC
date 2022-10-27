@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CashPaymentRepository extends JpaRepository<Payment, Long> {
 
+
 }

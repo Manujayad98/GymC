@@ -100,32 +100,32 @@ export default function Trainers() {
                   },
                 },
 
-                {
-                    icon: () => {
-                        return (
+                // {
+                //     icon: () => {
+                //         return (
 
-                            <button
-                                type="button"
-                                className="btn mt-0"
-                                style={{
-                                    backgroundColor: "#FF2121",
-                                    border: "none",
-                                }}
-                            >
-                                Leave
-                            </button>
-                        );
-                              },
-                              onClick: (event, rowData) => {
-                                setSelectedUserData(rowData);
-                                {
-                                    setPopUp("leave");
-                                }
-                                setMsg(
-                                    rowData.trainee_id
-                                );
-                            },
-                    }
+                //             <button
+                //                 type="button"
+                //                 className="btn mt-0"
+                //                 style={{
+                //                     backgroundColor: "#FF2121",
+                //                     border: "none",
+                //                 }}
+                //             >
+                //                 Leave
+                //             </button>
+                //         );
+                //               },
+                //               onClick: (event, rowData) => {
+                //                 setSelectedUserData(rowData);
+                //                 {
+                //                     setPopUp("leave");
+                //                 }
+                //                 setMsg(
+                //                     rowData.trainee_id
+                //                 );
+                //             },
+                //     }
                 
 
               ]}
@@ -141,13 +141,13 @@ export default function Trainers() {
             />
             {/* <DeleteModal open={openModal} onClose={() => setOpenModal(false)} /> */}
           </div>
-            {popup === "leave" && (
+            {/* {popup === "leave" && (
                 <LeaveModal
                     msg={msg}
                     closePopUp={closePopUp}
                     open={openleaveModal}
                 />
-            )}
+            )} */}
                     {/* <Button onClick={() => setadjustModal(true)}>Add Next Amount</Button> */}
                     {/* <AdjustModal open={openadjustModal} onClose={() => setadjustModal(false)} />
                     <DeleteModal open={openModal} onClose={() => setOpenModal(false)} /> */}

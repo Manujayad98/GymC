@@ -23,11 +23,11 @@ public class CashPaymentService {
 
         Payment newPayment = new Payment();
 
-        newPayment.setPaymentPlan(payment.getPaymentPlan());
+
         newPayment.setDate(payment.getDate());
         newPayment.setAmount(payment.getAmount());
         newPayment.setTrainee(payment.getTrainee());
-        newPayment.setType(payment.getType());
+        newPayment.setType("Cash");
 
         cashPaymentRepository.save(newPayment);
         return "payment Added";
